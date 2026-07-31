@@ -16,12 +16,13 @@ import * as vert from './sheets/verticals.js';
 import * as matice from './sheets/matrix.js';
 import * as vety from './sheets/sentences.js';
 import * as rozhovor from './sheets/conversation.js';
+import * as vzory from './sheets/patterns.js';
 import * as dialog from './dialog/new-sentence.js';
 
 const pohledy = {};
 const listy = {};
 let model = null, mapa = [], editovane = new Set();
-let stavDialogu = null;
+let stavDialogu = null, stavVzoru = null;
 
 /* ---- překreslení ----------------------------------------------------
    Model se NEPOČÍTÁ tady — vyzvedne se z backendu. Zdroj pravdy sedí
@@ -45,14 +46,19 @@ function prekresli() {
   vety.prekresli(listy.vety, akceVet);
   vety.tabulkaVazeb(listy.vety, model.slovnik);
   rozhovor.prekresli(listy.dial, stavDialogu, akceDialogu);
+  vzory.prekresli(listy.vz, stavVzoru);
+  popisVyrezu();
 
-  $('#tnF').textContent = D.data.facts.length;
-  $('#tnQ').textContent = D.data.query.length;
+  /* Počty vět v záložkách jsou z CELÉHO korpusu, ne z výřezu — jinak by
+     stránka tvrdila, že spisovatelský korpus má 25 vět. */
+  $('#tnF').textContent = model ? model.f.cisla.vet : D.data.facts.length;
+  $('#tnQ').textContent = model ? model.q.cisla.vet : D.data.query.length;
   $('#tnM').textContent = mapa.length;
   $('#tnV').textContent = D.data.cols.length;
   $('#tnMx').textContent = editovane.size;
   $('#tnS').textContent = vety.pocetVet();
   $('#tnD').textContent = stavDialogu ? stavDialogu.znalost.cisla.tvrzeni : '';
+  $('#tnVz').textContent = model ? model.f.cisla.sablon : '';
   poHrany();
 }
 
@@ -129,6 +135,42 @@ const akceVertikal = {
   },
 };
 
+/* Výřez. Pole se staví celé na backendu; tohle je jen okno, kterým se do
+   něj kouká — bez něj je spisovatelský korpus 28 MB a 59 106 řádků. */
+function popisVyrezu() {
+  const p = $('#vyPopis');
+  if (!p || !model) return;
+  const c = model.f.cisla;
+  p.textContent = c.vyrez.cely
+    ? `všech ${c.vet} vět · ${c.radku} řádků`
+    : `${c.vyrez.vet} z ${c.vet} vět · ${c.vyrez.radku} z ${c.radku} řádků`;
+  const od = $('#vyOd');
+  if (od) { od.max = Math.max(1, c.vet); od.disabled = c.vyrez.cely; }
+}
+
+async function posunVyrezu(o) {
+  const krok = stav.vyrez.pocet || 1;
+  stav.vyrez.od = Math.max(0, stav.vyrez.od + o * krok);
+  $('#vyOd').value = stav.vyrez.od + 1;
+  ulozUI();
+  await naDataVyrez();
+}
+
+/* Výřez mění i to, které VĚTY prohlížeč má — proto se s ním musí přenačíst
+   korpusy, ne jen model. */
+async function naDataVyrez() {
+  const zdroj = await store.nactiData(stav);
+  D.nastav({ cols: zdroj.vertikaly, facts: zdroj.korpusy.facts,
+    query: zdroj.korpusy.query, mapa: [] });
+  await prepocitat();
+  await naVzory();
+}
+
+async function naVzory() {
+  stavVzoru = await store.nactiVzory(stav, vzory.stav);
+  vzory.prekresli(listy.vz, stavVzoru);
+}
+
 /* Dialog. Stránka jen podá text a překreslí, co přišlo zpátky — mluvnice
    i odvozování sedí v jádře. */
 const akceDialogu = {
@@ -189,7 +231,8 @@ async function nactiMapu() {
 export async function start() {
   bub.priprav();
 
-  const zdroj = await store.nactiData();
+  nactiUI();
+  const zdroj = await store.nactiData(stav);
   const vychozi = { cols: zdroj.vertikaly, facts: zdroj.korpusy.facts,
     query: zdroj.korpusy.query, mapa: [] };
   D.zapamatujVychozi(vychozi);
@@ -209,11 +252,11 @@ export async function start() {
   listy.mx = matice.postavList();
   listy.vety = vety.postavList();
   listy.dial = rozhovor.postavList();
-  ['mapd', 'mapp', 'vert', 'mx', 'vety', 'dial']
+  listy.vz = vzory.postavList();
+  ['vz', 'mapd', 'mapp', 'vert', 'mx', 'vety', 'dial']
     .forEach(x => hlavni.appendChild(listy[x]));
   document.body.appendChild(dialog.postavDialog());
 
-  nactiUI();
   srovnejPrepinace();
   $$('#tabs button').forEach(b => { b.onclick = () => prepniList(b.dataset.s); });
   seg('#rf', v => { stav.R.f = v; }, true);
@@ -222,6 +265,42 @@ export async function start() {
   seg('#c', v => { stav.only = v; });
   seg('#cn', v => { stav.cIn = v; });
   seg('#ty', v => { stav.typyOn = v; });
+  $$('#vy button').forEach(b => {
+    b.onclick = async () => {
+      $$('#vy button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      stav.vyrez.pocet = +b.dataset.v;
+      stav.vyrez.od = 0;
+      $('#vyOd').value = 1;
+      ulozUI();
+      await naDataVyrez();
+    };
+  });
+  $('#vyZpet').onclick = () => posunVyrezu(-1);
+  $('#vyDal').onclick = () => posunVyrezu(1);
+  $('#vyOd').onchange = async () => {
+    stav.vyrez.od = Math.max(0, (+$('#vyOd').value || 1) - 1);
+    ulozUI();
+    await naDataVyrez();
+  };
+
+  $('#vzRazeni').onchange = async e => {
+    vzory.stav.razeni = e.target.value; vzory.stav.od = 0; await naVzory();
+  };
+  $('#vzHledat').oninput = async e => {
+    vzory.stav.hledat = e.target.value.trim(); vzory.stav.od = 0; await naVzory();
+  };
+  $$('#vzStrana button').forEach(b => {
+    b.onclick = async () => {
+      $$('#vzStrana button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      vzory.stav.strana = b.dataset.v; vzory.stav.od = 0; await naVzory();
+    };
+  });
+  $('#vzZpet').onclick = async () => {
+    vzory.stav.od = Math.max(0, vzory.stav.od - vzory.stav.pocet); await naVzory();
+  };
+  $('#vzDal').onclick = async () => {
+    vzory.stav.od += vzory.stav.pocet; await naVzory();
+  };
 
   $('#bSvaz').onclick = () => {
     if (!sklad.hotovy()) return;
@@ -297,6 +376,7 @@ export async function start() {
   await nactiMapu();
   stavDialogu = await store.nactiDialog();
   await prepocitat();
+  await naVzory();
 }
 
 function pridejVertikalu() {

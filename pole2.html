@@ -31,6 +31,7 @@
   <nav class="tabs" id="tabs">
     <button data-s="f" aria-selected="true">Facts<span class="n" id="tnF"></span></button>
     <button data-s="q" aria-selected="false">Query<span class="n" id="tnQ"></span></button>
+    <button data-s="vz" aria-selected="false">Vzory<span class="n" id="tnVz"></span></button>
     <button data-s="mapd" aria-selected="false">Vazby · definice</button>
     <button data-s="mapp" aria-selected="false">Vazby · přehled<span class="n" id="tnM"></span></button>
     <button data-s="vert" aria-selected="false">Vertikály<span class="n" id="tnV"></span></button>
@@ -65,6 +66,19 @@
       <div><label>Sloupce</label><div class="seg" id="c">
         <button data-v="1" aria-pressed="true">jen svítící</button>
         <button data-v="0">všech</button></div></div>
+      <!-- Výřez: velký korpus se celý nevykreslí. Pole se staví celé na
+           backendu, tohle je jen okno, kterým se do něj kouká. -->
+      <div><label>Výřez · vět</label><div class="seg" id="vy">
+        <button data-v="10">10</button>
+        <button data-v="25" aria-pressed="true">25</button>
+        <button data-v="50">50</button>
+        <button data-v="100">100</button>
+        <button data-v="0">vše</button></div></div>
+      <div><label>Od věty</label><div class="posun">
+        <button class="lehke" id="vyZpet" title="o výřez zpět">‹</button>
+        <input type="number" id="vyOd" min="1" value="1" size="6">
+        <button class="lehke" id="vyDal" title="o výřez dál">›</button>
+        <span class="cnt" id="vyPopis"></span></div></div>
     </div>
     <div class="legend">
       <span><i class="sw" style="background:var(--upos)"></i> UPOS</span>

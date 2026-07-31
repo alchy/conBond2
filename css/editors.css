@@ -320,3 +320,27 @@ li.skryto { color:var(--muted); font-size:11px; font-style:italic; }
   .znalost .rod b { color:var(--ink); }
   .znalost .pojmy { margin-top:10px; padding-top:8px;
                     border-top:1px solid var(--grid); }
+
+  /* ---- výřez a list Vzory ------------------------------------------- */
+  .posun { display:flex; gap:5px; align-items:center; }
+  .posun input { font:inherit; font-size:13px; width:74px; padding:4px 7px;
+                 border:1px solid var(--axis); border-radius:6px;
+                 background:var(--surface); color:var(--ink); }
+  .posun .cnt { font-size:11.5px; color:var(--muted); white-space:nowrap; }
+
+  .vzory { display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+           gap:9px; max-width:1180px; }
+
+  .vz { border:1px solid var(--ring); border-radius:7px; padding:8px 10px;
+        background:var(--plane); }
+  .vz .hlava { display:flex; gap:8px; align-items:baseline; font-size:13px; }
+  .vz .hlava b { color:var(--ink); }
+  /* Kolik slov vzor sdílí je to hlavní číslo — proto svítí. */
+  .vz .mira { font-weight:650; color:var(--feats); }
+  .vz .vyskyt { margin-left:auto; font-size:11px; color:var(--muted); }
+  .vz .vec { display:flex; flex-wrap:wrap; gap:3px; margin:6px 0 5px; }
+  .vz .sl { font-size:10.5px; font-style:normal; padding:1px 5px;
+            border-radius:4px; background:var(--grid); color:var(--ink2); }
+  .vz .sl[data-o="0"] { background:var(--hrube); color:#fff; }
+  .vz .tvary { font-size:12px; color:var(--ink2); line-height:1.5; }
+  .vz .vic { color:var(--muted); }

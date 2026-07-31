@@ -15,7 +15,8 @@ sys.path.insert(0, KOREN)
 from core import (Config, Nastaveni, Pole, SitkoStredu,  # noqa: E402
                   SitkoStupnovane, SitkoVse, Skladac, UlozisteSouboru,
                   ZdrojZTokenu, filtruje_stred, korpusy_ven, nastavit_log,
-                  pole_ven, vertikaly_odvozenych)
+                  pole_ven, prehled_sablon, vertikaly_odvozenych,
+                  Vyrez)
 from core.compose import popsat_zaznam  # noqa: E402
 from core.dialog import Rozhovor  # noqa: E402
 from core.language import Jazyk  # noqa: E402
@@ -403,6 +404,52 @@ ok(set(ven) >= {"nastaveni", "klic_mapovani", "slovnik", "f", "q"},
 ok(len(ven["f"]["radky"]) == pole.fakta.tok.pocet_radku(), "rozvržení řádků nesedí")
 ok(ven["f"]["cisla"]["sablon"] == 71, "čísla v exportu nesedí s modelem")
 print(f"  klíčů: {', '.join(sorted(ven))} · řádků f {len(ven['f']['radky'])}")
+
+print("\n— výřez: ven jde kousek, čísla zůstávají celá —")
+# Pole se staví CELÉ. Kdyby se stavělo z výřezu, přestaly by být šablony
+# šablonami korpusu a sdílení by se počítalo z náhodného vzorku — přesně ten
+# omyl, kvůli kterému dřív vyšel poměr 0.95.
+pole = nove_pole()
+cely = pole_ven(pole, s_korpusy=True)
+kus = pole_ven(pole, s_korpusy=True, vyrezy={"f": Vyrez(1, 3), "q": Vyrez(0, 5)})
+cf, kf = cely["f"]["cisla"], kus["f"]["cisla"]
+print(f"  celý: {cf['vet']} vět, {cf['radku']} řádků, {len(cely['f']['sablony'])} šablon"
+      f" · výřez: {kf['vyrez']['vet']} vět, {kf['vyrez']['radku']} řádků,"
+      f" {len(kus['f']['sablony'])} šablon")
+ok(kf["vet"] == cf["vet"] and kf["radku"] == cf["radku"] and kf["sablon"] == cf["sablon"],
+   "výřez přepočítal globální čísla — pak by korpus vypadal malý")
+ok(kf["vyrez"]["vet"] == 3, f"výřez má {kf['vyrez']['vet']} vět, čekány 3")
+ok(len(kus["f"]["radky"]) == kf["vyrez"]["radku"], "poslaných řádků je jiný počet, než hlásí")
+ok(len(kus["f"]["sablony"]) < len(cely["f"]["sablony"]), "výřez neubral šablony")
+ok(len(kus["korpusy"]["facts"]) == 3, "korpus se neořízl na výřez")
+
+# Indexy se PŘEČÍSLUJÍ, aby prohlížeč pracoval s hustými poli. Nic nesmí
+# ukazovat mimo poslané řádky — jinak by se hrany kreslily vedle.
+n = len(kus["f"]["radky"])
+ok(all(0 <= i < n for s in kus["f"]["sablony"].values() for i in s["radky"]),
+   "šablona ukazuje na řádek mimo výřez")
+ok(all(0 <= i < n for v in kus["f"]["vazby"] for i in v["vyskyty"]),
+   "vazba ukazuje na řádek mimo výřez")
+ok(all(0 <= int(i) < n for i in kus["f"]["sloty"]), "slot je u řádku mimo výřez")
+ok(all(0 <= r[0] < 3 for r in kus["f"]["radky"]), "číslo věty se nepřečíslovalo")
+# Slot mířící ven z výřezu je null, ne cizí řádek.
+mimo = [d for sl in kus["f"]["sloty"].values() for j, d in sl if j is None]
+print(f"  slotů mířících ven z výřezu: {len(mimo)} (posílají se jako null)")
+
+# Velikost vzoru se výřezem nemění — to je ta podstatná informace.
+spolecna = set(cely["f"]["sablony"]) & set(kus["f"]["sablony"])
+ok(all(kus["f"]["sablony"][t]["celkem_tvaru"]
+       == len(cely["f"]["sablony"][t]["tvary"]) for t in spolecna),
+   "výřez zmenšil hlášenou velikost vzoru")
+
+prehled = prehled_sablon(pole.fakta, od=0, pocet=5)
+ok(prehled["celkem"] == cf["sablon"], "přehled vzorů nepočítá všechny šablony")
+ok(len(prehled["sablony"]) == 5, "přehled nevrátil požadovaný počet")
+ok(all("radky" not in s for s in prehled["sablony"]),
+   "přehled vzorů posílá řádky, ač je nepotřebuje")
+serazeno = [s["tvaru"] for s in prehled["sablony"]]
+ok(serazeno == sorted(serazeno, reverse=True), f"vzory nejsou od největšího: {serazeno}")
+print(f"  přehled: {prehled['celkem']} vzorů, největší sdílí {serazeno[0]} tvarů")
 
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")

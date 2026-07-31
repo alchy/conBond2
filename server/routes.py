@@ -13,7 +13,8 @@ import sys
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
 
-from core import Pole, Skladac, korpusy_ven, log, pole_ven
+from core import (CELY, Pole, Skladac, Vyrez, korpusy_ven, log,
+                  pole_ven, prehled_sablon)
 from core.derived import bez_odvozenych, ocistit_korpus
 from core.dialog import Rozhovor
 from core.tvrzeni import INSTANCE, PODTRIDA, Mluvnice, Znalost
@@ -82,6 +83,22 @@ def udelej_handler(config, uloziste, rozbor):
         def parametry(self):
             return {k: v[0] for k, v in parse_qs(urlparse(self.path).query).items()}
 
+        def cele(self, q, klic, vychozi=None):
+            try:
+                return int(q[klic])
+            except (KeyError, TypeError, ValueError):
+                return vychozi
+
+        def vyrezy(self, q):
+            """Kolik vět poslat. Pole se staví celé; tohle je jen okno, kterým
+            se do něj kouká — spisovatelský korpus má 59 106 řádků a prohlížeč
+            z toho neudělá nic."""
+            vet = self.cele(q, "vety")
+            if vet is None or vet <= 0:
+                return {"f": CELY, "q": CELY}
+            od = max(0, self.cele(q, "odvety", 0) or 0)
+            return {"f": Vyrez(od, vet), "q": Vyrez(od, vet)}
+
         def log_message(self, fmt, *args):
             sys.stderr.write("  %s %s\n" % (self.command or "-", self.path))
 
@@ -132,16 +149,33 @@ def udelej_handler(config, uloziste, rozbor):
             if cesta == "/api/field":
                 self.nastavit_pole(q)
                 return self.posli(200, pole_ven(
-                    pole, s_korpusy=q.get("korpusy") in PRAVDA))
+                    pole, s_korpusy=q.get("korpusy") in PRAVDA,
+                    vyrezy=self.vyrezy(q)))
+
+            if cesta == "/api/templates":
+                # Vzory samy o sobě — pohled, který velký korpus unese.
+                self.nastavit_pole(q)
+                pole.postavit()
+                strana = pole.strana("q" if q.get("strana") == "q" else "f")
+                return self.posli(200, prehled_sablon(
+                    strana, od=max(0, self.cele(q, "od", 0) or 0),
+                    pocet=min(200, max(1, self.cele(q, "pocet", 60) or 60)),
+                    razeni=q.get("razeni", "velikost"),
+                    hledat=(q.get("hledat") or "").strip().lower()))
 
             if cesta == "/api/data":
                 # Týž katalog i tytéž věty jako /api/field — tedy i s hrubými
                 # vrstvami. Kdyby se to lišilo, mřížka by podle toho, kterou
                 # cestou se data načetla, ukazovala jednou o tři sloupce míň.
                 pole.postavit()
+                vyrezy = self.vyrezy(q)
                 return self.posli(200, {
                     "vertikaly": pole.vypsat_vertikaly(),
-                    "korpusy": korpusy_ven(pole),
+                    "korpusy": korpusy_ven(pole, vyrezy),
+                    "vyrez": {"od_vety": vyrezy["f"].od_vety,
+                              "vet": vyrezy["f"].vet},
+                    "celkem": {jm: len(uloziste.nacist_korpus(jm))
+                               for jm in ("facts", "query")},
                 })
 
             if cesta == "/api/dialog":

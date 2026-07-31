@@ -24,13 +24,16 @@ const parametry = st => new URLSearchParams({
   syrove: st.punct ? 1 : 0,
   stred: st.cIn ? 1 : 0,
   typy: st.typyOn ? 1 : 0,
+  /* Výřez: pole se staví celé, tohle je jen okno, kterým se do něj kouká.
+     0 = bez omezení, což u velkého korpusu prohlížeč nedá. */
+  odvety: st.vyrez.od, vety: st.vyrez.pocet,
 }).toString();
 
 export const klicMapy = R => 'q' + R.q + 'f' + R.f;
 
 /** Vertikály a oba korpusy. Stačí jednou, pak si je prohlížeč drží. */
-export async function nactiData() {
-  const r = await zavolej('/api/data', { cache: 'no-store' });
+export async function nactiData(st) {
+  const r = await zavolej('/api/data?' + parametry(st), { cache: 'no-store' });
   if (!r || !r.ok) throw new Error('backend neodpovídá — běží python3 -m server?');
   return r.json();
 }
@@ -95,6 +98,17 @@ export const nactiDialog = () => dialog('/api/dialog');
 export const posliDialog = text => dialog('/api/dialog', { text });
 export const rozhodniDialog = druh => dialog('/api/dialog/decide', { druh });
 export const zapomenDialog = () => dialog('/api/dialog/forget', {});
+
+/** Vzory samy o sobě — bez mřížky, proto je velký korpus unese. */
+export async function nactiVzory(st, v) {
+  const q = new URLSearchParams({
+    ...Object.fromEntries(new URLSearchParams(parametry(st))),
+    strana: v.strana, od: v.od, pocet: v.pocet,
+    razeni: v.razeni, hledat: v.hledat,
+  });
+  const r = await zavolej('/api/templates?' + q, { cache: 'no-store' });
+  return r && r.ok ? r.json() : null;
+}
 
 /** Rozbor věty lokálním UDPipe přes backend. */
 export async function rozeber(veta) {

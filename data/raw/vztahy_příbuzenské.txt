@@ -1,0 +1,11 @@
+Příbuzenské vztahy tvoří vrstvu pojmů nad základními vztahy rodiny.
+
+Tchán je otec manžela nebo manželky. Tchyně je matka manžela nebo manželky. Zeť je manžel dcery. Snacha je manželka syna.
+
+Švagr je bratr manžela nebo manželky. Švagrová je sestra manžela nebo manželky.
+
+Děd je otec otce nebo matky. Bába je matka otce nebo matky. Vnuk je syn syna nebo dcery. Vnučka je dcera syna nebo dcery.
+
+Strýc je bratr otce nebo matky. Teta je sestra otce nebo matky. Synovec je syn bratra nebo sestry. Neteř je dcera bratra nebo sestry.
+
+Pravnuk je syn vnuka nebo vnučky. Prababička je matka děda nebo báby.

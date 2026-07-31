@@ -232,6 +232,70 @@ korpus odpověď nemá (`S kým se oženil Hrabal / pes domácí?`), mlčí.
 
 ---
 
+## 4c · Zápor a doptání — dvě tiché chyby
+
+Obě vyšly najevo v dialogu, ne v měření. Obě vypadaly jako odpověď.
+
+### Zápor: odpověď byla pravý opak textu
+
+```
+Kdo je Božena Němcová?   →   realistkou
+
+  Podle Šaldy proto NENÍ Němcová realistkou, měříme-li realismus tím,
+  jak vystihuje hluboké kořeny zla…
+```
+
+Zápor v datech nechyběl — spona `není` nese `Polarity=Neg`. Jen se na ni
+nikdo nedíval, takže agent orazítkoval `Typ=druh` a odpovídač to podal jako
+fakt.
+
+```python
+# core/agents/druh.py
+@staticmethod
+def je_zaporna(veta, t):
+    """„není realistkou" je tvrzení o tom, čím ta osoba NENÍ —
+    a to je jiný fakt, ne slabší varianta téhož."""
+    return any(x.get("head") == t.get("id") and "cop" in x["acts"]
+               and "Polarity=Neg" in x["acts"] for x in veta)
+```
+
+**Větu nezahazujeme.** Pole je monotónní a informace „realistkou NENÍ" je
+plnohodnotná. Dostane vlastní typ `Typ=druh_ne`: na „Kdo je?" se nenabídne,
+protože ta otázka se ptá na `Typ=druh`, a přitom v poli zůstane
+adresovatelná. Zahodit ji by znamenalo z chybné odpovědi udělat mlčení —
+lepší, ale pořád ztráta.
+
+### Doptání: remíza se tiše rozhodla za nás
+
+```python
+# bylo: první z nejlepších vyhrává
+for klic in self.podle_entity:
+    if shoda > skore:
+        nejlepsi, skore = klic, shoda      # remízu nikdo neuvidí
+```
+
+„Kdo je Novák?" sedí na Karla, Petra i Milana úplně stejně. Vybrat prvního
+znamená odpovědět o někom, na koho se nikdo neptal — a nebylo by to poznat.
+
+`entity_pro_jmeno()` proto vrací **všechny** stejně dobré shody a dialog
+odpoví jinak:
+
+```
+Kdo je Novák?   →   upřesni prosím, koho myslíš: Karel Novák · Petr Novák · Milan Novák
+```
+
+**Doptání je vlastní druh tahu, ne varianta mlčení.**
+
+```
+mlčení    „o tom korpus nic neví"      chybí data
+doptání   „je toho víc, vyber si"      data jsou, chybí otázka
+```
+
+Míchat je znamená zahodit informaci, kterou pole má. Starý conBond to měl
+v etalonu jako třetí režim `clarify` vedle `answer` a `unsure`.
+
+---
+
 ## 5 · Dva stupně měření
 
 **Šablona neidentifikuje jednu odpověď, ale DRUH místa, kde odpověď leží.**

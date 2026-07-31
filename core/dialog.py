@@ -105,10 +105,17 @@ class Rozhovor:
         abstrakce, která má kandidáty matchnout, ne mezi nimi vybrat."""
         v = self.odpovidac.odpovedet(text, tema=self.horka_temata())
         self.zahrat(v["aktivace"].get("entita"))
+        v["kandidati"] = self.z_dialogu(text, v) + v["kandidati"]
+        if v["kandidati"]:
+            v["odpoved"] = v["kandidati"][0]["text"]
         self.posledni_nalez = v
         a = v["aktivace"]
         kde = f"Ent={a['entita']} ({a['vet_entity']} vět)" if a["entita"] else "bez osoby"
         tvary = ", ".join(f"{t} ({n})" for t, n in a["svitici"].items() if n)
+        if v.get("nejasne"):
+            kdo = " · ".join(k.replace("_", " ").title() for k in v["nejasne"])
+            return Zaznam(text, OBSAH,
+                          f"upřesni prosím, koho myslíš: {kdo}", nalez=v)
         if a.get("cizi_jmeno"):
             return Zaznam(text, OBSAH,
                           f"o „{' '.join(a['jmena'])}\" korpus nic neví — "

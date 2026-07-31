@@ -317,14 +317,17 @@ def krok_zapis() -> None:
                 t["dok"] = kdo
                 t["vd"] = poradi          # pořadí věty v dokumentu
             vety.append(v)
-    # Lemma do pole nepatří. `id` a `head` ANO — nejsou v `acts`, takže se
-    # do vektoru nedostanou, ale bez nich nejde poznat, co na čem závisí.
-    # První pokus je zahazoval a doplatily na to dvě věci: koreference brala
-    # podmět odkudkoli z věty a generátor otázek věšel na kořen nález, který
-    # patřil úplně jiné klauzuli („Kolik se narodil Mácha? → 16").
-    for v in vety:
-        for t in v:
-            t.pop("lemma", None)
+    # Lemma do POLE nepatří — do vektoru smí jen typ, ne hodnota. Ale mimo
+    # `acts` zůstat může, stejně jako `id`, `head`, `dok` a `vd`: co není
+    # v `acts`, to se do vektoru nedostane, a šablony se tím nerozdrobí.
+    #
+    # Bez lemmatu nejde použít slovník synonym. Ten je lemmatický („kázat →
+    # hlásat"), kdežto rejstřík pole je tvarový, a bez můstku by se otázka
+    # „Co hlásal Ježíš?" nikdy nepotkala s větou, kde stojí „kázal".
+    #
+    # První pokus lemma zahazoval spolu s `id` a `head` a doplatily na to
+    # dvě věci: koreference brala podmět odkudkoli z věty a generátor otázek
+    # věšel na kořen nález z jiné klauzule („Kolik se narodil Mácha? → 16").
     # AGENTI JSOU KROK PŘÍPRAVY, ne něco, co se pustí zvlášť. Dřív se
     # spouštěli ad hoc a přepsáním korpusu mlčky zmizeli — přesně ta tichá
     # vada, na kterou conBond nasadil health.py.

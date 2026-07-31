@@ -1,0 +1,83 @@
+R.U.R. (zkratka z Rossumovi univerzální roboti) je vědeckofantastické drama o vstupní komedii a třech dějstvích Karla Čapka z roku 1920.
+Autor v příběhu varuje před případnými negativními vlivy techniky na lidstvo. Je ovlivněn svým zájmem o techniku, ale také obavami o budoucnost lidstva (destrukce za první světové války).
+
+
+== Děj ==
+
+Úvodní dějství se odehrává v blíže nespecifikované budoucnosti na Rossumově ostrově výrobny robotů, kde je celá výroba prováděna roboty. Připluje za nimi pěkná dcera prezidenta Helena Gloryová, s cílem roboty zrovnoprávnit, a do které se všichni zamilují. Postupně jí vyprávějí příběh vynálezu prvních robotů starého Rossuma a jeho synovce. Helena se poté vdá za ředitele Harryho Domina.
+Příběh dále pokračuje po deseti letech, kdy už jsou roboti široce rozšířeni. Heleně je smutno z toho, že roboti, ač velmi podobní lidem, nemohou mít city jako lidé, a tak přiměje Dr. Galla, aby začal experimentovat s jejich „duší“. Jejich původním cílem bylo vytvořit pro člověka ráj na zemi, aby již nikdy nemuseli lidé umírat hlady a měli všeho dostatek. Jenže upadly mravy, lidé zlenivěli a začali roboty původně určené k práci používat jako vojáky pro své války.
+Několik robotů se vzbouřilo, ustanovilo Ústřední výbor robotů a vyhlásilo válku lidstvu, jež drtivě porazilo a nenechalo nikoho přežít. Dorazili až na výrobní ostrov a pozabíjeli všechny až na Alquista, jelikož on ještě pracoval rukama (což ho uklidňovalo; věřil, že je práce smyslem života). Jenže roboti se začali opotřebovávat a umírali. Chtěli po něm, aby objevil původní Rossumův výrobní postup, ten však spálila Helena předtím, než ji roboti zabili.
+Jedné noci Alquista vzbudili robot Primus a robotka Helena. Když chtěl jednoho z nich pitvat pro výzkum, druhý se nabízel místo něj – vůbec se nechovali jako roboti (snažili se navzájem chránit; záleželo jednomu na druhém). Alquist zjistil, že se mají rádi, a tak je poslal pryč, aby udrželi život a začali s láskou znovu jako Adam a Eva.
+Závěr je symbolickým odkazem k bibli, z níž Alquist cituje.
+
+
+== Osoby ==
+
+Lidé
+Harry Domin – centrální ředitel Rossumových Univerzálních Robotů,
+Inž. Fabry – generální technický ředitel R.U.R.,
+Dr. Gall – přednosta fyziologického a výzkumného oddělení R.U.R.,
+Dr. Hallemeier – přednosta ústavu pro psychologii a výchovu Robotů,
+Konzul Busman – generální komerční ředitel R.U.R.,
+Stavitel Alquist – šéf staveb R.U.R.,
+Helena Gloryová,
+Nána – její chůva.
+Roboti
+Marius,
+Sulla,
+Radius,
+Damon,
+Robot Primus,
+Robotka Helena,
+Robotský sluha,
+1., 2., 3., 4. robot a další.
+
+
+== Roboti v R.U.R. ==
+
+Roboti v Čapkově hře nejsou roboti v moderním smyslu v roce 1938. Jsou to biologičtí tvorové stvoření ve stejném stylu jako Frankensteinovo monstrum, jak o něm píše Mary Shelleyová. Jsou biologickými entitami, jejichž části se montují dohromady jako automobily. Projevují se úsečnými pohyby a výslovností. Oděni jsou stejně jako lidé a charakteristickým znakem je upřený pohled ve tváři bez výrazu.
+V jistém smyslu se podobají nejmodernější koncepci živých forem stvořených člověkem (jako jsou replikanti ve filmu Blade Runner nebo Cyloni v nové verzi seriálu Battlestar Galactica). V Čapkově době ale neexistovala žádná koncepce genetického inženýrství. Jeho roboti jsou biologické stroje, jsou sestaveni jako protiklad k tomu, že by rostli nebo se narodili.
+
+
+== Film ==
+V roce 1938 byl natočen podle divadelní hry krátký 35minutový britský film produkovaný BBC.
+
+
+== Opera ==
+
+V roce 1977 složil podle hry R.U.R. stejnojmennou operu Zdeněk Blažek.
+
+
+== Inspirovaná díla ==
+V roce 2020 uplynulo sto let od knižního vydání Čapkova R.U.R. a při této příležitosti vznikly dvě knihy s názvem „Robot 100“. Jedna má podtitul „Sto rozumů“, protože do ní přispělo 100 osobností (editor: Jitka Čejková) a vydala ji Vysoká škola chemicko-technologická v Praze. (Anglickou verzi vydává pod názvem R.U.R. and the Vision of Artificial Life MIT Press). Druhá obsahuje sci-fi povídky, a tak má podtitul „Povídky“ (vydalo Argo). V Památníku Karla Čapka ve Strži byla ke stému výročí R.U.R. připravena výstava s názvem „Cesta do hlubin Robotovy duše“. České centrum Mezinárodního PEN klubu připravilo ve spolupráci s divadlem Archa monumentální oslavy 100. výročí od premiéry R.U.R. na leden 2021, ale  kvůli covidové pandemii byly přesunuty o rok a konaly se v lednu 2022 pod názvem R.U.R. 100+1.
+V roce 2019 vznikl další projekt oslavující sté výročí od vydání knihy R.U.R. K oslavě stejného stoletého jubilea se spojil Ústav formální a aplikované lingvistiky Matematicko-fyzikální fakulty Univerzity Karlovy se Švandovým divadlem na Smíchově a organizátory hackathonů CEE Hacks, aby vytvořili projekt THEaiTRE, který si klade za cíl zjistit, zda dokáže umělá inteligence pomocí přirozeného zpracování jazyka a konkrétně vylepšeného jazykového modelu GPT-2 napsat divadelní hru.
+
+
+== Zajímavosti ==
+Ve hře poprvé zaznělo slovo robot, které na Karlovu výzvu navrhl jeho bratr Josef Čapek.
+
+ Karel Čapek původně uvažoval o slově „labor“.
+Divadelní hra byla přeložena do více než třiceti jazyků včetně esperanta.
+Premiéra hry měla proběhnout v Národním divadle v Praze, přičemž ale došlo k odložení termínu na 25. ledna 1921. Souběžně však své nastudování hry připravoval také ochotnický soubor Klicpera v Hradci Králové. Národní divadlo údajně požádalo královéhradecké ochotníky o odložení premiéry až na termín po pražské premiéře, tato žádost se do Hradce ale nikdy nedostala a tak se skutečná světová premiéra hry odehrála 2. ledna 1921 právě na prknech Klicperova divadla v Hradci Králové.
+
+
+== Odkazy ==
+
+
+=== Reference ===
+
+
+=== Literatura ===
+František Černý: Měnivá tvář divadla aneb Dvě století s pražskými herci, Mladá fronta, Praha, 1978, str. 110, 146, 169, 238
+Kolektiv autorů: Dějiny českého divadla/IV., Academia, Praha, 1983, str. 59, 71, 73, 74, 77, 122, 131, 150, 152, 169, 172, 185, 402, 406, 411, 438, 591, 605, 611–2, 647
+ČAPEK, Karel. Loupežník. R.U.R. Bílá nemoc.. Praha: Československý spisovatel, 1983. 340 s. 
+
+
+=== Externí odkazy ===
+ Obrázky, zvuky či videa k tématu R.U.R. na Wikimedia Commons 
+ Dílo R.U.R. ve Wikizdrojích
+  Digitalizovaná vydání díla R.U.R. v České digitální knihovně
+Dílo v elektronické podobě na webu Městské knihovny v Praze
+Robot 100: Sto rozumů – kniha obsahující R.U.R. v původním znění jako v 1. vydání z roku 1920
+R.U.R. – kompletní text na stránkách projektu Gutenberg
+R.U.R. v databázi Archivu Národního divadla

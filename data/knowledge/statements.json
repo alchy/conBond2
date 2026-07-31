@@ -1,3 +1,15 @@
 {
- "tvrzeni": []
+ "tvrzeni": [
+  {
+   "druh": "instance",
+   "levy": "božena němcová",
+   "pravy": "spisovatelka",
+   "zdroj": "dialog",
+   "cas": 1785527588.772105,
+   "jistota": 1.0,
+   "veta": "Božena Němcová je spisovatelka.",
+   "levy_tvar": "Božena Němcová",
+   "pravy_tvar": "spisovatelka"
+  }
+ ]
 }

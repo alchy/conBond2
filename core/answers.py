@@ -92,15 +92,28 @@ class Odpovidac:
         p = self.slovnik.najit(tvar)
         return set(p.vety["f"]) if p else set()
 
-    def najit_entitu(self, tvary) -> str:
-        """Jméno z otázky → klíč entity. Stačí, když sedí příjmení."""
+    def entity_pro_jmeno(self, tvary) -> list:
+        """VŠECHNY entity, které se na jméno hodí stejně dobře.
+
+        Původní verze vracela jen tu první z nejlepších a remízu zahodila.
+        Jenže remíza je informace: „Novák" sedí na Karla, Petra i Milana
+        úplně stejně a vybrat jednoho znamená hádat. Doptat se je levnější
+        než se splést, a hlavně je to poznat."""
         kusy = {t.lower() for t in tvary}
-        nejlepsi, skore = "", 0
+        skore: dict = {}
         for klic in self.podle_entity:
             shoda = len(set(klic.split("_")) & kusy)
-            if shoda > skore:
-                nejlepsi, skore = klic, shoda
-        return nejlepsi
+            if shoda:
+                skore[klic] = shoda
+        if not skore:
+            return []
+        nej = max(skore.values())
+        return sorted(k for k, n in skore.items() if n == nej)
+
+    def najit_entitu(self, tvary) -> str:
+        """Jméno z otázky → klíč entity. Stačí, když sedí příjmení."""
+        shody = self.entity_pro_jmeno(tvary)
+        return shody[0] if len(shody) == 1 else (shody[0] if shody else "")
 
     def sedi_cele_jmeno(self, jmena, entita: str) -> bool:
         """Sedí VŠECHNA jména z otázky na jednu entitu?
@@ -124,7 +137,8 @@ class Odpovidac:
 
     def rozsvitit(self, text: str, tema=()) -> dict:
         tvary = self.obsahove_tvary(text)
-        entita = self.najit_entitu(tvary)
+        shody = self.entity_pro_jmeno(tvary)
+        entita = shody[0] if shody else ""
         # TÉMA DRŽÍ ŘETĚZ. „Kdo je Hrabal?" a pak „Kde se narodil?" — druhá
         # otázka jméno nemá a bez tématu se pole složí ze samotného slovesa;
         # měřeno, že pak odpoví pokaždé týmž místem bez ohledu na to, o kom
@@ -151,6 +165,16 @@ class Odpovidac:
         jmena = self.jmena_v_otazce(text)
         cizi = bool(jmena) and not self.sedi_cele_jmeno(jmena, entita) \
             and any(not self.vety_tvaru(j.lower()) for j in jmena)
+        # NEJEDNOZNAČNÉ JMÉNO SE NEHÁDÁ. „Kdo je Novák?" sedí na Karla,
+        # Petra i Milana úplně stejně; vybrat prvního znamená odpovědět
+        # o někom, na koho se nikdo neptal — a nebylo by to poznat.
+        #
+        # Doptání se pozná od mlčení: mlčení říká „to v korpusu není",
+        # doptání říká „je toho víc a vyber si". Jsou to různé odpovědi
+        # a míchat je znamená zahodit informaci, kterou pole má.
+        nejasne = [] if (cizi or self.sedi_cele_jmeno(jmena, entita)) \
+            else [k for k in shody if len(k.split("_")) > 1][:6]
+        nejasne = nejasne if len(nejasne) > 1 else []
         zbytek = [t for t in tvary if t not in set(entita.split("_"))]
         kde = {t: self.vety_tvaru(t) for t in zbytek}
         zname = {t: v for t, v in kde.items() if v}
@@ -194,6 +218,7 @@ class Odpovidac:
                 "svitici": {t: len(v) for t, v in kde.items()},
                 "nezname": [t for t, v in kde.items() if not v],
                 "jmena": jmena, "cizi_jmeno": cizi, "z_tematu": bool(z_tematu),
+                "nejasne": nejasne,
                 "siroko": siroko, "vety": prunik}
 
     def rozsirit(self, tvar: str) -> set:
@@ -224,6 +249,10 @@ class Odpovidac:
 
     def odpovedet(self, text: str, se_znalosti: bool = True, tema=()) -> dict:
         akt = self.rozsvitit(text, tema)
+        if akt["nejasne"]:
+            return {"aktivace": dict(akt, vety=[]), "typ": None, "role": "",
+                    "vet": 0, "znalost_pomohla": False, "kandidati": [],
+                    "odpoved": None, "nejasne": akt["nejasne"]}
         vety = set(akt["vety"])
         pomohla = set()
         if se_znalosti:
@@ -274,7 +303,8 @@ class Odpovidac:
         ven = dict(akt, vety=sorted(akt["vety"])[:200])
         return {"aktivace": ven, "typ": typ, "role": role, "vet": len(vety),
                 "znalost_pomohla": bool(pomohla), "kandidati": nalezy,
-                "odpoved": nalezy[0]["text"] if nalezy else None}
+                "odpoved": nalezy[0]["text"] if nalezy else None,
+                "nejasne": []}
 
     def sebrat(self, vety, typ, o_kom=()) -> list:
         """Úseky daného druhu ve větách pole.

@@ -1,0 +1,943 @@
+[
+ {
+  "q": "Kdo je Isaac Newton?",
+  "expect": [
+   "fyzik",
+   "matematik",
+   "astronom"
+  ],
+  "mode": "answer",
+  "kind": "fyzika",
+  "src": "fyzika_gravitace"
+ },
+ {
+  "q": "Kdy se narodil Isaac Newton?",
+  "expect": [
+   "1643"
+  ],
+  "mode": "answer",
+  "kind": "fyzika",
+  "src": "fyzika_gravitace"
+ },
+ {
+  "q": "Kdo zformuloval zákon všeobecné gravitace?",
+  "expect": [
+   "newton"
+  ],
+  "mode": "answer",
+  "kind": "fyzika",
+  "src": "fyzika_gravitace"
+ },
+ {
+  "q": "Kdo je Albert Einstein?",
+  "expect": [
+   "fyzik"
+  ],
+  "mode": "answer",
+  "kind": "fyzika",
+  "src": "fyzika_gravitace"
+ },
+ {
+  "q": "Co je gravitace?",
+  "expect": [
+   "síla"
+  ],
+  "mode": "answer",
+  "kind": "fyzika",
+  "src": "fyzika_gravitace"
+ },
+ {
+  "q": "Co je foton?",
+  "expect": [
+   "částice"
+  ],
+  "mode": "answer",
+  "kind": "fyzika",
+  "src": "fyzika_gravitace"
+ },
+ {
+  "q": "Kdy vyšla kniha Principia?",
+  "expect": [
+   "1687"
+  ],
+  "mode": "answer",
+  "kind": "fyzika",
+  "src": "fyzika_gravitace"
+ },
+ {
+  "q": "Kdy obdržel Einstein Nobelovu cenu?",
+  "expect": [
+   "1921"
+  ],
+  "mode": "answer",
+  "kind": "fyzika",
+  "src": "fyzika_gravitace"
+ },
+ {
+  "q": "Co je Šumava?",
+  "expect": [
+   "pohoří",
+   "oblast"
+  ],
+  "mode": "answer",
+  "kind": "priroda",
+  "src": "priroda_ceska"
+ },
+ {
+  "q": "Co je Vltava?",
+  "expect": [
+   "řeka"
+  ],
+  "mode": "answer",
+  "kind": "priroda",
+  "src": "priroda_ceska"
+ },
+ {
+  "q": "Kde pramení Vltava?",
+  "expect": [
+   "šumava",
+   "šumavě"
+  ],
+  "mode": "answer",
+  "kind": "priroda",
+  "src": "priroda_ceska"
+ },
+ {
+  "q": "Co je Sněžka?",
+  "expect": [
+   "hora"
+  ],
+  "mode": "answer",
+  "kind": "priroda",
+  "src": "priroda_ceska"
+ },
+ {
+  "q": "Kde leží Sněžka?",
+  "expect": [
+   "krkonoše",
+   "krkonoších"
+  ],
+  "mode": "answer",
+  "kind": "priroda",
+  "src": "priroda_ceska"
+ },
+ {
+  "q": "Kde žije rys?",
+  "expect": [
+   "šumava",
+   "šumavě",
+   "beskydy",
+   "beskydech"
+  ],
+  "mode": "answer",
+  "kind": "priroda",
+  "src": "priroda_ceska"
+ },
+ {
+  "q": "Co je rys ostrovid?",
+  "expect": [
+   "šelma"
+  ],
+  "mode": "answer",
+  "kind": "priroda",
+  "src": "priroda_ceska"
+ },
+ {
+  "q": "Kolik měří Vltava?",
+  "expect": [
+   "430"
+  ],
+  "mode": "answer",
+  "kind": "priroda",
+  "src": "priroda_ceska",
+  "note": "count kategorie — známá mezera (0/7 na velkém etalonu)"
+ },
+ {
+  "q": "Kdo je Rex?",
+  "expect": [
+   "retrívr"
+  ],
+  "mode": "answer",
+  "kind": "poznamky",
+  "src": "poznamky_domacnost"
+ },
+ {
+  "q": "Kdy se narodil Rex?",
+  "expect": [
+   "2021"
+  ],
+  "mode": "answer",
+  "kind": "poznamky",
+  "src": "poznamky_domacnost"
+ },
+ {
+  "q": "Kdo je pan Dvořák?",
+  "expect": [
+   "truhlář",
+   "soused"
+  ],
+  "mode": "answer",
+  "kind": "poznamky",
+  "src": "poznamky_domacnost"
+ },
+ {
+  "q": "Kde bydlí babička?",
+  "expect": [
+   "tábor",
+   "táboře"
+  ],
+  "mode": "answer",
+  "kind": "poznamky",
+  "src": "poznamky_domacnost"
+ },
+ {
+  "q": "Kde bydlí Josef?",
+  "expect": [
+   "písek",
+   "písku"
+  ],
+  "mode": "answer",
+  "kind": "poznamky",
+  "src": "poznamky_domacnost",
+  "note": "kolize s Josefem Čapkem (wiki) — stres na výběr souboru"
+ },
+ {
+  "q": "Kde stojí chata?",
+  "expect": [
+   "hejtman",
+   "rybník"
+  ],
+  "mode": "answer",
+  "kind": "poznamky",
+  "src": "poznamky_domacnost"
+ },
+ {
+  "q": "Kdo je Karel Čapek?",
+  "expect": [
+   "spisovatel",
+   "dramatik"
+  ],
+  "mode": "answer",
+  "kind": "spisovatele",
+  "src": "wiki_karel_čapek"
+ },
+ {
+  "q": "Kdo napsal R.U.R.?",
+  "expect": [
+   "čapek"
+  ],
+  "mode": "answer",
+  "kind": "spisovatele",
+  "src": "wiki_r.u.r."
+ },
+ {
+  "q": "Kdo byl bratr Karla Čapka?",
+  "expect": [
+   "josef"
+  ],
+  "mode": "answer",
+  "kind": "spisovatele",
+  "src": "wiki_karel_čapek"
+ },
+ {
+  "q": "Kde se narodila Božena Němcová?",
+  "expect": [
+   "vídeň",
+   "vídni"
+  ],
+  "mode": "answer",
+  "kind": "spisovatele",
+  "src": "wiki_božena_němcová"
+ },
+ {
+  "q": "Kdy zemřel Jaroslav Hašek?",
+  "expect": [
+   "1923"
+  ],
+  "mode": "answer",
+  "kind": "spisovatele",
+  "src": "wiki_jaroslav_hašek"
+ },
+ {
+  "q": "Co je pes domácí?",
+  "expect": [
+   "šelma",
+   "savec"
+  ],
+  "mode": "answer",
+  "kind": "zvirata",
+  "src": "wiki_pes_domácí"
+ },
+ {
+  "q": "Je pes šelma?",
+  "expect": [
+   "ano"
+  ],
+  "mode": "answer",
+  "kind": "zvirata",
+  "src": "wiki_pes_domácí"
+ },
+ {
+  "q": "Je kůň šelma?",
+  "expect": [
+   "ne"
+  ],
+  "mode": "answer",
+  "kind": "zvirata",
+  "src": "wiki_kůň_domácí"
+ },
+ {
+  "q": "Kdo pokřtil Ježíše?",
+  "expect": [
+   "jan",
+   "křtitel"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_matous",
+  "note": "bible je známá slabina (0/23 na doménovém etalonu)"
+ },
+ {
+  "q": "Kde se narodil Ježíš?",
+  "expect": [
+   "betlém",
+   "betlémě"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kdo zabil Ábela?",
+  "expect": [
+   "kain"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_genesis",
+  "note": "„povstal Kain proti svému bratru Ábelovi a zabil jej“"
+ },
+ {
+  "q": "Čím byl Kain?",
+  "expect": [
+   "zemědělec",
+   "zemědělcem",
+   "bratr"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_genesis",
+  "note": "zemědělec (povolání) i bratr (charakterizace vztahu) jsou pravdivé — ranking specificity = budoucí krok"
+ },
+ {
+  "q": "Čím byl Ábel?",
+  "expect": [
+   "pastýř",
+   "pastýřem",
+   "bratr"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_genesis",
+  "note": "pastýř i bratr — obojí pravdivé (viz Kain)"
+ },
+ {
+  "q": "Kdo postavil archu?",
+  "expect": [
+   "noe",
+   "noem"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_genesis",
+  "note": "známý confident-wrong případ (dřív odpovídal „bůh“)"
+ },
+ {
+  "q": "Kde se usadil Mojžíš?",
+  "expect": [
+   "midján",
+   "midjánský",
+   "midjánské"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_exodus"
+ },
+ {
+  "q": "Před kým uprchl Mojžíš?",
+  "expect": [
+   "farao",
+   "faraón",
+   "faraónem"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_exodus"
+ },
+ {
+  "q": "Kdo se ukázal Mojžíšovi v keři?",
+  "expect": [
+   "posel",
+   "hospodin"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_exodus",
+  "note": "„ukázal se mu Hospodinův posel v plápolajícím ohni uprostřed trnitého keře“"
+ },
+ {
+  "q": "Kdo byl Herodes?",
+  "expect": [
+   "král",
+   "králem",
+   "tetrarcha"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_matous",
+  "note": "Titulní apozice (bod 3): korpus má DVA Herody — krále (Herodes Veliký, Mt 2) a tetrarchu (Antipas, Lk 3); entitní vrstva je zatím drží v jednom uzlu → výčet titulů je poctivý, přijímáme oba. Rozdělení jmenovců Herodů = potrava pro imunitu (bez roků je cannot-link slepý)."
+ },
+ {
+  "q": "Kdo byl Pilát Pontský?",
+  "expect": [
+   "vladař",
+   "místodržitel"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kdo byl Jidáš?",
+  "expect": [
+   "učedník",
+   "zloděj",
+   "iškariotský"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_jan"
+ },
+ {
+  "q": "Čím byl Šimon?",
+  "expect": [
+   "rybář",
+   "rybářem",
+   "rybáři",
+   "bratr"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_matous",
+  "note": "rybář i bratr Ondřeje — obojí pravdivé (viz Kain)"
+ },
+ {
+  "q": "Kde byl Ježíš pokřtěn?",
+  "expect": [
+   "jordán",
+   "jordánu"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kde byl Ježíš ukřižován?",
+  "expect": [
+   "golgota",
+   "golgotu"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kde proměnil Ježíš vodu ve víno?",
+  "expect": [
+   "kána",
+   "káně",
+   "kán"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_jan"
+ },
+ {
+  "q": "Koho vzkřísil Ježíš?",
+  "expect": [
+   "lazar",
+   "lazara"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_jan"
+ },
+ {
+  "q": "Kdo je syn Boha?",
+  "expect": [
+   "ježíš"
+  ],
+  "mode": "answer",
+  "kind": "bible-vztahy",
+  "src": "bible_matous",
+  "note": "ŘETĚZ uživatele: 'Ty jsi Mesiáš, Syn Boha živého' (adresát=Ježíš přes rám řeči, cíl=genitiv Boha) → syn(Ježíš, bůh)"
+ },
+ {
+  "q": "Kdo byl bratr Šimona?",
+  "expect": [
+   "ondřej",
+   "ondřeje"
+  ],
+  "mode": "unsure",
+  "kind": "bible-vztahy",
+  "src": "bible_matous",
+  "note": "AMBIGUITNÍ BEZ OSY: korpus má Šimona Petra (bratr Ondřej) i Šimona bratra Ježíšova (Mt 13,55), oba v bible_matous a entitní vrstva má jediný uzel Šimon → neexistuje rozlišující osa, kterou tazatel může znát; návodná nabídka [Jan, Ondřej] by vyzrazovala odpovědi → správné chování je PŘIZNANÝ ROZPOR (unsure s proveniencí). Jednoznačný směr testuje otázka na Ondřeje."
+ },
+ {
+  "q": "Kdo byl bratr Ondřeje?",
+  "expect": [
+   "šimon",
+   "petr"
+  ],
+  "mode": "answer",
+  "kind": "bible-vztahy",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kdo byl otec Jakuba a Jana?",
+  "expect": [
+   "zebedeus",
+   "zebedea",
+   "zebedeem"
+  ],
+  "mode": "answer",
+  "kind": "bible-vztahy",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kdo byl otec Jidáše?",
+  "expect": [
+   "šimon",
+   "šimona"
+  ],
+  "mode": "answer",
+  "kind": "bible-vztahy",
+  "src": "bible_jan",
+  "note": "„Jidáše, syna Šimona Iškariotského“"
+ },
+ {
+  "q": "Koho porodila Eva?",
+  "expect": [
+   "kain",
+   "kaina"
+  ],
+  "mode": "answer",
+  "kind": "bible-vztahy",
+  "src": "bible_genesis"
+ },
+ {
+  "q": "Kdo byl bratr Ezaua?",
+  "expect": [
+   "jákob",
+   "jákoba"
+  ],
+  "mode": "answer",
+  "kind": "bible-vztahy",
+  "src": "bible_genesis"
+ },
+ {
+  "q": "Kolik synů zplodil Noe?",
+  "expect": [
+   "tři",
+   "3"
+  ],
+  "mode": "answer",
+  "kind": "bible-pocty",
+  "src": "bible_genesis",
+  "note": "„A Noe zplodil tři syny: Šéma, Cháma a Jefeta“"
+ },
+ {
+  "q": "Kolik učedníků měl Ježíš?",
+  "expect": [
+   "dvanáct",
+   "12",
+   "dvanácti"
+  ],
+  "mode": "answer",
+  "kind": "bible-pocty",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kolik dní trvala potopa?",
+  "expect": [
+   "čtyřicet",
+   "40"
+  ],
+  "mode": "answer",
+  "kind": "bible-pocty",
+  "src": "bible_genesis"
+ },
+ {
+  "q": "Kolik dní byl Ježíš na poušti?",
+  "expect": [
+   "čtyřicet",
+   "40"
+  ],
+  "mode": "answer",
+  "kind": "bible-pocty",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kolikrát zapřel Petr Ježíše?",
+  "expect": [
+   "třikrát",
+   "3"
+  ],
+  "mode": "answer",
+  "kind": "bible-pocty",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Co kázal Ježíš?",
+  "expect": [
+   "evangelium",
+   "evangelia"
+  ],
+  "mode": "answer",
+  "kind": "bible-narativ",
+  "src": "bible_markus",
+  "note": "sumarizace řeči — nejtěžší uchopení"
+ },
+ {
+  "q": "Co kázal Jan?",
+  "expect": [
+   "pokání"
+  ],
+  "mode": "answer",
+  "kind": "bible-narativ",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Co řekl Ježíš Janovi?",
+  "expect": [
+   "pokřtít",
+   "spravedlnost",
+   "nech"
+  ],
+  "mode": "answer",
+  "kind": "bible-narativ",
+  "src": "bible_matous",
+  "note": "citát — přímá řeč"
+ },
+ {
+  "q": "Co řekl Ježíš Petrovi?",
+  "expect": [
+   "zapřeš",
+   "zapřít",
+   "kohout"
+  ],
+  "mode": "answer",
+  "kind": "bible-narativ",
+  "src": "bible_matous",
+  "note": "„třikrát mě zapřeš“"
+ },
+ {
+  "q": "Co řekl Ježíš rybářům?",
+  "expect": [
+   "pojďte",
+   "rybář",
+   "rybáře"
+  ],
+  "mode": "answer",
+  "kind": "bible-narativ",
+  "src": "bible_markus",
+  "note": "„Pojďte za mnou a učiním z vás rybáře lidí“"
+ },
+ {
+  "q": "Kdo zradil Ježíše?",
+  "expect": [
+   "jidáš",
+   "iškariotský"
+  ],
+  "mode": "answer",
+  "kind": "bible-narativ",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kdo zapřel Ježíše?",
+  "expect": [
+   "petr",
+   "šimon"
+  ],
+  "mode": "answer",
+  "kind": "bible-narativ",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Co přinesli mudrci Ježíšovi?",
+  "expect": [
+   "zlato",
+   "kadidlo",
+   "myrha",
+   "myrhu"
+  ],
+  "mode": "answer",
+  "kind": "bible-narativ",
+  "src": "bible_matous"
+ },
+ {
+  "q": "Kdo je otec Petra Nováka?",
+  "expect": [
+   "karel"
+  ],
+  "mode": "answer",
+  "kind": "vztahy-odvozene",
+  "src": "rodina_novakovi",
+  "note": "primitivní hrana (kontrola vrstvy pod rekurzí)"
+ },
+ {
+  "q": "Kdo je tchán Jany Novákové?",
+  "expect": [
+   "karel"
+  ],
+  "mode": "answer",
+  "kind": "vztahy-odvozene",
+  "src": "rodina_novakovi",
+  "note": "REKURZE: tchán = otec ∘ manžel/manželka (definiční vrstva)"
+ },
+ {
+  "q": "Kdo je tchyně Jany Novákové?",
+  "expect": [
+   "věra"
+  ],
+  "mode": "answer",
+  "kind": "vztahy-odvozene",
+  "src": "rodina_novakovi"
+ },
+ {
+  "q": "Kdo je švagrová Jany Novákové?",
+  "expect": [
+   "lucie"
+  ],
+  "mode": "answer",
+  "kind": "vztahy-odvozene",
+  "src": "rodina_novakovi",
+  "note": "švagrová = sestra ∘ manžel/manželka"
+ },
+ {
+  "q": "Kdo je teta Tomáše Nováka?",
+  "expect": [
+   "lucie"
+  ],
+  "mode": "answer",
+  "kind": "vztahy-odvozene",
+  "src": "rodina_novakovi",
+  "note": "teta = sestra ∘ otec/matka: otec(Tomáš)=Petr, sestra(Petr)=Lucie"
+ },
+ {
+  "q": "Kdo je děd Tomáše Nováka?",
+  "expect": [
+   "karel"
+  ],
+  "mode": "answer",
+  "kind": "vztahy-odvozene",
+  "src": "rodina_novakovi",
+  "note": "ŘETĚZ 2. řádu: děd = otec ∘ otec: otec(Tomáš)=Petr, otec(Petr)=Karel"
+ },
+ {
+  "q": "Kdo napsal Hamleta?",
+  "expect": [
+   "nevím"
+  ],
+  "mode": "unsure",
+  "kind": "honest-negative"
+ },
+ {
+  "q": "Kolik váží Sněžka?",
+  "expect": [
+   "nevím"
+  ],
+  "mode": "unsure",
+  "kind": "honest-negative"
+ },
+ {
+  "q": "Kdy se narodil Winston Churchill?",
+  "expect": [
+   "nevím"
+  ],
+  "mode": "unsure",
+  "kind": "honest-negative"
+ },
+ {
+  "q": "Kdo je Ježíš?",
+  "expect": [
+   "pán",
+   "syn",
+   "kristus",
+   "mesiáš",
+   "chléb"
+  ],
+  "mode": "answer",
+  "kind": "bible-vztahy",
+  "src": "bible_jan",
+  "note": "VÝČET (neunikátní role být|state dle role_card): otázka má množinu souběžných pravd z vyznání — systém odpoví reprezentantem a coanswers nese další; nabídka odpovědi nevyzrazuje předem (nenávodné doptání)."
+ },
+ {
+  "q": "Kdo je Karel Novák?",
+  "expect": [
+   "truhlář"
+  ],
+  "mode": "answer",
+  "kind": "rodina",
+  "src": "rodina_novakovi",
+  "note": "C1 collision: plné jméno v otázce musí porazit slavnějšího jmenovce (Karel Čapek sdílí holé 'Karel'). Před C1 confident-wrong 'spisovatel' z wiki_karel_čapek; opraveno full-name fillery + doc-scoped uzly faktů + víceslovný alias v q_nodes."
+ },
+ {
+  "q": "Čím je Milan Novák?",
+  "expect": [
+   "řidič"
+  ],
+  "mode": "answer",
+  "kind": "rodina",
+  "src": "rodina_novakovi",
+  "note": "C1 collision: dtto proti Milanu Kunderovi (před C1 'spisovatel' z wiki_milan_kundera)."
+ },
+ {
+  "q": "Co je exogamie?",
+  "expect": [
+   "mechanismus",
+   "pravidlo"
+  ],
+  "mode": "answer",
+  "kind": "definice",
+  "src": "wikisofia_pribuzenstvi",
+  "note": "D (potrava validace): odborná próza definuje DEFINIČNÍM SLOVESEM (Exogamie PŘEDSTAVUJE významný mechanismus...), ne sponou - definiční slovesa (cs.json definition_verbs) se normalizují na kopulový fakt. Před D poctivé nevím, ačkoli text definici nese. Endogamie definiční sloveso nemá, tam je nevím správně."
+ },
+ {
+  "q": "Kdo byl děd Josefa?",
+  "expect": [
+   "izák",
+   "izáka"
+  ],
+  "mode": "answer",
+  "kind": "bible-vztahy",
+  "src": "bible_genesis+bible_skutky_apoštolské",
+  "note": "C4 CROSS-DOC: děd(Izák, Josef) = otec(Izák, Jákob)@Genesis 1461 (Jákob přišel k svému otci Izákovi) ∘ otec(Jákob, Josef)@Skutky 185 (Josef si vzal k sobě svého otce Jákoba) — složeno napříč knihami přes jednoznačný canon Jákob s privilegiem universal pravidla. Obě primární hrany ověřeny v raw."
+ },
+ {
+  "q": "Co hlásal Ježíš?",
+  "expect": [
+   "evangelium"
+  ],
+  "mode": "answer",
+  "kind": "synonyma",
+  "src": "bible_markus",
+  "note": "Vrstva synonym (návrh uživatele): hlásat má vlastní fakty, ale ne k této otázce → SOUVÝZNAMOVÍ KOLEGOVÉ (hlásat ~ kázat z téže významové skupiny slovnik-synonym.cz) dodají kandidáty kázat-faktů. Před vrstvou confident-wrong 'oslátko' přes vzor."
+ },
+ {
+  "q": "Koho odeslal Bůh?",
+  "expect": [
+   "syn",
+   "syna"
+  ],
+  "mode": "answer",
+  "kind": "synonyma",
+  "src": "bible_galaťanům",
+  "note": "Vrstva synonym: 'odeslat' v korpusu není → FOLD přes jednoznačnou mapu pred_fold na 'poslat' (Bůh poslal svého Syna). Před vrstvou vzor-šum 'svědectví'."
+ },
+ {
+  "q": "Kdo byl Zachariáš?",
+  "expect": [
+   "kněz",
+   "knězem"
+  ],
+  "mode": "answer",
+  "kind": "bible-fakta",
+  "src": "bible_lukas",
+  "note": "Titulní apozice s hradlem osoby (návrat pokusu): tvar 'kněz, jménem Zachariáš' (Lk 1,5); hradlo = doc-scoped canon s ∃Q5 (Zachariáš Q139464 otec Jana Křtitele). Bez hradla dřív šum 'malíř'."
+ },
+ {
+  "q": "Proč Pán zachová Pavla?",
+  "expect": [
+   "království"
+  ],
+  "kind": "purpose"
+ },
+ {
+  "q": "Proč Pán vysvobodí Pavla?",
+  "expect": [
+   "království"
+  ],
+  "kind": "purpose"
+ },
+ {
+  "q": "Proč Kristus zemřel?",
+  "expect": [
+   "bratr"
+  ],
+  "kind": "purpose"
+ },
+ {
+  "q": "Proč Bůh určil moudrost?",
+  "expect": [
+   "oslavení",
+   "sláva"
+  ],
+  "kind": "purpose"
+ },
+ {
+  "q": "Proč jsou hanobeni?",
+  "expect": [
+   "jméno"
+  ],
+  "kind": "purpose"
+ },
+ {
+  "q": "Proč váží Sněžka?",
+  "expect": [
+   "nevím"
+  ],
+  "kind": "honest-negative"
+ },
+ {
+  "q": "Proč se narodil Karel Čapek?",
+  "expect": [
+   "nevím"
+  ],
+  "kind": "honest-negative"
+ },
+ {
+  "q": "Kdo byl František?",
+  "expect": [
+   "upřesni",
+   "myslíš"
+  ],
+  "mode": "clarify",
+  "kind": "identity-ambiguous"
+ },
+ {
+  "q": "Kdo byl Novák?",
+  "expect": [
+   "upřesni",
+   "myslíš"
+  ],
+  "mode": "clarify",
+  "kind": "identity-ambiguous"
+ },
+ {
+  "q": "Kdo byl Ježíš?",
+  "expect": [
+   "pán",
+   "kristus",
+   "syn"
+  ],
+  "kind": "identity-fragmented"
+ },
+ {
+  "q": "Kdo byl Karel Čapek?",
+  "expect": [
+   "spisovatel"
+  ],
+  "kind": "identity-full-name"
+ }
+]

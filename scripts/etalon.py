@@ -40,6 +40,42 @@ sys.path.insert(0, KOREN)
 from core import Config, Odpovidac, Pole, UlozisteSouboru, nastavit_log  # noqa: E402
 
 
+SCENARE = [
+    # Nález z dialogu: naučená hrana se na „Kdo je?" vůbec neuplatnila.
+    # Odpovídač čte pole, znalost leží vedle, a člověk to řekl před vteřinou.
+    {"nazev": "naučené vítězí nad korpusem",
+     "kroky": [("Božena Němcová je spisovatelka.", ["přijato"]),
+               ("Kdo je Božena Němcová?", ["spisovatelka"])]},
+    # Doptání je vlastní druh tahu, ne varianta mlčení.
+    {"nazev": "shodné jméno se nehádá",
+     "kroky": [("Kdo je Novák?", ["upřesni"])]},
+]
+
+
+def scenare(odpovidac) -> tuple:
+    """Vícetahové zkoušky. Některé vlastnosti se JEDNOU otázkou změřit
+    nedají: že naučené vítězí nad korpusem, je vidět až tehdy, když se
+    systém nejdřív něco naučí. Etalon má jinak každou otázku samostatně,
+    schválně — tohle je výjimka a je pojmenovaná."""
+    ok = spatne = 0
+    for s in SCENARE:
+        r = Rozhovor(Znalost(), odpovidac=odpovidac)
+        chyby = []
+        for veta, ceka in s["kroky"]:
+            z = r.poslat(veta)
+            odp = (z.nalez or {}).get("odpoved") or z.odpoved or ""
+            if not any(c.lower() in odp.lower() for c in ceka):
+                chyby.append(f"{veta!r} → {odp!r}, čekáno {ceka}")
+        if chyby:
+            spatne += 1
+            print(f"  ✗ scénář „{s['nazev']}\"")
+            for c in chyby:
+                print(f"      {c}")
+        else:
+            ok += 1
+    return ok, spatne
+
+
 def brana(odp, polozky):
     """Projde otázka vůbec do pole? Odpovídač se dá zavolat napřímo, ale
     dialog se nejdřív ptá `je_na_obsah()` — a co tam neprojde, na to se
@@ -133,6 +169,8 @@ def main() -> int:
     print("  " + "─" * 58)
     print(f"  {'celkem':<18} {c['celkem']:>7} {c['ok']:>7} {c['prvni']:>7}"
           f" {c['unsure']:>13}")
+    s_ok, s_spatne = scenare(o)
+    print(f"\n  scénáře: {s_ok}/{s_ok + s_spatne} prošlo")
     mimo = brana(o, sada)
     if mimo:
         print(f"\n  POZOR: {len(mimo)} otázek neprojde branou do pole:")

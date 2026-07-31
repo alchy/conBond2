@@ -23,6 +23,22 @@ jméno v korpusu.
 
 CO SE VYNECHÁVÁ. Zájmeno jako přísudek („to je on") neříká nic a tázací
 věta („Kdo je lhář?") taky ne — ta se ptá, neodpovídá.
+
+ZÁPOR JE JINÝ TYP, NE ZAHOZENÝ FAKT. Na „Kdo je Božena Němcová?" padla
+odpověď „realistkou" — z věty
+
+    Podle Šaldy proto NENÍ Němcová realistkou, měříme-li realismus tím…
+
+Text říká pravý opak toho, co odpovídač vrátil. Zápor přitom nikde nechybí:
+spona `není` nese `Polarity=Neg`, jen se na ni nikdo nedíval.
+
+Zahodit takovou větu by bylo špatně dvakrát — pole je monotónní a informace
+„realistkou NENÍ" je plnohodnotná. Dostane proto vlastní typ `Typ=druh_ne`.
+Na „Kdo je?" se nenabídne, protože se ptá na `Typ=druh`, a přitom v poli
+zůstane adresovatelná.
+
+Je to tentýž nález, jaký ukazuje `scripts/ukazka.py` u šablon: nejhorší
+případ není spor, ale ticho — chyba, která se netváří jako chyba.
 """
 
 from typing import Optional, Sequence
@@ -42,6 +58,7 @@ PADY_PRISUDKU = ("Case=Nom", "Case=Ins")
 class Druh(Agent):
     jmeno = "druh"
     typ = "Typ=druh"
+    typ_zapor = "Typ=druh_ne"
 
     def najdi(self, veta: Sequence[dict]) -> list:
         if self.je_tazaci(veta):
@@ -54,9 +71,10 @@ class Druh(Agent):
             if t["upos"] in NEVHODNE_UPOS or not self.je_prisudkovy_pad(t):
                 continue
             podmet = self.podmet(veta, t)
+            typ = self.typ_zapor if self.je_zaporna(veta, t) else self.typ
             out.append(Naveska(
                 rozsah=self.rozsah_prisudku(veta, t, podle_id),
-                hlava=veta.index(t), typ=self.typ,
+                hlava=veta.index(t), typ=typ,
                 hodnota={"tvar": t["form"],
                          "komu": self.cele_jmeno(veta, podmet)},
                 zdroj=self.jmeno))
@@ -68,6 +86,13 @@ class Druh(Agent):
         """Visí na tomhle tokenu spona? Pak je to jmenný přísudek."""
         return any(x.get("head") == t.get("id") and "cop" in x["acts"]
                    for x in veta)
+
+    @staticmethod
+    def je_zaporna(veta: Sequence[dict], t: dict) -> bool:
+        """Nese spona zápor? „není realistkou" je tvrzení o tom, čím ta
+        osoba NENÍ — a to je jiný fakt, ne slabší varianta téhož."""
+        return any(x.get("head") == t.get("id") and "cop" in x["acts"]
+                   and "Polarity=Neg" in x["acts"] for x in veta)
 
     @staticmethod
     def podmet(veta: Sequence[dict], t: dict) -> Optional[dict]:

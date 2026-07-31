@@ -1,0 +1,14895 @@
+{
+ "zdroj": "slovnik-synonym.cz (obsah vkládají uživatelé, ověřují editoři; staženo pro offline použití při přípravě dat)",
+ "pocet_slov": 1016,
+ "synonyma": {
+  "analyzovat": [
+   [
+    "rozebrat"
+   ]
+  ],
+  "aplikovat": [
+   [
+    "použít"
+   ],
+   [
+    "upotřebit"
+   ]
+  ],
+  "bdít": [
+   [
+    "opatrovat"
+   ]
+  ],
+  "bičovat": [
+   [
+    "zbičovat"
+   ],
+   [
+    "mrskat"
+   ],
+   [
+    "zmrskat"
+   ]
+  ],
+  "bloudit": [
+   [
+    "bloumat"
+   ],
+   [
+    "potulovat se"
+   ],
+   [
+    "toulat se"
+   ]
+  ],
+  "bojovat": [
+   [
+    "vést boj"
+   ],
+   [
+    "zápasit"
+   ],
+   [
+    "zápolit"
+   ],
+   [
+    "bít se"
+   ],
+   [
+    "potýkat se"
+   ],
+   [
+    "usilovat"
+   ]
+  ],
+  "bouřit": [
+   [
+    "kypět"
+   ],
+   [
+    "vyvádět"
+   ],
+   [
+    "burácet"
+   ],
+   [
+    "vřít"
+   ],
+   [
+    "zuřit"
+   ]
+  ],
+  "bránit": [
+   [
+    "svazovat"
+   ],
+   [
+    "omezovat"
+   ]
+  ],
+  "brát": [
+   [
+    "uchopovat"
+   ],
+   [
+    "dostávat"
+   ]
+  ],
+  "budit": [
+   [
+    "vzbuzovat"
+   ],
+   [
+    "vyvolávat"
+   ]
+  ],
+  "budovat": [
+   [
+    "stavět"
+   ]
+  ],
+  "bydlet": [
+   [
+    "obývat"
+   ]
+  ],
+  "bít": [
+   [
+    "flákat"
+   ],
+   [
+    "tlouci"
+   ],
+   [
+    "mlátit"
+   ],
+   [
+    "zbít"
+   ],
+   [
+    "bušit"
+   ],
+   [
+    "ztlouci"
+   ],
+   [
+    "odbíjet"
+   ],
+   [
+    "řezat"
+   ],
+   [
+    "tlouct"
+   ]
+  ],
+  "být": [
+   [
+    "žít"
+   ]
+  ],
+  "bědovat": [
+   [
+    "truchlit"
+   ],
+   [
+    "naříkat"
+   ],
+   [
+    "lkát"
+   ],
+   [
+    "lamentovat"
+   ]
+  ],
+  "běhat": [
+   [
+    "pobíhat"
+   ],
+   [
+    "běžet"
+   ],
+   [
+    "lítat"
+   ],
+   [
+    "pelášit"
+   ],
+   [
+    "fungovat"
+   ]
+  ],
+  "běžet": [
+   [
+    "uhánět"
+   ],
+   [
+    "fungovat"
+   ],
+   [
+    "pracovat"
+   ],
+   [
+    "běhat"
+   ],
+   [
+    "letět"
+   ],
+   [
+    "plynout"
+   ],
+   [
+    "míjet"
+   ],
+   [
+    "utíkat"
+   ],
+   [
+    "jít"
+   ]
+  ],
+  "cestovat": [
+   [
+    "jet"
+   ],
+   [
+    "jezdit"
+   ]
+  ],
+  "chodit": [
+   [
+    "kráčet"
+   ],
+   [
+    "přecházet"
+   ]
+  ],
+  "chovat": [
+   [
+    "pěstovat"
+   ]
+  ],
+  "chrlit": [
+   [
+    "vydávat"
+   ],
+   [
+    "vypouštět"
+   ],
+   [
+    "valit se"
+   ]
+  ],
+  "chránit": [
+   [
+    "hájit"
+   ],
+   [
+    "ochraňovat"
+   ],
+   [
+    "krýt"
+   ]
+  ],
+  "chtít": [
+   [
+    "rozhodnout se"
+   ],
+   [
+    "mít v úmyslu"
+   ],
+   [
+    "zamýšlet"
+   ],
+   [
+    "přát si"
+   ],
+   [
+    "po něčem toužit"
+   ]
+  ],
+  "chválit": [
+   [
+    "pochválit"
+   ]
+  ],
+  "chvět": [
+   [
+    "chvět se"
+   ],
+   [
+    "rozechvět"
+   ],
+   [
+    "rozechvět se"
+   ],
+   [
+    "třást se"
+   ],
+   [
+    "třást"
+   ]
+  ],
+  "chybět": [
+   [
+    "nedostávat se"
+   ]
+  ],
+  "chytit": [
+   [
+    "dostat"
+   ],
+   [
+    "nachytat"
+   ],
+   [
+    "lapit"
+   ],
+   [
+    "stihnout"
+   ],
+   [
+    "zastihnout"
+   ],
+   [
+    "vzplanout"
+   ],
+   [
+    "polapit"
+   ],
+   [
+    "uchopit"
+   ]
+  ],
+  "chápat": [
+   [
+    "porozumět"
+   ],
+   [
+    "pochopit"
+   ],
+   [
+    "uvědomit si"
+   ]
+  ],
+  "citovat": [
+   [
+    "uvést"
+   ],
+   [
+    "ocitovat"
+   ],
+   [
+    "doložit"
+   ]
+  ],
+  "ctít": [
+   [
+    "uctívat"
+   ],
+   [
+    "vážit si"
+   ]
+  ],
+  "cvičit": [
+   [
+    "nacvičovat co",
+    "učit",
+    "zdokonalovat"
+   ],
+   [
+    "vychovávat koho",
+    "vzdělávat",
+    "bystřit"
+   ],
+   [
+    "dělat cviky"
+   ]
+  ],
+  "cítit": [
+   [
+    "mít soucit"
+   ],
+   [
+    "pocítit"
+   ],
+   [
+    "tušit"
+   ]
+  ],
+  "darovat": [
+   [
+    "věnovat"
+   ]
+  ],
+  "dbát": [
+   [
+    "starat se"
+   ],
+   [
+    "pečovat"
+   ]
+  ],
+  "diskutovat": [
+   [
+    "debatovat"
+   ]
+  ],
+  "dobývat": [
+   [
+    "dolovat"
+   ],
+   [
+    "vydolovat"
+   ],
+   [
+    "těžit"
+   ]
+  ],
+  "dodat": [
+   [
+    "doplnit"
+   ],
+   [
+    "přidat"
+   ],
+   [
+    "připojit"
+   ]
+  ],
+  "dodržovat": [
+   [
+    "zachovávat"
+   ]
+  ],
+  "dohlížet": [
+   [
+    "dozírat"
+   ],
+   [
+    "kontrolovat"
+   ]
+  ],
+  "dohodnout": [
+   [
+    "sjednat"
+   ],
+   [
+    "smluvit"
+   ]
+  ],
+  "dojít": [
+   [
+    "jít"
+   ],
+   [
+    "přinést"
+   ]
+  ],
+  "dokazovat": [
+   [
+    "prokazovat"
+   ]
+  ],
+  "dokonat": [
+   [
+    "zemřít"
+   ]
+  ],
+  "dokončit": [
+   [
+    "ukončit"
+   ],
+   [
+    "vychodit"
+   ],
+   [
+    "dohotovit"
+   ],
+   [
+    "dovršit"
+   ],
+   [
+    "dodělat"
+   ]
+  ],
+  "dokázat": [
+   [
+    "dosvědčit"
+   ],
+   [
+    "uspět"
+   ]
+  ],
+  "donutit": [
+   [
+    "nutit"
+   ],
+   [
+    "přinutit"
+   ],
+   [
+    "dohnat"
+   ]
+  ],
+  "donést": [
+   [
+    "nést"
+   ],
+   [
+    "přinést"
+   ]
+  ],
+  "dopadnout": [
+   [
+    "padnout"
+   ],
+   [
+    "sletět"
+   ],
+   [
+    "spadnout"
+   ]
+  ],
+  "doporučit": [
+   [
+    "poradit"
+   ]
+  ],
+  "doporučovat": [
+   [
+    "radit"
+   ]
+  ],
+  "dopouštět": [
+   [
+    "dovolovat"
+   ],
+   [
+    "připouštět"
+   ],
+   [
+    "umožňovat"
+   ],
+   [
+    "sesílat"
+   ],
+   [
+    "přivolávat"
+   ]
+  ],
+  "dopravit": [
+   [
+    "doručit"
+   ],
+   [
+    "zanést"
+   ],
+   [
+    "přepravit"
+   ],
+   [
+    "přinést"
+   ],
+   [
+    "dostat"
+   ],
+   [
+    "převézt"
+   ],
+   [
+    "transportovat"
+   ],
+   [
+    "dovézt"
+   ]
+  ],
+  "doprovodit": [
+   [
+    "dovést"
+   ],
+   [
+    "doprovázet"
+   ],
+   [
+    "uvést"
+   ],
+   [
+    "zavést"
+   ],
+   [
+    "přivést"
+   ]
+  ],
+  "doprovázet": [
+   [
+    "doprovodit"
+   ]
+  ],
+  "dorazit": [
+   [
+    "dojet"
+   ],
+   [
+    "dostat se"
+   ]
+  ],
+  "dosadit": [
+   [
+    "jmenovat"
+   ],
+   [
+    "ustanovit"
+   ]
+  ],
+  "dospět": [
+   [
+    "uzrát"
+   ],
+   [
+    "dozrát"
+   ]
+  ],
+  "dostat": [
+   [
+    "dosáhnout"
+   ],
+   [
+    "dopravit"
+   ],
+   [
+    "chytit"
+   ],
+   [
+    "obdržet"
+   ],
+   [
+    "vpravit"
+   ]
+  ],
+  "dostávat": [
+   [
+    "brát"
+   ]
+  ],
+  "dosvědčit": [
+   [
+    "dokázat"
+   ],
+   [
+    "svědčit"
+   ]
+  ],
+  "dosáhnout": [
+   [
+    "dostat"
+   ],
+   [
+    "docílit"
+   ],
+   [
+    "získat"
+   ]
+  ],
+  "doufat": [
+   [
+    "věřit"
+   ]
+  ],
+  "dovolit": [
+   [
+    "nechat"
+   ],
+   [
+    "povolit"
+   ]
+  ],
+  "dovršit": [
+   [
+    "završit"
+   ],
+   [
+    "dokončit"
+   ]
+  ],
+  "dovést": [
+   [
+    "umět"
+   ],
+   [
+    "doprovodit"
+   ],
+   [
+    "přivést"
+   ]
+  ],
+  "dovézt": [
+   [
+    "dopravit"
+   ]
+  ],
+  "dozrát": [
+   [
+    "uzrát"
+   ],
+   [
+    "dospět"
+   ]
+  ],
+  "dráždit": [
+   [
+    "jitřit"
+   ],
+   [
+    "iritovat"
+   ],
+   [
+    "popudit"
+   ],
+   [
+    "rozčilovat"
+   ],
+   [
+    "provokovat"
+   ],
+   [
+    "vyprovokovat"
+   ],
+   [
+    "vydráždit"
+   ],
+   [
+    "zlobit"
+   ],
+   [
+    "podráždit"
+   ]
+  ],
+  "držet": [
+   [
+    "svírat"
+   ],
+   [
+    "nést"
+   ],
+   [
+    "podpírat"
+   ],
+   [
+    "lpět"
+   ]
+  ],
+  "dunět": [
+   [
+    "burácet"
+   ],
+   [
+    "rachotit"
+   ],
+   [
+    "hřmět"
+   ],
+   [
+    "hučet"
+   ]
+  ],
+  "dychtit": [
+   [
+    "prahnout"
+   ],
+   [
+    "hladovět"
+   ],
+   [
+    "toužit"
+   ],
+   [
+    "bažit"
+   ]
+  ],
+  "dát": [
+   [
+    "umístit"
+   ],
+   [
+    "rozdělit"
+   ],
+   [
+    "udělit"
+   ],
+   [
+    "poskytnout"
+   ],
+   [
+    "postavit"
+   ],
+   [
+    "dávat"
+   ],
+   [
+    "položit"
+   ],
+   [
+    "rozdat"
+   ],
+   [
+    "předat"
+   ]
+  ],
+  "dávat": [
+   [
+    "skýtat"
+   ],
+   [
+    "přinášet"
+   ],
+   [
+    "poskytovat"
+   ],
+   [
+    "dát"
+   ]
+  ],
+  "děd": [
+   [
+    "praotec"
+   ]
+  ],
+  "dělat": [
+   [
+    "činit"
+   ],
+   [
+    "pracovat"
+   ],
+   [
+    "provést"
+   ],
+   [
+    "působit"
+   ],
+   [
+    "konat"
+   ],
+   [
+    "udělat"
+   ]
+  ],
+  "dělit": [
+   [
+    "rozdělovat"
+   ]
+  ],
+  "děsit": [
+   [
+    "strašit"
+   ]
+  ],
+  "důvěřovat": [
+   [
+    "věřit"
+   ]
+  ],
+  "existovat": [
+   [
+    "žít"
+   ]
+  ],
+  "formulovat": [
+   [
+    "sepsat"
+   ],
+   [
+    "říci"
+   ],
+   [
+    "stylizovat"
+   ],
+   [
+    "vyjádřit"
+   ],
+   [
+    "definovat"
+   ]
+  ],
+  "fungovat": [
+   [
+    "běžet"
+   ],
+   [
+    "pracovat"
+   ],
+   [
+    "být v provozu"
+   ],
+   [
+    "běhat"
+   ],
+   [
+    "jít"
+   ],
+   [
+    "klapat"
+   ]
+  ],
+  "halit": [
+   [
+    "clonit"
+   ]
+  ],
+  "hladovět": [
+   [
+    "dychtit"
+   ]
+  ],
+  "hlaholit": [
+   [
+    "zvučet"
+   ],
+   [
+    "znít"
+   ],
+   [
+    "halasit"
+   ],
+   [
+    "vykřikovat"
+   ],
+   [
+    "vyvolávat"
+   ],
+   [
+    "povykovat"
+   ]
+  ],
+  "hledat": [
+   [
+    "pátrat po čem",
+    "vyhledávat",
+    "shánět"
+   ]
+  ],
+  "hledět": [
+   [
+    "dívat se"
+   ],
+   [
+    "zírat"
+   ],
+   [
+    "koukat"
+   ],
+   [
+    "okukovat"
+   ],
+   [
+    "pohledět"
+   ],
+   [
+    "podívat"
+   ],
+   [
+    "vidět"
+   ]
+  ],
+  "hlásat": [
+   [
+    "kázat"
+   ]
+  ],
+  "hlásit": [
+   [
+    "ohlásit"
+   ],
+   [
+    "oznámit"
+   ]
+  ],
+  "hlídat": [
+   [
+    "opatrovat"
+   ],
+   [
+    "dávat pozor"
+   ],
+   [
+    "hlídkovat"
+   ]
+  ],
+  "hnout": [
+   [
+    "dojmout"
+   ],
+   [
+    "pohnout"
+   ]
+  ],
+  "hnát": [
+   [
+    "pohánět"
+   ],
+   [
+    "štvát"
+   ]
+  ],
+  "hnízdit": [
+   [
+    "udělat si hnízdo"
+   ]
+  ],
+  "hodit": [
+   [
+    "pohodit"
+   ],
+   [
+    "mrštit"
+   ],
+   [
+    "mrsknout"
+   ]
+  ],
+  "hodlat": [
+   [
+    "chystat se"
+   ],
+   [
+    "zamýšlet"
+   ]
+  ],
+  "hodnotit": [
+   [
+    "klasifikovat"
+   ]
+  ],
+  "honit": [
+   [
+    "štvát"
+   ],
+   [
+    "pronásledovat"
+   ],
+   [
+    "stíhat"
+   ]
+  ],
+  "hovořit": [
+   [
+    "povídat si"
+   ]
+  ],
+  "hrozit": [
+   [
+    "vyhrožovat"
+   ]
+  ],
+  "hrát": [
+   [
+    "představovat"
+   ],
+   [
+    "ztělesnit"
+   ],
+   [
+    "znít"
+   ],
+   [
+    "předstírat"
+   ]
+  ],
+  "hájit": [
+   [
+    "ochraňovat"
+   ],
+   [
+    "obhajovat"
+   ],
+   [
+    "zastupovat"
+   ],
+   [
+    "chránit"
+   ]
+  ],
+  "házet": [
+   [
+    "lomcovat"
+   ],
+   [
+    "kymácet"
+   ],
+   [
+    "nabírat"
+   ],
+   [
+    "zmítat"
+   ],
+   [
+    "přikládat"
+   ]
+  ],
+  "ilustrovat": [
+   [
+    "objasnit"
+   ]
+  ],
+  "jednat": [
+   [
+    "počínat si"
+   ],
+   [
+    "nakládat"
+   ],
+   [
+    "dohadovat se"
+   ],
+   [
+    "zacházet"
+   ],
+   [
+    "chovat se"
+   ]
+  ],
+  "jet": [
+   [
+    "pracovat"
+   ],
+   [
+    "jít"
+   ],
+   [
+    "plout"
+   ],
+   [
+    "letět"
+   ],
+   [
+    "cestovat"
+   ]
+  ],
+  "jezdit": [
+   [
+    "cestovat"
+   ]
+  ],
+  "jmenovat": [
+   [
+    "určit"
+   ],
+   [
+    "nazývat"
+   ],
+   [
+    "dosadit"
+   ],
+   [
+    "ustanovit"
+   ],
+   [
+    "nominovat"
+   ],
+   [
+    "nastolit"
+   ],
+   [
+    "pojmenovat"
+   ],
+   [
+    "označit"
+   ],
+   [
+    "udat"
+   ],
+   [
+    "vyjmenovat"
+   ],
+   [
+    "nazvat"
+   ]
+  ],
+  "jásat": [
+   [
+    "plesat"
+   ]
+  ],
+  "jíst": [
+   [
+    "živit se"
+   ],
+   [
+    "obědvat"
+   ],
+   [
+    "žrát"
+   ],
+   [
+    "večeřet"
+   ],
+   [
+    "stolovat"
+   ]
+  ],
+  "jít": [
+   [
+    "plout"
+   ],
+   [
+    "běžet"
+   ],
+   [
+    "dařit se"
+   ],
+   [
+    "dojít"
+   ],
+   [
+    "fungovat"
+   ],
+   [
+    "letět"
+   ],
+   [
+    "jet"
+   ],
+   [
+    "následovat"
+   ],
+   [
+    "vyjít"
+   ],
+   [
+    "kráčet"
+   ]
+  ],
+  "kanout": [
+   [
+    "kapat"
+   ],
+   [
+    "stékat"
+   ]
+  ],
+  "klamat": [
+   [
+    "šidit"
+   ],
+   [
+    "oklamat"
+   ],
+   [
+    "podvádět"
+   ],
+   [
+    "namluvit"
+   ]
+  ],
+  "klekat": [
+   [
+    "poklekat"
+   ],
+   [
+    "kořit se",
+    "ctít koho"
+   ]
+  ],
+  "klesat": [
+   [
+    "sestupovat",
+    "padat"
+   ],
+   [
+    "sklánět se",
+    "snižovat se",
+    "svažovat se"
+   ],
+   [
+    "upadat",
+    "chátrat"
+   ],
+   [
+    "snižovat se",
+    "zmenšovat se",
+    "ubývat",
+    "tenčit se"
+   ],
+   [
+    "ztrácet odvahu",
+    "malomyslnět"
+   ]
+  ],
+  "klesnout": [
+   [
+    "padnout",
+    "spadnout"
+   ],
+   [
+    "sklonit se",
+    "spustit se"
+   ],
+   [
+    "upadnout",
+    "zchátrat"
+   ],
+   [
+    "snížit se",
+    "zmenšit se",
+    "ubýt",
+    "ztenčit se"
+   ],
+   [
+    "ztratit odvahu",
+    "zmalomyslnět"
+   ]
+  ],
+  "klopýtnout": [
+   [
+    "zakopnout"
+   ]
+  ],
+  "klást": [
+   [
+    "pokládat",
+    "ukládat",
+    "přikládat"
+   ],
+   [
+    "nanášet",
+    "pokrývat"
+   ],
+   [
+    "rozdělávat",
+    "zapalovat"
+   ],
+   [
+    "snášet"
+   ],
+   [
+    "tázat se",
+    "dávat"
+   ],
+   [
+    "zařazovat co",
+    "určovat",
+    "hodnotit",
+    "oceňovat"
+   ],
+   [
+    "pokládat za",
+    "považovat"
+   ],
+   [
+    "obětovat"
+   ]
+  ],
+  "konat": [
+   [
+    "dělat"
+   ],
+   [
+    "činit"
+   ],
+   [
+    "provádět"
+   ]
+  ],
+  "konfrontovat": [
+   [
+    "postavit proti sobě"
+   ]
+  ],
+  "korunovat": [
+   [
+    "završit"
+   ]
+  ],
+  "koupit": [
+   [
+    "zakoupit"
+   ]
+  ],
+  "kovat": [
+   [
+    "kout"
+   ]
+  ],
+  "kralovat": [
+   [
+    "vládnout"
+   ]
+  ],
+  "kritizovat": [
+   [
+    "pranýřovat"
+   ],
+   [
+    "ztrhat"
+   ]
+  ],
+  "krmit": [
+   [
+    "živit"
+   ],
+   [
+    "vykrmovat"
+   ]
+  ],
+  "krást": [
+   [
+    "vykrást"
+   ],
+   [
+    "vyloupit"
+   ],
+   [
+    "loupit"
+   ],
+   [
+    "odcizit"
+   ],
+   [
+    "ukrást"
+   ]
+  ],
+  "kráčet": [
+   [
+    "jít"
+   ],
+   [
+    "chodit"
+   ]
+  ],
+  "kupit": [
+   [
+    "hromadit"
+   ],
+   [
+    "nakupit"
+   ],
+   [
+    "shromažďovat"
+   ],
+   [
+    "nahromadit se"
+   ],
+   [
+    "vršit"
+   ],
+   [
+    "nakupit se"
+   ],
+   [
+    "nahromadit"
+   ]
+  ],
+  "kárat": [
+   [
+    "udělit důtku"
+   ],
+   [
+    "pokárat"
+   ],
+   [
+    "plísnit"
+   ],
+   [
+    "hubovat"
+   ]
+  ],
+  "kázat": [
+   [
+    "poučovat",
+    "kárat",
+    "napomínat"
+   ],
+   [
+    "hlásat",
+    "zvěstovat"
+   ],
+   [
+    "poroučet komu",
+    "přikazovat"
+   ]
+  ],
+  "křičet": [
+   [
+    "zvolat"
+   ],
+   [
+    "ječet"
+   ],
+   [
+    "zakřičet"
+   ],
+   [
+    "vřískat"
+   ],
+   [
+    "zavřískat"
+   ],
+   [
+    "zaječet"
+   ],
+   [
+    "vykřiknout"
+   ]
+  ],
+  "letět": [
+   [
+    "plout"
+   ],
+   [
+    "jít"
+   ],
+   [
+    "běžet"
+   ],
+   [
+    "hnát se"
+   ],
+   [
+    "padat"
+   ],
+   [
+    "létat"
+   ],
+   [
+    "uhánět"
+   ],
+   [
+    "jet"
+   ],
+   [
+    "upalovat"
+   ],
+   [
+    "řítit se"
+   ]
+  ],
+  "ležet": [
+   [
+    "spočívat"
+   ]
+  ],
+  "lichotit": [
+   [
+    "lahodit"
+   ],
+   [
+    "podkuřovat"
+   ],
+   [
+    "pochlebovat"
+   ]
+  ],
+  "litovat": [
+   [
+    "želet"
+   ],
+   [
+    "mít soucit"
+   ]
+  ],
+  "lišit": [
+   [
+    "odlišovat"
+   ]
+  ],
+  "lpět": [
+   [
+    "viset"
+   ],
+   [
+    "ulpívat"
+   ],
+   [
+    "držet"
+   ],
+   [
+    "přimknout se"
+   ]
+  ],
+  "lákat": [
+   [
+    "přitahovat"
+   ],
+   [
+    "vábit"
+   ]
+  ],
+  "lámat": [
+   [
+    "zlomit se"
+   ],
+   [
+    "zlomit"
+   ],
+   [
+    "lámat se"
+   ],
+   [
+    "rozbít se"
+   ],
+   [
+    "rozbít"
+   ]
+  ],
+  "láska": [
+   [
+    "vášeň"
+   ]
+  ],
+  "létat": [
+   [
+    "poletovat"
+   ],
+   [
+    "letět"
+   ],
+   [
+    "levitovat"
+   ],
+   [
+    "vznášet se"
+   ]
+  ],
+  "líbat": [
+   [
+    "hubičkovat"
+   ]
+  ],
+  "líčit": [
+   [
+    "podrobně popisovat"
+   ]
+  ],
+  "manželka": [
+   [
+    "manžel"
+   ],
+   [
+    "žena"
+   ],
+   [
+    "choť"
+   ]
+  ],
+  "matka": [
+   [
+    "maminka"
+   ],
+   [
+    "matička"
+   ],
+   [
+    "mamka"
+   ],
+   [
+    "máma"
+   ],
+   [
+    "matka"
+   ]
+  ],
+  "milovat": [
+   [
+    "mít rád"
+   ]
+  ],
+  "minout": [
+   [
+    "přejít"
+   ],
+   [
+    "uběhnout"
+   ],
+   [
+    "uplynout"
+   ],
+   [
+    "projít"
+   ]
+  ],
+  "mluvit": [
+   [
+    "promluvit"
+   ],
+   [
+    "povídat"
+   ]
+  ],
+  "množit": [
+   [
+    "rozmnožovat"
+   ]
+  ],
+  "moci": [
+   [
+    "smět"
+   ]
+  ],
+  "muž": [
+   [
+    "chlápek"
+   ],
+   [
+    "člověk"
+   ],
+   [
+    "mládenec"
+   ],
+   [
+    "manžel"
+   ]
+  ],
+  "myslit": [
+   [
+    "domnívat se"
+   ],
+   [
+    "předpokládat"
+   ],
+   [
+    "soudit"
+   ],
+   [
+    "mínit"
+   ]
+  ],
+  "mínit": [
+   [
+    "myslit"
+   ],
+   [
+    "mít na mysli"
+   ]
+  ],
+  "mít": [
+   [
+    "vlastnit"
+   ],
+   [
+    "nosit"
+   ],
+   [
+    "vykazovat"
+   ],
+   [
+    "ovládat"
+   ]
+  ],
+  "mířit": [
+   [
+    "zamířit"
+   ],
+   [
+    "zaměřit"
+   ],
+   [
+    "směřovat"
+   ]
+  ],
+  "měnit": [
+   [
+    "měnit se"
+   ],
+   [
+    "změnit"
+   ],
+   [
+    "obměňovat"
+   ],
+   [
+    "změnit se"
+   ],
+   [
+    "obměnit"
+   ],
+   [
+    "pozměňovat"
+   ]
+  ],
+  "měřit": [
+   [
+    "proměřit"
+   ],
+   [
+    "vyměřit"
+   ]
+  ],
+  "nabodnout": [
+   [
+    "napíchnout"
+   ]
+  ],
+  "nabrat": [
+   [
+    "zřasit"
+   ],
+   [
+    "zdrhnout"
+   ],
+   [
+    "přijmout"
+   ]
+  ],
+  "nabádat": [
+   [
+    "nutit"
+   ],
+   [
+    "vyzývat"
+   ]
+  ],
+  "nabírat": [
+   [
+    "házet"
+   ],
+   [
+    "přikládat"
+   ]
+  ],
+  "nabýt": [
+   [
+    "získat"
+   ],
+   [
+    "zajistit si"
+   ],
+   [
+    "přijít"
+   ]
+  ],
+  "nahradit": [
+   [
+    "vystřídat"
+   ],
+   [
+    "odčinit"
+   ],
+   [
+    "odškodnit"
+   ],
+   [
+    "napravit"
+   ],
+   [
+    "vytlačit"
+   ],
+   [
+    "kompenzovat"
+   ],
+   [
+    "vynahradit"
+   ],
+   [
+    "vyměnit"
+   ],
+   [
+    "vykompenzovat"
+   ],
+   [
+    "substituovat"
+   ]
+  ],
+  "najít": [
+   [
+    "zjistit"
+   ],
+   [
+    "nalézt"
+   ],
+   [
+    "objevit"
+   ]
+  ],
+  "nakazit": [
+   [
+    "zamořit"
+   ],
+   [
+    "infikovat"
+   ]
+  ],
+  "naklonit": [
+   [
+    "naklonit se"
+   ],
+   [
+    "sklonit"
+   ],
+   [
+    "sklonit se"
+   ]
+  ],
+  "nakládat": [
+   [
+    "zavařovat"
+   ],
+   [
+    "jednat"
+   ],
+   [
+    "udit"
+   ],
+   [
+    "zmrazit"
+   ],
+   [
+    "konzervovat"
+   ],
+   [
+    "zacházet"
+   ],
+   [
+    "chovat se"
+   ]
+  ],
+  "naložit": [
+   [
+    "navršit"
+   ],
+   [
+    "nalodit"
+   ]
+  ],
+  "nalít": [
+   [
+    "vlít"
+   ]
+  ],
+  "namluvit": [
+   [
+    "klamat"
+   ],
+   [
+    "oklamat"
+   ]
+  ],
+  "namočit": [
+   [
+    "navlhčit"
+   ],
+   [
+    "naslinit"
+   ]
+  ],
+  "namítat": [
+   [
+    "mít námitky"
+   ]
+  ],
+  "naměřit": [
+   [
+    "odměřit"
+   ],
+   [
+    "dávkovat"
+   ]
+  ],
+  "napadnout": [
+   [
+    "zaútočit"
+   ],
+   [
+    "popírat"
+   ]
+  ],
+  "naplnit": [
+   [
+    "uskutečnit"
+   ]
+  ],
+  "napnout": [
+   [
+    "natáhnout"
+   ],
+   [
+    "vypnout"
+   ],
+   [
+    "vzrušit"
+   ]
+  ],
+  "napodobovat": [
+   [
+    "kopírovat"
+   ]
+  ],
+  "napojit": [
+   [
+    "připojit"
+   ]
+  ],
+  "napomáhat": [
+   [
+    "podporovat"
+   ]
+  ],
+  "napomínat": [
+   [
+    "kárat"
+   ],
+   [
+    "domlouvat"
+   ],
+   [
+    "vytýkat"
+   ],
+   [
+    "pobízet"
+   ],
+   [
+    "nabádat"
+   ],
+   [
+    "vyzývat"
+   ]
+  ],
+  "napsat": [
+   [
+    "složit"
+   ],
+   [
+    "psát"
+   ]
+  ],
+  "napínat": [
+   [
+    "šponovat"
+   ]
+  ],
+  "narazit": [
+   [
+    "nabourat se"
+   ],
+   [
+    "vrazit"
+   ],
+   [
+    "setkat se"
+   ],
+   [
+    "přijít"
+   ]
+  ],
+  "nasadit": [
+   [
+    "naladit"
+   ]
+  ],
+  "nastat": [
+   [
+    "vynořit se"
+   ],
+   [
+    "dostavit se"
+   ],
+   [
+    "rozhostit se"
+   ]
+  ],
+  "nastavit": [
+   [
+    "seřídit"
+   ]
+  ],
+  "nastoupit": [
+   [
+    "nasednout"
+   ]
+  ],
+  "nastávat": [
+   [
+    "začínat"
+   ]
+  ],
+  "nasytit": [
+   [
+    "impregnovat"
+   ],
+   [
+    "ukojit"
+   ],
+   [
+    "napustit"
+   ]
+  ],
+  "natočit": [
+   [
+    "filmovat"
+   ],
+   [
+    "zfilmovat"
+   ],
+   [
+    "nakroutit"
+   ]
+  ],
+  "navrátit": [
+   [
+    "vrátit"
+   ]
+  ],
+  "navštívit": [
+   [
+    "přijít"
+   ],
+   [
+    "podívat se"
+   ]
+  ],
+  "naznačit": [
+   [
+    "načrtnout"
+   ],
+   [
+    "nastínit"
+   ]
+  ],
+  "naznačovat": [
+   [
+    "ukazovat"
+   ],
+   [
+    "signalizovat"
+   ]
+  ],
+  "nazvat": [
+   [
+    "označit"
+   ]
+  ],
+  "nazývat": [
+   [
+    "jmenovat"
+   ],
+   [
+    "pojmenovat"
+   ]
+  ],
+  "načerpat": [
+   [
+    "čerpat"
+   ]
+  ],
+  "nařídit": [
+   [
+    "nakázat"
+   ],
+   [
+    "poručit"
+   ],
+   [
+    "rozkázat"
+   ],
+   [
+    "předepsat"
+   ],
+   [
+    "přikázat"
+   ],
+   [
+    "stanovit"
+   ],
+   [
+    "říci"
+   ],
+   [
+    "ustanovit"
+   ],
+   [
+    "uzákonit"
+   ]
+  ],
+  "naříkat": [
+   [
+    "kňourat"
+   ],
+   [
+    "hekat"
+   ],
+   [
+    "oplakávat"
+   ],
+   [
+    "lamentovat"
+   ],
+   [
+    "výt"
+   ],
+   [
+    "truchlit"
+   ],
+   [
+    "kvílet"
+   ],
+   [
+    "sténat"
+   ],
+   [
+    "lkát"
+   ],
+   [
+    "bědovat"
+   ]
+  ],
+  "nechat": [
+   [
+    "dovolit"
+   ],
+   [
+    "odejít"
+   ],
+   [
+    "opustit"
+   ]
+  ],
+  "nenávidět": [
+   [
+    "hnusit si"
+   ],
+   [
+    "ošklivit si"
+   ]
+  ],
+  "ničit": [
+   [
+    "zpustošit"
+   ],
+   [
+    "pustošit"
+   ],
+   [
+    "zničit"
+   ],
+   [
+    "ruinovat"
+   ]
+  ],
+  "nosit": [
+   [
+    "mít"
+   ]
+  ],
+  "nutit": [
+   [
+    "donutit"
+   ],
+   [
+    "nabádat"
+   ],
+   [
+    "přinutit"
+   ],
+   [
+    "přimět"
+   ]
+  ],
+  "náležet": [
+   [
+    "patřit"
+   ]
+  ],
+  "následovat": [
+   [
+    "jít"
+   ],
+   [
+    "přijít"
+   ],
+   [
+    "přijet"
+   ]
+  ],
+  "nést": [
+   [
+    "držet"
+   ],
+   [
+    "donést"
+   ],
+   [
+    "podpírat"
+   ],
+   [
+    "přinášet"
+   ],
+   [
+    "vézt"
+   ],
+   [
+    "uhradit"
+   ]
+  ],
+  "obcházet": [
+   [
+    "obejít"
+   ]
+  ],
+  "obdarovat": [
+   [
+    "obdařit"
+   ],
+   [
+    "podarovat"
+   ]
+  ],
+  "obdařit": [
+   [
+    "vybavit"
+   ],
+   [
+    "obdarovat"
+   ]
+  ],
+  "obdržet": [
+   [
+    "dostat"
+   ]
+  ],
+  "obehnat": [
+   [
+    "ohradit"
+   ]
+  ],
+  "objasnit": [
+   [
+    "ilustrovat"
+   ],
+   [
+    "vyjasnit"
+   ]
+  ],
+  "objevit": [
+   [
+    "přijít"
+   ],
+   [
+    "odhalit"
+   ],
+   [
+    "vypátrat"
+   ],
+   [
+    "zjistit"
+   ],
+   [
+    "vynalézt"
+   ],
+   [
+    "najít"
+   ],
+   [
+    "nalézt"
+   ]
+  ],
+  "obklopit": [
+   [
+    "obklíčit"
+   ],
+   [
+    "obstoupit"
+   ],
+   [
+    "zahalit"
+   ]
+  ],
+  "obklopovat": [
+   [
+    "vroubit"
+   ]
+  ],
+  "obklíčit": [
+   [
+    "obklopit"
+   ]
+  ],
+  "obléci": [
+   [
+    "odít"
+   ],
+   [
+    "navléci"
+   ]
+  ],
+  "oblékat": [
+   [
+    "šatit"
+   ]
+  ],
+  "obměnit": [
+   [
+    "změnit"
+   ],
+   [
+    "měnit"
+   ],
+   [
+    "měnit se"
+   ],
+   [
+    "změnit se"
+   ],
+   [
+    "pozměnit"
+   ]
+  ],
+  "obnovit": [
+   [
+    "zrestaurovat"
+   ],
+   [
+    "restaurovat"
+   ],
+   [
+    "modernizovat"
+   ],
+   [
+    "renovovat"
+   ],
+   [
+    "opravit"
+   ],
+   [
+    "oživit"
+   ],
+   [
+    "vyladit"
+   ],
+   [
+    "zrenovovat"
+   ]
+  ],
+  "obrat": [
+   [
+    "obrácení"
+   ],
+   [
+    "oškubat"
+   ],
+   [
+    "zvrat"
+   ],
+   [
+    "převrácení"
+   ]
+  ],
+  "obrábět": [
+   [
+    "opracovávat"
+   ]
+  ],
+  "obrátit": [
+   [
+    "převrátit se"
+   ],
+   [
+    "konvertovat"
+   ],
+   [
+    "otočit"
+   ],
+   [
+    "obrátit se"
+   ],
+   [
+    "převrátit"
+   ]
+  ],
+  "obrůst": [
+   [
+    "zarůst"
+   ],
+   [
+    "porůst"
+   ]
+  ],
+  "obsluhovat": [
+   [
+    "řídit"
+   ]
+  ],
+  "obstoupit": [
+   [
+    "obklopit"
+   ]
+  ],
+  "obstát": [
+   [
+    "projít"
+   ]
+  ],
+  "obvinit": [
+   [
+    "nařknout"
+   ],
+   [
+    "obžalovat"
+   ]
+  ],
+  "obíhat": [
+   [
+    "točit"
+   ],
+   [
+    "pohybovat se"
+   ],
+   [
+    "kroužit"
+   ],
+   [
+    "otáčet"
+   ],
+   [
+    "točit se"
+   ],
+   [
+    "otáčet se"
+   ]
+  ],
+  "obývat": [
+   [
+    "bydlet"
+   ]
+  ],
+  "obětovat": [
+   [
+    "vzdát se"
+   ]
+  ],
+  "ochabovat": [
+   [
+    "umdlévat"
+   ]
+  ],
+  "ochraňovat": [
+   [
+    "hájit"
+   ],
+   [
+    "chránit"
+   ]
+  ],
+  "odbočit": [
+   [
+    "zatočit"
+   ],
+   [
+    "odchýlit se"
+   ],
+   [
+    "zabočit"
+   ],
+   [
+    "zahnout"
+   ]
+  ],
+  "odcestovat": [
+   [
+    "odjet"
+   ]
+  ],
+  "oddělit": [
+   [
+    "odřezat"
+   ],
+   [
+    "rozčlenit"
+   ]
+  ],
+  "oddělovat": [
+   [
+    "rozdělovat"
+   ]
+  ],
+  "odebrat": [
+   [
+    "vzít"
+   ],
+   [
+    "odejmout"
+   ],
+   [
+    "ubrat"
+   ]
+  ],
+  "odejmout": [
+   [
+    "vzít"
+   ],
+   [
+    "odebrat"
+   ],
+   [
+    "amputovat"
+   ],
+   [
+    "zbavit"
+   ],
+   [
+    "odnít"
+   ]
+  ],
+  "odejít": [
+   [
+    "vyjít"
+   ],
+   [
+    "opustit"
+   ],
+   [
+    "vzdálit se"
+   ],
+   [
+    "odebrat se"
+   ],
+   [
+    "nechat"
+   ],
+   [
+    "odjet"
+   ],
+   [
+    "stáhnout se"
+   ]
+  ],
+  "odepřít": [
+   [
+    "upřít"
+   ],
+   [
+    "odmítnout"
+   ]
+  ],
+  "odevzdat": [
+   [
+    "předložit"
+   ],
+   [
+    "doručit"
+   ],
+   [
+    "předat"
+   ]
+  ],
+  "odhalit": [
+   [
+    "vypátrat"
+   ],
+   [
+    "zjistit"
+   ],
+   [
+    "demaskovat"
+   ],
+   [
+    "ukázat"
+   ],
+   [
+    "odkrýt"
+   ],
+   [
+    "obnažit"
+   ],
+   [
+    "objevit"
+   ]
+  ],
+  "odhodit": [
+   [
+    "odložit"
+   ],
+   [
+    "zahodit"
+   ],
+   [
+    "odvrhnout"
+   ]
+  ],
+  "odjet": [
+   [
+    "odcestovat"
+   ],
+   [
+    "odejít"
+   ]
+  ],
+  "odkrýt": [
+   [
+    "odhalit"
+   ],
+   [
+    "obnažit"
+   ],
+   [
+    "ukázat"
+   ]
+  ],
+  "odletět": [
+   [
+    "odpadnout"
+   ],
+   [
+    "odskočit"
+   ],
+   [
+    "oddělit se"
+   ],
+   [
+    "odfrčet"
+   ],
+   [
+    "odběhnout"
+   ],
+   [
+    "odkvapit"
+   ],
+   [
+    "odspěchat"
+   ],
+   [
+    "utéci"
+   ],
+   [
+    "zmizet"
+   ],
+   [
+    "ztratit se"
+   ],
+   [
+    "minout"
+   ],
+   [
+    "uplynout"
+   ]
+  ],
+  "odlišit": [
+   [
+    "diferencovat"
+   ]
+  ],
+  "odlišovat": [
+   [
+    "lišit"
+   ]
+  ],
+  "odložit": [
+   [
+    "odsunout"
+   ],
+   [
+    "sundat"
+   ],
+   [
+    "odročit"
+   ],
+   [
+    "přeložit"
+   ],
+   [
+    "odhodit"
+   ]
+  ],
+  "odlít": [
+   [
+    "ulít"
+   ]
+  ],
+  "odmítat": [
+   [
+    "popírat"
+   ],
+   [
+    "neschvalovat"
+   ],
+   [
+    "zavrhovat"
+   ]
+  ],
+  "odmítnout": [
+   [
+    "zavrhnout"
+   ],
+   [
+    "odepřít"
+   ],
+   [
+    "odmrštit"
+   ],
+   [
+    "neuznat"
+   ]
+  ],
+  "odnést": [
+   [
+    "odplavit"
+   ],
+   [
+    "odskákat"
+   ]
+  ],
+  "odpadnout": [
+   [
+    "upadnout"
+   ]
+  ],
+  "odporovat": [
+   [
+    "nesouhlasit"
+   ],
+   [
+    "příčit se"
+   ]
+  ],
+  "odpovídat": [
+   [
+    "odpovědět"
+   ]
+  ],
+  "odpovědět": [
+   [
+    "odpovídat"
+   ],
+   [
+    "odvětit"
+   ]
+  ],
+  "odpočívat": [
+   [
+    "hovět si"
+   ],
+   [
+    "spát"
+   ]
+  ],
+  "odpustit": [
+   [
+    "slevit"
+   ],
+   [
+    "prominout"
+   ],
+   [
+    "omluvit"
+   ]
+  ],
+  "odsoudit": [
+   [
+    "pranýřovat"
+   ],
+   [
+    "zavrhnout"
+   ]
+  ],
+  "odstranit": [
+   [
+    "oddělat"
+   ],
+   [
+    "vytáhnout"
+   ],
+   [
+    "zahladit"
+   ],
+   [
+    "likvidovat"
+   ],
+   [
+    "sundat"
+   ]
+  ],
+  "odsuzovat": [
+   [
+    "neschvalovat"
+   ]
+  ],
+  "odtáhnout": [
+   [
+    "oddálit"
+   ],
+   [
+    "odstrčit"
+   ],
+   [
+    "odsunout"
+   ],
+   [
+    "odvléci"
+   ],
+   [
+    "odletět"
+   ],
+   [
+    "odklidit se"
+   ],
+   [
+    "odejít"
+   ]
+  ],
+  "odvrhnout": [
+   [
+    "zbavit se"
+   ],
+   [
+    "odhodit"
+   ]
+  ],
+  "odvrátit": [
+   [
+    "odvést"
+   ]
+  ],
+  "odvést": [
+   [
+    "odvrátit"
+   ]
+  ],
+  "odvézt": [
+   [
+    "zavézt"
+   ]
+  ],
+  "odvětit": [
+   [
+    "odpovědět"
+   ]
+  ],
+  "odít": [
+   [
+    "obléci"
+   ]
+  ],
+  "ohlásit": [
+   [
+    "oznámit"
+   ],
+   [
+    "hlásit"
+   ]
+  ],
+  "okusit": [
+   [
+    "ochutnat"
+   ]
+  ],
+  "opatrovat": [
+   [
+    "hlídat"
+   ],
+   [
+    "ošetřovat"
+   ],
+   [
+    "bdít"
+   ]
+  ],
+  "opatřit": [
+   [
+    "obstarat si"
+   ],
+   [
+    "pořídit"
+   ],
+   [
+    "opatřit si"
+   ],
+   [
+    "sehnat"
+   ],
+   [
+    "vybavit"
+   ],
+   [
+    "získat"
+   ],
+   [
+    "obstarat"
+   ]
+  ],
+  "oplakávat": [
+   [
+    "truchlit"
+   ],
+   [
+    "naříkat"
+   ]
+  ],
+  "opustit": [
+   [
+    "nechat"
+   ],
+   [
+    "zanechat"
+   ],
+   [
+    "odejít"
+   ],
+   [
+    "uvolnit"
+   ],
+   [
+    "upustit"
+   ]
+  ],
+  "opírat": [
+   [
+    "zakládat"
+   ],
+   [
+    "založit"
+   ],
+   [
+    "stavět"
+   ]
+  ],
+  "opěvovat": [
+   [
+    "velebit"
+   ]
+  ],
+  "organizovat": [
+   [
+    "připravovat"
+   ],
+   [
+    "pořádat"
+   ]
+  ],
+  "oslavovat": [
+   [
+    "slavit"
+   ],
+   [
+    "glorifikovat"
+   ],
+   [
+    "velebit"
+   ]
+  ],
+  "oslovit": [
+   [
+    "navázat hovor"
+   ]
+  ],
+  "osočovat": [
+   [
+    "očerňovat"
+   ],
+   [
+    "obviňovat"
+   ],
+   [
+    "pomlouvat"
+   ],
+   [
+    "špinit"
+   ],
+   [
+    "hanobit"
+   ],
+   [
+    "ostouzet"
+   ]
+  ],
+  "osvobodit": [
+   [
+    "propustit"
+   ],
+   [
+    "emancipovat"
+   ],
+   [
+    "rozvázat"
+   ],
+   [
+    "zrovnoprávnit"
+   ]
+  ],
+  "otec": [
+   [
+    "tatík"
+   ]
+  ],
+  "otevřít": [
+   [
+    "rozvinout"
+   ]
+  ],
+  "otupit": [
+   [
+    "ochromit"
+   ]
+  ],
+  "otěhotnět": [
+   [
+    "počít"
+   ]
+  ],
+  "otřít": [
+   [
+    "setřít"
+   ],
+   [
+    "utřít"
+   ]
+  ],
+  "ovlivňovat": [
+   [
+    "působit"
+   ],
+   [
+    "mít vliv"
+   ]
+  ],
+  "ovládat": [
+   [
+    "vládnout"
+   ],
+   [
+    "umět"
+   ],
+   [
+    "kontrolovat"
+   ],
+   [
+    "mít"
+   ],
+   [
+    "krotit"
+   ],
+   [
+    "řídit"
+   ]
+  ],
+  "označit": [
+   [
+    "vyznačit"
+   ],
+   [
+    "nazvat"
+   ],
+   [
+    "prohlásit"
+   ],
+   [
+    "pojmenovat"
+   ]
+  ],
+  "označovat": [
+   [
+    "značit"
+   ],
+   [
+    "poznamenávat"
+   ],
+   [
+    "značkovat"
+   ],
+   [
+    "cejchovat"
+   ],
+   [
+    "znamenat"
+   ],
+   [
+    "denotovat"
+   ],
+   [
+    "designovat"
+   ],
+   [
+    "vyznačovat"
+   ],
+   [
+    "značkovat"
+   ],
+   [
+    "pojmenovávat"
+   ],
+   [
+    "nazývat"
+   ],
+   [
+    "určovat"
+   ],
+   [
+    "stanovovat"
+   ]
+  ],
+  "oznámit": [
+   [
+    "vynést"
+   ],
+   [
+    "hlásit"
+   ],
+   [
+    "ohlásit"
+   ],
+   [
+    "informovat"
+   ]
+  ],
+  "očekávat": [
+   [
+    "čekat"
+   ],
+   [
+    "předpokládat"
+   ],
+   [
+    "být připraven"
+   ]
+  ],
+  "očistit": [
+   [
+    "ospravedlnit"
+   ],
+   [
+    "zbavit"
+   ]
+  ],
+  "padat": [
+   [
+    "letět"
+   ],
+   [
+    "klesat"
+   ]
+  ],
+  "padnout": [
+   [
+    "dopadnout"
+   ],
+   [
+    "sletět"
+   ],
+   [
+    "sedět"
+   ],
+   [
+    "upadnout"
+   ],
+   [
+    "spadnout"
+   ]
+  ],
+  "patřit": [
+   [
+    "spadat"
+   ],
+   [
+    "náležet"
+   ]
+  ],
+  "pečovat": [
+   [
+    "starat se"
+   ],
+   [
+    "dbát"
+   ]
+  ],
+  "plakat": [
+   [
+    "brečet"
+   ]
+  ],
+  "planout": [
+   [
+    "plát"
+   ]
+  ],
+  "platit": [
+   [
+    "být platný"
+   ],
+   [
+    "týkat se"
+   ],
+   [
+    "mít platnost"
+   ]
+  ],
+  "plesat": [
+   [
+    "jásat"
+   ]
+  ],
+  "plodit": [
+   [
+    "rodit"
+   ],
+   [
+    "přinášet s sebou"
+   ],
+   [
+    "zplodit"
+   ],
+   [
+    "zrodit"
+   ]
+  ],
+  "plout": [
+   [
+    "plavit se"
+   ],
+   [
+    "jít"
+   ],
+   [
+    "jet"
+   ],
+   [
+    "letět"
+   ]
+  ],
+  "plynout": [
+   [
+    "běžet"
+   ],
+   [
+    "ubíhat"
+   ],
+   [
+    "míjet"
+   ],
+   [
+    "proudit"
+   ],
+   [
+    "utíkat"
+   ],
+   [
+    "vyplývat"
+   ],
+   [
+    "uplynout"
+   ]
+  ],
+  "plánovat": [
+   [
+    "zamýšlet"
+   ],
+   [
+    "chystat se"
+   ]
+  ],
+  "plést": [
+   [
+    "splétat"
+   ],
+   [
+    "zaplétat"
+   ],
+   [
+    "vplétat"
+   ],
+   [
+    "mást",
+    "mýlit"
+   ]
+  ],
+  "pobouřit": [
+   [
+    "rozzlobit"
+   ],
+   [
+    "rozhořčit"
+   ]
+  ],
+  "pobíhat": [
+   [
+    "běhat"
+   ]
+  ],
+  "pobýt": [
+   [
+    "zůstat"
+   ],
+   [
+    "setrvat"
+   ]
+  ],
+  "pochopit": [
+   [
+    "porozumět"
+   ],
+   [
+    "chápat"
+   ],
+   [
+    "přijít"
+   ]
+  ],
+  "pochovat": [
+   [
+    "pohřbít"
+   ]
+  ],
+  "pochválit": [
+   [
+    "chválit"
+   ]
+  ],
+  "pocházet": [
+   [
+    "datovat se"
+   ]
+  ],
+  "pocítit": [
+   [
+    "ucítit"
+   ],
+   [
+    "cítit"
+   ]
+  ],
+  "podat": [
+   [
+    "natáhnout"
+   ],
+   [
+    "předložit"
+   ],
+   [
+    "přednést"
+   ]
+  ],
+  "podepsat": [
+   [
+    "připojit svůj podpis"
+   ],
+   [
+    "signovat"
+   ]
+  ],
+  "podepřít": [
+   [
+    "podložit"
+   ],
+   [
+    "vzepřít"
+   ],
+   [
+    "zapřít"
+   ],
+   [
+    "opřít"
+   ],
+   [
+    "podpírat"
+   ]
+  ],
+  "podlehnout": [
+   [
+    "ustoupit"
+   ],
+   [
+    "poddat se"
+   ],
+   [
+    "kapitulovat"
+   ]
+  ],
+  "podniknout": [
+   [
+    "udělat"
+   ]
+  ],
+  "podnítit": [
+   [
+    "popíchnout"
+   ],
+   [
+    "roznítit"
+   ],
+   [
+    "motivovat"
+   ],
+   [
+    "vyvolat"
+   ],
+   [
+    "způsobit"
+   ],
+   [
+    "vzbudit"
+   ]
+  ],
+  "podporovat": [
+   [
+    "schvalovat"
+   ],
+   [
+    "stavět se"
+   ],
+   [
+    "stát"
+   ],
+   [
+    "napomáhat"
+   ],
+   [
+    "povzbudit"
+   ],
+   [
+    "podpořit"
+   ]
+  ],
+  "podpořit": [
+   [
+    "podporovat"
+   ],
+   [
+    "posílit"
+   ],
+   [
+    "být podporou"
+   ]
+  ],
+  "podpírat": [
+   [
+    "nést"
+   ],
+   [
+    "držet"
+   ],
+   [
+    "podepřít"
+   ]
+  ],
+  "podstoupit": [
+   [
+    "podrobit se"
+   ]
+  ],
+  "podřídit": [
+   [
+    "podřadit"
+   ]
+  ],
+  "pohltit": [
+   [
+    "absorbovat"
+   ],
+   [
+    "spolknout"
+   ]
+  ],
+  "pohlédnout": [
+   [
+    "podívat se"
+   ]
+  ],
+  "pohlížet": [
+   [
+    "dívat se"
+   ]
+  ],
+  "pohnout": [
+   [
+    "pohybovat"
+   ],
+   [
+    "pohybovat se"
+   ],
+   [
+    "pohnout se"
+   ],
+   [
+    "hnout"
+   ],
+   [
+    "přimět"
+   ],
+   [
+    "hýbat"
+   ],
+   [
+    "hýbat se"
+   ],
+   [
+    "přinutit"
+   ]
+  ],
+  "pohrdat": [
+   [
+    "opovrhovat"
+   ],
+   [
+    "přehlížet"
+   ]
+  ],
+  "pohybovat": [
+   [
+    "pohnout se"
+   ],
+   [
+    "pohybovat se"
+   ],
+   [
+    "hýbat"
+   ],
+   [
+    "hýbat se"
+   ],
+   [
+    "pohnout"
+   ]
+  ],
+  "pohřbít": [
+   [
+    "pochovat"
+   ]
+  ],
+  "pojmenovat": [
+   [
+    "nazývat"
+   ],
+   [
+    "označit"
+   ],
+   [
+    "jmenovat"
+   ]
+  ],
+  "pokleknout": [
+   [
+    "padnout na kolena"
+   ]
+  ],
+  "pokládat": [
+   [
+    "položit"
+   ],
+   [
+    "uložit"
+   ],
+   [
+    "klást"
+   ]
+  ],
+  "pokořit": [
+   [
+    "ponížit"
+   ],
+   [
+    "urazit city"
+   ],
+   [
+    "dotknout se"
+   ]
+  ],
+  "pokračovat": [
+   [
+    "udržovat"
+   ]
+  ],
+  "pokropit": [
+   [
+    "kropit"
+   ],
+   [
+    "prskat"
+   ],
+   [
+    "stříkat"
+   ],
+   [
+    "postříkat"
+   ],
+   [
+    "poprskat"
+   ]
+  ],
+  "pokrýt": [
+   [
+    "překrýt"
+   ],
+   [
+    "krýt"
+   ],
+   [
+    "zakrýt"
+   ],
+   [
+    "přikrýt"
+   ],
+   [
+    "potáhnout"
+   ]
+  ],
+  "pokynout": [
+   [
+    "dát znamení"
+   ]
+  ],
+  "pokárat": [
+   [
+    "napomenout"
+   ],
+   [
+    "udělit důtku"
+   ],
+   [
+    "kárat"
+   ],
+   [
+    "potrestat"
+   ]
+  ],
+  "položit": [
+   [
+    "přiložit"
+   ],
+   [
+    "umístit"
+   ],
+   [
+    "vložit"
+   ],
+   [
+    "pokládat"
+   ],
+   [
+    "postavit"
+   ],
+   [
+    "uložit"
+   ],
+   [
+    "klást"
+   ],
+   [
+    "dát"
+   ]
+  ],
+  "polámat": [
+   [
+    "polámat se"
+   ],
+   [
+    "poškodit"
+   ],
+   [
+    "poškodit se"
+   ]
+  ],
+  "pomazat": [
+   [
+    "potřít"
+   ]
+  ],
+  "pomoci": [
+   [
+    "vypomoci"
+   ]
+  ],
+  "ponížit": [
+   [
+    "pokořit"
+   ],
+   [
+    "snížit"
+   ],
+   [
+    "urazit city"
+   ],
+   [
+    "dotknout se"
+   ]
+  ],
+  "popsat": [
+   [
+    "zobrazit"
+   ],
+   [
+    "vylíčit"
+   ],
+   [
+    "vyobrazit"
+   ],
+   [
+    "vypsat"
+   ]
+  ],
+  "popírat": [
+   [
+    "odmítat"
+   ],
+   [
+    "zavrhnout"
+   ],
+   [
+    "neuznat"
+   ],
+   [
+    "napadnout"
+   ],
+   [
+    "zříci se"
+   ],
+   [
+    "vyvracet"
+   ]
+  ],
+  "poradit": [
+   [
+    "doporučit"
+   ],
+   [
+    "radit"
+   ]
+  ],
+  "porazit": [
+   [
+    "odrovnat"
+   ],
+   [
+    "přemoci"
+   ],
+   [
+    "sklátit"
+   ],
+   [
+    "zničit"
+   ],
+   [
+    "překonat"
+   ],
+   [
+    "srazit"
+   ],
+   [
+    "zdolat"
+   ],
+   [
+    "kácet"
+   ],
+   [
+    "povalit"
+   ],
+   [
+    "pokácet"
+   ]
+  ],
+  "poručit": [
+   [
+    "nakázat"
+   ],
+   [
+    "rozkázat"
+   ],
+   [
+    "nařídit"
+   ],
+   [
+    "přikázat"
+   ]
+  ],
+  "porušit": [
+   [
+    "přestoupit"
+   ],
+   [
+    "překročit"
+   ]
+  ],
+  "posadit": [
+   [
+    "vysadit"
+   ],
+   [
+    "usadit"
+   ]
+  ],
+  "poskvrnit": [
+   [
+    "pokálet"
+   ],
+   [
+    "zhanobit"
+   ],
+   [
+    "pošpinit"
+   ],
+   [
+    "znesvětit"
+   ],
+   [
+    "potřísnit"
+   ],
+   [
+    "zneuctít"
+   ]
+  ],
+  "poskytnout": [
+   [
+    "věnovat"
+   ],
+   [
+    "propůjčit"
+   ],
+   [
+    "přinést"
+   ],
+   [
+    "udělit"
+   ],
+   [
+    "dát"
+   ]
+  ],
+  "poskytovat": [
+   [
+    "dávat"
+   ],
+   [
+    "skýtat"
+   ]
+  ],
+  "poslat": [
+   [
+    "odeslat"
+   ],
+   [
+    "vyslat"
+   ],
+   [
+    "zaslat"
+   ]
+  ],
+  "poslechnout": [
+   [
+    "uposlechnout"
+   ]
+  ],
+  "poslouchat": [
+   [
+    "uposlechnout"
+   ]
+  ],
+  "pospíchat": [
+   [
+    "chvátat"
+   ],
+   [
+    "spěchat"
+   ]
+  ],
+  "postavit": [
+   [
+    "vztyčit"
+   ],
+   [
+    "umístit"
+   ],
+   [
+    "vybudovat"
+   ],
+   [
+    "položit"
+   ],
+   [
+    "stavět"
+   ],
+   [
+    "dát"
+   ]
+  ],
+  "postačit": [
+   [
+    "dostačit"
+   ]
+  ],
+  "postihnout": [
+   [
+    "zachvátit"
+   ],
+   [
+    "zasáhnout"
+   ]
+  ],
+  "postrádat": [
+   [
+    "mít nedostatek"
+   ],
+   [
+    "nemít"
+   ]
+  ],
+  "posuzovat": [
+   [
+    "recenzovat"
+   ]
+  ],
+  "posílit": [
+   [
+    "osvěžit"
+   ],
+   [
+    "podpořit"
+   ]
+  ],
+  "potkat": [
+   [
+    "zastihnout"
+   ],
+   [
+    "stihnout"
+   ],
+   [
+    "setkat se"
+   ],
+   [
+    "střetnout se"
+   ],
+   [
+    "narazit"
+   ],
+   [
+    "zažít"
+   ],
+   [
+    "zakusit"
+   ]
+  ],
+  "potlačovat": [
+   [
+    "přemáhat"
+   ]
+  ],
+  "potrestat": [
+   [
+    "ztrestat"
+   ],
+   [
+    "trestat"
+   ],
+   [
+    "pokárat"
+   ],
+   [
+    "napomenout"
+   ]
+  ],
+  "potupit": [
+   [
+    "zostudit"
+   ],
+   [
+    "zneuctít"
+   ]
+  ],
+  "potvrdit": [
+   [
+    "ratifikovat"
+   ],
+   [
+    "schválit"
+   ],
+   [
+    "zpečetit"
+   ],
+   [
+    "stvrdit"
+   ]
+  ],
+  "potáhnout": [
+   [
+    "překrýt"
+   ],
+   [
+    "pokrýt"
+   ],
+   [
+    "povléci"
+   ]
+  ],
+  "potěšit": [
+   [
+    "udělat radost"
+   ]
+  ],
+  "potřebovat": [
+   [
+    "vyžadovat"
+   ]
+  ],
+  "potřít": [
+   [
+    "pomazat"
+   ]
+  ],
+  "použít": [
+   [
+    "využít"
+   ],
+   [
+    "užít"
+   ],
+   [
+    "upotřebit"
+   ],
+   [
+    "aplikovat"
+   ]
+  ],
+  "povalit": [
+   [
+    "srazit"
+   ],
+   [
+    "porazit"
+   ]
+  ],
+  "povolat": [
+   [
+    "svolat"
+   ],
+   [
+    "zavolat"
+   ],
+   [
+    "obeslat"
+   ],
+   [
+    "předvolat"
+   ]
+  ],
+  "povraždit": [
+   [
+    "masakrovat"
+   ],
+   [
+    "vraždit"
+   ]
+  ],
+  "povstat": [
+   [
+    "vstát"
+   ],
+   [
+    "zvednout se"
+   ],
+   [
+    "vzbouřit se"
+   ]
+  ],
+  "povzbudit": [
+   [
+    "podporovat"
+   ],
+   [
+    "pozvednout"
+   ]
+  ],
+  "povědět": [
+   [
+    "sdělit"
+   ],
+   [
+    "říci"
+   ]
+  ],
+  "pověsit": [
+   [
+    "zavěsit"
+   ],
+   [
+    "oběsit"
+   ]
+  ],
+  "pozdvihnout": [
+   [
+    "zvednout"
+   ],
+   [
+    "zdvihnout"
+   ],
+   [
+    "pozvednout"
+   ]
+  ],
+  "poznamenat": [
+   [
+    "podotknout"
+   ],
+   [
+    "prohodit"
+   ],
+   [
+    "zmínit se"
+   ],
+   [
+    "poznamenat si"
+   ],
+   [
+    "zapsat si"
+   ],
+   [
+    "zapsat"
+   ],
+   [
+    "komentovat"
+   ]
+  ],
+  "poznat": [
+   [
+    "uhodnout"
+   ]
+  ],
+  "pozorovat": [
+   [
+    "všimnout si"
+   ],
+   [
+    "prohlížet si"
+   ],
+   [
+    "zpozorovat"
+   ],
+   [
+    "střežit"
+   ],
+   [
+    "dívat se"
+   ]
+  ],
+  "pozvednout": [
+   [
+    "pozdvihnout"
+   ],
+   [
+    "povzbudit"
+   ],
+   [
+    "zvednout"
+   ],
+   [
+    "zdvihnout"
+   ]
+  ],
+  "pozřít": [
+   [
+    "spolknout"
+   ]
+  ],
+  "počít": [
+   [
+    "otěhotnět"
+   ]
+  ],
+  "počítat": [
+   [
+    "domnívat se"
+   ],
+   [
+    "kalkulovat"
+   ],
+   [
+    "vypočítat"
+   ],
+   [
+    "účtovat"
+   ],
+   [
+    "propočítat"
+   ],
+   [
+    "spoléhat se"
+   ]
+  ],
+  "pořádat": [
+   [
+    "připravovat"
+   ],
+   [
+    "organizovat"
+   ]
+  ],
+  "pořídit": [
+   [
+    "opatřit"
+   ],
+   [
+    "obstarat"
+   ]
+  ],
+  "pošlapat": [
+   [
+    "šlapat"
+   ],
+   [
+    "šlápnout"
+   ],
+   [
+    "ušlapat"
+   ],
+   [
+    "udupat"
+   ],
+   [
+    "zašlapat"
+   ]
+  ],
+  "pošpinit": [
+   [
+    "pomluvit"
+   ],
+   [
+    "pokálet"
+   ],
+   [
+    "poskvrnit"
+   ],
+   [
+    "špinit"
+   ],
+   [
+    "očernit"
+   ],
+   [
+    "ušpinit"
+   ],
+   [
+    "zašpinit"
+   ]
+  ],
+  "požadovat": [
+   [
+    "žádat"
+   ]
+  ],
+  "požehnat": [
+   [
+    "žehnat"
+   ]
+  ],
+  "požádat": [
+   [
+    "poprosit"
+   ]
+  ],
+  "pracovat": [
+   [
+    "běžet"
+   ],
+   [
+    "jet"
+   ],
+   [
+    "fungovat"
+   ],
+   [
+    "dělat"
+   ],
+   [
+    "působit"
+   ]
+  ],
+  "pramenit": [
+   [
+    "vyvěrat"
+   ]
+  ],
+  "prchat": [
+   [
+    "těkat"
+   ]
+  ],
+  "prezentovat": [
+   [
+    "představit"
+   ]
+  ],
+  "probodnout": [
+   [
+    "pobodat"
+   ],
+   [
+    "propíchnout"
+   ],
+   [
+    "prorazit"
+   ],
+   [
+    "bodnout"
+   ]
+  ],
+  "probudit": [
+   [
+    "vyvolat"
+   ],
+   [
+    "probudit se"
+   ],
+   [
+    "vzbudit"
+   ],
+   [
+    "vzbudit se"
+   ]
+  ],
+  "proběhnout": [
+   [
+    "projet"
+   ]
+  ],
+  "procitnout": [
+   [
+    "vzbudit se"
+   ],
+   [
+    "probudit se"
+   ]
+  ],
+  "prohlašovat": [
+   [
+    "označovat"
+   ],
+   [
+    "jmenovat"
+   ],
+   [
+    "vyhlašovat"
+   ],
+   [
+    "provolávat"
+   ],
+   [
+    "deklarovat"
+   ],
+   [
+    "proklamovat"
+   ]
+  ],
+  "prohlásit": [
+   [
+    "vyhlásit"
+   ],
+   [
+    "provolat"
+   ],
+   [
+    "rozhodnout"
+   ],
+   [
+    "označit"
+   ]
+  ],
+  "prohlédnout": [
+   [
+    "zkoumat"
+   ],
+   [
+    "prokouknout"
+   ],
+   [
+    "prozkoumat"
+   ]
+  ],
+  "projevit": [
+   [
+    "dát najevo"
+   ],
+   [
+    "ukázat"
+   ]
+  ],
+  "projít": [
+   [
+    "prodělat"
+   ],
+   [
+    "probrat"
+   ],
+   [
+    "přejít"
+   ],
+   [
+    "minout"
+   ],
+   [
+    "prožít"
+   ],
+   [
+    "obstát"
+   ],
+   [
+    "být trpěn"
+   ]
+  ],
+  "prokazovat": [
+   [
+    "dokazovat"
+   ]
+  ],
+  "proklínat": [
+   [
+    "zlořečit"
+   ]
+  ],
+  "prominout": [
+   [
+    "odpustit"
+   ],
+   [
+    "omluvit"
+   ]
+  ],
+  "promluvit": [
+   [
+    "mluvit"
+   ]
+  ],
+  "proměnit": [
+   [
+    "přeměnit"
+   ],
+   [
+    "změnit"
+   ],
+   [
+    "vyměnit"
+   ]
+  ],
+  "pronajmout": [
+   [
+    "najmout"
+   ]
+  ],
+  "proniknout": [
+   [
+    "prosadit se"
+   ],
+   [
+    "prorazit"
+   ],
+   [
+    "dostat se"
+   ]
+  ],
+  "pronásledovat": [
+   [
+    "štvát"
+   ],
+   [
+    "stíhat"
+   ],
+   [
+    "znepokojovat"
+   ],
+   [
+    "honit"
+   ]
+  ],
+  "pronést": [
+   [
+    "vyslovit"
+   ],
+   [
+    "prohodit"
+   ],
+   [
+    "proslovit"
+   ]
+  ],
+  "propustit": [
+   [
+    "vyhodit"
+   ],
+   [
+    "osvobodit"
+   ]
+  ],
+  "prorokovat": [
+   [
+    "předpovídat"
+   ],
+   [
+    "věštit"
+   ]
+  ],
+  "prosit": [
+   [
+    "žádat"
+   ],
+   [
+    "naléhavě žádat"
+   ]
+  ],
+  "protáhnout": [
+   [
+    "prodloužit se"
+   ],
+   [
+    "prodloužit"
+   ]
+  ],
+  "proudit": [
+   [
+    "pulsovat"
+   ],
+   [
+    "stékat"
+   ],
+   [
+    "téci"
+   ],
+   [
+    "plynout"
+   ]
+  ],
+  "provdat": [
+   [
+    "vdát"
+   ]
+  ],
+  "provolat": [
+   [
+    "prohlásit"
+   ],
+   [
+    "vyhlásit"
+   ]
+  ],
+  "provádět": [
+   [
+    "dělat"
+   ],
+   [
+    "konat"
+   ],
+   [
+    "činit"
+   ]
+  ],
+  "provázet": [
+   [
+    "vést"
+   ]
+  ],
+  "provést": [
+   [
+    "dělat"
+   ],
+   [
+    "zvládnout"
+   ],
+   [
+    "splnit"
+   ],
+   [
+    "udělat"
+   ],
+   [
+    "realizovat"
+   ],
+   [
+    "uskutečnit"
+   ],
+   [
+    "předvést"
+   ],
+   [
+    "vykonat"
+   ]
+  ],
+  "prožít": [
+   [
+    "projít"
+   ]
+  ],
+  "prskat": [
+   [
+    "kropit"
+   ],
+   [
+    "pokropit"
+   ],
+   [
+    "stříkat"
+   ],
+   [
+    "postříkat"
+   ],
+   [
+    "poprskat"
+   ]
+  ],
+  "psát": [
+   [
+    "napsat"
+   ]
+  ],
+  "publikovat": [
+   [
+    "uveřejnit"
+   ]
+  ],
+  "pustit": [
+   [
+    "spustit"
+   ],
+   [
+    "vpustit"
+   ],
+   [
+    "upustit"
+   ],
+   [
+    "vypustit"
+   ]
+  ],
+  "páchnout": [
+   [
+    "čpět"
+   ],
+   [
+    "zapáchat"
+   ]
+  ],
+  "pálit": [
+   [
+    "spálit"
+   ],
+   [
+    "upálit"
+   ]
+  ],
+  "pít": [
+   [
+    "sát"
+   ],
+   [
+    "hýřit"
+   ],
+   [
+    "nasávat"
+   ],
+   [
+    "chlastat"
+   ]
+  ],
+  "přecházet": [
+   [
+    "chodit"
+   ]
+  ],
+  "předat": [
+   [
+    "odevzdat"
+   ],
+   [
+    "svěřit"
+   ],
+   [
+    "dát"
+   ]
+  ],
+  "předejít": [
+   [
+    "předběhnout"
+   ],
+   [
+    "zabránit"
+   ]
+  ],
+  "předložit": [
+   [
+    "podat"
+   ],
+   [
+    "uvést"
+   ],
+   [
+    "odevzdat"
+   ],
+   [
+    "postoupit"
+   ],
+   [
+    "přednést"
+   ]
+  ],
+  "přednést": [
+   [
+    "podat"
+   ],
+   [
+    "předložit"
+   ]
+  ],
+  "předpokládat": [
+   [
+    "domnívat se"
+   ],
+   [
+    "očekávat"
+   ],
+   [
+    "být připraven"
+   ],
+   [
+    "myslit"
+   ]
+  ],
+  "předpovědět": [
+   [
+    "předvídat"
+   ]
+  ],
+  "představit": [
+   [
+    "vykreslit"
+   ],
+   [
+    "ukázat"
+   ]
+  ],
+  "představovat": [
+   [
+    "ztělesnit"
+   ],
+   [
+    "hrát"
+   ],
+   [
+    "tvořit"
+   ],
+   [
+    "reprezentovat"
+   ]
+  ],
+  "předvolat": [
+   [
+    "svolat"
+   ],
+   [
+    "zavolat"
+   ],
+   [
+    "povolat"
+   ],
+   [
+    "obeslat"
+   ]
+  ],
+  "předvádět": [
+   [
+    "ukazovat"
+   ]
+  ],
+  "předvést": [
+   [
+    "uvést"
+   ],
+   [
+    "provést"
+   ],
+   [
+    "ukázat"
+   ]
+  ],
+  "přejít": [
+   [
+    "minout"
+   ],
+   [
+    "projít"
+   ]
+  ],
+  "překládat": [
+   [
+    "tlumočit"
+   ]
+  ],
+  "překonat": [
+   [
+    "přemoci"
+   ],
+   [
+    "zvítězit"
+   ],
+   [
+    "porazit"
+   ],
+   [
+    "zlomit"
+   ],
+   [
+    "přestát"
+   ],
+   [
+    "zdolat"
+   ],
+   [
+    "překlenout"
+   ],
+   [
+    "přežít"
+   ]
+  ],
+  "překročit": [
+   [
+    "porušit"
+   ],
+   [
+    "přestoupit"
+   ],
+   [
+    "přesáhnout"
+   ]
+  ],
+  "překvapit": [
+   [
+    "udivit"
+   ]
+  ],
+  "přeložit": [
+   [
+    "odložit"
+   ],
+   [
+    "složit"
+   ],
+   [
+    "přehnout"
+   ],
+   [
+    "přemístit"
+   ],
+   [
+    "odsunout"
+   ],
+   [
+    "přesunout"
+   ]
+  ],
+  "přemoci": [
+   [
+    "získat převahu"
+   ],
+   [
+    "porazit"
+   ],
+   [
+    "překonat"
+   ],
+   [
+    "zdolat"
+   ],
+   [
+    "potlačit"
+   ],
+   [
+    "zničit"
+   ]
+  ],
+  "přemáhat": [
+   [
+    "potlačovat"
+   ]
+  ],
+  "přemítat": [
+   [
+    "uvažovat"
+   ],
+   [
+    "přemýšlet"
+   ],
+   [
+    "dumat"
+   ]
+  ],
+  "přemýšlet": [
+   [
+    "uvažovat"
+   ],
+   [
+    "hloubat"
+   ],
+   [
+    "dumat"
+   ],
+   [
+    "rozjímat"
+   ],
+   [
+    "přemítat"
+   ],
+   [
+    "spekulovat"
+   ]
+  ],
+  "přenést": [
+   [
+    "přesunout"
+   ],
+   [
+    "přemístit"
+   ]
+  ],
+  "přepadnout": [
+   [
+    "vrhnout se"
+   ]
+  ],
+  "přerušit": [
+   [
+    "přestat"
+   ],
+   [
+    "ukončit"
+   ]
+  ],
+  "přesahovat": [
+   [
+    "vymykat se"
+   ],
+   [
+    "převyšovat"
+   ],
+   [
+    "přečnívat"
+   ]
+  ],
+  "přestat": [
+   [
+    "skončit"
+   ],
+   [
+    "přerušit"
+   ],
+   [
+    "zastavit se"
+   ],
+   [
+    "ustat"
+   ]
+  ],
+  "přestoupit": [
+   [
+    "porušit"
+   ],
+   [
+    "překročit"
+   ]
+  ],
+  "přestěhovat": [
+   [
+    "přesídlit"
+   ],
+   [
+    "přesunout"
+   ],
+   [
+    "přestěhovat se"
+   ],
+   [
+    "přemístit"
+   ]
+  ],
+  "přesvědčit": [
+   [
+    "ubezpečit"
+   ],
+   [
+    "přemluvit"
+   ],
+   [
+    "ujistit"
+   ]
+  ],
+  "převažovat": [
+   [
+    "převládat"
+   ]
+  ],
+  "převléknout": [
+   [
+    "přestrojit"
+   ]
+  ],
+  "převyšovat": [
+   [
+    "přesahovat"
+   ]
+  ],
+  "převzít": [
+   [
+    "ujmout se"
+   ],
+   [
+    "vzít na sebe"
+   ]
+  ],
+  "přežít": [
+   [
+    "překonat"
+   ],
+   [
+    "přečkat"
+   ],
+   [
+    "přestát"
+   ]
+  ],
+  "přibývat": [
+   [
+    "stoupat"
+   ],
+   [
+    "zvětšovat se"
+   ],
+   [
+    "růst"
+   ]
+  ],
+  "přichystat": [
+   [
+    "připravit"
+   ],
+   [
+    "nachystat"
+   ]
+  ],
+  "přidat": [
+   [
+    "doplnit"
+   ],
+   [
+    "připojit"
+   ],
+   [
+    "dodat"
+   ]
+  ],
+  "přijet": [
+   [
+    "následovat"
+   ]
+  ],
+  "přijmout": [
+   [
+    "nabrat"
+   ]
+  ],
+  "přijít": [
+   [
+    "narazit"
+   ],
+   [
+    "nabýt"
+   ],
+   [
+    "připadnout"
+   ],
+   [
+    "stát"
+   ],
+   [
+    "následovat"
+   ],
+   [
+    "vyjít"
+   ],
+   [
+    "pochopit"
+   ],
+   [
+    "navštívit"
+   ],
+   [
+    "objevit"
+   ]
+  ],
+  "přikazovat": [
+   [
+    "předpisovat"
+   ],
+   [
+    "diktovat"
+   ]
+  ],
+  "přikrýt": [
+   [
+    "pokrýt"
+   ],
+   [
+    "krýt"
+   ]
+  ],
+  "přikrývat": [
+   [
+    "krýt"
+   ]
+  ],
+  "přikázat": [
+   [
+    "nakázat"
+   ],
+   [
+    "určit"
+   ],
+   [
+    "poručit"
+   ],
+   [
+    "rozkázat"
+   ],
+   [
+    "říci"
+   ],
+   [
+    "přidělit"
+   ],
+   [
+    "nařídit"
+   ]
+  ],
+  "přiložit": [
+   [
+    "nanést"
+   ],
+   [
+    "položit"
+   ]
+  ],
+  "přimět": [
+   [
+    "nutit"
+   ],
+   [
+    "přinutit"
+   ],
+   [
+    "pohnout"
+   ]
+  ],
+  "přinutit": [
+   [
+    "nutit"
+   ],
+   [
+    "přimět"
+   ],
+   [
+    "donutit"
+   ],
+   [
+    "pohnout"
+   ]
+  ],
+  "přinášet": [
+   [
+    "dávat"
+   ],
+   [
+    "nést"
+   ]
+  ],
+  "přinést": [
+   [
+    "dopravit"
+   ],
+   [
+    "dojít"
+   ],
+   [
+    "doručit"
+   ],
+   [
+    "zanést"
+   ],
+   [
+    "donést"
+   ],
+   [
+    "poskytnout"
+   ],
+   [
+    "vynést"
+   ]
+  ],
+  "připadat": [
+   [
+    "zdát se"
+   ],
+   [
+    "jevit se"
+   ]
+  ],
+  "připadnout": [
+   [
+    "přijít"
+   ]
+  ],
+  "připevnit": [
+   [
+    "přilepit"
+   ],
+   [
+    "upevnit"
+   ],
+   [
+    "připíchnout"
+   ],
+   [
+    "připojit"
+   ],
+   [
+    "přivázat"
+   ],
+   [
+    "přimontovat"
+   ]
+  ],
+  "připisovat": [
+   [
+    "přisuzovat"
+   ],
+   [
+    "přikládat"
+   ],
+   [
+    "přičítat"
+   ]
+  ],
+  "připojit": [
+   [
+    "přidat"
+   ],
+   [
+    "připevnit"
+   ],
+   [
+    "zapojit"
+   ],
+   [
+    "doplnit"
+   ],
+   [
+    "napojit"
+   ],
+   [
+    "přičlenit"
+   ],
+   [
+    "přidružit"
+   ],
+   [
+    "dodat"
+   ]
+  ],
+  "připomenout": [
+   [
+    "upozornit"
+   ]
+  ],
+  "připravit": [
+   [
+    "zbavit"
+   ],
+   [
+    "přichystat"
+   ],
+   [
+    "nachystat"
+   ]
+  ],
+  "připravovat": [
+   [
+    "pořádat"
+   ],
+   [
+    "organizovat"
+   ]
+  ],
+  "přispívat": [
+   [
+    "vést"
+   ]
+  ],
+  "přispět": [
+   [
+    "být jednou z příčin"
+   ]
+  ],
+  "přistoupit": [
+   [
+    "přikročit"
+   ]
+  ],
+  "přistát": [
+   [
+    "dosednout"
+   ]
+  ],
+  "přitáhnout": [
+   [
+    "utáhnout"
+   ]
+  ],
+  "přivolat": [
+   [
+    "zavolat"
+   ]
+  ],
+  "přivázat": [
+   [
+    "připevnit"
+   ],
+   [
+    "upevnit"
+   ],
+   [
+    "připoutat"
+   ],
+   [
+    "vázat"
+   ],
+   [
+    "zavázat"
+   ],
+   [
+    "svázat"
+   ]
+  ],
+  "přivést": [
+   [
+    "dovést"
+   ],
+   [
+    "uvést"
+   ],
+   [
+    "zavést"
+   ],
+   [
+    "doprovodit"
+   ]
+  ],
+  "přiznat": [
+   [
+    "doznat"
+   ],
+   [
+    "připustit"
+   ],
+   [
+    "přisoudit"
+   ]
+  ],
+  "přísahat": [
+   [
+    "slíbit"
+   ]
+  ],
+  "přítel": [
+   [
+    "přítelkyně"
+   ],
+   [
+    "druh"
+   ],
+   [
+    "kamarád"
+   ]
+  ],
+  "půjčit": [
+   [
+    "zapůjčit"
+   ]
+  ],
+  "působit": [
+   [
+    "dělat"
+   ],
+   [
+    "mít vliv"
+   ],
+   [
+    "účinkovat"
+   ],
+   [
+    "pracovat"
+   ],
+   [
+    "ovlivňovat"
+   ]
+  ],
+  "radit": [
+   [
+    "doporučovat"
+   ],
+   [
+    "poradit"
+   ]
+  ],
+  "reagovat": [
+   [
+    "zareagovat"
+   ]
+  ],
+  "realizovat": [
+   [
+    "provést"
+   ],
+   [
+    "uskutečnit"
+   ],
+   [
+    "konkretizovat"
+   ]
+  ],
+  "recitovat": [
+   [
+    "deklamovat"
+   ]
+  ],
+  "reptat": [
+   [
+    "stěžovat si"
+   ],
+   [
+    "bručet"
+   ],
+   [
+    "nadávat"
+   ],
+   [
+    "brblat"
+   ],
+   [
+    "remcat"
+   ]
+  ],
+  "rodit": [
+   [
+    "zplodit"
+   ],
+   [
+    "zrodit"
+   ],
+   [
+    "plodit"
+   ]
+  ],
+  "rozbít": [
+   [
+    "prolomit"
+   ],
+   [
+    "rozbít se"
+   ],
+   [
+    "lámat se"
+   ],
+   [
+    "zlomit se"
+   ],
+   [
+    "lámat"
+   ],
+   [
+    "zlomit"
+   ],
+   [
+    "roztříštit se"
+   ],
+   [
+    "roztřískat"
+   ],
+   [
+    "roztříštit"
+   ]
+  ],
+  "rozběhnout": [
+   [
+    "rozjet"
+   ]
+  ],
+  "rozdat": [
+   [
+    "dát"
+   ],
+   [
+    "vydat"
+   ],
+   [
+    "rozdělit"
+   ]
+  ],
+  "rozdrtit": [
+   [
+    "zdemolovat"
+   ],
+   [
+    "rozmačkat"
+   ],
+   [
+    "zničit"
+   ]
+  ],
+  "rozdávat": [
+   [
+    "dávat"
+   ],
+   [
+    "rozdělovat"
+   ],
+   [
+    "rozhazovat"
+   ]
+  ],
+  "rozdělit": [
+   [
+    "rozdat"
+   ],
+   [
+    "rozštěpit"
+   ],
+   [
+    "vydat"
+   ],
+   [
+    "rozkouskovat"
+   ],
+   [
+    "rozčlenit"
+   ],
+   [
+    "rozvrhnout"
+   ],
+   [
+    "roztrhnout"
+   ],
+   [
+    "rozparcelovat"
+   ],
+   [
+    "klasifikovat"
+   ],
+   [
+    "dát"
+   ]
+  ],
+  "rozdělovat": [
+   [
+    "dělit"
+   ],
+   [
+    "oddělovat"
+   ]
+  ],
+  "rozebírat": [
+   [
+    "rozmontovávat"
+   ],
+   [
+    "rozkládat"
+   ],
+   [
+    "rozdělávat"
+   ],
+   [
+    "analyzovat"
+   ],
+   [
+    "probírat"
+   ],
+   [
+    "uklidňovat"
+   ]
+  ],
+  "rozehnat": [
+   [
+    "rozházet"
+   ],
+   [
+    "zahnat"
+   ],
+   [
+    "rozprášit"
+   ],
+   [
+    "rozptýlit"
+   ]
+  ],
+  "rozevřít": [
+   [
+    "roztáhnout"
+   ]
+  ],
+  "rozhazovat": [
+   [
+    "plýtvat"
+   ]
+  ],
+  "rozhlašovat": [
+   [
+    "rozšiřovat"
+   ],
+   [
+    "roznášet"
+   ],
+   [
+    "rozkecávat"
+   ],
+   [
+    "roztrubovat"
+   ]
+  ],
+  "rozhněvat": [
+   [
+    "rozčílit"
+   ],
+   [
+    "rozčilit"
+   ],
+   [
+    "rozzlobit"
+   ]
+  ],
+  "rozhodnout": [
+   [
+    "prohlásit"
+   ]
+  ],
+  "rozházet": [
+   [
+    "rozehnat"
+   ],
+   [
+    "poházet"
+   ],
+   [
+    "rozprášit"
+   ],
+   [
+    "rozsypat"
+   ],
+   [
+    "promrhat"
+   ],
+   [
+    "roztrousit"
+   ],
+   [
+    "rozčilit"
+   ],
+   [
+    "promarnit"
+   ],
+   [
+    "rozptýlit"
+   ]
+  ],
+  "rozjímat": [
+   [
+    "přemýšlet"
+   ],
+   [
+    "uvažovat"
+   ],
+   [
+    "hloubat"
+   ]
+  ],
+  "rozkládat": [
+   [
+    "snímat"
+   ]
+  ],
+  "rozkázat": [
+   [
+    "přikázat"
+   ],
+   [
+    "nařídit"
+   ],
+   [
+    "poručit"
+   ]
+  ],
+  "rozlišovat": [
+   [
+    "dělat rozdíl"
+   ]
+  ],
+  "rozložit": [
+   [
+    "roztáhnout"
+   ],
+   [
+    "vyložit"
+   ],
+   [
+    "rozvinout"
+   ]
+  ],
+  "rozmnožit": [
+   [
+    "zvětšit"
+   ],
+   [
+    "zvýšit"
+   ]
+  ],
+  "rozmnožovat": [
+   [
+    "množit"
+   ]
+  ],
+  "rozpoltit": [
+   [
+    "rozštěpit"
+   ]
+  ],
+  "rozpoznat": [
+   [
+    "rozeznat"
+   ]
+  ],
+  "rozprostřít": [
+   [
+    "rozvinout"
+   ]
+  ],
+  "rozprášit": [
+   [
+    "rozehnat"
+   ],
+   [
+    "rozházet"
+   ],
+   [
+    "rozptýlit"
+   ]
+  ],
+  "rozptýlit": [
+   [
+    "rozehnat"
+   ],
+   [
+    "pobavit"
+   ],
+   [
+    "rozházet"
+   ],
+   [
+    "zahnat"
+   ],
+   [
+    "rozprášit"
+   ]
+  ],
+  "rozpustit": [
+   [
+    "tát"
+   ],
+   [
+    "rozpustit se"
+   ],
+   [
+    "roztavit"
+   ],
+   [
+    "roztavit se"
+   ]
+  ],
+  "rozsvítit": [
+   [
+    "zapnout"
+   ]
+  ],
+  "roztavit": [
+   [
+    "tát"
+   ],
+   [
+    "rozpustit"
+   ],
+   [
+    "rozpustit se"
+   ],
+   [
+    "roztavit se"
+   ]
+  ],
+  "roztrhnout": [
+   [
+    "odtrhnout"
+   ],
+   [
+    "rozpárat"
+   ],
+   [
+    "rozdělit"
+   ]
+  ],
+  "roztříštit": [
+   [
+    "rozbít"
+   ],
+   [
+    "rozpadnout se"
+   ],
+   [
+    "rozbít se"
+   ],
+   [
+    "roztříštit se"
+   ]
+  ],
+  "rozumět": [
+   [
+    "znát"
+   ],
+   [
+    "umět"
+   ]
+  ],
+  "rozvinout": [
+   [
+    "rozpracovat"
+   ],
+   [
+    "rozmístit"
+   ],
+   [
+    "rozestavit"
+   ],
+   [
+    "odvinout se"
+   ],
+   [
+    "odvinout"
+   ],
+   [
+    "otevřít"
+   ],
+   [
+    "rozvést"
+   ],
+   [
+    "rozložit"
+   ],
+   [
+    "rozbalit"
+   ],
+   [
+    "rozvinout se"
+   ],
+   [
+    "roztáhnout"
+   ],
+   [
+    "rozprostřít"
+   ]
+  ],
+  "rozvázat": [
+   [
+    "rozepnout"
+   ],
+   [
+    "osvobodit"
+   ],
+   [
+    "rozbalit"
+   ],
+   [
+    "odvázat"
+   ],
+   [
+    "rozšněrovat"
+   ],
+   [
+    "rozmotat"
+   ]
+  ],
+  "rozvíjet": [
+   [
+    "podporovat rozvoj"
+   ]
+  ],
+  "rozšířit": [
+   [
+    "roztáhnout se"
+   ],
+   [
+    "rozšířit se"
+   ],
+   [
+    "roztáhnout"
+   ]
+  ],
+  "rušit": [
+   [
+    "zrušit"
+   ],
+   [
+    "anulovat"
+   ],
+   [
+    "zlobit"
+   ],
+   [
+    "obtěžovat"
+   ]
+  ],
+  "rvát": [
+   [
+    "drásat"
+   ]
+  ],
+  "růst": [
+   [
+    "stoupat"
+   ],
+   [
+    "narůstat"
+   ],
+   [
+    "vyrůstat"
+   ],
+   [
+    "narůst"
+   ],
+   [
+    "zvyšovat se"
+   ],
+   [
+    "zvětšovat se"
+   ],
+   [
+    "zvětšování"
+   ],
+   [
+    "přibývat"
+   ]
+  ],
+  "sbírat": [
+   [
+    "česat"
+   ]
+  ],
+  "schvalovat": [
+   [
+    "podporovat"
+   ]
+  ],
+  "sdílet": [
+   [
+    "podělit se"
+   ],
+   [
+    "předat"
+   ]
+  ],
+  "sdělovat": [
+   [
+    "vyjadřovat"
+   ]
+  ],
+  "sebrat": [
+   [
+    "štípnout"
+   ],
+   [
+    "zatknout"
+   ],
+   [
+    "vybrat"
+   ],
+   [
+    "shromáždit"
+   ],
+   [
+    "sesbírat"
+   ]
+  ],
+  "sednout": [
+   [
+    "usadit se"
+   ],
+   [
+    "posadit se"
+   ]
+  ],
+  "sedět": [
+   [
+    "padnout"
+   ],
+   [
+    "bručet"
+   ]
+  ],
+  "sehnat": [
+   [
+    "opatřit"
+   ],
+   [
+    "opatřit si"
+   ],
+   [
+    "schrastit"
+   ],
+   [
+    "získat"
+   ]
+  ],
+  "sehrát": [
+   [
+    "zahrát"
+   ]
+  ],
+  "sejmout": [
+   [
+    "sundat"
+   ],
+   [
+    "odmontovat"
+   ]
+  ],
+  "sejít": [
+   [
+    "odchýlit se"
+   ],
+   [
+    "sestoupit"
+   ]
+  ],
+  "sepnout": [
+   [
+    "sevřít"
+   ]
+  ],
+  "sepsat": [
+   [
+    "formulovat"
+   ],
+   [
+    "katalogizovat"
+   ],
+   [
+    "stylizovat"
+   ]
+  ],
+  "sestoupit": [
+   [
+    "sesednout"
+   ],
+   [
+    "sejít"
+   ],
+   [
+    "slézt"
+   ],
+   [
+    "vystoupit"
+   ]
+  ],
+  "sestra": [
+   [
+    "zdravotní sestra"
+   ]
+  ],
+  "sestávat": [
+   [
+    "skládat se"
+   ]
+  ],
+  "setrvat": [
+   [
+    "vytrvat"
+   ],
+   [
+    "zůstat"
+   ],
+   [
+    "pobýt"
+   ]
+  ],
+  "sevřít": [
+   [
+    "stáhnout"
+   ],
+   [
+    "stisknout"
+   ],
+   [
+    "sepnout"
+   ],
+   [
+    "obejmout"
+   ],
+   [
+    "upnout"
+   ]
+  ],
+  "seznámit": [
+   [
+    "obeznámit"
+   ]
+  ],
+  "sežehnout": [
+   [
+    "ožehnout"
+   ]
+  ],
+  "sežrat": [
+   [
+    "schlamstnout"
+   ]
+  ],
+  "shrnout": [
+   [
+    "zhustit"
+   ],
+   [
+    "rekapitulovat"
+   ]
+  ],
+  "shromažďovat": [
+   [
+    "kupit"
+   ],
+   [
+    "hromadit"
+   ]
+  ],
+  "shromáždit": [
+   [
+    "svolat"
+   ],
+   [
+    "nakupit"
+   ],
+   [
+    "nechat nastoupit"
+   ],
+   [
+    "sebrat"
+   ]
+  ],
+  "sklonit": [
+   [
+    "naklonit"
+   ],
+   [
+    "naklonit se"
+   ],
+   [
+    "sklonit se"
+   ]
+  ],
+  "skládat": [
+   [
+    "zkomponovat"
+   ],
+   [
+    "komponovat"
+   ]
+  ],
+  "skonat": [
+   [
+    "zesnout"
+   ],
+   [
+    "zemřít"
+   ]
+  ],
+  "skončit": [
+   [
+    "zakončit"
+   ],
+   [
+    "ustat"
+   ],
+   [
+    "ukončit"
+   ],
+   [
+    "přestat"
+   ]
+  ],
+  "skrýt": [
+   [
+    "utajit"
+   ],
+   [
+    "ukrýt"
+   ],
+   [
+    "schovat"
+   ],
+   [
+    "maskovat"
+   ],
+   [
+    "zatajit"
+   ]
+  ],
+  "skácet": [
+   [
+    "kácet"
+   ],
+   [
+    "svalit"
+   ]
+  ],
+  "skákat": [
+   [
+    "poskakovat"
+   ],
+   [
+    "vzpínat se"
+   ]
+  ],
+  "skřípat": [
+   [
+    "vrzat"
+   ],
+   [
+    "zavrzat"
+   ],
+   [
+    "zaskřípat"
+   ]
+  ],
+  "slavit": [
+   [
+    "oslavovat"
+   ]
+  ],
+  "sledovat": [
+   [
+    "monitorovat"
+   ],
+   [
+    "kontrolovat"
+   ],
+   [
+    "odposlouchávat"
+   ],
+   [
+    "vystopovat"
+   ],
+   [
+    "stopovat"
+   ]
+  ],
+  "sloužit": [
+   [
+    "obsluhovat koho"
+   ],
+   [
+    "posluhovat"
+   ]
+  ],
+  "složit": [
+   [
+    "přeložit"
+   ],
+   [
+    "napsat"
+   ]
+  ],
+  "slábnout": [
+   [
+    "pohasnout"
+   ]
+  ],
+  "slíbit": [
+   [
+    "přislíbit"
+   ],
+   [
+    "přísahat"
+   ],
+   [
+    "dát slib"
+   ]
+  ],
+  "slídit": [
+   [
+    "pídit se"
+   ]
+  ],
+  "smluvit": [
+   [
+    "dohodnout"
+   ],
+   [
+    "sjednat"
+   ]
+  ],
+  "smést": [
+   [
+    "zamítnout"
+   ]
+  ],
+  "smísit": [
+   [
+    "mísit se"
+   ],
+   [
+    "smíchat"
+   ]
+  ],
+  "smířit": [
+   [
+    "urovnat"
+   ]
+  ],
+  "smět": [
+   [
+    "moci"
+   ]
+  ],
+  "směřovat": [
+   [
+    "zamířit"
+   ],
+   [
+    "spět"
+   ],
+   [
+    "mířit"
+   ]
+  ],
+  "snižovat": [
+   [
+    "podceňovat"
+   ],
+   [
+    "snížit"
+   ],
+   [
+    "omezit"
+   ]
+  ],
+  "snášet": [
+   [
+    "trpět"
+   ],
+   [
+    "překonávat"
+   ],
+   [
+    "odolávat"
+   ],
+   [
+    "tolerovat"
+   ],
+   [
+    "nést"
+   ],
+   [
+    "nosit"
+   ],
+   [
+    "shromažďovat"
+   ],
+   [
+    "nosit"
+   ]
+  ],
+  "snést": [
+   [
+    "vystát"
+   ],
+   [
+    "strpět"
+   ],
+   [
+    "vydržet"
+   ],
+   [
+    "odolat"
+   ]
+  ],
+  "snímat": [
+   [
+    "rozkládat"
+   ]
+  ],
+  "snít": [
+   [
+    "představovat si"
+   ],
+   [
+    "fantazírovat"
+   ]
+  ],
+  "soudit": [
+   [
+    "domnívat se"
+   ],
+   [
+    "myslit"
+   ],
+   [
+    "posoudit"
+   ]
+  ],
+  "souhlasit": [
+   [
+    "schválit"
+   ],
+   [
+    "shodovat se"
+   ],
+   [
+    "být ve shodě"
+   ],
+   [
+    "krýt se"
+   ]
+  ],
+  "soustředit": [
+   [
+    "koncentrovat se"
+   ]
+  ],
+  "souviset": [
+   [
+    "korelovat"
+   ],
+   [
+    "patřit k sobě"
+   ]
+  ],
+  "spadat": [
+   [
+    "patřit"
+   ]
+  ],
+  "spadnout": [
+   [
+    "padnout"
+   ],
+   [
+    "dopadnout"
+   ],
+   [
+    "sletět"
+   ]
+  ],
+  "spasit": [
+   [
+    "zachránit"
+   ]
+  ],
+  "spatřit": [
+   [
+    "zpozorovat"
+   ],
+   [
+    "zahlédnout"
+   ],
+   [
+    "uvidět"
+   ]
+  ],
+  "spekulovat": [
+   [
+    "přemýšlet"
+   ],
+   [
+    "uvažovat"
+   ],
+   [
+    "hloubat"
+   ]
+  ],
+  "splnit": [
+   [
+    "vyhovět"
+   ],
+   [
+    "uskutečnit"
+   ],
+   [
+    "provést"
+   ]
+  ],
+  "spojit": [
+   [
+    "splynout"
+   ],
+   [
+    "integrovat"
+   ],
+   [
+    "sloučit"
+   ],
+   [
+    "spojit se"
+   ],
+   [
+    "sjednotit"
+   ],
+   [
+    "sjednotit se"
+   ],
+   [
+    "sloučit se"
+   ]
+  ],
+  "spojovat": [
+   [
+    "propojovat"
+   ],
+   [
+    "pojit"
+   ],
+   [
+    "vázat"
+   ]
+  ],
+  "spolupracovat": [
+   [
+    "spojit se"
+   ]
+  ],
+  "spoutat": [
+   [
+    "svázat"
+   ],
+   [
+    "připoutat"
+   ],
+   [
+    "upoutat"
+   ]
+  ],
+  "spočívat": [
+   [
+    "ležet"
+   ],
+   [
+    "zakládat se"
+   ],
+   [
+    "záležet"
+   ]
+  ],
+  "spravovat": [
+   [
+    "vést"
+   ],
+   [
+    "řídit"
+   ]
+  ],
+  "spustit": [
+   [
+    "zavést"
+   ],
+   [
+    "pustit"
+   ],
+   [
+    "zahájit"
+   ]
+  ],
+  "spálit": [
+   [
+    "ožehnout"
+   ],
+   [
+    "pálit"
+   ],
+   [
+    "upálit"
+   ]
+  ],
+  "spát": [
+   [
+    "souložit"
+   ],
+   [
+    "chrápat"
+   ],
+   [
+    "odpočívat"
+   ]
+  ],
+  "spěchat": [
+   [
+    "chvátat"
+   ],
+   [
+    "pospíchat"
+   ]
+  ],
+  "spět": [
+   [
+    "směřovat"
+   ]
+  ],
+  "srazit": [
+   [
+    "zlevnit"
+   ],
+   [
+    "porazit"
+   ],
+   [
+    "shodit"
+   ],
+   [
+    "sklátit"
+   ],
+   [
+    "povalit"
+   ],
+   [
+    "snížit"
+   ]
+  ],
+  "stanovit": [
+   [
+    "vytyčit"
+   ],
+   [
+    "určit"
+   ],
+   [
+    "ustanovit"
+   ],
+   [
+    "nařídit"
+   ],
+   [
+    "předepsat"
+   ]
+  ],
+  "stavět": [
+   [
+    "opírat"
+   ],
+   [
+    "založit"
+   ],
+   [
+    "budovat"
+   ],
+   [
+    "postavit"
+   ],
+   [
+    "zakládat"
+   ]
+  ],
+  "stihnout": [
+   [
+    "chytit"
+   ],
+   [
+    "zastihnout"
+   ],
+   [
+    "potkat"
+   ]
+  ],
+  "stolovat": [
+   [
+    "jíst"
+   ],
+   [
+    "obědvat"
+   ],
+   [
+    "večeřet"
+   ]
+  ],
+  "stoupat": [
+   [
+    "zvyšovat se"
+   ],
+   [
+    "zvětšovat se"
+   ],
+   [
+    "přibývat"
+   ],
+   [
+    "růst"
+   ],
+   [
+    "zvedat se"
+   ]
+  ],
+  "strhnout": [
+   [
+    "servat"
+   ]
+  ],
+  "strmět": [
+   [
+    "tyčit se"
+   ],
+   [
+    "čnít"
+   ]
+  ],
+  "strávit": [
+   [
+    "zničit"
+   ]
+  ],
+  "stvořit": [
+   [
+    "vytvořit"
+   ]
+  ],
+  "stáhnout": [
+   [
+    "sevřít"
+   ],
+   [
+    "zúžit se"
+   ],
+   [
+    "stáhnout se"
+   ],
+   [
+    "zúžit"
+   ],
+   [
+    "upnout"
+   ]
+  ],
+  "stát": [
+   [
+    "trvat"
+   ],
+   [
+    "podporovat"
+   ],
+   [
+    "země"
+   ],
+   [
+    "mít cenu"
+   ],
+   [
+    "přijít"
+   ],
+   [
+    "mocenská organizace ve společnosti"
+   ]
+  ],
+  "sténat": [
+   [
+    "hekat"
+   ],
+   [
+    "naříkat"
+   ],
+   [
+    "úpět"
+   ]
+  ],
+  "stíhat": [
+   [
+    "pronásledovat"
+   ],
+   [
+    "honit"
+   ]
+  ],
+  "střežit": [
+   [
+    "pozorovat"
+   ]
+  ],
+  "střádat": [
+   [
+    "schraňovat"
+   ],
+   [
+    "hromadit"
+   ]
+  ],
+  "sužovat": [
+   [
+    "otravovat"
+   ],
+   [
+    "trápit"
+   ]
+  ],
+  "svolat": [
+   [
+    "nechat nastoupit"
+   ],
+   [
+    "povolat"
+   ],
+   [
+    "obeslat"
+   ],
+   [
+    "shromáždit"
+   ],
+   [
+    "předvolat"
+   ]
+  ],
+  "svázat": [
+   [
+    "přivázat"
+   ],
+   [
+    "zavázat"
+   ],
+   [
+    "vázat"
+   ],
+   [
+    "spoutat"
+   ],
+   [
+    "uvázat"
+   ]
+  ],
+  "svést": [
+   [
+    "zlákat"
+   ]
+  ],
+  "svírat": [
+   [
+    "držet"
+   ]
+  ],
+  "svítit": [
+   [
+    "třpytit se"
+   ],
+   [
+    "lesknout se"
+   ]
+  ],
+  "svědčit": [
+   [
+    "nasvědčovat"
+   ],
+   [
+    "dosvědčit"
+   ],
+   [
+    "vypovídat"
+   ]
+  ],
+  "svěřit": [
+   [
+    "předat"
+   ]
+  ],
+  "syn": [
+   [
+    "chlapec"
+   ],
+   [
+    "synek"
+   ]
+  ],
+  "sytit": [
+   [
+    "nasycovat"
+   ]
+  ],
+  "tajit": [
+   [
+    "zamlčovat"
+   ]
+  ],
+  "tasit": [
+   [
+    "vytasit"
+   ]
+  ],
+  "tlačit": [
+   [
+    "strkat"
+   ]
+  ],
+  "tlouci": [
+   [
+    "udeřit"
+   ],
+   [
+    "mlátit"
+   ],
+   [
+    "zbít"
+   ],
+   [
+    "bušit"
+   ],
+   [
+    "bít"
+   ],
+   [
+    "ztlouci"
+   ],
+   [
+    "třískat"
+   ],
+   [
+    "řezat"
+   ],
+   [
+    "tepat"
+   ]
+  ],
+  "toužit": [
+   [
+    "prahnout"
+   ],
+   [
+    "žíznit"
+   ],
+   [
+    "dychtit"
+   ]
+  ],
+  "trestat": [
+   [
+    "ztrestat"
+   ],
+   [
+    "potrestat"
+   ]
+  ],
+  "trpět": [
+   [
+    "strádat"
+   ],
+   [
+    "snášet"
+   ],
+   [
+    "tolerovat"
+   ],
+   [
+    "dovolovat"
+   ],
+   [
+    "připouštět"
+   ],
+   [
+    "dopouštět"
+   ],
+   [
+    "potrpět si"
+   ]
+  ],
+  "truchlit": [
+   [
+    "naříkat"
+   ],
+   [
+    "oplakávat"
+   ],
+   [
+    "lamentovat"
+   ],
+   [
+    "bědovat"
+   ]
+  ],
+  "trvat": [
+   [
+    "stát"
+   ],
+   [
+    "udržovat se"
+   ],
+   [
+    "držet se"
+   ],
+   [
+    "přetrvat"
+   ]
+  ],
+  "trápit": [
+   [
+    "žrát"
+   ],
+   [
+    "soužit"
+   ],
+   [
+    "hryzat"
+   ],
+   [
+    "otravovat"
+   ],
+   [
+    "znepokojovat"
+   ],
+   [
+    "sužovat"
+   ],
+   [
+    "mučit"
+   ],
+   [
+    "týrat"
+   ],
+   [
+    "bodat"
+   ],
+   [
+    "působit bolest"
+   ],
+   [
+    "obtěžovat"
+   ]
+  ],
+  "trýznit": [
+   [
+    "týrat"
+   ],
+   [
+    "mučit"
+   ]
+  ],
+  "tupit": [
+   [
+    "hanět"
+   ],
+   [
+    "ostouzet"
+   ],
+   [
+    "znevažovat"
+   ],
+   [
+    "špinit"
+   ],
+   [
+    "očerňovat"
+   ]
+  ],
+  "tušit": [
+   [
+    "větřit"
+   ],
+   [
+    "cítit"
+   ]
+  ],
+  "tvořit": [
+   [
+    "vytvářet"
+   ],
+   [
+    "produkovat"
+   ],
+   [
+    "představovat"
+   ],
+   [
+    "utvořit se"
+   ],
+   [
+    "vytvořit"
+   ],
+   [
+    "utvořit"
+   ],
+   [
+    "tvořit se"
+   ]
+  ],
+  "tvrdit": [
+   [
+    "kalit"
+   ]
+  ],
+  "táhnout": [
+   [
+    "tahat"
+   ],
+   [
+    "vést"
+   ]
+  ],
+  "téci": [
+   [
+    "prosakovat"
+   ],
+   [
+    "proudit"
+   ]
+  ],
+  "tíhnout": [
+   [
+    "klonit se"
+   ]
+  ],
+  "třást": [
+   [
+    "chvět se"
+   ],
+   [
+    "třást se"
+   ],
+   [
+    "klepat"
+   ],
+   [
+    "chvět"
+   ],
+   [
+    "rozechvět"
+   ],
+   [
+    "rozechvět se"
+   ],
+   [
+    "třepat"
+   ]
+  ],
+  "ublížit": [
+   [
+    "ukřivdit"
+   ],
+   [
+    "udělat"
+   ]
+  ],
+  "ubývat": [
+   [
+    "zmenšit"
+   ],
+   [
+    "snížit se"
+   ],
+   [
+    "snížit"
+   ],
+   [
+    "zmenšit se"
+   ]
+  ],
+  "uchopit": [
+   [
+    "chytit"
+   ]
+  ],
+  "uchvátit": [
+   [
+    "nadchnout"
+   ],
+   [
+    "vzrušit"
+   ],
+   [
+    "unést"
+   ],
+   [
+    "oslnit"
+   ],
+   [
+    "očarovat"
+   ],
+   [
+    "okouzlit"
+   ]
+  ],
+  "uctívat": [
+   [
+    "ctít"
+   ]
+  ],
+  "ucítit": [
+   [
+    "pocítit"
+   ]
+  ],
+  "udeřit": [
+   [
+    "tlouci"
+   ],
+   [
+    "zasáhnout"
+   ]
+  ],
+  "udržovat": [
+   [
+    "pokračovat"
+   ],
+   [
+    "pěstovat"
+   ]
+  ],
+  "udusit": [
+   [
+    "potlačit"
+   ],
+   [
+    "uhasit"
+   ]
+  ],
+  "udělat": [
+   [
+    "dělat"
+   ],
+   [
+    "vyrobit"
+   ],
+   [
+    "provést"
+   ],
+   [
+    "učinit"
+   ],
+   [
+    "ublížit"
+   ],
+   [
+    "vytvořit"
+   ],
+   [
+    "podniknout"
+   ]
+  ],
+  "udělit": [
+   [
+    "věnovat"
+   ],
+   [
+    "poskytnout"
+   ],
+   [
+    "propůjčit"
+   ],
+   [
+    "dát"
+   ]
+  ],
+  "uhasit": [
+   [
+    "udusit"
+   ]
+  ],
+  "ujistit": [
+   [
+    "přesvědčit"
+   ]
+  ],
+  "ujít": [
+   [
+    "uletět"
+   ],
+   [
+    "urazit"
+   ],
+   [
+    "uběhnout"
+   ],
+   [
+    "uniknout"
+   ]
+  ],
+  "ukazovat": [
+   [
+    "naznačovat"
+   ],
+   [
+    "předvádět"
+   ]
+  ],
+  "uklidnit": [
+   [
+    "utišit"
+   ],
+   [
+    "uklidnit se"
+   ],
+   [
+    "ukonejšit"
+   ],
+   [
+    "upokojit"
+   ],
+   [
+    "smiřovat"
+   ],
+   [
+    "usmířit"
+   ],
+   [
+    "upokojit se"
+   ],
+   [
+    "zklidnit"
+   ],
+   [
+    "ovládnout"
+   ]
+  ],
+  "ukončit": [
+   [
+    "dokončit"
+   ],
+   [
+    "zakončit"
+   ],
+   [
+    "uzavřít"
+   ],
+   [
+    "skončit"
+   ],
+   [
+    "přerušit"
+   ]
+  ],
+  "ukrýt": [
+   [
+    "schovat"
+   ],
+   [
+    "skrýt"
+   ],
+   [
+    "uschovat"
+   ]
+  ],
+  "ukázat": [
+   [
+    "dát najevo"
+   ],
+   [
+    "uvést"
+   ],
+   [
+    "odhalit"
+   ],
+   [
+    "vykreslit"
+   ],
+   [
+    "představit"
+   ],
+   [
+    "odkrýt"
+   ],
+   [
+    "předvést"
+   ],
+   [
+    "projevit"
+   ]
+  ],
+  "uložit": [
+   [
+    "položit"
+   ],
+   [
+    "pokládat"
+   ],
+   [
+    "vložit"
+   ],
+   [
+    "klást"
+   ],
+   [
+    "uschovat"
+   ]
+  ],
+  "umírat": [
+   [
+    "mřít",
+    "hynout",
+    "zanikat",
+    "zmírat"
+   ]
+  ],
+  "umístit": [
+   [
+    "rozmístit"
+   ],
+   [
+    "lokalizovat"
+   ],
+   [
+    "postavit"
+   ],
+   [
+    "položit"
+   ],
+   [
+    "situovat"
+   ],
+   [
+    "dát"
+   ]
+  ],
+  "umýt": [
+   [
+    "smýt"
+   ],
+   [
+    "čistit"
+   ]
+  ],
+  "umět": [
+   [
+    "dovést"
+   ],
+   [
+    "znát"
+   ],
+   [
+    "ovládat"
+   ],
+   [
+    "rozumět"
+   ]
+  ],
+  "umřít": [
+   [
+    "zemřít"
+   ]
+  ],
+  "unikat": [
+   [
+    "ucházet"
+   ],
+   [
+    "odkapávat"
+   ]
+  ],
+  "uniknout": [
+   [
+    "utéci"
+   ],
+   [
+    "uprchnout"
+   ],
+   [
+    "ujít"
+   ],
+   [
+    "vyvarovat se"
+   ],
+   [
+    "prchnout"
+   ],
+   [
+    "vyhnout se"
+   ]
+  ],
+  "upadat": [
+   [
+    "chátrat"
+   ],
+   [
+    "degenerovat"
+   ]
+  ],
+  "upadnout": [
+   [
+    "odpadnout"
+   ],
+   [
+    "padnout"
+   ]
+  ],
+  "upevnit": [
+   [
+    "přivázat"
+   ],
+   [
+    "připevnit"
+   ],
+   [
+    "utužit"
+   ],
+   [
+    "zpevnit"
+   ]
+  ],
+  "uplatnit": [
+   [
+    "prosadit"
+   ]
+  ],
+  "uplynout": [
+   [
+    "minout"
+   ],
+   [
+    "uběhnout"
+   ],
+   [
+    "míjet"
+   ],
+   [
+    "plynout"
+   ]
+  ],
+  "upnout": [
+   [
+    "sevřít"
+   ],
+   [
+    "stáhnout"
+   ],
+   [
+    "upřít"
+   ]
+  ],
+  "uposlechnout": [
+   [
+    "poslechnout"
+   ],
+   [
+    "poslouchat"
+   ]
+  ],
+  "upozornit": [
+   [
+    "připomenout"
+   ],
+   [
+    "varovat"
+   ]
+  ],
+  "uprchnout": [
+   [
+    "uniknout"
+   ],
+   [
+    "utéci"
+   ],
+   [
+    "prchnout"
+   ]
+  ],
+  "upustit": [
+   [
+    "zříci se"
+   ],
+   [
+    "vzdát se"
+   ],
+   [
+    "opustit"
+   ],
+   [
+    "pustit"
+   ]
+  ],
+  "upřít": [
+   [
+    "odepřít"
+   ],
+   [
+    "upnout"
+   ]
+  ],
+  "urážet": [
+   [
+    "dotýkat se cti"
+   ],
+   [
+    "pohoršovat"
+   ],
+   [
+    "ostouzet"
+   ],
+   [
+    "ulamovat"
+   ],
+   [
+    "uštípávat"
+   ]
+  ],
+  "určit": [
+   [
+    "stanovit"
+   ],
+   [
+    "vytyčit"
+   ],
+   [
+    "adresovat"
+   ],
+   [
+    "přikázat"
+   ],
+   [
+    "přidělit"
+   ],
+   [
+    "jmenovat"
+   ],
+   [
+    "ustanovit"
+   ]
+  ],
+  "určovat": [
+   [
+    "stanovovat"
+   ],
+   [
+    "vymezovat"
+   ],
+   [
+    "vytýkat"
+   ],
+   [
+    "vytyčovat"
+   ],
+   [
+    "zjišťovat"
+   ],
+   [
+    "rozpoznávat"
+   ],
+   [
+    "determinovat"
+   ],
+   [
+    "přidělovat"
+   ],
+   [
+    "zaměřovat"
+   ],
+   [
+    "jmenovat"
+   ],
+   [
+    "ustanovovat"
+   ],
+   [
+    "nominovat"
+   ]
+  ],
+  "usadit": [
+   [
+    "nanést"
+   ],
+   [
+    "zpražit"
+   ],
+   [
+    "naplavit"
+   ],
+   [
+    "posadit"
+   ]
+  ],
+  "uschnout": [
+   [
+    "usušit"
+   ],
+   [
+    "oschnout"
+   ],
+   [
+    "sušit"
+   ]
+  ],
+  "usednout": [
+   [
+    "posadit se"
+   ]
+  ],
+  "usilovat": [
+   [
+    "bojovat"
+   ],
+   [
+    "snažit se"
+   ],
+   [
+    "namáhat se"
+   ],
+   [
+    "aspirovat"
+   ]
+  ],
+  "uskutečnit": [
+   [
+    "splnit"
+   ],
+   [
+    "provést"
+   ],
+   [
+    "realizovat"
+   ],
+   [
+    "naplnit"
+   ],
+   [
+    "vykonat"
+   ],
+   [
+    "konkretizovat"
+   ]
+  ],
+  "usmířit": [
+   [
+    "smiřovat"
+   ],
+   [
+    "uklidnit"
+   ]
+  ],
+  "uspořádat": [
+   [
+    "upravit"
+   ],
+   [
+    "seřadit"
+   ],
+   [
+    "utřídit"
+   ],
+   [
+    "sestavit"
+   ],
+   [
+    "urovnat"
+   ],
+   [
+    "seřadit se"
+   ],
+   [
+    "uspořádat se"
+   ]
+  ],
+  "ustanovit": [
+   [
+    "určit"
+   ],
+   [
+    "uzákonit"
+   ],
+   [
+    "stanovit"
+   ],
+   [
+    "jmenovat"
+   ],
+   [
+    "dosadit"
+   ],
+   [
+    "nařídit"
+   ]
+  ],
+  "ustavit": [
+   [
+    "konstituovat"
+   ]
+  ],
+  "ustoupit": [
+   [
+    "ustupovat"
+   ],
+   [
+    "vzdát se"
+   ],
+   [
+    "podrobit se"
+   ],
+   [
+    "kapitulovat"
+   ],
+   [
+    "odstoupit"
+   ],
+   [
+    "podlehnout"
+   ],
+   [
+    "poddat se"
+   ],
+   [
+    "stáhnout se"
+   ],
+   [
+    "povolit"
+   ]
+  ],
+  "ustrnout": [
+   [
+    "zkostnatět"
+   ]
+  ],
+  "ustupovat": [
+   [
+    "ustoupit"
+   ],
+   [
+    "odlévat se"
+   ]
+  ],
+  "utiskovat": [
+   [
+    "utlačovat"
+   ]
+  ],
+  "utišit": [
+   [
+    "uklidnit"
+   ],
+   [
+    "ukonejšit"
+   ],
+   [
+    "upokojit"
+   ],
+   [
+    "uspokojit"
+   ],
+   [
+    "ovládnout"
+   ]
+  ],
+  "utkat": [
+   [
+    "tkát"
+   ]
+  ],
+  "utlačovat": [
+   [
+    "utiskovat"
+   ]
+  ],
+  "utnout": [
+   [
+    "useknout"
+   ]
+  ],
+  "utvořit": [
+   [
+    "utvořit se"
+   ],
+   [
+    "tvořit"
+   ],
+   [
+    "tvořit se"
+   ]
+  ],
+  "utéci": [
+   [
+    "uniknout"
+   ],
+   [
+    "uprchnout"
+   ],
+   [
+    "prchnout"
+   ],
+   [
+    "prásknout do bot"
+   ]
+  ],
+  "utíkat": [
+   [
+    "běžet"
+   ],
+   [
+    "pelášit"
+   ],
+   [
+    "míjet"
+   ],
+   [
+    "plynout"
+   ]
+  ],
+  "uvadat": [
+   [
+    "vadnout"
+   ]
+  ],
+  "uvalit": [
+   [
+    "uvrhnout"
+   ]
+  ],
+  "uvažovat": [
+   [
+    "přemítat"
+   ],
+   [
+    "rozvažovat"
+   ],
+   [
+    "hloubat"
+   ],
+   [
+    "dumat"
+   ],
+   [
+    "rozjímat"
+   ],
+   [
+    "přemýšlet"
+   ],
+   [
+    "spekulovat"
+   ]
+  ],
+  "uvidět": [
+   [
+    "zpozorovat"
+   ],
+   [
+    "zahlédnout"
+   ],
+   [
+    "spatřit"
+   ]
+  ],
+  "uvolnit": [
+   [
+    "uvolňovat"
+   ],
+   [
+    "odpoutat"
+   ],
+   [
+    "vyklidit"
+   ],
+   [
+    "opustit"
+   ],
+   [
+    "povolit"
+   ]
+  ],
+  "uvolňovat": [
+   [
+    "uvolnit"
+   ]
+  ],
+  "uvrhnout": [
+   [
+    "uvalit"
+   ],
+   [
+    "vrhnout"
+   ]
+  ],
+  "uvádět": [
+   [
+    "uvést"
+   ]
+  ],
+  "uvést": [
+   [
+    "zasvětit"
+   ],
+   [
+    "vyrobit"
+   ],
+   [
+    "citovat"
+   ],
+   [
+    "říci úvodem"
+   ],
+   [
+    "předložit"
+   ],
+   [
+    "přivést"
+   ],
+   [
+    "vydat"
+   ],
+   [
+    "doprovodit"
+   ],
+   [
+    "ukázat"
+   ],
+   [
+    "uvádět"
+   ],
+   [
+    "zavést"
+   ],
+   [
+    "předvést"
+   ],
+   [
+    "udat"
+   ],
+   [
+    "sdělit"
+   ]
+  ],
+  "uvíznout": [
+   [
+    "uváznout"
+   ]
+  ],
+  "uzavřít": [
+   [
+    "utěsnit"
+   ],
+   [
+    "zalepit"
+   ],
+   [
+    "zakončit"
+   ],
+   [
+    "zabednit"
+   ],
+   [
+    "ukončit"
+   ],
+   [
+    "zavřít"
+   ]
+  ],
+  "uznat": [
+   [
+    "akceptovat"
+   ]
+  ],
+  "uznávat": [
+   [
+    "respektovat"
+   ]
+  ],
+  "učinit": [
+   [
+    "udělat"
+   ]
+  ],
+  "učit": [
+   [
+    "vyučovat"
+   ]
+  ],
+  "ušetřit": [
+   [
+    "nastřádat"
+   ],
+   [
+    "našetřit"
+   ],
+   [
+    "naspořit"
+   ]
+  ],
+  "užít": [
+   [
+    "použít"
+   ],
+   [
+    "využít"
+   ],
+   [
+    "upotřebit"
+   ]
+  ],
+  "valit": [
+   [
+    "válet"
+   ]
+  ],
+  "varovat": [
+   [
+    "upozornit"
+   ]
+  ],
+  "vařit": [
+   [
+    "kuchtit"
+   ],
+   [
+    "připravovat jídlo"
+   ]
+  ],
+  "velebit": [
+   [
+    "opěvovat"
+   ],
+   [
+    "oslavovat"
+   ]
+  ],
+  "vepsat": [
+   [
+    "zapsat"
+   ]
+  ],
+  "vidět": [
+   [
+    "čučet"
+   ],
+   [
+    "dívat se"
+   ],
+   [
+    "koukat"
+   ],
+   [
+    "nahlížet"
+   ],
+   [
+    "postřehnout"
+   ],
+   [
+    "pozorovat"
+   ],
+   [
+    "sledovat"
+   ],
+   [
+    "uzřít"
+   ],
+   [
+    "vnímat"
+   ],
+   [
+    "všimnout si"
+   ],
+   [
+    "zřít"
+   ]
+  ],
+  "viset": [
+   [
+    "vznášet se"
+   ],
+   [
+    "lpět"
+   ]
+  ],
+  "vlastnit": [
+   [
+    "mít"
+   ]
+  ],
+  "vložit": [
+   [
+    "vsunout"
+   ],
+   [
+    "položit"
+   ],
+   [
+    "uložit"
+   ],
+   [
+    "zasunout"
+   ]
+  ],
+  "vládnout": [
+   [
+    "ovládat"
+   ],
+   [
+    "kralovat"
+   ]
+  ],
+  "vléci": [
+   [
+    "vláčet se"
+   ],
+   [
+    "vléci se"
+   ],
+   [
+    "vláčet"
+   ]
+  ],
+  "vniknout": [
+   [
+    "vetřít se"
+   ],
+   [
+    "vstoupit"
+   ]
+  ],
+  "vnést": [
+   [
+    "zanést"
+   ]
+  ],
+  "vnímat": [
+   [
+    "všimnout si"
+   ],
+   [
+    "vidět"
+   ]
+  ],
+  "volat": [
+   [
+    "telefonovat"
+   ]
+  ],
+  "volit": [
+   [
+    "hlasovat"
+   ]
+  ],
+  "vraždit": [
+   [
+    "masakrovat"
+   ],
+   [
+    "povraždit"
+   ]
+  ],
+  "vrcholit": [
+   [
+    "kulminovat"
+   ],
+   [
+    "vyvrcholit"
+   ]
+  ],
+  "vrhnout": [
+   [
+    "dávit"
+   ],
+   [
+    "zvracet"
+   ],
+   [
+    "uvrhnout"
+   ],
+   [
+    "blít"
+   ],
+   [
+    "zaměřit"
+   ],
+   [
+    "mrštit"
+   ]
+  ],
+  "vrátit": [
+   [
+    "navrátit"
+   ],
+   [
+    "dát zpět"
+   ]
+  ],
+  "vstoupit": [
+   [
+    "vniknout"
+   ],
+   [
+    "vkročit"
+   ]
+  ],
+  "vstát": [
+   [
+    "povstat"
+   ],
+   [
+    "zvednout se"
+   ]
+  ],
+  "vtisknout": [
+   [
+    "vštípit"
+   ],
+   [
+    "vtlačit"
+   ]
+  ],
+  "vtáhnout": [
+   [
+    "natáhnout"
+   ]
+  ],
+  "vybrat": [
+   [
+    "vzít si"
+   ],
+   [
+    "vyhloubit"
+   ],
+   [
+    "vyzvednout"
+   ],
+   [
+    "sebrat"
+   ]
+  ],
+  "vybudovat": [
+   [
+    "vztyčit"
+   ],
+   [
+    "zbudovat"
+   ],
+   [
+    "postavit"
+   ]
+  ],
+  "vybídnout": [
+   [
+    "vyzvat"
+   ]
+  ],
+  "vycházet": [
+   [
+    "vystačit"
+   ],
+   [
+    "vyjít"
+   ]
+  ],
+  "vydat": [
+   [
+    "rozdat"
+   ],
+   [
+    "uvést"
+   ],
+   [
+    "vydávat"
+   ],
+   [
+    "rozdělit"
+   ],
+   [
+    "utratit"
+   ],
+   [
+    "vystavit"
+   ]
+  ],
+  "vydržet": [
+   [
+    "přestát"
+   ],
+   [
+    "vystačit"
+   ],
+   [
+    "unést"
+   ],
+   [
+    "vytrvat"
+   ],
+   [
+    "snést"
+   ],
+   [
+    "odolat"
+   ],
+   [
+    "přetrvat"
+   ]
+  ],
+  "vydávat": [
+   [
+    "chrlit"
+   ],
+   [
+    "vypouštět"
+   ],
+   [
+    "šířit"
+   ],
+   [
+    "vydat"
+   ],
+   [
+    "vysílat"
+   ]
+  ],
+  "vyděsit": [
+   [
+    "polekat"
+   ],
+   [
+    "vylekat"
+   ],
+   [
+    "postrašit"
+   ]
+  ],
+  "vyhladit": [
+   [
+    "zahladit"
+   ],
+   [
+    "vyrovnat"
+   ],
+   [
+    "vykořenit"
+   ],
+   [
+    "vymazat"
+   ],
+   [
+    "zničit"
+   ],
+   [
+    "zabít"
+   ],
+   [
+    "vyhubit"
+   ]
+  ],
+  "vyhlašovat": [
+   [
+    "ohlašovat"
+   ],
+   [
+    "deklarovat"
+   ],
+   [
+    "prohlašovat"
+   ],
+   [
+    "jmenovat"
+   ],
+   [
+    "oznamovat"
+   ],
+   [
+    "rozhlašovat"
+   ],
+   [
+    "rozšiřovat"
+   ]
+  ],
+  "vyhledat": [
+   [
+    "vypátrat"
+   ]
+  ],
+  "vyhlásit": [
+   [
+    "prohlásit"
+   ],
+   [
+    "provolat"
+   ]
+  ],
+  "vyhlížet": [
+   [
+    "vypadat"
+   ]
+  ],
+  "vyhnat": [
+   [
+    "vykopnout"
+   ],
+   [
+    "vystěhovat"
+   ],
+   [
+    "vyloučit"
+   ],
+   [
+    "vypudit"
+   ],
+   [
+    "zahnat"
+   ],
+   [
+    "vystrnadit"
+   ]
+  ],
+  "vyhodit": [
+   [
+    "dát padáka"
+   ],
+   [
+    "vyrazit"
+   ],
+   [
+    "zahodit"
+   ],
+   [
+    "propustit"
+   ]
+  ],
+  "vyhovovat": [
+   [
+    "být vhodný"
+   ]
+  ],
+  "vyhovět": [
+   [
+    "uspokojit"
+   ],
+   [
+    "splnit"
+   ],
+   [
+    "poddat se"
+   ]
+  ],
+  "vyjadřovat": [
+   [
+    "sdělovat"
+   ]
+  ],
+  "vyjmout": [
+   [
+    "vytáhnout"
+   ],
+   [
+    "vyndat"
+   ]
+  ],
+  "vyjádřit": [
+   [
+    "formulovat"
+   ],
+   [
+    "vyslovit"
+   ],
+   [
+    "vystihnout"
+   ],
+   [
+    "říci"
+   ]
+  ],
+  "vyjít": [
+   [
+    "jít"
+   ],
+   [
+    "odejít"
+   ],
+   [
+    "přijít"
+   ],
+   [
+    "vystačit"
+   ],
+   [
+    "vystoupit"
+   ],
+   [
+    "vycházet"
+   ]
+  ],
+  "vykazovat": [
+   [
+    "mít"
+   ]
+  ],
+  "vykládat": [
+   [
+    "interpretovat"
+   ],
+   [
+    "vyložit"
+   ]
+  ],
+  "vykonat": [
+   [
+    "uskutečnit"
+   ],
+   [
+    "provést"
+   ]
+  ],
+  "vykonávat": [
+   [
+    "provozovat"
+   ]
+  ],
+  "vykoupit": [
+   [
+    "zachránit"
+   ]
+  ],
+  "vykrmovat": [
+   [
+    "krmit"
+   ]
+  ],
+  "vykázat": [
+   [
+    "vypovědět"
+   ]
+  ],
+  "vykřiknout": [
+   [
+    "křičet"
+   ],
+   [
+    "vzkřiknout"
+   ],
+   [
+    "zvolat"
+   ],
+   [
+    "vyhrknout"
+   ]
+  ],
+  "vyloupit": [
+   [
+    "vloupat se"
+   ],
+   [
+    "vyplenit"
+   ],
+   [
+    "vyrabovat"
+   ],
+   [
+    "vykrást"
+   ],
+   [
+    "plenit"
+   ],
+   [
+    "loupit"
+   ],
+   [
+    "ukrást"
+   ],
+   [
+    "oloupit"
+   ],
+   [
+    "okrást"
+   ],
+   [
+    "krást"
+   ]
+  ],
+  "vyloučit": [
+   [
+    "zrušit"
+   ],
+   [
+    "vyřadit"
+   ],
+   [
+    "potlačit"
+   ],
+   [
+    "vyhnat"
+   ]
+  ],
+  "vylézt": [
+   [
+    "zlézt"
+   ]
+  ],
+  "vylít": [
+   [
+    "vyprázdnit"
+   ],
+   [
+    "vysypat"
+   ]
+  ],
+  "vymazat": [
+   [
+    "vyhladit"
+   ],
+   [
+    "škrtnout"
+   ],
+   [
+    "zahladit"
+   ],
+   [
+    "mazat"
+   ]
+  ],
+  "vymezit": [
+   [
+    "omezit"
+   ]
+  ],
+  "vymítat": [
+   [
+    "vymetat",
+    "používá se v užším smyslu jako vyhnat",
+    "vypudit"
+   ]
+  ],
+  "vymýtit": [
+   [
+    "vykácet"
+   ],
+   [
+    "odstranit"
+   ],
+   [
+    "vyhladit"
+   ],
+   [
+    "zničit"
+   ]
+  ],
+  "vynaložit": [
+   [
+    "utratit"
+   ]
+  ],
+  "vynikat": [
+   [
+    "zářit"
+   ],
+   [
+    "excelovat"
+   ],
+   [
+    "mít úspěch"
+   ]
+  ],
+  "vynést": [
+   [
+    "vyzradit"
+   ],
+   [
+    "oznámit"
+   ],
+   [
+    "přinést"
+   ]
+  ],
+  "vypadat": [
+   [
+    "vyhlížet"
+   ],
+   [
+    "vzbuzovat naděje"
+   ]
+  ],
+  "vyplatit": [
+   [
+    "odkoupit zpět"
+   ],
+   [
+    "splatit"
+   ]
+  ],
+  "vyplenit": [
+   [
+    "vykrást"
+   ],
+   [
+    "vyrabovat"
+   ],
+   [
+    "vyloupit"
+   ],
+   [
+    "plenit"
+   ],
+   [
+    "loupit"
+   ],
+   [
+    "vydrancovat"
+   ],
+   [
+    "drancovat"
+   ]
+  ],
+  "vypovídat": [
+   [
+    "svědčit"
+   ]
+  ],
+  "vypovědět": [
+   [
+    "vykázat"
+   ]
+  ],
+  "vyprat": [
+   [
+    "přeprat"
+   ],
+   [
+    "prát"
+   ]
+  ],
+  "vypravit": [
+   [
+    "vybavit"
+   ]
+  ],
+  "vyprávět": [
+   [
+    "povídat"
+   ]
+  ],
+  "vypudit": [
+   [
+    "vystrnadit"
+   ],
+   [
+    "vyhnat"
+   ]
+  ],
+  "vypustit": [
+   [
+    "vynechat"
+   ],
+   [
+    "pustit"
+   ]
+  ],
+  "vypálit": [
+   [
+    "vystřelit"
+   ],
+   [
+    "střelit"
+   ]
+  ],
+  "vyrazit": [
+   [
+    "razit"
+   ],
+   [
+    "násilím otevřít"
+   ],
+   [
+    "vytisknout"
+   ],
+   [
+    "osypat se"
+   ],
+   [
+    "vyřítit se"
+   ],
+   [
+    "vystřelit"
+   ],
+   [
+    "naskákat"
+   ],
+   [
+    "vyhodit"
+   ]
+  ],
+  "vyrovnat": [
+   [
+    "vyhladit"
+   ],
+   [
+    "vyvážit"
+   ],
+   [
+    "srovnat"
+   ],
+   [
+    "srovnat se"
+   ],
+   [
+    "kompenzovat"
+   ],
+   [
+    "vykompenzovat"
+   ],
+   [
+    "uvést do rovnováhy"
+   ],
+   [
+    "zaplatit"
+   ],
+   [
+    "vyrovnat se"
+   ]
+  ],
+  "vyrábět": [
+   [
+    "produkovat"
+   ]
+  ],
+  "vyrůstat": [
+   [
+    "růst"
+   ]
+  ],
+  "vysadit": [
+   [
+    "nechat vystoupit"
+   ],
+   [
+    "vyložit"
+   ],
+   [
+    "posadit"
+   ]
+  ],
+  "vyslat": [
+   [
+    "poslat"
+   ]
+  ],
+  "vyslechnout": [
+   [
+    "vyslýchat"
+   ]
+  ],
+  "vyslovit": [
+   [
+    "vyjádřit"
+   ],
+   [
+    "pronést"
+   ]
+  ],
+  "vyslýchat": [
+   [
+    "vyslechnout"
+   ]
+  ],
+  "vystavit": [
+   [
+    "vydat"
+   ],
+   [
+    "vyložit"
+   ]
+  ],
+  "vystoupit": [
+   [
+    "sestoupit"
+   ],
+   [
+    "slézt"
+   ],
+   [
+    "sesednout"
+   ],
+   [
+    "vysednout"
+   ],
+   [
+    "vyjít"
+   ]
+  ],
+  "vystrojit": [
+   [
+    "vybavit"
+   ],
+   [
+    "vyšňořit"
+   ]
+  ],
+  "vystupovat": [
+   [
+    "vyčnívat"
+   ],
+   [
+    "vybíhat"
+   ]
+  ],
+  "vystřelit": [
+   [
+    "vypálit"
+   ],
+   [
+    "střelit"
+   ],
+   [
+    "odpálit"
+   ],
+   [
+    "vyrazit"
+   ]
+  ],
+  "vystřídat": [
+   [
+    "nahradit"
+   ]
+  ],
+  "vysvětlit": [
+   [
+    "ujasnit"
+   ],
+   [
+    "interpretovat"
+   ],
+   [
+    "vyložit"
+   ]
+  ],
+  "vysílat": [
+   [
+    "vydávat"
+   ]
+  ],
+  "vytasit": [
+   [
+    "tasit"
+   ]
+  ],
+  "vytesat": [
+   [
+    "vyřezat"
+   ]
+  ],
+  "vytrhnout": [
+   [
+    "škubnout"
+   ],
+   [
+    "trhnout"
+   ],
+   [
+    "vyškubnout"
+   ]
+  ],
+  "vytrpět": [
+   [
+    "zkusit"
+   ],
+   [
+    "zažít"
+   ]
+  ],
+  "vytrvat": [
+   [
+    "vydržet"
+   ],
+   [
+    "setrvat"
+   ]
+  ],
+  "vytrysknout": [
+   [
+    "vystříknout"
+   ]
+  ],
+  "vytvořit": [
+   [
+    "vyrobit"
+   ],
+   [
+    "stvořit"
+   ],
+   [
+    "tvořit"
+   ],
+   [
+    "udělat"
+   ]
+  ],
+  "vytvářet": [
+   [
+    "tvořit"
+   ],
+   [
+    "produkovat"
+   ]
+  ],
+  "vytáhnout": [
+   [
+    "vyjmout"
+   ],
+   [
+    "vymámit"
+   ],
+   [
+    "vyzvednout"
+   ],
+   [
+    "odstranit"
+   ],
+   [
+    "vydolovat"
+   ]
+  ],
+  "vyučovat": [
+   [
+    "učit"
+   ]
+  ],
+  "využít": [
+   [
+    "použít"
+   ],
+   [
+    "zneužít"
+   ],
+   [
+    "užít"
+   ]
+  ],
+  "vyvolat": [
+   [
+    "navodit"
+   ],
+   [
+    "probudit"
+   ],
+   [
+    "přivodit"
+   ],
+   [
+    "způsobit"
+   ],
+   [
+    "podnítit"
+   ],
+   [
+    "vzbudit"
+   ]
+  ],
+  "vyvolit": [
+   [
+    "zvolit"
+   ]
+  ],
+  "vyvolávat": [
+   [
+    "budit"
+   ],
+   [
+    "vzbuzovat"
+   ]
+  ],
+  "vyvracet": [
+   [
+    "popírat"
+   ]
+  ],
+  "vyvrcholit": [
+   [
+    "dosáhnout vrcholu"
+   ],
+   [
+    "kulminovat"
+   ],
+   [
+    "vrcholit"
+   ]
+  ],
+  "vyvádět": [
+   [
+    "bouřit"
+   ]
+  ],
+  "vyzvat": [
+   [
+    "vybídnout"
+   ]
+  ],
+  "vyzískat": [
+   [
+    "vydělat"
+   ]
+  ],
+  "vyzývat": [
+   [
+    "nabádat"
+   ]
+  ],
+  "vyřadit": [
+   [
+    "vyloučit"
+   ]
+  ],
+  "vyžadovat": [
+   [
+    "žádat"
+   ],
+   [
+    "potřebovat"
+   ]
+  ],
+  "vzbudit": [
+   [
+    "vyvolat"
+   ],
+   [
+    "probudit"
+   ],
+   [
+    "probudit se"
+   ],
+   [
+    "vzbudit se"
+   ],
+   [
+    "podnítit"
+   ]
+  ],
+  "vzbuzovat": [
+   [
+    "budit"
+   ],
+   [
+    "vyvolávat"
+   ]
+  ],
+  "vzdorovat": [
+   [
+    "odolávat"
+   ],
+   [
+    "neuposlechnout"
+   ]
+  ],
+  "vzdálit": [
+   [
+    "oddálit"
+   ],
+   [
+    "odtáhnout"
+   ],
+   [
+    "odsunout"
+   ],
+   [
+    "odtrhnout"
+   ],
+   [
+    "odloučit"
+   ],
+   [
+    "odpoutat"
+   ]
+  ],
+  "vzepřít": [
+   [
+    "podepřít"
+   ],
+   [
+    "opřít"
+   ]
+  ],
+  "vzniknout": [
+   [
+    "vytvořit se"
+   ]
+  ],
+  "vzplanout": [
+   [
+    "chytit"
+   ]
+  ],
+  "vzrůst": [
+   [
+    "zvýšit se"
+   ],
+   [
+    "velikost"
+   ],
+   [
+    "zvětšit se"
+   ],
+   [
+    "výška"
+   ]
+  ],
+  "vztyčit": [
+   [
+    "vybudovat"
+   ],
+   [
+    "postavit"
+   ]
+  ],
+  "vzít": [
+   [
+    "odebrat"
+   ],
+   [
+    "zbavit"
+   ],
+   [
+    "odejmout"
+   ]
+  ],
+  "vát": [
+   [
+    "vanout"
+   ],
+   [
+    "foukat"
+   ]
+  ],
+  "vést": [
+   [
+    "táhnout"
+   ],
+   [
+    "dělat průvodce"
+   ],
+   [
+    "dirigovat"
+   ],
+   [
+    "provázet"
+   ],
+   [
+    "navigovat"
+   ],
+   [
+    "řídit"
+   ],
+   [
+    "spravovat"
+   ],
+   [
+    "zavést"
+   ],
+   [
+    "přispívat"
+   ]
+  ],
+  "věnovat": [
+   [
+    "dedikovat"
+   ],
+   [
+    "udělit"
+   ],
+   [
+    "zasvětit"
+   ],
+   [
+    "darovat"
+   ],
+   [
+    "poskytnout"
+   ]
+  ],
+  "věřit": [
+   [
+    "doufat"
+   ],
+   [
+    "důvěřovat"
+   ]
+  ],
+  "zabezpečit": [
+   [
+    "zajistit"
+   ],
+   [
+    "zaručit"
+   ]
+  ],
+  "zabloudit": [
+   [
+    "zatoulat se"
+   ]
+  ],
+  "zabránit": [
+   [
+    "předejít"
+   ],
+   [
+    "znemožnit"
+   ],
+   [
+    "zamezit"
+   ]
+  ],
+  "zabít": [
+   [
+    "vyhladit"
+   ],
+   [
+    "skolit"
+   ],
+   [
+    "utratit"
+   ]
+  ],
+  "zachovávat": [
+   [
+    "dodržovat"
+   ]
+  ],
+  "zachraňovat": [
+   [
+    "zachránit"
+   ]
+  ],
+  "zachránit": [
+   [
+    "zachraňovat"
+   ],
+   [
+    "vykoupit"
+   ],
+   [
+    "spasit"
+   ]
+  ],
+  "zachvátit": [
+   [
+    "postihnout"
+   ]
+  ],
+  "zahalit": [
+   [
+    "zastřít"
+   ],
+   [
+    "zakrýt"
+   ],
+   [
+    "obklopit"
+   ]
+  ],
+  "zahladit": [
+   [
+    "vyhladit"
+   ],
+   [
+    "vymazat"
+   ],
+   [
+    "odstranit"
+   ],
+   [
+    "zničit"
+   ]
+  ],
+  "zahnat": [
+   [
+    "rozehnat"
+   ],
+   [
+    "vyhnat"
+   ],
+   [
+    "rozptýlit"
+   ],
+   [
+    "odehnat"
+   ]
+  ],
+  "zahrnout": [
+   [
+    "zasypat"
+   ],
+   [
+    "zavalit"
+   ],
+   [
+    "zařadit"
+   ]
+  ],
+  "zahynout": [
+   [
+    "zaniknout"
+   ],
+   [
+    "zajít"
+   ]
+  ],
+  "zahájit": [
+   [
+    "spustit"
+   ],
+   [
+    "zavést"
+   ],
+   [
+    "započít"
+   ],
+   [
+    "začínat"
+   ],
+   [
+    "odstartovat"
+   ]
+  ],
+  "zajistit": [
+   [
+    "zamluvit"
+   ],
+   [
+    "zabezpečit"
+   ],
+   [
+    "zaručit"
+   ],
+   [
+    "obstarat"
+   ]
+  ],
+  "zajít": [
+   [
+    "zapadnout"
+   ],
+   [
+    "zacházet"
+   ],
+   [
+    "zahynout"
+   ]
+  ],
+  "zakládat": [
+   [
+    "opírat"
+   ],
+   [
+    "založit"
+   ],
+   [
+    "stavět"
+   ]
+  ],
+  "zakrýt": [
+   [
+    "pokrýt"
+   ],
+   [
+    "zahalit"
+   ],
+   [
+    "zastřít"
+   ]
+  ],
+  "zakázat": [
+   [
+    "zapovědět"
+   ]
+  ],
+  "založit": [
+   [
+    "zařadit"
+   ],
+   [
+    "zakládat"
+   ],
+   [
+    "opírat"
+   ],
+   [
+    "stavět"
+   ]
+  ],
+  "zamířit": [
+   [
+    "směřovat"
+   ],
+   [
+    "zaměřit"
+   ],
+   [
+    "namířit"
+   ],
+   [
+    "mířit"
+   ]
+  ],
+  "zamýšlet": [
+   [
+    "mít v úmyslu"
+   ],
+   [
+    "chtít"
+   ],
+   [
+    "hodlat"
+   ],
+   [
+    "plánovat"
+   ],
+   [
+    "chystat se"
+   ]
+  ],
+  "zaměřit": [
+   [
+    "zamířit"
+   ],
+   [
+    "vrhnout"
+   ],
+   [
+    "mířit"
+   ]
+  ],
+  "zanechat": [
+   [
+    "vzdát se"
+   ],
+   [
+    "opustit"
+   ]
+  ],
+  "zaniknout": [
+   [
+    "vymizet"
+   ],
+   [
+    "zahynout"
+   ]
+  ],
+  "zapadnout": [
+   [
+    "zaskočit"
+   ],
+   [
+    "zajít"
+   ]
+  ],
+  "zaplatit": [
+   [
+    "vyrovnat"
+   ],
+   [
+    "uhradit"
+   ]
+  ],
+  "zapojit": [
+   [
+    "připojit"
+   ],
+   [
+    "včlenit"
+   ],
+   [
+    "začlenit"
+   ],
+   [
+    "zapnout"
+   ]
+  ],
+  "započít": [
+   [
+    "začít"
+   ]
+  ],
+  "zapustit": [
+   [
+    "zasadit"
+   ]
+  ],
+  "zapřísahat": [
+   [
+    "úpěnlivě prosit"
+   ],
+   [
+    "zaklínat"
+   ]
+  ],
+  "zapřít": [
+   [
+    "podepřít"
+   ],
+   [
+    "popřít"
+   ],
+   [
+    "opřít"
+   ]
+  ],
+  "zarazit": [
+   [
+    "zastavit"
+   ],
+   [
+    "vrazit"
+   ]
+  ],
+  "zarmoutit": [
+   [
+    "sklíčit"
+   ],
+   [
+    "zklamat"
+   ]
+  ],
+  "zasadit": [
+   [
+    "zasázet"
+   ],
+   [
+    "zapustit"
+   ]
+  ],
+  "zasloužit": [
+   [
+    "zasluhovat"
+   ],
+   [
+    "být hoden"
+   ],
+   [
+    "zasloužit si"
+   ]
+  ],
+  "zastavit": [
+   [
+    "stornovat"
+   ],
+   [
+    "dát do zástavy"
+   ],
+   [
+    "zmírnit"
+   ],
+   [
+    "zarazit"
+   ],
+   [
+    "zatížit hypotékou"
+   ],
+   [
+    "odvolat"
+   ]
+  ],
+  "zastihnout": [
+   [
+    "chytit"
+   ],
+   [
+    "stihnout"
+   ],
+   [
+    "potkat"
+   ]
+  ],
+  "zastupovat": [
+   [
+    "hájit"
+   ],
+   [
+    "obhajovat"
+   ],
+   [
+    "zastoupit"
+   ]
+  ],
+  "zastínit": [
+   [
+    "zaclonit"
+   ]
+  ],
+  "zastřít": [
+   [
+    "zakrýt"
+   ],
+   [
+    "zatemnit"
+   ],
+   [
+    "zahalit"
+   ]
+  ],
+  "zasypat": [
+   [
+    "zahrnout"
+   ],
+   [
+    "zavalit"
+   ]
+  ],
+  "zasáhnout": [
+   [
+    "zakročit"
+   ],
+   [
+    "udeřit"
+   ],
+   [
+    "postihnout"
+   ],
+   [
+    "vložit se"
+   ],
+   [
+    "uhodit"
+   ],
+   [
+    "dotknout se"
+   ]
+  ],
+  "zasít": [
+   [
+    "osít"
+   ]
+  ],
+  "zatajit": [
+   [
+    "utajit"
+   ],
+   [
+    "skrýt"
+   ],
+   [
+    "zamlčet"
+   ]
+  ],
+  "zatknout": [
+   [
+    "zadržet"
+   ],
+   [
+    "sebrat"
+   ]
+  ],
+  "zaujmout": [
+   [
+    "upoutat"
+   ]
+  ],
+  "zaujímat": [
+   [
+    "zabírat"
+   ],
+   [
+    "obsazovat"
+   ]
+  ],
+  "zavalit": [
+   [
+    "zahrnout"
+   ],
+   [
+    "zasypat"
+   ]
+  ],
+  "zavazovat": [
+   [
+    "uvazovat"
+   ],
+   [
+    "vázat"
+   ],
+   [
+    "převazovat"
+   ],
+   [
+    "svazovat"
+   ],
+   [
+    "spoutávat"
+   ],
+   [
+    "svazovat"
+   ],
+   [
+    "obvazovat"
+   ],
+   [
+    "fačovat"
+   ],
+   [
+    "ovíjet"
+   ],
+   [
+    "omotávat"
+   ],
+   [
+    "ovazovat"
+   ]
+  ],
+  "zavolat": [
+   [
+    "povolat"
+   ],
+   [
+    "zakřičet"
+   ],
+   [
+    "zatelefonovat"
+   ],
+   [
+    "odvolat"
+   ],
+   [
+    "přivolat"
+   ],
+   [
+    "obeslat"
+   ],
+   [
+    "předvolat"
+   ]
+  ],
+  "zavrhnout": [
+   [
+    "popírat"
+   ],
+   [
+    "zamítnout"
+   ],
+   [
+    "zatratit"
+   ],
+   [
+    "zříci se"
+   ],
+   [
+    "odsoudit"
+   ],
+   [
+    "odmítnout"
+   ]
+  ],
+  "zavázat": [
+   [
+    "přivázat"
+   ],
+   [
+    "obvázat"
+   ],
+   [
+    "vázat"
+   ],
+   [
+    "ovázat"
+   ],
+   [
+    "svázat"
+   ]
+  ],
+  "zavést": [
+   [
+    "spustit"
+   ],
+   [
+    "uvést"
+   ],
+   [
+    "doprovodit"
+   ],
+   [
+    "zahájit"
+   ],
+   [
+    "nastolit"
+   ],
+   [
+    "vést"
+   ],
+   [
+    "inovovat"
+   ],
+   [
+    "přivést"
+   ]
+  ],
+  "zavěsit": [
+   [
+    "pověsit"
+   ],
+   [
+    "zahákovat"
+   ]
+  ],
+  "zavřít": [
+   [
+    "uzavřít"
+   ],
+   [
+    "věznit"
+   ],
+   [
+    "zamknout"
+   ],
+   [
+    "uvěznit"
+   ]
+  ],
+  "zaznamenat": [
+   [
+    "všimnout si"
+   ],
+   [
+    "zaregistrovat"
+   ],
+   [
+    "zanést"
+   ],
+   [
+    "znamenat"
+   ],
+   [
+    "zapsat"
+   ]
+  ],
+  "začínat": [
+   [
+    "nastávat"
+   ]
+  ],
+  "začít": [
+   [
+    "započít"
+   ],
+   [
+    "dát se"
+   ],
+   [
+    "pustit se"
+   ]
+  ],
+  "zařadit": [
+   [
+    "zahrnout"
+   ],
+   [
+    "založit"
+   ]
+  ],
+  "zařídit": [
+   [
+    "přizpůsobit se"
+   ],
+   [
+    "instalovat"
+   ],
+   [
+    "přizpůsobit"
+   ],
+   [
+    "zařídit se"
+   ],
+   [
+    "upravit"
+   ],
+   [
+    "namontovat"
+   ]
+  ],
+  "zašlapat": [
+   [
+    "pošlapat"
+   ]
+  ],
+  "zažít": [
+   [
+    "zkusit"
+   ],
+   [
+    "vytrpět"
+   ]
+  ],
+  "zbavit": [
+   [
+    "vzít"
+   ],
+   [
+    "očistit"
+   ],
+   [
+    "odejmout"
+   ],
+   [
+    "připravit"
+   ]
+  ],
+  "zbudovat": [
+   [
+    "vybudovat"
+   ]
+  ],
+  "zbít": [
+   [
+    "bít"
+   ],
+   [
+    "ztlouci"
+   ],
+   [
+    "tlouci"
+   ],
+   [
+    "seřezat"
+   ]
+  ],
+  "zbýt": [
+   [
+    "zůstat"
+   ]
+  ],
+  "zdeptat": [
+   [
+    "zničit"
+   ],
+   [
+    "zdrtit"
+   ],
+   [
+    "zkrušit"
+   ]
+  ],
+  "zdobit": [
+   [
+    "krášlit"
+   ]
+  ],
+  "zdržet": [
+   [
+    "zpozdit"
+   ]
+  ],
+  "zdůrazňovat": [
+   [
+    "zdůraznit"
+   ]
+  ],
+  "zemřít": [
+   [
+    "umřít"
+   ],
+   [
+    "zesnout"
+   ],
+   [
+    "dokonat"
+   ],
+   [
+    "skonat"
+   ]
+  ],
+  "zesnout": [
+   [
+    "vydechnout naposled"
+   ],
+   [
+    "zemřít"
+   ],
+   [
+    "skonat"
+   ]
+  ],
+  "zhltnout": [
+   [
+    "spořádat"
+   ]
+  ],
+  "zjistit": [
+   [
+    "prozkoumat"
+   ],
+   [
+    "najít"
+   ],
+   [
+    "odhalit"
+   ],
+   [
+    "objevit"
+   ]
+  ],
+  "zjišťovat": [
+   [
+    "prošetřovat"
+   ]
+  ],
+  "zkoumat": [
+   [
+    "prozkoumat"
+   ],
+   [
+    "prohlížet"
+   ],
+   [
+    "bádat"
+   ],
+   [
+    "prohlédnout"
+   ],
+   [
+    "probádat"
+   ]
+  ],
+  "zkoušet": [
+   [
+    "podrobit zkoušce"
+   ],
+   [
+    "pokoušet se"
+   ],
+   [
+    "vyzkoušet"
+   ]
+  ],
+  "zkrátit": [
+   [
+    "snížit"
+   ],
+   [
+    "omezit"
+   ]
+  ],
+  "zlomit": [
+   [
+    "překonat"
+   ],
+   [
+    "přelomit"
+   ],
+   [
+    "rozbít se"
+   ],
+   [
+    "lámat se"
+   ],
+   [
+    "zdrtit"
+   ],
+   [
+    "rozbít"
+   ],
+   [
+    "zlomit se"
+   ],
+   [
+    "lámat"
+   ]
+  ],
+  "zlořečit": [
+   [
+    "proklínat"
+   ]
+  ],
+  "zmizet": [
+   [
+    "vypařit se"
+   ],
+   [
+    "vzít roha"
+   ],
+   [
+    "rozplynout se"
+   ],
+   [
+    "vytratit se"
+   ],
+   [
+    "ztratit se"
+   ]
+  ],
+  "zmocnit": [
+   [
+    "oprávnit"
+   ]
+  ],
+  "změnit": [
+   [
+    "měnit se"
+   ],
+   [
+    "měnit"
+   ],
+   [
+    "přeměnit"
+   ],
+   [
+    "zrušit"
+   ],
+   [
+    "změnit se"
+   ],
+   [
+    "obměnit"
+   ],
+   [
+    "zvrátit"
+   ],
+   [
+    "proměnit"
+   ]
+  ],
+  "znamenat": [
+   [
+    "zaznamenat"
+   ],
+   [
+    "vyplývat"
+   ]
+  ],
+  "znesvětit": [
+   [
+    "pokálet"
+   ],
+   [
+    "zneuctít"
+   ],
+   [
+    "poskvrnit"
+   ],
+   [
+    "profanovat"
+   ]
+  ],
+  "zničit": [
+   [
+    "vyhladit"
+   ],
+   [
+    "zruinovat"
+   ],
+   [
+    "zdeptat"
+   ],
+   [
+    "potopit"
+   ],
+   [
+    "rozdrtit"
+   ],
+   [
+    "zahladit"
+   ],
+   [
+    "porazit"
+   ],
+   [
+    "zdrtit"
+   ],
+   [
+    "zdolat"
+   ],
+   [
+    "anulovat"
+   ],
+   [
+    "ničit"
+   ],
+   [
+    "podkopat"
+   ],
+   [
+    "zpustošit"
+   ],
+   [
+    "zkazit"
+   ],
+   [
+    "ruinovat"
+   ],
+   [
+    "rozrušit"
+   ],
+   [
+    "zmařit"
+   ],
+   [
+    "vyvrátit"
+   ],
+   [
+    "přemoci"
+   ],
+   [
+    "zdemolovat"
+   ],
+   [
+    "strávit"
+   ],
+   [
+    "pustošit"
+   ]
+  ],
+  "znát": [
+   [
+    "umět"
+   ],
+   [
+    "rozumět"
+   ]
+  ],
+  "znít": [
+   [
+    "hrát"
+   ],
+   [
+    "zvučet"
+   ],
+   [
+    "zaznívat"
+   ],
+   [
+    "zvonit"
+   ],
+   [
+    "rozléhat se"
+   ],
+   [
+    "rezonovat"
+   ]
+  ],
+  "zobrazit": [
+   [
+    "popsat"
+   ],
+   [
+    "znázornit"
+   ],
+   [
+    "vylíčit"
+   ],
+   [
+    "vyobrazit"
+   ]
+  ],
+  "zplodit": [
+   [
+    "rodit"
+   ],
+   [
+    "být otcem"
+   ],
+   [
+    "zrodit"
+   ],
+   [
+    "plodit"
+   ]
+  ],
+  "zpívat": [
+   [
+    "pět"
+   ]
+  ],
+  "způsobit": [
+   [
+    "navodit"
+   ],
+   [
+    "zapříčinit"
+   ],
+   [
+    "vyvolat"
+   ],
+   [
+    "přivodit"
+   ],
+   [
+    "být příčinou"
+   ],
+   [
+    "podnítit"
+   ]
+  ],
+  "zradit": [
+   [
+    "podvést"
+   ]
+  ],
+  "zrodit": [
+   [
+    "rodit"
+   ],
+   [
+    "zplodit"
+   ],
+   [
+    "plodit"
+   ]
+  ],
+  "zrušit": [
+   [
+    "stornovat"
+   ],
+   [
+    "změnit"
+   ],
+   [
+    "rušit"
+   ],
+   [
+    "anulovat"
+   ],
+   [
+    "zvrátit"
+   ],
+   [
+    "odvolat"
+   ],
+   [
+    "potlačit"
+   ],
+   [
+    "prohlásit za neplatný"
+   ],
+   [
+    "vzít zpět"
+   ],
+   [
+    "vyloučit"
+   ]
+  ],
+  "ztratit": [
+   [
+    "prodělat"
+   ]
+  ],
+  "ztrestat": [
+   [
+    "trestat"
+   ],
+   [
+    "potrestat"
+   ]
+  ],
+  "zvednout": [
+   [
+    "nadzvednout"
+   ],
+   [
+    "zvednout se"
+   ],
+   [
+    "pozdvihnout"
+   ],
+   [
+    "zdvihnout"
+   ],
+   [
+    "nadzvednout se"
+   ],
+   [
+    "zdvihnout se"
+   ],
+   [
+    "pozvednout"
+   ]
+  ],
+  "zveřejnit": [
+   [
+    "uveřejnit"
+   ]
+  ],
+  "zvolat": [
+   [
+    "křičet"
+   ],
+   [
+    "vykřiknout"
+   ]
+  ],
+  "zvolit": [
+   [
+    "vyvolit"
+   ]
+  ],
+  "zvyknout": [
+   [
+    "uvyknout"
+   ],
+   [
+    "zvyknout si"
+   ],
+   [
+    "navyknout si"
+   ],
+   [
+    "přivyknout"
+   ],
+   [
+    "navyknout"
+   ]
+  ],
+  "zvítězit": [
+   [
+    "vyhrát"
+   ],
+   [
+    "překonat"
+   ]
+  ],
+  "zvěstovat": [
+   [
+    "ohlásit"
+   ],
+   [
+    "oznámit"
+   ]
+  ],
+  "záležet": [
+   [
+    "záviset"
+   ],
+   [
+    "spočívat"
+   ]
+  ],
+  "zápasit": [
+   [
+    "vést boj"
+   ],
+   [
+    "zápolit"
+   ],
+   [
+    "bojovat"
+   ],
+   [
+    "potýkat se"
+   ],
+   [
+    "rvát se"
+   ]
+  ],
+  "závidět": [
+   [
+    "nepřát"
+   ]
+  ],
+  "záviset": [
+   [
+    "záležet"
+   ]
+  ],
+  "zářit": [
+   [
+    "vynikat"
+   ],
+   [
+    "lesknout se"
+   ],
+   [
+    "třpytit se"
+   ],
+   [
+    "blyštět se"
+   ],
+   [
+    "vyzařovat"
+   ],
+   [
+    "mít úspěch"
+   ]
+  ],
+  "získat": [
+   [
+    "sehnat"
+   ],
+   [
+    "dosáhnout"
+   ],
+   [
+    "nabýt"
+   ],
+   [
+    "vyhrát"
+   ],
+   [
+    "zajistit si"
+   ],
+   [
+    "vytěžit"
+   ],
+   [
+    "opatřit"
+   ],
+   [
+    "čerpat"
+   ],
+   [
+    "vydělat"
+   ],
+   [
+    "opatřit si"
+   ]
+  ],
+  "zůstat": [
+   [
+    "přetrvat"
+   ],
+   [
+    "zůstávat"
+   ],
+   [
+    "zbýt"
+   ],
+   [
+    "pobýt"
+   ],
+   [
+    "setrvat"
+   ]
+  ],
+  "zůstávat": [
+   [
+    "zůstat"
+   ]
+  ],
+  "úpět": [
+   [
+    "hekat"
+   ],
+   [
+    "sténat"
+   ]
+  ],
+  "účtovat": [
+   [
+    "počítat"
+   ],
+   [
+    "fakturovat"
+   ]
+  ],
+  "čekat": [
+   [
+    "očekávat",
+    "vyčkávat"
+   ],
+   [
+    "odkládat co",
+    "odsunovat",
+    "otálet"
+   ],
+   [
+    "nadít se čeho",
+    "doufat",
+    "tušit"
+   ],
+   [
+    "nastávat",
+    "stát co před kým"
+   ]
+  ],
+  "čerpat": [
+   [
+    "načerpat"
+   ],
+   [
+    "pumpovat"
+   ],
+   [
+    "získat"
+   ]
+  ],
+  "čest": [
+   [
+    "počestnost",
+    "řádnost"
+   ],
+   [
+    "pocta",
+    "počest",
+    "vyznamenání"
+   ],
+   [
+    "úcta",
+    "vážnost"
+   ],
+   [
+    "neposkvrněnost",
+    "nevinnost",
+    "poctivost",
+    "bezúhonnost"
+   ]
+  ],
+  "činit": [
+   [
+    "dělat co",
+    "konat",
+    "působit",
+    "provádět"
+   ],
+   [
+    "rovnat se",
+    "dosahovat"
+   ],
+   [
+    "hubovat koho",
+    "plísnit"
+   ],
+   [
+    "vyvádět",
+    "řádit"
+   ]
+  ],
+  "číhat": [
+   [
+    "čekat na koho nebo na co",
+    "vyčkávat",
+    "slídit po čem"
+   ]
+  ],
+  "číst": [
+   [
+    "pročítat co"
+   ],
+   [
+    "rozpoznávat",
+    "uhadovat",
+    "domýšlet si co"
+   ],
+   [
+    "předčítat co komu",
+    "číst co nahlas"
+   ]
+  ],
+  "řadit": [
+   [
+    "třídit",
+    "zařazovat",
+    "seřazovat"
+   ],
+   [
+    "měnit",
+    "přehazovat"
+   ]
+  ],
+  "říci": [
+   [
+    "povědět"
+   ],
+   [
+    "přikázat"
+   ],
+   [
+    "sdělit"
+   ],
+   [
+    "formulovat"
+   ],
+   [
+    "říkat"
+   ],
+   [
+    "vyjádřit"
+   ],
+   [
+    "nařídit"
+   ],
+   [
+    "prozradit"
+   ]
+  ],
+  "řídit": [
+   [
+    "obsluhovat"
+   ],
+   [
+    "navigovat"
+   ],
+   [
+    "dirigovat"
+   ],
+   [
+    "ovládat"
+   ],
+   [
+    "regulovat"
+   ],
+   [
+    "vést"
+   ],
+   [
+    "usměrňovat"
+   ],
+   [
+    "spravovat"
+   ]
+  ],
+  "říkat": [
+   [
+    "povídat",
+    "vyprávět",
+    "vyslovovat"
+   ],
+   [
+    "přikazovat",
+    "oznamovat"
+   ]
+  ],
+  "šetřit": [
+   [
+    "uspořit"
+   ],
+   [
+    "spořit"
+   ],
+   [
+    "vyšetřovat"
+   ],
+   [
+    "skrblit"
+   ]
+  ],
+  "šlapat": [
+   [
+    "šlápnout"
+   ],
+   [
+    "pošlapat"
+   ]
+  ],
+  "šlehat": [
+   [
+    "švihat"
+   ]
+  ],
+  "šířit": [
+   [
+    "rozšiřovat"
+   ],
+   [
+    "propagovat"
+   ],
+   [
+    "vydávat"
+   ]
+  ],
+  "žasnout": [
+   [
+    "divit se"
+   ]
+  ],
+  "žehnat": [
+   [
+    "požehnat"
+   ]
+  ],
+  "žena": [
+   [
+    "manželka"
+   ]
+  ],
+  "živit": [
+   [
+    "vyživovat"
+   ],
+   [
+    "krmit"
+   ],
+   [
+    "vychovat"
+   ],
+   [
+    "vydržovat"
+   ]
+  ],
+  "žrát": [
+   [
+    "jíst"
+   ],
+   [
+    "trápit"
+   ],
+   [
+    "živit se"
+   ],
+   [
+    "požírat"
+   ]
+  ],
+  "žádat": [
+   [
+    "vyžadovat"
+   ],
+   [
+    "požadovat"
+   ],
+   [
+    "prosit"
+   ]
+  ],
+  "žít": [
+   [
+    "být"
+   ],
+   [
+    "existovat"
+   ]
+  ],
+  "žíznit": [
+   [
+    "toužit"
+   ]
+  ]
+ },
+ "pred_fold": {
+  "akceptovat": "uznat",
+  "aspirovat": "usilovat",
+  "bažit": "dychtit",
+  "bezúhonnost": "čest",
+  "bloumat": "bloudit",
+  "blít": "vrhnout",
+  "bodat": "trápit",
+  "bodnout": "probodnout",
+  "brblat": "reptat",
+  "brečet": "plakat",
+  "bystřit": "cvičit",
+  "bádat": "zkoumat",
+  "cejchovat": "označovat",
+  "chlapec": "syn",
+  "chlastat": "pít",
+  "chlápek": "muž",
+  "choť": "manželka",
+  "chrápat": "spát",
+  "clonit": "halit",
+  "debatovat": "diskutovat",
+  "dedikovat": "věnovat",
+  "definovat": "formulovat",
+  "deklamovat": "recitovat",
+  "demaskovat": "odhalit",
+  "denotovat": "označovat",
+  "designovat": "označovat",
+  "diferencovat": "odlišit",
+  "docílit": "dosáhnout",
+  "dodělat": "dokončit",
+  "dohnat": "donutit",
+  "dohotovit": "dokončit",
+  "dojmout": "hnout",
+  "dolovat": "dobývat",
+  "doložit": "citovat",
+  "dosednout": "přistát",
+  "dostačit": "postačit",
+  "doznat": "přiznat",
+  "drancovat": "vyplenit",
+  "druh": "přítel",
+  "drásat": "rvát",
+  "dávit": "vrhnout",
+  "dávkovat": "naměřit",
+  "emancipovat": "osvobodit",
+  "excelovat": "vynikat",
+  "fakturovat": "účtovat",
+  "fantazírovat": "snít",
+  "fačovat": "zavazovat",
+  "filmovat": "natočit",
+  "flákat": "bít",
+  "foukat": "vát",
+  "glorifikovat": "oslavovat",
+  "halasit": "hlaholit",
+  "hanobit": "osočovat",
+  "hanět": "tupit",
+  "hlasovat": "volit",
+  "hlídkovat": "hlídat",
+  "hubičkovat": "líbat",
+  "hubovat": "kárat",
+  "impregnovat": "nasytit",
+  "infikovat": "nakazit",
+  "inovovat": "zavést",
+  "instalovat": "zařídit",
+  "iritovat": "dráždit",
+  "ječet": "křičet",
+  "jitřit": "dráždit",
+  "kalkulovat": "počítat",
+  "kamarád": "přítel",
+  "kapat": "kanout",
+  "katalogizovat": "sepsat",
+  "klapat": "fungovat",
+  "klepat": "třást",
+  "komponovat": "skládat",
+  "konstituovat": "ustavit",
+  "korelovat": "souviset",
+  "kout": "kovat",
+  "kroužit": "obíhat",
+  "krášlit": "zdobit",
+  "kuchtit": "vařit",
+  "kvílet": "naříkat",
+  "kymácet": "házet",
+  "kňourat": "naříkat",
+  "lahodit": "lichotit",
+  "lapit": "chytit",
+  "levitovat": "létat",
+  "likvidovat": "odstranit",
+  "lomcovat": "házet",
+  "lítat": "běhat",
+  "malomyslnět": "klesat",
+  "maminka": "matka",
+  "mamka": "matka",
+  "maskovat": "skrýt",
+  "matička": "matka",
+  "mládenec": "muž",
+  "modernizovat": "obnovit",
+  "monitorovat": "sledovat",
+  "motivovat": "podnítit",
+  "mrskat": "bičovat",
+  "mrsknout": "hodit",
+  "máma": "matka",
+  "mást": "plést",
+  "mýlit": "plést",
+  "mřít": "umírat",
+  "nachytat": "chytit",
+  "nadchnout": "uchvátit",
+  "nadzvednout": "zvednout",
+  "nadávat": "reptat",
+  "nakroutit": "natočit",
+  "naladit": "nasadit",
+  "namontovat": "zařídit",
+  "nanášet": "klást",
+  "naplavit": "usadit",
+  "napustit": "nasytit",
+  "napíchnout": "nabodnout",
+  "narůstat": "růst",
+  "nasednout": "nastoupit",
+  "naskákat": "vyrazit",
+  "naslinit": "namočit",
+  "naspořit": "ušetřit",
+  "nastínit": "naznačit",
+  "nastřádat": "ušetřit",
+  "nasávat": "pít",
+  "navlhčit": "namočit",
+  "navléci": "obléci",
+  "navyknout": "zvyknout",
+  "načrtnout": "naznačit",
+  "nařknout": "obvinit",
+  "našetřit": "ušetřit",
+  "nemít": "postrádat",
+  "neposkvrněnost": "čest",
+  "nepřát": "závidět",
+  "nesouhlasit": "odporovat",
+  "neuposlechnout": "vzdorovat",
+  "nevinnost": "čest",
+  "obejmout": "sevřít",
+  "obeznámit": "seznámit",
+  "obměňovat": "měnit",
+  "obrácení": "obrat",
+  "obsazovat": "zaujímat",
+  "obvázat": "zavázat",
+  "ochutnat": "okusit",
+  "ocitovat": "citovat",
+  "odbíjet": "bít",
+  "oddělat": "odstranit",
+  "odehnat": "zahnat",
+  "odeslat": "poslat",
+  "odfrčet": "odletět",
+  "odkapávat": "unikat",
+  "odkvapit": "odletět",
+  "odmontovat": "sejmout",
+  "odmrštit": "odmítnout",
+  "odnít": "odejmout",
+  "odplavit": "odnést",
+  "odposlouchávat": "sledovat",
+  "odpálit": "vystřelit",
+  "odrovnat": "porazit",
+  "odskočit": "odletět",
+  "odskákat": "odnést",
+  "odspěchat": "odletět",
+  "odstartovat": "zahájit",
+  "odstoupit": "ustoupit",
+  "odstrčit": "odtáhnout",
+  "odsunovat": "čekat",
+  "odvinout": "rozvinout",
+  "odvléci": "odtáhnout",
+  "odvázat": "rozvázat",
+  "odčinit": "nahradit",
+  "odřezat": "oddělit",
+  "odškodnit": "nahradit",
+  "okouzlit": "uchvátit",
+  "okrást": "vyloupit",
+  "okukovat": "hledět",
+  "oloupit": "vyloupit",
+  "omotávat": "zavazovat",
+  "opovrhovat": "pohrdat",
+  "opravit": "obnovit",
+  "oprávnit": "zmocnit",
+  "oschnout": "uschnout",
+  "oslnit": "uchvátit",
+  "osvěžit": "posílit",
+  "osít": "zasít",
+  "otálet": "čekat",
+  "ovazovat": "zavazovat",
+  "ovíjet": "zavazovat",
+  "očarovat": "uchvátit",
+  "očernit": "pošpinit",
+  "oškubat": "obrat",
+  "oživit": "obnovit",
+  "plýtvat": "rozhazovat",
+  "pobavit": "rozptýlit",
+  "pobodat": "probodnout",
+  "pobízet": "napomínat",
+  "pochlebovat": "lichotit",
+  "pocta": "čest",
+  "poctivost": "čest",
+  "podceňovat": "snižovat",
+  "podkopat": "zničit",
+  "podkuřovat": "lichotit",
+  "podráždit": "dráždit",
+  "podvádět": "klamat",
+  "podvést": "zradit",
+  "podřadit": "podřídit",
+  "pohasnout": "slábnout",
+  "pohodit": "hodit",
+  "pohánět": "hnát",
+  "poházet": "rozházet",
+  "pojit": "spojovat",
+  "pojmenovávat": "označovat",
+  "poklekat": "klekat",
+  "polapit": "chytit",
+  "poletovat": "létat",
+  "pomluvit": "pošpinit",
+  "poprosit": "požádat",
+  "popíchnout": "podnítit",
+  "popřít": "zapřít",
+  "porůst": "obrůst",
+  "posoudit": "soudit",
+  "postrašit": "vyděsit",
+  "povykovat": "hlaholit",
+  "pozměňovat": "měnit",
+  "poznamenávat": "označovat",
+  "počest": "čest",
+  "počestnost": "čest",
+  "poškodit": "polámat",
+  "praotec": "děd",
+  "probrat": "projít",
+  "probádat": "zkoumat",
+  "probírat": "rozebírat",
+  "prodloužit": "protáhnout",
+  "profanovat": "znesvětit",
+  "prohlížet": "zkoumat",
+  "projet": "proběhnout",
+  "proklamovat": "prohlašovat",
+  "prokouknout": "prohlédnout",
+  "promarnit": "rozházet",
+  "promrhat": "rozházet",
+  "proměřit": "měřit",
+  "propagovat": "šířit",
+  "propočítat": "počítat",
+  "propíchnout": "probodnout",
+  "prosadit": "uplatnit",
+  "prosakovat": "téci",
+  "proslovit": "pronést",
+  "prozradit": "říci",
+  "prošetřovat": "zjišťovat",
+  "prát": "vyprat",
+  "pulsovat": "proudit",
+  "pumpovat": "čerpat",
+  "pět": "zpívat",
+  "předpisovat": "přikazovat",
+  "předpovídat": "prorokovat",
+  "předvídat": "předpovědět",
+  "přehazovat": "řadit",
+  "přehlížet": "pohrdat",
+  "přehnout": "přeložit",
+  "přelomit": "zlomit",
+  "přeprat": "vyprat",
+  "přepravit": "dopravit",
+  "přestrojit": "převléknout",
+  "přesáhnout": "překročit",
+  "přesídlit": "přestěhovat",
+  "převazovat": "zavazovat",
+  "převládat": "převažovat",
+  "převrácení": "obrat",
+  "převrátit": "obrátit",
+  "převézt": "dopravit",
+  "přečnívat": "přesahovat",
+  "přidružit": "připojit",
+  "přidělovat": "určovat",
+  "přikročit": "přistoupit",
+  "přilepit": "připevnit",
+  "přimontovat": "připevnit",
+  "připíchnout": "připevnit",
+  "přislíbit": "slíbit",
+  "přisoudit": "přiznat",
+  "přisuzovat": "připisovat",
+  "přitahovat": "lákat",
+  "přivyknout": "zvyknout",
+  "přizpůsobit": "zařídit",
+  "přičlenit": "připojit",
+  "přičítat": "připisovat",
+  "přítelkyně": "přítel",
+  "rachotit": "dunět",
+  "ratifikovat": "potvrdit",
+  "recenzovat": "posuzovat",
+  "regulovat": "řídit",
+  "rekapitulovat": "shrnout",
+  "remcat": "reptat",
+  "renovovat": "obnovit",
+  "reprezentovat": "představovat",
+  "respektovat": "uznávat",
+  "restaurovat": "obnovit",
+  "rezonovat": "znít",
+  "rozebrat": "analyzovat",
+  "rozepnout": "rozvázat",
+  "rozeznat": "rozpoznat",
+  "rozhořčit": "pobouřit",
+  "rozjet": "rozběhnout",
+  "rozkecávat": "rozhlašovat",
+  "rozkouskovat": "rozdělit",
+  "rozmačkat": "rozdrtit",
+  "rozmontovávat": "rozebírat",
+  "rozmotat": "rozvázat",
+  "roznášet": "rozhlašovat",
+  "roznítit": "podnítit",
+  "rozparcelovat": "rozdělit",
+  "rozpárat": "roztrhnout",
+  "rozrušit": "zničit",
+  "rozsypat": "rozházet",
+  "roztrousit": "rozházet",
+  "roztrubovat": "rozhlašovat",
+  "roztřískat": "rozbít",
+  "rozvrhnout": "rozdělit",
+  "rozvést": "rozvinout",
+  "rozčilovat": "dráždit",
+  "rozčílit": "rozhněvat",
+  "rozšněrovat": "rozvázat",
+  "schlamstnout": "sežrat",
+  "schrastit": "sehnat",
+  "schraňovat": "střádat",
+  "servat": "strhnout",
+  "sesbírat": "sebrat",
+  "seřazovat": "řadit",
+  "seřezat": "zbít",
+  "seřídit": "nastavit",
+  "signalizovat": "naznačovat",
+  "signovat": "podepsat",
+  "situovat": "umístit",
+  "sjednotit": "spojit",
+  "sklíčit": "zarmoutit",
+  "skrblit": "šetřit",
+  "sloučit": "spojit",
+  "smíchat": "smísit",
+  "smýt": "umýt",
+  "spoutávat": "zavazovat",
+  "spořit": "šetřit",
+  "spořádat": "zhltnout",
+  "stisknout": "sevřít",
+  "stopovat": "sledovat",
+  "strašit": "děsit",
+  "strkat": "tlačit",
+  "strpět": "snést",
+  "substituovat": "nahradit",
+  "sušit": "uschnout",
+  "svalit": "skácet",
+  "synek": "syn",
+  "tatík": "otec",
+  "telefonovat": "volat",
+  "tepat": "tlouci",
+  "tkát": "utkat",
+  "tlouct": "bít",
+  "točit": "obíhat",
+  "transportovat": "dopravit",
+  "trhnout": "vytrhnout",
+  "těkat": "prchat",
+  "třepat": "třást",
+  "třídit": "řadit",
+  "třískat": "tlouci",
+  "ubezpečit": "přesvědčit",
+  "ubrat": "odebrat",
+  "ubíhat": "plynout",
+  "uchopovat": "brát",
+  "udit": "nakládat",
+  "udivit": "překvapit",
+  "udupat": "pošlapat",
+  "uhadovat": "číst",
+  "uhodnout": "poznat",
+  "ujasnit": "vysvětlit",
+  "uklidňovat": "rozebírat",
+  "ukřivdit": "ublížit",
+  "ulamovat": "urážet",
+  "ulpívat": "lpět",
+  "upalovat": "letět",
+  "urazit": "ujít",
+  "useknout": "utnout",
+  "uspořit": "šetřit",
+  "usušit": "uschnout",
+  "utužit": "upevnit",
+  "utěsnit": "uzavřít",
+  "utřít": "otřít",
+  "uvazovat": "zavazovat",
+  "uvyknout": "zvyknout",
+  "uvázat": "svázat",
+  "uváznout": "uvíznout",
+  "ušlapat": "pošlapat",
+  "ušpinit": "pošpinit",
+  "uštípávat": "urážet",
+  "vadnout": "uvadat",
+  "velikost": "vzrůst",
+  "vláčet": "vléci",
+  "vplétat": "plést",
+  "vpravit": "dostat",
+  "vpustit": "pustit",
+  "vroubit": "obklopovat",
+  "vrzat": "skřípat",
+  "vršit": "kupit",
+  "vsunout": "vložit",
+  "vtlačit": "vtisknout",
+  "vychovat": "živit",
+  "vydrancovat": "vyplenit",
+  "vydráždit": "dráždit",
+  "vydržovat": "živit",
+  "vyhrknout": "vykřiknout",
+  "vyhrožovat": "hrozit",
+  "vyhubit": "vyhladit",
+  "vyjasnit": "objasnit",
+  "vyjmenovat": "jmenovat",
+  "vyklidit": "uvolnit",
+  "vykopnout": "vyhnat",
+  "vykácet": "vymýtit",
+  "vyladit": "obnovit",
+  "vymetat": "vymítat",
+  "vymámit": "vytáhnout",
+  "vynahradit": "nahradit",
+  "vynalézt": "objevit",
+  "vyndat": "vyjmout",
+  "vypnout": "napnout",
+  "vypočítat": "počítat",
+  "vyprovokovat": "dráždit",
+  "vyprázdnit": "vylít",
+  "vysednout": "vystoupit",
+  "vystopovat": "sledovat",
+  "vystát": "snést",
+  "vystěhovat": "vyhnat",
+  "vystříknout": "vytrysknout",
+  "vytlačit": "nahradit",
+  "vytyčovat": "určovat",
+  "vyvážit": "vyrovnat",
+  "vyzařovat": "zářit",
+  "vyznamenání": "čest",
+  "vyznačit": "označit",
+  "vyzradit": "vynést",
+  "vyčnívat": "vystupovat",
+  "vyřezat": "vytesat",
+  "vyšetřovat": "šetřit",
+  "vyškubnout": "vytrhnout",
+  "vyšňořit": "vystrojit",
+  "vyživovat": "živit",
+  "vzdělávat": "cvičit",
+  "vzkřiknout": "vykřiknout",
+  "vábit": "lákat",
+  "válet": "valit",
+  "vášeň": "láska",
+  "vážnost": "čest",
+  "výt": "naříkat",
+  "výška": "vzrůst",
+  "včlenit": "zapojit",
+  "větřit": "tušit",
+  "věznit": "zavřít",
+  "věštit": "prorokovat",
+  "vřískat": "křičet",
+  "vřít": "bouřit",
+  "vštípit": "vtisknout",
+  "zabednit": "uzavřít",
+  "zabočit": "odbočit",
+  "zabírat": "zaujímat",
+  "zaclonit": "zastínit",
+  "zadržet": "zatknout",
+  "zahnout": "odbočit",
+  "zahákovat": "zavěsit",
+  "zaječet": "křičet",
+  "zaklínat": "zapřísahat",
+  "zakopnout": "klopýtnout",
+  "zakoupit": "koupit",
+  "zakročit": "zasáhnout",
+  "zalepit": "uzavřít",
+  "zamluvit": "zajistit",
+  "zamlčet": "zatajit",
+  "zamlčovat": "tajit",
+  "zapalovat": "klást",
+  "zapovědět": "zakázat",
+  "zapříčinit": "způsobit",
+  "zapůjčit": "půjčit",
+  "zareagovat": "reagovat",
+  "zaregistrovat": "zaznamenat",
+  "zarůst": "obrůst",
+  "zaskočit": "zapadnout",
+  "zaskřípat": "skřípat",
+  "zastoupit": "zastupovat",
+  "zasázet": "zasadit",
+  "zatelefonovat": "zavolat",
+  "zatemnit": "zastřít",
+  "zatočit": "odbočit",
+  "zatratit": "zavrhnout",
+  "zavařovat": "nakládat",
+  "zavrhovat": "odmítat",
+  "zavrzat": "skřípat",
+  "zavřískat": "křičet",
+  "zaznívat": "znít",
+  "zaútočit": "napadnout",
+  "začlenit": "zapojit",
+  "zařazovat": "řadit",
+  "zašpinit": "pošpinit",
+  "zbičovat": "bičovat",
+  "zchátrat": "klesnout",
+  "zdrhnout": "nabrat",
+  "zdůraznit": "zdůrazňovat",
+  "země": "stát",
+  "zhustit": "shrnout",
+  "zkazit": "zničit",
+  "zklamat": "zarmoutit",
+  "zklidnit": "uklidnit",
+  "zkomponovat": "skládat",
+  "zkostnatět": "ustrnout",
+  "zkrušit": "zdeptat",
+  "zlevnit": "srazit",
+  "zlákat": "svést",
+  "zlézt": "vylézt",
+  "zmalomyslnět": "klesnout",
+  "zmařit": "zničit",
+  "zmenšit": "ubývat",
+  "zmrazit": "nakládat",
+  "zmrskat": "bičovat",
+  "zmírnit": "zastavit",
+  "značit": "označovat",
+  "znemožnit": "zabránit",
+  "zostudit": "potupit",
+  "zpečetit": "potvrdit",
+  "zpozdit": "zdržet",
+  "zpražit": "usadit",
+  "zrenovovat": "obnovit",
+  "zrestaurovat": "obnovit",
+  "zrovnoprávnit": "osvobodit",
+  "zruinovat": "zničit",
+  "ztrhat": "kritizovat",
+  "zuřit": "bouřit",
+  "zvládnout": "provést",
+  "zvrat": "obrat",
+  "zvětšit": "rozmnožit",
+  "zvětšování": "růst",
+  "zírat": "hledět",
+  "zúžit": "stáhnout",
+  "zřasit": "nabrat",
+  "zřít": "vidět",
+  "úcta": "čest",
+  "česat": "sbírat",
+  "čistit": "umýt",
+  "člověk": "muž",
+  "čnít": "strmět",
+  "čpět": "páchnout",
+  "čučet": "vidět",
+  "řádit": "činit",
+  "řádnost": "čest",
+  "šatit": "oblékat",
+  "šidit": "klamat",
+  "škrtnout": "vymazat",
+  "škubnout": "vytrhnout",
+  "šponovat": "napínat",
+  "štípnout": "sebrat",
+  "švihat": "šlehat"
+ },
+ "predikaty": [
+  "Nenič",
+  "Nežen",
+  "absolvovat",
+  "absorbovat",
+  "adaptovat",
+  "adresovat",
+  "akcentovat",
+  "amputovat",
+  "analyzovat",
+  "anticipovat",
+  "aplikovat",
+  "argumentovat",
+  "balzamovat",
+  "bdít",
+  "berit",
+  "berát",
+  "bilancovat",
+  "bičovat",
+  "blahoslavit",
+  "blažit",
+  "bloudit",
+  "blyštit",
+  "blížit",
+  "bohatnout",
+  "boj",
+  "bojovat",
+  "bortit",
+  "boukat",
+  "bouřit",
+  "bovat",
+  "bořit",
+  "bratr",
+  "brodit",
+  "bránit",
+  "brát",
+  "budit",
+  "budovat",
+  "burácet",
+  "bydlet",
+  "bydlit",
+  "bát",
+  "bít",
+  "být",
+  "býzt",
+  "běda",
+  "bědovat",
+  "běhat",
+  "běsnit",
+  "běžet",
+  "běžíet",
+  "cedit",
+  "cenit",
+  "cestovat",
+  "charakterizovat",
+  "chlubit",
+  "chodit",
+  "chodívat",
+  "chopit",
+  "chovat",
+  "chrat",
+  "chrlit",
+  "chránit",
+  "chrát",
+  "chtít",
+  "chvalit",
+  "chvat",
+  "chválit",
+  "chválívat",
+  "chvástat",
+  "chvát",
+  "chvít",
+  "chvět",
+  "chybovat",
+  "chybět",
+  "chystat",
+  "chytit",
+  "chyť",
+  "chápat",
+  "chát",
+  "chátrat",
+  "chýlit",
+  "chřadnout",
+  "citovat",
+  "cizoložit",
+  "couvnout",
+  "ctit",
+  "ctít",
+  "cvičit",
+  "cválat",
+  "cítit",
+  "darovat",
+  "datovat",
+  "dařit",
+  "dbát",
+  "dcera",
+  "debutovat",
+  "dechnout",
+  "decimovat",
+  "degenerovat",
+  "demonstrovat",
+  "demystifikovat",
+  "deptat",
+  "destruovat",
+  "determinovat",
+  "diagnostikovat",
+  "diktovat",
+  "diskutovat",
+  "disponovat",
+  "divit",
+  "dobrořeč",
+  "dobrořečit",
+  "dobýt",
+  "dobývat",
+  "dochovat",
+  "docházet",
+  "dodat",
+  "dodržet",
+  "dodržovat",
+  "dodávat",
+  "dohadovat",
+  "dohasínat",
+  "dohlížet",
+  "dohodnout",
+  "dojet",
+  "dojít",
+  "dokazovat",
+  "dokládat",
+  "dokonat",
+  "dokonávat",
+  "dokončit",
+  "dokumentovat",
+  "dokázat",
+  "dolehnout",
+  "dolomit",
+  "doléhat",
+  "domlouvat",
+  "domluvit",
+  "domnívat",
+  "donout",
+  "donutit",
+  "donést",
+  "dopadnout",
+  "dopisovat",
+  "doplatit",
+  "doplnit",
+  "doplout",
+  "doplácet",
+  "doplňovat",
+  "dopomoci",
+  "dopomozit",
+  "dopomáhat",
+  "doporučit",
+  "doporučovat",
+  "dopouštět",
+  "dopravit",
+  "doprovodit",
+  "doprovázet",
+  "dopsat",
+  "dopustit",
+  "dopřat",
+  "dopřát",
+  "dopřávat",
+  "dopřít",
+  "dorazit",
+  "dorůst",
+  "dorůstat",
+  "dosadit",
+  "dosahovat",
+  "dosedat",
+  "doslechnout",
+  "doslýchat",
+  "dospívat",
+  "dospět",
+  "dostat",
+  "dostavit",
+  "dostavovat",
+  "dostihnout",
+  "dostávat",
+  "dosvědčit",
+  "dosvědčovat",
+  "dosáhnout",
+  "dotazovat",
+  "dotknout",
+  "dotvrzovat",
+  "dotázat",
+  "dotýkat",
+  "doufat",
+  "dovet",
+  "dovolit",
+  "dovolovat",
+  "dovolávat",
+  "dovozovat",
+  "dovršit",
+  "dovršovat",
+  "dovážet",
+  "dovést",
+  "dovézt",
+  "dovědět",
+  "doznávat",
+  "doznít",
+  "doznívat",
+  "dozrát",
+  "dozrávat",
+  "dozvídat",
+  "dozvědět",
+  "dozírat",
+  "dočkat",
+  "dožadovat",
+  "dožít",
+  "dožívat",
+  "drtit",
+  "dráždit",
+  "držet",
+  "dunět",
+  "dusit",
+  "dychtit",
+  "dát",
+  "dávat",
+  "dít",
+  "dívat",
+  "dýmat",
+  "děd",
+  "děkovat",
+  "dělat",
+  "dělit",
+  "děsit",
+  "dřit",
+  "dřímat",
+  "důvěřovat",
+  "eliminovat",
+  "emigrovat",
+  "etablovat",
+  "evidovat",
+  "evokovat",
+  "existovat",
+  "falšovat",
+  "fixovat",
+  "formovat",
+  "formulovat",
+  "fungovat",
+  "fárat",
+  "gratulovat",
+  "halit",
+  "hanbit",
+  "hasit",
+  "hasnout",
+  "hatit",
+  "hemžit",
+  "heoci",
+  "hladovět",
+  "hlaholit",
+  "hledat",
+  "hledit",
+  "hledávat",
+  "hledět",
+  "hlet",
+  "hleď",
+  "hlučit",
+  "hlásat",
+  "hlásit",
+  "hlídat",
+  "hnat",
+  "hnisat",
+  "hnout",
+  "hnusit",
+  "hnát",
+  "hnízdit",
+  "hněvat",
+  "hodit",
+  "hodlat",
+  "hodnotit",
+  "hodovat",
+  "honit",
+  "honosit",
+  "horlit",
+  "hospodařit",
+  "hovořit",
+  "hořet",
+  "hrnout",
+  "hromadit",
+  "hroutit",
+  "hrozit",
+  "hryzat",
+  "hrát",
+  "hučet",
+  "hynout",
+  "hádat",
+  "hájit",
+  "hárat",
+  "házat",
+  "házet",
+  "hýřit",
+  "hřešit",
+  "hřmotit",
+  "hřmět",
+  "ilustrovat",
+  "imponovat",
+  "informovat",
+  "inspirovat",
+  "integrovat",
+  "investovat",
+  "jednat",
+  "jet",
+  "jevit",
+  "jezdit",
+  "jezit",
+  "jmenovat",
+  "jásat",
+  "jídat",
+  "jídávat",
+  "jímat",
+  "jíst",
+  "jít",
+  "kalit",
+  "kamenovat",
+  "kandidovat",
+  "kanout",
+  "kanut",
+  "kažit",
+  "kladat",
+  "kladit",
+  "kladnout",
+  "klamat",
+  "klamit",
+  "klanit",
+  "klanějt",
+  "klanět",
+  "klekat",
+  "kleknout",
+  "klenout",
+  "klesat",
+  "klesnout",
+  "klevetit",
+  "klnout",
+  "klopýtat",
+  "klopýtnout",
+  "klást",
+  "kojit",
+  "kolovat",
+  "kolísat",
+  "kombinovat",
+  "komentovat",
+  "kompenzovat",
+  "komplikovat",
+  "komunikovat",
+  "konat",
+  "konejšit",
+  "konfrontovat",
+  "kontrastovat",
+  "kontrolovat",
+  "konvertovat",
+  "konzervovat",
+  "končit",
+  "koovat",
+  "kopat",
+  "kopírovat",
+  "korunovat",
+  "koukat",
+  "koupit",
+  "koušat",
+  "kovat",
+  "kralovat",
+  "kramařit",
+  "kreslit",
+  "kritizovat",
+  "krmit",
+  "krotit",
+  "krák",
+  "krást",
+  "kráčet",
+  "krčit",
+  "kuat",
+  "kupit",
+  "kupovat",
+  "kupírovat",
+  "kvalifikovat",
+  "kvasit",
+  "kydat",
+  "kypit",
+  "kypět",
+  "kypřit",
+  "kárat",
+  "kázat",
+  "kývat",
+  "křecha",
+  "křivdit",
+  "křičet",
+  "křtit",
+  "křtít",
+  "křísit",
+  "kříst",
+  "křížit",
+  "lačnit",
+  "legitimizovat",
+  "lehávat",
+  "lekat",
+  "leknout",
+  "lemovat",
+  "letět",
+  "lež",
+  "ležet",
+  "ležit",
+  "lhat",
+  "lhát",
+  "libovat",
+  "lichotit",
+  "litovat",
+  "lišit",
+  "lkat",
+  "lnout",
+  "lokalizovat",
+  "lomit",
+  "losovat",
+  "loupit",
+  "lovit",
+  "lpět",
+  "lzat",
+  "lze",
+  "lákat",
+  "lámat",
+  "láska",
+  "létat",
+  "léčit",
+  "líbat",
+  "líbit",
+  "línat",
+  "lít",
+  "lízat",
+  "líčit",
+  "malovat",
+  "manifestovat",
+  "manželka",
+  "mapovat",
+  "masírovat",
+  "matka",
+  "maturovat",
+  "mazat",
+  "mařit",
+  "meškat",
+  "mhouřit",
+  "milovat",
+  "minout",
+  "mizet",
+  "mluvit",
+  "mluvívat",
+  "mlít",
+  "mlčet",
+  "mnout",
+  "množit",
+  "moci",
+  "modlit",
+  "modlést",
+  "montovat",
+  "muset",
+  "muž",
+  "mylit",
+  "myslit",
+  "mámit",
+  "mínit",
+  "mít",
+  "mívat",
+  "mířit",
+  "mýt",
+  "měnit",
+  "měřit",
+  "nabalzamovat",
+  "nabeít",
+  "nabodnout",
+  "nabra",
+  "nabrat",
+  "nabrousit",
+  "nabádat",
+  "nabídnout",
+  "nabírat",
+  "nabízet",
+  "nabýt",
+  "nabývat",
+  "nachystat",
+  "nacházet",
+  "nacválat",
+  "nadejít",
+  "nadržovat",
+  "nadělat",
+  "nadět",
+  "nahlédnout",
+  "nahlížet",
+  "nahradit",
+  "nahrnout",
+  "nahromadit",
+  "najet",
+  "najit",
+  "najmout",
+  "najíst",
+  "najít",
+  "nakazit",
+  "nakladnout",
+  "naklonit",
+  "nakloňit",
+  "nakládat",
+  "nakoupit",
+  "nakreslit",
+  "nakrývat",
+  "nakupovat",
+  "nalej",
+  "naleznout",
+  "nalodit",
+  "naložit",
+  "naléhat",
+  "nalévat",
+  "nalézat",
+  "nalít",
+  "namalovat",
+  "namlouvat",
+  "namluvit",
+  "namočit",
+  "namáhat",
+  "namíchat",
+  "namítat",
+  "namítnout",
+  "namířit",
+  "naměřit",
+  "napadat",
+  "napadnout",
+  "naplnit",
+  "naplňovat",
+  "napnout",
+  "napodobovat",
+  "napojit",
+  "napomeň",
+  "napomáhat",
+  "napomínat",
+  "napravit",
+  "napravovat",
+  "napsat",
+  "napájet",
+  "napéci",
+  "napínat",
+  "napít",
+  "napřimit",
+  "napřimovat",
+  "narazit",
+  "narodit",
+  "narovnat",
+  "narukovat",
+  "narůst",
+  "nasadit",
+  "nasazovat",
+  "nasbírat",
+  "naset",
+  "nashromáždit",
+  "naskakovat",
+  "naslouchat",
+  "nastat",
+  "nastavit",
+  "nastiňovat",
+  "nastolit",
+  "nastoupit",
+  "nastražit",
+  "nastrojit",
+  "nastávat",
+  "nastěhovat",
+  "nastříhat",
+  "nasvědčovat",
+  "nasycovat",
+  "nasypat",
+  "nasytit",
+  "natočit",
+  "naučit",
+  "navazovat",
+  "navléknout",
+  "navracet",
+  "navratit",
+  "navrhnout",
+  "navrhovat",
+  "navrátit",
+  "navršit",
+  "navykat",
+  "navázat",
+  "navážit",
+  "navést",
+  "navštivit",
+  "navštívit",
+  "navštěvovat",
+  "naznačit",
+  "naznačovat",
+  "nazpívat",
+  "nazvat",
+  "nazvít",
+  "nazírat",
+  "nazývat",
+  "načerpat",
+  "nařizovat",
+  "nařídit",
+  "naříkat",
+  "naštípat",
+  "neber",
+  "nechat",
+  "nechodit",
+  "nechávat",
+  "nejíst",
+  "nekrást",
+  "nenuť",
+  "nenávidět",
+  "neodvrhovat",
+  "neotevřít",
+  "neotřást",
+  "nepochybovat",
+  "nepřivolovat",
+  "nepřít",
+  "nerozlučovat",
+  "nesmeť",
+  "nest",
+  "nestavit",
+  "nestyď",
+  "neudržet",
+  "neustanovovat",
+  "nevyrůst",
+  "nevystupovat",
+  "nevzdalovat",
+  "nevzrušovat",
+  "nevzít",
+  "nevést",
+  "nevěřit",
+  "nezahanbovat",
+  "nezapisovat",
+  "nezapomeň",
+  "nezastavovat",
+  "nezatajovat",
+  "nezařazovat",
+  "nezbavovat",
+  "ničit",
+  "nocovat",
+  "nominovat",
+  "nosit",
+  "nořit",
+  "nutit",
+  "nuťit",
+  "náležet",
+  "následovat",
+  "nát",
+  "nést",
+  "obahnit",
+  "obchodovat",
+  "obcházet",
+  "obdarovat",
+  "obdařit",
+  "obdivovat",
+  "obdržet",
+  "obdělávat",
+  "obehnat",
+  "obejít",
+  "obelhávat",
+  "obelstit",
+  "obestřít",
+  "obhájit",
+  "objasnit",
+  "objevit",
+  "objevovat",
+  "objmout",
+  "objímat",
+  "obkličovat",
+  "obklopit",
+  "obklopovat",
+  "obklíčit",
+  "oblažovat",
+  "oblecit",
+  "oblehnout",
+  "obloudit",
+  "obložit",
+  "obléci",
+  "oblékat",
+  "obléknout",
+  "oblíbit",
+  "obměnit",
+  "obnažit",
+  "obnovit",
+  "obnovovat",
+  "obořit",
+  "obracet",
+  "obrat",
+  "obratit",
+  "obrušovat",
+  "obrábět",
+  "obrátit",
+  "obrůst",
+  "obsahovat",
+  "obsluhovat",
+  "obstarávat",
+  "obstoupit",
+  "obstát",
+  "obsáhnout",
+  "obtočit",
+  "obvazovat",
+  "obvinit",
+  "obviňovat",
+  "obávat",
+  "obíhat",
+  "obývat",
+  "oběset",
+  "oběsit",
+  "obětovat",
+  "obřezat",
+  "obřezávat",
+  "obžalovat",
+  "obžalovávat",
+  "obživit",
+  "ocenit",
+  "oceňovat",
+  "ochabovat",
+  "ochladit",
+  "ochočit",
+  "ochořit",
+  "ochraňovat",
+  "ochrnout",
+  "ochromit",
+  "ochránit",
+  "oci",
+  "ocitat",
+  "ocitnout",
+  "odbočit",
+  "odbývat",
+  "odběhnout",
+  "odcestovat",
+  "odchylovat",
+  "odcházet",
+  "odcházívat",
+  "odchýlit",
+  "odcizit",
+  "oddat",
+  "oddávat",
+  "oddělit",
+  "oddělovat",
+  "odebrat",
+  "odehrát",
+  "odehrávat",
+  "odejmout",
+  "odejít",
+  "odepsat",
+  "odepřit",
+  "odepřít",
+  "odevzdat",
+  "odevzdávat",
+  "odhadovat",
+  "odhalit",
+  "odhalovat",
+  "odhat",
+  "odhodit",
+  "odhánět",
+  "odjet",
+  "odklonit",
+  "odkládat",
+  "odklízet",
+  "odkojit",
+  "odkrýt",
+  "odkrývat",
+  "odkvétat",
+  "odkázat",
+  "odletět",
+  "odlišit",
+  "odlišovat",
+  "odloučit",
+  "odložit",
+  "odlévat",
+  "odlít",
+  "odmaturovat",
+  "odmítat",
+  "odmítnout",
+  "odměnit",
+  "odměňovat",
+  "odměřit",
+  "odměřovat",
+  "odnášet",
+  "odnést",
+  "odnímat",
+  "odpadat",
+  "odpadnout",
+  "odplatit",
+  "odplout",
+  "odplácat",
+  "odplácet",
+  "odporovat",
+  "odpouštět",
+  "odpovídat",
+  "odpovědět",
+  "odpovězit",
+  "odpočinout",
+  "odpočívat",
+  "odpustit",
+  "odpírat",
+  "odpřisáhnout",
+  "odrazit",
+  "odrodit",
+  "odročit",
+  "odrážet",
+  "odseknout",
+  "odsekávat",
+  "odsloužit",
+  "odsoudit",
+  "odstavit",
+  "odstavovat",
+  "odstranit",
+  "odstraňovat",
+  "odstrojit",
+  "odstupit",
+  "odstupňovat",
+  "odstávat",
+  "odstěhovat",
+  "odsunout",
+  "odsuzovat",
+  "odtrhávat",
+  "odtáhnout",
+  "odvalit",
+  "odvalovat",
+  "odvažovat",
+  "odvleknout",
+  "odvlečit",
+  "odvodit",
+  "odvolávat",
+  "odvozovat",
+  "odvracet",
+  "odvratit",
+  "odvrhnout",
+  "odvrátit",
+  "odvádět",
+  "odvážit",
+  "odvést",
+  "odvézt",
+  "odvíjet",
+  "odvětit",
+  "odzbrojit",
+  "odít",
+  "odět",
+  "odňanout",
+  "odřezávat",
+  "odštěpovat",
+  "ohlasit",
+  "ohlašovat",
+  "ohlásit",
+  "ohlédnout",
+  "ohlížat",
+  "ohlížet",
+  "oholit",
+  "ohradit",
+  "ohromit",
+  "ohrožovat",
+  "ohýbat",
+  "ohřívat",
+  "oklamat",
+  "okrádat",
+  "okusit",
+  "okusovat",
+  "okřiknout",
+  "okřát",
+  "olizovat",
+  "olížit",
+  "omezit",
+  "omezovat",
+  "omočit",
+  "omyjit",
+  "omýt",
+  "omývat",
+  "onemocnit",
+  "onemocnět",
+  "oněmět",
+  "opadnout",
+  "opadávat",
+  "opakovat",
+  "opatrovat",
+  "opatřit",
+  "opatřovat",
+  "opisovat",
+  "oplakávat",
+  "oplatit",
+  "oplývat",
+  "opodléhat",
+  "opojit",
+  "oponovat",
+  "opouštět",
+  "opovažovat",
+  "opovrhnout",
+  "opozdit",
+  "opracovávat",
+  "oprasit",
+  "opustit",
+  "opásat",
+  "opásávat",
+  "opášat",
+  "opíjat",
+  "opíjet",
+  "opírat",
+  "opít",
+  "opěvovat",
+  "opřít",
+  "orat",
+  "organizovat",
+  "osamět",
+  "osat",
+  "osedlat",
+  "oset",
+  "oslabovat",
+  "oslavit",
+  "oslavovat",
+  "oslepit",
+  "oslepnout",
+  "oslepovat",
+  "oslovit",
+  "oslovovat",
+  "osmělit",
+  "osobovat",
+  "osočovat",
+  "ospravedlnit",
+  "ospravedlňovat",
+  "ostouzit",
+  "ostřit",
+  "ostříhat",
+  "osvobodit",
+  "osvobozovat",
+  "osvojit",
+  "osvítit",
+  "osvěcovat",
+  "osvědčit",
+  "osvědčovat",
+  "osvětlit",
+  "osvěžovat",
+  "osévat",
+  "osídlit",
+  "otec",
+  "otesávat",
+  "otevírat",
+  "otevřít",
+  "otextovat",
+  "otisknout",
+  "otiskovat",
+  "otočit",
+  "otročit",
+  "otupit",
+  "otupět",
+  "otvírat",
+  "otálit",
+  "otázat",
+  "otáčet",
+  "otírat",
+  "otěhotnět",
+  "otřást",
+  "otřít",
+  "ovinout",
+  "ovinovat",
+  "ovlivnit",
+  "ovlivňovat",
+  "ovládat",
+  "ovázat",
+  "ověšovat",
+  "oznamit",
+  "oznamovat",
+  "oznat",
+  "označit",
+  "označovat",
+  "oznámit",
+  "ozvat",
+  "ozářit",
+  "ozývat",
+  "očekávat",
+  "očist",
+  "očistit",
+  "očišťovat",
+  "ošetřit",
+  "ošetřovat",
+  "ošklivit",
+  "oženit",
+  "oživovat",
+  "ožrat",
+  "ožít",
+  "padat",
+  "padnout",
+  "pamatovat",
+  "panovat",
+  "pasit",
+  "patřit",
+  "pečovat",
+  "pitvat",
+  "plakat",
+  "planout",
+  "platit",
+  "plavat",
+  "plavit",
+  "plačit",
+  "plenit",
+  "plesat",
+  "plivat",
+  "plivnout",
+  "plnit",
+  "plnout",
+  "plodit",
+  "plout",
+  "plovat",
+  "plstnatit",
+  "pluralizovat",
+  "plynout",
+  "plánovat",
+  "plát",
+  "plést",
+  "plížit",
+  "pnout",
+  "pobloudit",
+  "pobouřit",
+  "pobořit",
+  "pobrat",
+  "pobídnout",
+  "pobíhat",
+  "pobíjet",
+  "pobít",
+  "pobýt",
+  "pobývat",
+  "pochlubit",
+  "pochodit",
+  "pochopit",
+  "pochovat",
+  "pochválit",
+  "pochybovat",
+  "pocházet",
+  "pociťovat",
+  "pocítit",
+  "podarovat",
+  "podat",
+  "podařit",
+  "poddat",
+  "poddávat",
+  "podepisovat",
+  "podepsat",
+  "podepírat",
+  "podepřít",
+  "podivit",
+  "podivnout",
+  "podlamovat",
+  "podlehnout",
+  "podlomit",
+  "podložit",
+  "podléhat",
+  "podmanit",
+  "podnikat",
+  "podniknout",
+  "podnítit",
+  "podněcovat",
+  "podobat",
+  "podotknout",
+  "podplatit",
+  "podporovat",
+  "podpořit",
+  "podpálit",
+  "podpírat",
+  "podrobit",
+  "podrobovat",
+  "podstoupit",
+  "podstupovat",
+  "podtrhovat",
+  "podupat",
+  "podvolovat",
+  "podvracet",
+  "podvrtnout",
+  "podvrátit",
+  "podávat",
+  "podílat",
+  "podílet",
+  "podít",
+  "podívat",
+  "poděsit",
+  "podět",
+  "podřidit",
+  "podřizovat",
+  "podřídit",
+  "poetizovat",
+  "pohladit",
+  "pohledit",
+  "pohledět",
+  "pohltit",
+  "pohlédnout",
+  "pohlížet",
+  "pohnout",
+  "pohoršovat",
+  "pohostit",
+  "pohrdat",
+  "pohrdnout",
+  "pohrozit",
+  "pohybovat",
+  "pohřbít",
+  "pohřbívat",
+  "pohřít",
+  "pojednávat",
+  "pojet",
+  "pojmenovat",
+  "pojmout",
+  "pojímat",
+  "pojíst",
+  "pojít",
+  "pokleknout",
+  "poklonit",
+  "pokládat",
+  "pokousat",
+  "pokoušet",
+  "pokořit",
+  "pokořovat",
+  "pokračovat",
+  "pokropit",
+  "pokročit",
+  "pokrýt",
+  "pokrývat",
+  "pokusit",
+  "pokvést",
+  "pokynout",
+  "pokácet",
+  "pokálet",
+  "pokárat",
+  "pokřikovat",
+  "pokřtít",
+  "polekat",
+  "polemizovat",
+  "polidšťovat",
+  "položit",
+  "polámat",
+  "polézt",
+  "políbit",
+  "polít",
+  "políčit",
+  "pomazat",
+  "pomažit",
+  "pominout",
+  "pomlouvat",
+  "pomoci",
+  "pomodlit",
+  "pomoz",
+  "pomozit",
+  "pomyslit",
+  "pomáhat",
+  "pomíjet",
+  "pomřít",
+  "ponechat",
+  "ponechávat",
+  "ponižovat",
+  "ponést",
+  "ponížit",
+  "poodejít",
+  "poohlédnout",
+  "popadnout",
+  "popisovat",
+  "poplynout",
+  "popsat",
+  "popudit",
+  "popásat",
+  "popírat",
+  "popěvovat",
+  "popřát",
+  "poradit",
+  "poranit",
+  "porazit",
+  "poračovat",
+  "porocházet",
+  "porodit",
+  "poroučet",
+  "porozumět",
+  "poručit",
+  "porušit",
+  "porušovat",
+  "porážet",
+  "posadit",
+  "posel",
+  "posilnout",
+  "posilovat",
+  "poskakovat",
+  "posktovat",
+  "poskvrnit",
+  "poskvrňovat",
+  "poskytnout",
+  "poskytovat",
+  "poslat",
+  "poslechnout",
+  "poslouchat",
+  "posloužit",
+  "posluhovat",
+  "poslyšit",
+  "posmívat",
+  "pospit",
+  "pospíchat",
+  "pospěit",
+  "postarat",
+  "postavit",
+  "postačit",
+  "postačovat",
+  "postihnout",
+  "postihovat",
+  "postit",
+  "postoupit",
+  "postrádat",
+  "postrčit",
+  "postupovat",
+  "postřehnout",
+  "postříkat",
+  "posuzovat",
+  "posvěcovat",
+  "posvětit",
+  "posílat",
+  "posílit",
+  "potkat",
+  "potlačovat",
+  "potlouknout",
+  "potlučit",
+  "potopit",
+  "potratit",
+  "potrestat",
+  "potrkat",
+  "potrvat",
+  "potupit",
+  "potvrdit",
+  "potvrzovat",
+  "potácet",
+  "potáhnout",
+  "potírat",
+  "potěit",
+  "potěšit",
+  "potěšovat",
+  "potřebovat",
+  "potřásat",
+  "potřísnit",
+  "potřít",
+  "poukazovat",
+  "poukázat",
+  "poutat",
+  "poučit",
+  "poučovat",
+  "pouštět",
+  "použít",
+  "používat",
+  "povalit",
+  "považit",
+  "považovat",
+  "povléci",
+  "povolat",
+  "povolovat",
+  "povolávat",
+  "povraždit",
+  "povstat",
+  "povstávat",
+  "povyšovat",
+  "povzbudit",
+  "povzbuzovat",
+  "povzít",
+  "povážit",
+  "povést",
+  "povídat",
+  "povýšit",
+  "povědět",
+  "pověsit",
+  "povězit",
+  "pověřit",
+  "povšimnout",
+  "pozabíjet",
+  "pozbýt",
+  "pozdravit",
+  "pozdravovat",
+  "pozdvihnout",
+  "pozměnit",
+  "poznamenat",
+  "poznat",
+  "poznávat",
+  "pozorovat",
+  "pozvat",
+  "pozvedat",
+  "pozvednout",
+  "pozřít",
+  "počeštit",
+  "počkat",
+  "počnout",
+  "počínat",
+  "počít",
+  "počítat",
+  "pořádat",
+  "pořídit",
+  "pošlapat",
+  "pošpinit",
+  "požadovat",
+  "požehnat",
+  "požádat",
+  "požírat",
+  "požívat",
+  "pracovat",
+  "praktikovat",
+  "pramenit",
+  "praskat",
+  "pravit",
+  "prchat",
+  "prchnout",
+  "preferovat",
+  "prezentovat",
+  "probdit",
+  "probodnout",
+  "probouzat",
+  "probouzet",
+  "probudit",
+  "probíhat",
+  "probýt",
+  "proběhnout",
+  "procházet",
+  "procitnout",
+  "prodat",
+  "prodlužovat",
+  "produkovat",
+  "prodávat",
+  "prodírat",
+  "prohlašovat",
+  "prohlásit",
+  "prohlédnout",
+  "prohánět",
+  "prohýřit",
+  "prohřešit",
+  "projektovat",
+  "projevit",
+  "projevovat",
+  "projít",
+  "prokazovat",
+  "prokaž",
+  "prokažit",
+  "proklínat",
+  "proklít",
+  "prokvasit",
+  "prokzat",
+  "prokázat",
+  "prolistovat",
+  "prolomit",
+  "prolévat",
+  "prolínat",
+  "promarnout",
+  "prominout",
+  "promlouvat",
+  "promluvit",
+  "promíjet",
+  "promítat",
+  "promítnout",
+  "promýšlet",
+  "proměnit",
+  "proměňovat",
+  "pronajmout",
+  "pronaříkat",
+  "pronikat",
+  "proniknout",
+  "pronásledovat",
+  "pronášet",
+  "pronést",
+  "propadat",
+  "propadnout",
+  "proplout",
+  "propojovat",
+  "propouštívat",
+  "propouštět",
+  "propustit",
+  "propůjčovat",
+  "prorazit",
+  "prorokovat",
+  "prosazovat",
+  "prosit",
+  "proslavit",
+  "proslechnout",
+  "proslout",
+  "proslýchat",
+  "prosmýčit",
+  "prospit",
+  "prospívat",
+  "prospět",
+  "prostoupit",
+  "prostrčit",
+  "prostupovat",
+  "prostírat",
+  "protesat",
+  "protestovat",
+  "protkávat",
+  "protrhnout",
+  "protáhnout",
+  "protékat",
+  "protříbit",
+  "protřít",
+  "proudit",
+  "provalit",
+  "provalovat",
+  "provdat",
+  "provinit",
+  "provléknout",
+  "provokovat",
+  "provolat",
+  "provolávat",
+  "provozovat",
+  "provádět",
+  "provázet",
+  "provést",
+  "prověřit",
+  "prozpěvovat",
+  "prořezávat",
+  "prožít",
+  "prožívat",
+  "prskat",
+  "psát",
+  "psávat",
+  "ptát",
+  "publikovat",
+  "pudit",
+  "pukat",
+  "pustit",
+  "pustošit",
+  "putovat",
+  "pykat",
+  "pyšnit",
+  "páchat",
+  "páchnout",
+  "pádět",
+  "pálit",
+  "pásat",
+  "pást",
+  "pát",
+  "pátrat",
+  "pářit",
+  "pášat",
+  "pít",
+  "píti",
+  "pěnit",
+  "pěstovat",
+  "přebrodit",
+  "přebírat",
+  "přebývat",
+  "přechovávat",
+  "přecházat",
+  "přecházet",
+  "předat",
+  "předběhnout",
+  "předejít",
+  "předkládat",
+  "předložit",
+  "přednášat",
+  "přednášet",
+  "přednést",
+  "předpokládat",
+  "předpovědět",
+  "předsevzít",
+  "představit",
+  "představovat",
+  "předstoupit",
+  "předstupovat",
+  "předstírat",
+  "předurčit",
+  "předvolat",
+  "předvádět",
+  "předvést",
+  "předávat",
+  "předčítat",
+  "přehnat",
+  "přehodit",
+  "přehryznout",
+  "přejít",
+  "překlenout",
+  "překládat",
+  "překonat",
+  "překonávat",
+  "překračovat",
+  "překročit",
+  "překrucovat",
+  "překrýt",
+  "překvapit",
+  "překážet",
+  "přeložit",
+  "přelstit",
+  "přelstít",
+  "přelézat",
+  "přemlouvat",
+  "přemluvit",
+  "přemnožit",
+  "přemoci",
+  "přemáhat",
+  "přemítat",
+  "přemýšlet",
+  "přeměňovat",
+  "přenechat",
+  "přenocovat",
+  "přenášet",
+  "přenést",
+  "přepadnout",
+  "přeplavit",
+  "přepracovat",
+  "přepásávat",
+  "přepášat",
+  "přeraz",
+  "přerušit",
+  "přerušovat",
+  "přervat",
+  "přerůst",
+  "přerůstat",
+  "přesadit",
+  "přesahovat",
+  "přeseknout",
+  "přesouvat",
+  "přestat",
+  "přestoupit",
+  "přestupovat",
+  "přestát",
+  "přestávat",
+  "přestěhovat",
+  "přesvědčit",
+  "přesvědčovat",
+  "přetrhnout",
+  "přetrvávat",
+  "přetéci",
+  "převalit",
+  "převažovat",
+  "převezmit",
+  "převléknout",
+  "převracet",
+  "převyšovat",
+  "převzít",
+  "převádět",
+  "převést",
+  "přezimovat",
+  "přečkat",
+  "přečíst",
+  "přešlechťovat",
+  "přeťat",
+  "přežít",
+  "přežívat",
+  "přiblitit",
+  "přibližovat",
+  "přiblížit",
+  "přibra",
+  "přibrat",
+  "přibíhat",
+  "přibít",
+  "přibýt",
+  "přibývat",
+  "přiběhnout",
+  "přichystat",
+  "přichytit",
+  "přicházat",
+  "přicházet",
+  "přidat",
+  "přidržovat",
+  "přidávat",
+  "přihlásit",
+  "přihlédnout",
+  "přihlížet",
+  "přihnat",
+  "přihodit",
+  "přijet",
+  "přijmout",
+  "přijímat",
+  "přijít",
+  "přijíždět",
+  "přikazovat",
+  "přiklonit",
+  "přikládat",
+  "přikryjet",
+  "přikrýt",
+  "přikrývat",
+  "přikvačit",
+  "přikzat",
+  "přikázat",
+  "přiletět",
+  "přilnout",
+  "přiložit",
+  "přilétnout",
+  "přimknout",
+  "přimlouvat",
+  "přimět",
+  "přinutit",
+  "přinášat",
+  "přinášet",
+  "přinést",
+  "přiodět",
+  "připadat",
+  "připadnout",
+  "připat",
+  "připevnit",
+  "připevňovat",
+  "připisovat",
+  "připlout",
+  "připlovat",
+  "připojit",
+  "připojovat",
+  "připomenout",
+  "připomeout",
+  "připomínat",
+  "připočíst",
+  "připočítávat",
+  "připravit",
+  "připravovat",
+  "připsat",
+  "připustit",
+  "přirazit",
+  "přirovnávat",
+  "přisednout",
+  "přisluhovat",
+  "přispívat",
+  "přispěchat",
+  "přispět",
+  "přistoupit",
+  "přistupit",
+  "přistupovat",
+  "přistát",
+  "přistěhovat",
+  "přisvojit",
+  "přisvědčovat",
+  "přitisknout",
+  "přitáhnout",
+  "přitížit",
+  "přivalit",
+  "přivodit",
+  "přivolat",
+  "přivolávat",
+  "přivydělávat",
+  "přivádět",
+  "přivázat",
+  "přivést",
+  "přivézt",
+  "přivítat",
+  "přiznat",
+  "přiznávat",
+  "přizpůsobovat",
+  "přiřknout",
+  "přišívat",
+  "přát",
+  "přátelit",
+  "přísahat",
+  "příslušet",
+  "příst",
+  "přít",
+  "přítel",
+  "půjčit",
+  "půjčovat",
+  "půlit",
+  "působit",
+  "radit",
+  "radovat",
+  "ranit",
+  "razit",
+  "račit",
+  "rašit",
+  "rdít",
+  "reagovat",
+  "realizovat",
+  "recitovat",
+  "redigovat",
+  "redukovat",
+  "referovat",
+  "registrovat",
+  "reptat",
+  "režírovat",
+  "rmoutit",
+  "rodit",
+  "rostit",
+  "rouhat",
+  "rovnat",
+  "rozbovat",
+  "rozburácet",
+  "rozbít",
+  "rozběhnout",
+  "rozcházet",
+  "rozdat",
+  "rozdrtit",
+  "rozdvojit",
+  "rozdávat",
+  "rozdílet",
+  "rozdělat",
+  "rozdělit",
+  "rozdělovat",
+  "rozdět",
+  "rozebírat",
+  "rozehnat",
+  "rozejít",
+  "rozemlet",
+  "rozepsat",
+  "rozestavit",
+  "rozestírat",
+  "rozestřít",
+  "rozetřít",
+  "rozevírat",
+  "rozevřít",
+  "rozeznávat",
+  "rozeznít",
+  "rozežat",
+  "rozhazovat",
+  "rozhlašovat",
+  "rozhlásit",
+  "rozhlédnout",
+  "rozhněvat",
+  "rozhodit",
+  "rozhodnout",
+  "rozhodovat",
+  "rozhojnit",
+  "rozhojňovat",
+  "rozhovořit",
+  "rozhánět",
+  "rozházet",
+  "rozjasnit",
+  "rozjasnout",
+  "rozjitřit",
+  "rozjásat",
+  "rozjímat",
+  "rozkazovat",
+  "rozkládat",
+  "rozkvést",
+  "rozkvétat",
+  "rozkymácet",
+  "rozkázat",
+  "rozkřiknout",
+  "rozlehnout",
+  "rozletět",
+  "rozlišovat",
+  "rozlomit",
+  "rozloučit",
+  "rozložit",
+  "rozluštit",
+  "rozlámat",
+  "rozléhat",
+  "rozlévat",
+  "rozlítit",
+  "rozmetat",
+  "rozmlouvat",
+  "rozmnožit",
+  "rozmnožovat",
+  "rozmoci",
+  "rozmrzet",
+  "rozmáchnout",
+  "rozmáhat",
+  "rozmístit",
+  "rozmělnit",
+  "rozměřit",
+  "roznemoci",
+  "roznést",
+  "rozpadnout",
+  "rozplakat",
+  "rozplodit",
+  "rozplynout",
+  "rozplývat",
+  "rozpoltit",
+  "rozpomenout",
+  "rozpomínat",
+  "rozpoutat",
+  "rozpouštět",
+  "rozpoznat",
+  "rozpoznávat",
+  "rozpracovat",
+  "rozpracovávat",
+  "rozpraš",
+  "rozprchnout",
+  "rozprodat",
+  "rozprostřít",
+  "rozprášit",
+  "rozptylovat",
+  "rozptyt",
+  "rozptýlit",
+  "rozpustit",
+  "rozpálit",
+  "rozpínat",
+  "rozrazit",
+  "rozrývat",
+  "rozrůst",
+  "rozsekat",
+  "rozsoudit",
+  "rozsut",
+  "rozsuzovat",
+  "rozsvítit",
+  "rozsvěcovat",
+  "rozsévat",
+  "rozsívat",
+  "roztahávat",
+  "roztavit",
+  "roztrhnout",
+  "roztřást",
+  "roztříštit",
+  "rozumět",
+  "rozutéci",
+  "rozvažit",
+  "rozvažovat",
+  "rozvinout",
+  "rozvracet",
+  "rozvázat",
+  "rozvíjet",
+  "rozzlobit",
+  "rozzuřit",
+  "rozzářit",
+  "rozšlapat",
+  "rozšlapávat",
+  "rozšířit",
+  "rudnout",
+  "rušit",
+  "rvat",
+  "rvát",
+  "růst",
+  "sahat",
+  "sakralizovat",
+  "sblížit",
+  "sbírat",
+  "sběhnout",
+  "scet",
+  "schovat",
+  "schovávat",
+  "schvalovat",
+  "schválit",
+  "schylovat",
+  "scházet",
+  "sdílat",
+  "sdílet",
+  "sdělit",
+  "sdělovat",
+  "sebrat",
+  "seběhnout",
+  "sedat",
+  "sednout",
+  "sedávat",
+  "sedět",
+  "sehnat",
+  "sehnout",
+  "sehrát",
+  "sejmout",
+  "sejít",
+  "selhat",
+  "selhávat",
+  "selít",
+  "sepnout",
+  "sepsat",
+  "sesednout",
+  "seslat",
+  "sestavit",
+  "sestoupit",
+  "sestra",
+  "sestupit",
+  "sestupovat",
+  "sestávat",
+  "sesílat",
+  "setkat",
+  "setkávat",
+  "setmět",
+  "setrvat",
+  "setřesit",
+  "setřást",
+  "setřít",
+  "sevřít",
+  "seznamovat",
+  "seznámit",
+  "sezobat",
+  "sečit",
+  "sečíst",
+  "seřadit",
+  "sežehnout",
+  "sežehovat",
+  "sežrat",
+  "shledat",
+  "shledávat",
+  "shluknout",
+  "shlédnout",
+  "shlížet",
+  "shnít",
+  "shodit",
+  "shodnout",
+  "shodovat",
+  "shořit",
+  "shrabat",
+  "shrnout",
+  "shromažďovat",
+  "shromáát",
+  "shromáždit",
+  "shrábnout",
+  "shánět",
+  "sklenout",
+  "sklidit",
+  "sklonit",
+  "skloňit",
+  "skládat",
+  "sklánět",
+  "sklátit",
+  "sklízet",
+  "skolit",
+  "skonat",
+  "skoncovat",
+  "skončit",
+  "skoupit",
+  "skočit",
+  "skrat",
+  "skropit",
+  "skrápět",
+  "skrýt",
+  "skrývat",
+  "skvět",
+  "skácet",
+  "skákat",
+  "skřípat",
+  "slavit",
+  "sledovat",
+  "slevit",
+  "slibovat",
+  "slinit",
+  "slitovat",
+  "slitovávat",
+  "sloupat",
+  "sloupávat",
+  "sloužit",
+  "slož",
+  "složit",
+  "slušet",
+  "služit",
+  "slyet",
+  "slyš",
+  "slyšet",
+  "slábnout",
+  "slétnout",
+  "slézt",
+  "slíbit",
+  "slídit",
+  "slýchat",
+  "slýt",
+  "smilnit",
+  "smilovat",
+  "smilovávat",
+  "smlouvat",
+  "smluvit",
+  "smát",
+  "smáčit",
+  "smést",
+  "smísit",
+  "smít",
+  "smířit",
+  "smýknout",
+  "smýšlat",
+  "smýšlet",
+  "smět",
+  "směřovat",
+  "snažit",
+  "snižovat",
+  "snát",
+  "snášat",
+  "snášet",
+  "snést",
+  "snímat",
+  "sníst",
+  "snít",
+  "soucítit",
+  "soudit",
+  "souhlasit",
+  "souložit",
+  "soustředit",
+  "soutěžit",
+  "souviset",
+  "soužit",
+  "spadat",
+  "spadnout",
+  "spalovat",
+  "spasat",
+  "spasit",
+  "spatřit",
+  "spatřovat",
+  "specifikovat",
+  "spekulovat",
+  "spiritualizovat",
+  "splatit",
+  "splnit",
+  "splynout",
+  "splést",
+  "splétat",
+  "splňit",
+  "spojit",
+  "spojovat",
+  "spokojit",
+  "spolehnout",
+  "spolknout",
+  "spolupracovat",
+  "spoléhat",
+  "spolčit",
+  "spoutat",
+  "spouštět",
+  "spočinout",
+  "spočívat",
+  "spravovat",
+  "spustit",
+  "spáchat",
+  "spálit",
+  "spásat",
+  "spát",
+  "spílat",
+  "spínat",
+  "spěchat",
+  "spět",
+  "spřádat",
+  "spřáhnout",
+  "spřátelit",
+  "spříznout",
+  "srazit",
+  "sroat",
+  "srocovat",
+  "srotit",
+  "srovnat",
+  "srovnávat",
+  "srázit",
+  "srážet",
+  "stahovat",
+  "stanout",
+  "stanovat",
+  "stanovit",
+  "starat",
+  "stat",
+  "stavit",
+  "stavět",
+  "stačit",
+  "staňit",
+  "stihnout",
+  "stimulovat",
+  "stlat",
+  "stolovat",
+  "stoupat",
+  "strachovat",
+  "stranit",
+  "strat",
+  "stravovat",
+  "strhat",
+  "strhnout",
+  "strhovat",
+  "strhávat",
+  "strmět",
+  "strnout",
+  "strojit",
+  "strpit",
+  "strádat",
+  "strávit",
+  "strýc",
+  "studovat",
+  "stupňovat",
+  "stvořit",
+  "stvrdit",
+  "stydět",
+  "stylizovat",
+  "stáhnout",
+  "stálo",
+  "stát",
+  "stávat",
+  "sténat",
+  "stíhat",
+  "stýkat",
+  "stýskat",
+  "stěhovat",
+  "stěžovat",
+  "střetnout",
+  "střezit",
+  "střežit",
+  "střádat",
+  "střídat",
+  "stříhat",
+  "sužovat",
+  "svalovat",
+  "svazovat",
+  "svitit",
+  "svlažit",
+  "svlecit",
+  "svléknout",
+  "svolat",
+  "svolit",
+  "svolávat",
+  "svrhnout",
+  "svádět",
+  "svázat",
+  "svážit",
+  "svést",
+  "svíjet",
+  "svírat",
+  "svítit",
+  "svítívat",
+  "svědčit",
+  "svěsit",
+  "svěřit",
+  "svěřovat",
+  "symbolizovat",
+  "syn",
+  "synovec",
+  "sypat",
+  "sytit",
+  "sáhnout",
+  "sápat",
+  "sát",
+  "sídlit",
+  "sílit",
+  "sýt",
+  "sňat",
+  "sňít",
+  "sťat",
+  "sžírat",
+  "tahat",
+  "tajit",
+  "tančit",
+  "tasit",
+  "tavit",
+  "tchyně",
+  "tchán",
+  "tematizovat",
+  "testovat",
+  "teta",
+  "tisknout",
+  "tlačit",
+  "tleskat",
+  "tlouci",
+  "tlumit",
+  "tlumočit",
+  "topit",
+  "toulat",
+  "toužit",
+  "transformovat",
+  "trapit",
+  "trestat",
+  "trhat",
+  "trnout",
+  "troubit",
+  "trpit",
+  "trpět",
+  "truchlit",
+  "trvat",
+  "tryskat",
+  "trápit",
+  "trávit",
+  "trýznit",
+  "trůnit",
+  "tulit",
+  "tupit",
+  "tučnit",
+  "tušit",
+  "tvařit",
+  "tvořit",
+  "tvrdit",
+  "tykat",
+  "tábořit",
+  "táhnout",
+  "tápat",
+  "tát",
+  "téci",
+  "tíhnout",
+  "tísnit",
+  "tížit",
+  "týkat",
+  "týrat",
+  "těšit",
+  "těžit",
+  "třesat",
+  "třpytit",
+  "třást",
+  "tříštit",
+  "ubližovat",
+  "ublížit",
+  "ubránit",
+  "ubytovat",
+  "ubíjet",
+  "ubírat",
+  "ubít",
+  "ubýt",
+  "ubývat",
+  "uběhnout",
+  "uchopit",
+  "uchovat",
+  "uchovávat",
+  "uchránit",
+  "uchvátit",
+  "uchytit",
+  "ucházet",
+  "uchýlit",
+  "uctít",
+  "uctívat",
+  "ucítit",
+  "udat",
+  "udeřit",
+  "udržet",
+  "udržovat",
+  "udusit",
+  "udát",
+  "udílit",
+  "udělat",
+  "udělit",
+  "udělovat",
+  "udět",
+  "uhasit",
+  "uhasnout",
+  "uhnout",
+  "uhnízdit",
+  "uhodit",
+  "uhostit",
+  "uhynout",
+  "uhýbat",
+  "ujet",
+  "ujistit",
+  "ujišťovat",
+  "ujmout",
+  "ujímat",
+  "ujít",
+  "ukamenovat",
+  "ukazovat",
+  "ukažit",
+  "uklidnit",
+  "uklonit",
+  "uklouznout",
+  "ukládat",
+  "uklízet",
+  "ukojit",
+  "ukončit",
+  "ukradnout",
+  "ukrýt",
+  "ukrývat",
+  "ukázat",
+  "ukážit",
+  "ukřižovat",
+  "ulehnout",
+  "ulehčit",
+  "uleknout",
+  "uletět",
+  "uloupit",
+  "ulovit",
+  "uložit",
+  "ulpět",
+  "uléhat",
+  "ulít",
+  "umdlévat",
+  "umisťovat",
+  "umlknout",
+  "umlouvat",
+  "umluvit",
+  "umlčet",
+  "umlčit",
+  "umlčovat",
+  "umožnit",
+  "umožňovat",
+  "umrtvovat",
+  "umírat",
+  "umírňovat",
+  "umístit",
+  "umísťovat",
+  "umýt",
+  "umývat",
+  "umět",
+  "umřít",
+  "unavovat",
+  "unikat",
+  "uniknout",
+  "unést",
+  "upadat",
+  "upadnout",
+  "upevnit",
+  "upevnout",
+  "upevňovat",
+  "upjmout",
+  "uplatnit",
+  "uplatňovat",
+  "uplynout",
+  "uplést",
+  "upnout",
+  "upokojit",
+  "uposlechnout",
+  "upozornit",
+  "upozorňovat",
+  "upravit",
+  "upravovat",
+  "uprchnout",
+  "upustit",
+  "upínat",
+  "upírat",
+  "upít",
+  "upřesnit",
+  "upřít",
+  "uradit",
+  "urodit",
+  "urovnat",
+  "urážet",
+  "určit",
+  "určovat",
+  "usadit",
+  "usazovat",
+  "uschnout",
+  "usedat",
+  "usednout",
+  "usilovat",
+  "uskladňovat",
+  "uskutečnit",
+  "uskutečňovat",
+  "uslyšet",
+  "usmiřovat",
+  "usmrtit",
+  "usmířit",
+  "usměrňovat",
+  "usnadňovat",
+  "usnout",
+  "usnést",
+  "uspořádat",
+  "uspět",
+  "ustanovit",
+  "ustanovovat",
+  "ustat",
+  "ustavit",
+  "ustavovat",
+  "ustet",
+  "ustoupit",
+  "ustrnout",
+  "ustupovat",
+  "ustálit",
+  "ustávat",
+  "usvědčit",
+  "usvědčovat",
+  "usídlit",
+  "usídlovat",
+  "usídnout",
+  "utečit",
+  "utiskovat",
+  "utišit",
+  "utkat",
+  "utlačovat",
+  "utnout",
+  "utonout",
+  "utopit",
+  "utrpět",
+  "utržit",
+  "utvořit",
+  "utvrdit",
+  "utábořit",
+  "utáhnout",
+  "utéci",
+  "utíkat",
+  "utírat",
+  "utřídit",
+  "uvadat",
+  "uvalit",
+  "uvařit",
+  "uvažovat",
+  "uvelebit",
+  "uveít",
+  "uveřejnit",
+  "uvidět",
+  "uvolnit",
+  "uvolňovat",
+  "uvrhnout",
+  "uvádět",
+  "uvážit",
+  "uvést",
+  "uvíznout",
+  "uvědomit",
+  "uvěznit",
+  "uvěřit",
+  "uzavírat",
+  "uzavřít",
+  "uzdravit",
+  "uzdravovat",
+  "uznat",
+  "uznávat",
+  "uzřit",
+  "uzřít",
+  "učarovat",
+  "učinit",
+  "učit",
+  "učívat",
+  "ušetřit",
+  "uštknout",
+  "uťat",
+  "užasnout",
+  "užít",
+  "užívat",
+  "valit",
+  "vanout",
+  "variovat",
+  "varovat",
+  "vařit",
+  "vběhnout",
+  "vcházat",
+  "vcházet",
+  "vdechnout",
+  "vdát",
+  "vdávat",
+  "vehnat",
+  "vejít",
+  "velebit",
+  "vemlouvat",
+  "vepsat",
+  "veselit",
+  "veslovat",
+  "vet",
+  "vetřít",
+  "vhodit",
+  "vidět",
+  "vinit",
+  "vinout",
+  "viset",
+  "viz",
+  "vizte",
+  "vjet",
+  "vkládat",
+  "vkročit",
+  "vlastnit",
+  "vlat",
+  "vlnit",
+  "vloudit",
+  "vložit",
+  "vládnout",
+  "vláčit",
+  "vléci",
+  "vlévat",
+  "vlít",
+  "vmísit",
+  "vnikat",
+  "vniknout",
+  "vnuk",
+  "vnášet",
+  "vnést",
+  "vnímat",
+  "vodit",
+  "volat",
+  "volit",
+  "volávat",
+  "vonět",
+  "vpadnout",
+  "vracat",
+  "vracet",
+  "vraždit",
+  "vrcholit",
+  "vrhat",
+  "vrhnout",
+  "vrátit",
+  "vsadit",
+  "vsednout",
+  "vstat",
+  "vstavit",
+  "vstoupit",
+  "vstupit",
+  "vstupovat",
+  "vstát",
+  "vstávat",
+  "vtisknout",
+  "vtrhnout",
+  "vtáhnout",
+  "vtírat",
+  "vtělovat",
+  "vybočovat",
+  "vybrat",
+  "vybudovat",
+  "vybídnout",
+  "vybíhat",
+  "vybílit",
+  "vybírat",
+  "vybízet",
+  "vyběhnout",
+  "vybělovat",
+  "vychladnout",
+  "vychodit",
+  "vychovávat",
+  "vychrlit",
+  "vychválit",
+  "vycházet",
+  "vycházívat",
+  "vydat",
+  "vydechnout",
+  "vydobýt",
+  "vydržet",
+  "vydávat",
+  "vyděsit",
+  "vyhasnout",
+  "vyhazovat",
+  "vyhladit",
+  "vyhlasit",
+  "vyhlazovat",
+  "vyhlašovat",
+  "vyhledat",
+  "vyhledávat",
+  "vyhloubit",
+  "vyhlásit",
+  "vyhlédnout",
+  "vyhlížet",
+  "vyhnat",
+  "vyhnout",
+  "vyhodit",
+  "vyhovovat",
+  "vyhovět",
+  "vyhrabávat",
+  "vyhrotit",
+  "vyhrát",
+  "vyhubět",
+  "vyhynout",
+  "vyhánět",
+  "vyhýbat",
+  "vyhřeznout",
+  "vyjadřovat",
+  "vyjet",
+  "vyjevit",
+  "vyjmout",
+  "vyjádřit",
+  "vyjídat",
+  "vyjít",
+  "vykazovat",
+  "vyklestit",
+  "vykládat",
+  "vykonat",
+  "vykonávat",
+  "vykopat",
+  "vykopávat",
+  "vykoupit",
+  "vykořenit",
+  "vykrmit",
+  "vykrmovat",
+  "vykročit",
+  "vykupit",
+  "vykupovat",
+  "vykázat",
+  "vykřiknout",
+  "vykřikovat",
+  "vylat",
+  "vylekat",
+  "vyloupit",
+  "vyloupnout",
+  "vyloučit",
+  "vyložit",
+  "vylučovat",
+  "vylámat",
+  "vylát",
+  "vylétávat",
+  "vylévat",
+  "vylézat",
+  "vylézt",
+  "vyléčit",
+  "vylít",
+  "vylíčit",
+  "vymazat",
+  "vymažit",
+  "vymezit",
+  "vymezovat",
+  "vymizet",
+  "vymoci",
+  "vymykat",
+  "vymyslit",
+  "vymáhat",
+  "vymítat",
+  "vymýtit",
+  "vymýšlet",
+  "vyměnit",
+  "vyměřit",
+  "vyn",
+  "vynakládat",
+  "vynaložit",
+  "vynasnažit",
+  "vynechat",
+  "vyneout",
+  "vynesit",
+  "vynikat",
+  "vyniknout",
+  "vynořit",
+  "vynucovat",
+  "vynášat",
+  "vynášet",
+  "vynést",
+  "vyorat",
+  "vypadat",
+  "vypadnout",
+  "vypadávat",
+  "vyplakat",
+  "vyplatit",
+  "vyplenit",
+  "vyplnit",
+  "vyplout",
+  "vyplývat",
+  "vyplňovat",
+  "vypomoci",
+  "vypotácet",
+  "vypouštět",
+  "vypovídat",
+  "vypovědět",
+  "vypracovat",
+  "vyprat",
+  "vypravit",
+  "vypravovat",
+  "vyprosit",
+  "vyprostit",
+  "vyprovodit",
+  "vyprovázet",
+  "vyprošovat",
+  "vyprávět",
+  "vyprůst",
+  "vypsat",
+  "vyptat",
+  "vyptávat",
+  "vypudit",
+  "vypukat",
+  "vypuknout",
+  "vypustit",
+  "vypálit",
+  "vypátrat",
+  "vypínat",
+  "vypírat",
+  "vypít",
+  "vypěstovat",
+  "vyrazit",
+  "vyrašit",
+  "vyrobit",
+  "vyrojit",
+  "vyrovnat",
+  "vyrovnávat",
+  "vyrvat",
+  "vyryj",
+  "vyryjit",
+  "vyrábět",
+  "vyrážet",
+  "vyrýt",
+  "vyrůst",
+  "vyrůstat",
+  "vysadit",
+  "vysazovat",
+  "vyschnout",
+  "vysedávat",
+  "vyskočit",
+  "vyskytnout",
+  "vyskytovat",
+  "vyslat",
+  "vyslechnout",
+  "vysloužit",
+  "vyslovit",
+  "vyslovovat",
+  "vyslyšet",
+  "vyslyšit",
+  "vyslýchat",
+  "vyslýt",
+  "vysmolit",
+  "vysmát",
+  "vysmívat",
+  "vysmět",
+  "vystavit",
+  "vystavovat",
+  "vystavět",
+  "vystihnout",
+  "vystihovat",
+  "vystoupit",
+  "vystrojit",
+  "vystrčit",
+  "vystudovat",
+  "vystupit",
+  "vystupovat",
+  "vystřelit",
+  "vystřídat",
+  "vysušit",
+  "vysvléknout",
+  "vysvobodit",
+  "vysvobozovat",
+  "vysvětlit",
+  "vysvětlovat",
+  "vysypat",
+  "vysázet",
+  "vysílat",
+  "vysýchat",
+  "vytahovat",
+  "vytasit",
+  "vytepat",
+  "vytesat",
+  "vytisknout",
+  "vytlačovat",
+  "vytratit",
+  "vytrhnout",
+  "vytrhovat",
+  "vytrpět",
+  "vytrvat",
+  "vytrysknout",
+  "vytrácet",
+  "vytvořit",
+  "vytvářet",
+  "vytyčit",
+  "vytáhnout",
+  "vytéci",
+  "vytýkat",
+  "vytěžit",
+  "vyučit",
+  "vyučovat",
+  "využít",
+  "využívat",
+  "vyvalit",
+  "vyvarovat",
+  "vyvedit",
+  "vyvet",
+  "vyvinout",
+  "vyvleknout",
+  "vyvlečit",
+  "vyvolat",
+  "vyvolit",
+  "vyvolávat",
+  "vyvracet",
+  "vyvraždit",
+  "vyvrcholit",
+  "vyvrátit",
+  "vyvstat",
+  "vyvyšovat",
+  "vyvádět",
+  "vyvážet",
+  "vyvést",
+  "vyvíjet",
+  "vyvýšit",
+  "vyvěrat",
+  "vyzbrojit",
+  "vyzdobit",
+  "vyzdvihovat",
+  "vyzkoušet",
+  "vyznamenat",
+  "vyznat",
+  "vyznačovat",
+  "vyznávat",
+  "vyznívat",
+  "vyzvat",
+  "vyzvednout",
+  "vyzvědět",
+  "vyzískat",
+  "vyzývat",
+  "vyústit",
+  "vyčist",
+  "vyčkávat",
+  "vyčleňovat",
+  "vyčítat",
+  "vyňanout",
+  "vyňat",
+  "vyřadit",
+  "vyřazovat",
+  "vyřidit",
+  "vyřknout",
+  "vyřídit",
+  "vyřítit",
+  "vyšet",
+  "vyšlechtit",
+  "vyšlehnout",
+  "vyžadovat",
+  "vyžeň",
+  "vyžádat",
+  "vzbouřit",
+  "vzbudit",
+  "vzbuzovat",
+  "vzchopit",
+  "vzcházet",
+  "vzdalovat",
+  "vzdat",
+  "vzdorovat",
+  "vzdouvat",
+  "vzdychat",
+  "vzdálit",
+  "vzdát",
+  "vzdávat",
+  "vzejít",
+  "vzepřít",
+  "vzhlédnout",
+  "vzhlížet",
+  "vzkládat",
+  "vzkázat",
+  "vzkřísit",
+  "vzmoci",
+  "vzmáhat",
+  "vznikat",
+  "vzniknout",
+  "vznášet",
+  "vznášit",
+  "vznést",
+  "vzpamatovat",
+  "vzplanout",
+  "vzplat",
+  "vzplát",
+  "vzpomenout",
+  "vzpomínat",
+  "vzpouzet",
+  "vzpínat",
+  "vzpírat",
+  "vzpřímit",
+  "vzrůst",
+  "vzrůstat",
+  "vztahovat",
+  "vztyčit",
+  "vztáhnout",
+  "vzít",
+  "vzývat",
+  "válit",
+  "válčit",
+  "vát",
+  "vázat",
+  "vážit",
+  "vést",
+  "vézt",
+  "vítat",
+  "vítězit",
+  "vířit",
+  "vědět",
+  "věnovat",
+  "věnčit",
+  "větřít",
+  "věz",
+  "vězit",
+  "věřit",
+  "všimnout",
+  "všímat",
+  "vžít",
+  "zabalit",
+  "zabezpečit",
+  "zablesknout",
+  "zabloudit",
+  "zabořit",
+  "zabránit",
+  "zaburácet",
+  "zabíjet",
+  "zabít",
+  "zabývat",
+  "zachmuřit",
+  "zachovat",
+  "zachovávat",
+  "zachrat",
+  "zachraňit",
+  "zachraňovat",
+  "zachránit",
+  "zachvacovat",
+  "zachvátit",
+  "zachvět",
+  "zachycovat",
+  "zachytit",
+  "zachytávat",
+  "zacházet",
+  "zacpávat",
+  "zadout",
+  "zahalit",
+  "zahalovat",
+  "zahanbit",
+  "zahemžit",
+  "zahladit",
+  "zahlédnout",
+  "zahnat",
+  "zahodit",
+  "zahojit",
+  "zahořet",
+  "zahrabat",
+  "zahrnout",
+  "zahrnovat",
+  "zahrát",
+  "zahubit",
+  "zahynout",
+  "zahájit",
+  "zahálet",
+  "zahánět",
+  "zahřímat",
+  "zahřívat",
+  "zajistit",
+  "zajišťovat",
+  "zajmout",
+  "zajásat",
+  "zajímat",
+  "zajít",
+  "zakazovat",
+  "zakládat",
+  "zakokrhat",
+  "zakolísat",
+  "zakončit",
+  "zakopat",
+  "zakousnout",
+  "zakoušet",
+  "zakrýt",
+  "zakrývat",
+  "zaktualizovat",
+  "zakusit",
+  "zakázat",
+  "zaleknout",
+  "zalomcovat",
+  "založit",
+  "zalátat",
+  "zalévat",
+  "zalézat",
+  "zalíbit",
+  "zamanout",
+  "zamezit",
+  "zamilovat",
+  "zamknout",
+  "zamořit",
+  "zamávat",
+  "zamítat",
+  "zamítnout",
+  "zamířit",
+  "zamýšlet",
+  "zaměnit",
+  "zaměňovat",
+  "zaměřit",
+  "zaměřovat",
+  "zanechat",
+  "zanechávat",
+  "zanedbávat",
+  "zanevřít",
+  "zanikat",
+  "zaniknout",
+  "zano",
+  "zapadat",
+  "zapadnout",
+  "zapamatovat",
+  "zapečetit",
+  "zaplakat",
+  "zaplatit",
+  "zaplavovat",
+  "zaplesat",
+  "zaplnit",
+  "zaplést",
+  "zaplétat",
+  "zapojit",
+  "zapomenout",
+  "zapomínat",
+  "započít",
+  "zapracovat",
+  "zapršet",
+  "zapsat",
+  "zapudit",
+  "zapustit",
+  "zapáchat",
+  "zapálit",
+  "zapírat",
+  "zapít",
+  "zapřisáhnout",
+  "zapřičiňovat",
+  "zapřísahat",
+  "zapřít",
+  "zapůsobit",
+  "zaradovat",
+  "zarazit",
+  "zardit",
+  "zarmoutit",
+  "zarmucovat",
+  "zaručit",
+  "zaručovat",
+  "zarůstat",
+  "zasadit",
+  "zasahovat",
+  "zasazovat",
+  "zasedat",
+  "zasednout",
+  "zaskvět",
+  "zaslat",
+  "zaslechnout",
+  "zasloužit",
+  "zasluhovat",
+  "zaslíbit",
+  "zasnoubit",
+  "zastat",
+  "zastavit",
+  "zastihnout",
+  "zastiňovat",
+  "zastupovat",
+  "zastávat",
+  "zastínit",
+  "zastírat",
+  "zastřelit",
+  "zastřít",
+  "zasunout",
+  "zasvitnout",
+  "zasypat",
+  "zasáhnout",
+  "zasévat",
+  "zasít",
+  "zatajit",
+  "zatknout",
+  "zatlačit",
+  "zatleskat",
+  "zatlučit",
+  "zatmit",
+  "zatmět",
+  "zatopit",
+  "zatoužit",
+  "zatroubit",
+  "zatrubit",
+  "zatvrdit",
+  "zatvrzovat",
+  "zatínat",
+  "zatýkat",
+  "zatěžovat",
+  "zatřást",
+  "zaujmout",
+  "zaujímat",
+  "zavalit",
+  "zavalovat",
+  "zavanout",
+  "zavazovat",
+  "zavinout",
+  "zavlažovat",
+  "zavládnout",
+  "zavolat",
+  "zavraždit",
+  "zavrhnout",
+  "zavrčit",
+  "zavádět",
+  "zavát",
+  "zavázat",
+  "zavést",
+  "zavézt",
+  "zavírat",
+  "zavěsit",
+  "zavřít",
+  "zazelenat",
+  "zaznamenat",
+  "zaznit",
+  "zaznít",
+  "zazpívat",
+  "zazvučit",
+  "zazářit",
+  "zaúpět",
+  "začínat",
+  "začít",
+  "zařadit",
+  "zařidit",
+  "zařídit",
+  "zašlapat",
+  "zašlapávat",
+  "zažít",
+  "zbavit",
+  "zbavovat",
+  "zbloudit",
+  "zbohatnout",
+  "zbořit",
+  "zbraňovat",
+  "zbudovat",
+  "zbít",
+  "zbýt",
+  "zbývat",
+  "zběhat",
+  "zcizoložit",
+  "zdat",
+  "zdeptat",
+  "zdivočet",
+  "zdivočit",
+  "zdobit",
+  "zdokonalovat",
+  "zdolat",
+  "zdramatizovat",
+  "zdravit",
+  "zdrsnět",
+  "zdrtit",
+  "zdráhat",
+  "zdrťt",
+  "zdržet",
+  "zdržovat",
+  "zdvihnout",
+  "zdát",
+  "zděsit",
+  "zdůrazňovat",
+  "zemdlit",
+  "zemřít",
+  "zeptat",
+  "zesinat",
+  "zesládnout",
+  "zesnout",
+  "zesílit",
+  "zfilmovat",
+  "zformovat",
+  "zformulovat",
+  "zhanobit",
+  "zhasnout",
+  "zhltnout",
+  "zhnusit",
+  "zhoršovat",
+  "zhotovit",
+  "zhořknout",
+  "zhrdat",
+  "zhrozit",
+  "zhubit",
+  "zhudebnit",
+  "zhynout",
+  "zhášat",
+  "zhřešit",
+  "zidealizovat",
+  "zjednat",
+  "zjednávat",
+  "zjevit",
+  "zjevovat",
+  "zjistit",
+  "zjišťovat",
+  "zkonzumovat",
+  "zkoumat",
+  "zkoušet",
+  "zkracovat",
+  "zkritizovat",
+  "zkrotit",
+  "zkroutit",
+  "zkrvavět",
+  "zkrátit",
+  "zkřížit",
+  "zlehčovat",
+  "zlenivět",
+  "zlepšit",
+  "zlepšovat",
+  "zlomit",
+  "zlořečit",
+  "zlámat",
+  "zmatat",
+  "zmetat",
+  "zmizet",
+  "zmiňovat",
+  "zmlknout",
+  "zmoci",
+  "zmocnit",
+  "zmocňovat",
+  "zmohutnět",
+  "zmáhat",
+  "zmátnout",
+  "zmírat",
+  "zmítat",
+  "změnit",
+  "změňet",
+  "změřit",
+  "znamenat",
+  "značkovat",
+  "znecitlivit",
+  "zneklidňovat",
+  "znepokojit",
+  "znepokojovat",
+  "znesvěcovat",
+  "znesvětit",
+  "zneuctívat",
+  "zneužít",
+  "zneužívat",
+  "znevažovat",
+  "znevážit",
+  "znečišťovat",
+  "zničit",
+  "znát",
+  "znázornit",
+  "znít",
+  "zobrazit",
+  "zobrazovat",
+  "zorganizovat",
+  "zosnovat",
+  "zotavovat",
+  "zotevírat",
+  "zotročit",
+  "zpeněžit",
+  "zpevnit",
+  "zpečeťovat",
+  "zplodit",
+  "zpochybňovat",
+  "zpracovat",
+  "zpracovávat",
+  "zprosnout",
+  "zprostit",
+  "zprotivit",
+  "zprošťovat",
+  "zpustnout",
+  "zpustošit",
+  "zpytovat",
+  "zpívat",
+  "zpívati",
+  "zpřeházet",
+  "zpřetrhat",
+  "zpřevracet",
+  "zpříjemnit",
+  "způsobit",
+  "způsobovat",
+  "zradit",
+  "zrazovat",
+  "zrcadlit",
+  "zrezavět",
+  "zrežírovat",
+  "zrodit",
+  "zrušit",
+  "ztichnout",
+  "ztišit",
+  "ztotožnit",
+  "ztratit",
+  "ztrestat",
+  "ztroskotat",
+  "ztrpčovat",
+  "ztrácat",
+  "ztrácet",
+  "ztupit",
+  "ztvárnit",
+  "ztát",
+  "ztěžovat",
+  "zužovat",
+  "zvedat",
+  "zvednout",
+  "zvetšet",
+  "zveřejnit",
+  "zveřejňovat",
+  "zviklat",
+  "zvolat",
+  "zvolit",
+  "zvonit",
+  "zvracet",
+  "zvrhnout",
+  "zvučet",
+  "zvučit",
+  "zvyknout",
+  "zvyrážet",
+  "zvyšovat",
+  "zvítězit",
+  "zvýšit",
+  "zvědět",
+  "zvěstovat",
+  "záležet",
+  "zápasit",
+  "zápolit",
+  "zát",
+  "závidět",
+  "záviset",
+  "závít",
+  "zářit",
+  "získat",
+  "získávat",
+  "zúčastnit",
+  "zčernat",
+  "zřeknout",
+  "zřídit",
+  "zřítit",
+  "zůstat",
+  "zůstávat",
+  "úpit",
+  "úpět",
+  "ústit",
+  "útočit",
+  "účastnit",
+  "účinkovat",
+  "účtovat",
+  "čekat",
+  "čerpat",
+  "čest",
+  "čeřit",
+  "činit",
+  "činout",
+  "čit",
+  "čiň",
+  "číhat",
+  "číst",
+  "čítat",
+  "řadit",
+  "ředit",
+  "řeknout",
+  "řečnit",
+  "řešit",
+  "řinout",
+  "řvát",
+  "říci",
+  "řídit",
+  "říkat",
+  "říkávat",
+  "řítit",
+  "šeptat",
+  "šetřit",
+  "šikanovat",
+  "šiřit",
+  "škodit",
+  "škubat",
+  "šlapat",
+  "šlehat",
+  "štvout",
+  "štípit",
+  "švagrová",
+  "šálit",
+  "šít",
+  "šířit",
+  "žalovat",
+  "žasnout",
+  "žebrat",
+  "žehnat",
+  "žehrat",
+  "želet",
+  "žena",
+  "ženit",
+  "živit",
+  "žnout",
+  "žrát",
+  "žádat",
+  "žárlit",
+  "žát",
+  "žít",
+  "žíznit"
+ ]
+}

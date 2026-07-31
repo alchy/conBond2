@@ -594,6 +594,51 @@ ok(_j.na_co_se_pta("Co napsal Jirásek?") == "Typ=druh",
 print("  pád i předložka rozhodují · prázdná slova a slovesa neodpovídají"
       " · delší tázací tvar vyhrává")
 
+print("\n— vztahy: definiční věta je pravidlo, fakt není —")
+from core.relations import fixpoint, odvodit_hrany, pravidla_z_vety  # noqa: E402
+
+
+def _v(form, upos, dep, *rysy, tid=1, head=0, lem=None):
+    return {"form": form, "lemma": (lem or form).lower(), "upos": upos,
+            "acts": [upos, dep] + list(rysy), "id": tid, "head": head}
+
+
+_def = [_v("Tchán", "NOUN", "nsubj", "Case=Nom", tid=1, head=3, lem="tchán"),
+        _v("je", "AUX", "cop", tid=2, head=3),
+        _v("otec", "NOUN", "root", "Case=Nom", tid=3, head=0, lem="otec"),
+        _v("manžela", "NOUN", "nmod", "Case=Gen", tid=4, head=3, lem="manžel"),
+        _v("manželky", "NOUN", "conj", "Case=Gen", tid=6, head=4, lem="manželka")]
+ok(pravidla_z_vety(_def) == [("tchán", "otec", ["manžel", "manželka"])],
+   "definiční věta nedala pravidlo")
+
+# „Karel je otec Petra" je FAKT o Karlovi, ne definice slova. Kdyby PROPN
+# procházel, stal by se z každého životopisu zdroj definic.
+_fakt = [_v("Karel", "PROPN", "nsubj", "Case=Nom", tid=1, head=3),
+         _v("je", "AUX", "cop", tid=2, head=3),
+         _v("otec", "NOUN", "root", "Case=Nom", tid=3, head=0, lem="otec"),
+         _v("Petra", "PROPN", "nmod", "Case=Gen", tid=4, head=3)]
+ok(pravidla_z_vety(_fakt) == [], "vlastní jméno prošlo jako definice")
+
+# Bez spony věta nedefinuje, jen vypráví.
+ok(pravidla_z_vety([t for t in _def if "cop" not in t["acts"]]) == [],
+   "věta bez spony prošla jako definice")
+
+# Fixpoint: „praděd je otec děda" nedává smysl, dokud není přijat „děd".
+_pr = fixpoint([("praděd", "otec", ["děd"], "d"),
+                ("děd", "otec", ["matka", "otec"], "d"),
+                ("tchán", "otec", ["manžel", "manželka"], "d")],
+               {"otec", "matka", "manžel", "manželka"})
+ok(set(_pr) == {"praděd", "děd", "tchán"}, f"fixpoint nepřijal vše: {sorted(_pr)}")
+ok(all(r["rozsah"] == "jazyk" for v in _pr.values() for r in v),
+   "pravidlo nad základními vztahy nemá být vázané na dokument")
+
+_nove = odvodit_hrany([("otec", "karel", "petr"), ("manžel", "petr", "jana"),
+                       ("otec", "josef", "karel")], _pr)
+_sada = {(h["predikat"], h["kdo"], h["ci"]) for h in _nove}
+ok(("tchán", "karel", "jana") in _sada, f"tchán se neodvodil: {_sada}")
+ok(("děd", "josef", "petr") in _sada, f"děd se neodvodil: {_sada}")
+print(f"  pravidel {len(_pr)} · odvozených hran {len(_nove)}")
+
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")
 ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")

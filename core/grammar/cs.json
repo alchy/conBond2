@@ -109,7 +109,10 @@
   "kam": "Typ=misto",
   "odkud": "Typ=misto",
   "kudy": "Typ=misto",
-  "kolik": "Typ=pocet"
+  "kolik": "Typ=pocet",
+  "kolika": "Typ=pocet",
+  "kolikrát": "Typ=pocet",
+  "nakolik": "Typ=pocet"
  },
  "_prazdna": "Tvary, které o obsahu nic neříkají — svítily by skoro všude a průnik by zúžily na nic.",
  "prazdna": [

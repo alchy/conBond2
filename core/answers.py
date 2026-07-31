@@ -117,28 +117,55 @@ class Odpovidac:
         tvary = self.obsahove_tvary(text)
         entita = self.najit_entitu(tvary)
         vety_entity = set(self.podle_entity.get(entita, ()))
-        # JMÉNO, KTERÉ NEZNÁME, ZNAMENÁ „NEVÍM". Bez tohohle řezu odpověděl
-        # systém na „Kdy se narodil Sherlock Holmes?" datem narození někoho
-        # jiného: entita nesedla, takže se pole složilo ze samotného slovesa
-        # „narodil" a to svítí u půlky korpusu. Vymyšlená odpověď je horší
-        # než mlčení — proto se ptáme, jestli otázka JMÉNO vůbec měla.
+        # JMÉNO, KTERÉ V KORPUSU VŮBEC NENÍ, ZNAMENÁ „NEVÍM". Bez tohohle
+        # řezu odpověděl systém na „Kdy se narodil Sherlock Holmes?" datem
+        # někoho jiného: pole se složilo ze samotného slovesa „narodil" a to
+        # svítí u půlky korpusu.
+        #
+        # Testuje se VÝSKYT V KORPUSU, ne shoda s entitou. První verze
+        # odmítala všechno, co není jedním z 49 životopisů — tedy i „Ol
+        # Doinyo Lengai" a „Ježíš", o kterých korpus mluví celé kapitoly.
+        # Entit je pár desítek, kdežto jmen v textu tisíce.
         jmena = self.jmena_v_otazce(text)
-        cizi = bool(jmena) and not self.sedi_cele_jmeno(jmena, entita)
+        cizi = bool(jmena) and not self.sedi_cele_jmeno(jmena, entita) \
+            and any(not self.vety_tvaru(j.lower()) for j in jmena)
         zbytek = [t for t in tvary if t not in set(entita.split("_"))]
         kde = {t: self.vety_tvaru(t) for t in zbytek}
         zname = {t: v for t, v in kde.items() if v}
-        podle_tvaru = set.intersection(*zname.values()) if zname else set()
-        # Prázdný průnik neznamená „nevím" — znamená, že se o TÉHLE osobě
-        # tímhle slovesem nemluví. Koreference doplnila entitu jen u 15 %
-        # vět korpusu, takže se to stává často a mlčet by bylo horší než
-        # ukázat širší pole a přiznat, že je širší.
+
+        # POLE SE VÁŽÍ, NEPRONÍKÁ. Průnik VŠECH obsahových slov je křehký:
+        # „Kam odešel Ježíš s matkou a učedníky?" má čtyři slova, každé svítí
+        # ve stovkách vět, a průnik všech čtyř je prázdný — přitom taková
+        # věta v korpusu je. A u „Kde leží sopka Ol Doinyo Lengai?" naopak
+        # entita článku (sopka) převálcovala konkrétní jméno.
+        #
+        # Vážení dělá obojí správně: věta dostane bod za každé slovo otázky,
+        # které v ní stojí, a bod navíc za entitu. Berou se věty s nejvyšším
+        # skóre — tedy ty, které z otázky pokrývají nejvíc.
+        skore: dict = defaultdict(int)
+        for vety_slova in zname.values():
+            for vi in vety_slova:
+                skore[vi] += 1
+        for vi in vety_entity:
+            skore[vi] += 1
+        signalu = len(zname) + (1 if vety_entity else 0)
         siroko = False
-        if vety_entity and podle_tvaru:
-            prunik = vety_entity & podle_tvaru
-            if not prunik:
-                prunik, siroko = vety_entity, True
-        else:
-            prunik = vety_entity or podle_tvaru
+        prunik = set()
+        if skore:
+            nej = max(skore.values())
+            # KDYŽ SE ŽÁDNÉ DVA SIGNÁLY NEPOTKAJÍ, JE TO „NEVÍM". Jinak by
+            # z vážení vzniklo SJEDNOCENÍ místo zúžení: „Kdy se narodil pes
+            # domácí?" má entitu (76 vět) i sloveso (67 vět), nikde se
+            # nesejdou, a bez tohohle řezu se pole složilo ze všech 143 —
+            # a odpovědělo datem narození Hrabalova bratra.
+            if signalu >= 2 and nej < 2:
+                prunik = set()
+            else:
+                prunik = {vi for vi, n in skore.items() if n == nej}
+                # Nižší skóre než součet všech signálů znamená, že se něco
+                # z otázky v jedné větě nepotkalo — pole je širší, než jsme
+                # chtěli, a je poctivé to říct.
+                siroko = nej < signalu
         if cizi:
             prunik, siroko = set(), False
         return {"tvary": tvary, "entita": entita, "vet_entity": len(vety_entity),
@@ -175,17 +202,39 @@ class Odpovidac:
             if pomohla:
                 vety = pomohla if not vety else ((vety & pomohla) or vety)
         typ = self.jazyk.na_co_se_pta(text)
-        nalezy = []
-        for vi in sorted(vety):
-            for rozsah in self.podle_typu.get(vi, {}).get(typ, ()):
-                nalezy.append({"veta": vi, "rozsah": list(rozsah),
-                               "text": self.text_rozsahu(vi, rozsah),
-                               "kontext": self.text_vety(vi)})
+        nalezy = self.sebrat(vety, typ)
+        # ZÚŽENÍ, KTERÉ NIC NENAJDE, JE HORŠÍ NEŽ ŠIRŠÍ POLE — ale jen když
+        # otázce rozumíme celé. „Kdy se narodil Alois Jirásek?" protnulo
+        # entitu se slovesem na jedinou větu, a ta žádný čas neměla: rok
+        # narození stojí v úvodní závorce, kde slovo „narodil" není. Tam se
+        # rozšířit vyplatí.
+        #
+        # NEROZŠIŘOVAT, když otázka obsahuje slovo, které korpus nezná
+        # („Kolik měl Hrabal LETADEL?"), nebo cizí jméno. Tam by z „nevím"
+        # vzniklo „tady máš něco o té osobě" — a to je zase vymýšlení, jen
+        # opatrnější. První verze tohohle řezu neměla a rozbila dva zápory.
+        lze_rozsirit = (akt["vet_entity"] and not akt["cizi_jmeno"]
+                        and not akt["nezname"])
+        if not nalezy and lze_rozsirit:
+            sirsi = set(self.podle_entity.get(akt["entita"], ()))
+            nalezy = self.sebrat(sirsi, typ)
+            if nalezy:
+                vety, akt["siroko"] = sirsi, True
         # Množiny se ven neposílají — nález jde rovnou do JSON pro prohlížeč.
         ven = dict(akt, vety=sorted(akt["vety"])[:200])
         return {"aktivace": ven, "typ": typ, "vet": len(vety),
                 "znalost_pomohla": bool(pomohla), "kandidati": nalezy,
                 "odpoved": nalezy[0]["text"] if nalezy else None}
+
+    def sebrat(self, vety, typ) -> list:
+        """Úseky daného druhu ve větách pole."""
+        out = []
+        for vi in sorted(vety):
+            for rozsah in self.podle_typu.get(vi, {}).get(typ, ()):
+                out.append({"veta": vi, "rozsah": list(rozsah),
+                            "text": self.text_rozsahu(vi, rozsah),
+                            "kontext": self.text_vety(vi)})
+        return out
 
     # ---- čtení -------------------------------------------------------
     def text_rozsahu(self, vi: int, rozsah) -> str:

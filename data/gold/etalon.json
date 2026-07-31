@@ -1,0 +1,265 @@
+[
+ {
+  "q": "Kolik zubů má dospělý pes?",
+  "expect": [
+   "42"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "pes_domácí"
+ },
+ {
+  "q": "Kolik mléčných zubů má štěně?",
+  "expect": [
+   "28"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "pes_domácí"
+ },
+ {
+  "q": "Z kolika vlků pochází pes?",
+  "expect": [
+   "13",
+   "24"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "pes_domácí"
+ },
+ {
+  "q": "Kolik kostí má dospělá kočka?",
+  "expect": [
+   "244"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "kočka_domácí"
+ },
+ {
+  "q": "Kolik svalů má kočka?",
+  "expect": [
+   "512"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "kočka_domácí"
+ },
+ {
+  "q": "Kolik zubů má mléčný chrup kočky?",
+  "expect": [
+   "26"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "kočka_domácí"
+ },
+ {
+  "q": "Kolik zubů má trvalý chrup kočky?",
+  "expect": [
+   "30"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "kočka_domácí"
+ },
+ {
+  "q": "Kolik dělnic je v úlu při hlavní snůšce?",
+  "expect": [
+   "30 000",
+   "50 000"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "včela_medonosná"
+ },
+ {
+  "q": "Co je nejbližší příbuzný psa?",
+  "expect": [
+   "vlk"
+  ],
+  "mode": "answer",
+  "kind": "zvířata",
+  "dok": "pes_domácí"
+ },
+ {
+  "q": "Na kolika polích se hrají šachy?",
+  "expect": [
+   "8"
+  ],
+  "mode": "answer",
+  "kind": "věci",
+  "dok": "šachy"
+ },
+ {
+  "q": "Kdy vyhrál Deep Blue zápas s mistrem světa?",
+  "expect": [
+   "1997"
+  ],
+  "mode": "answer",
+  "kind": "věci",
+  "dok": "šachy"
+ },
+ {
+  "q": "Kolik procent je Antarktida větší než Evropa?",
+  "expect": [
+   "40"
+  ],
+  "mode": "answer",
+  "kind": "věci",
+  "dok": "antarktida"
+ },
+ {
+  "q": "Jaká je nejnižší naměřená teplota na Zemi?",
+  "expect": [
+   "89"
+  ],
+  "mode": "answer",
+  "kind": "věci",
+  "dok": "antarktida"
+ },
+ {
+  "q": "Jak silný je antarktický ledový příkrov?",
+  "expect": [
+   "1",
+   "9"
+  ],
+  "mode": "answer",
+  "kind": "věci",
+  "dok": "antarktida"
+ },
+ {
+  "q": "Kde leží sopka Ol Doinyo Lengai?",
+  "expect": [
+   "Tanzanii"
+  ],
+  "mode": "answer",
+  "kind": "věci",
+  "dok": "sopka"
+ },
+ {
+  "q": "Kdy se objevily první sinice?",
+  "expect": [
+   "2 miliardami",
+   "miliardami"
+  ],
+  "mode": "answer",
+  "kind": "věci",
+  "dok": "fotosyntéza"
+ },
+ {
+  "q": "Kde se narodil Bohumil Hrabal?",
+  "expect": [
+   "Židenic"
+  ],
+  "mode": "answer",
+  "kind": "životopisy",
+  "dok": "bohumil_hrabal"
+ },
+ {
+  "q": "Kdy se narodil Alois Jirásek?",
+  "expect": [
+   "1851"
+  ],
+  "mode": "answer",
+  "kind": "životopisy",
+  "dok": "alois_jirásek"
+ },
+ {
+  "q": "Kde zemřel Egon Hostovský?",
+  "expect": [
+   "Montclair"
+  ],
+  "mode": "answer",
+  "kind": "životopisy",
+  "dok": "egon_hostovský"
+ },
+ {
+  "q": "Kdy se oženil Alois Jirásek?",
+  "expect": [
+   "1879"
+  ],
+  "mode": "answer",
+  "kind": "životopisy",
+  "dok": "alois_jirásek"
+ },
+ {
+  "q": "Kde studoval Bohumil Hrabal práva?",
+  "expect": [
+   "Praze"
+  ],
+  "mode": "answer",
+  "kind": "životopisy",
+  "dok": "bohumil_hrabal"
+ },
+ {
+  "q": "Kdy zemřel František Halas?",
+  "expect": [
+   "1949"
+  ],
+  "mode": "answer",
+  "kind": "životopisy",
+  "dok": "františek_halas"
+ },
+ {
+  "q": "Kam odešel Ježíš s matkou a učedníky?",
+  "expect": [
+   "Kafarnaum"
+  ],
+  "mode": "answer",
+  "kind": "bible",
+  "dok": "bible_jan"
+ },
+ {
+  "q": "Kolik let byl nemocný ten člověk u rybníka?",
+  "expect": [
+   "třicet",
+   "osm"
+  ],
+  "mode": "answer",
+  "kind": "bible",
+  "dok": "bible_jan"
+ },
+ {
+  "q": "Kdy se narodil Sherlock Holmes?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "zápory",
+  "dok": ""
+ },
+ {
+  "q": "Kde zemřel Napoleon Bonaparte?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "zápory",
+  "dok": ""
+ },
+ {
+  "q": "Kdy zemřela Marie Curie?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "zápory",
+  "dok": ""
+ },
+ {
+  "q": "Kolik měl Bohumil Hrabal letadel?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "zápory",
+  "dok": ""
+ },
+ {
+  "q": "Kde se narodil Franz Kafka?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "zápory",
+  "dok": ""
+ },
+ {
+  "q": "Kdy se narodil pes domácí?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "zápory",
+  "dok": "pes_domácí"
+ }
+]

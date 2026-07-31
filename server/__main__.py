@@ -15,6 +15,8 @@ from http.server import ThreadingHTTPServer
 from core import Config, UlozisteSouboru, nastavit_log
 
 from .parse import Rozbor
+from core.health import zkontrolovat
+
 from .processes import Sprava
 from .routes import udelej_handler
 
@@ -29,6 +31,14 @@ def serve(config) -> None:
     print("pole2 běží na http://localhost:%d/" % config.port)
     print("  data   %s" % config.data)
     print("  rozbor %s" % config.udpipe)
+    # Kontrola zdraví PŘED odpovídáním: tiché vady (nespuštěná příprava,
+    # zlatá sada na pozicích, odkaz na přejmenovaný soubor) se jinak
+    # projeví až chudšími výsledky a hledají se mnohem hůř.
+    nalezy = zkontrolovat(config)
+    for n in nalezy:
+        print("  %s" % n)
+    if not nalezy:
+        print("  data   zdravá")
     try:
         srv.serve_forever()
     except KeyboardInterrupt:

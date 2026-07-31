@@ -19,6 +19,7 @@ from core import (Config, Nastaveni, Pole, SitkoStredu,  # noqa: E402
                   Odpovidac, Vyrez)
 from core.compose import popsat_zaznam  # noqa: E402
 from core.dialog import Rozhovor  # noqa: E402
+from core.health import zkontrolovat  # noqa: E402
 from core.language import Jazyk  # noqa: E402
 from core.tvrzeni import Mluvnice, Znalost  # noqa: E402
 from core.window import Okno  # noqa: E402
@@ -419,6 +420,24 @@ ok(set(v) >= {"aktivace", "typ", "kandidati", "odpoved"}, "nález má jiné klí
 ok(isinstance(v["aktivace"]["vety"], list), "věty jdou ven jako množina, to není JSON")
 ok(v["typ"] == "Typ=misto", f"tázací tvar dal {v['typ']}")
 print(f"  aktivace: {v['aktivace']['svitici']} · typ {v['typ']}")
+
+print("\n— hlídač zdraví chytí, co dnes proklouzlo —")
+# Tři vady za den a ani jedna se neohlásila: nenačtené styly, nespuštění
+# agenti, zlatá sada na pozicích vět. Všechny mají týž tvar — A se změnilo,
+# B o tom neví.
+import json as _json
+_d = tempfile.mkdtemp(prefix="pole2-zdravi-")
+os.makedirs(os.path.join(_d, "corpora"))
+_cfg = Config(data=_d, koren=_d)
+_json.dump([[{"form": "a", "upos": "NOUN", "acts": ["NOUN"]}]],
+           open(os.path.join(_d, "corpora", "facts.json"), "w"))
+_co = {n.co for n in zkontrolovat(_cfg)}
+print("  " + " · ".join(sorted(_co)))
+ok(any("návěsku agentů" in c for c in _co), "nespuštění agenti se neohlásili")
+open(os.path.join(_d, "pole2.html"), "w").write('<link href="css/neni.css">')
+ok(any("neexistující soubor" in n.co for n in zkontrolovat(_cfg)),
+   "odkaz na chybějící soubor se neohlásil")
+shutil.rmtree(_d, ignore_errors=True)
 
 print("\n— původ věty se drží MIMO acts —")
 # Bez původu se dá na větu odkazovat jen pozicí v korpusu a ta přežije do

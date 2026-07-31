@@ -10,6 +10,17 @@
    "veta": "Bohumil Hrabal je spisovatel.",
    "levy_tvar": "Bohumil Hrabal",
    "pravy_tvar": "spisovatel"
+  },
+  {
+   "druh": "podtrida",
+   "levy": "rur",
+   "pravy": "dílo",
+   "zdroj": "dialog",
+   "cas": 1785497951.124141,
+   "jistota": 1.0,
+   "veta": "RUR je druh díla",
+   "levy_tvar": "RUR",
+   "pravy_tvar": "díla"
   }
  ]
 }

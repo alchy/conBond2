@@ -45,6 +45,7 @@ sys.path.insert(0, KOREN)
 
 from core import Config  # noqa: E402
 from core.agents import oznacit_korpus  # noqa: E402
+from core.ingest import Cistic, Rozbor  # noqa: E402
 from core.log import log, nastavit  # noqa: E402
 
 SUROVE = os.path.join(KOREN, "data", "raw")
@@ -59,31 +60,13 @@ MIN_SLOV = 4
 
 
 # ---- 1. text → věty ------------------------------------------------------
-def vycistit_radek(radek: str) -> str:
-    radek = re.sub(r"\[\d+\]", "", radek)          # poznámky pod čarou
-    radek = re.sub(r"\s+", " ", radek)
-    return radek.strip()
-
-
-def vety_z_clanku(cesta: str) -> list:
-    out = []
-    with open(cesta, encoding="utf-8") as f:
-        for radek in f:
-            if NEPATRI.match(radek):
-                continue
-            radek = vycistit_radek(radek)
-            if len(radek.split()) >= MIN_SLOV:
-                out.append(radek)
-    return out
-
-
 def krok_vety() -> dict:
     clanky = {}
     for jmeno in sorted(os.listdir(SUROVE)):
         if not jmeno.endswith(".txt"):
             continue
         klic = jmeno[:-4]
-        clanky[klic] = vety_z_clanku(os.path.join(SUROVE, jmeno))
+        clanky[klic] = Cistic().ze_souboru(os.path.join(SUROVE, jmeno))
         log.info("článek načten", kdo=klic, odstavcu=len(clanky[klic]))
     with open(MEZIKROK, "w", encoding="utf-8") as f:
         json.dump(clanky, f, ensure_ascii=False, indent=1)
@@ -93,47 +76,17 @@ def krok_vety() -> dict:
 
 
 # ---- 2. věty → tokeny ----------------------------------------------------
-def rozebrat(text: str, url: str, timeout: int = 600) -> list:
-    """Jedno volání UDPipe. Vrací seznam vět, každá seznam tokenů."""
-    telo = urllib.parse.urlencode({
-        "tokenizer": "", "tagger": "", "parser": "", "data": text,
-    }).encode("utf-8")
-    with urllib.request.urlopen(url.rstrip("/") + "/process", telo,
-                                timeout=timeout) as r:
-        odpoved = json.loads(r.read().decode("utf-8"))
-    vety, tokeny = [], []
-    for radek in odpoved.get("result", "").splitlines():
-        if radek.startswith("# newdoc") or radek.startswith("# newpar"):
-            continue
-        if not radek.strip():
-            if tokeny:
-                vety.append(tokeny)
-                tokeny = []
-            continue
-        if radek.startswith("#"):
-            continue
-        c = radek.split("\t")
-        if len(c) < 8 or "-" in c[0] or "." in c[0]:
-            continue
-        rysy = [] if c[5] == "_" else c[5].split("|")
-        tokeny.append({"form": c[1], "lemma": c[2], "upos": c[3],
-                       "id": int(c[0]), "head": int(c[6]) if c[6].isdigit() else 0,
-                       "acts": [c[3], c[7]] + rysy})
-    if tokeny:
-        vety.append(tokeny)
-    return vety
-
-
 def krok_rozbor(config) -> dict:
     with open(MEZIKROK, encoding="utf-8") as f:
         clanky = json.load(f)
+    rozbor = Rozbor(config.udpipe)
     out = {}
     for kdo, odstavce in clanky.items():
         zacatek = time.perf_counter()
         vety = []
         # Po dávkách, ať se nepošle celý článek v jednom požadavku.
         for i in range(0, len(odstavce), 25):
-            vety.extend(rozebrat("\n".join(odstavce[i:i + 25]), config.udpipe))
+            vety.extend(rozbor.vety_slovniku("\n".join(odstavce[i:i + 25])))
         out[kdo] = vety
         log.info("rozebráno", kdo=kdo, vet=len(vety),
                  tokenu=sum(len(v) for v in vety),

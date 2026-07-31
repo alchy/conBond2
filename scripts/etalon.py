@@ -38,6 +38,13 @@ KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, KOREN)
 
 from core import Config, Odpovidac, Pole, UlozisteSouboru, nastavit_log  # noqa: E402
+
+
+def brana(odp, polozky):
+    """Projde otázka vůbec do pole? Odpovídač se dá zavolat napřímo, ale
+    dialog se nejdřív ptá `je_na_obsah()` — a co tam neprojde, na to se
+    člověk odpovědi nedočká, i kdyby ji pole mělo."""
+    return [p["q"] for p in polozky if not odp.je_na_obsah(p["q"])]
 from core.dialog import Rozhovor  # noqa: E402
 from core.tvrzeni import Znalost  # noqa: E402
 
@@ -126,6 +133,11 @@ def main() -> int:
     print("  " + "─" * 58)
     print(f"  {'celkem':<18} {c['celkem']:>7} {c['ok']:>7} {c['prvni']:>7}"
           f" {c['unsure']:>13}")
+    mimo = brana(o, sada)
+    if mimo:
+        print(f"\n  POZOR: {len(mimo)} otázek neprojde branou do pole:")
+        for q in mimo:
+            print(f"    {q}")
     if c["celkem"]:
         print(f"\n  uspěl {100*c['ok']/c['celkem']:.0f} %"
               f" · první {100*c['prvni']/max(1, c['celkem']-c['unsure']):.0f} %"

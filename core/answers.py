@@ -212,7 +212,15 @@ class Odpovidac:
 
     # ---- odpověď -----------------------------------------------------
     def je_na_obsah(self, text: str) -> bool:
-        return self.jazyk.na_co_se_pta(text) is not None
+        """Je to otázka do pole, ne do znalosti?
+
+        Brána musí znát OBĚ cesty k odpovědi. Ptát se jen na typ znamenalo,
+        že „Jako co pracoval Jirásek?" — které typ schválně nemá, aby ho
+        vzala role — vypadlo z dialogu ještě před polem a odpovědělo se
+        „tomuhle tvaru nerozumím". V etalonu to vidět nebylo, protože ten
+        volá `odpovedet()` napřímo a bránu obchází."""
+        return (self.jazyk.na_co_se_pta(text) is not None
+                or bool(self.role_otazky(text)))
 
     def odpovedet(self, text: str, se_znalosti: bool = True, tema=()) -> dict:
         akt = self.rozsvitit(text, tema)

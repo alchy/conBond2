@@ -175,6 +175,43 @@ class Odpovidac:
         shody = self.entity_pro_jmeno(tvary)
         return shody[0] if len(shody) == 1 else (shody[0] if shody else "")
 
+    # Kolikrát musí jméno v korpusu stát, aby se na ně vyplatilo ptát,
+    # a jak výrazně musí jedna varianta převažovat, aby se ostatní daly
+    # považovat za tutéž osobu.
+    NEJMENE_VET = 2
+    PREVAHA = 3
+
+    def prevazujici(self, lide: list) -> list:
+        """Z několika jmen ta, na která se má smysl ptát.
+
+        REGRESE, KTERÁ TO VYNUTILA. Doptání spravilo „Kdo je Novák?" a
+        rozbilo „Kdo je Ježíš?" — to se najednou ptalo mezi pěti tvary:
+
+            ježíš krist nazaretský  134 vět
+            kristus ježíš            22
+            ježíš kristus            13
+            ježíš duch                1     ← vada rozboru
+            ježíš šimon               1     ← vada rozboru
+
+        Jsou to varianty jednoho jména plus smetí, ne pět lidí. Pravidlo
+        o zkráceném jménu je nespojilo, protože „kristus" a „krist" nejsou
+        totéž slovo.
+
+        Rozhoduje EVIDENCE, ne teorie o českých jménech. Jméno doložené
+        jednou větou není osoba, na kterou se ptát; a když jedna varianta
+        několikanásobně převažuje, ptá se člověk na ni. Novákové takhle
+        nevypadají — 5, 3, 2, 2, 2 je vyrovnané a doptání tam zůstává."""
+        vazne = [j for j in lide
+                 if len(self.podle_jmena.get(j, ())) >= self.NEJMENE_VET]
+        if not vazne:
+            return []
+        podle_vah = sorted(vazne, key=lambda j: -len(self.podle_jmena[j]))
+        nej = len(self.podle_jmena[podle_vah[0]])
+        druhy = len(self.podle_jmena[podle_vah[1]]) if len(podle_vah) > 1 else 0
+        if druhy and nej >= self.PREVAHA * druhy:
+            return [podle_vah[0]]
+        return podle_vah
+
     def sedi_cele_jmeno(self, jmena, entita: str) -> bool:
         """Sedí VŠECHNA jména z otázky na jednu entitu?
 
@@ -195,8 +232,19 @@ class Odpovidac:
         kusy = text.replace("?", " ").replace(".", " ").split()
         return [k for k in kusy[1:] if k[:1].isupper()]
 
-    def rozsvitit(self, text: str, tema=()) -> dict:
+    def rozsvitit(self, text: str, tema=(), doplnit=()) -> dict:
         tvary = self.obsahove_tvary(text)
+        # ODPOVĚĎ JE TAKY AKTIVACE. „Kdo je Ježíš?" → „Syn"; navazující
+        # „Čí?" nemá jediné obsahové slovo, a bez doplnění by si pole
+        # postavilo z celé entity a role by z něj vybrala první genitiv.
+        #
+        # Doplňuje se JEN u otázky, která sama nic nenese. Kdyby se slova
+        # z minulého tahu přidávala vždycky, táhla by si předchozí odpověď
+        # do každé další otázky — a to je zase konfabulace, jen pomalejší.
+        z_odpovedi = []
+        if not tvary and doplnit:
+            z_odpovedi = [t for t in doplnit if self.vety_tvaru(t)]
+            tvary = list(z_odpovedi)
         shody = self.entity_pro_jmeno(tvary)
         entita = shody[0] if shody else ""
         # TÉMA DRŽÍ ŘETĚZ. „Kdo je Hrabal?" a pak „Kde se narodil?" — druhá
@@ -245,6 +293,7 @@ class Odpovidac:
         z_dokumentu = [j for j in lide if j.replace(" ", "_") in self.podle_entity]
         if len(z_dokumentu) == 1:
             lide = z_dokumentu
+        lide = self.prevazujici(lide)
         if len(lide) == 1:
             # Otázka určuje jednoho člověka. Že se přitom „Karel" trefí do
             # tří dokumentů, je vedlejší — celé jméno je silnější signál
@@ -296,7 +345,7 @@ class Odpovidac:
                 "svitici": {t: len(v) for t, v in kde.items()},
                 "nezname": [t for t, v in kde.items() if not v],
                 "jmena": jmena, "cizi_jmeno": cizi, "z_tematu": bool(z_tematu),
-                "nejasne": nejasne,
+                "nejasne": nejasne, "z_odpovedi": z_odpovedi,
                 "siroko": siroko, "vety": prunik}
 
     def rozsirit(self, tvar: str) -> set:
@@ -390,8 +439,9 @@ class Odpovidac:
                 or bool(self.role_otazky(text))
                 or bool(self.je_na_vztah(text)))
 
-    def odpovedet(self, text: str, se_znalosti: bool = True, tema=()) -> dict:
-        akt = self.rozsvitit(text, tema)
+    def odpovedet(self, text: str, se_znalosti: bool = True, tema=(),
+                  doplnit=()) -> dict:
+        akt = self.rozsvitit(text, tema, doplnit)
         if akt["nejasne"]:
             return {"aktivace": dict(akt, vety=[]), "typ": None, "role": "",
                     "vet": 0, "znalost_pomohla": False, "kandidati": [],
@@ -417,6 +467,16 @@ class Odpovidac:
         # Role proto smí mluvit jen u otázek, které žádný typ nepokrývá:
         # Komu, Čím, Proč, Jak. Prázdný `typ` je ta podmínka.
         role = "" if typ else self.role_otazky(text)
+        # ROLE POTŘEBUJE, ČÍM ZÚŽIT. „Čí?" je samotný tázací tvar bez
+        # jediného obsahového slova, takže pole zůstane celá entita
+        # z tématu a role z ní vybere první genitiv, na který narazí —
+        # vyšlo z toho „této noci". Je to táž nebezpečná dvojice jako
+        # role v rozšířeném poli: nejslabší důkaz nad nejširším polem.
+        #
+        # Doplnit chybějící slova z předchozího tahu (elipsa) je vlastní
+        # úloha; do té doby je mlčení správná odpověď.
+        if role and not any(akt["svitici"].values()):
+            role = ""
         if not nalezy and role:
             nalezy = self.sebrat_roli(vety, role)
         # ZÚŽENÍ, KTERÉ NIC NENAJDE, JE HORŠÍ NEŽ ŠIRŠÍ POLE — ale jen když

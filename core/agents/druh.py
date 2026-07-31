@@ -131,15 +131,21 @@ class Druh(Agent):
     def rozsah_prisudku(veta: Sequence[dict], t: dict, podle_id: dict) -> list:
         """Přísudek i s tím, co ho blíže určuje: „český prozaik", ne „prozaik".
 
-        Bere se jen shodný přívlastek nalevo — „byl prozaik, dramatik
-        a učitel" má další členy jako `conj` a ty jsou vlastní odpovědi."""
+        NA OBĚ STRANY. První verze brala jen přívlastek nalevo a na
+        „Ježíš je Syn Boží" odpověděla „Syn" — `Boží` visí na přísudku
+        taky jako `amod`, jen stojí vpravo. Odpověď tím ztratila to
+        podstatné a přitom vypadala úplně.
+
+        `conj` se nebere ani teď: „byl prozaik, dramatik a učitel" má další
+        členy jako vlastní odpovědi, ne jako součást první."""
         i = veta.index(t)
         rozsah = [i]
-        j = i - 1
-        while j >= 0:
-            x = veta[j]
-            if x.get("head") != t.get("id") or "amod" not in x["acts"]:
-                break
-            rozsah.insert(0, j)
-            j -= 1
-        return rozsah
+        for smer in (-1, 1):
+            j = i + smer
+            while 0 <= j < len(veta):
+                x = veta[j]
+                if x.get("head") != t.get("id") or "amod" not in x["acts"]:
+                    break
+                rozsah.append(j)
+                j += smer
+        return sorted(rozsah)

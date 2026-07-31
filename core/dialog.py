@@ -78,6 +78,7 @@ class Rozhovor:
         self.nejasne: Optional[Nejasnost] = None
         self.posledni_nalez: Optional[dict] = None
         self.tema: dict = {}          # entita → teplo
+        self.posledni_slova: tuple = ()   # slova poslední odpovědi
 
     # ---- příjem ------------------------------------------------------
     def poslat(self, text: str) -> Zaznam:
@@ -147,12 +148,18 @@ class Rozhovor:
     def z_pole(self, text: str) -> Zaznam:
         """Odpověď z korpusu. Vrací KANDIDÁTY, ne jedno slovo: šablona je
         abstrakce, která má kandidáty matchnout, ne mezi nimi vybrat."""
-        v = self.odpovidac.odpovedet(text, tema=self.horka_temata())
+        v = self.odpovidac.odpovedet(text, tema=self.horka_temata(),
+                                     doplnit=self.posledni_slova)
         self.zahrat(v["aktivace"].get("entita"))
         v["kandidati"] = self.z_dialogu(text, v) + v["kandidati"]
         if v["kandidati"]:
             v["odpoved"] = v["kandidati"][0]["text"]
         self.posledni_nalez = v
+        # Odpověď se stane aktivací pro příští tah — navazující otázka
+        # („Čí?") tím dostane, čím zúžit.
+        if v["kandidati"]:
+            self.posledni_slova = tuple(
+                w.lower().strip(".,") for w in v["kandidati"][0]["text"].split())
         a = v["aktivace"]
         kde = f"Ent={a['entita']} ({a['vet_entity']} vět)" if a["entita"] else "bez osoby"
         tvary = ", ".join(f"{t} ({n})" for t, n in a["svitici"].items() if n)

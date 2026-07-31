@@ -126,4 +126,10 @@ class Jazyk:
         return None
 
     def je_prazdne(self, slovo: str) -> bool:
-        return slovo in self.prazdna or slovo in self.tazaci_na_typ
+        """Slovo, které do pole nic nepřináší.
+
+        Tázací tvary z ROLOVÉHO katalogu sem patří taky. Bez nich svítilo
+        „čí" jako obsahové slovo a otázka „Čí?" si postavila pole z vět,
+        kde to slovo náhodou stojí — odpověď pak byla „této noci"."""
+        return (slovo in self.prazdna or slovo in self.tazaci_na_typ
+                or slovo in self.tazaci_na_roli)

@@ -71,7 +71,8 @@
   ],
   "mode": "answer",
   "kind": "zvířata",
-  "dok": "včela_medonosná"
+  "dok": "včela_medonosná",
+  "mezera": "'30 000' je rozdělené na dva tokeny, návěska je jen na '30'"
  },
  {
   "q": "Co je nejbližší příbuzný psa?",
@@ -80,7 +81,8 @@
   ],
   "mode": "answer",
   "kind": "zvířata",
-  "dok": "pes_domácí"
+  "dok": "pes_domácí",
+  "mezera": "tázací tvar Co/Jaký nemá druh odpovědi - umíme jen čas, místo a počet"
  },
  {
   "q": "Na kolika polích se hrají šachy?",
@@ -116,7 +118,8 @@
   ],
   "mode": "answer",
   "kind": "věci",
-  "dok": "antarktida"
+  "dok": "antarktida",
+  "mezera": "totéž: Jaká"
  },
  {
   "q": "Jak silný je antarktický ledový příkrov?",
@@ -126,7 +129,8 @@
   ],
   "mode": "answer",
   "kind": "věci",
-  "dok": "antarktida"
+  "dok": "antarktida",
+  "mezera": "totéž: Jak"
  },
  {
   "q": "Kde leží sopka Ol Doinyo Lengai?",
@@ -145,7 +149,8 @@
   ],
   "mode": "answer",
   "kind": "věci",
-  "dok": "fotosyntéza"
+  "dok": "fotosyntéza",
+  "mezera": "'před 2 miliardami let' bere Metron jako počet, ne Chronos jako čas"
  },
  {
   "q": "Kde se narodil Bohumil Hrabal?",
@@ -163,7 +168,8 @@
   ],
   "mode": "answer",
   "kind": "životopisy",
-  "dok": "alois_jirásek"
+  "dok": "alois_jirásek",
+  "mezera": "rok narození je v poli, ale až za datem svatby - zúžení uvnitř pole"
  },
  {
   "q": "Kde zemřel Egon Hostovský?",
@@ -218,7 +224,8 @@
   ],
   "mode": "answer",
   "kind": "bible",
-  "dok": "bible_jan"
+  "dok": "bible_jan",
+  "mezera": "číslovka slovy 'třicet osm' jsou dvě návěsky, ne jedna"
  },
  {
   "q": "Kdy se narodil Sherlock Holmes?",

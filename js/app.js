@@ -11,6 +11,7 @@ import * as bub from './pohled/bublina.js';
 import { zhasni, rozsvit, obnov, prepniPin } from './pohled/svit.js';
 import * as korpus from './listy/korpus.js';
 import * as defin from './listy/vazby-definice.js';
+import * as sklad from './listy/skladani.js';
 import * as prehled from './listy/vazby-prehled.js';
 import * as vert from './listy/vertikaly.js';
 import * as matice from './listy/matice.js';
@@ -22,12 +23,14 @@ const listy = {};
 let model = null, mapa = [], editovane = new Set();
 
 /* ---- překreslení ---------------------------------------------------- */
+let poradi = new Map();
+
 function prekresli() {
-  const poradi = poradiAktivaci(D.data.cols);
+  poradi = poradiAktivaci(D.data.cols);
   model = postavVse(D.data, { ...stav, poradi });
 
   ['f', 'q'].forEach(k => korpus.prekresli(pohledy[k], model[k], model.slovnik, handlery));
-  defin.prekresli(listy.mapd, model, model.slovnik, mapa, akceMapy);
+  defin.prekresli(listy.mapd, model, model.slovnik, mapa, akceMapy, poradi);
   prehled.prekresli(listy.mapp, model.slovnik, model, mapa, akceMapy);
   vert.prekresli(listy.vert, editovane, akceVertikal);
   matice.prekresli(listy.mx, editovane, akceVertikal);
@@ -66,12 +69,21 @@ const handlery = {
 };
 
 /* ---- akce jednotlivých listů ---------------------------------------- */
+/* Skládání otázky. Klik ve slovníku dotazů přidá slovo do vzoru, klik ve
+   slovníku faktů přepne cíl. Překresluje se jen list definice — přepočítávat
+   kvůli jednomu kliknutí celý model by bylo zbytečné. */
+const znovuDefinici = () => {
+  defin.prekresli(listy.mapd, model, model.slovnik, mapa, akceMapy, poradi);
+  poHrany();
+};
 const akceMapy = {
-  prepniOznaceni: (k, i) => {
-    if (defin.vyber[k].has(i)) defin.vyber[k].delete(i); else defin.vyber[k].add(i);
-    defin.prekresli(listy.mapd, model, model.slovnik, mapa, akceMapy);
-    poHrany();
+  klikSlovo: (k, form) => {
+    if (k === 'q') sklad.pridejSlovo(form); else sklad.prepniCil(form);
+    znovuDefinici();
   },
+  kotva: form => { sklad.pridejKotvu(form); znovuDefinici(); },
+  odeber: i => { sklad.odeberSlovo(i); znovuDefinici(); },
+  odeberCil: form => { sklad.prepniCil(form); znovuDefinici(); },
   smazDvojici: n => {
     mapa.splice(n, 1);
     store.ulozMapu(store.klicMapy(stav.R), mapa);
@@ -128,7 +140,7 @@ function seg(id, nastav, prepocitatMapu) {
       $$(id + ' button').forEach(x => x.setAttribute('aria-pressed', x === b));
       nastav(+b.dataset.v);
       ulozUI();
-      if (prepocitatMapu) { defin.zrusVyber(); await nactiMapu(); }
+      if (prepocitatMapu) { sklad.vycisti(); await nactiMapu(); }
       prekresli();
     };
   });
@@ -155,7 +167,7 @@ export async function start() {
   D.zapamatujVychozi(vychozi);
   const mistni = store.stavZProhlizece(vychozi.query);
   D.nastav(mistni || vychozi);
-  editovane = new Set(D.data.cols.filter(c => c.g === 'TYP' || c.g === 'VLASTNÍ')
+  editovane = new Set(D.data.cols.filter(c => c.g === 'TYP' || c.g === 'PTÁ' || c.g === 'VLASTNÍ')
     .map(c => c.a));
 
   const hlavni = $('#listy');
@@ -183,18 +195,28 @@ export async function start() {
   seg('#ty', v => { stav.typyOn = v; });
 
   $('#bSvaz').onclick = () => {
-    if (!defin.vyber.q.size || !defin.vyber.f.size) return;
-    const tvar = i => model.slovnik.lex[i].form;
-    mapa.push({
-      id: 'm' + Date.now().toString(36),
-      q: [...defin.vyber.q].map(tvar),
-      f: [...defin.vyber.f].map(tvar),
-    });
+    if (!sklad.hotovy()) return;
+    mapa.push(sklad.doZaznamu());
     store.ulozMapu(store.klicMapy(stav.R), mapa);
-    defin.zrusVyber();
+    sklad.vycisti();
     prekresli();
   };
-  $('#bZrus').onclick = () => { defin.zrusVyber(); prekresli(); };
+  $('#bZrus').onclick = () => { sklad.vycisti(); znovuDefinici(); };
+
+  /* Filtr palety: text a výběr otázky. Slovník je společný a roste s každou
+     zadanou otázkou, takže bez filtru je paleta brzo nepřehledná. */
+  listy.mapd.addEventListener('input', e => {
+    if (e.target.classList.contains('hledej')) {
+      defin.filtr[e.target.dataset.k] = e.target.value;
+      znovuDefinici();
+    }
+  });
+  listy.mapd.addEventListener('change', e => {
+    if (e.target.classList.contains('vybraVeta')) {
+      defin.filtr.veta = +e.target.value;
+      znovuDefinici();
+    }
+  });
 
   $('#vAdd').onclick = pridejVertikalu;
   $('#vName').onkeydown = e => {
@@ -217,7 +239,7 @@ export async function start() {
     if (!confirm('Zahodit všechny změny v obou korpusech i vlastní vertikály '
       + 'a vrátit výchozí data? Mapování zůstane.')) return;
     D.naVychozi();
-    editovane = new Set(D.data.cols.filter(c => c.g === 'TYP' || c.g === 'VLASTNÍ')
+    editovane = new Set(D.data.cols.filter(c => c.g === 'TYP' || c.g === 'PTÁ' || c.g === 'VLASTNÍ')
       .map(c => c.a));
     stav.pin = null;
     store.ulozStav(D.data);

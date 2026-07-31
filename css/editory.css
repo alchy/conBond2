@@ -222,3 +222,40 @@
 
   .fg label { display:inline-flex; align-items:center; gap:4px; margin-right:9px;
               font-size:13px; }
+
+/* ---- skládání otázky ------------------------------------------------ */
+/* Lišta nad zrcadlem. Nese rozdělaný vzor: tázací tvar, naklikaná slova
+   i s offsety, cíl ve faktech a vektor, který z toho vychází. */
+.skladac { background:var(--surface); border:1px solid var(--ring);
+           border-radius:8px; padding:10px 13px; margin-bottom:10px;
+           width:max-content; min-width:640px; max-width:1600px; }
+.skladac .radek { display:flex; align-items:baseline; gap:9px; padding:3px 0;
+                  flex-wrap:wrap; }
+.skladac .popis { flex:0 0 108px; font-size:11px; letter-spacing:.06em;
+                  text-transform:uppercase; color:var(--muted); }
+.skladac .prazdno { color:var(--muted); font-size:13px; }
+.skladac .cnt { font-size:12px; color:var(--ink2); }
+.chip { font:inherit; font-size:13px; padding:2px 9px; border-radius:11px;
+        border:1px solid var(--axis); background:var(--plane); color:var(--ink);
+        cursor:pointer; }
+.chip + .chip { margin-left:5px; }
+.chip:hover { border-color:var(--ink2); }
+/* Kotva je jiná než ostatní slova: od ní se počítají offsety. */
+.chip.kotva { background:var(--upos); border-color:var(--upos); color:#fff;
+              font-weight:600; }
+.chip.cil { background:var(--ink); border-color:var(--ink); color:var(--surface); }
+.chip.pta { border-style:dashed; }
+.chip.pta.aktivni { background:var(--upos); border-color:var(--upos); color:#fff; }
+/* Co je za oknem r_q, do vektoru nevstoupí — musí to být poznat hned. */
+.chip.mimo { opacity:.4; text-decoration:line-through; }
+.skladac .vysledek code { font-size:12px; color:var(--ink2); }
+.skladac .shoda { font-size:12px; color:var(--feats); font-weight:600; }
+.skladac .varovani { font-size:12px; color:var(--deprel); margin-left:8px; }
+.skladac button[disabled] { opacity:.45; cursor:default; }
+
+/* filtr nad paletou */
+.filtr { display:flex; gap:5px; padding:0 11px 7px; flex-direction:column; }
+.filtr input, .filtr select { font-size:12px; padding:3px 6px; max-width:100%; }
+li.skryto { color:var(--muted); font-size:11px; font-style:italic; }
+.p-map li .pta { font-size:10.5px; background:var(--upos); color:#fff;
+                 border-radius:9px; padding:0 6px; font-weight:600; }

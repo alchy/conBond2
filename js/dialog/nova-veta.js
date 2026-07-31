@@ -79,7 +79,7 @@ function tokenEditor(tvar, predvolba, otevreny) {
     + `<div><label class="fld">DEPREL</label><select class="d">${nabidka(hodnotySkupiny('DEPREL'), predvolba.deprel)}</select></div>`
     + '</div><div class="fgrid">';
   const zvolene = new Set(predvolba.feats || []);
-  ['FEATS', 'TYP', 'LEM', 'VLASTNÍ'].forEach(g => {
+  ['FEATS', 'TYP', 'LEM', 'PTÁ', 'VLASTNÍ'].forEach(g => {
     trsy(g).forEach((vals, nm) => {
       h += `<div class="fg"><i>${esc(nm)}</i>`
         + vals.map(v => `<label><input type="checkbox" value="${esc(v)}"`

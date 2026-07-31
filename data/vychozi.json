@@ -723,6 +723,74 @@
   {
    "a": "Lem=čí",
    "g": "LEM"
+  },
+  {
+   "a": "Ptá=kdo",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=co",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=jak",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=kdy",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=koho",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=kam",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=kde",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=komu",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=kým",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=čí",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=jaké",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=jakou",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=jaký",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=kterém",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=kterou",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=který",
+   "g": "PTÁ"
+  },
+  {
+   "a": "Ptá=proč",
+   "g": "PTÁ"
   }
  ],
  "facts": [
@@ -1795,7 +1863,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -1845,7 +1914,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=jak"
     ]
    },
    {
@@ -1922,7 +1992,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=jak"
     ]
    },
    {
@@ -2000,7 +2071,8 @@
      "Gender=Masc",
      "Number=Sing",
      "PronType=Int,Rel",
-     "Lem=čí"
+     "Lem=čí",
+     "Ptá=čí"
     ]
    },
    {
@@ -2053,7 +2125,8 @@
      "Animacy=Anim",
      "Case=Dat",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=komu"
     ]
    },
    {
@@ -2117,7 +2190,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -2185,7 +2259,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -2467,7 +2542,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -2548,7 +2624,8 @@
      "Animacy=Anim",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=koho"
     ]
    },
    {
@@ -2629,7 +2706,8 @@
      "Animacy=Anim",
      "Case=Dat",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=komu"
     ]
    },
    {
@@ -2694,7 +2772,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -2756,7 +2835,8 @@
      "Animacy=Anim",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=koho"
     ]
    },
    {
@@ -2819,7 +2899,8 @@
      "Animacy=Anim",
      "Case=Ins",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kým"
     ]
    },
    {
@@ -2895,7 +2976,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -2957,7 +3039,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -3041,7 +3124,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -3139,7 +3223,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -3190,7 +3275,8 @@
      "Animacy=Anim",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=koho"
     ]
    },
    {
@@ -3242,7 +3328,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -3303,7 +3390,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -3367,7 +3455,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -3443,7 +3532,8 @@
      "Animacy=Anim",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kdo"
     ]
    },
    {
@@ -3493,7 +3583,8 @@
      "Gender=Masc",
      "Number=Sing",
      "PronType=Int,Rel",
-     "Lem=jaký"
+     "Lem=jaký",
+     "Ptá=jaký"
     ]
    },
    {
@@ -3558,7 +3649,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=jak"
     ]
    },
    {
@@ -3707,7 +3799,8 @@
      "Animacy=Anim",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=koho"
     ]
    },
    {
@@ -3772,7 +3865,8 @@
      "Animacy=Inan",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=co"
+     "Lem=co",
+     "Ptá=co"
     ]
    },
    {
@@ -3837,7 +3931,8 @@
      "Animacy=Inan",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=co"
+     "Lem=co",
+     "Ptá=co"
     ]
    },
    {
@@ -3976,7 +4071,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kdy"
     ]
    },
    {
@@ -4052,7 +4148,8 @@
      "Gender=Masc,Neut",
      "Number=Sing",
      "PronType=Int,Rel",
-     "Lem=který"
+     "Lem=který",
+     "Ptá=kterém"
     ]
    },
    {
@@ -4126,7 +4223,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kdy"
     ]
    },
    {
@@ -4298,7 +4396,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kdy"
     ]
    },
    {
@@ -4365,7 +4464,8 @@
      "Gender=Masc",
      "Number=Sing",
      "PronType=Int,Rel",
-     "Lem=který"
+     "Lem=který",
+     "Ptá=který"
     ]
    },
    {
@@ -4454,7 +4554,8 @@
      "Gender=Fem",
      "Number=Sing",
      "PronType=Int,Rel",
-     "Lem=který"
+     "Lem=který",
+     "Ptá=kterou"
     ]
    },
    {
@@ -4527,7 +4628,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=jak"
     ]
    },
    {
@@ -4599,7 +4701,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=jak"
     ]
    },
    {
@@ -4669,7 +4772,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kdy"
     ]
    },
    {
@@ -4767,7 +4871,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kdy"
     ]
    },
    {
@@ -4826,7 +4931,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kam"
     ]
    },
    {
@@ -4886,7 +4992,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kde"
     ]
    },
    {
@@ -4949,7 +5056,8 @@
      "Animacy=Anim",
      "Case=Ins",
      "PronType=Int,Rel",
-     "Lem=kdo"
+     "Lem=kdo",
+     "Ptá=kým"
     ]
    },
    {
@@ -5001,7 +5109,8 @@
      "Animacy=Inan",
      "Case=Nom",
      "PronType=Int,Rel",
-     "Lem=co"
+     "Lem=co",
+     "Ptá=co"
     ]
    },
    {
@@ -5061,7 +5170,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kam"
     ]
    },
    {
@@ -5157,7 +5267,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kam"
     ]
    },
    {
@@ -5215,7 +5326,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kde"
     ]
    },
    {
@@ -5264,7 +5376,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=proč"
     ]
    },
    {
@@ -5339,7 +5452,8 @@
      "Animacy=Inan",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=co"
+     "Lem=co",
+     "Ptá=co"
     ]
    },
    {
@@ -5391,7 +5505,8 @@
      "Animacy=Inan",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=co"
+     "Lem=co",
+     "Ptá=co"
     ]
    },
    {
@@ -5453,7 +5568,8 @@
      "Animacy=Inan",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=co"
+     "Lem=co",
+     "Ptá=co"
     ]
    },
    {
@@ -5517,7 +5633,8 @@
      "Animacy=Inan",
      "Case=Acc",
      "PronType=Int,Rel",
-     "Lem=co"
+     "Lem=co",
+     "Ptá=co"
     ]
    },
    {
@@ -5593,7 +5710,8 @@
      "Gender=Fem",
      "Number=Sing",
      "PronType=Int,Rel",
-     "Lem=jaký"
+     "Lem=jaký",
+     "Ptá=jakou"
     ]
    },
    {
@@ -5654,7 +5772,8 @@
     "acts": [
      "ADV",
      "advmod",
-     "PronType=Int,Rel"
+     "PronType=Int,Rel",
+     "Ptá=kde"
     ]
    },
    {
@@ -5822,7 +5941,8 @@
      "Gender=Neut",
      "Number=Sing",
      "PronType=Int,Rel",
-     "Lem=jaký"
+     "Lem=jaký",
+     "Ptá=jaké"
     ]
    },
    {

@@ -6,6 +6,7 @@ import { tok, stredy } from '../js/jadro/tok.js';
 import { sloty, pocetSlotu, znamenko } from '../js/jadro/sloty.js';
 import { poradiAktivaci, aktivace, vektor, PRAZDNY_TVAR } from '../js/jadro/vektor.js';
 import { postavVse, klicTvaru } from '../js/jadro/model.js';
+import { offsety, vektorSlozene, shodnaSablona } from '../js/jadro/skladani.js';
 
 const D = JSON.parse(readFileSync(new URL('../data/vychozi.json', import.meta.url)));
 const poradi = poradiAktivaci(D.cols);
@@ -58,8 +59,8 @@ console.log('\n— slovník je společný, šablony a vazby ne —');
   console.log(`  vazby: fakta ${M.f.links.length} · dotazy ${M.q.links.length}`);
   ok(lex.length === 104, `slovník ${lex.length}, čekáno 104`);
   ok(vObou.length === 38, `v obou ${vObou.length}, čekáno 38`);
-  ok(M.f.byT.size === 71 && M.q.byT.size === 157, 'počty šablon nesedí');
-  ok(M.f.links.length === 74 && M.q.links.length === 209, 'počty vazeb nesedí');
+  ok(M.f.byT.size === 71 && M.q.byT.size === 161, 'počty šablon nesedí');
+  ok(M.f.links.length === 74 && M.q.links.length === 210, 'počty vazeb nesedí');
   // zpětný odkaz: součet vazeb na šablonu musí dát počet vazeb
   ['f', 'q'].forEach(k => {
     const zpet = [...M[k].byT.keys()]
@@ -108,6 +109,90 @@ console.log('\n— tok a klíč tvaru —');
   ok(stredy(out).length === 86, 'surové zrno nedalo 86 středů');
   ok(klicTvaru('Karel', 0) === 'karel' && klicTvaru('Karel', 1) === 'Karel',
     'klicTvaru nerespektuje zrno');
+}
+
+console.log('\n— tázací tvar rozděluje to, co UD slévá —');
+{
+  const kolidujici = ['jak', 'kdy', 'kam', 'kde', 'proč'];
+  const bezPta = new Set(), sPta = new Set();
+  D.query.flat().forEach(t => {
+    if (!t.acts.some(a => a.startsWith('PronType=Int'))) return;
+    if (!kolidujici.includes(t.form.toLowerCase())) return;
+    bezPta.add(t.acts.filter(a => !a.startsWith('Ptá=')).slice().sort().join('|'));
+    sPta.add(t.acts.slice().sort().join('|'));
+  });
+  console.log(`  ${kolidujici.join(', ')}: bez Ptá= ${bezPta.size} podpis`
+    + `, s Ptá= ${sPta.size}`);
+  ok(bezPta.size === 1, 'čekal jsem, že tyhle tvary bez Ptá= splývají do jednoho');
+  ok(sPta.size === kolidujici.length, 'Ptá= je nerozdělil na samostatné');
+}
+
+console.log('\n— skládání otázky ze slovníku —');
+{
+  const M = postavVse(D, nast());
+  const opts = { r: 2, cIn: 0, typyOn: 1, poradiAkt: poradi };
+  // „se jmenuje KDO alfons" — kotva uprostřed, tedy offsety -2 -1 0 +1
+  const poradiSlov = ['se', 'jmenuje', 'kdo', 'alfons'];
+  console.log('  offsety:', offsety(poradiSlov, 2).map(o => `${o.form}(${o.d})`).join(' '));
+  const v = vektorSlozene(poradiSlov, 2, M.slovnik, opts);
+  console.log('  vektor:', v.vec.slice(0, 4).join(' '), '…', `(${v.vec.length} položek)`);
+  console.log('  mimo okno:', v.mimoOkno.join(', ') || 'nic',
+    '· neznámé:', v.nezname.join(', ') || 'nic',
+    '· nejisté:', v.nejiste.join(', ') || 'nic');
+  ok(offsety(poradiSlov, 2).map(o => o.d).join(',') === '-2,-1,0,1', 'offsety nesedí');
+  ok(!v.vec.some(a => a.startsWith('0:')), 'střed se dostal do vektoru, ač cIn=0');
+  ok(v.nezname.length === 0, 'některý tvar nemá ve slovníku aktivace');
+  // s r=1 musí dvě krajní slova vypadnout z okna
+  const uzsi = vektorSlozene(poradiSlov, 2, M.slovnik, { ...opts, r: 1 });
+  console.log('  při r=1 vypadne:', uzsi.mimoOkno.join(', '));
+  ok(uzsi.mimoOkno.includes('se'), 'r=1 nevyřadilo slovo na offsetu -2');
+  ok(uzsi.vec.length < v.vec.length, 'užší okno nedalo kratší vektor');
+  // shoda s hotovou šablonou
+  const t = shodnaSablona(v.vec, M.q.byT);
+  console.log('  shoduje se s hotovou šablonou dotazů:', t || 'ne');
+}
+
+console.log('\n— stavový automat skládání (bez DOM) —');
+{
+  const S = await import('../js/listy/skladani.js');
+  S.vycisti();
+  ok(!S.hotovy(), 'prázdný vzor se tváří jako hotový');
+  S.pridejSlovo('se');
+  S.pridejSlovo('jmenuje');
+  ok(!S.hotovy(), 'vzor bez kotvy se tváří jako hotový');
+  S.pridejKotvu('kdo');
+  S.pridejSlovo('alfons');
+  console.log('  po naklikání:', S.vzor.q.join(' '), '· kotva na indexu', S.vzor.kotva);
+  ok(S.vzor.kotva === 2, `kotva má být 2, je ${S.vzor.kotva}`);
+  ok(!S.hotovy(), 'vzor bez cíle se tváří jako hotový');
+  S.prepniCil('pes');
+  ok(S.hotovy(), 'úplný vzor se netváří jako hotový');
+  S.prepniCil('pes');
+  ok(!S.hotovy(), 'odebrání cíle se neprojevilo');
+  S.prepniCil('pes');
+
+  // odebrání slova PŘED kotvou musí kotvu posunout
+  S.odeberSlovo(0);
+  console.log('  po odebrání „se":', S.vzor.q.join(' '), '· kotva', S.vzor.kotva);
+  ok(S.vzor.kotva === 1, `kotva se neposunula: ${S.vzor.kotva}`);
+  ok(S.vzor.q[S.vzor.kotva] === 'kdo', 'kotva ukazuje na jiné slovo než kdo');
+
+  const z = S.doZaznamu();
+  console.log('  záznam:', JSON.stringify({ typ: z.typ, q: z.q, kotva: z.kotva, f: z.f }));
+  ok(z.typ === 'kdo', 'typ záznamu nesedí s kotvou');
+  const p = S.popisZaznamu(z);
+  console.log('  popis:', p.typ, '·', p.text);
+  ok(p.text === '-1:jmenuje 0:kdo +1:alfons', 'popis s offsety nesedí: ' + p.text);
+
+  // odebrání kotvy ji musí zrušit, ne posunout na cizí slovo
+  S.odeberSlovo(S.vzor.kotva);
+  ok(S.vzor.kotva === -1, 'odebrání kotvy ji nezrušilo');
+
+  // starší záznam bez kotvy se musí číst jako množina
+  const stary = S.popisZaznamu({ q: ['kdo'], f: ['psa'] });
+  console.log('  starší záznam bez kotvy:', stary.typ, '·', stary.text);
+  ok(stary.typ === null && stary.text === 'kdo', 'starý záznam se čte špatně');
+  S.vycisti();
 }
 
 console.log(chyb ? `\n${chyb} KONTROL SELHALO` : '\nvšechny kontroly prošly');

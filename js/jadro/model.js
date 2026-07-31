@@ -35,13 +35,35 @@ export function doSlovniku(S, out, strana) {
         rows: { f: [], q: [] },
         sents: { f: new Set(), q: new Set() },
         tids: { f: new Set(), q: new Set() },
+        sady: new Map(),          // sada aktivací → kolikrát se u toho tvaru objevila
       });
     }
     const wd = S.lex[S.idx.get(f)];
     wd.rows[strana].push(i);
     wd.sents[strana].add(x.s);
+    /* Sady aktivací se počítají proto, aby šlo SKLÁDAT otázku ze slovníku:
+       naklikané slovo si musí odněkud přinést své aktivace. U většiny tvarů
+       je sada jediná; kde jich je víc, bere se nejčastější a zbytek je
+       vidět jako nejistota. */
+    if (!x.e) {
+      const klic = x.t.acts.slice().sort().join('|');
+      const drive = wd.sady.get(klic);
+      if (drive) drive.n++;
+      else wd.sady.set(klic, { acts: x.t.acts.slice(), n: 1 });
+    }
   });
 }
+
+/** Nejčastější sada aktivací daného tvaru, nebo null. */
+export function sadaTvaru(wd) {
+  if (!wd || !wd.sady || !wd.sady.size) return null;
+  let nej = null;
+  wd.sady.forEach(s => { if (!nej || s.n > nej.n) nej = s; });
+  return nej;
+}
+
+/** Kolik různých sad tvar má — míra toho, jak jistý ten výběr je. */
+export const jistotaTvaru = wd => (wd && wd.sady ? wd.sady.size : 0);
 
 /** Šablony a vazby jedné strany. Slovník už musí být naplněný z obou. */
 export function postav(vety, strana, opts, S) {

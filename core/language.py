@@ -60,6 +60,7 @@ class Jazyk:
     jmenne_upos: tuple = ()
     predlozka_na_roli: dict = field(default_factory=dict)
     tazaci_bez_typu: tuple = ()
+    vztahova_slovesa: tuple = ()
 
     # ---- načtení -----------------------------------------------------
     @classmethod

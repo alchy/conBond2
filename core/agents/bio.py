@@ -68,8 +68,23 @@ class Bio(Agent):
         """Úvodní věta životopisu: „Osoba ( … – … ) byl/byla …".
 
         Dvě podmínky naráz, protože každá sama propouští: jméno na začátku
-        věty (závorka do sedmého tokenu) a spona hned za závorkou."""
-        if od > 7:
+        věty a spona hned za závorkou.
+
+        HRANICE BYLA SEDM TOKENŮ A BYLA TĚSNÁ. Životopis často začíná
+        vsuvkou s jiným jménem:
+
+            Karel Čapek , rodným jménem Karel Antonín Čapek ( 9 . ledna 1890 …
+            Božena Němcová , rodným jménem Barbora Novotná , později … ( 4 . února 1820 …
+
+        Závorka je tam až za desátým, respektive čtrnáctým tokenem, takže
+        se definiční nepoznala a data se označila jako `Udal=zivot` — tedy
+        „nějaký letopočet ze života". Čapek a Němcová pak neměli vytažené
+        narození vůbec, ačkoli stojí v první větě článku.
+
+        Šestnáct místo sedmi. Vsuvka „rodným jménem X, později Y" se do
+        toho vejde a přitom to pořád znamená ZAČÁTEK věty — spona hned za
+        závorkou zůstává druhou podmínkou a ta je ta přísná."""
+        if od > 16:
             return False
         po = veta[do + 1] if do + 1 < len(veta) else None
         return bool(po and po["form"].lower() in

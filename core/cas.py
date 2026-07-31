@@ -40,10 +40,13 @@ def rok(text: str) -> Optional[int]:
 def zivoty_z_korpusu(vety: Iterable) -> dict:
     """Dokument → (narození, úmrtí) v letech; chybějící údaj je None.
 
-    Bere se NEJMENŠÍ rok u narození a NEJVĚTŠÍ u úmrtí. Životopis zmiňuje
-    víc dat a rozbor se občas splete; krajní hodnota je proti překlepu
-    odolnější než první nalezená a hlavně je určená — první nalezená
-    závisí na pořadí vět.
+    Bere se výhradně DEFINIČNÍ VĚTA, tedy ta s nejmenším `vd` v dokumentu,
+    ve které narození stojí.
+
+    První verze brala nejmenší rok narození a největší rok úmrtí z celého
+    článku. Znělo to odolně a bylo to vedle: Nerudovi tak vyšlo
+    `(1784, 1891)`, protože 1784 je rok narození jeho OTCE ze třetí věty.
+    Krajní hodnota přes celý dokument nesbírá překlepy, sbírá cizí lidi.
     """
     out: dict = {}
     for veta in vety:
@@ -57,13 +60,15 @@ def zivoty_z_korpusu(vety: Iterable) -> dict:
             dok = (t.get("dok") or "").replace("_", " ")
             if not r or not dok:
                 continue
-            n, z = out.get(dok, (None, None))
-            if udal == "Udal=narozeni":
-                n = r if n is None else min(n, r)
-            else:
-                z = r if z is None else max(z, r)
-            out[dok] = (n, z)
-    return out
+            vd = t.get("vd")
+            if vd is None:
+                continue
+            zaznam = out.setdefault(dok, {"n": None, "z": None,
+                                          "vd_n": None, "vd_z": None})
+            klic, klic_vd = ("n", "vd_n") if udal == "Udal=narozeni" else ("z", "vd_z")
+            if zaznam[klic_vd] is None or vd < zaznam[klic_vd]:
+                zaznam[klic], zaznam[klic_vd] = r, vd
+    return {d: (v["n"], v["z"]) for d, v in out.items()}
 
 
 class Cas(Rozmer):

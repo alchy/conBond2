@@ -96,9 +96,53 @@ class Rozhovor:
             return self.zapsat(self.odpovedet(text[1:]))
         # Otázka na OBSAH se pozná tázacím tvarem a jde do pole, ne do
         # znalosti — „Kde se narodil Hrabal?" žádný vztah nezakládá.
-        if self.odpovidac is not None and self.odpovidac.je_na_obsah(text):
-            return self.zapsat(self.z_pole(text))
+        if self.odpovidac is not None:
+            dvojice = self.odpovidac.je_na_vztah(text)
+            if dvojice:
+                return self.zapsat(self.z_grafu(text, dvojice))
+            if self.odpovidac.je_na_obsah(text):
+                return self.zapsat(self.z_pole(text))
         return self.zapsat(self.prijmout(text))
+
+    def z_grafu(self, text: str, dvojice: tuple) -> Zaznam:
+        """Otázka na vztah dvou lidí — poslední patro odpovědi.
+
+        Sahá se sem, teprve když otázka nemíří do pole: „Mohl A znát B?"
+        nemá odpověď v jedné větě a skládat ji z hran taky nejde, protože
+        o té dvojici nikdo nic nenapsal.
+
+        TŘI ODPOVĚDI A JEN JEDNA JE TVRZENÍ. Cesta v grafu není důkaz —
+        dva lidé v řetězu vět se znát nemuseli, a cesta se najde skoro
+        vždycky. Proto se doložení, možnost a vyloučení musí v odpovědi
+        LIŠIT SLOVY, ne jen v detailu; kdo čte jen první řádek, si jinak
+        odnese, že to systém tvrdí."""
+        a, b = dvojice
+        r = self.odpovidac.spojeni(a, b)
+        nalez = {"aktivace": {"entita": "", "svitici": {}, "nezname": [],
+                              "jmena": list(dvojice), "cizi_jmeno": False,
+                              "z_tematu": False, "siroko": False, "vety": []},
+                 "typ": None, "role": "", "vet": 0, "znalost_pomohla": False,
+                 "kandidati": [], "odpoved": None, "nejasne": [], "graf": r}
+        if r["druh"] == "vylouceno":
+            return Zaznam(text, OBSAH,
+                          f"ne — {r['proc']} ({a}, {b})", nalez=nalez)
+        if r["druh"] == "dolozeno":
+            nalez["kandidati"] = [{"veta": v, "rozsah": [], "text": "doloženo",
+                                   "kontext": self.odpovidac.text_vety(v)}
+                                  for v in r["doklad"]]
+            return Zaznam(text, OBSAH,
+                          f"ano — {a} a {b} stojí v jedné větě", nalez=nalez)
+        if r["druh"] == "cesta":
+            nalez["kandidati"] = [
+                {"veta": (k["vety"] or [None])[0], "rozsah": [],
+                 "text": f"{k['z']} → {k['do']}",
+                 "kontext": self.odpovidac.text_vety(k["vety"][0])
+                 if k["vety"] else ""} for k in r["kroky"]]
+            return Zaznam(text, OBSAH,
+                          "nevím — doloženo to nikde není, ale vede cesta: "
+                          + " → ".join(r["cesta"]), nalez=nalez)
+        return Zaznam(text, OBSAH,
+                      f"o vztahu {a} a {b} korpus mlčí", nalez=nalez)
 
     def z_pole(self, text: str) -> Zaznam:
         """Odpověď z korpusu. Vrací KANDIDÁTY, ne jedno slovo: šablona je

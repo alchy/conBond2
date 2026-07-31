@@ -85,11 +85,21 @@ class Odpovidac:
 
         Jméno se skládá týmž pravidlem jako u hran a v grafu — jedním."""
         out: dict = defaultdict(set)
+        # TVAR → CELÁ JMÉNA, ve kterých ten tvar stojí. Otázka není
+        # rozebraná a píše „s Václavem Havlem"; rejstřík drží lemmata.
+        # Odhadovat kmen je slepá ulička (dnes už jednou byla), ale tvary
+        # v korpusu jsou — stačí si je zapamatovat.
+        self.tvar_jmena: dict = defaultdict(set)
         for vi, veta in enumerate(self.vety):
             for t in veta:
                 if t.get("upos") != "PROPN" or deprel(t) == "flat":
                     continue
                 j = cele_jmeno(veta, t)
+                if j and 2 <= len(j.split()) <= 3:
+                    self.tvar_jmena[t["form"].lower()].add(j)
+                    for x in veta:
+                        if x.get("head") == t.get("id") and deprel(x) == "flat":
+                            self.tvar_jmena[x["form"].lower()].add(j)
                 # Jen celá jména — holé křestní neurčuje. A nanejvýš tři
                 # slova: „Arthur Rimbaud Autor Karel Čapek" vzniklo tím, že
                 # `flat` v citaci spojil, co spolu nesouvisí. Delší řetěz
@@ -102,11 +112,24 @@ class Odpovidac:
         # Slučuje se jen JEDNOZNAČNÉ zkrácení, stejně jako u hran: kdyby
         # „Karel Novák" byl podmnožinou dvou delších jmen, nepatří ani
         # jednomu.
+        slouceno = {}
         for kratke in sorted(out):
+            # KDO MÁ VLASTNÍ ČLÁNEK, JE VLASTNÍ OSOBA. „Václav Havel" je
+            # podmnožinou „Martin Václav Havel" a pravidlo o zkráceném
+            # jménu je slilo v jednoho — jsou to ale dva lidé a odpověď
+            # pak mluvila o někom jiném.
+            if kratke.replace(" ", "_") in self.podle_entity:
+                continue
             slova = set(kratke.split())
             delsi = [j for j in out if j != kratke and slova < set(j.split())]
             if len(delsi) == 1:
+                slouceno[kratke] = delsi[0]
                 out[delsi[0]] |= out.pop(kratke)
+        # Tvarový rejstřík musí slučování VIDĚT. Stavěl se dřív, takže by
+        # „Karel Čapek" pořád sedělo na dvě jména a otázka na vztah by
+        # propadla jako nejednoznačná — ačkoli je to jeden člověk.
+        for tvar, jmena in self.tvar_jmena.items():
+            self.tvar_jmena[tvar] = {slouceno.get(j, j) for j in jmena}
         return out
 
     def _sestavit_entity(self) -> dict:
@@ -291,6 +314,67 @@ class Odpovidac:
         return vety
 
     # ---- odpověď -----------------------------------------------------
+    @property
+    def graf(self):
+        """Graf spoluvýskytů. Staví se až při první otázce na vztah —
+        je to sekundy a většina rozhovorů se na vztah nezeptá."""
+        if getattr(self, "_graf", None) is None:
+            from .graph import Graf
+            self._graf = Graf.postavit(self.vety, nejvys_vet=3, jen_osoby=True)
+        return self._graf
+
+    @property
+    def zivoty(self):
+        if getattr(self, "_zivoty", None) is None:
+            from .cas import zivoty_z_korpusu
+            self._zivoty = zivoty_z_korpusu(self.vety)
+        return self._zivoty
+
+    def spojeni(self, a: str, b: str) -> dict:
+        from .graph import spojeni as _spojeni
+        return _spojeni(self.graf, a, b, self.zivoty)
+
+    def je_na_vztah(self, text: str) -> tuple:
+        """Ptá se otázka na vztah dvou lidí? Vrátí je, nebo prázdno.
+
+        Dvě jména nestačí: „Kdy se narodil Karel Čapek?" jich má taky dvě.
+        Musí být i sloveso, které vztah pojmenovává — jinak by se do grafu
+        posílala každá otázka se jménem a příjmením.
+
+        Jména se hledají mezi OSOBAMI korpusu, ne mezi dokumenty; graf zná
+        patnáct set lidí, dokumentů je devadesát jedna."""
+        slova = {s.lower().strip("?.,") for s in text.split()}
+        if not (slova & set(self.jazyk.vztahova_slovesa)):
+            return ()
+        # Jména se z otázky berou po DVOJICÍCH sousedních slov, protože
+        # člověk píše „Bohumil Hrabal", ne „hrabal". Dvojice se hledá dřív
+        # — jedno slovo sedí na víc lidí a bylo by z toho doptání.
+        slovaq = [w.strip("?.,") for w in text.split()]
+        jmena = [w for w in slovaq[1:] if w[:1].isupper()]
+        lide = []
+        for i in range(len(jmena)):
+            sady = [self.tvar_jmena.get(jmena[i].lower(), set())]
+            if i + 1 < len(jmena):
+                sady.append(self.tvar_jmena.get(jmena[i + 1].lower(), set()))
+            spolecne = set.intersection(*sady) if len(sady) > 1 and all(sady) \
+                else sady[0]
+            # ČLÁNEK PŘEBÍJÍ ZMÍNKU, stejně jako u doptání. „Čapek" sedí
+            # na `karel čapek`, `karel antonín čapek` i `karel čapek čapek`
+            # — tři varianty jednoho člověka plus vada rozboru. Vlastní
+            # dokument z nich vybere toho, na koho se lidé ptají.
+            if len(spolecne) > 1:
+                s_clankem = [j for j in spolecne
+                             if j.replace(" ", "_") in self.podle_entity]
+                if len(s_clankem) == 1:
+                    spolecne = set(s_clankem)
+            # Nejednoznačné jméno se do grafu neposílá — vybrat prvního
+            # znamená odpovídat o někom, na koho se nikdo neptal.
+            if len(spolecne) == 1:
+                kdo = next(iter(spolecne))
+                if kdo not in lide:
+                    lide.append(kdo)
+        return tuple(lide[:2]) if len(lide) >= 2 else ()
+
     def je_na_obsah(self, text: str) -> bool:
         """Je to otázka do pole, ne do znalosti?
 
@@ -299,8 +383,12 @@ class Odpovidac:
         vzala role — vypadlo z dialogu ještě před polem a odpovědělo se
         „tomuhle tvaru nerozumím". V etalonu to vidět nebylo, protože ten
         volá `odpovedet()` napřímo a bránu obchází."""
+        # Brána musí znát VŠECHNY cesty k odpovědi. Když jsem přidal role,
+        # ptala se jen na typ a otázka propadla ještě před polem; teď
+        # přibyla třetí cesta a platí to znovu.
         return (self.jazyk.na_co_se_pta(text) is not None
-                or bool(self.role_otazky(text)))
+                or bool(self.role_otazky(text))
+                or bool(self.je_na_vztah(text)))
 
     def odpovedet(self, text: str, se_znalosti: bool = True, tema=()) -> dict:
         akt = self.rozsvitit(text, tema)

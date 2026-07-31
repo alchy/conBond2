@@ -42,6 +42,18 @@ VAHY = {"nsubj": 2.0, "nsubj:pass": 2.0, "obj": 1.5, "iobj": 1.5,
 # Jména, ne slova. Obecné podstatné jméno by z grafu udělalo tezaurus.
 JMENNE_UPOS = ("PROPN",)
 
+# Rozbor rozlišuje, co je jméno člověka a co zeměpisné.
+OSOBNI = ("NameType=Giv", "NameType=Sur")
+MISTNI = ("NameType=Geo",)
+
+
+def je_osoba(token: Mapping) -> bool:
+    return any(a in OSOBNI for a in token["acts"])
+
+
+def je_misto(token: Mapping) -> bool:
+    return any(a in MISTNI for a in token["acts"])
+
 
 class Graf:
     """Vážený graf spoluvýskytů jmen, s doložením u každé hrany."""
@@ -51,18 +63,31 @@ class Graf:
         self.doklad: dict = {}     # (a, b) → [čísla vět]
 
     @classmethod
-    def postavit(cls, vety: Iterable, nejvys_vet: int = 0) -> "Graf":
+    def postavit(cls, vety: Iterable, nejvys_vet: int = 0,
+                 jen_osoby: bool = False) -> "Graf":
         """Z korpusu. Dvě jména v jedné větě = hrana s vahou obou zmínek.
 
         `nejvys_vet` omezí, kolik doložení se u hrany drží. Nula znamená
         všechna — u velkého korpusu je to hodně paměti a k odpovědi stačí
-        pár vět, protože se stejně ukazují jen ony."""
+        pár vět, protože se stejně ukazují jen ony.
+
+        `jen_osoby` VYNECHÁ MÍSTA, a bez toho je graf na otázku „mohl znát"
+        k ničemu. Praha stojí v tisících vět, takže přes ni vede cesta od
+        každého ke každému:
+
+            bohumil hrabal → praha → alois jirásek
+
+        Že oba byli v Praze, o jejich známosti neříká nic — a přitom to
+        vypadá jako nález. Rozbor přitom místo od člověka odlišuje sám
+        (`NameType=Geo` proti `Giv`/`Sur`), takže se nemusí hádat."""
         g = cls()
         for vi, veta in enumerate(vety):
             zminky = {}
             for t in veta:
                 if t.get("upos") not in JMENNE_UPOS or deprel(t) == "flat":
                     continue                 # `flat` je část jména, ne zmínka
+                if jen_osoby and not je_osoba(t):
+                    continue
                 # JMÉNO SE SKLÁDÁ TÝMŽ PRAVIDLEM JAKO U HRAN. První verze
                 # brala holé lemma tokenu, takže graf měl uzel „jirásek",
                 # kdežto životy byly vedené pod „alois jirásek" — a měření

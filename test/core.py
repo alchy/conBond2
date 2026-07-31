@@ -18,7 +18,8 @@ from core import (Config, Nastaveni, Pole, SitkoStredu,  # noqa: E402
                   pole_ven, vertikaly_odvozenych)
 from core.compose import popsat_zaznam  # noqa: E402
 from core.dialog import Rozhovor  # noqa: E402
-from core.tvrzeni import Znalost  # noqa: E402
+from core.language import Jazyk  # noqa: E402
+from core.tvrzeni import Mluvnice, Znalost  # noqa: E402
 from core.window import Okno  # noqa: E402
 
 chyb = 0
@@ -362,6 +363,37 @@ ok(stav["znalost"]["cisla"]["tvrzeni"] == len(r.znalost.tvrzeni), "čísla nesed
 r.zapomenout()
 ok(not r.znalost.tvrzeni and not r.znalost.nadrazene and not r.znalost.zapory,
    "po zapomenutí zůstaly hrany — smazat seznam tvrzení nestačí")
+
+print("\n— jazykový profil: česká slova v JSON, ne v podmínkách —")
+j = Jazyk.nacist()
+print(f"  {j.kod} ({j.jmeno}) · značek podtřídy {len(j.znacky_podtridy)}"
+      f" · tázacích {len(j.tazaci)} · měsíců {len(j.mesice)}")
+ok(j.kod == "cs" and j.mesice, "profil se nenačetl")
+ok(all(isinstance(x, tuple) for x in
+       (j.spona, j.tazaci, j.znacky_podtridy, j.predlozky)),
+   "seznamy z JSON nedorazily jako n-tice")
+# Vysvětlivky pro člověka (klíče od podtržítka) se nesmí stát daty.
+ok(not any(p.startswith("_") for p in Jazyk.__dataclass_fields__),
+   "vysvětlivka z JSON se propašovala mezi pole profilu")
+
+# A tohle je ten skutečný zisk: značka přidaná v JSON funguje bez sahání
+# do Pythonu. „spadá pod" v kódu nikde není.
+m = Mluvnice()
+ok("spadá pod" in j.znacky_podtridy, "„spadá pod“ v profilu chybí")
+t = m.rozeber("kniha spadá pod dílo")
+ok(getattr(t, "druh", None) == "podtrida",
+   f"značka z profilu se neuplatnila: {t}")
+print(f"  značka jen z JSON: „kniha spadá pod dílo“ → {t}")
+
+# Profil se dá podstrčit; pravidlo o velkém písmenu je příznak, ne slovník,
+# protože v němčině by bylo k ničemu — velká jsou tam všechna substantiva.
+bez_velkych = Mluvnice(jazyk=Jazyk.ze_slovniku(
+    {**{p: list(getattr(j, p)) if isinstance(getattr(j, p), tuple)
+        else getattr(j, p) for p in Jazyk.__dataclass_fields__},
+     "velke_pismeno_je_instance": False}))
+ok(type(bez_velkych.rozeber("Krakatit je román")).__name__ == "Nejasnost",
+   "vypnuté pravidlo o velkém písmenu se neprojevilo")
+print("  s vypnutým pravidlem o velkém písmenu se „Krakatit je román“ ptá")
 
 print("\n— export ven —")
 pole = nove_pole()

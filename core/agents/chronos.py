@@ -21,26 +21,21 @@ Pravidla jsou z conBondu, obě vzniklá měřením:
 import re
 from typing import Sequence
 
+from ..language import Jazyk
 from .base import Agent, Naveska, v_zavorce
 
-MESICE = {
-    "leden": 1, "ledna": 1, "únor": 2, "února": 2, "březen": 3, "března": 3,
-    "duben": 4, "dubna": 4, "květen": 5, "května": 5, "červen": 6, "června": 6,
-    "červenec": 7, "července": 7, "srpen": 8, "srpna": 8, "září": 9,
-    "říjen": 10, "října": 10, "listopad": 11, "listopadu": 11,
-    "prosinec": 12, "prosince": 12,
-}
-# „v roce", „r." — slovo, které rok uvozuje a patří do rozsahu nálezu
-UVOZUJE = {"rok", "roce", "roku", "r", "léta", "letech", "století", "stol"}
+# Jména měsíců i slova, která rok uvozují („v roce", „r."), sedí v jazykovém
+# profilu — je to slovník jazyka, ne pravidlo agenta. Viz core/language.py.
 
 
 class Chronos(Agent):
     jmeno = "chronos"
     typ = "Typ=cas"
 
-    def __init__(self, rok_od: int = 1000, rok_do: int = 2100):
+    def __init__(self, rok_od: int = 1000, rok_do: int = 2100, jazyk=None):
         self.rok_od = rok_od
         self.rok_do = rok_do
+        self.jazyk = jazyk or Jazyk.nacist()
 
     # ---- rozpoznání --------------------------------------------------
     def je_rok(self, forma: str) -> bool:
@@ -53,9 +48,8 @@ class Chronos(Agent):
         odděluje, takže sem přijde holé číslo a tečka je další token."""
         return forma.isdigit() and 1 <= len(forma) <= 2 and 1 <= int(forma) <= 31
 
-    @staticmethod
-    def mesic(forma: str):
-        return MESICE.get(forma.lower())
+    def mesic(self, forma: str):
+        return self.jazyk.cislo_mesice(forma)
 
     # ---- hledání -----------------------------------------------------
     def najdi(self, veta: Sequence[dict]) -> list:
@@ -100,7 +94,7 @@ class Chronos(Agent):
         if v_zavorce(veta, i):
             return None
         rozsah = [i]
-        if i > 0 and veta[i - 1]["form"].lower().rstrip(".") in UVOZUJE:
+        if i > 0 and self.jazyk.uvozuje(veta[i - 1]["form"]):
             rozsah.insert(0, i - 1)
         return Naveska(rozsah=rozsah, hlava=i, typ=self.typ,
                        hodnota=int(veta[i]["form"]), zdroj=self.jmeno)

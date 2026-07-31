@@ -39,6 +39,8 @@ import time
 from dataclasses import dataclass, field
 from typing import Optional
 
+from .language import Jazyk
+
 PODTRIDA, INSTANCE, SYNONYMUM, ZAPOR = "podtrida", "instance", "synonymum", "zapor"
 
 # Zkratka psaná s tečkami je JEDEN pojem, ne tři. Tokenizér ji rozseká na
@@ -52,19 +54,10 @@ def sceli_zkratky(text: str) -> str:
     """R.U.R. → RUR, s.r.o. → sro"""
     return ZKRATKA.sub(lambda m: m.group(0).replace(".", ""), text)
 
-# Tvary, které druh určují samy. Cokoli jiného je nejasné a ptáme se.
-ZNACKY_PODTRIDY = ("je druh", "je druhem", "patří mezi", "je typ", "je typem")
-ZNACKY_SYNONYMA = ("je totéž co", "je totez co", "znamená totéž co", "=",
-                   "je synonymum pro", "je jiné slovo pro")
-
-# OTÁZKA NENÍ TVRZENÍ. „Co je Šmoula?" má tvar „X je Y" a bez tohohle se
-# zapsalo jako fakt, že co je šmoula — tázací slovo se stalo pojmem. Otázku
-# pozná otazník na konci nebo tázací slovo na začátku; obojí, protože
-# „kdo je Šmoula" bez otazníku je pořád otázka.
-TAZACI = ("co", "kdo", "koho", "komu", "čí", "jaký", "jaká", "jaké", "který",
-          "která", "které", "je", "jsou", "není", "nejsou")
-# Tázací slova, po kterých se ptáme na ZAŘAZENÍ, ne na jednu hranu.
-NA_ZARAZENI = ("co", "kdo", "koho", "komu", "čí")
+# Česká slova sedí v jazykovém profilu (core/grammar/cs.json), ne tady.
+# Přidat „spadá pod" má jít bez sahání do Pythonu — a je vidět pohromadě,
+# co všechno mluvnice zná. Proč to nedělá z programu vícejazyčný program,
+# stojí v language.py.
 
 
 @dataclass
@@ -148,8 +141,9 @@ class Mluvnice:
     protože „román je druh díla" má pravou stranu v genitivu a bez lemmat
     by z toho byl jiný uzel než „dílo"."""
 
-    def __init__(self, lemmatizuj=None):
+    def __init__(self, lemmatizuj=None, jazyk: Optional[Jazyk] = None):
         self.lemmatizuj = lemmatizuj or (lambda s: s.strip().lower())
+        self.jazyk = jazyk or Jazyk.nacist()
 
     def rozeber(self, veta: str):
         """Vrací Tvrzeni, Dotaz, Nejasnost, nebo None. Otázka se testuje
@@ -159,25 +153,27 @@ class Mluvnice:
         cista = syrova.rstrip(".!?")
         if not cista:
             return None
-        if syrova.endswith("?") or self._prvni_slovo(cista) in TAZACI:
+        if syrova.endswith("?") or self.jazyk.je_tazaci(self._prvni_slovo(cista)):
             return self._dotaz(cista, veta)
 
-        for znacka in ZNACKY_SYNONYMA:
+        for znacka in self.jazyk.znacky_synonyma:
             if znacka in cista.lower():
                 l, p = self._rozdel(cista, znacka)
                 return self._tvrzeni(SYNONYMUM, l, p, veta)
 
-        if self._obsahuje(cista, " není "):
-            l, p = self._rozdel(cista, " není ")
+        znacka = self._najit(cista, self.jazyk.spona_zapor)
+        if znacka:
+            l, p = self._rozdel(cista, znacka)
             return self._tvrzeni(ZAPOR, l, p, veta)
 
-        for znacka in ZNACKY_PODTRIDY:
+        for znacka in self.jazyk.znacky_podtridy:
             if znacka in cista.lower():
                 l, p = self._rozdel(cista, znacka)
                 return self._tvrzeni(PODTRIDA, l, p, veta)
 
-        if self._obsahuje(cista, " je "):
-            l, p = self._rozdel(cista, " je ")
+        znacka = self._najit(cista, self.jazyk.spona)
+        if znacka:
+            l, p = self._rozdel(cista, znacka)
             levy_syrovy = l.strip()
             # Velké písmeno = konkrétní věc. V češtině je to slušné vodítko
             # u vlastních jmen; kde nestačí, ptáme se.
@@ -185,7 +181,7 @@ class Mluvnice:
             # Celá verzálka se dřív vylučovala, aby se za jméno nepovažoval
             # křik. Jenže tím propadly zkratky: R.U.R. se scelí na „RUR"
             # a to je vlastní jméno jako každé jiné.
-            if levy_syrovy[:1].isupper():
+            if self.jazyk.velke_pismeno_je_instance and levy_syrovy[:1].isupper():
                 return self._tvrzeni(INSTANCE, l, p, veta)
             return Nejasnost(self._pojem(l), self._pojem(p), veta,
                              self._ocistit(l), self._ocistit(p))
@@ -196,11 +192,10 @@ class Mluvnice:
         return Tvrzeni(druh, self._pojem(l), self._pojem(p), veta=veta,
                        levy_tvar=self._ocistit(l), pravy_tvar=self._ocistit(p))
 
-    @staticmethod
-    def _ocistit(kus: str) -> str:
+    def _ocistit(self, kus: str) -> str:
         """Povrchový tvar bez značek — lemmatizace se sem nesahá."""
         kus = sceli_zkratky(kus.strip()).strip(",;")
-        for predlozka in ("pro ", "s ", "se ", "co "):
+        for predlozka in self.jazyk.predlozky:
             if kus.lower().startswith(predlozka):
                 kus = kus[len(predlozka):]
         return kus.strip()
@@ -209,6 +204,10 @@ class Mluvnice:
     def _prvni_slovo(veta: str) -> str:
         kusy = veta.strip().split()
         return kusy[0].lower().strip(",;") if kusy else ""
+
+    def _najit(self, veta: str, znacky) -> str:
+        """První značka z profilu, která ve větě je. Prázdno, když žádná."""
+        return next((z for z in znacky if self._obsahuje(veta, z)), "")
 
     @staticmethod
     def _obsahuje(veta: str, znacka: str) -> bool:
@@ -233,10 +232,12 @@ class Mluvnice:
         slovo je to, na co se ptáme, zbytek je pojem — víceslovné pojmy na
         obou stranách naráz rozdělit nejde."""
         prvni = self._prvni_slovo(cista)
-        if prvni in NA_ZARAZENI and self._obsahuje(cista, " je "):
-            _, pojem = self._rozdel(cista, " je ")
+        spony = tuple(self.jazyk.spona) + tuple(self.jazyk.spona_zapor)
+        znacka = self._najit(cista, spony)
+        if self.jazyk.pta_se_na_zarazeni(prvni) and znacka:
+            _, pojem = self._rozdel(cista, znacka)
             return Dotaz(self._pojem(pojem), None, veta) if pojem else None
-        if prvni in ("je", "jsou", "není", "nejsou"):
+        if prvni in tuple(z.strip() for z in spony):
             zbytek = cista.split(None, 1)[1] if len(cista.split(None, 1)) > 1 else ""
             kusy = zbytek.split()
             if len(kusy) >= 2:
@@ -244,8 +245,8 @@ class Mluvnice:
                 # výchozí řez u posledního slova; lepší najde až znalost
                 return Dotaz(" ".join(slova[:-1]), slova[-1], veta, slova)
             return None
-        if self._obsahuje(cista, " je "):
-            l, p = self._rozdel(cista, " je ")
+        if znacka:
+            l, p = self._rozdel(cista, znacka)
             if l and p:
                 return Dotaz(self._pojem(l), self._pojem(p), veta)
         return None
@@ -254,7 +255,7 @@ class Mluvnice:
         # Scelení i tady, ne jen v rozeber(): dotazy „? R.U.R. dílo" jdou
         # rovnou sem a jinak by se ptaly na jiný uzel, než jaký se uložil.
         kus = sceli_zkratky(kus.strip()).strip(",;")
-        for predlozka in ("pro ", "s ", "se ", "co "):
+        for predlozka in self.jazyk.predlozky:
             if kus.lower().startswith(predlozka):
                 kus = kus[len(predlozka):]
         return self.lemmatizuj(kus)

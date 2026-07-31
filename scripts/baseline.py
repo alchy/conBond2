@@ -211,10 +211,59 @@ def je_zajmeno_3(t: dict) -> bool:
             and "Person=3" in t["acts"])
 
 
+def je_to_ona(podmet: dict, osoba: dict) -> bool:
+    """Je pojmenovaný podmět TA osoba, o které článek je?
+
+    Měření ukázalo díru: 913 vět z 3478 (26 %) má vlastní pojmenovaný podmět
+    — „Němcová", „Kundera", „Seifert" — a entitu nedostalo ŽÁDNOU, protože
+    se doplňovala jen tam, kde podmět chybí. Otázka na tu osobu se pak k té
+    větě nedostane, ačkoli ji jmenuje.
+
+    Porovnává se lemma s kusy identity (jméno souboru), aby „Josef" u článku
+    o Josefu Čapkovi sedlo a u článku o Karlovi ne."""
+    if podmet["upos"] not in ("PROPN", "NOUN"):
+        return False
+    casti = set(osoba["id"].split("_"))
+    lemma = podmet.get("lemma", podmet["form"]).lower()
+    return lemma in casti or podmet["form"].lower() in casti
+
+
+def je_proza(veta: list) -> bool:
+    """Je to výpověď, nebo položka seznamu?
+
+    Měření: 57 % „vět" v korpusu nemá slovesný kořen a při pohledu do nich
+    je to bibliografie a soupisy děl — „Praha : Academia , 1985 .",
+    „Wiener slawistischer Almanach , sv . 19 , 1987 , str . 101 – 122 .".
+    Vysvětluje to i vzory, které v poli nesedaly: šablona plná cizích slov
+    (als, arts, avantgarde, bei) je vzor CIZOJAZYČNÉ BIBLIOGRAFIE, ne češtiny.
+
+    NEMAŽE SE TO. Pole má být obraz textu a v článku ta bibliografie je;
+    zahodit půlku korpusu by navíc změnilo všechna dosud naměřená čísla.
+    Místo toho se to OZNAČÍ a kdo měří výpovědi, si odfiltruje. Pro pole je
+    to navíc užitečná osa: soused v bibliografii je jiné místo než soused ve
+    větě, a bez příznaku to obojí padá do jedné šablony."""
+    return any(je_koren_slovesa(t) for t in veta)
+
+
+def oznacit_druh(vety: list) -> dict:
+    """Každý token dostane, do jaké výpovědi patří. Na KAŽDÝ token schválně:
+    šablona se skládá ze SOUSEDŮ, takže kdyby to nesl jen kořen, sousedi by
+    o tom nevěděli a vzory by se nerozdělily."""
+    pocty = {"proza": 0, "seznam": 0}
+    for v in vety:
+        druh = "proza" if je_proza(v) else "seznam"
+        pocty[druh] += 1
+        for t in v:
+            if f"Vyp={druh}" not in t["acts"]:
+                t["acts"].append(f"Vyp={druh}")
+    return pocty
+
+
 def krok_koreference() -> dict:
     with open(ROZEBRANE, encoding="utf-8") as f:
         clanky = json.load(f)
-    souhrn = {"prodrop": 0, "zajmeno": 0, "shoda": 0, "neshoda": 0, "vet": 0}
+    souhrn = {"prodrop": 0, "zajmeno": 0, "jmenovana": 0,
+              "shoda": 0, "neshoda": 0, "vet": 0}
     for kdo, vety in clanky.items():
         osoba = hlavni_osoba(kdo, vety)
         if not osoba:
@@ -231,6 +280,16 @@ def krok_koreference() -> dict:
                 druh = "prodrop"
             elif ("PronType=Prs" in podmet["acts"] and "Person=3" in podmet["acts"]):
                 druh = "zajmeno"
+            elif je_to_ona(podmet, osoba):
+                # Podmět je vyjádřený a je to ona. Shodu neověřujeme —
+                # jméno je jistější vodítko než rod slovesa.
+                souhrn["jmenovana"] += 1
+                souhrn["shoda"] += 1
+                zasah += 1
+                for a in ("Kor=jmenovana", f"Ent={osoba['id']}"):
+                    if a not in koren["acts"]:
+                        koren["acts"].append(a)
+                continue
             else:
                 continue
             # Shoda rodu a čísla. U minulého času je rod na slovese, jinak ne;
@@ -269,6 +328,9 @@ def krok_zapis() -> None:
     for v in vety:
         for t in v:
             t.pop("lemma", None)
+    pocty = oznacit_druh(vety)
+    log.info("druh výpovědi označen", **pocty,
+             podil_prozy=f"{100*pocty['proza']/max(len(vety),1):.0f} %")
     os.makedirs(os.path.dirname(CIL), exist_ok=True)
     with open(CIL, "w", encoding="utf-8") as f:
         json.dump(vety, f, ensure_ascii=False)
@@ -291,8 +353,12 @@ def doplnit_vertikaly(vety: list) -> None:
             for a in t["acts"]:
                 if a in zname or a in nove:
                     continue
-                nove[a] = ("KOR" if a.startswith(("Kor=", "Ent="))
-                           else skupina_aktivace(a))
+                if a.startswith(("Kor=", "Ent=")):
+                    nove[a] = "KOR"
+                elif a.startswith("Vyp="):
+                    nove[a] = "VÝP"
+                else:
+                    nove[a] = skupina_aktivace(a)
     for a, g in sorted(nove.items(), key=lambda x: (x[1], x[0])):
         cols.append({"a": a, "g": g})
     os.makedirs(os.path.dirname(cesta), exist_ok=True)

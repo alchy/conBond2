@@ -1,19 +1,23 @@
 """Specializovaní agenti — každý jednu doménu, každý zdroj aktivací pro pole.
 
-    from core.agents import Chronos, Metron, Topos, oznacit_korpus
+    from core.agents import Bio, Chronos, Metron, Topos, oznacit_korpus
 
 Typ jde do vektoru a zobecňuje, hodnota zůstane na vazbě a rozlišuje. Viz
 base.py, kde je ten rozdíl vysvětlený i s čísly, proč na něm záleží.
 """
 
 from .base import Agent, Naveska, je_cislo, v_zavorce
+from .bio import Bio
 from .chronos import Chronos
 from .metron import Metron
 from .topos import Topos
 
-VYCHOZI = (Chronos, Metron, Topos)
+# Bio JDE PRVNÍ: čte biografickou závorku, kterou ostatní schválně
+# přeskakují. Kdyby šel po Chronosovi, nic by se nezměnilo — Chronos
+# do závorky nesáhne —, ale pořadí říká, kdo má na to místo nárok.
+VYCHOZI = (Bio, Chronos, Metron, Topos)
 
-__all__ = ["Agent", "Naveska", "Chronos", "Metron", "Topos",
+__all__ = ["Agent", "Naveska", "Bio", "Chronos", "Metron", "Topos",
            "oznacit_korpus", "VYCHOZI", "je_cislo", "v_zavorce"]
 
 

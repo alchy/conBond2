@@ -19,7 +19,7 @@ from .interfaces import Sitko, SkladacVektoru, Slucovac, Uloziste, ZdrojAktivaci
 from .lexicon import Slovnik
 from .log import log
 from .side import Strana
-from .sieve import SitkoStredu
+from .sieve import SitkoStredu, filtruje_stred
 from .flow import Tok
 from .sources import SkladacRetezcem, SlucovacShodou, ZdrojZTokenu
 
@@ -107,6 +107,9 @@ class Pole:
     def postavit_stranu(self, strana: str, tok: Tok) -> Strana:
         okno = Okno(self.nastaveni.ziskat_polomer(strana),
                     self.nastaveni.stred_uvnitr)
+        if filtruje_stred(self.sitko) and not okno.zasahuje(0):
+            log.info("sítko filtruje střed, ale střed není v okně — nefiltruje "
+                     "se nic; chybí stred_uvnitr", strana=strana, sitko=repr(self.sitko))
         return Strana(strana, PREDPONY[strana], tok, okno, self.zdroj,
                       self.skladac, self.slucovace[strana], self.slovnik,
                       self.sitko).postavit()

@@ -21,7 +21,8 @@ from .settings import MAX_POLOMER, Nastaveni
 from .window import Okno, Slot, zapsat_offset
 from .field import KORPUSY, PREDPONY, Pole
 from .interfaces import Sitko, SkladacVektoru, Slucovac, Uloziste, ZdrojAktivaci
-from .sieve import SitkoStredu, SitkoVse, jmeno_aktivace
+from .sieve import (SitkoStredu, SitkoStupnovane, SitkoVse,  # noqa: E402
+                    filtruje_stred, jmeno_aktivace)
 from .compose import Skladac, Vzor
 from .lexicon import Polozka, Slovnik
 from .side import Strana, Vazba
@@ -39,6 +40,7 @@ __all__ = [
     "Skladac", "Vzor",
     "ZdrojAktivaci", "Uloziste", "SkladacVektoru", "Slucovac", "Sitko",
     "ZdrojZTokenu", "SkladacRetezcem", "SlucovacShodou",
-    "SitkoStredu", "SitkoVse", "jmeno_aktivace",
+    "SitkoStredu", "SitkoStupnovane", "SitkoVse",
+    "filtruje_stred", "jmeno_aktivace",
     "PRAZDNO", "PRAZDNY_TVAR", "MAX_POLOMER", "KORPUSY", "PREDPONY",
 ]

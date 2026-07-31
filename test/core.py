@@ -12,8 +12,9 @@ import tempfile
 KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, KOREN)
 
-from core import (Config, Nastaveni, Pole, Skladac, UlozisteSouboru,  # noqa: E402
-                  nastavit_log, pole_ven)
+from core import (Config, Nastaveni, Pole, SitkoStredu,  # noqa: E402
+                  SitkoStupnovane, SitkoVse, Skladac, UlozisteSouboru,
+                  filtruje_stred, nastavit_log, pole_ven)
 from core.compose import popsat_zaznam  # noqa: E402
 from core.window import Okno  # noqa: E402
 
@@ -205,6 +206,33 @@ ok(mimo.fakta.pocet_sablon() <= uzke.fakta.pocet_sablon()
 ok(any(a.startswith("-1:") and "Polarity" not in a
        for info in uzke.fakta.vypsat_sablony().values() for a in info["vec"]),
    "sítko ořezalo i sousední sloty, ne jen střed")
+
+print("\n— stupňované sítko: blízko podrobně, daleko hrubě —")
+# Slot navíc stojí sdílení tím víc, čím jemnější je to, co se v něm vidí.
+plne = nove_pole(polomer_faktu=2, polomer_dotazu=2)
+hrube = Pole(UlozisteSouboru(config=CONFIG),
+             sitko=SitkoStupnovane({1: (), None: ("UPOS",)}))
+hrube.nastavit_polomery(2, 2).postavit()
+print(f"  r=2 plně {plne.fakta.pocet_sablon()} šablon"
+      f" · r=2 s UPOS na ±2 {hrube.fakta.pocet_sablon()}")
+ok(hrube.fakta.pocet_sablon() < plne.fakta.pocet_sablon(),
+   "hrubší pohled do dálky nedal míň šablon")
+daleko = {a.split(":", 1)[1] for info in hrube.fakta.vypsat_sablony().values()
+          for a in info["vec"] if a.startswith(("-2:", "+2:"))}
+ok(all("=" not in a or a == "∅" for a in daleko),
+   f"na ±2 prosáklo víc než UPOS: {sorted(a for a in daleko if '=' in a)[:5]}")
+blizko = {a for info in hrube.fakta.vypsat_sablony().values()
+          for a in info["vec"] if a.startswith(("-1:", "+1:"))}
+ok(any("Case=" in a for a in blizko), "±1 přišlo o podrobnost, ač mělo zůstat plné")
+
+# Past, do které jsem spadl: sítko podstrčené jako šev nezapne střed do okna
+# a filtruje se pak vzduch. Zkouška to pozná.
+ok(filtruje_stred(SitkoStredu(("Polarity",))), "zkouška nepoznala filtrující sítko")
+ok(not filtruje_stred(SitkoVse()), "zkouška označila propouštějící sítko za filtrující")
+ok(not filtruje_stred(SitkoStupnovane({1: (), None: ("UPOS",)})),
+   "sítko, které střed nechává být, se hlásí jako filtrující")
+ok(filtruje_stred(SitkoStupnovane({0: ("Polarity",), None: ()})),
+   "sítko filtrující nultý offset se nepřiznalo")
 
 print("\n— export ven —")
 pole = nove_pole()

@@ -95,6 +95,46 @@ Samotné `Polarity` dělá na tvrzeních celou práci — výsledek je totožný
 s celým středem, včetně počtu šablon — a na faktech stojí 5 bodů sdílení
 místo 30.
 
+## Přílepek: totéž přes vzdálenost
+
+Sítko dostává offset, ne jen aktivace, takže se stejnou pákou dá řídit i to,
+kolik se toho vidí **do dálky**. `SitkoStupnovane`: blízko podrobně, daleko
+hrubě.
+
+Změřeno na témž korpusu, střed = `Polarity` ve všech řádcích:
+
+| na dálku vidět | délka vektoru | šablon | poměr | sdíleno |
+|---|---:|---:|---:|---:|
+| r=1, dál nic | 14 | 28 578 | 0.548 | 52 % |
+| r=2, na ±2 vše | 26 | 46 484 | 0.891 | 10 % |
+| r=2, na ±2 jen UPOS (17 hodnot) | 16 | 40 980 | 0.786 | 24 % |
+| **r=2, na ±2 hrubá třída (3 hodnoty)** | 16 | 34 820 | 0.668 | **38 %** |
+| r=3, na ±2 a dál hrubá třída | 18 | 40 345 | 0.774 | 25 % |
+
+Dohlédnout o slovo dál stojí 42 bodů sdílení plným pohledem a 14 bodů hrubým.
+Je to týž zákon, který vyšel u výběru atributů — cena ≈ pokrytí × mohutnost —,
+jen zapsaný přes vzdálenost.
+
+Ta „hrubá třída" je pomocný atribut o třech hodnotách (plnovýznamové /
+pomocné / ostatní) odvozený z UPOS. V měření se přidával zvenku přes vlastní
+`ZdrojAktivaci`; jako vertikála v katalogu zatím není.
+
+Dvě mezní hodnoty stojí za zapamatování: patro, které nepustí **nic**, splyne
+s prázdným slotem, takže je to totéž jako menší poloměr — ověřeno, `r=3` s
+prázdným ±3 dalo znak po znaku tytéž počty jako `r=2`. A klíč `None` (zbytek)
+se úmyslně **netýká offsetu 0**: kdo píše útlum podle vzdálenosti, na střed
+nemyslí a tiché oříznutí středu by bylo překvapení.
+
+### Past, na kterou je hlídač
+
+Sítko podstrčené jako šev **nezapne střed do okna** — to dělá jen setter
+`stred_atributy`. Filtrovat střed, který není slot, znamená filtrovat vzduch,
+a je to němé: vypadá to, že se filtruje, a nefiltruje se nic. Přesně tak jsem
+si první sadu měření znehodnotil.
+
+`filtruje_stred(sitko)` se sítka zeptá aktivací, kterou nemůže znát; když ji
+zahodí a střed přitom v okně není, jádro to při stavbě ohlásí do logu.
+
 ## Co zůstává otevřené
 
 * **Frontend.** API bere `?stred_atr=Polarity,Tense`; v prohlížeči zatím není

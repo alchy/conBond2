@@ -7,7 +7,7 @@
     --plane:#0d0d0d; --surface:#1a1a19;
     --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
     --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
-    --upos:#3987e5; --deprel:#d95926; --feats:#199e70;
+    --upos:#3987e5; --deprel:#d95926; --feats:#199e70; --hrube:#a78bfa;
   }
 
   /* PLÁTNO, ne responzivní stránka. Nic se nepřizpůsobuje oknu: co je jednou
@@ -135,6 +135,7 @@
  .cell.g3{background:var(--ink)}
 
   .cell.g4{background:var(--ink2)}
+  .cell.g5{background:var(--hrube)}
 
   .cell.off { background:var(--grid); }
 

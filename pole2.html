@@ -1,27 +1,32 @@
 <meta charset="utf-8">
 <title>Pole → slovník → vazby → šablony</title>
-<link rel="stylesheet" href="css/tokeny.css">
-<link rel="stylesheet" href="css/rozvrzeni.css">
-<link rel="stylesheet" href="css/pole.css">
-<link rel="stylesheet" href="css/panely.css">
-<link rel="stylesheet" href="css/editory.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/field.css">
+<link rel="stylesheet" href="css/panels.css">
+<link rel="stylesheet" href="css/editors.css">
 
 <div class="wrap">
-  <h1>Pole → slovník → vazby → šablony</h1>
-  <p class="lede">Dvě strany téhož stroje. <b>Facts</b> je pole textu, <b>Query</b> pole
+  <!-- Výklad je dlouhý a čte se jednou; sbalený nechá místo tomu, kvůli čemu
+       se sem chodí. Otevření si stránka pamatuje jako každé jiné nastavení. -->
+  <details class="lede" id="uvod">
+    <summary><b>Pole → slovník → vazby → šablony</b><span class="sum">dvě strany
+      téhož stroje — týž kód, jiná data</span></summary>
+    <p>Dvě strany téhož stroje. <b>Facts</b> je pole textu, <b>Query</b> pole
      dotazů — <b>týž kód, jiná data</b>. Obě končí šablonou: vlevo <b>pole</b> (řádek na
      slovo, sloupec na aktivaci), pak <b>slovník</b>, pak <b>vazby</b>
      (<code>links[(w_id, t_id, zrno)] → výskyty</code>) a vpravo <b>šablony</b> — obálka
-     okolí pro zvolené <b>r</b>, sloučená tam, kde vyšla stejně.<br>
-     <b>Slovník je jeden, společný oběma stranám</b>; <b>vazby i šablony má každá strana
+     okolí pro zvolené <b>r</b>, sloučená tam, kde vyšla stejně.</p>
+    <p><b>Slovník je jeden, společný oběma stranám</b>; <b>vazby i šablony má každá strana
      vlastní</b>. Že je týž tvar ve faktu i v dotazu, samo o sobě nic nespojuje — je to
      jen společný prostor tvarů. <b>Spojení jde přes šablony</b> a řeší se na listech
      <b>Vazby</b>. Vertikály jsou sdílené proto, že bez toho by měly vektory obou stran
-     jiný atributový prostor.<br>
-     Poloměry jsou <b>dva a smí se lišit</b>: dotaz může mít jiné r než fakt, protože se
+     jiný atributový prostor.</p>
+    <p>Poloměry jsou <b>dva a smí se lišit</b>: dotaz může mít jiné r než fakt, protože se
      vektory nikdy neporovnávají přímo — mapování je kotvené na tvarech.
      Každá věta stojí sama: dostane <b>r prázdných řádků</b> před sebe a <b>r za sebe</b>,
      takže okno nemá jak přelézt do sousední a co přesahuje, je <b>&lt;empty&gt;</b>.</p>
+  </details>
 
   <div id="globals">
     <div class="bar">
@@ -54,6 +59,8 @@
       <span><i class="sw" style="background:var(--upos)"></i> UPOS</span>
       <span><i class="sw" style="background:var(--deprel)"></i> DEPREL</span>
       <span><i class="sw" style="background:var(--feats)"></i> FEATS</span>
+      <span><i class="sw" style="background:var(--hrube)"></i> HRUBĚ — týž atribut
+        v nižším rozlišení, počítá se z jemných</span>
       <span><i class="sw" style="background:var(--ink)"></i><i class="sw"
         style="background:var(--ink2)"></i> TYP · LEM · vlastní — vrstvy, které
         UDPipe nedává, proto inkoust a ne další barva</span>

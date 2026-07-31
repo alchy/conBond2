@@ -16,6 +16,7 @@ export const stav = {
   cIn: 0,            // střed uvnitř vektoru
   typyOn: 1,         // významový typ v poli i ve vektoru
   sheet: 'f',
+  uvod: 0,           // výklad nahoře rozbalený
   pin: null,         // připnuté zvýraznění "strana:druh:id"
 };
 
@@ -34,12 +35,16 @@ export function nacti() {
   stav.only = cele(u.only, 0, 1, 1);
   stav.cIn = cele(u.cIn, 0, 1, 0);
   stav.typyOn = cele(u.typyOn, 0, 1, 1);
+  stav.uvod = cele(u.uvod, 0, 1, 0);
   if (LISTY.includes(u.sheet)) stav.sheet = u.sheet;
 }
 
 export function uloz() {
-  const { R, punct, only, cIn, typyOn, sheet } = stav;
-  try { localStorage.setItem(KLIC, JSON.stringify({ R, punct, only, cIn, typyOn, sheet })); }
+  const { R, punct, only, cIn, typyOn, sheet, uvod } = stav;
+  try {
+    localStorage.setItem(KLIC,
+      JSON.stringify({ R, punct, only, cIn, typyOn, sheet, uvod }));
+  }
   catch (e) { /* prázdno */ }
 }
 
@@ -51,4 +56,11 @@ export function srovnejPrepinace() {
   set('#rf', stav.R.f); set('#rq', stav.R.q);
   set('#p', stav.punct); set('#c', stav.only);
   set('#cn', stav.cIn); set('#ty', stav.typyOn);
+  /* Výklad je dlouhý a čte se jednou — sbalený je výchozí stav, ale kdo si
+     ho nechá otevřený, najde ho otevřený i příště. */
+  const uvod = document.querySelector('#uvod');
+  if (uvod) {
+    uvod.open = !!stav.uvod;
+    uvod.ontoggle = () => { stav.uvod = uvod.open ? 1 : 0; uloz(); };
+  }
 }

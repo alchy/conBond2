@@ -1,7 +1,7 @@
 /* Vertikály — co za osy vůbec existuje. Přiřazuje se na listu Matice. */
 
 import { el, esc } from '../util.js';
-import { data, GRUPY, BARVA_GRUPY, pocetTokenu } from '../data.js';
+import { data, GRUPY, BARVA_GRUPY, POCITANE, jePocitana, pocetTokenu } from '../data.js';
 
 export function postavList() {
   const nova = el('div', { class: 'vnew card' }, [
@@ -26,19 +26,23 @@ export function postavList() {
 }
 
 export function prekresli(root, editovane, akce) {
-  root.querySelector('#vGrp').innerHTML = GRUPY.map(g =>
+  /* Počítanou skupinu nejde založit ručně — hodnoty do ní dosazuje jádro. */
+  root.querySelector('#vGrp').innerHTML = GRUPY.filter(g => g !== POCITANE).map(g =>
     `<option${g === 'VLASTNÍ' ? ' selected' : ''}>${esc(g)}</option>`).join('');
 
   const telo = root.querySelector('#vBody');
   telo.innerHTML = '';
   GRUPY.filter(g => data.cols.some(c => c.g === g)).forEach(g => {
+    const popis = g === POCITANE
+      ? ' <small>(počítá se z jemných, needituje se)</small>' : '';
     telo.appendChild(el('div', { class: 'vgrp',
-      html: `<i style="color:var(--${BARVA_GRUPY[g] || 'muted'})">${esc(g)}</i>`
+      html: `<i style="color:var(--${BARVA_GRUPY[g] || 'muted'})">${esc(g)}${popis}</i>`
         + data.cols.filter(c => c.g === g).map(c =>
           '<div class="vrow"><label><input type="checkbox" data-a="' + esc(c.a) + '"'
           + (editovane.has(c.a) ? ' checked' : '') + `><span class="nm">${esc(c.a)}</span>`
           + `</label><span class="n">${pocetTokenu(c.a)}</span>`
-          + `<button class="x" data-del="${esc(c.a)}" title="smazat vertikálu">×</button>`
+          + (jePocitana(c) ? '<span class="x" title="počítaná vertikála">·</span>'
+             : `<button class="x" data-del="${esc(c.a)}" title="smazat vertikálu">×</button>`)
           + '</div>').join('') }));
   });
 

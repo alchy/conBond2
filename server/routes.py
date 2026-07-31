@@ -15,14 +15,38 @@ from urllib.parse import parse_qs, urlparse
 
 from core import Pole, Skladac, korpusy_ven, log, pole_ven
 from core.derived import bez_odvozenych, ocistit_korpus
+from core.dialog import Rozhovor
+from core.tvrzeni import INSTANCE, PODTRIDA, Mluvnice, Znalost
 from core.window import Okno
 
 STATICKE = (".html", ".css", ".js", ".json", ".svg", ".map")
 PRAVDA = ("1", "true", "ano")
 
 
+def udelej_lemmatizator(rozbor):
+    """Pojmy z dialogu se lemmatizují týmž UDPipe jako věty. Pamatuje si,
+    co už viděl — v rozhovoru se stejné slovo opakuje pořád dokola. Bez
+    UDPipe se jen zmenší písmena, ať se dá pracovat i tak."""
+    pamet = {}
+
+    def lemmatizuj(text: str) -> str:
+        klic = (text or "").strip().lower()
+        if not klic:
+            return klic
+        if klic not in pamet:
+            pamet[klic] = rozbor.lemmata(text) or klic
+        return pamet[klic]
+
+    return lemmatizuj
+
+
 def udelej_handler(config, uloziste, rozbor):
     pole = Pole(uloziste)
+    # Rozhovor žije po celou dobu běhu serveru; tvrzení se ukládají hned,
+    # takže restart o nic nepřijde.
+    znalost = Znalost(config.cesta_znalosti())
+    znalost.naplnit_ze_svazu(config.cesta_svazu())
+    rozhovor = Rozhovor(znalost, Mluvnice(udelej_lemmatizator(rozbor)))
 
     class Handler(BaseHTTPRequestHandler):
         server_version = "pole2/3.0"
@@ -120,6 +144,9 @@ def udelej_handler(config, uloziste, rozbor):
                     "korpusy": korpusy_ven(pole),
                 })
 
+            if cesta == "/api/dialog":
+                return self.posli(200, rozhovor.vypsat_stav())
+
             if cesta == "/api/mappings":
                 return self.posli(200, uloziste.vypsat_mapovani())
 
@@ -193,6 +220,26 @@ def udelej_handler(config, uloziste, rozbor):
 
             if cesta == "/api/compose":
                 return self.posli(200, self.slozit(data))
+
+            # Dialog: text dovnitř, celý stav ven. Prohlížeč si nic nedopočítává
+            # — o tom, co se s větou stalo, rozhoduje jádro.
+            if cesta == "/api/dialog":
+                rozhovor.poslat(data.get("text") or "")
+                return self.posli(200, rozhovor.vypsat_stav())
+
+            if cesta == "/api/dialog/decide":
+                volba = data.get("druh")
+                if volba == "preskocit":
+                    rozhovor.preskocit()
+                elif volba in (PODTRIDA, INSTANCE):
+                    rozhovor.rozhodnout(volba)
+                else:
+                    return self.chyba(400, "druh je podtrida, instance nebo preskocit")
+                return self.posli(200, rozhovor.vypsat_stav())
+
+            if cesta == "/api/dialog/forget":
+                rozhovor.zapomenout()
+                return self.posli(200, rozhovor.vypsat_stav())
 
             return self.chyba(404, "neznámá cesta")
 

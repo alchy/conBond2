@@ -20,7 +20,7 @@ export const stav = {
   pin: null,         // připnuté zvýraznění "strana:druh:id"
 };
 
-export const LISTY = ['f', 'q', 'mapd', 'mapp', 'vert', 'mx', 'vety'];
+export const LISTY = ['f', 'q', 'mapd', 'mapp', 'vert', 'mx', 'vety', 'dial'];
 
 /* r=1 je výchozí schválně: při vyšším r je s plnými FEATS poměr šablon ke
    středům skoro 1.00, každé slovo má vlastní vzor a nesbíhá se ani jedna

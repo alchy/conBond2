@@ -15,11 +15,13 @@ import * as prehled from './sheets/links-overview.js';
 import * as vert from './sheets/verticals.js';
 import * as matice from './sheets/matrix.js';
 import * as vety from './sheets/sentences.js';
+import * as rozhovor from './sheets/conversation.js';
 import * as dialog from './dialog/new-sentence.js';
 
 const pohledy = {};
 const listy = {};
 let model = null, mapa = [], editovane = new Set();
+let stavDialogu = null;
 
 /* ---- překreslení ----------------------------------------------------
    Model se NEPOČÍTÁ tady — vyzvedne se z backendu. Zdroj pravdy sedí
@@ -42,6 +44,7 @@ function prekresli() {
   matice.prekresli(listy.mx, editovane, akceVertikal);
   vety.prekresli(listy.vety, akceVet);
   vety.tabulkaVazeb(listy.vety, model.slovnik);
+  rozhovor.prekresli(listy.dial, stavDialogu, akceDialogu);
 
   $('#tnF').textContent = D.data.facts.length;
   $('#tnQ').textContent = D.data.query.length;
@@ -49,6 +52,7 @@ function prekresli() {
   $('#tnV').textContent = D.data.cols.length;
   $('#tnMx').textContent = editovane.size;
   $('#tnS').textContent = vety.pocetVet();
+  $('#tnD').textContent = stavDialogu ? stavDialogu.znalost.cisla.tvrzeni : '';
   poHrany();
 }
 
@@ -125,6 +129,18 @@ const akceVertikal = {
   },
 };
 
+/* Dialog. Stránka jen podá text a překreslí, co přišlo zpátky — mluvnice
+   i odvozování sedí v jádře. */
+const akceDialogu = {
+  rozhodni: async druh => { stavDialogu = await store.rozhodniDialog(druh); prekresli(); },
+};
+
+async function posli(text) {
+  if (!text.trim()) return;
+  stavDialogu = await store.posliDialog(text);
+  prekresli();
+}
+
 const akceVet = {
   smazVetu: (k, i) => {
     if (!confirm(`Smazat ${k === 'f' ? 'větu' : 'dotaz'} ${i + 1}?`)) return;
@@ -192,7 +208,9 @@ export async function start() {
   listy.vert = vert.postavList();
   listy.mx = matice.postavList();
   listy.vety = vety.postavList();
-  ['mapd', 'mapp', 'vert', 'mx', 'vety'].forEach(x => hlavni.appendChild(listy[x]));
+  listy.dial = rozhovor.postavList();
+  ['mapd', 'mapp', 'vert', 'mx', 'vety', 'dial']
+    .forEach(x => hlavni.appendChild(listy[x]));
   document.body.appendChild(dialog.postavDialog());
 
   nactiUI();
@@ -256,6 +274,20 @@ export async function start() {
     store.ulozData(D.data).then(prepocitat);
     prekresli();
   };
+  $('#dSend').onclick = () => { const i = $('#dText'); posli(i.value); i.value = ''; };
+  $('#dText').onkeydown = e => {
+    if (e.key === 'Enter') { e.preventDefault(); $('#dSend').click(); }
+  };
+  $('#dUkazka').onclick = async () => {
+    /* Po jedné a po sobě: druhá věta staví na tom, co udělala první. */
+    for (const veta of rozhovor.UKAZKA) await posli(veta);
+  };
+  $('#dZapomen').onclick = async () => {
+    if (!confirm('Zapomenout všechno, co se systém naučil rozhovorem? '
+      + 'Typový svaz z Wikidat zůstane.')) return;
+    stavDialogu = await store.zapomenDialog();
+    prekresli();
+  };
   addEventListener('resize', poHrany);
 
   /* Nakresli hned z místních dat, ať je něco vidět, a teprve pak se ptej
@@ -263,6 +295,7 @@ export async function start() {
      vědělo, jestli server existuje, takže sáhlo jen do prohlížeče. */
   prepniList(stav.sheet);
   await nactiMapu();
+  stavDialogu = await store.nactiDialog();
   await prepocitat();
 }
 

@@ -21,6 +21,15 @@ class Rozbor:
         self.url = url.rstrip("/") + "/process"
         self.timeout = timeout
 
+    def lemmata(self, text):
+        """Jen lemmata, pro pojmy z dialogu. „román je druh díla“ má pravou
+        stranu v genitivu; bez lemmat by z toho byl jiný uzel než „dílo“."""
+        vysledek = self.veta(text)
+        if "chyba" in vysledek:
+            return None
+        return " ".join(t["lemma"] for t in vysledek["tokeny"]
+                        if t["upos"] != "PUNCT") or None
+
     def veta(self, text, zname=()):
         telo = urllib.parse.urlencode({
             "tokenizer": "", "tagger": "", "parser": "", "data": text,
@@ -41,8 +50,10 @@ class Rozbor:
             if len(c) < 8 or "-" in c[0]:      # víceslovné tokeny přeskakujeme
                 continue
             feats = [] if c[5] == "_" else c[5].split("|")
+            # Lemma se drží MIMO aktivace: do vektoru patří typ, ne hodnota.
             tokeny.append({
-                "form": c[1], "upos": c[3], "deprel": c[7], "feats": feats,
+                "form": c[1], "lemma": c[2].lower(), "upos": c[3],
+                "deprel": c[7], "feats": feats,
             })
 
         zname = set(zname)

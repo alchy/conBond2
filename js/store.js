@@ -80,6 +80,22 @@ export async function ulozMapu(klic, seznam) {
   });
 }
 
+/* Dialog. Prohlížeč pošle text a dostane CELÝ stav — o tom, co se s větou
+   stalo, rozhoduje jádro. Kdyby si druh tvrzení určovala stránka, byla by to
+   druhá mluvnice vedle té v core/tvrzeni.py. */
+async function dialog(cesta, telo) {
+  const r = await zavolej(cesta, telo ? {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(telo),
+  } : { cache: 'no-store' });
+  return r && r.ok ? r.json() : null;
+}
+
+export const nactiDialog = () => dialog('/api/dialog');
+export const posliDialog = text => dialog('/api/dialog', { text });
+export const rozhodniDialog = druh => dialog('/api/dialog/decide', { druh });
+export const zapomenDialog = () => dialog('/api/dialog/forget', {});
+
 /** Rozbor věty lokálním UDPipe přes backend. */
 export async function rozeber(veta) {
   const r = await zavolej('/api/parse', {

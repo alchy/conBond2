@@ -28,6 +28,17 @@
      takže okno nemá jak přelézt do sousední a co přesahuje, je <b>&lt;empty&gt;</b>.</p>
   </details>
 
+  <nav class="tabs" id="tabs">
+    <button data-s="f" aria-selected="true">Facts<span class="n" id="tnF"></span></button>
+    <button data-s="q" aria-selected="false">Query<span class="n" id="tnQ"></span></button>
+    <button data-s="mapd" aria-selected="false">Vazby · definice</button>
+    <button data-s="mapp" aria-selected="false">Vazby · přehled<span class="n" id="tnM"></span></button>
+    <button data-s="vert" aria-selected="false">Vertikály<span class="n" id="tnV"></span></button>
+    <button data-s="mx" aria-selected="false">Matice<span class="n" id="tnMx"></span></button>
+    <button data-s="vety" aria-selected="false">Věty<span class="n" id="tnS"></span></button>
+    <button data-s="dial" aria-selected="false">Dialog<span class="n" id="tnD"></span></button>
+  </nav>
+
   <div id="globals">
     <div class="bar">
       <div><label>r_words · fakta</label><div class="seg" id="rf">
@@ -69,16 +80,6 @@
       <span style="color:var(--muted)">vybledlé ve slovníku = v tomhle korpusu není</span>
     </div>
   </div>
-
-  <nav class="tabs" id="tabs">
-    <button data-s="f" aria-selected="true">Facts<span class="n" id="tnF"></span></button>
-    <button data-s="q" aria-selected="false">Query<span class="n" id="tnQ"></span></button>
-    <button data-s="mapd" aria-selected="false">Vazby · definice</button>
-    <button data-s="mapp" aria-selected="false">Vazby · přehled<span class="n" id="tnM"></span></button>
-    <button data-s="vert" aria-selected="false">Vertikály<span class="n" id="tnV"></span></button>
-    <button data-s="mx" aria-selected="false">Matice<span class="n" id="tnMx"></span></button>
-    <button data-s="vety" aria-selected="false">Věty<span class="n" id="tnS"></span></button>
-  </nav>
 
   <main id="listy"></main>
 </div>

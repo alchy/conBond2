@@ -2,8 +2,12 @@
 
 
 
+  /* Záložky sedí NAD ovládací lištou a drží se nahoře. Lišta se na části
+     listů schovává, takže pod ní by záložky při každém přepnutí poskočily
+     o její výšku — a přilepením se navíc neztratí při odjetí dolů. */
   .tabs { display:flex; gap:2px; margin:0 0 14px; width:max-content;
-          border-bottom:1px solid var(--axis); }
+          border-bottom:1px solid var(--axis);
+          position:sticky; top:0; z-index:6; background:var(--plane); }
 
   .tabs button { font:inherit; font-size:14px; padding:7px 16px; border:0;
                  border-bottom:2px solid transparent; margin-bottom:-1px;

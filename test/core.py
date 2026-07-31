@@ -17,6 +17,8 @@ from core import (Config, Nastaveni, Pole, SitkoStredu,  # noqa: E402
                   ZdrojZTokenu, filtruje_stred, korpusy_ven, nastavit_log,
                   pole_ven, vertikaly_odvozenych)
 from core.compose import popsat_zaznam  # noqa: E402
+from core.dialog import Rozhovor  # noqa: E402
+from core.tvrzeni import Znalost  # noqa: E402
 from core.window import Okno  # noqa: E402
 
 chyb = 0
@@ -281,6 +283,53 @@ prvni = next(t for veta in vyvezeno["facts"] for t in veta)
 ok(any(a.startswith("Trida=") for a in prvni["acts"]),
    f"vyvezený token nemá hrubou vrstvu: {prvni['acts']}")
 ok("form" in prvni and "upos" in prvni, "vývozem se ztratilo, co token nesl")
+
+print("\n— rozhovor: věta dovnitř, záznam ven —")
+# Bez UDPipe se pojmy jen zmenší na malá písmena; na tvary, které mluvnice
+# rozlišuje, to stačí a test tím nezávisí na běžícím rozboru.
+r = Rozhovor(Znalost())
+ok(r.poslat("Krakatit je román.").druh == "tvrzeni", "instance neprošla")
+ok(r.poslat("román je druh díla").druh == "tvrzeni", "podtřída neprošla")
+z = r.poslat("Krakatit není báseň")
+# Druh ZÁZNAMU je „tvrzeni" (přijalo se), druh HRANY je „zapor" (co to je).
+ok(z.druh == "tvrzeni" and z.hrana["druh"] == "zapor",
+   f"zápor se zapsal jako {z.druh}/{z.hrana and z.hrana['druh']}")
+print("  " + " · ".join(f"{z.text} → {z.hrana['druh']}" for z in r.historie))
+
+# Expanze: odpověď nesmí být z přímé hrany, ale přes dva skoky.
+ok(r.odpovedet(" Krakatit díla").odpoved.startswith("ano"),
+   "expanze nedosáhla přes dvě hrany")
+ok(r.odpovedet(" Krakatit film").odpoved.startswith("nevím"),
+   "o čem nepadlo slovo, se má říct nevím, ne ne")
+r.poslat("Krakatit není báseň")
+ok(r.odpovedet(" Krakatit báseň").odpoved.startswith("ne,"),
+   "zapsaný zápor se neprojevil v odpovědi")
+print(f"  ano/nevím/ne: {r.odpovedet(' Krakatit díla').odpoved}"
+      f" | {r.odpovedet(' Krakatit film').odpoved[:5]}"
+      f" | {r.odpovedet(' Krakatit báseň').odpoved}")
+
+# Nejasnost drží rozhovor: nedořešená hrana se nesmí ztratit.
+z = r.poslat("pes je savec")
+ok(z.druh == "nejasnost", f"„pes je savec“ mělo být nejasné, je {z.druh}")
+ok(r.ceka_na_rozhodnuti(), "rozhovor po nejasnosti nečeká")
+ok(r.poslat("kočka je šelma").druh == "nejasnost",
+   "čekající rozhovor přijal další větu a rozdělaná hrana by se ztratila")
+ok(r.rozhodnout("podtrida").druh == "tvrzeni", "rozhodnutí neprošlo")
+ok(not r.ceka_na_rozhodnuti(), "rozhovor čeká i po rozhodnutí")
+print(f"  nejasnost → rozhodnuto → {r.historie[-1].odpoved}")
+
+# A tohle je to učení: nevím → jedna věta → ano.
+ok(r.odpovedet(" Alík savec").odpoved.startswith("nevím"), "o Alíkovi se nemá vědět nic")
+r.poslat("Alík je pes")
+ok(r.odpovedet(" Alík savec").odpoved.startswith("ano"),
+   "po přidání věty se odpověď nezměnila — nic se nenaučilo")
+
+stav = r.vypsat_stav()
+ok(set(stav) == {"historie", "znalost", "ceka"}, "stav pro prohlížeč má jiné klíče")
+ok(stav["znalost"]["cisla"]["tvrzeni"] == len(r.znalost.tvrzeni), "čísla nesedí")
+r.zapomenout()
+ok(not r.znalost.tvrzeni and not r.znalost.nadrazene and not r.znalost.zapory,
+   "po zapomenutí zůstaly hrany — smazat seznam tvrzení nestačí")
 
 print("\n— export ven —")
 pole = nove_pole()

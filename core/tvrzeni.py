@@ -165,6 +165,7 @@ class Znalost:
 
     def __init__(self, soubor: Optional[str] = None):
         self.soubor = soubor
+        self.svaz: Optional[str] = None   # odkud přišel podklad, kvůli úklidu
         self.tvrzeni: list = []
         self.nadrazene: dict = {}       # pojem → [nadřazené]
         self.synonyma: dict = {}        # pojem → zástupce
@@ -242,6 +243,7 @@ class Znalost:
     def naplnit_ze_svazu(self, cesta: str) -> int:
         """Svaz z Wikidat jako podklad. Hrany dostanou zdroj `wikidata`,
         aby šlo poznat, co je odkud."""
+        self.svaz = cesta
         if not os.path.exists(cesta):
             return 0
         d = json.load(open(cesta, encoding="utf-8"))
@@ -259,6 +261,21 @@ class Znalost:
                     self.nadrazene[l].append(p)
                     kolik += 1
         return kolik
+
+    def vycistit(self) -> None:
+        """Zapomene, co se přidalo dialogem, a vrátí se k holému podkladu.
+
+        Nestačí smazat seznam tvrzení: hrany z nich už sedí v `nadrazene`
+        vedle hran ze svazu a rozeznat je tam po sobě nejde. Proto se vyklidí
+        všechno a podklad se natáhne znovu — proto si taky Znalost pamatuje,
+        odkud přišel."""
+        self.tvrzeni.clear()
+        self.nadrazene.clear()
+        self.synonyma.clear()
+        self.zapory.clear()
+        if self.svaz:
+            self.naplnit_ze_svazu(self.svaz)
+        self.uloz()
 
     def uloz(self) -> None:
         if not self.soubor:

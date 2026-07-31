@@ -1,147 +1,301 @@
 {
- "kod": "cs",
- "jmeno": "čeština",
- "_spona": "Sloveso být v přítomném čase. Odsazené mezerami, protože se hledá uvnitř věty.",
- "spona": [
-  " je ",
-  " jsou "
- ],
- "spona_zapor": [
-  " není ",
-  " nejsou "
- ],
- "_znacky": "Tvary, které druh tvrzení určují SAMY. Cokoli jiného je nejasné a ptáme se.",
- "znacky_podtridy": [
-  "je druh",
-  "je druhem",
-  "patří mezi",
-  "je typ",
-  "je typem",
-  "je poddruh",
-  "je poddruhem",
-  "spadá pod"
- ],
- "znacky_synonyma": [
-  "je totéž co",
-  "je totez co",
-  "znamená totéž co",
-  "=",
-  "je synonymum pro",
-  "je jiné slovo pro"
- ],
- "_tazaci": "Otázka není tvrzení. Pozná se otazníkem, nebo tímhle slovem na začátku.",
- "tazaci": [
-  "co",
-  "kdo",
-  "koho",
-  "komu",
-  "čí",
-  "jaký",
-  "jaká",
-  "jaké",
-  "který",
-  "která",
-  "které",
-  "je",
-  "jsou",
-  "není",
-  "nejsou"
- ],
- "na_zarazeni": [
-  "co",
-  "kdo",
-  "koho",
-  "komu",
-  "čí"
- ],
- "_predlozky": "Odpadnou z pojmu: „je synonymum PRO slučitelnost“.",
- "predlozky": [
-  "pro ",
-  "s ",
-  "se ",
-  "co "
- ],
- "_velke_pismeno": "PRAVIDLO, ne slovník. V češtině je velké písmeno slušné vodítko na vlastní jméno. V němčině by bylo k ničemu — velká jsou tam všechna podstatná jména —, takže jinému jazyku tenhle příznak nestačí vypnout, musel by dostat vodítko jiné.",
- "velke_pismeno_je_instance": true,
- "_mesice": "Pro agenta Chronos. Nominativ i genitiv, protože „28. března“ i „březen 1914“.",
- "mesice": {
-  "leden": 1,
-  "ledna": 1,
-  "únor": 2,
-  "února": 2,
-  "březen": 3,
-  "března": 3,
-  "duben": 4,
-  "dubna": 4,
-  "květen": 5,
-  "května": 5,
-  "červen": 6,
-  "června": 6,
-  "červenec": 7,
-  "července": 7,
-  "srpen": 8,
-  "srpna": 8,
-  "září": 9,
-  "říjen": 10,
-  "října": 10,
-  "listopad": 11,
-  "listopadu": 11,
-  "prosinec": 12,
-  "prosince": 12
- },
- "_uvozuje_rok": "Slovo, které rok uvozuje a patří do rozsahu nálezu.",
- "uvozuje_rok": [
-  "rok",
-  "roce",
-  "roku",
-  "r",
-  "léta",
-  "letech",
-  "století",
-  "stol"
- ],
- "_tazaci_na_typ": "Tázací tvar → druh místa, kde odpověď leží. Kdo/Co míří na JMENNÝ PŘÍSUDEK („Ježíš je Kristus“), který označuje agent Druh; ostatní na návěsky Chronose, Topose a Metrona.",
- "tazaci_na_typ": {
-  "kdy": "Typ=cas",
-  "odkdy": "Typ=cas",
-  "dokdy": "Typ=cas",
-  "kde": "Typ=misto",
-  "kam": "Typ=misto",
-  "odkud": "Typ=misto",
-  "kudy": "Typ=misto",
-  "kolik": "Typ=pocet",
-  "kolika": "Typ=pocet",
-  "kolikrát": "Typ=pocet",
-  "nakolik": "Typ=pocet",
-  "kdo": "Typ=druh",
-  "co": "Typ=druh",
-  "jaký": "Typ=druh",
-  "jaká": "Typ=druh",
-  "jaké": "Typ=druh",
-  "čím": "Typ=druh"
- },
- "_prazdna": "Tvary, které o obsahu nic neříkají — svítily by skoro všude a průnik by zúžily na nic.",
- "prazdna": [
-  "se",
-  "si",
-  "je",
-  "jsou",
-  "byl",
-  "byla",
-  "bylo",
-  "v",
-  "na",
-  "z",
-  "do",
-  "a",
-  "i",
-  "s",
-  "o",
-  "u",
-  "k",
-  "ve",
-  "za",
-  "po",
-  "pro"
- ]
+  "kod": "cs",
+  "jmeno": "čeština",
+  "_spona": "Sloveso být v přítomném čase. Odsazené mezerami, protože se hledá uvnitř věty.",
+  "spona": [
+    " je ",
+    " jsou "
+  ],
+  "spona_zapor": [
+    " není ",
+    " nejsou "
+  ],
+  "_znacky": "Tvary, které druh tvrzení určují SAMY. Cokoli jiného je nejasné a ptáme se.",
+  "znacky_podtridy": [
+    "je druh",
+    "je druhem",
+    "patří mezi",
+    "je typ",
+    "je typem",
+    "je poddruh",
+    "je poddruhem",
+    "spadá pod"
+  ],
+  "znacky_synonyma": [
+    "je totéž co",
+    "je totez co",
+    "znamená totéž co",
+    "=",
+    "je synonymum pro",
+    "je jiné slovo pro"
+  ],
+  "_tazaci": "Otázka není tvrzení. Pozná se otazníkem, nebo tímhle slovem na začátku.",
+  "tazaci": [
+    "co",
+    "kdo",
+    "koho",
+    "komu",
+    "čí",
+    "jaký",
+    "jaká",
+    "jaké",
+    "který",
+    "která",
+    "které",
+    "je",
+    "jsou",
+    "není",
+    "nejsou"
+  ],
+  "na_zarazeni": [
+    "co",
+    "kdo",
+    "koho",
+    "komu",
+    "čí"
+  ],
+  "_predlozky": "Odpadnou z pojmu: „je synonymum PRO slučitelnost“.",
+  "predlozky": [
+    "pro ",
+    "s ",
+    "se ",
+    "co "
+  ],
+  "_velke_pismeno": "PRAVIDLO, ne slovník. V češtině je velké písmeno slušné vodítko na vlastní jméno. V němčině by bylo k ničemu — velká jsou tam všechna podstatná jména —, takže jinému jazyku tenhle příznak nestačí vypnout, musel by dostat vodítko jiné.",
+  "velke_pismeno_je_instance": true,
+  "_mesice": "Pro agenta Chronos. Nominativ i genitiv, protože „28. března“ i „březen 1914“.",
+  "mesice": {
+    "leden": 1,
+    "ledna": 1,
+    "únor": 2,
+    "února": 2,
+    "březen": 3,
+    "března": 3,
+    "duben": 4,
+    "dubna": 4,
+    "květen": 5,
+    "května": 5,
+    "červen": 6,
+    "června": 6,
+    "červenec": 7,
+    "července": 7,
+    "srpen": 8,
+    "srpna": 8,
+    "září": 9,
+    "říjen": 10,
+    "října": 10,
+    "listopad": 11,
+    "listopadu": 11,
+    "prosinec": 12,
+    "prosince": 12
+  },
+  "_uvozuje_rok": "Slovo, které rok uvozuje a patří do rozsahu nálezu.",
+  "uvozuje_rok": [
+    "rok",
+    "roce",
+    "roku",
+    "r",
+    "léta",
+    "letech",
+    "století",
+    "stol"
+  ],
+  "_tazaci_na_typ": "Tázací tvar → druh místa, kde odpověď leží. Kdo/Co míří na JMENNÝ PŘÍSUDEK („Ježíš je Kristus“), který označuje agent Druh; ostatní na návěsky Chronose, Topose a Metrona.",
+  "tazaci_na_typ": {
+    "kdy": "Typ=cas",
+    "odkdy": "Typ=cas",
+    "dokdy": "Typ=cas",
+    "kde": "Typ=misto",
+    "kam": "Typ=misto",
+    "odkud": "Typ=misto",
+    "kudy": "Typ=misto",
+    "kolik": "Typ=pocet",
+    "kolika": "Typ=pocet",
+    "kolikrát": "Typ=pocet",
+    "nakolik": "Typ=pocet",
+    "kdo": "Typ=druh",
+    "co": "Typ=druh",
+    "jaký": "Typ=druh",
+    "jaká": "Typ=druh",
+    "jaké": "Typ=druh",
+    "čím": "Typ=druh"
+  },
+  "_prazdna": "Tvary, které o obsahu nic neříkají — svítily by skoro všude a průnik by zúžily na nic.",
+  "prazdna": [
+    "se",
+    "si",
+    "je",
+    "jsou",
+    "byl",
+    "byla",
+    "bylo",
+    "v",
+    "na",
+    "z",
+    "do",
+    "a",
+    "i",
+    "s",
+    "o",
+    "u",
+    "k",
+    "ve",
+    "za",
+    "po",
+    "pro"
+  ],
+  "_role": "VĚTNÉ ČLENY jako data. Převzato z conBondu (roles.py + data/grammar/cs.json). Rozdíl proti Typ=: role je FUNKCE („který větný člen to je\"), typ je OBSAH („je to čas\"). Role se odvodí z rozboru tabulkou, typ musí najít agent — proto se doplňují, nenahrazují.",
+  "deprel_na_roli": {
+    "nsubj": {
+      "vychozi": "kdo"
+    },
+    "nsubj:pass": {
+      "vychozi": "kdo"
+    },
+    "obj": {
+      "Gen": "koho_ceho",
+      "vychozi": "koho_co"
+    },
+    "iobj": {
+      "vychozi": "komu_cemu"
+    },
+    "obl": {
+      "Dat": "komu_cemu",
+      "Ins": "s_kym_cim",
+      "Loc": "kde",
+      "Gen": "koho_ceho",
+      "Acc": "koho_co",
+      "vychozi": "kde"
+    },
+    "obl:arg": {
+      "Dat": "komu_cemu",
+      "Ins": "s_kym_cim",
+      "Loc": "kde",
+      "Gen": "koho_ceho",
+      "Acc": "koho_co",
+      "vychozi": "kde"
+    },
+    "nmod": {
+      "Gen": "koho_ceho",
+      "vychozi": "jaky"
+    },
+    "amod": {
+      "vychozi": "jaky"
+    },
+    "nummod": {
+      "vychozi": "kolik"
+    },
+    "advmod": {
+      "vychozi": "jak"
+    },
+    "ccomp": {
+      "vychozi": "koho_co"
+    },
+    "xcomp": {
+      "vychozi": "koho_co"
+    },
+    "root": {
+      "vychozi": "co_dela"
+    },
+    "advcl:pred": {
+      "vychozi": "jako_co"
+    }
+  },
+  "_tazaci_na_roli": "Tázací tvar → ROLE, kterou má mít odpověď. Doplněk k tazaci_na_typ: kde agent typ nedodá (Komu, Čím, Proč, Jak), rozhodne role z rozboru.",
+  "tazaci_na_roli": {
+    "kdo": "kdo",
+    "co": "koho_co",
+    "koho": "koho_ceho",
+    "čeho": "koho_ceho",
+    "komu": "komu_cemu",
+    "čemu": "komu_cemu",
+    "kým": "s_kym_cim",
+    "čím": "s_kym_cim",
+    "kde": "kde",
+    "kam": "kde",
+    "odkud": "kde",
+    "kudy": "kde",
+    "kdy": "kdy",
+    "odkdy": "kdy",
+    "dokdy": "kdy",
+    "jak": "jak",
+    "jakým": "jak",
+    "kolik": "kolik",
+    "kolika": "kolik",
+    "kolikrát": "kolik",
+    "proč": "proc",
+    "jaký": "jaky",
+    "jaká": "jaky",
+    "jaké": "jaky",
+    "který": "jaky",
+    "jako co": "jako_co",
+    "jako kdo": "jako_co"
+  },
+  "_role_podle_prisudku": "Přemapování role odpovědi podle slovesa. U pojmenování se ptáme JAK („Jak se jmenoval?\"), ale odpovědí je JMÉNO, tedy předmět vazby. Jazyk = data, ne větev v kódu.",
+  "role_podle_prisudku": {
+    "jmenovat": {
+      "jak": "koho_co"
+    },
+    "říkat": {
+      "jak": "koho_co"
+    },
+    "zvát": {
+      "jak": "koho_co"
+    }
+  },
+  "_role_popis": "K čemu která role je — pro člověka, ne pro kód.",
+  "role_popis": {
+    "kdo": "podmět — Kdo? Co?",
+    "co_dela": "přísudek — Co dělá?",
+    "koho_co": "předmět ve 4. pádě — Koho? Co?",
+    "koho_ceho": "předmět ve 2. pádě — Koho? Čeho?",
+    "komu_cemu": "předmět ve 3. pádě — Komu? Čemu?",
+    "s_kym_cim": "předmět v 7. pádě — S kým? Čím?",
+    "kde": "příslovečné určení místa — Kde? Kam? Odkud?",
+    "kdy": "příslovečné určení času — Kdy? Odkdy?",
+    "jak": "příslovečné určení způsobu — Jak?",
+    "kolik": "příslovečné určení míry — Kolik?",
+    "proc": "příslovečné určení příčiny — Proč?",
+    "jaky": "přívlastek — Jaký? Který? Čí?",
+    "jako_co": "v jaké roli, čím se živil"
+  },
+  "_spojky_role": "Podřadicí spojka určuje roli celé vedlejší věty.",
+  "spojky_role": {
+    "protože": "proc",
+    "poněvadž": "proc",
+    "jelikož": "proc",
+    "neboť": "proc",
+    "aby": "proc",
+    "abych": "proc",
+    "abychom": "proc"
+  },
+  "role_vyzaduji_predlozku": {
+    "s_kym_cim": [
+      "s",
+      "se"
+    ]
+  },
+  "role_zadaji_jmeno": [
+    "kdo",
+    "koho_co",
+    "komu_cemu",
+    "koho_ceho",
+    "s_kym_cim",
+    "kolik",
+    "jaky",
+    "jako_co"
+  ],
+  "jmenne_upos": [
+    "NOUN",
+    "PROPN",
+    "NUM",
+    "ADJ"
+  ],
+  "predlozka_na_roli": {
+    "jako": "jako_co"
+  },
+  "tazaci_bez_typu": [
+    "jako co",
+    "jako kdo"
+  ]
 }

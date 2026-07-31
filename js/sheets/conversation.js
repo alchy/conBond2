@@ -22,12 +22,12 @@ const POPIS = { podtrida: 'podtřída', instance: 'instance',
 const cislo = x => new Intl.NumberFormat('cs').format(x);
 
 export const UKAZKA = [
-  'Kdo je Alois Jirásek?',
-  'Kde se narodil Bohumil Hrabal?',
-  'Kolik zubů má dospělý pes?',
-  'Kdy se narodil Sherlock Holmes?',
-  'Krakatit je román.',
-  '? Krakatit dílo',
+  'Kdo je Bohumil Hrabal?',
+  'Kde se narodil?',          // bez jména — vezme téma z předchozího tahu
+  'Kdy zemřel?',
+  'Kdo je Karel Čapek?',      // téma se přepne
+  'Kde se narodil?',
+  'Kdy se narodil Sherlock Holmes?',   // téma NESMÍ zachránit cizí jméno
 ];
 
 export function postavList() {
@@ -85,8 +85,11 @@ function detailTahu(z) {
     const a = z.nalez.aktivace;
     const r = [];
     if (a.entita) {
+      /* „z tématu" je podstatné: odpověď na otázku bez jména se opírá
+         o předchozí tah, ne o to, co je v ní napsané. */
       r.push('<div class="r"><span>osoba</span>'
-        + `<i class="cip ent">Ent=${esc(a.entita)} <b>${a.vet_entity}</b></i></div>`);
+        + `<i class="cip ent">Ent=${esc(a.entita)} <b>${a.vet_entity}</b></i>`
+        + (a.z_tematu ? cip('z tématu rozhovoru', 'zn') : '') + '</div>');
     }
     const tvary = Object.entries(a.svitici).filter(([, k]) => k)
       .map(([t, k]) => `<i class="cip">${esc(t)} <b>${k}</b></i>`).join('');
@@ -97,6 +100,9 @@ function detailTahu(z) {
     }
     r.push('<div class="r"><span>pole</span>'
       + cip(cislo(z.nalez.vet) + ' vět') + cip(z.nalez.typ || '—')
+      /* Role říká, že odpověď nenašel agent, ale větný člen z rozboru —
+         slabší důkaz, takže má být poznat na první pohled. */
+      + (z.nalez.role ? cip('větný člen: ' + z.nalez.role, 'zn') : '')
       + (a.siroko ? cip('širší — něco se nepotkalo', 'pryc') : '')
       + (z.nalez.znalost_pomohla ? cip('pomohla znalost', 'zn') : '') + '</div>');
     kusy.push(`<div class="akt">${r.join('')}</div>`);

@@ -362,7 +362,7 @@ ok(r3.poslat("Je Šmoula pohádková bytost?").odpoved.startswith("ano"),
 print(f"  víceslovný pojem: {r3.historie[-1].odpoved}")
 
 stav = r.vypsat_stav()
-ok(set(stav) == {"historie", "znalost", "nalez", "ceka"},
+ok(set(stav) == {"historie", "znalost", "nalez", "tema", "ceka"},
    f"stav pro prohlížeč má jiné klíče: {sorted(stav)}")
 ok(stav["znalost"]["cisla"]["tvrzeni"] == len(r.znalost.tvrzeni), "čísla nesedí")
 r.zapomenout()
@@ -453,6 +453,45 @@ prosaklo = [a for v in korpus for t in v for a in t["acts"]
 print(f"  vět s původem: {ma_puvod}/{len(korpus)} · v acts prosáklo: {len(prosaklo)}")
 ok(not prosaklo, "původ věty se dostal do aktivací a rozpadl by šablony po autorech")
 
+print("\n— téma drží řetěz, ale nezachrání cizí jméno —")
+# Bez tématu odpověděla otázka bez jména („Kde se narodil?") pokaždé týmž
+# místem — polem složeným ze samotného slovesa. Měřeno: Hrabal i Čapek
+# dostali Hronov, protože alois_jirásek je první abecedně.
+from core.dialog import Rozhovor as _R  # noqa: E402
+from core.tvrzeni import Znalost as _Z  # noqa: E402
+_pole = nove_pole()
+_o = Odpovidac(_pole)
+_r = _R(_Z(), odpovidac=_o)
+_r.zahrat("karel")
+ok(_r.horka_temata() == ["karel"], "téma se nezahřálo")
+# Zmínka je PŘEPNUTÍ tématu, ne hlas: bez tohohle šel dlouho probíraný
+# Hrabal přebít Čapka a „Kde se narodil?" odpovědělo Židenice.
+for _ in range(5):
+    _r.zahrat("karel")
+_r.zahrat("alfons")
+ok(_r.horka_temata()[0] == "alfons",
+   f"pětkrát zmíněné téma přebilo nové: {_r.tema}")
+for _ in range(5):
+    _r.zahrat(None)
+ok(not _r.horka_temata(), f"téma nevychladlo: {_r.tema}")
+
+# Otázka SE JMÉNEM téma nebere — jinak by cizí jméno zachránilo předchozí
+# osobu a z paměti tématu by se stala cesta ke konfabulaci.
+# Výchozí sada je malá a entity v ní nejsou, tak si jednu podstrčíme —
+# zkouší se PRAVIDLO výběru tématu, ne obsah korpusu.
+_o.podle_entity["zkouska"] = {0, 1}
+_a = _o.rozsvitit("Kdy se narodil Sherlock Holmes?", tema=["zkouska"])
+ok(not _a["z_tematu"], "otázka se jménem si vzala téma")
+ok(_a["cizi_jmeno"], "cizí jméno se nepoznalo")
+_b = _o.rozsvitit("Kde se narodil?", tema=["zkouska"])
+ok(_b["z_tematu"] and _b["entita"] == "zkouska",
+   f"otázka bez jména téma nevzala: {_b['entita']!r}")
+# Téma, které v korpusu není, se nesmí použít — jinak by pole bylo prázdné
+# a odpověď by se hledala v ničem.
+_c = _o.rozsvitit("Kde se narodil?", tema=["nikdo_takovy"])
+ok(not _c["z_tematu"], "vzalo se téma, které v korpusu není")
+print(f"  téma se bere jen bez jména · chladne na {len(_r.tema)} po pěti tazích")
+
 print("\n— cizí jméno znamená nevím, ne odpověď o někom jiném —")
 # Bez tohohle řezu odpověděl systém na „Kdy se narodil Sherlock Holmes?"
 # datem někoho jiného: entita nesedla, pole se složilo ze samotného slovesa
@@ -513,6 +552,47 @@ ok(all("radky" not in s for s in prehled["sablony"]),
 serazeno = [s["tvaru"] for s in prehled["sablony"]]
 ok(serazeno == sorted(serazeno, reverse=True), f"vzory nejsou od největšího: {serazeno}")
 print(f"  přehled: {prehled['celkem']} vzorů, největší sdílí {serazeno[0]} tvarů")
+
+print("\n— role: větný člen z rozboru, ale jen tam, kde agent není —")
+from core.roles import Role  # noqa: E402
+
+_role = Role(Jazyk.nacist())
+
+# Tabulka, ne kód: pád rozhoduje dřív než výchozí hodnota, jinak by
+# „řekl Janovi“ bylo určení místa.
+def _tok(upos, dep, *rysy, lemma="x", form="x", tid=1, head=0):
+    return {"form": form, "lemma": lemma, "upos": upos,
+            "acts": [upos, dep] + list(rysy), "id": tid, "head": head}
+
+ok(_role.role_tokenu(_tok("NOUN", "obl", "Case=Dat")) == "komu_cemu",
+   "dativ u obl není komu_cemu")
+ok(_role.role_tokenu(_tok("NOUN", "obl", "Case=Loc")) == "kde",
+   "lokál u obl není kde")
+
+# Instrumentál sám o sobě není „s kým" — bez předložky se role nepřiřadí,
+# jinak by „byl nositelem“ odpovídalo na otázku po společníkovi.
+_bez = _tok("NOUN", "obl", "Case=Ins", tid=2, head=1)
+ok(_role.role_tokenu(_bez, [_bez]) == "", "holý instrumentál se vydává za s_kym_cim")
+_s = _tok("ADP", "case", lemma="s", tid=3, head=2)
+ok(_role.role_tokenu(_bez, [_bez, _s]) == "s_kym_cim", "s předložkou role nevznikla")
+
+# Dvě síta nad rolí: prázdné slovo neodpovídá nikdy, jmenná role žádá jméno.
+ok(not _role.nese_obsah(_tok("PRON", "obl", "Case=Dat")), "zájmeno prošlo jako odpověď")
+ok(not _role.nese_obsah(_tok("VERB", "ccomp", "Case=Acc"), "koho_co"),
+   "sloveso prošlo do jmenné role")
+ok(_role.nese_obsah(_tok("NOUN", "obl", "Case=Acc"), "koho_co"), "jméno neprošlo")
+
+# Delší tázací tvar bije kratší, jinak „jako CO“ spadne pod „co“.
+_j = Jazyk.nacist()
+ok(_j.na_co_se_pta("Jako co pracoval Jirásek?") is None,
+   "„jako co“ se pořád čte jako Typ=druh")
+ok(_role.role_otazky("Jako co pracoval Jirásek?") == "jako_co",
+   "„jako co“ nedostalo roli doplňku")
+ok(_j.na_co_se_pta("Co napsal Jirásek?") == "Typ=druh",
+   "obyčejné „co“ přestalo ukazovat na druh")
+
+print("  pád i předložka rozhodují · prázdná slova a slovesa neodpovídají"
+      " · delší tázací tvar vyhrává")
 
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")

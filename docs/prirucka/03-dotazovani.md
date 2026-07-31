@@ -166,6 +166,72 @@ o té osobě", což je zase vymýšlení, jen opatrnější.
 
 ---
 
+## 4b · Role — když žádný agent typ nedodá
+
+Čtyři agenti umějí čtyři druhy odpovědí: čas, místo, počet, druh. Otázka,
+která se ptá na něco jiného, propadla celá — a přitom to v datech leží,
+protože rozbor u každého tokenu říká, jaký je to větný člen.
+
+```
+role   FUNKCE   „který větný člen to je"   z rozboru, tabulkou v cs.json
+typ    OBSAH    „je to čas / místo"        našel agent
+```
+
+`Řekl jim` je `obl` v dativu ⇒ role `komu_cemu`. Nikdo to netypoval, ale
+tázací tvar „Komu" na tu roli ukazuje, takže se odpověď dá vzít.
+
+```python
+# core/roles.py
+def role_tokenu(self, token, veta=()):
+    tabulka = self.jazyk.deprel_na_roli.get(deprel(token))
+    if not tabulka:
+        return ""
+    # Pád rozhoduje dřív než výchozí hodnota: `obl` je `kde` obecně,
+    # ale v dativu je to `komu_cemu`.
+    r = tabulka.get(pad(token)) or tabulka.get("vychozi", "")
+    nutne = self.jazyk.role_vyzaduji_predlozku.get(r)
+    if nutne and self.predlozka(veta, token) not in nutne:
+        return ""
+    return r
+```
+
+### Čtyři řezy, každý za jednu naměřenou chybu
+
+| řez | co dělá | co bez něj vzniklo |
+|---|---|---|
+| `role = "" if typ else …` | role mluví jen tam, kde agent není | `Kde se narodil Franz Kafka?` → „ve svých prózách" |
+| role se nepustí do širšího pole | rozšíření zahazuje sloveso otázky | `S kým se oženil Hrabal?` → „s Jiřím Kolářem" |
+| `PRAZDNE_UPOS` | odpověď musí něco nést | `Komu to řekl?` → „vám" |
+| `role_zadaji_jmeno` | na „koho" se neodpovídá slovesem | `Jak se jmenovala matka?` → „přijali" |
+
+První dva jsou tentýž princip: **role je nejslabší důkaz, takže potřebuje
+nejsilnější pole.** Typ přežije rozšíření, protože ho ověřil agent — datum
+je datum i v širším poli. Role ověřená není.
+
+Mlčení agenta je proto odpověď, ne mezera. Když se ptáme „Kde" a Topos
+nenajde místo, znamená to, že v poli žádné není; přebít ho rolí `kde` je
+totéž jako vzít první lokál, který se namane.
+
+```python
+# core/answers.py — sebrat_roli()
+# Role se počítá až nad větami POLE, ne dopředu nad korpusem:
+# pole má desítky vět, korpus 25 755.
+for i in self.role.role_vety(veta).get(role, ()):
+    r = self.role.rozsah(veta, i)     # token + předložka, přívlastek, flat
+```
+
+*Naměřeno* na kurátorované sadě, doména `role` (6 otázek):
+
+```
+uspěl 5/6 · první 3 · z toho poctivé mlčení 2/2
+celkem 40 otázek:  uspěl 82 % · první 61 %   (dřív 34 otázek: 82 % · 59 %)
+```
+
+Šest druhů otázek, které dřív nešly vůbec, teď jde — a obě položky, kde
+korpus odpověď nemá (`S kým se oženil Hrabal / pes domácí?`), mlčí.
+
+---
+
 ## 5 · Dva stupně měření
 
 **Šablona neidentifikuje jednu odpověď, ale DRUH místa, kde odpověď leží.**

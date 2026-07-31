@@ -1,50 +1,35 @@
-"""Klient k VLASTNÍ instanci UDPipe (viz udpipe.sh).
+"""Rozbor pro API — tenká slupka nad jediným klientem UDPipe v jádře.
 
-Umí jediné: poslat větu a vrátit tokeny ve tvaru, jakému rozumí pole —
-{form, upos, deprel, feats[]}. CoNLL-U ven nepouštíme, ať se s ním nemusí
-zabývat prohlížeč.
+Klienti bývali dva: tenhle a `baseline.rozebrat()`. Lišili se v tom, co
+dělají se zkratkami, takže korpus mohl mít „R.U.R." rozsekané na tři tokeny
+a otázka scelené — obojí by dál fungovalo a jen mluvilo o jiném slově.
+Klient je teď jeden (`core.ingest.Rozbor`) a tohle k němu jen přidává, co
+potřebuje HTTP: hlášení chyby místo výjimky a seznam neznámých aktivací.
 
-Model je týž, ze kterého vznikla výchozí data, takže vrácené aktivace mají
-v poli obvykle už svou vertikálu. Co ji nemá, se vrací v `nezname` — tiše
-zakládat sloupce by znamenalo, že si uživatel překlepem rozšíří prostor,
-aniž by o tom věděl.
+Neznámé se vracejí schválně: tiše zakládat sloupce by znamenalo, že si
+uživatel překlepem rozšíří atributový prostor, aniž by o tom věděl.
 """
 
-import json
 import urllib.error
-import urllib.parse
-import urllib.request
+
+from core.ingest import Rozbor as Jadro
 
 
 class Rozbor:
     def __init__(self, url, timeout=180):
-        self.url = url.rstrip("/") + "/process"
-        self.timeout = timeout
+        self.jadro = Jadro(url, timeout=timeout)
 
     def veta(self, text, zname=()):
-        telo = urllib.parse.urlencode({
-            "tokenizer": "", "tagger": "", "parser": "", "data": text,
-        }).encode("utf-8")
         try:
-            with urllib.request.urlopen(self.url, telo, timeout=self.timeout) as r:
-                odpoved = json.loads(r.read().decode("utf-8"))
+            vety = self.jadro.rozebrat(text)
         except urllib.error.URLError as e:
             return {"chyba": "UDPipe neodpovídá (%s) — spusť ./udpipe.sh" % e.reason}
         except (ValueError, OSError) as e:
             return {"chyba": "UDPipe vrátil něco divného: %s" % e}
 
-        tokeny = []
-        for radek in odpoved.get("result", "").splitlines():
-            if not radek or radek.startswith("#"):
-                continue
-            c = radek.split("\t")
-            if len(c) < 8 or "-" in c[0]:      # víceslovné tokeny přeskakujeme
-                continue
-            feats = [] if c[5] == "_" else c[5].split("|")
-            tokeny.append({
-                "form": c[1], "upos": c[3], "deprel": c[7], "feats": feats,
-            })
-
+        tokeny = [{"form": t.form, "lemma": t.lemma.lower(), "upos": t.upos,
+                   "deprel": t.deprel, "feats": list(t.feats)}
+                  for v in vety for t in v]
         zname = set(zname)
         nezname = []
         if zname:
@@ -53,3 +38,9 @@ class Rozbor:
                     if a not in zname and a not in nezname:
                         nezname.append(a)
         return {"tokeny": tokeny, "nezname": nezname}
+
+    def lemmata(self, text):
+        try:
+            return self.jadro.lemmata(text)
+        except (urllib.error.URLError, ValueError, OSError):
+            return None

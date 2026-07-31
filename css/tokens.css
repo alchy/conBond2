@@ -6,7 +6,7 @@
     --plane:#f9f9f7; --surface:#fcfcfb;
     --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
     --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
-    --upos:#2a78d6; --deprel:#eb6834; --feats:#1baf7a;
+    --upos:#2a78d6; --deprel:#eb6834; --feats:#1baf7a; --hrube:#8b5cf6;
     --rh:17px;
   }
 
@@ -16,7 +16,7 @@
       --plane:#0d0d0d; --surface:#1a1a19;
       --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
       --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
-      --upos:#3987e5; --deprel:#d95926; --feats:#199e70;
+      --upos:#3987e5; --deprel:#d95926; --feats:#199e70; --hrube:#a78bfa;
     }
 
   * { box-sizing:border-box; }
@@ -29,8 +29,37 @@
 
   h2 { font-size:15px; margin:0 0 8px; letter-spacing:-0.01em; }
 
-  .lede { color:var(--ink2); margin:0 0 16px; max-width:82ch; }
+  .lede { color:var(--ink2); margin:0 0 16px; }
 
   .lede b { color:var(--ink); font-weight:600; }
+
+  /* Míru řádku drží odstavce, ne celý blok — jinak by se o ni lámal i
+     titulek v proužku, který se lámat nemá. */
+  .lede > p { max-width:82ch; }
+
+  /* Výklad sbalený do jednoho proužku. Sbalený je to titulek, rozbalený text
+     — proto se summary chová jako nadpis a odstavce se objeví až pod ním. */
+  details.lede > summary {
+    cursor:pointer; list-style:none; padding:6px 0;
+    font-size:20px; letter-spacing:-0.01em; color:var(--ink);
+    display:flex; align-items:baseline; gap:10px;
+    white-space:nowrap;
+  }
+  details.lede > summary::-webkit-details-marker { display:none; }
+  details.lede > summary::before {
+    content:"›"; display:inline-block; color:var(--muted);
+    transition:transform .12s ease; font-size:16px; line-height:1;
+  }
+  details.lede[open] > summary::before { transform:rotate(90deg); }
+  details.lede > summary .sum {
+    font-size:12px; font-weight:400; color:var(--muted); letter-spacing:0;
+  }
+  details.lede[open] > summary .sum { visibility:hidden; }
+  details.lede > p { margin:0 0 8px; }
+  details.lede > p:first-of-type { margin-top:4px; }
+
+  @media (prefers-reduced-motion:reduce) {
+    details.lede > summary::before { transition:none; }
+  }
 
   @media (prefers-reduced-motion:reduce) { li.oznac { animation:none; }

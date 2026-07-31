@@ -7,6 +7,7 @@ stejných vektorů. Co se smí vyměnit, je tohle:
   Uloziste         odkud se čte korpus a kam se ukládá mapování
   SkladacVektoru   jak se z okolí udělá vektor
   Slucovac         kdy jsou dva vektory tatáž šablona
+  Sitko            co z kterého offsetu do vektoru projde
 
 Když se v jádře objeví `if` podle druhu dat, znamená to, že tady chybí šev.
 """
@@ -76,13 +77,29 @@ class SkladacVektoru(ABC):
         """Vektor k zobrazení."""
 
 
+class Sitko(ABC):
+    """Co z kterého offsetu do vektoru projde. Zdroj říká, CO token
+    aktivuje; sítko říká, jestli se to na tomhle místě okna počítá.
+
+    Bez sítka je střed buď celý venku, nebo celý uvnitř, a obojí je pro
+    něco špatně — viz sieve.py."""
+
+    @abstractmethod
+    def propustit(self, offset: int, aktivace: Sequence[str]) -> Sequence[str]:
+        """Aktivace, které z tohohle slotu smějí do vektoru."""
+
+    @abstractmethod
+    def je_cinne(self) -> bool:
+        """Filtruje sítko vůbec něco? Podle toho se hlásí do stavu."""
+
+
 class Slucovac(ABC):
     """Kdy jsou dva vektory tatáž šablona. Dnes přesná shoda klíče; jinou
     implementací může být podobnost nad prahem."""
 
     @abstractmethod
     def zacit_sadu(self, predpona: str) -> None:
-        """Nová sada šablon. Předpona 't' pro fakta, 'q' pro dotazy — id
+        """Nová sada šablon. Předpona 'f' pro fakta, 'q' pro dotazy — id
         jsou pak od sebe rozeznatelná na první pohled."""
 
     @abstractmethod

@@ -31,6 +31,8 @@ PODADRESARE = {
     "verticals": "verticals",
     "corpora": "corpora",
     "mappings": "mappings",
+    "knowledge": "knowledge",
+    "ontology": "ontology",
     "defaults": "defaults",
 }
 
@@ -64,6 +66,15 @@ class Config:
     def slozka_behu(self) -> str:
         """Kam se ukládají pid soubory a logy běžících procesů."""
         return os.path.join(self.koren, "run")
+
+    def cesta_znalosti(self) -> str:
+        """Tvrzení přijatá z dialogu. Nejde přes šev Uloziste: to je rozhraní
+        pro pole, ne pro všechno, co projekt ukládá."""
+        return os.path.join(self.slozka("knowledge"), "statements.json")
+
+    def cesta_svazu(self) -> str:
+        """Typový svaz z Wikidat — podklad, na který dialog navazuje."""
+        return os.path.join(self.slozka("ontology"), "typy.json")
 
     # ---- odvozené cesty ----------------------------------------------
     def absolutni(self, cesta: str) -> str:

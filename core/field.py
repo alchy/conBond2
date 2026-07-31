@@ -14,15 +14,20 @@ Poloměr se nevleče každým voláním — drží ho Nastaveni. Setter jen pozn
 from typing import Mapping, Optional, Sequence
 
 from .settings import Nastaveni
+from .derived import bez_odvozenych, vertikaly_odvozenych
 from .window import Okno
-from .interfaces import SkladacVektoru, Slucovac, Uloziste, ZdrojAktivaci
+from .interfaces import Sitko, SkladacVektoru, Slucovac, Uloziste, ZdrojAktivaci
 from .lexicon import Slovnik
 from .log import log
 from .side import Strana
+from .sieve import SitkoStredu, filtruje_stred
 from .flow import Tok
 from .sources import SkladacRetezcem, SlucovacShodou, ZdrojZTokenu
 
-PREDPONY = {"f": "t", "q": "q"}
+# Předpona id šablon. Fakta „f", dotazy „q" — id je pak na první
+# pohled poznat, ze které strany je. Dřív měla fakta „t" (template)
+# a míchalo se to s označením strany.
+PREDPONY = {"f": "f", "q": "q"}
 KORPUSY = {"f": "facts", "q": "query"}
 
 
@@ -30,16 +35,20 @@ class Pole:
     def __init__(self, uloziste: Uloziste, nastaveni: Optional[Nastaveni] = None, *,
                  zdroj: Optional[ZdrojAktivaci] = None,
                  skladac: Optional[SkladacVektoru] = None,
-                 slucovace: Optional[Mapping[str, Slucovac]] = None):
+                 slucovace: Optional[Mapping[str, Slucovac]] = None,
+                 sitko: Optional[Sitko] = None):
         self.uloziste = uloziste
         self.nastaveni = nastaveni or Nastaveni()
         self._zdroj_zvenku = zdroj
+        self._sitko_zvenku = sitko
         self.skladac = skladac or SkladacRetezcem()
         self.slucovace = dict(slucovace) if slucovace else {
             "f": SlucovacShodou(), "q": SlucovacShodou()}
         self.zdroj: Optional[ZdrojAktivaci] = None
+        self.sitko: Optional[Sitko] = None
         self.slovnik: Optional[Slovnik] = None
         self.strany: dict[str, Strana] = {}
+        self._vertikaly: Optional[list] = None
 
     # ---- stavba ------------------------------------------------------
     def postavit(self, vzdy: bool = False) -> "Pole":
@@ -51,6 +60,7 @@ class Pole:
                       r_q=self.nastaveni.polomer_dotazu,
                       syrove=self.nastaveni.syrove, typy=self.nastaveni.typy):
             self.zdroj = self.pripravit_zdroj()
+            self.sitko = self.pripravit_sitko()
             with log.krok("rozprostření vět"):
                 toky = {k: self.rozprostrit(k) for k in KORPUSY}
             with log.krok("sdílený slovník"):
@@ -69,12 +79,39 @@ class Pole:
             self.nastaveni.oznacit_cerstvym()
         return self
 
+    def vypsat_vertikaly(self) -> list:
+        """Katalog sloupců: uložené plus hrubé vrstvy nad nimi.
+
+        Skládá se to tady, ne v úložišti — úložiště má vracet, co je uložené,
+        a hrubé vrstvy uložené nejsou, počítají se. Zdroj, sítko i export
+        musejí vidět týž katalog, jinak by se rozešlo kanonické pořadí."""
+        if self._vertikaly is None:
+            # bez_odvozenych i tady: kdyby se hrubý sloupec přece jen dostal
+            # do uloženého katalogu, nesmí v něm být dvakrát
+            self._vertikaly = (bez_odvozenych(self.uloziste.nacist_vertikaly())
+                               + vertikaly_odvozenych())
+        return self._vertikaly
+
+    def zapomenout_katalog(self) -> "Pole":
+        """Katalog se změnil zvenku — zahodit, ať se složí znovu."""
+        self._vertikaly = None
+        self.nastaveni.zestaralo = True
+        return self
+
     def pripravit_zdroj(self) -> ZdrojAktivaci:
         if self._zdroj_zvenku is not None:
             return self._zdroj_zvenku
-        return ZdrojZTokenu(self.uloziste.nacist_vertikaly(),
+        return ZdrojZTokenu(self.vypsat_vertikaly(),
                             typy=self.nastaveni.typy,
                             syrove=self.nastaveni.syrove)
+
+    def pripravit_sitko(self) -> Sitko:
+        """Vertikály sítko potřebuje kvůli skupinám — `FEATS` propustí celou
+        skupinu, ne jedno jméno."""
+        if self._sitko_zvenku is not None:
+            return self._sitko_zvenku
+        return SitkoStredu(self.nastaveni.stred_atributy,
+                           self.vypsat_vertikaly())
 
     def rozprostrit(self, strana: str) -> Tok:
         vety = self.uloziste.nacist_korpus(KORPUSY[strana])
@@ -94,8 +131,12 @@ class Pole:
     def postavit_stranu(self, strana: str, tok: Tok) -> Strana:
         okno = Okno(self.nastaveni.ziskat_polomer(strana),
                     self.nastaveni.stred_uvnitr)
+        if filtruje_stred(self.sitko) and not okno.zasahuje(0):
+            log.info("sítko filtruje střed, ale střed není v okně — nefiltruje "
+                     "se nic; chybí stred_uvnitr", strana=strana, sitko=repr(self.sitko))
         return Strana(strana, PREDPONY[strana], tok, okno, self.zdroj,
-                      self.skladac, self.slucovace[strana], self.slovnik).postavit()
+                      self.skladac, self.slucovace[strana], self.slovnik,
+                      self.sitko).postavit()
 
     # ---- čtení -------------------------------------------------------
     @property

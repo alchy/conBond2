@@ -16,10 +16,15 @@ export const stav = {
   cIn: 0,            // střed uvnitř vektoru
   typyOn: 1,         // významový typ v poli i ve vektoru
   sheet: 'f',
+  /* Kolik vět jde ven. Velký korpus se celý nevykreslí — 3478 vět
+     je 28 MB a 59 106 řádků. Nula znamená bez omezení. */
+  vyrez: { od: 0, pocet: 25 },
+  uvod: 0,           // výklad nahoře rozbalený
   pin: null,         // připnuté zvýraznění "strana:druh:id"
 };
 
-export const LISTY = ['f', 'q', 'mapd', 'mapp', 'vert', 'mx', 'vety'];
+export const LISTY = ['f', 'q', 'vz', 'mapd', 'mapp', 'vert', 'mx',
+                      'vety', 'dial'];
 
 /* r=1 je výchozí schválně: při vyšším r je s plnými FEATS poměr šablon ke
    středům skoro 1.00, každé slovo má vlastní vzor a nesbíhá se ani jedna
@@ -34,12 +39,20 @@ export function nacti() {
   stav.only = cele(u.only, 0, 1, 1);
   stav.cIn = cele(u.cIn, 0, 1, 0);
   stav.typyOn = cele(u.typyOn, 0, 1, 1);
+  stav.uvod = cele(u.uvod, 0, 1, 0);
+  if (u.vyrez) {
+    stav.vyrez.od = cele(u.vyrez.od, 0, 1e9, 0);
+    stav.vyrez.pocet = cele(u.vyrez.pocet, 0, 1e9, 25);
+  }
   if (LISTY.includes(u.sheet)) stav.sheet = u.sheet;
 }
 
 export function uloz() {
-  const { R, punct, only, cIn, typyOn, sheet } = stav;
-  try { localStorage.setItem(KLIC, JSON.stringify({ R, punct, only, cIn, typyOn, sheet })); }
+  const { R, punct, only, cIn, typyOn, sheet, uvod, vyrez } = stav;
+  try {
+    localStorage.setItem(KLIC,
+      JSON.stringify({ R, punct, only, cIn, typyOn, sheet, uvod, vyrez }));
+  }
   catch (e) { /* prázdno */ }
 }
 
@@ -51,4 +64,14 @@ export function srovnejPrepinace() {
   set('#rf', stav.R.f); set('#rq', stav.R.q);
   set('#p', stav.punct); set('#c', stav.only);
   set('#cn', stav.cIn); set('#ty', stav.typyOn);
+  set('#vy', stav.vyrez.pocet);
+  const od = document.querySelector('#vyOd');
+  if (od) od.value = stav.vyrez.od + 1;
+  /* Výklad je dlouhý a čte se jednou — sbalený je výchozí stav, ale kdo si
+     ho nechá otevřený, najde ho otevřený i příště. */
+  const uvod = document.querySelector('#uvod');
+  if (uvod) {
+    uvod.open = !!stav.uvod;
+    uvod.ontoggle = () => { stav.uvod = uvod.open ? 1 : 0; uloz(); };
+  }
 }

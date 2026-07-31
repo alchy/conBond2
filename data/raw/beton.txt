@@ -1,0 +1,119 @@
+Beton je kompozitní stavební materiál. Podle ČSN EN 206+A2 je beton materiál vyrobený ze směsi cementu, hrubého a drobného kameniva a vody a může obsahovat další přísady, příměsi nebo vlákna. Své vlastnosti získává hydratací cementu. Označením beton bez přívlastku je vždy míněn tzv. cementový beton (CB), kde je pojivem cement a plnivem kamenivo; dalším materiálem pro výrobu je voda.
+Jiné druhy betonu jsou vždy uváděny s přívlastkem, například tzv. asfaltový beton (AB), který se využívá k výstavbě asfaltových vozovek.
+Název beton poprvé použil francouzský inženýr Bernard Forest de Bélidor v roce 1753, tehdy se jednalo o směs s hydraulickým pojivem, která byla použita jako omítka.
+
+
+== Historie ==
+Počátky využití kompozitních stavebních materiálů (tedy betonu v obecném smyslu[zdroj?]) můžeme hledat v Asýrii, kdy se jako pojivo používal jíl. V Egyptě se pak jako pojivo užívala sádra.
+
+
+=== Antika ===
+
+První použití hydraulického betonu, podobného tomu, který se používá v současnosti, tedy s pojivy na bázi hydraulických vápen, přírodního nebo portlandského cementu, se datuje do období starověké Římské republiky (okolo roku 200 př. n. l.), kdy se jako materiál na výrobu pojiva začal používat pucolán (sopečný popel) – přírodní hydraulický cement s vynikajícími vlastnostmi. Tento druh pojiva umožnil vybudování významných inženýrských staveb, přístavních hrází, akvaduktů a mostů v celé oblasti Středomoří. Na kvalitu betonu mohlo mít vliv mimo jiné i mísení složek za tepla.
+Z pucolánového betonu byly vyrobeny některé z nejmonumentálnějších staveb antiky. Mnoho vynikajících příkladů těchto staveb ještě stojí. Technologickým zázrakem je například obrovská monolitická kopule na Pantheonu v Římě. Má průměr 43,3 m a váží 5000 tun. Byla vytvořena technologií litého betonu za sedm let (118–125 n. l.). Kopule srovnatelné velikosti byly ještě o jeden a půl tisíce let později stavěny technologií kamenné klenby, přičemž výstavba trvala desítky let.
+Podle všeobecně přijímaného názoru byla znalost používání hydraulických pojiv ztracena se zánikem římské říše a znovuobjevena až v souvislosti s novověkými pokusy Johna Smeatona.
+
+
+=== Středověk ===
+Velmi překvapivé jsou proto analýzy původního zdiva Karlova mostu v Praze uskutečněné na VŠCHT v roce 2008, které prokázaly unikátní příklad pokračování antické tradice použití vysoce kvalitních malt/betonů s hydraulickým pojivem na této středověké stavbě. Citace: Kvalita a homogenita výplňového zdiva svědčí o tom, že suroviny pro něj nebyly získávány ad hoc, ale naopak pečlivě vybírány a zpracovávány osvědčenými technologiemi, které tvořily dobře tajené znalostní zázemí středověkých stavebních hutí. Je možné, že součástí strategie utajování skutečných postupů bylo vytváření „falešných“ veřejně přístupných receptur (např. tvrzení o organických přísadách, které měly odvést pozornost případných napodobitelů). Fyzikální vlastnosti výplňového zdiva Karlova mostu (zejména nízká objemová hmotnost) odpovídají moderním tzv. lehkým konstrukčním betonům. Zdivo s těmito parametry tak celkovou stavbu nejen stabilizuje, ale rovněž nevystavuje její vnější konstrukci (lícní kvádrové zdivo) nadbytečnému zatížení.
+
+
+=== Novověk ===
+Moderní portlandský cement poprvé použil v roce 1756 britský inženýr John Smeaton; po dalším zdokonalení si jej v roce 1824 patentoval Joseph Aspdin.
+Míchačky byly na stavbách zaváděny ve dvacátých letech 20. století, u větších staveb se však první prototypy objevovaly už v 70. letech století devatenáctého. Ruční míchání vápenné malty nebyl problém, na stavbách pomocné práce prováděly ženy, což byla levná pracovní síla. Beton však musel být namíchán v přesném poměru a ve stále stejné kvalitě, což bylo nutné např. u železobetonových nosníků. Byly tu i důvody ekonomické: do ručně míchaného betonu se musí dávat více cementu, protože se musí počítat s nedokonalou ruční prací. Už v té době vznikl výrok polírů: „S betonem jdou dělat největší kouzla.“
+V roce 1907 Thomas Alva Edison poprvé zavedl lití betonu do konstrukce (bednění?[ujasnit]).
+V Čechách byl do základů větší stavby poprvé použit beton v roce 1862 při výstavbě prozatímního divadla a později divadla Národního. Beton měl být původně z cementu, avšak zkoušky provedené na stavbě dokázaly, že beton může být namíchán též ze staropražského vápna. Zvolený poměr byl 1:3:5 (čeho?[ujasnit]) Při opětovném odhalení základů v roce 1883 se prokázalo, že tento beton nabyl požadované pevnosti.
+
+
+== Charakteristika ==
+
+Během hydratace a tvrdnutí probíhají v betonu fyzikální a chemické procesy (provázené uvolňováním tepla), při kterých beton získává mechanickou pevnost a odolnost a vytváří se chemická stabilita v materiálu. Beton neztvrdne tím, že vyschne, ale že postupně během týdnů vykrystalizuje.[ujasnit] Tento proces začne asi hodinu po namíchání, a čím je teplota betonové směsi vyšší, tím je krystalizace rychlejší (např. v panelárnách se beton ohříval až na 80 °C). Tento proces nelze nijak zastavit, a pokud například beton v automixu zbude, musí se zlikvidovat. Voda v krystalech betonu nesmí zmrznout, tím je beton zcela znehodnocen. Beton při tuhnutí není závislý na přítomnosti vzduchu, a proto tuhne i pod vodou.
+
+
+=== Druhy betonu ===
+Prostý beton je odolný především vůči namáhání tlakem, naproti tomu snese pouze malé tahové zatížení. Proto se beton kombinuje s ocelovou výztuží – vzniká železobeton. Jako výztuž se používají i dráty, které se při formování betonu napnou a po ztuhnutí uvolní, čímž vnáší do betonu tlak – předpjatý beton.
+
+
+==== Speciální betony ====
+
+Speciálním betonem označujeme beton, který má neobvyklé vlastnosti, nebo jinak neobvyklé použití. Mezi speciální betony patří např. lehký beton (pórobeton), těžký beton, rozpínavý beton, vysokopevnostní beton, samozhutnitelný beton, zhutněný beton, vláknobeton, drátkobeton, vodotěsný beton, stříkaný beton, sklobeton, cihlobeton, hlinitanový beton, grafický beton, vakuovaný beton a jiné.
+Pokud se do betonu přidají různá vlákna, drátky apod., vzniká vláknobeton či drátkobeton. Jako příměs je možno použít i moderní materiály, jako jsou uhlíková vlákna, a zvýšit tím pevnost betonu ještě o několik desítek procent. Samotný vláknobeton (bez kovové výztuže) není možné použít jako konstrukční beton. U vláknobetonu není možné staticky určit rozmístění, pozici a orientaci jednotlivých vláken (drátků) tak, aby se dala výsledná konstrukce staticky spočítat. Vláknobeton se proto nejčastěji používá pro konstrukce ležící na podpoře.
+Lehčený beton, u kterého bylo vylehčení dosaženo při výrobě vytvořením pórů do hmoty betonu, se nazývá pórobeton. Je typický svojí lehkostí, dobrými tepelněizolačními vlastnostmi a jednoduchým použitím (pórobetonové tvárnice lze řezat speciální pilou). V pórobetonu lze jako příměs využít mimo písku také popílek z uhelného spalování.
+Beton v kombinaci se skleněnými tvarovkami, tzv. luxferami, tvoří sklobeton. Sklobetonem je též nazýván kompozitní materiál složený z portlandského cementu, skleněných vláken, anorganického plniva a dalších přísad dle požadovaných vlastností konečného materiálu.
+
+
+=== Vlastnosti ===
+Beton je pevný, libovolně tvarovatelný a velmi trvanlivý materiál. Má pevnost v tlaku, vysokou tepelnou akumulaci a je nehořlavý.
+Pevnost betonu závisí především na vlastnostech cementu, dalšími ovlivňujícími faktory jsou vlastnosti vody a kameniva. Beton s větším obsahem cementu (1:2) má za teplého počasí už druhý den téměř poloviční tvrdost. V praxi se po 28 dnech považuje beton za hotový (vyzrálý).
+Při krystalizaci se v betonu vytváří tzv. vnitřní teplo. Při betonáži přehrady v šíři několika metrů by vysoká teplota beton znehodnotila, a proto se do betonu vkládají ocelové roury např. půlmetrového průměru, kterými při krystalizaci nepřetržitě proudí studená chladicí voda. Tyto roury pak v betonu zůstanou. Betonáž takovýchto masívů probíhá nepřetržitě dnem i nocí, protože po noční přestávce by se již beton nespojil kvalitně. Při teplotě +5 °C a méně se krystalizace betonu velmi zpomaluje, ale když teplota stoupne, opět pokračuje.
+Betony se označují značkou C následovanou dvěma čísly – válcovou pevností a krychelnou (různé metodiky měření pevnosti) v MPa, např. C16/20.
+Kontrola kvality betonu a jeho vlastností se provádí za pomocí destruktivních a nedestruktivních zkoušek.
+Podle hodnot více parametrů se krom běžných betonů (NSC) označuje i vysokohodnotných beton (HPC), ultra vysokohodnotný beton (UHPC) či mikroarmovaný UHPC.
+
+
+==== Vodotěsnost ====
+Při posuzování vodotěsnosti betonu se nezapočítávají různé hrubé poruchy (trhliny, štěrková hnízda, díry v betonu apod.), které umožňují pronikání vody a kde je nutno beton opatřit vodotěsnou izolací. Vodotěsnost betonu se posuzuje podle toho, zda voda může procházet cementovou maltou nebo stykem mezi maltou a kamennými zrny. Normální zdravý kámen je prakticky vodotěsný.
+K zajištění vodotěsnosti je třeba betonovou směs řádně složit a dokonale zhutnit. Pro zlepšení vodotěsnosti se dobře osvědčily povrchově aktivní látky (plastifikovaný a provzdušněný beton).
+Pokud je potřeba zhotovit v terénu se spodní tlakovou vodou betonovou šachtu se zárukou absolutní nepropustnosti, postupuje se takto: Z ocelových plechů tloušťky 5 mm se svaří nepropustná ocelová bedna, nahoře otevřená. Vybetonuje se základová deska, a na ni, ještě do čerstvého betonu, se bedna postaví. Pak se do ní a zvenku zabuduje šalung a po přidání armatury se vybetonuje. Ocelová bedna je tak vlastně uvnitř železobetonové bedny.
+
+
+== Přísady a příměsi ==
+
+Přísady jsou obvykle různé chemikálie, které se přidávají do vody; příměsi se naopak přidávají do kameniva. Jsou to organické nebo anorganické materiály, tekutiny i sypké, které se přidávají do záměsi, aby určitým způsobem pozměnily vlastnosti betonu. Běžně tvoří maximálně 5 % hmotnosti. Nejčastěji se používají tyto typy:
+
+Zrychlovače tuhnutí – urychlují hydrataci, beton rychleji dosáhne počáteční pevnosti. Nejjednodušší je přimíchání vodního skla. Beton pak tuhne velmi rychle a je nutno to napřed vyzkoušet. Pozor – tuhost nebo tvrdost betonu s vodním sklem je zpočátku pouze technologická – to znamená, že nám umožní s betonem hned pracovat. U tohoto betonu ale také proběhne čtyřtýdenní krystalizace do konečné tvrdosti (aby nebylo mýlky, že beton s vodním sklem je hned hotový). Použití je hlavně při havarijních opravách proti vodě, nebo například tažení římsy z cementové malty při 5 °C. V chladu by tuhnutí vrstev malty trvalo dlouho. Přidá-li se vodní sklo, malta tuhne rychleji, její tuhost pak umožní i natažení jemné omítky. Římsa je hotová, pak ať si proběhne krystalizace.
+Zpomalovače tuhnutí – zpomalují hydrataci, beton je déle zpracovatelný.
+Provzdušňovací přísady – vytvářejí mikroskopické dutiny.
+Plastifikátory a superplastifikátory – zlepšují zpracovatelnost betonové směsi.
+Protizmrazovací přísady – urychlují v zimním období dřívější dosažení pevnosti nutné pro odolnost betonu vůči působení mrazu na záměsovou vodu.
+Vodotěsnicí přísady – zvyšuje vodonepropustnost betonu, přísady oddělují póry od sebe a přerušují je. Nejjednodušší je přimíchání mazlavého mýdla, tzv. jádrového – starý způsob, známý už za 1. republiky. Tento způsob objevila praxe – nevědělo se, jak je to teoreticky možné. Až později bylo vysvětleno, že se v betonu vytvoří vodou nerozpustná vápenatá mýdla. Pro výrobu tzv. „mýdlobetonu“ se používá běžný poměr cementu a písku, případně štěrku, ale místo vody je použit roztok mazlavého mýdla v hmotnostním poměru 1 : 100. Tedy 1 kg mazlavého mýdla (běžně dostupného např. v drogerii) se rozpustí nejdříve v 10 litrech vody a teprve pak se tento koncentrát vlije do sudu s 90 litry vody. Vše se řádně promíchá, aby se mazlavé mýdlo dobře rozpustilo a tento mýdlový roztok se již použije stejně jako voda při výrobě betonu, který je však nutno velmi dobře promíchat, aby se na zrníčkách písku či štěrku vytvořil mýdlový povlak. Takto vyrobený mýdlobeton lze výborně použít při rekonstrukcích starších objektů – zejména podlah nebo základů. Voda ve zdivu či podlahách tak bude mít mnohem menší příležitost vzlínat betonem, což se projeví např. suchou podlahou bez použití asfaltové izolace. (Staří praktici se shodují v tom, že tento beton je stejně kvalitní jako beton bez přísady mýdla).
+Hydrofobizační přísady – přísady vytváří na povrchu pórů vodoodpuzující povlak a snižují jejich propustnost pro vodu
+Barviva – mění barvu hotového betonu
+
+
+== Použití ==
+
+Beton je univerzálním stavebním materiálem, používá se jak na nosné konstrukce (skelety), tak na výrobu panelů; v dopravním stavitelství je beton hlavním materiálem pro výstavbu mostů, vozovek dálnic; v podzemním stavitelství se beton používá jako dočasná i trvalá výztuž. U betonu je jedno, je-li použit na suchu nebo pod vodou, jeho vlastnosti se tím nemění.
+Optimální vlastnosti, minimální nároky na údržbu, nízká cena a vysoká životnost předurčuje tento materiál k použití na dopravních komunikacích. Jednou z léty ověřených technologií je tzv. vymývaný beton, který vytváří estetické a funkční plochy s dlouhou životností.
+
+
+== Výroba betonu ==
+
+
+=== Uložení do konstrukce, hutnění, doba zrání ===
+Uložení betonu do konstrukce má proběhnout co nejdříve od jeho výroby a následně by měl být zhutněn, aby se z něho vypudily velké vzduchové bubliny. Již vyrobený beton je třeba nadále ochránit proti vyschnutí, a to po celou dobu jeho zrání, která se při teplotě +15 až +25 °C pohybuje okolo 28 dnů. Ochranou proti vyschnutí je pravidelné máčení betonu, zejména v prvních dnech, a dále jeho překrytí např. geotextilií a polystyrénovými deskami, nebo PE fólií a podobně.
+
+
+=== Betonování v zimě ===
+Pokud je třeba betonovat za nízkých teplot, je třeba ohlídat, aby teplota v době zrání betonu neklesala pod +5 °C. Při poklesu teploty pod +5 °C přestává beton zrát (přerušuje se tvorba pevných vazeb mezi jednotlivými cementovými zrny) a při poklesu teploty betonu v době jeho zrání pod 0 °C může dojít k jeho trvalému znehodnocení. Používají se přísady urychlující tuhnutí betonu, které zrychlují celý proces a mohou i způsobit vydávání tepla chemickým procesem, zejména v počátku krystalizace betonu.
+
+
+=== Krytí výztuže ===
+Výztuž by měla mít krytí v závislosti na frakci kameniva, běžně se pohybuje se od 15 do 65 mm, v závislosti na stupni prostředí a typu provedení konstrukce.
+
+
+== Odkazy ==
+
+
+=== Reference ===
+
+
+=== Literatura ===
+SVOBODA, Luboš. Stavební hmoty. [s.l.]: [s.n.], 2013. 1000 s. Dostupné v archivu pořízeném dne 2013-10-16. ISBN 978-80-260-4972-2.  Archivováno 16. 10. 2013 na Wayback Machine.
+
+
+=== Související články ===
+Imitace betonu
+Polymerbeton
+Předpjatý beton
+Textilní beton
+Železobeton
+
+
+=== Externí odkazy ===
+ Obrázky, zvuky či videa k tématu beton na Wikimedia Commons 
+ Slovníkové heslo beton ve Wikislovníku
+ Téma Beton ve Wikicitátech
+Odborný časopis BETON TKS (technologie, konstrukce, sanace) - vše o betonu
+eBeton informace o betonu
+V čem spočívalo tajemství betonu Římanů?, článek na serveru Osel

@@ -7,6 +7,7 @@ se nemění.
 from typing import Any, Hashable, Iterable, Mapping, Sequence
 
 from .window import zapsat_offset
+from .derived import ODVOZENE, Odvozena
 from .interfaces import SkladacVektoru, Slucovac, ZdrojAktivaci
 
 PRAZDNO = "∅"
@@ -14,11 +15,17 @@ PRAZDNY_TVAR = "<empty>"
 
 
 class ZdrojZTokenu(ZdrojAktivaci):
-    """Aktivace jsou rovnou v tokenu, kanonické pořadí dávají sloupce pole."""
+    """Aktivace jsou rovnou v tokenu, kanonické pořadí dávají sloupce pole.
+
+    Hrubé vrstvy se dopočítají tady, ne v korpusu — jsou funkcí toho, co
+    v tokenu už je, takže by je uložení jen zdvojilo. Viz derived.py."""
 
     def __init__(self, vertikaly: Sequence[Mapping], *, typy: bool = True,
-                 syrove: bool = False):
+                 syrove: bool = False,
+                 odvozene: Sequence[Odvozena] = ODVOZENE):
         self.poradi = self.sestavit_poradi(vertikaly)
+        self.skupiny = {c["a"]: c.get("g", "") for c in vertikaly}
+        self.odvozene = tuple(odvozene)
         self.typy = typy
         self.syrove = syrove
 
@@ -27,7 +34,18 @@ class ZdrojZTokenu(ZdrojAktivaci):
         return {c["a"]: i for i, c in enumerate(vertikaly)}
 
     def vypsat_aktivace(self, token: Mapping) -> list[str]:
-        return self.seradit_kanonicky(self.odfiltrovat_typy(token["acts"]))
+        aktivace = self.odfiltrovat_typy(token["acts"])
+        return self.seradit_kanonicky(aktivace + self.dopocitat_hrube(aktivace))
+
+    def dopocitat_hrube(self, aktivace: Sequence[str]) -> list[str]:
+        """Hrubé vrstvy nad jemnými. Chybí-li zdroj, vrstva se nepřidá —
+        mlčení je lepší než vymyšlená hodnota."""
+        out = []
+        for o in self.odvozene:
+            hodnota = o.odvodit(aktivace, self.skupiny)
+            if hodnota is not None:
+                out.append(hodnota)
+        return out
 
     def odfiltrovat_typy(self, acts: Sequence[str]) -> list[str]:
         """Vypnutý významový typ musí zmizet i z pole, ne jen z vektoru —
@@ -71,7 +89,7 @@ class SlucovacShodou(Slucovac):
     """Dva vektory jsou tatáž šablona, právě když jsou znak po znaku stejné."""
 
     def __init__(self) -> None:
-        self.predpona = "t"
+        self.predpona = "f"
         self.podle_klice: dict[Hashable, str] = {}
         self.sablony: dict[str, dict] = {}
 

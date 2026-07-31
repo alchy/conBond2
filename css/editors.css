@@ -7,7 +7,7 @@
     --plane:#0d0d0d; --surface:#1a1a19;
     --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
     --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
-    --upos:#3987e5; --deprel:#d95926; --feats:#199e70;
+    --upos:#3987e5; --deprel:#d95926; --feats:#199e70; --hrube:#a78bfa;
   }
 
   /* PLÁTNO, ne responzivní stránka. Nic se nepřizpůsobuje oknu: co je jednou
@@ -135,6 +135,7 @@
  .cell.g3{background:var(--ink)}
 
   .cell.g4{background:var(--ink2)}
+  .cell.g5{background:var(--hrube)}
 
   .cell.off { background:var(--grid); }
 
@@ -259,3 +260,125 @@
 li.skryto { color:var(--muted); font-size:11px; font-style:italic; }
 .p-map li .pta { font-size:10.5px; background:var(--upos); color:#fff;
                  border-radius:9px; padding:0 6px; font-weight:600; }
+
+  /* ---- list Dialog --------------------------------------------------
+     Přepis vlevo, znalost vpravo. Přepis má pevnou výšku a roluje: kdyby
+     rostl, odsouval by vstupní řádek a při delším rozhovoru by se za ním
+     muselo jezdit. */
+  .rozhovor { width:min(560px, 46vw); }
+
+  .rozhovor .prepis { height:300px; overflow-y:auto; padding:8px 10px;
+                      background:var(--plane); border:1px solid var(--ring);
+                      border-radius:6px; margin-bottom:10px; }
+
+  .rozhovor .tah { padding:5px 0; border-bottom:1px solid var(--grid); }
+  .rozhovor .tah:last-child { border-bottom:0; }
+  .rozhovor .tah .rekl { font-size:13px; color:var(--ink); }
+  .rozhovor .tah .rekl { font-weight:600; }
+  .rozhovor .tah .rekl::before { content:"› "; color:var(--muted);
+                                 font-weight:400; }
+  .rozhovor .tah .rekl2 { font-size:12.5px; color:var(--ink2);
+                          padding-left:14px; }
+  .rozhovor .tah.ok .rekl2 { color:var(--feats); }
+  .rozhovor .tah.ne .rekl2 { color:var(--deprel); }
+  .rozhovor .tah.ptam .rekl2 { color:var(--hrube); }
+  .rozhovor .tah.prazdno { color:var(--muted); font-size:12.5px; }
+  .rozhovor .hrana { margin-left:9px; color:var(--muted); }
+  .rozhovor .hrana b { color:var(--ink); }
+
+  .rozhovor .ptani { display:flex; gap:7px; margin-bottom:10px;
+                     padding:9px 10px; border-radius:6px;
+                     border:1px solid var(--hrube); }
+
+  .rozhovor .radek { display:flex; gap:7px; align-items:center;
+                     margin-bottom:7px; }
+  .rozhovor .radek input { font:inherit; font-size:13px; padding:5px 9px;
+                           border:1px solid var(--axis); border-radius:6px;
+                           background:var(--surface); color:var(--ink);
+                           flex:1 1 auto; }
+  .rozhovor input:disabled { opacity:.5; }
+
+  .lehke { font:inherit; font-size:12px; padding:4px 9px; cursor:pointer;
+           border:1px solid var(--ring); border-radius:6px;
+           background:transparent; color:var(--ink2); }
+  .lehke:hover { background:var(--grid); color:var(--ink); }
+
+  .znalost { width:min(430px, 36vw); }
+  .znalost .cisla { display:flex; flex-wrap:wrap; gap:11px; font-size:12px;
+                    color:var(--ink2); margin-bottom:10px; }
+  .znalost .cisla b { color:var(--ink); }
+  .znalost .cisla .muted { color:var(--muted); }
+
+  .znalost .hr { display:flex; gap:7px; align-items:baseline; font-size:13px;
+                 padding:3px 0; border-bottom:1px solid var(--grid); }
+  .znalost .hr .zn { color:var(--hrube); font-weight:650; }
+  .znalost .hr.zapor .zn { color:var(--deprel); }
+  .znalost .hr .lv, .znalost .hr .pv { color:var(--ink); }
+  .znalost .hr .dr { margin-left:auto; font-size:11px; color:var(--muted); }
+
+  .znalost .rod { font-size:12px; color:var(--ink2); padding:2px 0; }
+  .znalost .rod b { color:var(--ink); }
+  .znalost .pojmy { margin-top:10px; padding-top:8px;
+                    border-top:1px solid var(--grid); }
+
+  /* ---- výřez a list Vzory ------------------------------------------- */
+  .posun { display:flex; gap:5px; align-items:center; }
+  .posun input { font:inherit; font-size:13px; width:74px; padding:4px 7px;
+                 border:1px solid var(--axis); border-radius:6px;
+                 background:var(--surface); color:var(--ink); }
+  .posun .cnt { font-size:11.5px; color:var(--muted); white-space:nowrap; }
+
+  .vzory { display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+           gap:9px; max-width:1180px; }
+
+  .vz { border:1px solid var(--ring); border-radius:7px; padding:8px 10px;
+        background:var(--plane); }
+  .vz .hlava { display:flex; gap:8px; align-items:baseline; font-size:13px; }
+  .vz .hlava b { color:var(--ink); }
+  /* Kolik slov vzor sdílí je to hlavní číslo — proto svítí. */
+  .vz .mira { font-weight:650; color:var(--feats); }
+  .vz .vyskyt { margin-left:auto; font-size:11px; color:var(--muted); }
+  .vz .vec { display:flex; flex-wrap:wrap; gap:3px; margin:6px 0 5px; }
+  .vz .sl { font-size:10.5px; font-style:normal; padding:1px 5px;
+            border-radius:4px; background:var(--grid); color:var(--ink2); }
+  .vz .sl[data-o="0"] { background:var(--hrube); color:#fff; }
+  .vz .tvary { font-size:12px; color:var(--ink2); line-height:1.5; }
+  .vz .vic { color:var(--muted); }
+
+  /* ---- kandidáti odpovědi -------------------------------------------- */
+  .kandidati { width:min(520px, 42vw); }
+  .kandidati .akt { display:flex; flex-direction:column; gap:4px;
+                    margin-bottom:10px; }
+  .kandidati .akt .r { display:flex; flex-wrap:wrap; gap:4px;
+                       align-items:baseline; }
+  .kandidati .akt .r > span { font-size:11px; color:var(--muted);
+                              width:52px; flex:0 0 auto; }
+  .cip { font-style:normal; font-size:11.5px; padding:1px 7px; border-radius:4px;
+         background:var(--grid); color:var(--ink2); }
+  .cip b { color:var(--ink); }
+  .cip.ent { background:var(--hrube); color:#fff; }
+  .cip.ent b { color:#fff; }
+  .cip.zn { background:var(--feats); color:#fff; }
+  /* Tvar, který nesvítí nikde, je důvod, proč odpověď nepřijde. */
+  .cip.pryc { background:transparent; border:1px dashed var(--deprel);
+              color:var(--deprel); }
+
+  .kandidati .pocet { font-size:11px; color:var(--muted); margin-bottom:6px; }
+  .kandidati .kseznam { max-height:420px; overflow-y:auto; }
+  .kand { padding:6px 9px; border-radius:6px; background:var(--plane);
+          border:1px solid var(--ring); margin-bottom:5px; }
+  .kand.prvni { border-color:var(--feats); }
+  .kand b { font-size:13.5px; color:var(--ink); }
+  .kand .vt { font-size:11px; color:var(--muted); margin-left:8px; }
+  .kand .ctx { font-size:11.5px; color:var(--ink2); margin-top:3px;
+               line-height:1.45; }
+
+  details.znalost { margin-top:12px; width:max-content; max-width:1010px; }
+  details.znalost > summary { cursor:pointer; list-style:none;
+                              display:flex; gap:12px; align-items:baseline; }
+  details.znalost > summary::-webkit-details-marker { display:none; }
+  details.znalost > summary::before { content:"›"; color:var(--muted);
+                                      transition:transform .12s ease; }
+  details.znalost[open] > summary::before { transform:rotate(90deg); }
+  details.znalost > summary b { font-size:15px; }
+  details.znalost .cisla { margin-bottom:0; }

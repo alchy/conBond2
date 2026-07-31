@@ -10,9 +10,10 @@ from dataclasses import dataclass, field
 from typing import Mapping, Sequence
 
 from .window import Okno, Slot
-from .interfaces import SkladacVektoru, Slucovac, ZdrojAktivaci
+from .interfaces import Sitko, SkladacVektoru, Slucovac, ZdrojAktivaci
 from .lexicon import Slovnik
 from .log import log
+from .sieve import SitkoVse
 from .flow import Tok
 
 
@@ -28,7 +29,7 @@ class Vazba:
 class Strana:
     def __init__(self, oznaceni: str, predpona: str, tok: Tok, okno: Okno,
                  zdroj: ZdrojAktivaci, skladac: SkladacVektoru, slucovac: Slucovac,
-                 slovnik: Slovnik):
+                 slovnik: Slovnik, sitko: Sitko = None):
         self.oznaceni = oznaceni
         self.predpona = predpona
         self.tok = tok
@@ -37,6 +38,7 @@ class Strana:
         self.skladac = skladac
         self.slucovac = slucovac
         self.slovnik = slovnik
+        self.sitko = sitko or SitkoVse()
         self.slovo_radku: dict[int, tuple[int, str]] = {}
         self.sloty_radku: dict[int, list[Slot]] = {}
         self.vazby: list[Vazba] = []
@@ -67,11 +69,12 @@ class Strana:
 
     def aktivace_slotu(self, slot: Slot) -> list[str]:
         """Prázdný slot i slot mimo pole nepřispějí ničím — skládač si
-        z toho udělá ∅."""
+        z toho udělá ∅. Co projde dál, rozhodne sítko podle offsetu."""
         radek = self.tok.radek(slot.j)
         if radek is None or radek.je_prazdny:
             return []
-        return list(self.zdroj.vypsat_aktivace(radek.token))
+        return list(self.sitko.propustit(
+            slot.d, self.zdroj.vypsat_aktivace(radek.token)))
 
     def pripsat_k_sablone(self, oznaceni: str, tvar: str, radek: int) -> None:
         info = self.slucovac.vypsat_sablony()[oznaceni]

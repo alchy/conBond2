@@ -1,0 +1,116 @@
+Oběhová soustava (kardiovaskulární systém, cévní soustava) je jedna z orgánových soustav živočichů. Slouží zejména k transportu živin, plynů a odpadních látek z tkání nebo do tkání. Transportním médiem je krev nebo hemolymfa. Člověk a ostatní obratlovci mají uzavřenou oběhovou soustavu. Někteří jiní živočichové však mají otevřenou oběhovou soustavu. Primitivní kmeny nemají vůbec žádnou.
+S kardiovaskulárním systémem úzce souvisí i lymfatická soustava. O embryonálním vývoji oběhové soustavy referuje článek embryonální vývoj kardiovaskulární soustavy člověka. Oběhová soustava je tvořena srdcem a cévami.
+
+
+== Funkce ==
+Hlavním účelem oběhové soustavy člověka je rozvádět živiny, dýchací plyny a hormony. Soustava bývá často úzce spjata se soustavou trávicí a dýchací, ale navazuje na ni i soustava vylučovací.
+
+
+== Evoluce oběhové soustavy ==
+
+
+=== Živočichové bez oběhové soustavy ===
+Oběhovou soustavu nemají jednobuněčné organismy podobné živočichům, jako jsou prvoci – u nich funkci cévní soustavy obstará pouhá difuze látek v buněčné cytoplazmě. Také někteří mnohobuněční živočichové nemají cévní soustavu: např. žahavcům a ploštěncům stačí tzv. gastrovaskulární soustava, kde se odehrává trávení i rozvod látek. Touto dutinou se látky určitým způsobem distribuují po celém těle a pronikají do tkání, kde následuje jejich difuze mimobuněčnou tekutinou. U hlístů je to vyřešeno jinak: mají tzv. pseudocoelom, což v podstatě znamená, že se živiny mohou volně pohybovat celým tělem vyjma uzavřené trávicí soustavy.
+
+
+=== Oběhová soustava bezobratlých ===
+
+U mnoha skupin bezobratlých se vyvinuly různé jednoduché, nebo i důmyslné oběhové systémy. K nejjednodušším patří např. oběhová soustava pásnic, která se omezuje na několik dutin (lakun) vzniklých odškrcením od tělní dutiny. Promyšlenější systém cév vzniká v rámci uzavřené oběhové soustavy kroužkovců, u nichž krev proudí na břišní straně těla dozadu a na hřbetní straně směrem dopředu. Příčné spojky mezi břišní a hřbetní cévou jsou stažitelné a plní funkci srdcí. Oběhová soustava kroužkovců představuje základní schéma oběhové soustavy vůbec: ostatní cévní systémy vznikají vlastně úpravou tohoto základního schématu s ohledem na tvar a velikost těla.
+U členovců však je uzavřená část cévní soustavy redukována na malé úseky cév a tekutina (tzv. hemolymfa) se rozlévá do tkání, takže se jedná spíše o otevřenou cévní soustavu. Srdce členovců je velmi velké, což umožňuje pumpovat hemolymfu s dostatečnou silou, aby mohla proudit po celém těle i bez potřeby cév. Podobnou (otevřenou) cévní soustavu mají však i (jinak spíše nepříbuzní) měkkýši: srdce opět pumpuje hemolymfu přímo do tkání a ta se až následně sbírá pomocí cév zpátky do srdce. Výjimkou jsou v tomto ohledu hlavonožci, kteří mají druhotně uzavřené cévní řečiště.
+
+
+=== Oběhová soustava obratlovců ===
+
+Všichni obratlovci mají určité společné rysy ve stavbě své (uzavřené) oběhové soustavy. Tyto rysy nejvíce vyniknou u primitivních zástupců, jejichž oběhová soustava si zachovává většinu původních znaků. Krev je pumpována srdcem do ventrální (břišně umístěné) aorty. Z ní se odštěpuje řada cév směřujících do žaberních oblouků, kde dochází k okysličování. Část okysličené krve putuje vnějšími karotidami do hlavy. Cévy žaberních oblouků se spojují do párové dorzální aorty, která směřuje posteriorním směrem („směrem k ocasu“). Ještě předtím se nicméně z dorzální aorty odštěpují bohatě okysličené vnitřní karotidy, které vedou do hlavy a obvykle zásobují mozek. Párová dorzální aorta se přibližně v úrovni jater spojuje do jedné cévy a následně zásobuje tkáně na ocasním konci těla. V průběhu dorzální aorty se ovšem odštěpuje celá řada malých či větších tepen – například tepna podklíčková, jež zásobuje krví horní končetiny či přední ploutve, či tepna kyčelní, která vede do dolních končetin. Krev se vrací do srdce systémem předních a zadních kardinálních žil, které se sbíhají ze všech částí těla do žilního splavu. Důležitou složkou oběhové soustavy obratlovců je jaterní portální oběh, který přivádí krev ze střev.
+U jednotlivých skupin obratlovců samozřejmě došlo k obrovským změnám stylu života. Následně se jejich oběhová soustava natolik přizpůsobila, že výše popsané základní schéma nemusí být patrné.
+V uzavřené cévní soustavě obratlovců se krev rozvádí pomocí krevních cév, jichž existují tři základní typy:
+
+Tepny – vedou krev od srdce a mají silnou stěnu
+Vlásečnice – konečné sítě
+Žíly – vedou krev z kapilár do srdce
+
+
+==== Ryby ====
+Srdce ryb je sinusovitě zahnutá céva přepažená chlopní a obklopená svalovinou. Má jednu síň a jednu komoru. Krev je z něj vytlačována do žaberních tepen, kde dochází k okysličování. Okysličená krev se sbírá do dalších tepen a rozvádí se po celém těle, načež se kapilární systémy spojují do žil, jimiž krev odchází žilním splavem do srdeční síně.
+
+
+==== Obojživelníci ====
+
+U obojživelníků dochází k redukci žaberních oblouků v souvislosti s přechodem k suchozemskému stylu života. Míra jejich redukce závisí na příslušnosti ke konkrétní skupině (ocasatí, žáby) a na vývojovém stadiu (pulec či dospělec). Roli dýchacího orgánu přejímají do značné míry plíce, z nichž se okysličená krev vrací do levé síně srdce. V pravé síni je krev odkysličená. Existence dvou síní je anatomickým přizpůsobením, které souvisí se vznikem plicního (malého) oběhu. Komora je však stále jedna a krev se v ní mísí: jen někteří obojživelníci mají určité záhyby či nedokonalé přepážky, jež omezují míšení krve okysličené a neokysličené. Zajímavostí je, že malá část plicních artérií neprochází plícemi, nýbrž směřuje do kůže, kde dochází k doplňkovému kožnímu dýchání.
+
+
+==== Plazi ====
+
+U plazů byl doveden do dokonalosti suchozemský způsob života, čemuž odpovídá i stavba cévní soustavy. Ve srovnání s obojživelníky dochází ke vzniku výraznějších přepážek uprostřed původní srdeční komory, čímž se postupně vyvíjí pravá a levá komora srdeční. Krev však stále může mezi komorami proudit a zpravidla dochází ke značnému míšení okysličené krve (z levé komory) s krví odkysličenou (v komoře pravé). Výjimkou jsou krokodýli: u nich je mezi komorami mikroskopická šterbina  a krev se mísí minimálně. Pokračuje přestavba původních žaberních oblouků v souvislosti s tím, že plazi nemají žábry. Krev opouští srdce hned třemi cévami, které jsou deriváty původní ventrální aorty ryb: těmito třemi cévami jsou pravá aorta, levá aorta a plicní kmen. Pravá aorta zásobuje krví pravou část těla, levá aorta směřuje do levé části těla. V typickém případě je pravá aorta poněkud větší, než ta levá. V krvi putují oválné červené krvinky obsahující buněčná jádra.
+
+
+==== Ptáci ====
+
+Ptáci jsou blízcí příbuzní plazů (zejména krokodýlů) a oběhová soustava tomu jen nasvědčuje. Dochází k úplnému rozdělení komory na levou a pravou část. Levá síň je spojena s levou komorou, pravá síň s pravou komorou. Z pravé komory vychází plicnice směřující do plic. Z levé komory vychází aorta – jedná se vlastně o původní pravou aortu plazů. Původní levá aorta plazů je u ptáků zcela redukována. Červené krvinky ptáků jsou oválné a obsahují jádra.
+
+
+==== Savci ====
+Také savci mají kompletně oddělené srdeční komory a jsou tedy nositeli dvoukomorového a dvousíňového srdce. I u savců došlo k redukci mnohých žaberních oblouků. Krev ze srdce rozvádí do těla aorta, která však vzniká z levé větve šestého aortálního oblouku (na rozdíl od pravé větve, jako tomu je u ptáků). Jinak jsou savci spíše jen vyvrcholením trendů, které započaly u plazů, ačkoliv k dílčím změnám dochází (např. ve způsobu zakládání podklíčkových tepen). Červené krvinky jsou až na výjimky (velbloud) bezjaderné.
+
+
+== Oběhová soustava člověka ==
+
+Lidská oběhová soustava je uzavřená a je složená ze dvou hlavních okruhů: plicní oběh („malý“) cirkuluje krev z pravé komory do plicního řečiště a okysličená zpět do levé srdeční předsíně , zatímco v systémovým („velkém“) teče krev z levé srdeční komory do všech tělních oblastí, odkud se vrací zpět do pravé předsíně, aby byly živiny a kyslík dopraveny k buňkám.
+
+
+=== Funkce ===
+Oběhová soustava má v lidském těle celou řadu různých funkcí. Přenáší kyslík do tkání a odvádí CO2. Rozvádí živiny z trávicí soustavy do jater (vrátnicový oběh) a z jater do orgánů celého těla. Odvádí odpadní látky do ledvin (vznik moči) a do kůže (vzniká pot). Rozvádí po těle hormony z endokrinních žláz (žlázy s vnitřní sekrecí) a teplo (čímž řídí termoregulaci). Zprostředkovává obranu organismu proti choroboplodným zárodkům – tvorbou protilátek a mechanickým zničením. Oběhová soustava konečně vytváří a udržuje stálé vnitřní prostředí.
+
+
+=== Zárodečný vývoj ===
+
+Přibližně uprostřed třetího týdne embryo již není schopné dodávat živiny do všech částí těla pomocí prosté pasivní difúze a objeví se potřeba vytvořit specializovaný cévní systém. Buňky, které jsou určeny pro vznik cévní soustavy, se rekrutují z řad mezodermu laterální destičky. Některé se postupně mění v myoblasty budoucího srdce, jiné se oplošťují a vytváří tzv. krevní ostrůvky – duté útvary, které postupně dávají vzniknout prvním cévám i krevním buňkám. Srdce prochází velmi komplikovaným embryonálním vývojem samo o sobě, je potřeba správně vytvořit všechny základní vrstvy a dutiny, chlopně mezi nimi, ale i třeba převodní srdeční systém. Co se týče cévního řečiště, to v podstatě kopíruje evoluční historii. V určité fázi je tak v lidském embryu možno najít artérie vedoucí k jednotlivým žaberním obloukům. Během dalšího vývoje však samozřejmě většina těchto tepen (tzv. aortálních oblouků) zakrňuje či podléhá značným změnám a dává vzniknout některým z nejdůležitějších cév v lidském těle (například z nich vznikají karotidy nebo podklíčkové tepny).
+Důležitý přelom v uspořádání cévní soustavy je narození dítěte, kdy zaprvé přestane proudit krev z placenty a zadruhé tělo začne využívat plíce k dýchání. Zavře se zkratka zvaná ductus arteriosus, což umožní vyšší průtok krve plícemi. Vlivem následných tlakových změn uvnitř srdce se také zavírá foramen ovale (otvor mezi síněmi) a u většiny jedinců dojde do jednoho roku k úplnému srůstu. Samozřejmě dojde také k zániku pupečníkových tepen, pupečníkové žíly a také cévy známé jako ductus venosus, které měly význam jen pro plod napojený na placentu.
+
+
+== Anatomie oběhové soustavy ==
+Oběhová soustava se skládá z několika hlavních částí, které společně zajišťují transport krve, kyslíku, živin a odpadních látek. Mezi hlavní složky patří: 
+
+
+=== Srdce ===
+Srdce je svalový orgán, který funguje jako pumpa pohánějící krev krevním řečištěm. Srdce je rozděleno na čtyři dutiny: 
+
+Levá síň
+Levá komora
+Pravá síň
+Pravá komora
+
+
+=== Cévy ===
+Krevní cévy tvoří síť trubic, kterými v lidském těle protéká krev. Dělí se na tři hlavní typy podle toho, směru vůči srdci a stavby: 
+
+Tepny (lat. arterie) – vedou okysličenou krev ze srdce do celého těla (výjimkou je plicní tepna, ta vede krev neokysličenou)
+Žíly (lat. vény) – vedou krev odkysličenou zpět do srdce (výjimkou je plicní žíla, ta vede krev okysličenou)
+Vlásečnice (lat. kapiláry) – tenké cévy spojující tepny a žíly, probíhá zde výměna látek mezi krví a tkáněmi
+
+
+=== Krev ===
+Krev je tekutá tkáň v lidském těle, která proudí v cévním řečišti. Přenáší kyslík, oxid uhličitý, živiny, hormony a odpadní látky. Její hlavní složky jsou: 
+
+Červené krvinky (lat. erytrocyty)
+Bílé krvinky (lat. leukocyty)
+Krevní destičky (lat. trombocyty)
+Krevné plazma – tekutá složka krve
+
+
+== Odkazy ==
+
+
+=== Reference ===
+V tomto článku byl použit překlad textu z článku Circulatory system na anglické Wikipedii.
+
+
+=== Související články ===
+Krev
+Céva: Tepna, Žíla, Vlásečnice
+Srdce
+Lymfatická soustava
+
+
+=== Externí odkazy ===
+ Obrázky, zvuky či videa k tématu oběhová soustava na Wikimedia Commons

@@ -11,3 +11,17 @@ __pycache__/
 *.pyc
 .DS_Store
 run/
+
+# Mezikroky stavby baseline (velké, obnovitelné skriptem)
+data/raw/_vety.json
+data/raw/_tokeny.json
+data/ontology/tvrzeni.json
+data/gold/_kotvy.json
+data/gold/_otazky_text.json
+
+# Biblický text je EKUMENICKÝ PŘEKLAD a je autorskoprávně chráněný
+# (Česká biblická společnost). Do korpusu se hodí — je to jiný druh textu
+# než Wikipedie, tedy pořádná zátěžová zkouška —, ale do veřejného
+# repozitáře nepatří. Kdo ho chce mít i v gitu, musí sáhnout po Bibli
+# kralické, která je volné dílo.
+data/raw/bible_*.txt

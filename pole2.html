@@ -1,27 +1,52 @@
+<!doctype html>
+<!-- lang="cs" a translate="no" jsou tu oba schválně. Bez `lang` si Chrome
+     jazyk domyslí a stránku přeloží; a překlad se nedrží textu, sahá i na
+     DATA — z „Trida=pomocny" udělal „Class=help" a z „Uloha=jiny"
+     „Task=other". Na obrazovce pak stojí jména atributů, která v poli
+     nejsou. Tvary slov v korpusu by dopadly stejně. -->
+<html lang="cs" translate="no" class="notranslate">
 <meta charset="utf-8">
+<meta name="google" content="notranslate">
 <title>Pole → slovník → vazby → šablony</title>
-<link rel="stylesheet" href="css/tokeny.css">
-<link rel="stylesheet" href="css/rozvrzeni.css">
-<link rel="stylesheet" href="css/pole.css">
-<link rel="stylesheet" href="css/panely.css">
-<link rel="stylesheet" href="css/editory.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/field.css">
+<link rel="stylesheet" href="css/panels.css">
+<link rel="stylesheet" href="css/editors.css">
 
 <div class="wrap">
-  <h1>Pole → slovník → vazby → šablony</h1>
-  <p class="lede">Dvě strany téhož stroje. <b>Facts</b> je pole textu, <b>Query</b> pole
+  <!-- Výklad je dlouhý a čte se jednou; sbalený nechá místo tomu, kvůli čemu
+       se sem chodí. Otevření si stránka pamatuje jako každé jiné nastavení. -->
+  <details class="lede" id="uvod">
+    <summary><b>Pole → slovník → vazby → šablony</b><span class="sum">dvě strany
+      téhož stroje — týž kód, jiná data</span></summary>
+    <p>Dvě strany téhož stroje. <b>Facts</b> je pole textu, <b>Query</b> pole
      dotazů — <b>týž kód, jiná data</b>. Obě končí šablonou: vlevo <b>pole</b> (řádek na
      slovo, sloupec na aktivaci), pak <b>slovník</b>, pak <b>vazby</b>
      (<code>links[(w_id, t_id, zrno)] → výskyty</code>) a vpravo <b>šablony</b> — obálka
-     okolí pro zvolené <b>r</b>, sloučená tam, kde vyšla stejně.<br>
-     <b>Slovník je jeden, společný oběma stranám</b>; <b>vazby i šablony má každá strana
+     okolí pro zvolené <b>r</b>, sloučená tam, kde vyšla stejně.</p>
+    <p><b>Slovník je jeden, společný oběma stranám</b>; <b>vazby i šablony má každá strana
      vlastní</b>. Že je týž tvar ve faktu i v dotazu, samo o sobě nic nespojuje — je to
      jen společný prostor tvarů. <b>Spojení jde přes šablony</b> a řeší se na listech
      <b>Vazby</b>. Vertikály jsou sdílené proto, že bez toho by měly vektory obou stran
-     jiný atributový prostor.<br>
-     Poloměry jsou <b>dva a smí se lišit</b>: dotaz může mít jiné r než fakt, protože se
+     jiný atributový prostor.</p>
+    <p>Poloměry jsou <b>dva a smí se lišit</b>: dotaz může mít jiné r než fakt, protože se
      vektory nikdy neporovnávají přímo — mapování je kotvené na tvarech.
      Každá věta stojí sama: dostane <b>r prázdných řádků</b> před sebe a <b>r za sebe</b>,
      takže okno nemá jak přelézt do sousední a co přesahuje, je <b>&lt;empty&gt;</b>.</p>
+  </details>
+
+  <nav class="tabs" id="tabs">
+    <button data-s="f" aria-selected="true">Facts<span class="n" id="tnF"></span></button>
+    <button data-s="q" aria-selected="false">Query<span class="n" id="tnQ"></span></button>
+    <button data-s="vz" aria-selected="false">Vzory<span class="n" id="tnVz"></span></button>
+    <button data-s="mapd" aria-selected="false">Vazby · definice</button>
+    <button data-s="mapp" aria-selected="false">Vazby · přehled<span class="n" id="tnM"></span></button>
+    <button data-s="vert" aria-selected="false">Vertikály<span class="n" id="tnV"></span></button>
+    <button data-s="mx" aria-selected="false">Matice<span class="n" id="tnMx"></span></button>
+    <button data-s="vety" aria-selected="false">Věty<span class="n" id="tnS"></span></button>
+    <button data-s="dial" aria-selected="false">Dialog<span class="n" id="tnD"></span></button>
+  </nav>
 
   <div id="globals">
     <div class="bar">
@@ -49,11 +74,26 @@
       <div><label>Sloupce</label><div class="seg" id="c">
         <button data-v="1" aria-pressed="true">jen svítící</button>
         <button data-v="0">všech</button></div></div>
+      <!-- Výřez: velký korpus se celý nevykreslí. Pole se staví celé na
+           backendu, tohle je jen okno, kterým se do něj kouká. -->
+      <div><label>Výřez · vět</label><div class="seg" id="vy">
+        <button data-v="10">10</button>
+        <button data-v="25" aria-pressed="true">25</button>
+        <button data-v="50">50</button>
+        <button data-v="100">100</button>
+        <button data-v="0">vše</button></div></div>
+      <div><label>Od věty</label><div class="posun">
+        <button class="lehke" id="vyZpet" title="o výřez zpět">‹</button>
+        <input type="number" id="vyOd" min="1" value="1" size="6">
+        <button class="lehke" id="vyDal" title="o výřez dál">›</button>
+        <span class="cnt" id="vyPopis"></span></div></div>
     </div>
     <div class="legend">
       <span><i class="sw" style="background:var(--upos)"></i> UPOS</span>
       <span><i class="sw" style="background:var(--deprel)"></i> DEPREL</span>
       <span><i class="sw" style="background:var(--feats)"></i> FEATS</span>
+      <span><i class="sw" style="background:var(--hrube)"></i> HRUBĚ — týž atribut
+        v nižším rozlišení, počítá se z jemných</span>
       <span><i class="sw" style="background:var(--ink)"></i><i class="sw"
         style="background:var(--ink2)"></i> TYP · LEM · vlastní — vrstvy, které
         UDPipe nedává, proto inkoust a ne další barva</span>
@@ -62,16 +102,6 @@
       <span style="color:var(--muted)">vybledlé ve slovníku = v tomhle korpusu není</span>
     </div>
   </div>
-
-  <nav class="tabs" id="tabs">
-    <button data-s="f" aria-selected="true">Facts<span class="n" id="tnF"></span></button>
-    <button data-s="q" aria-selected="false">Query<span class="n" id="tnQ"></span></button>
-    <button data-s="mapd" aria-selected="false">Vazby · definice</button>
-    <button data-s="mapp" aria-selected="false">Vazby · přehled<span class="n" id="tnM"></span></button>
-    <button data-s="vert" aria-selected="false">Vertikály<span class="n" id="tnV"></span></button>
-    <button data-s="mx" aria-selected="false">Matice<span class="n" id="tnMx"></span></button>
-    <button data-s="vety" aria-selected="false">Věty<span class="n" id="tnS"></span></button>
-  </nav>
 
   <main id="listy"></main>
 </div>

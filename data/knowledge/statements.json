@@ -1,0 +1,37 @@
+{
+ "tvrzeni": [
+  {
+   "druh": "instance",
+   "levy": "krakatit",
+   "pravy": "román",
+   "zdroj": "dialog",
+   "cas": 1785504301.763558,
+   "jistota": 1.0,
+   "veta": "Krakatit je román.",
+   "levy_tvar": "Krakatit",
+   "pravy_tvar": "román"
+  },
+  {
+   "druh": "podtrida",
+   "levy": "román",
+   "pravy": "dílo",
+   "zdroj": "dialog",
+   "cas": 1785504301.831427,
+   "jistota": 1.0,
+   "veta": "román je druh díla",
+   "levy_tvar": "román",
+   "pravy_tvar": "díla"
+  },
+  {
+   "druh": "zapor",
+   "levy": "krakatit",
+   "pravy": "báseň",
+   "zdroj": "dialog",
+   "cas": 1785504301.964895,
+   "jistota": 1.0,
+   "veta": "Krakatit není báseň",
+   "levy_tvar": "Krakatit",
+   "pravy_tvar": "báseň"
+  }
+ ]
+}

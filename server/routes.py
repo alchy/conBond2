@@ -13,15 +13,50 @@ import sys
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
 
-from core import Pole, Skladac, log, pole_ven
+from core import (CELY, Odpovidac, Pole, Skladac, Vyrez, korpusy_ven,
+                  log, pole_ven, prehled_sablon)
+from core.derived import bez_odvozenych, ocistit_korpus
+from core.dialog import Rozhovor
+from core.tvrzeni import INSTANCE, PODTRIDA, Mluvnice, Znalost
 from core.window import Okno
 
 STATICKE = (".html", ".css", ".js", ".json", ".svg", ".map")
 PRAVDA = ("1", "true", "ano")
 
 
+def udelej_lemmatizator(rozbor):
+    """Pojmy z dialogu se lemmatizují týmž UDPipe jako věty. Pamatuje si,
+    co už viděl — v rozhovoru se stejné slovo opakuje pořád dokola. Bez
+    UDPipe se jen zmenší písmena, ať se dá pracovat i tak."""
+    pamet = {}
+
+    def lemmatizuj(text: str) -> str:
+        klic = (text or "").strip().lower()
+        if not klic:
+            return klic
+        if klic not in pamet:
+            pamet[klic] = rozbor.lemmata(text) or klic
+        return pamet[klic]
+
+    return lemmatizuj
+
+
 def udelej_handler(config, uloziste, rozbor):
     pole = Pole(uloziste)
+    # Rozhovor žije po celou dobu běhu serveru; tvrzení se ukládají hned,
+    # takže restart o nic nepřijde.
+    znalost = Znalost(config.cesta_znalosti())
+    znalost.naplnit_ze_svazu(config.cesta_svazu())
+    rozhovor = Rozhovor(znalost, Mluvnice(udelej_lemmatizator(rozbor)))
+
+    def pripojit_odpovidac():
+        """Odpovídač potřebuje postavené pole, takže se zapojí líně — první
+        otázka na obsah si ho vyžádá a pak už drží. Sdílí TUTÉŽ znalost jako
+        rozhovor, jinak by expanze neznala, co se právě zadalo."""
+        if rozhovor.odpovidac is None:
+            pole.postavit()
+            rozhovor.odpovidac = Odpovidac(pole, znalost)
+        return rozhovor.odpovidac
 
     class Handler(BaseHTTPRequestHandler):
         server_version = "pole2/3.0"
@@ -57,6 +92,22 @@ def udelej_handler(config, uloziste, rozbor):
         def parametry(self):
             return {k: v[0] for k, v in parse_qs(urlparse(self.path).query).items()}
 
+        def cele(self, q, klic, vychozi=None):
+            try:
+                return int(q[klic])
+            except (KeyError, TypeError, ValueError):
+                return vychozi
+
+        def vyrezy(self, q):
+            """Kolik vět poslat. Pole se staví celé; tohle je jen okno, kterým
+            se do něj kouká — spisovatelský korpus má 59 106 řádků a prohlížeč
+            z toho neudělá nic."""
+            vet = self.cele(q, "vety")
+            if vet is None or vet <= 0:
+                return {"f": CELY, "q": CELY}
+            od = max(0, self.cele(q, "odvety", 0) or 0)
+            return {"f": Vyrez(od, vet), "q": Vyrez(od, vet)}
+
         def log_message(self, fmt, *args):
             sys.stderr.write("  %s %s\n" % (self.command or "-", self.path))
 
@@ -73,6 +124,9 @@ def udelej_handler(config, uloziste, rozbor):
                 n.syrove = q["syrove"] in PRAVDA
             if "stred" in q:
                 n.stred_uvnitr = q["stred"] in PRAVDA
+            if "stred_atr" in q:
+                # čárkami oddělený seznam; prázdný = celý střed
+                n.stred_atributy = q["stred_atr"]
             if "typy" in q:
                 n.typy = q["typy"] in PRAVDA
             return n
@@ -104,14 +158,37 @@ def udelej_handler(config, uloziste, rozbor):
             if cesta == "/api/field":
                 self.nastavit_pole(q)
                 return self.posli(200, pole_ven(
-                    pole, s_korpusy=q.get("korpusy") in PRAVDA))
+                    pole, s_korpusy=q.get("korpusy") in PRAVDA,
+                    vyrezy=self.vyrezy(q)))
+
+            if cesta == "/api/templates":
+                # Vzory samy o sobě — pohled, který velký korpus unese.
+                self.nastavit_pole(q)
+                pole.postavit()
+                strana = pole.strana("q" if q.get("strana") == "q" else "f")
+                return self.posli(200, prehled_sablon(
+                    strana, od=max(0, self.cele(q, "od", 0) or 0),
+                    pocet=min(200, max(1, self.cele(q, "pocet", 60) or 60)),
+                    razeni=q.get("razeni", "velikost"),
+                    hledat=(q.get("hledat") or "").strip().lower()))
 
             if cesta == "/api/data":
+                # Týž katalog i tytéž věty jako /api/field — tedy i s hrubými
+                # vrstvami. Kdyby se to lišilo, mřížka by podle toho, kterou
+                # cestou se data načetla, ukazovala jednou o tři sloupce míň.
+                pole.postavit()
+                vyrezy = self.vyrezy(q)
                 return self.posli(200, {
-                    "vertikaly": uloziste.nacist_vertikaly(),
-                    "korpusy": {jm: uloziste.nacist_korpus(jm)
-                                for jm in ("facts", "query")},
+                    "vertikaly": pole.vypsat_vertikaly(),
+                    "korpusy": korpusy_ven(pole, vyrezy),
+                    "vyrez": {"od_vety": vyrezy["f"].od_vety,
+                              "vet": vyrezy["f"].vet},
+                    "celkem": {jm: len(uloziste.nacist_korpus(jm))
+                               for jm in ("facts", "query")},
                 })
+
+            if cesta == "/api/dialog":
+                return self.posli(200, rozhovor.vypsat_stav())
 
             if cesta == "/api/mappings":
                 return self.posli(200, uloziste.vypsat_mapovani())
@@ -144,11 +221,13 @@ def udelej_handler(config, uloziste, rozbor):
             if cesta == "/api/data":
                 if not isinstance(data, dict) or "vertikaly" not in data:
                     return self.chyba(400, "čekám objekt s klíčem vertikaly")
-                uloziste.ulozit_vertikaly(data["vertikaly"])
+                # Hrubé vrstvy prohlížeč dostal, aby je uměl vykreslit, ale
+                # zpátky se neukládají — počítají se z jemných.
+                uloziste.ulozit_vertikaly(bez_odvozenych(data["vertikaly"]))
                 for jm in ("facts", "query"):
                     if jm in data.get("korpusy", {}):
-                        uloziste.ulozit_korpus(jm, data["korpusy"][jm])
-                pole.nastaveni.zestaralo = True     # data se změnila, přepočítat
+                        uloziste.ulozit_korpus(jm, ocistit_korpus(data["korpusy"][jm]))
+                pole.zapomenout_katalog()           # data se změnila, přepočítat
                 return self.posli(200, {"ok": True})
 
             m = re.match(r"^/api/mappings/([^/]+)$", cesta)
@@ -185,6 +264,27 @@ def udelej_handler(config, uloziste, rozbor):
             if cesta == "/api/compose":
                 return self.posli(200, self.slozit(data))
 
+            # Dialog: text dovnitř, celý stav ven. Prohlížeč si nic nedopočítává
+            # — o tom, co se s větou stalo, rozhoduje jádro.
+            if cesta == "/api/dialog":
+                pripojit_odpovidac()
+                rozhovor.poslat(data.get("text") or "")
+                return self.posli(200, rozhovor.vypsat_stav())
+
+            if cesta == "/api/dialog/decide":
+                volba = data.get("druh")
+                if volba == "preskocit":
+                    rozhovor.preskocit()
+                elif volba in (PODTRIDA, INSTANCE):
+                    rozhovor.rozhodnout(volba)
+                else:
+                    return self.chyba(400, "druh je podtrida, instance nebo preskocit")
+                return self.posli(200, rozhovor.vypsat_stav())
+
+            if cesta == "/api/dialog/forget":
+                rozhovor.zapomenout()
+                return self.posli(200, rozhovor.vypsat_stav())
+
             return self.chyba(404, "neznámá cesta")
 
         def slozit(self, data):
@@ -194,7 +294,8 @@ def udelej_handler(config, uloziste, rozbor):
             pole.postavit()
             skladac = Skladac(pole.ziskat_slovnik(), pole.zdroj, pole.skladac,
                               Okno(pole.nastaveni.polomer_dotazu,
-                                   pole.nastaveni.stred_uvnitr))
+                                   pole.nastaveni.stred_uvnitr),
+                              pole.sitko)
             skladac.vzor.slova = list(data.get("q", []))
             skladac.vzor.kotva = int(data.get("kotva", -1))
             skladac.vzor.cile = list(data.get("f", []))

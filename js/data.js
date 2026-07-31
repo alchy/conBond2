@@ -8,21 +8,28 @@ export const data = { cols: [], facts: [], query: [] };
 export let vychozi = null;      // pro tlačítko „Výchozí data"
 
 export const KORPUS = {
-  f: { klic: 'facts', jm: 'fakta', predpona: 't' },
+  f: { klic: 'facts', jm: 'fakta', predpona: 'f' },
   q: { klic: 'query', jm: 'dotazy', predpona: 'q' },
 };
 
-export const GRUPY = ['UPOS', 'DEPREL', 'FEATS', 'TYP', 'LEM', 'PTÁ', 'VLASTNÍ'];
+export const GRUPY = ['UPOS', 'DEPREL', 'FEATS', 'HRUBĚ', 'TYP', 'LEM',
+                     'PTÁ', 'VLASTNÍ'];
 /* Typ, Lem, tázací tvar a vlastní atributy jsou NAŠE vrstva, ne rozborová —
    proto inkoust, ne další barva. Co nedává UDPipe, patří vizuálně k sobě.
    PTÁ je tázací TVAR, ne lemma: „co" a „koho" jsou různé otázky s různými
    odpověďmi, ale totéž lemma. */
 export const BARVA_GRUPY = {
   '∅': 'muted', UPOS: 'upos', DEPREL: 'deprel', FEATS: 'feats',
-  TYP: 'ink', LEM: 'ink2', 'PTÁ': 'ink', 'VLASTNÍ': 'ink',
+  'HRUBĚ': 'hrube', TYP: 'ink', LEM: 'ink2', 'PTÁ': 'ink', 'VLASTNÍ': 'ink',
 };
-export const TRIDA_GRUPY = { UPOS: 0, DEPREL: 1, FEATS: 2, TYP: 3, LEM: 4,
-                             'PTÁ': 3, 'VLASTNÍ': 3 };
+export const TRIDA_GRUPY = { UPOS: 0, DEPREL: 1, FEATS: 2, 'HRUBĚ': 5, TYP: 3,
+                             LEM: 4, 'PTÁ': 3, 'VLASTNÍ': 3 };
+
+/* HRUBĚ se POČÍTÁ z jemných sloupců, neukládá se. Backend ho při ukládání
+   odfiltruje, takže smazání v prohlížeči by po načtení mlčky zmizelo —
+   editor ho proto nenabízí. */
+export const POCITANE = 'HRUBĚ';
+export const jePocitana = c => c.g === POCITANE;
 
 const kopie = o => JSON.parse(JSON.stringify(o));
 

@@ -162,7 +162,8 @@ class Odpovidac:
         kusy = {t.lower() for t in tvary}
         skore: dict = {}
         for klic in self.podle_entity:
-            shoda = len(set(klic.split("_")) & kusy)
+            casti = set(klic.split("_"))
+            shoda = len(casti & kusy)
             if shoda:
                 skore[klic] = shoda
         if not skore:

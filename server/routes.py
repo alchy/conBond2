@@ -268,7 +268,21 @@ def udelej_handler(config, uloziste, rozbor):
             # — o tom, co se s větou stalo, rozhoduje jádro.
             if cesta == "/api/dialog":
                 pripojit_odpovidac()
-                rozhovor.poslat(data.get("text") or "")
+                z = rozhovor.poslat(data.get("text") or "")
+                # DO LOGU PATŘÍ OTÁZKA I TO, ČÍM SE POLE ZÚŽILO. Přístupový
+                # řádek `POST /api/dialog` neřekne nic; když se něco zvrtne,
+                # je z tohohle poznat, jestli selhalo rozsvícení, zúžení,
+                # nebo výběr — a nemusí se to přehrávat ručně.
+                n = z.nalez or {}
+                a = n.get("aktivace") or {}
+                log.info("dialog", otazka=z.text, druh=z.druh,
+                         odpoved=(n.get("odpoved") or z.odpoved or "")[:60],
+                         sviti=",".join(f"{t}:{k}" for t, k in
+                                        list((a.get("svitici") or {}).items())[:4]),
+                         entita=a.get("entita") or "", vet=n.get("vet"),
+                         typ=n.get("typ"), role=n.get("role") or "",
+                         kandidatu=len(n.get("kandidati") or ()),
+                         z_odpovedi=",".join(a.get("z_odpovedi") or ()))
                 return self.posli(200, rozhovor.vypsat_stav())
 
             if cesta == "/api/dialog/decide":

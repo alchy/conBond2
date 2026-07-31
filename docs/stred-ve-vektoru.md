@@ -135,6 +135,22 @@ si první sadu měření znehodnotil.
 `filtruje_stred(sitko)` se sítka zeptá aktivací, kterou nemůže znát; když ji
 zahodí a střed přitom v okně není, jádro to při stavbě ohlásí do logu.
 
+## Co je z toho výchozí
+
+Od měření na 34 autorech je `stred_atributy = ("NameType",)` VÝCHOZÍ. Stojí
+2 body sdílení (59 % → 57 %) a zvedne čistotu šablon nesoucích místo
+z 22 % na 98 %: „v Praze" a „v bezvědomí" mají identického souseda a
+rozlišuje je právě to, co sedí na středu.
+
+Čas z toho nemá skoro nic (44 % → 48 %) — rok je NUM a jméno mu nepomůže;
+`Case` by ho zvedl na 63 %, ale za 9 bodů sdílení, takže zatím ne.
+
+**Na odpovídání to zatím nemá vliv** a je poctivé to říct: odpovídač jde
+přes entitu a návěsku agenta, šablony vůbec nekonzultuje. Zlepšila se
+abstrakce pole, ne cesta k odpovědi. Co ta ostrost ukázala: mezi řádky
+„místních" šablon je 20 míst, která agent Topos NEOZNAČIL — většinou proto,
+že jsou v závorce, kam schválně nesahá. Pole je vidí i tam.
+
 ## Co zůstává otevřené
 
 * **Frontend.** API bere `?stred_atr=Polarity,Tense`; v prohlížeči zatím není

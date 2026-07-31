@@ -99,8 +99,8 @@ print(f"  slovník {len(s)} · v obou {len(v_obou)} · nejistých {len(s.vypsat_
 print(f"  vazby: fakta {len(pole.fakta.vazby)} · dotazy {len(pole.dotazy.vazby)}")
 ok(len(s) == 104, f"slovník {len(s)}, čekáno 104")
 ok(len(v_obou) == 38, f"v obou {len(v_obou)}, čekáno 38")
-ok(pole.fakta.pocet_sablon() == 71 and pole.dotazy.pocet_sablon() == 161,
-   "počty šablon nesedí")
+ok(pole.fakta.pocet_sablon() == 71 and pole.dotazy.pocet_sablon() == 166,
+   f"počty šablon nesedí: {pole.fakta.pocet_sablon()}/{pole.dotazy.pocet_sablon()}")
 ok(len(pole.fakta.vazby) == 74 and len(pole.dotazy.vazby) == 210,
    "počty vazeb nesedí")
 for k, predpona in (("f", "f"), ("q", "q")):
@@ -135,6 +135,8 @@ ok(len(s_pta) == len(kolidujici), "Ptá= je nerozdělil na samostatné")
 
 print("\n— skládání otázky ze slovníku —")
 pole = nove_pole(polomer_dotazu=2)
+# Okno(2, False) = střed MIMO; tenhle test zkoumá právě to, takže se
+# nesmí opírat o výchozí nastavení, které má střed v okně.
 skladac = Skladac(pole.ziskat_slovnik(), pole.zdroj, pole.skladac, Okno(2, False))
 skladac.pridat_slovo("se").pridat_slovo("jmenuje").zvolit_kotvu("kdo")
 skladac.pridat_slovo("alfons").prepnout_cil("pes")
@@ -178,8 +180,8 @@ print("\n— sítko: střed v okně, ale projde z něj jen jmenované —")
 # Bez sítka je střed buď celý venku (a zápor, čas i osoba jsou neviditelné,
 # protože je v češtině nese slovo samo), nebo celý uvnitř (a šablona přestane
 # být obálkou okolí). Sítko je mezi tím.
-mimo = nove_pole()
-cely = nove_pole(stred_uvnitr=True)
+mimo = nove_pole(stred_atributy=(), stred_uvnitr=False)
+cely = nove_pole(stred_uvnitr=True, stred_atributy=())
 uzke = nove_pole(stred_atributy=("Polarity",))
 print(f"  šablon faktů — mimo {mimo.fakta.pocet_sablon()}"
       f" · celý střed {cely.fakta.pocet_sablon()}"
@@ -404,7 +406,8 @@ ven = pole_ven(pole)
 ok(set(ven) >= {"nastaveni", "klic_mapovani", "slovnik", "f", "q"},
    "v exportu chybí klíč")
 ok(len(ven["f"]["radky"]) == pole.fakta.tok.pocet_radku(), "rozvržení řádků nesedí")
-ok(ven["f"]["cisla"]["sablon"] == 71, "čísla v exportu nesedí s modelem")
+ok(ven["f"]["cisla"]["sablon"] == pole.fakta.pocet_sablon(),
+   "čísla v exportu nesedí s modelem")
 print(f"  klíčů: {', '.join(sorted(ven))} · řádků f {len(ven['f']['radky'])}")
 
 print("\n— odpovídač: osoba jako aktivace, sloveso jako tvar —")

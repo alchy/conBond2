@@ -15,11 +15,17 @@ sdílení, celý venku zneviditelní zápor a čas — viz sieve.py.
 
 MAX_POLOMER = 8
 
+# Výchozí je to, co je změřeně nejlepší — jinak by se každý musel trefit sám.
+# `NameType` na středu stojí 2 body sdílení (59 % → 57 %) a zvedne čistotu
+# šablon nesoucích místo z 22 % na 98 %: „v Praze" a „v bezvědomí" mají
+# identického souseda a rozlišuje je právě to, co sedí NA STŘEDU.
+VYCHOZI_STRED = ("NameType",)
+
 
 class Nastaveni:
     def __init__(self, polomer_faktu: int = 1, polomer_dotazu: int = 1, *,
                  syrove: bool = False, stred_uvnitr: bool = False,
-                 typy: bool = True, stred_atributy=()):
+                 typy: bool = True, stred_atributy=VYCHOZI_STRED):
         self._polomer = {"f": 0, "q": 0}
         self.polomer_faktu = polomer_faktu
         self.polomer_dotazu = polomer_dotazu

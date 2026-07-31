@@ -553,6 +553,47 @@ serazeno = [s["tvaru"] for s in prehled["sablony"]]
 ok(serazeno == sorted(serazeno, reverse=True), f"vzory nejsou od největšího: {serazeno}")
 print(f"  přehled: {prehled['celkem']} vzorů, největší sdílí {serazeno[0]} tvarů")
 
+print("\n— role: větný člen z rozboru, ale jen tam, kde agent není —")
+from core.roles import Role  # noqa: E402
+
+_role = Role(Jazyk.nacist())
+
+# Tabulka, ne kód: pád rozhoduje dřív než výchozí hodnota, jinak by
+# „řekl Janovi“ bylo určení místa.
+def _tok(upos, dep, *rysy, lemma="x", form="x", tid=1, head=0):
+    return {"form": form, "lemma": lemma, "upos": upos,
+            "acts": [upos, dep] + list(rysy), "id": tid, "head": head}
+
+ok(_role.role_tokenu(_tok("NOUN", "obl", "Case=Dat")) == "komu_cemu",
+   "dativ u obl není komu_cemu")
+ok(_role.role_tokenu(_tok("NOUN", "obl", "Case=Loc")) == "kde",
+   "lokál u obl není kde")
+
+# Instrumentál sám o sobě není „s kým" — bez předložky se role nepřiřadí,
+# jinak by „byl nositelem“ odpovídalo na otázku po společníkovi.
+_bez = _tok("NOUN", "obl", "Case=Ins", tid=2, head=1)
+ok(_role.role_tokenu(_bez, [_bez]) == "", "holý instrumentál se vydává za s_kym_cim")
+_s = _tok("ADP", "case", lemma="s", tid=3, head=2)
+ok(_role.role_tokenu(_bez, [_bez, _s]) == "s_kym_cim", "s předložkou role nevznikla")
+
+# Dvě síta nad rolí: prázdné slovo neodpovídá nikdy, jmenná role žádá jméno.
+ok(not _role.nese_obsah(_tok("PRON", "obl", "Case=Dat")), "zájmeno prošlo jako odpověď")
+ok(not _role.nese_obsah(_tok("VERB", "ccomp", "Case=Acc"), "koho_co"),
+   "sloveso prošlo do jmenné role")
+ok(_role.nese_obsah(_tok("NOUN", "obl", "Case=Acc"), "koho_co"), "jméno neprošlo")
+
+# Delší tázací tvar bije kratší, jinak „jako CO“ spadne pod „co“.
+_j = Jazyk.nacist()
+ok(_j.na_co_se_pta("Jako co pracoval Jirásek?") is None,
+   "„jako co“ se pořád čte jako Typ=druh")
+ok(_role.role_otazky("Jako co pracoval Jirásek?") == "jako_co",
+   "„jako co“ nedostalo roli doplňku")
+ok(_j.na_co_se_pta("Co napsal Jirásek?") == "Typ=druh",
+   "obyčejné „co“ přestalo ukazovat na druh")
+
+print("  pád i předložka rozhodují · prázdná slova a slovesa neodpovídají"
+      " · delší tázací tvar vyhrává")
+
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")
 ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")

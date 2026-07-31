@@ -114,7 +114,11 @@ def zmerit(rozmer: Rozmer, dolozene: Iterable, pozadi: Iterable) -> dict:
             # Zdvih pod jednou znamená, že se ta značka u doložených dvojic
             # vyskytuje VZÁCNĚJI než náhodou — a nula znamená, že vůbec.
             "zdvih": (podil_d / podil_p) if podil_p else None,
-            "protipriklady": prip_d.get(z, [])[:5]}
+            # Dvojice s touhle značkou. U značky, která se má u doložených
+            # NEvyskytovat, jsou to protipříklady; u té druhé prostě
+            # doklady. Jedno pole, protože je to táž informace — pojmenovat
+            # je „protipříklady" plošně bylo matoucí.
+            "priklady": prip_d.get(z, [])[:5]}
     return out
 
 

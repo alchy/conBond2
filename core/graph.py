@@ -31,6 +31,7 @@ a graf se utopí v místech a letopočtech.
 
 from typing import Iterable, Mapping, Optional
 
+from .edges import jmeno as cele_jmeno
 from .roles import deprel
 
 # Kolik váží zmínka podle toho, čím ve větě je. Podmět nese téma věty,
@@ -40,10 +41,6 @@ VAHY = {"nsubj": 2.0, "nsubj:pass": 2.0, "obj": 1.5, "iobj": 1.5,
 
 # Jména, ne slova. Obecné podstatné jméno by z grafu udělalo tezaurus.
 JMENNE_UPOS = ("PROPN",)
-
-
-def jmeno(token: Mapping) -> str:
-    return (token.get("lemma") or token.get("form") or "").lower()
 
 
 class Graf:
@@ -64,9 +61,16 @@ class Graf:
         for vi, veta in enumerate(vety):
             zminky = {}
             for t in veta:
-                if t.get("upos") not in JMENNE_UPOS:
+                if t.get("upos") not in JMENNE_UPOS or deprel(t) == "flat":
+                    continue                 # `flat` je část jména, ne zmínka
+                # JMÉNO SE SKLÁDÁ TÝMŽ PRAVIDLEM JAKO U HRAN. První verze
+                # brala holé lemma tokenu, takže graf měl uzel „jirásek",
+                # kdežto životy byly vedené pod „alois jirásek" — a měření
+                # pak hlásilo nula doložených dvojic, ačkoli jich jsou
+                # tisíce. Vada nebyla v datech, ale v klíči.
+                j = cele_jmeno(veta, t)
+                if not j:
                     continue
-                j = jmeno(t)
                 v = VAHY.get(deprel(t), 0.5)
                 zminky[j] = max(zminky.get(j, 0.0), v)
             jmena = sorted(zminky)

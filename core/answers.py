@@ -50,6 +50,11 @@ class Odpovidac:
         self.podle_typu = self._sestavit_navesky()
         self.podle_entity = self._sestavit_entity()
         self.podle_jmena = self._sestavit_jmena()
+        # Dokumenty, které jsou lidé — poznají se podle doloženého narození.
+        # Počítá se z týchž dat, ne z výčtu: korpus roste a ruční seznam by
+        # tiše zastaral.
+        from .edges import osoby_korpusu
+        self.osoby = {j.replace(" ", "_") for j in osoby_korpusu(self.vety)}
 
     # ---- rejstříky ---------------------------------------------------
     def _sestavit_navesky(self) -> dict:
@@ -169,7 +174,14 @@ class Odpovidac:
         if not skore:
             return []
         nej = max(skore.values())
-        return sorted(k for k, n in skore.items() if n == nej)
+        stejne = sorted(k for k, n in skore.items() if n == nej)
+        # ČLOVĚK PŘED KNIHOU PŘI ROVNOSTI. „Jan" sedí stejným počtem slov
+        # na `bible_1_jan` i `jan_neruda`; otázka „Kdo byl Jan?" pak
+        # odpovídala z listu Janova. Rozhoduje se podle dat — dokument
+        # s doloženým narozením je člověk — ne podle váhy klíče, kterou
+        # jsem zkusil a zhoršila to.
+        lide = [k for k in stejne if k in getattr(self, "osoby", ())]
+        return lide or stejne
 
     def najit_entitu(self, tvary) -> str:
         """Jméno z otázky → klíč entity. Stačí, když sedí příjmení."""
@@ -248,6 +260,10 @@ class Odpovidac:
             tvary = list(z_odpovedi)
         shody = self.entity_pro_jmeno(tvary)
         entita = shody[0] if shody else ""
+        # Entita z REMÍZY je slabý výběr. „Jan" sedí na pět dokumentů a
+        # člověk z nich vyhrál jen proto, že má doložené narození — to
+        # nestačí na to, aby se kvůli němu rozšiřovalo pole.
+        z_remizy = len(shody) > 1
         # TÉMA DRŽÍ ŘETĚZ. „Kdo je Hrabal?" a pak „Kde se narodil?" — druhá
         # otázka jméno nemá a bez tématu se pole složí ze samotného slovesa;
         # měřeno, že pak odpoví pokaždé týmž místem bez ohledu na to, o kom
@@ -347,6 +363,7 @@ class Odpovidac:
                 "nezname": [t for t, v in kde.items() if not v],
                 "jmena": jmena, "cizi_jmeno": cizi, "z_tematu": bool(z_tematu),
                 "nejasne": nejasne, "z_odpovedi": z_odpovedi,
+                "z_remizy": z_remizy,
                 "siroko": siroko, "vety": prunik}
 
     def rozsirit(self, tvar: str) -> set:
@@ -490,8 +507,12 @@ class Odpovidac:
         # („Kolik měl Hrabal LETADEL?"), nebo cizí jméno. Tam by z „nevím"
         # vzniklo „tady máš něco o té osobě" — a to je zase vymýšlení, jen
         # opatrnější. První verze tohohle řezu neměla a rozbila dva zápory.
+        # ROZŠÍŘENÍ ŽÁDÁ JISTOTU, KOHO SE TÝKÁ. „Kde byl Jan uvězněn?"
+        # vybralo Nerudu z pěti Janů, u něj se „uvězněn" nepotkalo, pole
+        # se rozšířilo na celý článek a vyšla z toho „Praha". Sebejistá
+        # chyba je horší než prázdno.
         lze_rozsirit = (akt["vet_entity"] and not akt["cizi_jmeno"]
-                        and not akt["nezname"])
+                        and not akt["nezname"] and not akt.get("z_remizy"))
         if not nalezy and lze_rozsirit:
             sirsi = set(self.podle_entity.get(akt["entita"], ()))
             # Role se do širšího pole nepouští. Rozšíření zahazuje právě

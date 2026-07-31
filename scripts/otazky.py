@@ -99,17 +99,29 @@ def entita(koren) -> str:
     return ""
 
 
-def visi_na(veta, i, koren, kroku=2):
-    """Závisí token i na kořeni, nejvýš přes `kroku` kroků?
+# Slovesné závislosti, které otvírají VLASTNÍ klauzuli. Projít přes ně
+# znamená odejít do jiné výpovědi — a nález tam už patří jinému ději.
+CIZI_KLAUZULE = ("acl", "advcl", "ccomp", "xcomp", "csubj", "conj", "parataxis")
 
-    Přes jeden krok kvůli předložkám a shodným přívlastkům: „v Praze" visí
-    Praha na slovese přes obl, ale „v roce 1925" má rok pod „roce". Dva kroky
-    to pokryjí a dál už se dostáváme do cizích klauzulí."""
+
+def visi_na(veta, i, koren, max_kroku=8):
+    """Závisí token i na kořeni, aniž by se cestou opustila jeho klauzule?
+
+    Dřív se počítaly KROKY (nejvýš dva) a bylo to špatné měřítko: „Dne
+    12. srpna 1879 se Alois Jirásek oženil" má řetěz 1879 → srpna → Dne →
+    oženil, tedy tři kroky, takže předsunuté určení času propadlo — a to je
+    45 % všech časových návěsek.
+
+    Proti cizí klauzuli nechrání délka cesty, ale hranice klauzule: chůze se
+    zastaví, jakmile by prošla slovesem, které otvírá vlastní výpověď."""
     podle_id = {t.get("id"): t for t in veta if t.get("id") is not None}
     t = veta[i]
-    for _ in range(kroku + 1):
+    for _ in range(max_kroku):
         if t.get("id") == koren.get("id"):
             return True
+        if t.get("upos") in ("VERB", "AUX") and any(
+                a in CIZI_KLAUZULE for a in t["acts"]):
+            return False              # vlastní klauzule, ne naše
         t = podle_id.get(t.get("head"))
         if t is None:
             return False

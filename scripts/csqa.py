@@ -81,6 +81,10 @@ class Sit:
         self.cesta = cesta
         self.pamet: dict = {}
         self.selhalo: set = set()
+        self.stupen: dict = {}
+        if os.path.exists(cesta + ".stupne"):
+            with open(cesta + ".stupne", encoding="utf-8") as f:
+                self.stupen = json.load(f)
         if os.path.exists(cesta):
             with open(cesta, encoding="utf-8") as f:
                 self.pamet = json.load(f)
@@ -89,6 +93,8 @@ class Sit:
         os.makedirs(os.path.dirname(self.cesta), exist_ok=True)
         with open(self.cesta, "w", encoding="utf-8") as f:
             json.dump(self.pamet, f, ensure_ascii=False)
+        with open(self.cesta + ".stupne", "w", encoding="utf-8") as f:
+            json.dump(self.stupen, f, ensure_ascii=False)
 
     def okoli(self, pojem: str) -> list:
         """Hrany, kde pojem stojí vlevo. Vrací [(rel, druhý konec)]."""
@@ -108,6 +114,11 @@ class Sit:
             self.selhalo.add(klic)
             return []
         hrany = [[r["row"]["rel"], r["row"]["arg2"]] for r in d.get("rows", [])]
+        # STUPEŇ UZLU je skutečný počet, ne délka staženého vzorku: hrany
+        # omezuji na sto, ale `new york` jich má tisíce a právě proto
+        # přežije v každé otázce. Bez pravého čísla by se rozbočník
+        # nepoznal.
+        self.stupen[klic] = d.get("num_rows_total", len(hrany))
         self.pamet[klic] = hrany
         return hrany
 
@@ -128,8 +139,10 @@ def opora(sit: Sit, pojem: str, moznost: str) -> dict:
     hrany = sit.okoli(pojem)
     for rel, druhy in hrany:
         if druhy == cil and rel in NOSNE:
+            sit.okoli(cil)          # kvůli stupni cíle
             return {"kroku": 1, "druh": "trida" if rel in ("isa", "definedas")
-                    else "primo", "pres": [rel]}
+                    else "primo", "pres": [rel],
+                    "stupen": sit.stupen.get(cil, 0)}
     # PŘES ZAŘAZENÍ, NEBO PŘÍMO? Tohle je ten rozdíl, který úloha zkouší:
     #
     #   fox --isa--> wild_animal --atlocation--> natural_habitat   typické
@@ -142,13 +155,14 @@ def opora(sit: Sit, pojem: str, moznost: str) -> dict:
     pres_tridu = sorted(set(tridy) & set(tam))
     if pres_tridu:
         u = pres_tridu[0]
-        return {"kroku": 2, "druh": "trida", "pres": [tridy[u], tam[u]], "uzel": u}
+        return {"kroku": 2, "druh": "trida", "pres": [tridy[u], tam[u]],
+                "uzel": u, "stupen": sit.stupen.get(cil, 0)}
     odtud = {d: r for r, d in hrany if r in NOSNE}
     spolecne = sorted(set(odtud) & set(tam))
     if spolecne:
         u = spolecne[0]
         return {"kroku": 2, "druh": "asociace", "pres": [odtud[u], tam[u]],
-                "uzel": u}
+                "uzel": u, "stupen": sit.stupen.get(cil, 0)}
     return {"kroku": 0}
 
 
@@ -162,6 +176,7 @@ def main() -> int:
     sit = Sit()
 
     s_oporou = trefa = preskoceno = 0
+    zaznamy: list = []
     podle = {d: {"otazek": 0, "trefa": 0, "kandidatu": 0}
              for d in ("trida", "primo", "asociace")}
     vyloucenych = zabitych = 0
@@ -191,6 +206,7 @@ def main() -> int:
                 podle[d]["otazek"] += 1
                 podle[d]["trefa"] += (spravny in kdo)
                 podle[d]["kandidatu"] += len(kdo)
+        zaznamy.append({"opory": opory, "spravny": spravny})
         nej = min(range(len(opory)),
                   key=lambda j: (opory[j]["kroku"] or 9))
         if opory[nej]["kroku"]:
@@ -229,6 +245,61 @@ def main() -> int:
             continue
         print(f"  {d:<12} {x['otazek']:>7} {x['trefa']:>10} "
               f"({100*x['trefa']/x['otazek']:>3.0f} %) {x['kandidatu']/x['otazek']:>16.1f}")
+    zuzeni(zaznamy)
+    return 0
+
+
+def zuzeni(zaznamy: list) -> None:
+    """Postupy hodnocené nad TÝMIŽ daty — každý krok zvlášť.
+
+    Nepočítá se přesnost, ale dvojice, kterou tenhle projekt používá u pole:
+
+        dosah      přežije správná odpověď zúžení?
+        kandidátů  kolik jich zbylo z pěti
+
+    Zúžit na jednoho se ztrátou dosahu není pokrok, jen hádání s menším
+    počtem možností. Proto se obě čísla hlásí spolu — samotné „kandidátů"
+    se dá vylepšit tím, že se zahodí všechno.
+    """
+    def vyhodnotit(nazev, vyber):
+        dosah = kand = kde = 0
+        for z in zaznamy:
+            zbyle = vyber(z["opory"])
+            if not zbyle:
+                continue
+            kde += 1
+            kand += len(zbyle)
+            dosah += z["spravny"] in zbyle
+        if not kde:
+            return
+        print(f"  {nazev:<34} {dosah}/{kde} ({100*dosah/kde:>3.0f} %)"
+              f" {kand/kde:>8.1f}"
+              f" {100*dosah/kde/(kand/kde):>9.0f} %")
+
+    print(f"\n  ZÚŽENÍ — každý krok zvlášť, nad týmiž daty")
+    print(f"  {'postup':<34} {'dosah':>12} {'kandidátů':>8} {'čekaná úspěšnost':>17}")
+    vyhodnotit("A · jakákoli opora",
+               lambda o: [j for j, x in enumerate(o) if x["kroku"]])
+    vyhodnotit("B · bez asociace",
+               lambda o: [j for j, x in enumerate(o)
+                          if x["kroku"] and x.get("druh") != "asociace"])
+
+    def idf(o, podil=0.5):
+        """Rozbočník ven. `new york` je uzel, ke kterému vede všechno, a
+        proto přežije v každé otázce; vzácnější cíl nese víc informace.
+        Práh je poměrem k nejvzácnějšímu, ne pevným číslem — stupně se
+        mezi otázkami liší o řády."""
+        zb = [j for j, x in enumerate(o)
+              if x["kroku"] and x.get("druh") != "asociace"]
+        if len(zb) < 2:
+            return zb
+        nej = min(o[j].get("stupen") or 1 for j in zb)
+        return [j for j in zb if (o[j].get("stupen") or 1) <= nej / podil]
+
+    vyhodnotit("C · B + idf (vzácnější cíl)", idf)
+    vyhodnotit("D · C, ale nejdřív zařazení",
+               lambda o: ([j for j, x in enumerate(o) if x.get("druh") == "trida"]
+                          or idf(o)))
     return 0
 
 

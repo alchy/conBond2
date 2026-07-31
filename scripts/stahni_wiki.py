@@ -37,6 +37,15 @@ PAUZA = 1.0
 # Čeští spisovatelé napříč obdobími. Vybráno tak, aby přibylo, co v korpusu
 # chybí — obrození, poezie, meziválečná próza, exil i současnost —, ne aby
 # to bylo dvanáctkrát totéž.
+# Jiná témata, ne životopisy. Smysl je zkusit, jestli se šablony postavené
+# na životopisech přenesou jinam — tvar vět je tu jiný: definice, výčty
+# vlastností, procesy, žádný protagonista.
+JINA_TEMATA = [
+    "Fotosyntéza", "Vltava", "Sopka", "Krevní oběh", "Šachy",
+    "Beton", "Pivo", "Elektromotor", "Antarktida", "Včela medonosná",
+    "Gotika", "Zemětřesení", "Kávovník", "Vlak", "Housle",
+]
+
 AUTORI = [
     "Alois Jirásek", "Karel Havlíček Borovský", "Karel Jaromír Erben",
     "Jaroslav Vrchlický", "Julius Zeyer", "Svatopluk Čech", "Petr Bezruč",
@@ -75,8 +84,9 @@ def main() -> int:
     znovu = "--znovu" in sys.argv
     mam = {j[:-4] for j in os.listdir(SUROVE) if j.endswith(".txt")}
 
-    chybi = [a for a in AUTORI if znovu or klic(a) not in mam]
-    print(f"v data/raw je {len(mam)} článků · seznam má {len(AUTORI)}"
+    seznam = AUTORI + JINA_TEMATA
+    chybi = [a for a in seznam if znovu or klic(a) not in mam]
+    print(f"v data/raw je {len(mam)} článků · seznam má {len(seznam)}"
           f" · stáhne se {len(chybi)}")
     if "--seznam" in sys.argv:
         for a in chybi:

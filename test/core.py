@@ -453,6 +453,21 @@ prosaklo = [a for v in korpus for t in v for a in t["acts"]
 print(f"  vět s původem: {ma_puvod}/{len(korpus)} · v acts prosáklo: {len(prosaklo)}")
 ok(not prosaklo, "původ věty se dostal do aktivací a rozpadl by šablony po autorech")
 
+print("\n— cizí jméno znamená nevím, ne odpověď o někom jiném —")
+# Bez tohohle řezu odpověděl systém na „Kdy se narodil Sherlock Holmes?"
+# datem někoho jiného: entita nesedla, pole se složilo ze samotného slovesa
+# a to svítí u půlky korpusu. Vymyšlená odpověď je horší než mlčení.
+odp = Odpovidac(nove_pole())
+for otazka in ("Kdy se narodil Sherlock Holmes?", "Kde zemřel Napoleon Bonaparte?"):
+    v = odp.odpovedet(otazka)
+    ok(v["aktivace"]["cizi_jmeno"], f"„{otazka}“ se netváří jako cizí jméno")
+    ok(not v["kandidati"], f"na „{otazka}“ systém odpověděl: {v['odpoved']!r}")
+# Shoda na JEDNOM kuse jména nestačí — „Marie Curie" trefila Marii Majerovou.
+ok(not odp.sedi_cele_jmeno(["Marie", "Curie"], "marie_majerová"),
+   "půlka jména prošla jako celá shoda")
+ok(odp.sedi_cele_jmeno(["Karel"], "karel_čapek"), "úplná shoda neprošla")
+print("  mlčí na neznámá jména a nespoléhá na půlku jména")
+
 print("\n— výřez: ven jde kousek, čísla zůstávají celá —")
 # Pole se staví CELÉ. Kdyby se stavělo z výřezu, přestaly by být šablony
 # šablonami korpusu a sdílení by se počítalo z náhodného vzorku — přesně ten

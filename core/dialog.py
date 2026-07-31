@@ -99,6 +99,11 @@ class Rozhovor:
         a = v["aktivace"]
         kde = f"Ent={a['entita']} ({a['vet_entity']} vět)" if a["entita"] else "bez osoby"
         tvary = ", ".join(f"{t} ({n})" for t, n in a["svitici"].items() if n)
+        if a.get("cizi_jmeno"):
+            return Zaznam(text, OBSAH,
+                          f"o „{' '.join(a['jmena'])}\" korpus nic neví — "
+                          "radši mlčím, než abych odpověděl o někom jiném",
+                          nalez=v)
         if not v["kandidati"]:
             popis = f"v poli není nic typu {v['typ']} — {kde}"
             if a["nezname"]:

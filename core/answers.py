@@ -93,10 +93,37 @@ class Odpovidac:
                 nejlepsi, skore = klic, shoda
         return nejlepsi
 
+    def sedi_cele_jmeno(self, jmena, entita: str) -> bool:
+        """Sedí VŠECHNA jména z otázky na jednu entitu?
+
+        „Marie Curie" trefila `marie_majerová` přes křestní jméno a systém
+        pak odpověděl rokem úmrtí Majerové. Shoda na jednom kuse jména
+        nestačí — je to táž past jako „Karel patřil všem sedmadvaceti
+        Karlům", jen na vstupu místo na výstupu."""
+        if not entita:
+            return False
+        casti = set(entita.split("_"))
+        return all(j.lower() in casti for j in jmena)
+
+    @staticmethod
+    def jmena_v_otazce(text: str) -> list:
+        """Slova s velkým písmenem uprostřed otázky. V češtině je to slušné
+        vodítko na vlastní jméno a první slovo se vynechá, protože tam velké
+        písmeno nese začátek věty, ne jméno."""
+        kusy = text.replace("?", " ").replace(".", " ").split()
+        return [k for k in kusy[1:] if k[:1].isupper()]
+
     def rozsvitit(self, text: str) -> dict:
         tvary = self.obsahove_tvary(text)
         entita = self.najit_entitu(tvary)
         vety_entity = set(self.podle_entity.get(entita, ()))
+        # JMÉNO, KTERÉ NEZNÁME, ZNAMENÁ „NEVÍM". Bez tohohle řezu odpověděl
+        # systém na „Kdy se narodil Sherlock Holmes?" datem narození někoho
+        # jiného: entita nesedla, takže se pole složilo ze samotného slovesa
+        # „narodil" a to svítí u půlky korpusu. Vymyšlená odpověď je horší
+        # než mlčení — proto se ptáme, jestli otázka JMÉNO vůbec měla.
+        jmena = self.jmena_v_otazce(text)
+        cizi = bool(jmena) and not self.sedi_cele_jmeno(jmena, entita)
         zbytek = [t for t in tvary if t not in set(entita.split("_"))]
         kde = {t: self.vety_tvaru(t) for t in zbytek}
         zname = {t: v for t, v in kde.items() if v}
@@ -112,9 +139,12 @@ class Odpovidac:
                 prunik, siroko = vety_entity, True
         else:
             prunik = vety_entity or podle_tvaru
+        if cizi:
+            prunik, siroko = set(), False
         return {"tvary": tvary, "entita": entita, "vet_entity": len(vety_entity),
                 "svitici": {t: len(v) for t, v in kde.items()},
                 "nezname": [t for t, v in kde.items() if not v],
+                "jmena": jmena, "cizi_jmeno": cizi,
                 "siroko": siroko, "vety": prunik}
 
     def rozsirit(self, tvar: str) -> set:

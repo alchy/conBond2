@@ -14,7 +14,7 @@ jednorázových.
 
 from typing import Sequence
 
-from .base import Agent, Naveska, je_cislo, v_zavorce
+from .base import Agent, Naveska, je_cele_cislo, je_cislo, v_zavorce
 
 
 class Metron(Agent):
@@ -26,7 +26,7 @@ class Metron(Agent):
         self.rok_do = rok_do
 
     def je_rok(self, forma: str) -> bool:
-        return (forma.isdigit() and len(forma) == 4
+        return (je_cele_cislo(forma) and len(forma) == 4
                 and self.rok_od <= int(forma) <= self.rok_do)
 
     def najdi(self, veta: Sequence[dict]) -> list:
@@ -48,4 +48,4 @@ class Metron(Agent):
     def hodnota(t: dict):
         """Číslicí přesně, slovem jen jako tvar — číslovkový lexikon zatím
         nemáme a hádat ho nebudeme."""
-        return int(t["form"]) if t["form"].isdigit() else t["form"].lower()
+        return int(t["form"]) if je_cele_cislo(t["form"]) else t["form"].lower()

@@ -1,0 +1,115 @@
+Zemětřesení je náhlý pohyb zemské kůry, indukovaný uvolněním napětí – např. z neustálých pohybů zemských desek – podél zlomů. Větší zemětřesení se proto obvykle vyskytují v těch oblastech světa, kterými významné zlomy procházejí (západní pobřeží Ameriky, východní Asie a ostrovy mezi ní a Austrálií, Kavkaz, Turecko a Írán, Středomoří). Studiu zemětřesení se věnuje geofyzika konkrétně její součást seismologie.
+Místo vzniku zemětřesení se nazývá ohnisko neboli hypocentrum, jeho kolmý průmět na zemském povrchu se nazývá epicentrum.
+K vyjádření síly otřesů se používají dvě rozdílné veličiny, magnitudo a makroseismická intenzita. Magnitudo se určuje z maximální výchylky seismometru, zatímco makroseismická intenzita se určuje ze statistického vyhodnocení účinků zemětřesení na osoby, budovy a krajinu. Každé zemětřesení je charakterizováno jednou hodnotou magnituda, ale více hodnotami makroseismické intenzity v závislosti na poloze vůči hypocentru. Například zemětřesení v rakouském Ebreichsdorfu 11. července 2000 mělo magnitudo 4,8 a makroseismickou intenzitu v epicentru VI stupňů EMS-98, v Brně bylo pocítěno jako IV. stupeň EMS-98.
+Zemětřesení způsobuje pohyb litosférických desek. Slabá zemětřesení, která člověk buď vůbec nepocítí, nebo která se projeví na nestabilních předmětech v domácnosti (skleničky na policích, lustr, hodiny na stole), jsou velmi častá i v seismicky klidnějších oblastech – např. seismické roje v západních Čechách mohou vést až k lehkému popraskání zdí. Slabá zemětřesení způsobuje různá lidská činnost. Například na Ostravsku dochází často k slabým otřesům v souvislosti s důlní činností. Zemětřesení mohou způsobovat i vodní nádrže a přehrady. Velká a nízkofrekvenční zemětřesení (LFE) mohou spouštět slapové síly. Silnější zemětřesení jsou pak vázána většinou na aktivní tektonické oblasti a jejich výskyt je méně častý, avšak celosvětově nejde o výjimečný úkaz. Jednou za několik let však dojde k silnému zemětřesení v nejchudších státech světa, které může připravit o život stovky či tisíce lidí a způsobí mnohamiliardové škody na majetku. Podmořská zemětřesení pak mohou vyvolat také velmi ničivé vlny tsunami. Zemětřesení také někdy doprovázejí světelné efekty. Doprovodné efekty vykazují podobné charakteristiky jako lámání bambusové tyčky. Předvídat okamžik, kdy k tomuto jevu dojde, je obtížné.
+
+
+== Druhy zemětřesení ==
+Podle původu:
+
+tektonická (dislokační) – nejčastější a nejzhoubnější. Vznikají náhlým uvolněním nahromaděné elastické energie v tektonicky aktivních oblastech, přičemž dochází ke smykovému pohybu ker podél zlomových spár. Maximální pohyby v horizontálním i vertikálním směru mohou dosáhnout i mnohametrových hodnot. Horizontální rozměr ohniska může dosahovat i stovek kilometrů.
+sopečná (vulkanická) – 7 %[zdroj?] Bývají průvodním jevem sopečné činnosti. Hypocentra mají vázaná na přívodní dráhy vulkanického materiálu a nacházejí se v hloubkách do 10 km. Tato zemětřesení mívají lokální význam a malou intenzitu. Často se vyskytují v rojích.
+řítivá – přibližně 3 % všech zemětřesení[zdroj?] – vznikají např. zřícením stropů podzemních dutin v krasových nebo pod dolovaných oblastech. Mají mělké hypocentrum a bývají lokálního charakteru. Mohou však způsobit značné škody.
+Podle hloubky:
+
+mělká – vyskytují se do 70 km, jedná se o 85 % všech zemětřesení[zdroj?]
+středně hluboká – vyskytují se mezi 70 až 300 km, 12 % všech zemětřesení[zdroj?]
+hluboká – hlouběji než 300 km (nejčastěji do 700 km), 3 % všech zemětřesení[zdroj?]
+Vedle rychlých zemětřesení existují i takzvaná pomalá zemětřesení trvající i měsíce a roky.
+
+
+== Výskyt zemětřesení ==
+
+Zemětřesení tektonického původu se vyskytují v místech s poruchami zemské kůry (nazývané také jako zlomy anebo dislokace), kde dochází k pohybu jednotlivých horninových bloků. Velká většina takovýchto zlomů je umístěna při okrajích tektonických desek, kde dochází k jejich vzájemné interakci. Více než 75 % tektonických zemětřesení se odehrává v pásmu ohraničující Pacifik v oblasti nazývané Ohnivý kruh. Dalších 15 až 20 % v zóně, která se táhne od Azor přes Severní Afriku, Středozemní moře, Apeninský poloostrov, Alpy, Dinárské hory, Turecko, Írán až po Himálaj. Ostatní tektonická zemětřesení připadají na oblast středooceánských hřbetů a v minimálním množství ještě na vnitrodesková zemětřesení.
+Masivní výskyt zemětřesení v konvergentních, divergentních a transformních okrajích tektonických desek je jedním z faktorů podporující teorii deskové tektoniky. Jednotlivé typy okrajů a jejich interakce produkují charakteristický typ zemětřesení (např. zemětřesení transformních okrajů mají ohniskovou hloubku přibližně 100 km, v případě konvergentních okrajů je charakteristický výskyt ve větších hloubkách lemující poklesávající desku – tzv. benioffova zóna).
+
+
+== Mechanismus zemětřesení ==
+
+Většina zemětřesení se vyskytuje na aktivních zlomech. Zlom představuje oslabenou zónu mezi dvěma bloky hornin, které jsou tvořeny horninami vzniklé vysokotlakou metamorfózou (mylonity, tektonity až pseudotachylity). Hloubka zlomu je často jen několik metrů, v porovnání s jeho délkou, které může být až stovky kilometrů. Zlomy se vyskytují na okrajích litosférických desek, ale také uvnitř těchto desek. Některé vystupují na povrch Země, ale většina jich je umístěna pod jejím povrchem.
+
+Jednotlivé horninové bloky se pohybují podél zlomu různými rychlostmi (od několika mm až po cm za rok, směr pohybu je protisměrný, případně rovnoběžný s rozdílnými rychlostmi jednotlivých bloků). Když dojde k jejich zaklínění, začne se kinetická energie pohybu akumulovat v podobě potenciální energie. Časem tak dochází k deformaci zaklíněných částí a jejich okolí. Třecí síly mohou být oslabované silikagelem, který vzniká reakcí oxidu křemičitého s vodou a současně působí jako mazivo. Platí všeobecný vztah, že se zvyšujícím se obsahem SiO2 v hornině (jako např. granit či gabro) klesá tření v horninových blocích. Roli hraje i geometrie zlomu.
+Proces kumulace potenciální energie je pomalý, trvá několik desítek až stovek let, přičemž dochází k fyzikálním a chemickým změnám na zlomové ploše. Faktorem, který hraje důležitou úlohu při spouštění zemětřesení je voda. Její uvolňování (např. dehydratací serpentinitu) a následným tlakovým nasycením zaklesnutých částí dochází ke vzniku mikrotrhlin. Narůst počtu mikrotrhlin má za následek překročení mezi pevnosti horniny a vede ke vzniku trhliny.
+Pokud napětí naroste příliš, dojde k tomu, že se zaklesnuté bloky nenávratně posunou do nové polohy. Během pohybu dojde k emisi seismických vln, které vznikají po celé délce porušené oblasti (tzv. ohnisko zemětřesení). Místo výskytu trhliny se nazývá hypocentrum a kolmý průmět hypocentra na povrch Země se pak nazývá epicentrum. Jednotlivé horninové bloky se však po uvolnění napětí nedostanou do poloh, kam by se dostaly, kdyby nedošlo k zaklesnutí. Rozdíl mezí původní a novou polohou se nazývá diskontinuita. Její velikost je řádově v několika metrech, při největších zemětřesení může dosahovat až 10 metrů. Rychlost posunu bloků se nazývá rychlost posunutí a čas, během kterého k tomuto posunutí došlo se nazývá náběhový čas.[zdroj?]
+
+Z hypocentra se trhlina šíří po deformované zlomové ploše všemi směry, jediným omezením je geometrie zlomu a změna fyzikálních podmínek (např. pokud nenarazí na volný povrch anebo na místo s deformací nepostačující na šíření trhliny). Místa, kde se šíření trhliny zastaví, může energii akumulovat a stát se tak místem menších zemětřesení v podobě tzv. dotřesů jejichž četnost s časem klesá, ale může být detekovaná roky po hlavním zemětřesení. Předtřesy jsou naopak menší zemětřesení, které předcházejí hlavnímu otřesu a upozorňují na příchod hlavního úderu. Jejich vznik je spojován s existencí míst s velmi velkým napětím, které se během uvolnění nerozšíří na celou zlomovou plochu, ale dojde tak pouze k lokálně omezenému uvolnění. Jak je zlom nehomogenní a neudrží kumulaci napětí, dochází k zemětřesným rojům – sérii slabších zemětřesení v relativně krátkém čase (týdny až měsíce). Vícenásobné zemětřesení nastává tehdy, když se v krátkém časovém sledu (sekundy až minuty) uvolní energie v podobě sérií izolovaných zemětřesení.
+Zemětřesení není jedinou událostí, ke které na zlomu dochází. Je jen krátkou epizodou tektonického vývoje v oblasti. Po uvolnění nahromaděné energie se celý cyklus opakuje. Hypocentrum a porušená část zlomové plochy však zpravidla nebývá shodná s předcházející oblastí zemětřesení.
+
+
+=== Seismické vlny ===
+
+Seismické vlny jsou elastické vlny šířící se v zemském tělese, které jsou vyzařované v důsledku šíření trhliny ve zlomu. Jsou jedním z projevů zemětřesení a připadá na ně asi 30 % celkové uvolněné energie (zbytek spotřebuje uvolnění zaklesnutých bloků, jejich posun a přeměna na teplo). Vyjma zemětřesení mohou být vytvářeny i fázovými přechody v zemském nitru, dopady meteoritů, svahovými sesuvy anebo projevy lidské činnosti (výbuchy, start rakety atd.). Výzkum šíření zemětřesných vln poskytuje informace o vnitřní stavbě Země pomocí vzniku seismických modelů Země.
+Seismické vlny se rozděluji na povrchové a prostorové. Povrchové vlny se šíří jen po zemském povrchu do určité hloubky (tato hloubka závisí na periodě, např. dlouhoperiodické povrchové seismické vlny s periodou okolo 200 s zasahují do svrchního pláště) Dělí se na Rayleighovy vlny a Loveovy vlny. Prostorové vlny se naopak mohou šířit i do nitra zemského tělesa. Rozdělují se na primární (tzv. P-vlny, či podélné vlny), které se šíří celou Zemí a na sekundární (S-vlny, či příčné), které nemohou procházet kapalinami a tedy vnějším jádrem Země. Jak se seismické vlny šíří tělesem Země, dochází k jejich postupnému útlumu vlivem zmenšování jejich amplitudy s časem. Současně horniny se nechovají zcela elasticky a část mechanické energie vlnění se přemění na teplo.
+
+
+== Energie zemětřesení a jeho velikost ==
+Energie uvolněná zemětřesením je převážně tepelná. Část vyzářená v podobě seismických vln, zaznamenávají seismometry a seismografy. Účinky na lidi a stavby měří makroseismická stupnice intenzity a na odhad velikosti uvolněné energie se využívá magnitudo a seismické momenty.
+Jedno z nejsilnějších zemětřesení se pravděpodobně odehrálo po dopadu planetky na konci období křídy (před 66 miliony let). Zhruba 10 až 15 km velký objekt narazil do povrchu Země v oblasti dnešního Mexického zálivu a vzniklé zemětřesení mělo pravděpodobně sílu až přes 11 stupňů na Richterově škále.
+
+
+=== Makroseismické účinky zemětřesení ===
+Makroseismické účinky zemětřesení jsou účinky zemětřesení, které se projevují v přírodě, na budovách a lidech v určité lokalitě. Jsou definované za pomoci tzv. makroseismické intenzity, které je určována škálou makrosiesmické stupnice. Jeden stupeň této stupnice je charakterizovaný souborem pozorovatelných projevů. Například třetí stupeň Mercalliho stupnice je typický slabými otřesy, které může pocítit člověk na vyšších poschodích budov, případně jako projev rozkývání zavěšených předmětů. Poslední dvanáctý stupeň této stupnice se pak projevuje destrukcemi velkých staveb, zdvíháním či poklesáváním povrchu Země a vznikem trhlin.
+V současnosti se využívají dvanáctistupňové stupnice (MCS, MM, EMS-98, MKS) a sedmistupňová stupnice JMA. Jednotlivé stupnice jsou využívány v různých státech, např. JMA je využívána v Japonsku a pro evropské státy EMS-98.
+
+
+=== Magnitudo ===
+Definování síly zemětřesení pomocí stupnic je poměrně subjektivní, jelikož záleží na pozorovateli a jeho odhadu rozsahu škod. Proto se zavádí objektivnější popis zemětřesení v podobě magnituda, které je funkcí dekadického logaritmu amplitudy vlny. Měření síly zemětřesení pomocí magnituda navrhl poprvé japonský seismolog Kijoo Wadati ve 30. letech 20. století a do praxe uvedli Charles Richter a Beno Gutenberg v roce 1935. Na základě jejich práce vznikla metoda, která umožňovala analyzovat seismogramy pro zemětřesení v jižní Kalifornii. Tato metoda měří tzv. lokální magnitudo (ML) jako dekadický logaritmus poměru amplitudy a periody seismické vlny, veřejnosti známa jako Richterova stupnice. Richter se při jejím pojmenování inspiroval hvězdnou magnitudou. V souvislosti s Richterovou stupnicí je rozšířená častá chyba mezi veřejností využívat tuto stupnici celosvětově. Samotná stupnice byla totiž vymyšlena pouze pro měření síly zemětřesení v jižní Kalifornii.
+
+
+== Zemětřesení z hlediska statistiky ==
+
+Jako velká zemětřesení označujeme ta, která jsou schopna vážně poškodit budovy blízko epicentra. Odpovídají 6. stupni Richterovy stupnice.
+U ničivých zemětřesení je v hustě osídlených oblastech většinou více než 1000 obětí, v řidčeji osídlených oblastech více než 100 obětí.
+Jako velká ničivá zemětřesení označují různí autoři ta s více než 10, 20 nebo 50 tisíci oběťmi.
+Od roku 1900 do roku 2010 proběhlo ve světě nejméně 126 ničivých zemětřesení, z toho – podle různých autorů 11 až 25 velkých ničivých zemětřesení. Velké ničivé zemětřesení má v uvedeném období průměrný počet obětí 60 (resp. 61) tisíc. To představuje jedno velké ničivé zemětřesení průměrně za 4,5 až 10 let; nejméně 1 ničivé zemětřesení ročně; 1 velké zemětřesení několikrát za rok. (ČT1; )
+
+
+== Nejsilnější zemětřesení od roku 1900 podle počtu obětí ==
+
+
+== Zemětřesení v Česku ==
+V Česku bývají citelná zemětřesení zaznamenána několikrát do roka, ale otřesy bývají jen slabé, obvykle do 4. stupně Richterovy škály. Nejaktivnějšími oblastmi jsou mariánskolázeňský zlom, zejména Kraslicko v Karlovarském kraji a hronovsko-poříčský zlom v kraji Královéhradeckém. Zemětřesení se objevují v zemětřesných rojích. Nejsilnějším zaznamenaným rojem na Kraslicku byl roj z října 2008 s epicentrem u vsi Nový Kostel. Nejsilnější otřes 14. října 2008 měl podle Richterovy stupnice magnitudo 4,8 až 5,0. Nejsilnější zemětřesení na Hronovsku bylo naměřeno v roce 1901, mělo sílu 4,7 Richterovy stupnice. Ze starších pak zemětřesení 20. února 1616.
+Dalšími oblastmi s občasnou aktivitou jsou Český les, Opavsko a východní část Krušných hor. Kromě toho na Ostravsku, Kladensku a v Podkrušnohorské pánvi dochází k otřesům v souvislosti s intenzivní důlní činností. Na území jižních Čech jsou také zaznamenávány dozvuky alpských zemětřesení.
+
+
+== Pojmy ==
+Ohnisko zemětřesení je prostor konečných rozměrů, ve kterém vzniká zemětřesení. Jeho délkové rozměry dosahují až několika set kilometrů.
+Hypocentrum je bodem, kterým je nahrazováno ohnisko a je kladeno do těžiště ohniska.
+Epicentrum je kolmý průmět hypocentra na povrch Země.
+Hloubka ohniska je vzdálenost mezi hypocentrem a epicentrem.
+Epicentrální vzdálenost je vzdálenost epicentra od místa pozorování. Lze ji uvést buď jako délku ortodromy, nebo jako velikost úhlu vzhledem ke středu Země.
+Epicentrální čas je okamžik, v němž se zemětřesení projeví v epicentru.
+Pleistoseistní oblast je okolí epicentra nejvíce postižené zemětřesením.
+Intenzita zemětřesení je veličina charakterizující velikost zemětřesení na základě pozorování makroseismických účinků. Směrem od pleistoseistní oblasti klesá intenzita na všechny strany.
+Zemětřesné roje je skupina po sobě následujících otřesů podobné intenzity, u které není možnost určit hlavní otřes.
+
+
+== Odkazy ==
+
+
+=== Literatura ===
+BUCHANAN, Mark. Všeobecný princip: věda o historii: proč je svět jednodušší, než si myslíme. Praha : Baronet, 2004. ISBN 80-7214-644-0
+JAKEŠ, Petr. Vlny hrůzy: zemětřesení, sopky a tsunami. Praha : Nakladatelství Lidové noviny, 2005. ISBN 80-7106-772-5
+
+
+=== Reference ===
+V tomto článku byl použit překlad textu z článku Zemetrasenie na slovenské Wikipedii.
+
+
+=== Související články ===
+tsunami
+seismická vlna
+desková tektonika
+tektonická deska
+sopka
+Seznam zemětřesení v Česku
+
+
+=== Externí odkazy ===
+ Obrázky, zvuky či videa k tématu zemětřesení na Wikimedia Commons 
+ Encyklopedické heslo Zemětřesení v Ottově slovníku naučném ve Wikizdrojích
+ Slovníkové heslo zemětřesení ve Wikislovníku
+Současná zemětřesení ve světě na USGS.gov
+Současná zemětřesení ve světě na Orfeus-eu.org
+Současná zemětřesení v Evropě : European-Mediterranean Seismological Centre
+Seismologické monitorování širšího okolí jaderné elektrárny Temelín

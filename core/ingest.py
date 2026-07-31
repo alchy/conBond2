@@ -138,12 +138,14 @@ class Rozbor:
             if radek.startswith("#"):
                 continue
             c = radek.split("\t")
-            if len(c) < 8 or "-" in c[0] or "." in c[0]:
+            # První sloupec musí být číslo řádku; cokoli jiného je
+            # rozsypaný CoNLL-U a int() by na tom spadl.
+            if len(c) < 8 or not c[0].isdecimal():
                 continue
             tokeny.append(Token(
                 form=c[1], lemma=c[2], upos=c[3], deprel=c[7],
                 feats=[] if c[5] == "_" else c[5].split("|"),
-                id=int(c[0]), head=int(c[6]) if c[6].isdigit() else 0))
+                id=int(c[0]), head=int(c[6]) if c[6].isdecimal() else 0))
         if tokeny:
             vety.append(tokeny)
         return vety

@@ -75,6 +75,35 @@ def nacist_zlatou(o=None):
     return ven
 
 
+# NEODPOVĚDĚT je taky výsledek. Převzato z etalonu conBondu: „stroj, který
+# si vymyslí, je horší než stroj, který mlčí." Naše dosavadní metrika to
+# neumí — každá otázka v sadě má odpověď z konstrukce, takže se nikdy
+# neměřilo, jestli systém pozná, že neví.
+ZAPORNE = [
+    ("Kdy se narodil Sherlock Holmes?", "postava, o které korpus nemluví"),
+    ("Kde zemřel Napoleon Bonaparte?", "osoba mimo korpus"),
+    ("Kdy zemřela Marie Curie?", "osoba mimo korpus"),
+    ("Kolik měl Bohumil Hrabal letadel?", "věc, o které se nepíše"),
+    ("Kde se narodil Franz Kafka?", "jméno, které se v korpusu zmiňuje, "
+                                    "ale článek o něm není"),
+]
+# POZOR na to, co se sem píše. „Kdy se narodil Jirásek v Brně?" (nepravdivý
+# předpoklad) a „Kde se narodil pes domácí?" (kde odpověď „v Asii" dává
+# smysl) jsem odsud vyhodil: nebyly to poctivé negativy, ale mé špatně
+# položené otázky. Měřítko, které trestá správnou odpověď, je horší než
+# žádné.
+
+
+def zmerit_zapory(o: Odpovidac) -> dict:
+    """Kolikrát systém MLČÍ tam, kde má. Kandidát navíc není zadarmo:
+    odpověď na otázku, na kterou korpus neodpovídá, je horší než nic."""
+    out = []
+    for otazka, proc in ZAPORNE:
+        v = o.odpovedet(otazka, se_znalosti=False)
+        out.append((otazka, proc, len(v["kandidati"]), v["odpoved"]))
+    return {"mlci": sum(1 for _, _, n, _ in out if n == 0), "detail": out}
+
+
 def zmerit(o: Odpovidac, zlata, se_znalosti=False):
     v_poli = presne = bez = 0
     kandidatu = []
@@ -164,6 +193,13 @@ def main():
     print(f"  zásah pole {m['v_poli']:>3}/{n} ({100*m['v_poli']/n:>4.0f} %)"
           f" · přesně {m['presne']:>3}/{n} ({100*m['presne']/n:>4.0f} %)"
           f" · bez kandidátů {m['bez']:>3} · průměr {m['prumer']:.1f}")
+    zap = zmerit_zapory(o)
+    print(f"\n  poctivý zápor: mlčí {zap['mlci']}/{len(ZAPORNE)}"
+          "   (otázky, na které korpus odpověď nemá)")
+    for otazka, proc, n, odp in zap["detail"]:
+        znak = "✓ mlčí" if n == 0 else f"✗ {n:>3} kandidátů → {odp!r}"
+        print(f"    {znak:<34} {otazka}")
+
     celkem = Counter(z["typ"] for z in zlata)
     print("\n  po typech otázky:")
     for typ, k in celkem.items():

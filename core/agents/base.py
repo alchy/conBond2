@@ -97,6 +97,16 @@ def v_zavorce(veta: Sequence[dict], i: int) -> bool:
     return False
 
 
+def je_cele_cislo(forma: str) -> bool:
+    """Dá se ten tvar přečíst jako celé číslo?
+
+    NE `isdigit()`. Ten vrací True i pro „²" (a pro arabské číslice), takže
+    `int()` na něm spadne — a spadl: článek o betonu má „m²" a shodil celou
+    stavbu korpusu na 86 článcích. `isdecimal()` je právě ten predikát, po
+    kterém `int()` projde vždycky."""
+    return forma.isdecimal()
+
+
 def je_cislo(token: dict) -> bool:
     return token["upos"] == "NUM" or any(
         a.startswith("NumType=") for a in token["acts"])

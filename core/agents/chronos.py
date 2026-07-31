@@ -22,7 +22,7 @@ import re
 from typing import Sequence
 
 from ..language import Jazyk
-from .base import Agent, Naveska, v_zavorce
+from .base import Agent, Naveska, je_cele_cislo, v_zavorce
 
 # Jména měsíců i slova, která rok uvozují („v roce", „r."), sedí v jazykovém
 # profilu — je to slovník jazyka, ne pravidlo agenta. Viz core/language.py.
@@ -39,14 +39,15 @@ class Chronos(Agent):
 
     # ---- rozpoznání --------------------------------------------------
     def je_rok(self, forma: str) -> bool:
-        return (forma.isdigit() and len(forma) == 4
+        return (je_cele_cislo(forma) and len(forma) == 4
                 and self.rok_od <= int(forma) <= self.rok_do)
 
     @staticmethod
     def je_den(forma: str) -> bool:
         """Den v datu se v češtině píše s tečkou: „28.". UDPipe tečku
         odděluje, takže sem přijde holé číslo a tečka je další token."""
-        return forma.isdigit() and 1 <= len(forma) <= 2 and 1 <= int(forma) <= 31
+        return (je_cele_cislo(forma) and 1 <= len(forma) <= 2
+                and 1 <= int(forma) <= 31)
 
     def mesic(self, forma: str):
         return self.jazyk.cislo_mesice(forma)

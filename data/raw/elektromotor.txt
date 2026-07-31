@@ -1,0 +1,178 @@
+Elektromotor je v elektrotechnice elektrický stroj, který slouží k přeměně elektrické energie na mechanickou energii. Většina elektrických motorů využívá vzájemného silového působení magnetického pole a elektrického proudu procházejícího cívkou, výsledkem čehož je točivý moment přenášený na poháněné zařízení (např. vysavač, výtah, elektromobil). Motory jsou poháněny stejnosměrným nebo střídavým proudem, který je přiváděn z baterie, elektrického rozvodu nebo generátoru. Elektrický generátor je mechanicky stejný jako elektromotor, ale slouží k opačnému převodu mechanické energie na elektrickou. Existuje mnoho typů elektrických motorů podle napájení, konstrukce, provozních charakteristik a způsobu převodu elektrické energie na mechanickou. Nejrozšířenější je asynchronní motor.
+Elektromotory jsou ve srovnání se spalovacími motory lehčí, menší, jednodušší, efektivnější, lacinější, poskytují vysokou účinnost v celém rozsahu otáček. Přestože byly využívány v počátcích automobilismu, jsou elektromotory v roce 2022 méně rozšířené než spalovací, protože potřebují neprakticky velké a pomalu nabíjející se akumulátory, které mají nízkou životnost, malý rozsah provozních teplot a vysokou cenu. V této době dochází díky masivní politické a dotační podpoře (a mírnému pokroku v konstrukci elektromotorů i akumulátorů) k rozvoji elektromobilů.
+
+
+== Historie ==
+Elektromotor sestavil v roce 1828 kněz Štefan Anián Jedlík a považuje se často za jeho vynálezce.
+
+
+== Charakteristika ==
+Současné elektromotory jsou většinou realizovány jako točivý elektrický stroj, který převádí elektrickou energii na mechanickou (slouží k pohonu různých strojů). Asynchronní motor je pro svoji jednoduchost nejběžněji používaným elektromotorem. V domácích spotřebičích je používán univerzální motor (může být napájen střídavým i stejnosměrným proudem). Méně obvyklé jsou netočivé elektromotory jako je lineární elektromotor, motory využívající piezoelektrický jev nebo silové účinky elektrostatického pole.
+Většina typů elektrických strojů může (v závislosti na konstrukci) pracovat jako motor nebo jako elektrický generátor (opak elektromotoru, převádí mechanickou energii na elektrickou). Některé z těchto strojů mohou samočinně přecházet z motorického do generátorického režimu a naopak. Díky těmto vlastnostem elektrické pohony umožňují při brzdění rekuperaci, tj. vracení elektrické energie do elektrické sítě nebo do akumulátorů. Jako generátory velkých výkonů jsou používány synchronní alternátory a na malých vodních elektrárnách jsou používány asynchronní alternátory.
+Elektrický stroj má různé režimy provozu:
+
+motorický režim – stroj odebírá elektrickou energii z elektrického zdroje (elektrické distribuční sítě, místní elektrické izolované sítě, baterie, generátor) a přeměňuje ji na mechanickou energii na hřídeli. Označuje se jako práce v prvním nebo třetím kvadrantu.
+generátorický režim – stroj odebírá na hřídeli mechanickou energii z připojeného mechanického zdroje energie (kinetická, polohová energie, spalovací motor, parní turbína, parní stroj, klika, vrtule větrné elektrárny…). Mechanická energie je přeměněna na elektrickou energii, která je dodávána do elektrické sítě, akumulátoru nebo do jiné připojené elektrické zátěže. Označuje se jako práce v druhém kvadrantu.
+brzdný režim – stroj odebírá elektrický výkon z elektrického zdroje. Odebraný výkon působí proti mechanickému výkonu na hřídeli, tj. působí proti mechanickému pohybu. Elektrická i mechanická energie je v elektrickém stroji přeměňována na teplo. Teplo se vyvíjí především v kotvě stroje, která se značně ohřívá. Proto brzdný režim smí být využíván jen krátkodobě. Označuje se jako práce ve čtvrtém kvadrantu.
+elektrodynamická brzda – jedná se o obrácený motorický režim, využívá se ke zpomalení a zkrácení doběhu stroje. Elektrodynamická brzda odebírá z vnějšího zdroje poměrně malý výkon. Stator je napájen stejnosměrným proudem, jehož hodnota je menší než efektivní hodnota jmenovitého proudu a vytváří spřažený magnetický tok stroje, ve kterém se otáčí rotor. Ve vodičích rotoru se indukuje napětí. Vyvolaný proud se uzavírá zkratovanými vodiči rotoru (v kleci). Elektrická energie se mění na teplo v rotoru. Moment výrazně klesá s otáčkami. V tomto režimu odpovídá nulový skluz, tj. synchronním otáčkám nulové otáčky hřídele.
+
+
+== Princip elektromotoru ==
+
+Elektromotor přeměňuje elektrickou energii na mechanickou, některé mohou fungovat i jako elektrický generátor.
+
+
+=== Využití magnetického pole ===
+Většina motorů využívá působení Lorentzovy síly (tj. elektromagnetické síly), kdy na vodič protékaný elektrickým proudem, který se nachází v magnetickém poli působí síla úměrná kolmé ortogonální složce magnetické indukce a velikosti elektrického proudu tekoucího vodičem (tj. vektorový součin), takže platí 
+  
+    
+      
+        F
+        =
+        B
+        ⋅
+        I
+        ⋅
+        l
+      
+    
+    {\displaystyle F=B\cdot I\cdot l}
+  
+ (jednotky N; T, A, m). V konečném důsledku na sebe silově působí dvě spřažená magnetická pole ve společném – spřaženém magnetickém obvodu (statoru, rotoru a vzduchové mezery). Zjednodušeně si lze představit, že je využíváno vzájemné přitahování a odpuzování dvou elektromagnetů (nebo elektromagnetu a permanentního magnetu). Sílu a polaritu elektromagnetu lze řídit velikostí a směrem protékajícího elektrického proudu.
+Působením elektromagnetické síly na vodič se vodič uvádí do pohybu. Tím současně pohybující se vodič protíná magnetické siločáry v magnetickém poli a ve vodiči indukováno elektrické napětí (
+  
+    
+      
+        U
+        =
+        B
+        ⋅
+        l
+        ⋅
+        v
+      
+    
+    {\displaystyle U=B\cdot l\cdot v}
+  
+ – jednotky V; T, m, m·s−1). Podobně je ve vodiči, který leží v časově proměnném magnetickém poli indukováno napětí = transformátor. V el. strojích na střídavý proud se vodič pohybuje v časově proměnném magnetickém poli (transformační napětí) a současně se pohybuje v magnetickém poli a protíná jeho siločára (pohybové napětí). Tento jev se projevuje v brzdném, motorickém i generátorickém chodu stroje.
+
+
+=== Reluktanční motor ===
+Při konstrukci elektromotorů je také využíváno silové působení mezi elektromagnetem a tělesem, které má různé reluktance, tj. různé magnetické odpory (různé permeance, tj. různé magnetické vodivosti). Vyžívána je v reluktančních motorech, kde jsou využívány rozdíly reluktance zubové kotvy (vzduch/zub). Zjednodušeně si lze představit, že v reluktančním stroji je využíváno vzájemné přitahování elektromagnetu a železa. Reluktanční motor je typem synchronního stroje. Dokáže samočinný rozběh na synchronní otáčky bez dalšího zařízení. Staví se pro menší výkony. Používán byl pro pohon přepínače (usměrňovače) u vysokonapěťového napájení odlučovače prachu ve spalinách kotle.
+
+
+=== Další možnosti ===
+Zkonstruovat je možné i elektrické stroje využívající jiné fyzikální principy, např. elektrostatická síla, piezoelektrický jev. V současnosti se tyto jevy pro konstrukci elektromotorů téměř nepoužívají.
+
+
+== Konstrukce motoru ==
+Většina elektrických indukčních strojů (elektromotorů a generátorů) má několik společných typů součástí. Některé specifické typy elektrických strojů se mohou konstrukčně lišit. Indukční stroj je konstruován tak, aby na sebe vhodně vzájemně působila magnetická pole rotoru a statoru a jejich působením byl vytvářen točivý moment. Kroutící moment je přenášen na hřídel stroje. Otáčející se rotor vykonává mechanickou práci jako motor. Nebo je zdrojem elektrického výkonu, kdy otáčející se rotor odebírá mechanickou práci.
+
+
+=== Rotor ===
+
+Rotor je otočná část stroje. Na hřídeli je umístěn magnetický obvod s vloženým rotorovým vinutím, elektromagnety nebo permanentními magnety. Na hřídeli rotoru mohou být upevněny sběrné kroužky nebo komutátor. Rotor je také označován jako kotva. Například jako kotva je označována také ta část dynama, která generuje výstupní napětí. Rotor je umístěn buď uvnitř nebo vně statoru (když je požadován zvýšený moment setrvačnosti – například magnetofon napájený napětím o síťovém kmitočtu, gyroskop).
+
+
+=== Stator ===
+
+Stator je pevná část stroje. U komutátorových strojů sestává z magnetického obvodu s budícím vinutím nebo permanentními magnety. Stejnosměrný stroj může mít stator jako masivní obrobek odlitku. Střídavé stroje mají magnetický obvod vždy z transformátorových plechů. Ve drážkách statoru jsou umístěny cívky statorových vinutí. Elektromagnetická část statoru bývá vsazena do vnějšího krytu stroje, který je pomocí patek nebo příruby připevněn k podložce a zajišťuje reakci silového působení stroje a chlazení, tj. odvod ztrátového tepla. Na stator jsou upevněny ložiskové štíty s ložisky.
+
+
+=== Vzduchová mezera ===
+Vzduchová mezera odděluje stator od rotoru. Její velikost musí být co nejmenší, protože intenzita magnetického pole klesá se čtvercem vzdálenosti, což klade vysoké nároky na přesnost výroby motoru.
+
+
+=== Cívky ===
+
+Cívky slouží k vytváření spřaženého elektromagnetického pole. Jsou umístěny v rotoru i statoru (pokud nejsou nahrazeny permanentními magnety). Klec asynchronního stroje je také vinutí. Vinutí statoru indukčního stroje (i rotoru) bývá složeno z několika vhodně zapojených cívek, které jsou uloženy v drážkách magnetického obvodu. Výsledný tvar pole má být co nejpříhodnější pro vysokou účinnost stroje.
+
+
+=== Ložiskový štít ===
+Přední a zadní ložiskový štít je upevněn na přírubách statoru. V ložiskových štítech jsou vestavěna ložiska, ve kterých jsou uloženy konce hřídele stroje. Některé stroje jsou vyráběny bez zadního štítu. V tom případě je zadní ložisko součástí připojeného zařízení.
+
+
+=== Chlazení ===
+
+Chlazení zajišťuje odvod tepla vznikajícího ohmickými ztrátami ve vinutí, ztrátami v magnetickém obvodu vířivými proudy, ventilačními ztrátami a mechanickými ztrátami v ložiscích. Chlazení může být provedeno jako přirozené (bez ofukování), nucené s vlastním ventilátorem, nucené cizím ventilátorem, kapalinové (vodní), plynem (vodík). Překročením provozní teploty izolace vodičů (vinutí) dochází k překotnému stárnutí (degradaci) izolací a následnému průrazu (zkratu mezi závity cívky) a tím ke snížení životnosti motoru. U strojů s permanentními magnety může dojít při překročení Curieovy teploty k jejich odmagnetování.
+
+
+=== Ložiska ===
+
+Ložiska jsou vsazena předního a zadního ložiskového štítu stroje a slouží k udržení hřídele rotoru ve středu statoru a umožnění jeho rotace. Hřídel je vyvedena z ložiskových štítů stroje mimo motor, aby mohla předávat mechanickou práci. Ložiska jsou určena pro zachycení radiálních a částečně axiálních sil.
+
+
+=== Komutátor a kroužky ===
+
+Komutátor je prstenec složený ze vzájemně izolovaných lamel. K jednotlivým lamelám jsou připojeny jednotlivé vývody cívek rotoru. Komutátor v motorickém režimu slouží jako střídač proudu v cívkách rotoru. Komutátor v generátorickém režimu slouží jako usměrňovač napětí a proudu z cívek rotoru. Ke komutátoru přiléhá dvojice (nebo více) kartáčů (uhlíků). V moderních strojích je komutátor nahrazován polovodičovým měničem kmitočtu (BLDC stroje). Střídavé stroje, kde není potřeba přepínat vinutí cívek, se používají sběrné kroužky (například asynchronní kroužkový motor).
+
+
+=== Mechanická konstrukce ===
+Mechanická konstrukce elektrického stroje je tvořena nosnými částmi, ložiskovými štíty, patkami, přírubami, kryty, svorkovnicí, chlazením. Přenáší reakční síly od hřídele stroje. Zajišťuje dostatečnou mechanickou tuhost a pevnost stroje. Chrání před vniknutím cizích částí a vody do stroje, současně chrání před nebezpečným dotykem pohybujících se částí a dotykem s elektrickými částmi pod napětím = úrazem. Dále zajišťuje oddělení vnějšího a vnitřního prostředí ve stroji (např. nebezpečí výbuchu). Označuje se jako krytí IP 00 až IP 68. Zajišťuje odvod tepelné energie vzniklé ve stroji. Mechanická konstrukce stroje má zaručovat, že stroj nebude mechanicky kmitat vlastními kmity.
+
+
+== Typy elektromotorů ==
+Níže jsou uvedeny hlavní typy elektromotorů. Další podtypy a varianty najdete v odkazovaných článcích s podrobnějšími informacemi.
+
+
+=== Stejnosměrný stroj ===
+
+Stejnosměrný motor vytváří točivý moment ze zdroje stejnosměrného proudu. Dělíme je na motory s komutátorem a bez komutátoru. Elektromotor bez komutátoru vyžaduje řídící elektroniku, protože otáčivý pohyb je vytvářen změnou polarizace elektrického pole cívek. Komutátor je složen z vodivých, vzájemně izolovaných lamel. Na lamely dosedají uhlíky. Komutátor s uhlíky vyžaduje pravidelnou údržbu, bývají nejporuchovějším místem komutátorového stroje (asynchronní stroj vyžaduje minimální údržbu). Bezkomutátorový stejnosměrný motor je například krokový motor, kde je točivé magnetické pole vytvářeno ve statoru přepínáním proudu tekoucího do cívek vinutí pomocí řídící elektroniky.
+
+
+=== Střídavý stroj ===
+
+Je to střídavý stroj (též indukční stroj) napájený střídavým proudem, který vytváří ve statoru točivé magnetické pole bez potřeby dalších přídavných zařízení (stroj s vnější komutací). Spřažené točivé magnetické pole působí na rotor, které vzájemným silovým působením vytváří rotační pohyb hřídele. Podle konstrukce rotoru dělíme indukční stroje na dvě skupiny:
+
+
+=== Asynchronní stroj ===
+
+Asynchronní stroj (též indukční stroj) využívá pro přenos výkonu mezi statorem a rotorem elektromagnetickou indukci. Rotor – kotva stroje má za provozu otáčky větší (generátorický chod) nebo menší (motorický chod) než synchronní otáčky tj. otáčky magnetického pole. Rozdíl otáček je označován jako skluz, označení s. Pro s = 1 rotor stojí n = 0. Pro s = 0 synchronní otáčky rotoru. Pro 0 > s > −1 generátor. Pro 1 > s > 0 motor. Pro 2 > s > 1 brzda. Samočinně přechází mezi motorickým a generátorickým provozem.
+
+
+=== Synchronní stroj ===
+
+Synchronní stroj (též indukční stroj) využívá pro přenos výkonu mezi statorem a rotorem elektromagnetickou indukci. Rotor stroje má za provozu mechanické otáčky rotoru stejné velikosti a směru jako otáčky točivého magnetické pole statoru. Odtud synchronní stroj. Moderní synchronní stroje mají na rotoru permanentní magnety ze vzácných zemin (dosahují velkého sycení) nebo rotor je buzen proudem, který je přiváděn na rotor přes dva sběrné kroužky s uhlíky. Přebuzený synchronní stroj je využíván pro kompenzaci účiníku v síti, protože pak vykazuje kapacitní charakter. Účiník představuje vzájemný fázový posun proudu vůči napětí.
+
+
+=== Univerzální stroj ===
+
+Univerzální stroj je určen především k napájení střídavým napětím a proudem. Může být napájen i ze stejnosměrného zdroje. Je konstrukčně shodný se stejnosměrným komutátorovým strojem. Podstatný rozdíl je v magnetickém obvodu statoru, který musí být složen z transformátorových plechů. Většinou je používán k pohonu drobných přenosného elektrických spotřebičů (vrtačka, mixér, vysavač…).
+
+
+=== Lineární stroj ===
+
+Většina běžných elektrických strojů je konstruována jako rotační. Existují i netočivé varianty strojů, například lineární elektromotor, u nějž je stator a rotor stroje rozvinut do délky. Podél pevné pojezdové dráhy je umístěna jedna část motoru. Na pohyblivé části je druhá část motoru. Vzájemné umístění napájeného vinutí a kotvy motoru závisí od konkrétní aplikaci. Tento druh motorů se v technické praxi používá zejména pro některá speciální dopravní zařízení nebo pro vlaky na magnetickém polštáři (Maglev).
+
+
+=== Další druhy strojů ===
+V historii bylo vyvinuto a úspěšně provozováno mnoho typů strojů a soustrojí. Využívány byly především k regulaci rychlosti a změně směru otáčení. Jsou to například repulzní motor, motor Schrage, motor Winter-Eichberg, soustrojí Ward-Leonard-Illgner a další. V současnosti jsou tyto stroje nahrazovány indukčními stroji s elektronickým řízením otáček (frekvenčními měniči nebo cyklokonvertory). Používány jsou od běžných asynchronních strojů až po synchronní stroje s permanentními magnety ze vzácných zemin. V motorových vozidlech se například používá generátor s drápkovou kotvou. a další.
+
+
+== Reference ==
+
+
+== Literatura ==
+Ota Roubíček: Elektrické motory a pohony – příručka techniky, volby a užití vybraných druhů, BEN – technická literatura, Praha 2004, ISBN 80-7300-092-X
+Štěpán Berka: Elektrotechnická schémata a zapojení 1, BEN – technická literatura, Praha 2008, ISBN 978-80-7300-229-9, str. 140–171 (zapojení stykačových kombinací pro spouštění elektromotorů)
+Štěpán Berka: Elektrotechnická schémata a zapojení 2, BEN – technická literatura, Praha 2010, ISBN 978-80-7300-254-1, str. 22–60 a 89–143 (zapojení svorkovnic elektromotorů, stykačových kombinací a vačkových spínačů pro spouštění elektromotorů)
+
+
+== Související články ==
+Stejnosměrný proud
+Dynamo
+Elektrodynamická brzda
+Komutátor (elektrotechnika)
+Stejnosměrný motor
+Střídavý proud
+Alternátor
+Asynchronní motor
+Elektrický generátor
+Lineární elektromotor
+Reluktanční motor
+Reproduktor
+
+
+== Externí odkazy ==
+ Obrázky, zvuky či videa k tématu elektromotor na Wikimedia Commons 
+Soubor článků v odborném časopise

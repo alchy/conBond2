@@ -6,7 +6,7 @@
 
 import { el, esc } from '../util.js';
 import { stavSpojeni } from '../store.js';
-import { sablonyProTvary } from './vazby-definice.js';
+import { sablonyProTvary } from './links-define.js';
 
 export function postavList() {
   const lista = el('div', { class: 'mapbar' }, [

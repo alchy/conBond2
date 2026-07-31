@@ -1,0 +1,794 @@
+[
+ {
+  "a": "NOUN",
+  "g": "UPOS"
+ },
+ {
+  "a": "PUNCT",
+  "g": "UPOS"
+ },
+ {
+  "a": "VERB",
+  "g": "UPOS"
+ },
+ {
+  "a": "ADP",
+  "g": "UPOS"
+ },
+ {
+  "a": "ADJ",
+  "g": "UPOS"
+ },
+ {
+  "a": "PRON",
+  "g": "UPOS"
+ },
+ {
+  "a": "DET",
+  "g": "UPOS"
+ },
+ {
+  "a": "CCONJ",
+  "g": "UPOS"
+ },
+ {
+  "a": "PROPN",
+  "g": "UPOS"
+ },
+ {
+  "a": "AUX",
+  "g": "UPOS"
+ },
+ {
+  "a": "ADV",
+  "g": "UPOS"
+ },
+ {
+  "a": "SCONJ",
+  "g": "UPOS"
+ },
+ {
+  "a": "NUM",
+  "g": "UPOS"
+ },
+ {
+  "a": "PART",
+  "g": "UPOS"
+ },
+ {
+  "a": "SYM",
+  "g": "UPOS"
+ },
+ {
+  "a": "X",
+  "g": "UPOS"
+ },
+ {
+  "a": "INTJ",
+  "g": "UPOS"
+ },
+ {
+  "a": "punct",
+  "g": "DEPREL"
+ },
+ {
+  "a": "case",
+  "g": "DEPREL"
+ },
+ {
+  "a": "conj",
+  "g": "DEPREL"
+ },
+ {
+  "a": "nsubj",
+  "g": "DEPREL"
+ },
+ {
+  "a": "root",
+  "g": "DEPREL"
+ },
+ {
+  "a": "nmod",
+  "g": "DEPREL"
+ },
+ {
+  "a": "amod",
+  "g": "DEPREL"
+ },
+ {
+  "a": "obl",
+  "g": "DEPREL"
+ },
+ {
+  "a": "cc",
+  "g": "DEPREL"
+ },
+ {
+  "a": "obj",
+  "g": "DEPREL"
+ },
+ {
+  "a": "obl:arg",
+  "g": "DEPREL"
+ },
+ {
+  "a": "det",
+  "g": "DEPREL"
+ },
+ {
+  "a": "advmod",
+  "g": "DEPREL"
+ },
+ {
+  "a": "mark",
+  "g": "DEPREL"
+ },
+ {
+  "a": "cop",
+  "g": "DEPREL"
+ },
+ {
+  "a": "expl:pv",
+  "g": "DEPREL"
+ },
+ {
+  "a": "advmod:emph",
+  "g": "DEPREL"
+ },
+ {
+  "a": "aux",
+  "g": "DEPREL"
+ },
+ {
+  "a": "advcl",
+  "g": "DEPREL"
+ },
+ {
+  "a": "ccomp",
+  "g": "DEPREL"
+ },
+ {
+  "a": "acl:relcl",
+  "g": "DEPREL"
+ },
+ {
+  "a": "flat",
+  "g": "DEPREL"
+ },
+ {
+  "a": "nummod",
+  "g": "DEPREL"
+ },
+ {
+  "a": "appos",
+  "g": "DEPREL"
+ },
+ {
+  "a": "xcomp",
+  "g": "DEPREL"
+ },
+ {
+  "a": "aux:pass",
+  "g": "DEPREL"
+ },
+ {
+  "a": "parataxis",
+  "g": "DEPREL"
+ },
+ {
+  "a": "nsubj:pass",
+  "g": "DEPREL"
+ },
+ {
+  "a": "dep",
+  "g": "DEPREL"
+ },
+ {
+  "a": "advcl:pred",
+  "g": "DEPREL"
+ },
+ {
+  "a": "vocative",
+  "g": "DEPREL"
+ },
+ {
+  "a": "nummod:gov",
+  "g": "DEPREL"
+ },
+ {
+  "a": "acl",
+  "g": "DEPREL"
+ },
+ {
+  "a": "orphan",
+  "g": "DEPREL"
+ },
+ {
+  "a": "compound",
+  "g": "DEPREL"
+ },
+ {
+  "a": "fixed",
+  "g": "DEPREL"
+ },
+ {
+  "a": "csubj",
+  "g": "DEPREL"
+ },
+ {
+  "a": "expl:pass",
+  "g": "DEPREL"
+ },
+ {
+  "a": "discourse",
+  "g": "DEPREL"
+ },
+ {
+  "a": "det:numgov",
+  "g": "DEPREL"
+ },
+ {
+  "a": "csubj:pass",
+  "g": "DEPREL"
+ },
+ {
+  "a": "iobj",
+  "g": "DEPREL"
+ },
+ {
+  "a": "det:nummod",
+  "g": "DEPREL"
+ },
+ {
+  "a": "Number=Sing",
+  "g": "FEATS"
+ },
+ {
+  "a": "Number=Plur",
+  "g": "FEATS"
+ },
+ {
+  "a": "Number=Plur,Sing",
+  "g": "FEATS"
+ },
+ {
+  "a": "Number=Dual",
+  "g": "FEATS"
+ },
+ {
+  "a": "Case=Nom",
+  "g": "FEATS"
+ },
+ {
+  "a": "Case=Acc",
+  "g": "FEATS"
+ },
+ {
+  "a": "Case=Gen",
+  "g": "FEATS"
+ },
+ {
+  "a": "Case=Loc",
+  "g": "FEATS"
+ },
+ {
+  "a": "Case=Ins",
+  "g": "FEATS"
+ },
+ {
+  "a": "Case=Dat",
+  "g": "FEATS"
+ },
+ {
+  "a": "Case=Voc",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender=Masc",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender=Fem",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender=Neut",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender=Masc,Neut",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender=Fem,Neut",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender=Fem,Masc",
+  "g": "FEATS"
+ },
+ {
+  "a": "Polarity=Pos",
+  "g": "FEATS"
+ },
+ {
+  "a": "Polarity=Neg",
+  "g": "FEATS"
+ },
+ {
+  "a": "Animacy=Anim",
+  "g": "FEATS"
+ },
+ {
+  "a": "Animacy=Inan",
+  "g": "FEATS"
+ },
+ {
+  "a": "VerbForm=Fin",
+  "g": "FEATS"
+ },
+ {
+  "a": "VerbForm=Part",
+  "g": "FEATS"
+ },
+ {
+  "a": "VerbForm=Inf",
+  "g": "FEATS"
+ },
+ {
+  "a": "VerbForm=Vnoun",
+  "g": "FEATS"
+ },
+ {
+  "a": "VerbForm=Conv",
+  "g": "FEATS"
+ },
+ {
+  "a": "Aspect=Imp",
+  "g": "FEATS"
+ },
+ {
+  "a": "Aspect=Perf",
+  "g": "FEATS"
+ },
+ {
+  "a": "Aspect=Imp,Perf",
+  "g": "FEATS"
+ },
+ {
+  "a": "Voice=Act",
+  "g": "FEATS"
+ },
+ {
+  "a": "Voice=Pass",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Prs",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Dem",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Int,Rel",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Tot",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Ind",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Neg",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Rel",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Emp",
+  "g": "FEATS"
+ },
+ {
+  "a": "PronType=Dem,Ind",
+  "g": "FEATS"
+ },
+ {
+  "a": "Tense=Pres",
+  "g": "FEATS"
+ },
+ {
+  "a": "Tense=Past",
+  "g": "FEATS"
+ },
+ {
+  "a": "Tense=Fut",
+  "g": "FEATS"
+ },
+ {
+  "a": "Person=3",
+  "g": "FEATS"
+ },
+ {
+  "a": "Person=1",
+  "g": "FEATS"
+ },
+ {
+  "a": "Person=2",
+  "g": "FEATS"
+ },
+ {
+  "a": "Mood=Ind",
+  "g": "FEATS"
+ },
+ {
+  "a": "Mood=Imp",
+  "g": "FEATS"
+ },
+ {
+  "a": "Mood=Cnd",
+  "g": "FEATS"
+ },
+ {
+  "a": "AdpType=Prep",
+  "g": "FEATS"
+ },
+ {
+  "a": "AdpType=Voc",
+  "g": "FEATS"
+ },
+ {
+  "a": "AdpType=Comprep",
+  "g": "FEATS"
+ },
+ {
+  "a": "Degree=Pos",
+  "g": "FEATS"
+ },
+ {
+  "a": "Degree=Cmp",
+  "g": "FEATS"
+ },
+ {
+  "a": "Degree=Sup",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Giv",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Geo",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Nat",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Oth",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Giv,Nat",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Geo,Giv",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Giv,Oth",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Geo,Oth",
+  "g": "FEATS"
+ },
+ {
+  "a": "NameType=Geo,Giv,Oth",
+  "g": "FEATS"
+ },
+ {
+  "a": "Variant=Short",
+  "g": "FEATS"
+ },
+ {
+  "a": "Reflex=Yes",
+  "g": "FEATS"
+ },
+ {
+  "a": "Poss=Yes",
+  "g": "FEATS"
+ },
+ {
+  "a": "NumType=Card",
+  "g": "FEATS"
+ },
+ {
+  "a": "NumType=Ord",
+  "g": "FEATS"
+ },
+ {
+  "a": "NumType=Mult",
+  "g": "FEATS"
+ },
+ {
+  "a": "NumType=Sets",
+  "g": "FEATS"
+ },
+ {
+  "a": "NumForm=Digit",
+  "g": "FEATS"
+ },
+ {
+  "a": "NumForm=Word",
+  "g": "FEATS"
+ },
+ {
+  "a": "NumForm=Roman",
+  "g": "FEATS"
+ },
+ {
+  "a": "Number[psor]=Sing",
+  "g": "FEATS"
+ },
+ {
+  "a": "Number[psor]=Plur",
+  "g": "FEATS"
+ },
+ {
+  "a": "PrepCase=Npr",
+  "g": "FEATS"
+ },
+ {
+  "a": "PrepCase=Pre",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender[psor]=Masc,Neut",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender[psor]=Masc",
+  "g": "FEATS"
+ },
+ {
+  "a": "Gender[psor]=Fem",
+  "g": "FEATS"
+ },
+ {
+  "a": "Abbr=Yes",
+  "g": "FEATS"
+ },
+ {
+  "a": "Foreign=Yes",
+  "g": "FEATS"
+ },
+ {
+  "a": "ExtPos=ADP",
+  "g": "FEATS"
+ },
+ {
+  "a": "ExtPos=CCONJ",
+  "g": "FEATS"
+ },
+ {
+  "a": "ExtPos=SCONJ",
+  "g": "FEATS"
+ },
+ {
+  "a": "ExtPos=ADV",
+  "g": "FEATS"
+ },
+ {
+  "a": "Hyph=Yes",
+  "g": "FEATS"
+ },
+ {
+  "a": "ConjType=Oper",
+  "g": "FEATS"
+ },
+ {
+  "a": "Style=Coll",
+  "g": "FEATS"
+ },
+ {
+  "a": "Typ=cas",
+  "g": "TYP"
+ },
+ {
+  "a": "Typ=dej",
+  "g": "TYP"
+ },
+ {
+  "a": "Typ=misto",
+  "g": "TYP"
+ },
+ {
+  "a": "Typ=osoba",
+  "g": "TYP"
+ },
+ {
+  "a": "Typ=vec",
+  "g": "TYP"
+ },
+ {
+  "a": "Typ=zivocich",
+  "g": "TYP"
+ },
+ {
+  "a": "Lem=a",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=být",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=co",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=do",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=jaký",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=jeho",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=k",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=kdo",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=kolik",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=který",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=mezi",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=na",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=nebo",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=než",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=o",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=on",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=protože",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=s",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=se",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=svůj",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=ten",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=tento",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=u",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=v",
+  "g": "LEM"
+ },
+ {
+  "a": "Lem=čí",
+  "g": "LEM"
+ },
+ {
+  "a": "Ptá=kdo",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=co",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=jak",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=kdy",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=koho",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=kam",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=kde",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=komu",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=kým",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=čí",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=jaké",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=jakou",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=jaký",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=kterém",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=kterou",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=který",
+  "g": "PTÁ"
+ },
+ {
+  "a": "Ptá=proč",
+  "g": "PTÁ"
+ }
+]

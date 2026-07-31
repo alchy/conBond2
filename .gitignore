@@ -2,10 +2,12 @@
 .venv/
 models/
 
-# Běhová data. vychozi.json je naopak zdroj, ten se verzuje.
-data/stav.json
-data/maps/
+# Pracovní kopie dat. Zdrojem je data/defaults/, ten se verzuje.
+data/verticals/
+data/corpora/
+data/mappings/
 
 __pycache__/
 *.pyc
 .DS_Store
+run/

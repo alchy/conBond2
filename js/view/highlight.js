@@ -7,9 +7,9 @@
    Zvýraznění je PRŮCHOZÍ celým řetězem: ať sáhneš kamkoli, dojede to na
    oba konce — od řádku v poli až k šabloně a zpátky. */
 
-import { stav } from '../stav.js';
-import { znamenko } from '../jadro/sloty.js';
-import { PRAZDNY_TVAR } from '../jadro/vektor.js';
+import { stav } from '../state.js';
+import { znamenko } from '../model.js';
+import { PRAZDNY_TVAR } from '../model.js';
 
 export function zhasni(v) {
   v.sv.querySelectorAll('path').forEach(p => p.classList.remove('hot'));

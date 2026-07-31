@@ -1,0 +1,6 @@
+{
+  "data": "data",
+  "port": 9000,
+  "udpipe_port": 9010,
+  "udpipe_host": "127.0.0.1"
+}

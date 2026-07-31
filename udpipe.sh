@@ -13,9 +13,16 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 SRC="$ROOT/vendor/udpipe2-src"
 MODEL="$ROOT/models/udpipe2/cs_all-ud-2.17-251125.model"
 PY="$ROOT/.venv/bin/python"
-# 8020 schválně: 8001 a 8112 už na tomhle stroji drží jiné projekty a
-# nechceme si s nimi lézt do zelí.
-PORT="${PORT:-8020}"
+# Port se bere z config.json, ne z čísla natvrdo. Proměnná PORT ho přebije
+# (tak ho předává server/processes.py); poslední záchrana je 9010.
+PORT="${PORT:-$(python3 - "$ROOT/config.json" <<'EOF' 2>/dev/null || echo 9010
+import json, sys
+try:
+    print(json.load(open(sys.argv[1]))["udpipe_port"])
+except Exception:
+    print(9010)
+EOF
+)}"
 
 # Rozbor je jediné opravdu drahé místo a škáluje s jádry. Dvě necháváme
 # systému, ať stroj při rozboru nezamrzne.

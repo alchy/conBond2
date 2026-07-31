@@ -8,10 +8,21 @@
    Kotva nemusí být první: co naklikáš před ní, leží vlevo. */
 
 import { el, esc, sklon } from '../util.js';
-import { stav } from '../stav.js';
+import { stav } from '../state.js';
 import { data } from '../data.js';
-import { offsety, vektorSlozene, shodnaSablona } from '../jadro/skladani.js';
-import { znamenko } from '../jadro/sloty.js';
+import { znamenko } from '../model.js';
+
+/* Vektor složené otázky počítá JÁDRO na backendu, ne prohlížeč. Sem přijde
+   hotový; drží se v `posledni`, aby se nemusel volat server při každém
+   překreslení lišty. */
+export let posledni = null;
+export function zapamatuj(odpoved) { posledni = odpoved; }
+
+/** Offsety se počítají i tady, ale jen pro kreslení chipů — autoritou je
+    to, co vrátí jádro v `posledni.offsety`. */
+export function offsety(poradi, kotva) {
+  return poradi.map((form, i) => ({ form, d: kotva < 0 ? 0 : i - kotva }));
+}
 
 /** Rozdělaný vzor. `kotva` je index tázacího tvaru v `q`, -1 = zatím žádný. */
 export const vzor = { q: [], kotva: -1, f: [] };
@@ -111,23 +122,23 @@ export function prekresli(root, lex, modelQ, poradiAkt, akce) {
     });
   }
 
-  // vektor a jeho zdraví
+  // vektor a jeho zdraví — hotový z jádra
   const vv = root.querySelector('#vzorVec');
   if (vzor.kotva < 0 || !vzor.q.length) {
     vv.innerHTML = '<span class="prazdno">bez kotvy vektor nevznikne — '
       + 'tázací tvar určuje, od čeho se offsety počítají</span>';
+  } else if (!posledni) {
+    vv.innerHTML = '<span class="prazdno">počítá jádro…</span>';
   } else {
-    const v = vektorSlozene(vzor.q, vzor.kotva, lex,
-      { r: stav.R.q, cIn: stav.cIn, typyOn: stav.typyOn, poradiAkt });
-    const shoda = shodnaSablona(v.vec, modelQ.byT);
-    vv.innerHTML = (v.vec.length
-      ? `<code>${esc(v.vec.slice(0, 6).join(' '))}${v.vec.length > 6 ? ' …' : ''}</code>`
-        + ` <span class="cnt">${sklon(v.vec.length, 'položka', 'položky', 'položek')}</span>`
+    const v = posledni;
+    vv.innerHTML = (v.vektor.length
+      ? `<code>${esc(v.vektor.slice(0, 6).join(' '))}${v.vektor.length > 6 ? ' …' : ''}</code>`
+        + ` <span class="cnt">${sklon(v.vektor.length, 'položka', 'položky', 'položek')}</span>`
       : '<span class="prazdno">prázdný — všechno vypadlo z okna</span>')
-      + (shoda ? ` <span class="shoda">= ${shoda}</span>`
+      + (v.shoda ? ` <span class="shoda">= ${v.shoda}</span>`
         : ' <span class="cnt">nová šablona</span>')
-      + (v.mimoOkno.length
-        ? ` <span class="varovani">za oknem: ${esc(v.mimoOkno.join(', '))}</span>` : '')
+      + (v.mimo_okno.length
+        ? ` <span class="varovani">za oknem: ${esc(v.mimo_okno.join(', '))}</span>` : '')
       + (v.nejiste.length
         ? ` <span class="varovani">nejisté aktivace: ${esc(v.nejiste.join(', '))}</span>` : '')
       + (v.nezname.length

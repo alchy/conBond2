@@ -2,33 +2,39 @@
    výpočet, patří do jádra; jakmile kreslení, patří do pohledu. */
 
 import { $, $$, el } from './util.js';
-import { stav, LISTY, nacti as nactiUI, uloz as ulozUI, srovnejPrepinace } from './stav.js';
+import { stav, LISTY, nacti as nactiUI, uloz as ulozUI, srovnejPrepinace } from './state.js';
 import * as D from './data.js';
 import * as store from './store.js';
-import { poradiAktivaci } from './jadro/vektor.js';
-import { postavVse } from './jadro/model.js';
-import * as bub from './pohled/bublina.js';
-import { zhasni, rozsvit, obnov, prepniPin } from './pohled/svit.js';
-import * as korpus from './listy/korpus.js';
-import * as defin from './listy/vazby-definice.js';
-import * as sklad from './listy/skladani.js';
-import * as prehled from './listy/vazby-prehled.js';
-import * as vert from './listy/vertikaly.js';
-import * as matice from './listy/matice.js';
-import * as vety from './listy/vety.js';
-import * as dialog from './dialog/nova-veta.js';
+import { prevzit } from './model.js';
+import * as bub from './view/tooltip.js';
+import { zhasni, rozsvit, obnov, prepniPin } from './view/highlight.js';
+import * as korpus from './sheets/corpus.js';
+import * as defin from './sheets/links-define.js';
+import * as sklad from './sheets/compose.js';
+import * as prehled from './sheets/links-overview.js';
+import * as vert from './sheets/verticals.js';
+import * as matice from './sheets/matrix.js';
+import * as vety from './sheets/sentences.js';
+import * as dialog from './dialog/new-sentence.js';
 
 const pohledy = {};
 const listy = {};
 let model = null, mapa = [], editovane = new Set();
 
-/* ---- překreslení ---------------------------------------------------- */
+/* ---- překreslení ----------------------------------------------------
+   Model se NEPOČÍTÁ tady — vyzvedne se z backendu. Zdroj pravdy sedí
+   v Pythonu, prohlížeč je jen jeden ze dvou kanálů k témuž jádru. */
 let poradi = new Map();
+let cekaNaModel = null;
+
+async function prepocitat() {
+  const odpoved = await store.nactiPole(stav);
+  model = prevzit(odpoved, { facts: D.data.facts, query: D.data.query });
+  prekresli();
+}
 
 function prekresli() {
-  poradi = poradiAktivaci(D.data.cols);
-  model = postavVse(D.data, { ...stav, poradi });
-
+  if (!model) return;
   ['f', 'q'].forEach(k => korpus.prekresli(pohledy[k], model[k], model.slovnik, handlery));
   defin.prekresli(listy.mapd, model, model.slovnik, mapa, akceMapy, poradi);
   prehled.prekresli(listy.mapp, model.slovnik, model, mapa, akceMapy);
@@ -72,7 +78,13 @@ const handlery = {
 /* Skládání otázky. Klik ve slovníku dotazů přidá slovo do vzoru, klik ve
    slovníku faktů přepne cíl. Překresluje se jen list definice — přepočítávat
    kvůli jednomu kliknutí celý model by bylo zbytečné. */
-const znovuDefinici = () => {
+const znovuDefinici = async () => {
+  /* Vektor složené otázky spočítá JÁDRO na backendu. Bez kotvy se neptáme —
+     nemá se od čeho počítat offset. */
+  const v = sklad.vzor;
+  sklad.zapamatuj(v.kotva >= 0 && v.q.length
+    ? await store.slozitVzor({ q: v.q, kotva: v.kotva, f: v.f }, stav)
+    : null);
   defin.prekresli(listy.mapd, model, model.slovnik, mapa, akceMapy, poradi);
   poHrany();
 };
@@ -103,12 +115,12 @@ const akceVertikal = {
       + 'v obou korpusech a šablony se přepočítají.')) return;
     D.smazVertikalu(a);
     editovane.delete(a);
-    store.ulozStav(D.data);
+    store.ulozData(D.data).then(prepocitat);
     prekresli();
   },
   prepniAktivaci: (k, z, t, a) => {
     D.prepniAktivaci(k, z, t, a);
-    store.ulozStav(D.data);
+    store.ulozData(D.data).then(prepocitat);
     prekresli();
   },
 };
@@ -118,7 +130,7 @@ const akceVet = {
     if (!confirm(`Smazat ${k === 'f' ? 'větu' : 'dotaz'} ${i + 1}?`)) return;
     D.smazVetu(k, i);
     stav.pin = null;
-    store.ulozStav(D.data);
+    store.ulozData(D.data).then(prepocitat);
     prekresli();
   },
 };
@@ -141,7 +153,7 @@ function seg(id, nastav, prepocitatMapu) {
       nastav(+b.dataset.v);
       ulozUI();
       if (prepocitatMapu) { sklad.vycisti(); await nactiMapu(); }
-      prekresli();
+      await prepocitat();
     };
   });
 }
@@ -151,22 +163,21 @@ function seg(id, nastav, prepocitatMapu) {
 async function nactiMapu() {
   const klic = store.klicMapy(stav.R);
   const nal = await store.nactiMapu(klic);
-  mapa = nal ? nal.list : JSON.parse(JSON.stringify(D.vychozi.mapa));
-  /* Zapiš, když store nikde není (založ ho), i když je jen v prohlížeči
-     a backend mezitím naběhl (přenes ho nahoru). */
-  if (!nal || (nal.zdroj === 'local' && store.stavSpojeni.online)) {
-    store.ulozMapu(klic, mapa);
-  }
+  /* Store se zakládá LÍNĚ: první otevření dvojice poloměrů dostane
+     předvyplněnou sadu z backendu, další už si žije vlastním životem. */
+  mapa = nal ? nal.dvojice : [];
+  if (nal && !nal.vlastni) await store.ulozMapu(klic, mapa);
 }
 
 /* ---- start ----------------------------------------------------------- */
 export async function start() {
   bub.priprav();
 
-  const vychozi = await (await fetch('data/vychozi.json', { cache: 'no-store' })).json();
+  const zdroj = await store.nactiData();
+  const vychozi = { cols: zdroj.vertikaly, facts: zdroj.korpusy.facts,
+    query: zdroj.korpusy.query, mapa: [] };
   D.zapamatujVychozi(vychozi);
-  const mistni = store.stavZProhlizece(vychozi.query);
-  D.nastav(mistni || vychozi);
+  D.nastav(vychozi);
   editovane = new Set(D.data.cols.filter(c => c.g === 'TYP' || c.g === 'PTÁ' || c.g === 'VLASTNÍ')
     .map(c => c.a));
 
@@ -231,7 +242,7 @@ export async function start() {
     if (v.chyba) { $('#nWarn').textContent = v.chyba; return; }
     D.pridejVetu(dialog.cilovyKorpus(), v.tokeny);
     stav.pin = null;
-    store.ulozStav(D.data);
+    store.ulozData(D.data).then(prepocitat);
     $('#dnew').close();
     prekresli();
   };
@@ -242,7 +253,7 @@ export async function start() {
     editovane = new Set(D.data.cols.filter(c => c.g === 'TYP' || c.g === 'PTÁ' || c.g === 'VLASTNÍ')
       .map(c => c.a));
     stav.pin = null;
-    store.ulozStav(D.data);
+    store.ulozData(D.data).then(prepocitat);
     prekresli();
   };
   addEventListener('resize', poHrany);
@@ -252,13 +263,7 @@ export async function start() {
      vědělo, jestli server existuje, takže sáhlo jen do prohlížeče. */
   prepniList(stav.sheet);
   await nactiMapu();
-  prekresli();
-
-  const zeServeru = await store.ozviSe();
-  if (zeServeru) D.nastav(zeServeru);
-  else if (store.stavSpojeni.online) store.ulozStav(D.data);
-  await nactiMapu();
-  prekresli();
+  await prepocitat();
 }
 
 function pridejVertikalu() {
@@ -268,7 +273,7 @@ function pridejVertikalu() {
   if (chyba) return;
   editovane.add(a);
   $('#vName').value = '';
-  store.ulozStav(D.data);
+  store.ulozData(D.data).then(prepocitat);
   prekresli();
 }
 

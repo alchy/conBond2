@@ -1,7 +1,7 @@
 /* Bublina u kurzoru. Jediná na celou stránku, přesouvá se. */
 
 import { $, esc, sklon, vetaText } from '../util.js';
-import { stav } from '../stav.js';
+import { stav } from '../state.js';
 import { KORPUS } from '../data.js';
 
 let bublina = null;

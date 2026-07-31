@@ -5,7 +5,7 @@
 
 import { el, esc, vetaText } from '../util.js';
 import { BARVA_GRUPY, TRIDA_GRUPY } from '../data.js';
-import { PRAZDNO } from '../jadro/vektor.js';
+import { PRAZDNO } from '../model.js';
 
 /** Které sloupce se kreslí. Vrací indexy do cols, -1 je sloupec prázdna. */
 export function sloupce(cols, out, { only, typyOn }) {

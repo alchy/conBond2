@@ -9,12 +9,12 @@
    jen pořadí, v jakém vzor vznikl, a přečísluje se při každé změně r. */
 
 import { el, esc, vetaText } from '../util.js';
-import { stav } from '../stav.js';
+import { stav } from '../state.js';
 import { KORPUS, vetyKorpusu } from '../data.js';
 import { klicMapy, stavSpojeni } from '../store.js';
-import { vycisti, kresli, stred, rozestup } from '../pohled/hrany.js';
-import * as bub from '../pohled/bublina.js';
-import * as sklad from './skladani.js';
+import { vycisti, kresli, stred, rozestup } from '../view/edges.js';
+import * as bub from '../view/tooltip.js';
+import * as sklad from './compose.js';
 
 /* Slovník je společný a roste s každou zadanou otázkou, takže palet o sto
    položkách je brzo nepřehledná. Filtr má tři vrstvy: text, a hlavně výběr

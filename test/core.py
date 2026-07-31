@@ -1,0 +1,173 @@
+"""Testy jádra. Bez prohlížeče, bez serveru — jen import knihovny.
+
+    python3 test/core.py
+    python3 test/core.py --debug      # i s trasováním z logu
+"""
+
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from core import (Config, Nastaveni, Pole, Skladac, UlozisteSouboru,  # noqa: E402
+                  nastavit_log, pole_ven)
+from core.compose import popsat_zaznam  # noqa: E402
+from core.window import Okno  # noqa: E402
+
+chyb = 0
+
+
+def ok(podminka, zprava):
+    global chyb
+    if not podminka:
+        chyb += 1
+        print("  ✗ " + zprava)
+
+
+def nove_pole(**kw):
+    pole = Pole(UlozisteSouboru(config=Config.nacist()))
+    for klic, hodnota in kw.items():
+        setattr(pole.nastaveni, klic, hodnota)
+    return pole.postavit()
+
+
+print("— odsazení drží hranice vět, oba korpusy, r 0–8 —")
+print("r | fakta: řádků/středů/šablon | dotazy: řádků/středů/šablon | mimo | přes")
+for r in range(9):
+    pole = nove_pole(polomer_faktu=r, polomer_dotazu=r)
+    mimo = pres = 0
+    for k in ("f", "q"):
+        strana = pole.strana(k)
+        for i, sloty in strana.sloty_radku.items():
+            for sl in sloty:
+                radek = strana.tok.radek(sl.j)
+                if radek is None:
+                    mimo += 1
+                elif radek.veta != strana.tok.radky[i].veta:
+                    pres += 1
+    f, q = pole.fakta, pole.dotazy
+    print(f"{r} | {f.tok.pocet_radku()}/{f.pocet_stredu()}/{f.pocet_sablon()}"
+          f" | {q.tok.pocet_radku()}/{q.pocet_stredu()}/{q.pocet_sablon()}"
+          f" | {mimo} | {pres}")
+    ok(mimo == 0, f"r={r}: {mimo} slotů míří mimo pole")
+    ok(pres == 0, f"r={r}: {pres} slotů přelezlo do sousední věty")
+    ok(f.pocet_stredu() == 75, f"r={r}: středů faktů {f.pocet_stredu()}, čekáno 75")
+    ok(q.pocet_stredu() == 260, f"r={r}: středů dotazů {q.pocet_stredu()}, čekáno 260")
+    ma_prazdno = pole.ziskat_slovnik().najit("<empty>") is not None
+    ok(ma_prazdno == (r > 0), f"r={r}: <empty> ve slovníku = {ma_prazdno}")
+
+print("\n— poloměry se smí lišit a nastaví se jednou —")
+pole = nove_pole(polomer_faktu=1, polomer_dotazu=4)
+print(f"  fakta r=1 → {pole.fakta.pocet_sablon()} šablon"
+      f" · dotazy r=4 → {pole.dotazy.pocet_sablon()} šablon")
+ok(Okno(1, False).pocet_slotu() == 2 and Okno(4, False).pocet_slotu() == 8,
+   "počet slotů se neliší podle poloměru")
+ok(pole.ziskat_klic_mapovani() == "q4f1", "klíč mapování nesedí s poloměry")
+n = Nastaveni()
+n.polomer_dotazu = 3
+ok(n.zestaralo, "setter neoznačil model za zestaralý")
+n.oznacit_cerstvym()
+n.polomer_dotazu = 3
+ok(not n.zestaralo, "nastavení téže hodnoty zbytečně zneplatnilo model")
+
+print("\n— slovník je společný, šablony a vazby ne —")
+pole = nove_pole()
+s = pole.ziskat_slovnik()
+v_obou = s.vypsat_tvary_v_obou()
+print(f"  slovník {len(s)} · v obou {len(v_obou)} · nejistých {len(s.vypsat_nejiste())}")
+print(f"  vazby: fakta {len(pole.fakta.vazby)} · dotazy {len(pole.dotazy.vazby)}")
+ok(len(s) == 104, f"slovník {len(s)}, čekáno 104")
+ok(len(v_obou) == 38, f"v obou {len(v_obou)}, čekáno 38")
+ok(pole.fakta.pocet_sablon() == 71 and pole.dotazy.pocet_sablon() == 161,
+   "počty šablon nesedí")
+ok(len(pole.fakta.vazby) == 74 and len(pole.dotazy.vazby) == 210,
+   "počty vazeb nesedí")
+for k, predpona in (("f", "t"), ("q", "q")):
+    strana = pole.strana(k)
+    zpet = sum(len(strana.vypsat_vazby_sablony(t)) for t in strana.vypsat_sablony())
+    ok(zpet == len(strana.vazby),
+       f"{k}: zpětných odkazů {zpet}, vazeb {len(strana.vazby)}")
+    ok(all(t.startswith(predpona) for t in strana.vypsat_sablony()),
+       f"{k}: šablony nemají předponu {predpona}")
+
+print("\n— vypnutý významový typ nesmí Typ= pustit do vektoru —")
+pole = nove_pole(typy=False)
+prosaklo = [a for info in pole.fakta.vypsat_sablony().values()
+            for a in info["vec"] if ":Typ=" in a]
+print("  slotů s Typ=:", len(prosaklo))
+ok(not prosaklo, "Typ= prosáklo do vektoru i při vypnutém přepínači")
+
+print("\n— tázací tvar rozděluje to, co UD slévá —")
+pole = nove_pole()
+kolidujici = {"jak", "kdy", "kam", "kde", "proč"}
+bez_pta, s_pta = set(), set()
+for veta in pole.uloziste.nacist_korpus("query"):
+    for t in veta:
+        if t["form"].lower() in kolidujici and any(
+                a.startswith("PronType=Int") for a in t["acts"]):
+            bez_pta.add("|".join(sorted(a for a in t["acts"] if not a.startswith("Ptá="))))
+            s_pta.add("|".join(sorted(t["acts"])))
+print(f"  {', '.join(sorted(kolidujici))}: bez Ptá= {len(bez_pta)} podpis,"
+      f" s Ptá= {len(s_pta)}")
+ok(len(bez_pta) == 1, "čekal jsem, že tyhle tvary bez Ptá= splývají do jednoho")
+ok(len(s_pta) == len(kolidujici), "Ptá= je nerozdělil na samostatné")
+
+print("\n— skládání otázky ze slovníku —")
+pole = nove_pole(polomer_dotazu=2)
+skladac = Skladac(pole.ziskat_slovnik(), pole.zdroj, pole.skladac, Okno(2, False))
+skladac.pridat_slovo("se").pridat_slovo("jmenuje").zvolit_kotvu("kdo")
+skladac.pridat_slovo("alfons").prepnout_cil("pes")
+print("  offsety:", " ".join(f"{t}({d:+d})" for t, d in skladac.spocitat_offsety()))
+slozeno = skladac.slozit_vektor()
+print(f"  vektor: {' '.join(slozeno['vektor'][:4])} … "
+      f"({len(slozeno['vektor'])} položek)")
+print(f"  mimo okno: {slozeno['mimo_okno'] or 'nic'}"
+      f" · neznámé: {slozeno['nezname'] or 'nic'}"
+      f" · nejisté: {', '.join(slozeno['nejiste']) or 'nic'}")
+ok([d for _, d in skladac.spocitat_offsety()] == [-2, -1, 0, 1], "offsety nesedí")
+ok(not any(a.startswith("0:") for a in slozeno["vektor"]),
+   "střed se dostal do vektoru, ač je nastavený mimo")
+ok(not slozeno["nezname"], "některý tvar nemá ve slovníku aktivace")
+ok(not slozeno["mimo_okno"], "kotva se hlásí jako mimo okno, ač je jen mimo vektor")
+ok(skladac.vzor.je_hotovy(), "úplný vzor se netváří jako hotový")
+
+uzsi = Skladac(pole.ziskat_slovnik(), pole.zdroj, pole.skladac, Okno(1, False))
+uzsi.vzor = skladac.vzor
+uz = uzsi.slozit_vektor()
+print("  při r=1 vypadne:", ", ".join(uz["mimo_okno"]))
+ok("se" in uz["mimo_okno"], "r=1 nevyřadilo slovo na offsetu -2")
+ok(len(uz["vektor"]) < len(slozeno["vektor"]), "užší okno nedalo kratší vektor")
+
+print("\n— kotva při odebírání slov —")
+skladac.odebrat_slovo(0)
+print(f"  po odebrání „se\": {' '.join(skladac.vzor.slova)} · kotva {skladac.vzor.kotva}")
+ok(skladac.vzor.kotva == 1, f"kotva se neposunula: {skladac.vzor.kotva}")
+ok(skladac.vzor.tazaci_tvar() == "kdo", "kotva ukazuje na jiné slovo než kdo")
+popis = popsat_zaznam(skladac.vzor.do_slovniku())
+print(f"  popis: {popis['typ']} · {popis['text']}")
+ok(popis["text"] == "-1:jmenuje 0:kdo +1:alfons",
+   "popis s offsety nesedí: " + popis["text"])
+skladac.odebrat_slovo(skladac.vzor.kotva)
+ok(skladac.vzor.kotva == -1, "odebrání kotvy ji nezrušilo")
+stary = popsat_zaznam({"q": ["kdo"], "f": ["psa"]})
+ok(stary["typ"] is None and stary["text"] == "kdo",
+   "starší záznam bez kotvy se čte špatně")
+
+print("\n— export ven —")
+pole = nove_pole()
+ven = pole_ven(pole)
+ok(set(ven) >= {"nastaveni", "klic_mapovani", "slovnik", "f", "q"},
+   "v exportu chybí klíč")
+ok(len(ven["f"]["radky"]) == pole.fakta.tok.pocet_radku(), "rozvržení řádků nesedí")
+ok(ven["f"]["cisla"]["sablon"] == 71, "čísla v exportu nesedí s modelem")
+print(f"  klíčů: {', '.join(sorted(ven))} · řádků f {len(ven['f']['radky'])}")
+
+print("\n— config umí data přesměrovat —")
+jinam = Config(data="/tmp/pole2-test-data")
+ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")
+ok(jinam.slozka("corpora").endswith("corpora"), "podadresář struktury nesedí")
+ok(Config(data="data").data.endswith("/data"), "relativní cesta se nezakotvila")
+print(f"  {jinam}")
+
+print(f"\n{chyb} KONTROL SELHALO" if chyb else "\nvšechny kontroly prošly")
+sys.exit(1 if chyb else 0)

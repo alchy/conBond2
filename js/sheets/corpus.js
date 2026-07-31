@@ -7,13 +7,12 @@
    soubory, tedy přesně ta chyba, které se vyhýbáme. */
 
 import { el, esc, sklon } from '../util.js';
-import { stav } from '../stav.js';
+import { stav } from '../state.js';
 import { data, KORPUS } from '../data.js';
-import { pocetSlotu } from '../jadro/sloty.js';
-import { sloupce, hlavicka, mrizka } from '../pohled/pole.js';
-import { slovnik, vazby, sablony } from '../pohled/panely.js';
-import { vycisti, retez, rozestup } from '../pohled/hrany.js';
-import * as bub from '../pohled/bublina.js';
+import { sloupce, hlavicka, mrizka } from '../view/field.js';
+import { slovnik, vazby, sablony } from '../view/panels.js';
+import { vycisti, retez, rozestup } from '../view/edges.js';
+import * as bub from '../view/tooltip.js';
 
 const SIRKA_UZKA = 13, SIRKA_SIROKA = 6;
 
@@ -112,7 +111,7 @@ function cisla(v, m, lex, sloupcu, sviti) {
   q('.nw').textContent = m.own.length;
   q('.ratio').textContent = m.own.length ? (m.byT.size / m.own.length).toFixed(2) : '—';
   q('.reach').textContent = r === 0 ? '1 slot — jen střed'
-    : sklon(pocetSlotu({ r, cIn: stav.cIn }), 'slot', 'sloty', 'slotů');
+    : sklon(m.cisla.slotu, 'slot', 'sloty', 'slotů');
   q('.pust').textContent = vsechSlotu
     ? `${prazdnych} z ${vsechSlotu} (${(100 * prazdnych / vsechSlotu).toFixed(0)} %)` : '—';
 }

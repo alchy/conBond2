@@ -1,0 +1,4147 @@
+[
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "root",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jak",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=jak"
+   ]
+  },
+  {
+   "form": "se",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "expl:pv",
+    "Case=Acc",
+    "PronType=Prs",
+    "Reflex=Yes",
+    "Variant=Short",
+    "Lem=se"
+   ]
+  },
+  {
+   "form": "jmenuje",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp,Perf",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karlův",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "amod",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Gender[psor]=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Poss=Yes",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jak",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=jak"
+   ]
+  },
+  {
+   "form": "se",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "expl:pv",
+    "Case=Acc",
+    "PronType=Prs",
+    "Reflex=Yes",
+    "Variant=Short",
+    "Lem=se"
+   ]
+  },
+  {
+   "form": "jmenuje",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp,Perf",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "ten",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "PronType=Dem",
+    "Lem=ten"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Čí",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "root",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "PronType=Int,Rel",
+    "Lem=čí",
+    "Ptá=čí"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Komu",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obl:arg",
+    "Animacy=Anim",
+    "Case=Dat",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=komu"
+   ]
+  },
+  {
+   "form": "patří",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "ten",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "PronType=Dem",
+    "Lem=ten"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Alfonsův",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "amod",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Gender[psor]=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Poss=Yes",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "pán",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "root",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "pán",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "root",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "toho",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Case=Gen",
+    "Gender=Masc,Neut",
+    "Number=Sing",
+    "PronType=Dem",
+    "Lem=ten"
+   ]
+  },
+  {
+   "form": "psa",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nmod",
+    "Animacy=Anim",
+    "Case=Gen",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "root",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "pánem",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "root",
+    "Animacy=Anim",
+    "Case=Ins",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "Alfonse",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nmod",
+    "Animacy=Anim",
+    "Case=Gen",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jmenuje",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp,Perf",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "se",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "expl:pv",
+    "Case=Acc",
+    "PronType=Prs",
+    "Reflex=Yes",
+    "Variant=Short",
+    "Lem=se"
+   ]
+  },
+  {
+   "form": "Karlův",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "amod",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Gender[psor]=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Poss=Yes",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "flat",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "root",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "„",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  },
+  {
+   "form": "tento",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "PronType=Dem",
+    "Lem=tento"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "“",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Koho",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Anim",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=koho"
+   ]
+  },
+  {
+   "form": "označuje",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "„",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  },
+  {
+   "form": "jeho",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Gender[psor]=Masc,Neut",
+    "Number[psor]=Sing",
+    "Person=3",
+    "Poss=Yes",
+    "PronType=Prs",
+    "Lem=jeho"
+   ]
+  },
+  {
+   "form": "pán",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "“",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Komu",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obl:arg",
+    "Animacy=Anim",
+    "Case=Dat",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=komu"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "dává",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "buřty",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "dává",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "buřty",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Na",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Acc",
+    "Lem=na"
+   ]
+  },
+  {
+   "form": "koho",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obl:arg",
+    "Animacy=Anim",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=koho"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "čeká",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "S",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Ins",
+    "Lem=s"
+   ]
+  },
+  {
+   "form": "kým",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obl",
+    "Animacy=Anim",
+    "Case=Ins",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kým"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "do",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Gen",
+    "Lem=do"
+   ]
+  },
+  {
+   "form": "lesa",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Animacy=Inan",
+    "Case=Gen",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=misto"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "do",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Gen",
+    "Lem=do"
+   ]
+  },
+  {
+   "form": "lesa",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Animacy=Inan",
+    "Case=Gen",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=misto"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "se",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "expl:pv",
+    "Case=Acc",
+    "PronType=Prs",
+    "Reflex=Yes",
+    "Variant=Short",
+    "Lem=se"
+   ]
+  },
+  {
+   "form": "narodil",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Perf",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Tense=Past",
+    "VerbForm=Part",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "v",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Loc",
+    "Lem=v"
+   ]
+  },
+  {
+   "form": "roce",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Animacy=Inan",
+    "Case=Loc",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=cas"
+   ]
+  },
+  {
+   "form": "2015",
+   "upos": "NUM",
+   "acts": [
+    "NUM",
+    "nummod",
+    "NumForm=Digit",
+    "NumType=Card"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "starší",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "root",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Degree=Cmp",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": ",",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "appos",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "nebo",
+   "upos": "CCONJ",
+   "acts": [
+    "CCONJ",
+    "cc",
+    "Lem=nebo"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "conj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "psa",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Anim",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Koho",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Anim",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=koho"
+   ]
+  },
+  {
+   "form": "má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "čeká",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "u",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Gen",
+    "Lem=u"
+   ]
+  },
+  {
+   "form": "dveří",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Case=Gen",
+    "Gender=Fem",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "rád",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "iobj",
+    "Degree=Pos",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Variant=Short"
+   ]
+  },
+  {
+   "form": "buřty",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "nemá",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Neg",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "rád",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "iobj",
+    "Degree=Pos",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Variant=Short"
+   ]
+  },
+  {
+   "form": "studenou",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "amod",
+    "Case=Acc",
+    "Degree=Pos",
+    "Gender=Fem",
+    "Number=Sing",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": "vodu",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Case=Acc",
+    "Gender=Fem",
+    "Number=Sing",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdo",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kdo"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "plavat",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "advcl",
+    "Aspect=Imp",
+    "Polarity=Pos",
+    "VerbForm=Inf"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jaký",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "root",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "PronType=Int,Rel",
+    "Lem=jaký",
+    "Ptá=jaký"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Karlův",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "amod",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Gender[psor]=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Poss=Yes",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jak",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=jak"
+   ]
+  },
+  {
+   "form": "velký",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "root",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Degree=Pos",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "rád",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "iobj",
+    "Degree=Pos",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Variant=Short"
+   ]
+  },
+  {
+   "form": "svého",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Animacy=Anim",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Sing",
+    "Poss=Yes",
+    "PronType=Prs",
+    "Reflex=Yes",
+    "Lem=svůj"
+   ]
+  },
+  {
+   "form": "psa",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Anim",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Koho",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Anim",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=koho"
+   ]
+  },
+  {
+   "form": "má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "rád",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "iobj",
+    "Degree=Pos",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Variant=Short"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Co",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=co",
+    "Ptá=co"
+   ]
+  },
+  {
+   "form": "má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "rád",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "iobj",
+    "Degree=Pos",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Variant=Short"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Co",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=co",
+    "Ptá=co"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "nemá",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Neg",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "rád",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "iobj",
+    "Degree=Pos",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Variant=Short"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "rád",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "iobj",
+    "Degree=Pos",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Variant=Short"
+   ]
+  },
+  {
+   "form": "studenou",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "amod",
+    "Case=Acc",
+    "Degree=Pos",
+    "Gender=Fem",
+    "Number=Sing",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": "vodu",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Case=Acc",
+    "Gender=Fem",
+    "Number=Sing",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdy",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kdy"
+   ]
+  },
+  {
+   "form": "se",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "expl:pv",
+    "Case=Acc",
+    "PronType=Prs",
+    "Reflex=Yes",
+    "Variant=Short",
+    "Lem=se"
+   ]
+  },
+  {
+   "form": "narodil",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Perf",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Tense=Past",
+    "VerbForm=Part",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "V",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Loc",
+    "Lem=v"
+   ]
+  },
+  {
+   "form": "kterém",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Case=Loc",
+    "Gender=Masc,Neut",
+    "Number=Sing",
+    "PronType=Int,Rel",
+    "Lem=který",
+    "Ptá=kterém"
+   ]
+  },
+  {
+   "form": "roce",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Animacy=Inan",
+    "Case=Loc",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=cas"
+   ]
+  },
+  {
+   "form": "se",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "expl:pv",
+    "Case=Acc",
+    "PronType=Prs",
+    "Reflex=Yes",
+    "Variant=Short",
+    "Lem=se"
+   ]
+  },
+  {
+   "form": "narodil",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Perf",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Tense=Past",
+    "VerbForm=Part",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdy",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kdy"
+   ]
+  },
+  {
+   "form": "se",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "expl:pv",
+    "Case=Acc",
+    "PronType=Prs",
+    "Reflex=Yes",
+    "Variant=Short",
+    "Lem=se"
+   ]
+  },
+  {
+   "form": "narodil",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Perf",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos",
+    "Tense=Past",
+    "VerbForm=Part",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "O",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Acc",
+    "Lem=o"
+   ]
+  },
+  {
+   "form": "kolik",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det:numgov",
+    "Case=Acc",
+    "NumType=Card",
+    "PronType=Dem,Ind",
+    "Lem=kolik"
+   ]
+  },
+  {
+   "form": "let",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Case=Gen",
+    "Gender=Neut",
+    "Number=Plur"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "mladší",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "root",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Degree=Cmp",
+    "Gender=Masc",
+    "Number=Sing",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": "než",
+   "upos": "SCONJ",
+   "acts": [
+    "SCONJ",
+    "mark",
+    "Lem=než"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "advcl",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdy",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kdy"
+   ]
+  },
+  {
+   "form": "dostává",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "buřty",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Který",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Sing",
+    "PronType=Int,Rel",
+    "Lem=který",
+    "Ptá=který"
+   ]
+  },
+  {
+   "form": "den",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=cas"
+   ]
+  },
+  {
+   "form": "dostává",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "pes",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "buřty",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "V",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Acc",
+    "Lem=v"
+   ]
+  },
+  {
+   "form": "kterou",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Case=Acc",
+    "Gender=Fem",
+    "Number=Sing",
+    "PronType=Int,Rel",
+    "Lem=který",
+    "Ptá=kterou"
+   ]
+  },
+  {
+   "form": "denní",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "amod",
+    "Case=Acc",
+    "Degree=Pos",
+    "Gender=Fem",
+    "Number=Sing",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": "dobu",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Case=Acc",
+    "Gender=Fem",
+    "Number=Sing",
+    "Typ=cas"
+   ]
+  },
+  {
+   "form": "dostává",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "buřty",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jak",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=jak"
+   ]
+  },
+  {
+   "form": "často",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "Degree=Pos",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": "dostává",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "buřty",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "Gender=Masc",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jak",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=jak"
+   ]
+  },
+  {
+   "form": "často",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "Degree=Pos",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "plavat",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "advcl",
+    "Aspect=Imp",
+    "Polarity=Pos",
+    "VerbForm=Inf"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdy",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kdy"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Plur",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "s",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Ins",
+    "Lem=s"
+   ]
+  },
+  {
+   "form": "Alfonsem",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "obl",
+    "Animacy=Anim",
+    "Case=Ins",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "do",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Gen",
+    "Lem=do"
+   ]
+  },
+  {
+   "form": "lesa",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Animacy=Inan",
+    "Case=Gen",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=misto"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kdy",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kdy"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "k",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Dat",
+    "Lem=k"
+   ]
+  },
+  {
+   "form": "rybníku",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Animacy=Inan",
+    "Case=Dat",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=misto"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kam",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kam"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "plavat",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "advcl",
+    "Aspect=Imp",
+    "Polarity=Pos",
+    "VerbForm=Inf"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kde",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kde"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "plave",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Mezi",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Ins",
+    "Lem=mezi"
+   ]
+  },
+  {
+   "form": "kým",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obl",
+    "Animacy=Anim",
+    "Case=Ins",
+    "PronType=Int,Rel",
+    "Lem=kdo",
+    "Ptá=kým"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "plave",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Co",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "nsubj",
+    "Animacy=Inan",
+    "Case=Nom",
+    "PronType=Int,Rel",
+    "Lem=co",
+    "Ptá=co"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "v",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Loc",
+    "Lem=v"
+   ]
+  },
+  {
+   "form": "rybníce",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "root",
+    "Animacy=Inan",
+    "Case=Loc",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=misto"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kam",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kam"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "s",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Ins",
+    "Lem=s"
+   ]
+  },
+  {
+   "form": "psem",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Animacy=Anim",
+    "Case=Ins",
+    "Gender=Masc",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "v",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Loc",
+    "Lem=v"
+   ]
+  },
+  {
+   "form": "zimě",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Case=Loc",
+    "Gender=Fem",
+    "Number=Sing",
+    "Typ=cas"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kam",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kam"
+   ]
+  },
+  {
+   "form": "chodí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Plur",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "v",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Loc",
+    "Lem=v"
+   ]
+  },
+  {
+   "form": "létě",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Case=Loc",
+    "Gender=Neut",
+    "Number=Sing",
+    "Typ=cas"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kde",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kde"
+   ]
+  },
+  {
+   "form": "čeká",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Proč",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=proč"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "čeká",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "u",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Gen",
+    "Lem=u"
+   ]
+  },
+  {
+   "form": "dveří",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Case=Gen",
+    "Gender=Fem",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Co",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=co",
+    "Ptá=co"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "ví",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Co",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=co",
+    "Ptá=co"
+   ]
+  },
+  {
+   "form": "dělá",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "pravidelně",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "Degree=Pos",
+    "Polarity=Pos"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Co",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=co",
+    "Ptá=co"
+   ]
+  },
+  {
+   "form": "dává",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "psovi",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl:arg",
+    "Animacy=Anim",
+    "Case=Dat",
+    "Gender=Masc",
+    "Number=Sing"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Co",
+   "upos": "PRON",
+   "acts": [
+    "PRON",
+    "obj",
+    "Animacy=Inan",
+    "Case=Acc",
+    "PronType=Int,Rel",
+    "Lem=co",
+    "Ptá=co"
+   ]
+  },
+  {
+   "form": "dělá",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "u",
+   "upos": "ADP",
+   "acts": [
+    "ADP",
+    "case",
+    "AdpType=Prep",
+    "Case=Gen",
+    "Lem=u"
+   ]
+  },
+  {
+   "form": "dveří",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obl",
+    "Case=Gen",
+    "Gender=Fem",
+    "Number=Plur",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jakou",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det",
+    "Case=Acc",
+    "Gender=Fem",
+    "Number=Sing",
+    "PronType=Int,Rel",
+    "Lem=jaký",
+    "Ptá=jakou"
+   ]
+  },
+  {
+   "form": "barvu",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Case=Acc",
+    "Gender=Fem",
+    "Number=Sing",
+    "Typ=vec"
+   ]
+  },
+  {
+   "form": "má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Alfons",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=zivocich"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kde",
+   "upos": "ADV",
+   "acts": [
+    "ADV",
+    "advmod",
+    "PronType=Int,Rel",
+    "Ptá=kde"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "bydlí",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Má",
+   "upos": "VERB",
+   "acts": [
+    "VERB",
+    "root",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act"
+   ]
+  },
+  {
+   "form": "Karel",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "nsubj",
+    "Animacy=Anim",
+    "Case=Nom",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "kočku",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "obj",
+    "Case=Acc",
+    "Gender=Fem",
+    "Number=Sing"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Kolik",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "det:numgov",
+    "Case=Nom",
+    "NumType=Card",
+    "PronType=Dem,Ind",
+    "Lem=kolik"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Karlovi",
+   "upos": "PROPN",
+   "acts": [
+    "PROPN",
+    "root",
+    "Animacy=Anim",
+    "Case=Dat",
+    "Gender=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "let",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Case=Gen",
+    "Gender=Neut",
+    "Number=Plur"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ],
+ [
+  {
+   "form": "Jaké",
+   "upos": "DET",
+   "acts": [
+    "DET",
+    "root",
+    "Case=Nom",
+    "Gender=Neut",
+    "Number=Sing",
+    "PronType=Int,Rel",
+    "Lem=jaký",
+    "Ptá=jaké"
+   ]
+  },
+  {
+   "form": "je",
+   "upos": "AUX",
+   "acts": [
+    "AUX",
+    "cop",
+    "Aspect=Imp",
+    "Mood=Ind",
+    "Number=Sing",
+    "Person=3",
+    "Polarity=Pos",
+    "Tense=Pres",
+    "VerbForm=Fin",
+    "Voice=Act",
+    "Lem=být"
+   ]
+  },
+  {
+   "form": "Karlovo",
+   "upos": "ADJ",
+   "acts": [
+    "ADJ",
+    "amod",
+    "Case=Nom",
+    "Gender=Neut",
+    "Gender[psor]=Masc",
+    "NameType=Giv",
+    "Number=Sing",
+    "Poss=Yes",
+    "Typ=osoba"
+   ]
+  },
+  {
+   "form": "příjmení",
+   "upos": "NOUN",
+   "acts": [
+    "NOUN",
+    "nsubj",
+    "Case=Nom",
+    "Gender=Neut",
+    "Number=Sing",
+    "Typ=dej"
+   ]
+  },
+  {
+   "form": "?",
+   "upos": "PUNCT",
+   "acts": [
+    "PUNCT",
+    "punct"
+   ]
+  }
+ ]
+]

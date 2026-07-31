@@ -1,0 +1,80 @@
+<meta charset="utf-8">
+<title>Pole → slovník → vazby → šablony</title>
+<link rel="stylesheet" href="css/tokeny.css">
+<link rel="stylesheet" href="css/rozvrzeni.css">
+<link rel="stylesheet" href="css/pole.css">
+<link rel="stylesheet" href="css/panely.css">
+<link rel="stylesheet" href="css/editory.css">
+
+<div class="wrap">
+  <h1>Pole → slovník → vazby → šablony</h1>
+  <p class="lede">Dvě strany téhož stroje. <b>Facts</b> je pole textu, <b>Query</b> pole
+     dotazů — <b>týž kód, jiná data</b>. Obě končí šablonou: vlevo <b>pole</b> (řádek na
+     slovo, sloupec na aktivaci), pak <b>slovník</b>, pak <b>vazby</b>
+     (<code>links[(w_id, t_id, zrno)] → výskyty</code>) a vpravo <b>šablony</b> — obálka
+     okolí pro zvolené <b>r</b>, sloučená tam, kde vyšla stejně.<br>
+     <b>Slovník je jeden, společný oběma stranám</b>; <b>vazby i šablony má každá strana
+     vlastní</b>. Že je týž tvar ve faktu i v dotazu, samo o sobě nic nespojuje — je to
+     jen společný prostor tvarů. <b>Spojení jde přes šablony</b> a řeší se na listech
+     <b>Vazby</b>. Vertikály jsou sdílené proto, že bez toho by měly vektory obou stran
+     jiný atributový prostor.<br>
+     Poloměry jsou <b>dva a smí se lišit</b>: dotaz může mít jiné r než fakt, protože se
+     vektory nikdy neporovnávají přímo — mapování je kotvené na tvarech.
+     Každá věta stojí sama: dostane <b>r prázdných řádků</b> před sebe a <b>r za sebe</b>,
+     takže okno nemá jak přelézt do sousední a co přesahuje, je <b>&lt;empty&gt;</b>.</p>
+
+  <div id="globals">
+    <div class="bar">
+      <div><label>r_words · fakta</label><div class="seg" id="rf">
+        <button data-v="0">0</button><button data-v="1" aria-pressed="true">1</button>
+        <button data-v="2">2</button><button data-v="3">3</button>
+        <button data-v="4">4</button><button data-v="5">5</button>
+        <button data-v="6">6</button><button data-v="7">7</button>
+        <button data-v="8">8</button></div></div>
+      <div><label>r_words · dotazy</label><div class="seg" id="rq">
+        <button data-v="0">0</button><button data-v="1" aria-pressed="true">1</button>
+        <button data-v="2">2</button><button data-v="3">3</button>
+        <button data-v="4">4</button><button data-v="5">5</button>
+        <button data-v="6">6</button><button data-v="7">7</button>
+        <button data-v="8">8</button></div></div>
+      <div><label>Střed ve vektoru</label><div class="seg" id="cn">
+        <button data-v="0" aria-pressed="true">mimo</button>
+        <button data-v="1">uvnitř</button></div></div>
+      <div><label>Významový typ</label><div class="seg" id="ty">
+        <button data-v="1" aria-pressed="true">zapnut</button>
+        <button data-v="0">vypnut</button></div></div>
+      <div><label>Zrno textu</label><div class="seg" id="p">
+        <button data-v="0" aria-pressed="true">normalizovaně</button>
+        <button data-v="1">surově</button></div></div>
+      <div><label>Sloupce</label><div class="seg" id="c">
+        <button data-v="1" aria-pressed="true">jen svítící</button>
+        <button data-v="0">všech</button></div></div>
+    </div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--upos)"></i> UPOS</span>
+      <span><i class="sw" style="background:var(--deprel)"></i> DEPREL</span>
+      <span><i class="sw" style="background:var(--feats)"></i> FEATS</span>
+      <span><i class="sw" style="background:var(--ink)"></i><i class="sw"
+        style="background:var(--ink2)"></i> TYP · LEM · vlastní — vrstvy, které
+        UDPipe nedává, proto inkoust a ne další barva</span>
+      <span><i class="sw" style="background:var(--muted)"></i> ∅ prázdný slot</span>
+      <span><i class="obe">F·Q</i> tvar je ve faktech i v dotazech</span>
+      <span style="color:var(--muted)">vybledlé ve slovníku = v tomhle korpusu není</span>
+    </div>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button data-s="f" aria-selected="true">Facts<span class="n" id="tnF"></span></button>
+    <button data-s="q" aria-selected="false">Query<span class="n" id="tnQ"></span></button>
+    <button data-s="mapd" aria-selected="false">Vazby · definice</button>
+    <button data-s="mapp" aria-selected="false">Vazby · přehled<span class="n" id="tnM"></span></button>
+    <button data-s="vert" aria-selected="false">Vertikály<span class="n" id="tnV"></span></button>
+    <button data-s="mx" aria-selected="false">Matice<span class="n" id="tnMx"></span></button>
+    <button data-s="vety" aria-selected="false">Věty<span class="n" id="tnS"></span></button>
+  </nav>
+
+  <main id="listy"></main>
+</div>
+<div id="tip"></div>
+
+<script type="module" src="js/app.js"></script>

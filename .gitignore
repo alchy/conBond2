@@ -1,0 +1,11 @@
+# Prostředí a modely — dohromady přes 2 GB a dají se obnovit podle README.
+.venv/
+models/
+
+# Běhová data. vychozi.json je naopak zdroj, ten se verzuje.
+data/stav.json
+data/maps/
+
+__pycache__/
+*.pyc
+.DS_Store

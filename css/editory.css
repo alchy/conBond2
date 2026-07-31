@@ -1,0 +1,224 @@
+/* Editory: matice, seznam vertikál, seznam vět, tabulky, dialog nové věty. */
+
+
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --plane:#0d0d0d; --surface:#1a1a19;
+    --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+    --upos:#3987e5; --deprel:#d95926; --feats:#199e70;
+  }
+
+  /* PLÁTNO, ne responzivní stránka. Nic se nepřizpůsobuje oknu: co je jednou
+     nakreslené, zůstává ve svých rozměrech, plocha roste a scrolluje se
+     v obou osách. Proto max-content všude, kde by jinak flex roztahoval. */
+  body { margin:0; padding:24px 20px 60px; background:var(--plane); color:var(--ink);
+         font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;
+         width:max-content; min-width:100%; }
+
+  /* Doplnění faktu a doplnění dotazu jsou dvě různé věci a nesmí jít
+     splést — proto dvě tlačítka, ne jedno plus přepínač, který se dá
+     přehlédnout. Každé nese barvu své strany. */
+  .act b { font-weight:650; }
+
+  #bNewF b { color:var(--ink); }
+
+  #bNewQ b { color:var(--upos); }
+
+  #bNewQ { border-color:var(--upos); }
+
+
+  .legend { display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin:0 0 10px;
+            color:var(--ink2); font-size:13px; max-width:1300px; }
+
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+
+  .sw { width:11px; height:11px; border-radius:2px; box-shadow:0 0 0 1px var(--ring); }
+
+
+  /* Pole má i po odfiltrování hodně sloupců a odtlačovalo by ostatní panely
+     mimo obraz. Dostane proto strop a VLASTNÍ vodorovný scroll; plátno
+     se tím nezvětšuje a k novým sloupcům se dá dojet uvnitř pole.
+     Panely vpravo scrollují svisle ze stejného důvodu — slovník je společný
+     oběma stranám, takže je delší než kterékoli jedno pole. */
+  .p-field { flex:0 0 auto; max-width:1000px; }
+
+  /* Typ, Lem a vlastní atributy jsou NAŠE vrstva, ne rozborová — proto inkoust,
+     ne další odstín. Paleta má strop na třech a čtvrtý by neprošel proti
+     stávajícím; a co nedává UDPipe, patří vizuálně k sobě. */
+  .c.g3{background:var(--ink)}
+
+
+  /* Hlavička vertikál. Odsazení 27px = šířka žlábku, ať pásma sedí na sloupce. */
+  .grp { display:flex; padding:0 13px; height:20px; align-items:flex-end; }
+
+
+  /* Věta pod svým blokem. Hranici drží odsazení, tenhle popisek ji pojmenuje. */
+  .sent { height:var(--rh); display:flex; align-items:center; padding-left:27px;
+          color:var(--muted); font-size:11px; white-space:nowrap;
+          border-bottom:1px solid var(--grid); margin-bottom:4px; }
+
+  /* Slovník je společný, takže tvar, který v TOMHLE korpusu není, musí být
+     poznat — jinak by se hledalo, proč z něj nevede hrana. */
+  li.cizi { opacity:.42; }
+
+  /* Zpětný odkaz šablony na její vazby. Šipka míří doleva, protože tam
+     vazby ve sloupcích skutečně leží. */
+  .share.zpet { color:var(--muted); border-style:dashed;
+                font-variant-numeric:tabular-nums; }
+
+  /* Sdílená šablona svítí TRVALE, ne až po najetí — je to nález, ne stav UI.
+     Pořadí pravidel platí: .hot musí přebít .heat. */
+  svg.edges path.heat { stroke:var(--deprel); stroke-width:1.8; opacity:.95; }
+
+  .vlist { width:330px; max-height:64vh; overflow:auto; }
+
+  .vgrp { margin-bottom:11px; }
+
+  .vgrp > i { font-style:normal; font-size:10.5px; letter-spacing:.07em;
+              text-transform:uppercase; color:var(--muted); display:block;
+              border-bottom:2px solid currentColor; padding-bottom:2px;
+              margin-bottom:4px; }
+
+  .vrow { display:flex; align-items:center; gap:7px; padding:1px 0; font-size:13px; }
+
+  .vrow label { display:flex; align-items:center; gap:6px; cursor:pointer; flex:1;
+                min-width:0; }
+
+  .vrow .nm { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+  .vrow .n { font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; }
+
+  .x { border:0; background:transparent; color:var(--muted); cursor:pointer;
+       font:inherit; padding:0 4px; border-radius:4px; }
+
+  .x:hover { background:var(--deprel); color:var(--surface); }
+
+  .vnew { display:flex; gap:9px; align-items:flex-end; flex-wrap:wrap;
+          margin-bottom:12px; }
+
+
+  .mxwrap { max-height:68vh; overflow:auto; }
+
+  table.mx { border-collapse:separate; border-spacing:0; font-size:13px; }
+
+  table.mx th { position:sticky; top:0; z-index:2; background:var(--surface);
+                text-align:left; font-weight:500; font-size:10.5px; color:var(--muted);
+                letter-spacing:.05em; text-transform:uppercase; white-space:nowrap;
+                padding:0 8px 6px; border-bottom:1px solid var(--axis);
+                vertical-align:bottom; }
+
+  table.mx td { padding:0 8px; height:20px; white-space:nowrap; }
+
+  table.mx td.k { color:var(--muted); font-size:11px;
+                  font-variant-numeric:tabular-nums; text-align:right; }
+
+  table.mx td.f { font-weight:500; }
+
+  table.mx td.pun { color:var(--muted); font-weight:400; }
+
+  table.mx tr.tok:hover td { background:var(--grid); }
+
+  table.mx tr.vs td { color:var(--muted); font-size:11px; padding-top:11px;
+                      border-bottom:1px solid var(--grid); }
+
+  .cell { display:block; width:22px; height:12px; border-radius:3px;
+          background:var(--grid); cursor:pointer; }
+
+  .cell:hover { outline:1px solid var(--axis); outline-offset:1px; }
+
+  .cell.g0{background:var(--upos)}
+ .cell.g1{background:var(--deprel)}
+
+  .cell.g2{background:var(--feats)}
+ .cell.g3{background:var(--ink)}
+
+  .cell.g4{background:var(--ink2)}
+
+  .cell.off { background:var(--grid); }
+
+
+  .vetyCol { width:620px; }
+
+  .vety { max-height:58vh; overflow:auto; }
+
+  .pocet { font-size:11px; color:var(--muted); font-weight:400;
+           font-variant-numeric:tabular-nums; margin-left:5px; }
+
+  .vt { display:flex; align-items:baseline; gap:11px; padding:5px 0;
+        border-bottom:1px solid var(--grid); }
+
+  .vt .num { color:var(--muted); font-variant-numeric:tabular-nums; width:2.4em;
+             text-align:right; flex:0 0 auto; }
+
+  .vt .tx { flex:1; }
+
+  .vt .n { color:var(--muted); font-size:11px; font-variant-numeric:tabular-nums;
+           flex:0 0 auto; }
+
+  details.tab { margin-top:20px; }
+ summary { cursor:pointer; color:var(--ink2); }
+
+  table.vaz { border-collapse:collapse; margin-top:10px; font-size:13px; }
+
+  table.vaz th, table.vaz td { text-align:left; padding:4px 13px 4px 0;
+    border-bottom:1px solid var(--grid); vertical-align:top; }
+
+  table.vaz th { color:var(--muted); font-weight:500; font-size:11px;
+    letter-spacing:.06em; text-transform:uppercase; }
+
+  table.vaz td.n { font-variant-numeric:tabular-nums; color:var(--ink2); }
+
+  table.vaz td.qf { color:var(--upos); font-weight:600; }
+
+  table.vaz td.ff { color:var(--ink); font-weight:600; }
+
+  table.vaz tr.mez td { opacity:.45; }
+
+  table.vaz .tid { font-variant-numeric:tabular-nums; color:var(--muted);
+                   font-size:12px; }
+
+
+  /* ---- list Vazby šablon ---------------------------------------------- */
+  /* Označené slovo bliká, dokud se sada nesváže — je to rozdělaná práce,
+     ne stav výběru, a musí to být poznat i přes celé plátno. */
+  @keyframes blik { 0%,100%{opacity:1}
+ 50%{opacity:.3}
+ }
+  li.oznac { animation:blik .9s ease-in-out infinite;
+             outline:2px solid var(--deprel); outline-offset:-2px; }
+ }
+  .span { flex:0 0 calc(var(--bw,54px) * 2); position:relative; }
+
+
+  #tip { position:fixed; z-index:9; pointer-events:none; opacity:0; background:var(--ink);
+         color:var(--surface); padding:6px 10px; border-radius:6px; font-size:12px;
+         max-width:min(62ch,80vw); transition:opacity .08s; }
+
+  .tok { border-top:1px solid var(--grid); padding:7px 0; }
+
+  .tok > summary { list-style:none; display:flex; align-items:baseline; gap:10px; }
+
+  .tok > summary::-webkit-details-marker { display:none; }
+
+  .tok > summary::before { content:"▸"; color:var(--muted); font-size:11px; }
+
+  .tok[open] > summary::before { content:"▾"; }
+
+  .tok .nm { font-weight:650; }
+
+  .tok .sum { color:var(--ink2); font-size:12px; }
+
+  .tok .hd { display:flex; gap:14px; align-items:flex-end; margin:8px 0 8px 16px; }
+
+  .tok .hd input { width:14ch; }
+
+  .fgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+           gap:8px 18px; margin-left:16px; }
+
+  .fg > i { font-style:normal; font-size:10.5px; letter-spacing:.06em;
+            text-transform:uppercase; color:var(--muted); display:block; }
+
+  .fg label { display:inline-flex; align-items:center; gap:4px; margin-right:9px;
+              font-size:13px; }

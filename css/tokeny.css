@@ -1,0 +1,36 @@
+/* Barvy, rozměrové jednotky, světlý a tmavý režim, základ stránky. */
+
+
+  :root {
+    color-scheme: light;
+    --plane:#f9f9f7; --surface:#fcfcfb;
+    --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+    --upos:#2a78d6; --deprel:#eb6834; --feats:#1baf7a;
+    --rh:17px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --plane:#0d0d0d; --surface:#1a1a19;
+      --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+      --upos:#3987e5; --deprel:#d95926; --feats:#199e70;
+    }
+
+  * { box-sizing:border-box; }
+
+  [hidden] { display:none !important; }
+
+  .wrap { width:max-content; margin:0; }
+
+  h1 { font-size:20px; margin:0 0 6px; letter-spacing:-0.01em; }
+
+  h2 { font-size:15px; margin:0 0 8px; letter-spacing:-0.01em; }
+
+  .lede { color:var(--ink2); margin:0 0 16px; max-width:82ch; }
+
+  .lede b { color:var(--ink); font-weight:600; }
+
+  @media (prefers-reduced-motion:reduce) { li.oznac { animation:none; }

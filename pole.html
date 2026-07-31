@@ -1,0 +1,803 @@
+<meta charset="utf-8">
+<title>Aktivační pole, slovník a šablony</title>
+<style>
+  :root {
+    color-scheme: light;
+    --plane:#f9f9f7; --surface:#fcfcfb;
+    --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+    --grid:#e1e0d9; --axis:#c3c2b7; --ring:rgba(11,11,11,0.10);
+    --upos:#2a78d6; --deprel:#eb6834; --feats:#1baf7a;
+    --rh:17px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --plane:#0d0d0d; --surface:#1a1a19;
+      --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+      --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+      --upos:#3987e5; --deprel:#d95926; --feats:#199e70;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --plane:#0d0d0d; --surface:#1a1a19;
+    --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --axis:#383835; --ring:rgba(255,255,255,0.10);
+    --upos:#3987e5; --deprel:#d95926; --feats:#199e70;
+  }
+  * { box-sizing:border-box; }
+  /* PLÁTNO, ne responzivní stránka. Nic se nepřizpůsobuje oknu: co je jednou
+     nakreslené, zůstává ve svých rozměrech, plocha roste a scrolluje se
+     v obou osách. Proto max-content všude, kde by jinak flex roztahoval. */
+  body { margin:0; padding:24px 20px 60px; background:var(--plane); color:var(--ink);
+         font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;
+         width:max-content; min-width:100%; }
+  .wrap { width:max-content; margin:0; }
+  h1 { font-size:20px; margin:0 0 6px; letter-spacing:-0.01em; }
+  .lede { color:var(--ink2); margin:0 0 16px; max-width:78ch; }
+  .lede b { color:var(--ink); font-weight:600; }
+
+  .bar { display:flex; gap:16px; align-items:flex-end; padding:11px 13px; width:max-content;
+         margin-bottom:12px; background:var(--surface); border:1px solid var(--ring);
+         border-radius:8px; }
+  .bar label { display:block; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
+               color:var(--muted); margin-bottom:4px; }
+  select { font:inherit; padding:5px 8px; border:1px solid var(--axis); border-radius:6px;
+           background:var(--surface); color:var(--ink); max-width:300px; }
+  .seg { display:inline-flex; border:1px solid var(--axis); border-radius:6px; overflow:hidden; }
+  .seg button { font:inherit; padding:5px 10px; border:0; cursor:pointer;
+                background:transparent; color:var(--ink2); }
+  .seg button + button { border-left:1px solid var(--axis); }
+  .seg button[aria-pressed="true"] { background:var(--ink); color:var(--surface); }
+
+  .legend { display:flex; flex-wrap:wrap; gap:16px; align-items:center; margin:0 0 10px;
+            color:var(--ink2); font-size:13px; max-width:1300px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .sw { width:11px; height:11px; border-radius:2px; box-shadow:0 0 0 1px var(--ring); }
+
+  .stage { position:relative; width:max-content; }
+  .cols { display:flex; align-items:flex-start; gap:0; }
+  .panel { background:var(--surface); border:1px solid var(--ring); border-radius:8px;
+           padding:10px 0 12px; }
+  .cap { font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+         padding:0 13px 7px; white-space:nowrap; }
+  .cap b { color:var(--ink2); font-weight:600; }
+
+  /* Pole má po přidání typů 156 sloupců a odtlačovalo by ostatní panely
+     mimo obraz. Dostane proto strop a VLASTNÍ vodorovný scroll; plátno
+     se tím nezvětšuje a k novým sloupcům se dá dojet uvnitř pole. */
+  .p-field { flex:0 0 auto; max-width:1100px; }
+  .scroll { overflow-x:auto; overflow-y:visible; }
+  .scroll::-webkit-scrollbar { height:10px; }
+  .scroll::-webkit-scrollbar-thumb { background:var(--axis); border-radius:5px; }
+  /* číslo věty musí zůstat vidět, i když se sloupce odrolují */
+  .gut { position:sticky; left:0; z-index:1; background:var(--surface); }
+  .groups { display:flex; gap:2px; padding:0 13px 0 33px; align-items:flex-end; height:20px; }
+  .groups div { font-size:10px; letter-spacing:.05em; text-transform:uppercase;
+                border-bottom:2px solid currentColor; padding-bottom:2px; white-space:nowrap;
+                overflow:hidden; }
+  .rows { padding:0 13px; }
+  .rw { display:grid; gap:1px; height:var(--rh); align-content:center; flex:0 0 auto; }
+  .line { display:flex; align-items:center; height:var(--rh); }
+  .line.hot { background:var(--axis); }
+  .line.slot .gut { color:var(--ink); font-weight:650; }
+  .line.slot { background:var(--grid); }
+  .line.pruh .rw .c { opacity:.35; }        /* průhledný rám: slot to není */
+  .gut { transition:color .08s; }
+  .gut { flex:0 0 20px; text-align:right; padding-right:7px; font-size:10px;
+         color:var(--muted); font-variant-numeric:tabular-nums; }
+  .c { height:11px; border-radius:2px; background:var(--grid); }
+  .c.g0{background:var(--upos)} .c.g1{background:var(--deprel)}
+  .c.g2{background:var(--feats)} .c.gb{background:var(--muted)}
+  /* Typ je NAŠE vrstva, ne rozborová — proto inkoust, ne čtvrtý odstín.
+     Paleta má strop na třech a čtvrtý by neprošel proti stávajícím. */
+  .c.g3{background:var(--ink)}
+  /* Lemma ZAVŘENÉ třídy — u předložek a spojek je lemma mluvnice, ne obsah.
+     Bez něj jsou „do lesa" a „u dveří" v poli nerozlišitelné. */
+  .c.g4{background:var(--ink2)}
+  .rw.bnd .c { height:3px; }
+
+  .bridge { flex:0 0 58px; }
+  .span { flex:0 0 120px; position:relative; }   /* větší odstup: jiný svět */
+  .span i { position:absolute; top:14px; left:50%; transform:translateX(-50%);
+            font-style:normal; font-size:10px; letter-spacing:.09em;
+            text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+  .p-join { flex:0 0 auto; } .p-qtpl { flex:0 0 auto; }
+  .p-qlnk { flex:0 0 auto; } .p-qlex { flex:0 0 auto; } .p-q { flex:0 0 auto; }
+  .p-q li { max-width:34ch; overflow:hidden; text-overflow:ellipsis; }
+  .klik { cursor:pointer; }
+  .line:not(.bnd) { cursor:pointer; }
+  .pinned { outline:2px solid var(--ink); outline-offset:-2px; }
+  .p-q li.ask { cursor:pointer; }
+  .p-q li.ask:hover { background:var(--grid); }
+  li.mez { opacity:.45; }
+  li.mez .form { text-decoration:line-through; }
+  svg.edges path.ask { stroke:var(--upos); stroke-width:1.4; opacity:.75; }
+  svg.edges path.mez { stroke:var(--muted); stroke-dasharray:3 3; opacity:.5; }
+  .p-lex { flex:0 0 132px; }
+  .p-lnk { flex:0 0 158px; }
+  .p-tpl { flex:0 0 205px; }
+  .panel ul { list-style:none; margin:0; padding:0; }
+  .panel li { height:var(--rh); display:flex; align-items:center; gap:6px;
+              padding:0 11px; white-space:nowrap; cursor:default; }
+  .p-lnk .id { color:var(--ink2); }
+  .vec { font-size:11px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; }
+  .id { color:var(--muted); font-size:11px; font-variant-numeric:tabular-nums; }
+  .off { width:2.5em; text-align:right; color:var(--muted); font-size:11px;
+         font-variant-numeric:tabular-nums; }
+  .p-field .lab { padding:0 13px 0 33px; }
+  li.hot { background:var(--grid); }
+  li.mid .form { font-weight:650; text-decoration:underline; text-underline-offset:3px; }
+  li.dim { opacity:.32; }
+  li.bnd .form { color:var(--muted); letter-spacing:.28em; }
+  .share { font-size:10.5px; color:var(--ink2); border:1px solid var(--axis);
+           border-radius:9px; padding:0 6px; }
+
+  svg.edges { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  svg.edges path { fill:none; stroke:var(--axis); stroke-width:1; opacity:.5; }
+  /* Sdílená šablona svítí TRVALE, ne až po najetí — je to nález, ne stav UI.
+     Pořadí pravidel platí: .hot musí přebít .heat. */
+  svg.edges path.heat { stroke:var(--deprel); stroke-width:1.8; opacity:.95; }
+  svg.edges path.hot { stroke:var(--ink); stroke-width:2.4; opacity:1; }
+
+  .foot { display:flex; flex-wrap:wrap; gap:22px; margin-top:13px; color:var(--ink2);
+          max-width:1300px; }
+  .foot b { color:var(--ink); font-variant-numeric:tabular-nums; }
+  .text { margin-top:14px; padding:11px 13px; background:var(--surface);
+          border:1px solid var(--ring); border-radius:8px; color:var(--ink2);
+          width:max-content; max-width:1300px; }
+  .text p { margin:0 0 3px; } .text p:last-child { margin:0; }
+  .text p.cur { color:var(--ink); }
+  .text .num { color:var(--muted); margin-right:7px; font-variant-numeric:tabular-nums; }
+  details { margin-top:18px; } summary { cursor:pointer; color:var(--ink2); }
+  table { border-collapse:collapse; margin-top:10px; font-size:13px; }
+  th,td { text-align:left; padding:4px 13px 4px 0; border-bottom:1px solid var(--grid);
+          vertical-align:top; }
+  th { color:var(--muted); font-weight:500; font-size:11px; letter-spacing:.06em;
+       text-transform:uppercase; }
+  td.n { font-variant-numeric:tabular-nums; color:var(--ink2); }
+  .note { margin-top:20px; color:var(--ink2); max-width:78ch;
+          border-left:2px solid var(--axis); padding-left:13px; }
+  #tip { position:fixed; z-index:9; pointer-events:none; opacity:0; background:var(--ink);
+         color:var(--surface); padding:6px 10px; border-radius:6px; font-size:12px;
+         max-width:min(62ch,80vw); transition:opacity .08s; }
+</style>
+
+<div class="wrap">
+  <h1>Pole → slovník → vazby → šablony: celý text v jednom obrázku</h1>
+  <p class="lede">Čtyři panely vedle sebe a hrany mezi nimi. Vlevo <b>pole</b>: řádek na
+     každé slovo, sloupec na každou aktivaci. Uprostřed <b>slovník</b> — každý tvar
+     jednou, i když se v textu opakuje. Pak <b>vazby</b> — tatáž tabulka, jakou drží
+     kód: <code>links[(w_id, t_id, zrno)] → výskyty</code>. Vpravo <b>šablony</b>: vzor
+     okolí pro zvolené <b>r</b>, sloučený tam, kde vyšel stejně. Ze slova do šablony
+     nevede hrana přímo — jde <b>přes vazební tabulku</b>, stejně jako v kódu.
+     <b>Kde se hrany sbíhají, tam sdílí víc slov jeden vzor.</b> Najetím se ukáže text,
+     Kreslí se <b>celý text najednou</b>; věty odděluje rám <b>‖</b> a číslo na kraji.
+     Středem je <b>každé slovo</b>. Poloměry jsou <b>dva</b> a každý se krokuje v jiné
+     jednotce — <b>r_words</b> po jednom slově, <b>r_sentences</b> po jedné větě.
+     Nezávislé nejsou: volba „celé okno“ neznamená celou větu, ale tak daleko, kam ji
+     <b>r_sentences</b> pustí.</p>
+
+  <div class="bar">
+    <div><label>Poloměr ve slovech · r_words</label><div class="seg" id="r">
+      <button data-v="0" aria-pressed="true">0</button>
+      <button data-v="1" aria-pressed="false">1</button>
+      <button data-v="2" aria-pressed="false">2</button>
+      <button data-v="9" aria-pressed="false" id="rw9">celé okno</button></div></div>
+    <div><label>Poloměr ve větách · r_sentences</label><div class="seg" id="rs">
+      <button data-v="0" aria-pressed="false">0</button>
+      <button data-v="1" aria-pressed="true">1</button>
+      <button data-v="2" aria-pressed="false">2</button></div></div>
+    <div><label>Rám věty · frame</label><div class="seg" id="f">
+      <button data-v="0" aria-pressed="true">krokuje</button>
+      <button data-v="1" aria-pressed="false">nekrokuje</button></div></div>
+    <div><label>Významový typ</label><div class="seg" id="ty">
+      <button data-v="1" aria-pressed="true">zapnut</button>
+      <button data-v="0" aria-pressed="false">vypnut</button></div></div>
+    <div><label>Střed ve vektoru</label><div class="seg" id="cn">
+      <button data-v="0" aria-pressed="true">mimo</button>
+      <button data-v="1" aria-pressed="false">uvnitř</button></div></div>
+    <div><label>Role tázacích slov</label><div class="seg" id="rl">
+      <button data-v="0" aria-pressed="true">vypnuto</button>
+      <button data-v="1" aria-pressed="false">zapnuto</button></div></div>
+    <div><label>Zrno textu</label><div class="seg" id="p">
+      <button data-v="0" aria-pressed="true">normalizovaně</button>
+      <button data-v="1" aria-pressed="false">surově</button></div></div>
+    <div><label>Sloupce</label><div class="seg" id="c">
+      <button data-v="1" aria-pressed="true">jen svítící</button>
+      <button data-v="0" aria-pressed="false">všech 151</button></div></div>
+  </div>
+
+  <div class="legend">
+    <span><i class="sw" style="background:var(--upos)"></i> UPOS</span>
+    <span><i class="sw" style="background:var(--deprel)"></i> DEPREL</span>
+    <span><i class="sw" style="background:var(--feats)"></i> FEATS</span>
+    <span><i class="sw" style="background:var(--ink)"></i> TYP — významový typ</span>
+    <span><i class="sw" style="background:var(--ink2)"></i> LEM — lemma zavřené
+      třídy (u předložky je lemma mluvnice)</span>
+    <span><i class="sw" style="background:var(--muted)"></i> ‖ rám věty</span>
+    <span style="color:var(--muted)">normalizovaně = bez interpunkce a malými písmeny</span>
+    <span><i class="sw" style="background:var(--deprel);width:16px;height:3px;
+      border-radius:2px"></i> spoj sdílené šablony (≥ 2 slova)</span>
+    <span style="color:var(--muted)">najetím se v postranním sloupci vypíšou
+      offsety slotů; ‖ u čísla = slot prošel přes hranici věty</span>
+  </div>
+
+  <div class="stage">
+    <div class="cols">
+      <div class="panel p-field"><div class="cap">1 · pole <b id="capf"></b></div>
+        <div class="scroll"><div class="groups" id="grp"></div>
+          <div class="rows" id="rows"></div><div class="lab" id="lab"></div></div></div>
+      <div class="bridge"></div>
+      <div class="panel p-lex"><div class="cap">2 · slovník <b id="capl"></b></div>
+        <ul id="lex"></ul></div>
+      <div class="bridge"></div>
+      <div class="panel p-lnk"><div class="cap">3 · vazby <b id="capv"></b></div>
+        <ul id="lnk"></ul></div>
+      <div class="bridge"></div>
+      <div class="panel p-tpl"><div class="cap">4 · šablony <b id="capt"></b></div>
+        <ul id="tpl"></ul></div>
+
+      <div class="span"><i>most mezi světy</i></div>
+      <div class="panel p-join"><div class="cap">5 · vazba fakt ↔ otázka
+        <b id="capj"></b></div><ul id="join"></ul></div>
+      <div class="bridge"></div>
+      <div class="panel p-qtpl"><div class="cap">6 · šablony otázek <b id="capqt"></b>
+        </div><ul id="qtpl"></ul></div>
+      <div class="bridge"></div>
+      <div class="panel p-qlnk"><div class="cap">7 · vazby otázek <b id="capqv"></b>
+        </div><ul id="qlnk"></ul></div>
+      <div class="bridge"></div>
+      <div class="panel p-qlex"><div class="cap">8 · slovník otázek <b id="capql"></b>
+        </div><ul id="qlex"></ul></div>
+      <div class="bridge"></div>
+      <div class="panel p-q"><div class="cap">9 · otázky <b id="capq"></b></div>
+        <ul id="q"></ul></div>
+    </div>
+    <svg class="edges" id="sv"></svg>
+  </div>
+
+  <div class="foot">
+    <span>rozměr pole <b id="dim"></b></span>
+    <span>svítí <b id="lit"></b></span>
+    <span>hustota <b id="den"></b></span>
+    <span>šablon <b id="nt"></b> na <b id="nw"></b> středů</span>
+    <span>poměr <b id="ratio"></b></span>
+    <span>dosah r_words <b id="reach"></b></span>
+    <span>vět v dostřelu <b id="hit"></b></span>
+    <span>slotů přes hranici <b id="cross"></b></span>
+  </div>
+
+  <div class="text" id="txt"></div>
+  <details><summary>Tabulka vazeb — slovo ↔ šablona</summary><div id="tab"></div></details>
+  <p class="note" id="note"></p>
+</div>
+<div id="tip"></div>
+
+<script>
+const COLS = [{"a": "NOUN", "g": "UPOS"}, {"a": "PUNCT", "g": "UPOS"}, {"a": "VERB", "g": "UPOS"}, {"a": "ADP", "g": "UPOS"}, {"a": "ADJ", "g": "UPOS"}, {"a": "PRON", "g": "UPOS"}, {"a": "DET", "g": "UPOS"}, {"a": "CCONJ", "g": "UPOS"}, {"a": "PROPN", "g": "UPOS"}, {"a": "AUX", "g": "UPOS"}, {"a": "ADV", "g": "UPOS"}, {"a": "SCONJ", "g": "UPOS"}, {"a": "NUM", "g": "UPOS"}, {"a": "PART", "g": "UPOS"}, {"a": "SYM", "g": "UPOS"}, {"a": "X", "g": "UPOS"}, {"a": "INTJ", "g": "UPOS"}, {"a": "punct", "g": "DEPREL"}, {"a": "case", "g": "DEPREL"}, {"a": "conj", "g": "DEPREL"}, {"a": "nsubj", "g": "DEPREL"}, {"a": "root", "g": "DEPREL"}, {"a": "nmod", "g": "DEPREL"}, {"a": "amod", "g": "DEPREL"}, {"a": "obl", "g": "DEPREL"}, {"a": "cc", "g": "DEPREL"}, {"a": "obj", "g": "DEPREL"}, {"a": "obl:arg", "g": "DEPREL"}, {"a": "det", "g": "DEPREL"}, {"a": "advmod", "g": "DEPREL"}, {"a": "mark", "g": "DEPREL"}, {"a": "cop", "g": "DEPREL"}, {"a": "expl:pv", "g": "DEPREL"}, {"a": "advmod:emph", "g": "DEPREL"}, {"a": "aux", "g": "DEPREL"}, {"a": "advcl", "g": "DEPREL"}, {"a": "ccomp", "g": "DEPREL"}, {"a": "acl:relcl", "g": "DEPREL"}, {"a": "flat", "g": "DEPREL"}, {"a": "nummod", "g": "DEPREL"}, {"a": "appos", "g": "DEPREL"}, {"a": "xcomp", "g": "DEPREL"}, {"a": "aux:pass", "g": "DEPREL"}, {"a": "parataxis", "g": "DEPREL"}, {"a": "nsubj:pass", "g": "DEPREL"}, {"a": "dep", "g": "DEPREL"}, {"a": "advcl:pred", "g": "DEPREL"}, {"a": "vocative", "g": "DEPREL"}, {"a": "nummod:gov", "g": "DEPREL"}, {"a": "acl", "g": "DEPREL"}, {"a": "orphan", "g": "DEPREL"}, {"a": "compound", "g": "DEPREL"}, {"a": "fixed", "g": "DEPREL"}, {"a": "csubj", "g": "DEPREL"}, {"a": "expl:pass", "g": "DEPREL"}, {"a": "discourse", "g": "DEPREL"}, {"a": "det:numgov", "g": "DEPREL"}, {"a": "csubj:pass", "g": "DEPREL"}, {"a": "iobj", "g": "DEPREL"}, {"a": "det:nummod", "g": "DEPREL"}, {"a": "Number=Sing", "g": "FEATS"}, {"a": "Number=Plur", "g": "FEATS"}, {"a": "Number=Plur,Sing", "g": "FEATS"}, {"a": "Number=Dual", "g": "FEATS"}, {"a": "Case=Nom", "g": "FEATS"}, {"a": "Case=Acc", "g": "FEATS"}, {"a": "Case=Gen", "g": "FEATS"}, {"a": "Case=Loc", "g": "FEATS"}, {"a": "Case=Ins", "g": "FEATS"}, {"a": "Case=Dat", "g": "FEATS"}, {"a": "Case=Voc", "g": "FEATS"}, {"a": "Gender=Masc", "g": "FEATS"}, {"a": "Gender=Fem", "g": "FEATS"}, {"a": "Gender=Neut", "g": "FEATS"}, {"a": "Gender=Masc,Neut", "g": "FEATS"}, {"a": "Gender=Fem,Neut", "g": "FEATS"}, {"a": "Gender=Fem,Masc", "g": "FEATS"}, {"a": "Polarity=Pos", "g": "FEATS"}, {"a": "Polarity=Neg", "g": "FEATS"}, {"a": "Animacy=Anim", "g": "FEATS"}, {"a": "Animacy=Inan", "g": "FEATS"}, {"a": "VerbForm=Fin", "g": "FEATS"}, {"a": "VerbForm=Part", "g": "FEATS"}, {"a": "VerbForm=Inf", "g": "FEATS"}, {"a": "VerbForm=Vnoun", "g": "FEATS"}, {"a": "VerbForm=Conv", "g": "FEATS"}, {"a": "Aspect=Imp", "g": "FEATS"}, {"a": "Aspect=Perf", "g": "FEATS"}, {"a": "Aspect=Imp,Perf", "g": "FEATS"}, {"a": "Voice=Act", "g": "FEATS"}, {"a": "Voice=Pass", "g": "FEATS"}, {"a": "PronType=Prs", "g": "FEATS"}, {"a": "PronType=Dem", "g": "FEATS"}, {"a": "PronType=Int,Rel", "g": "FEATS"}, {"a": "PronType=Tot", "g": "FEATS"}, {"a": "PronType=Ind", "g": "FEATS"}, {"a": "PronType=Neg", "g": "FEATS"}, {"a": "PronType=Rel", "g": "FEATS"}, {"a": "PronType=Emp", "g": "FEATS"}, {"a": "PronType=Dem,Ind", "g": "FEATS"}, {"a": "Tense=Pres", "g": "FEATS"}, {"a": "Tense=Past", "g": "FEATS"}, {"a": "Tense=Fut", "g": "FEATS"}, {"a": "Person=3", "g": "FEATS"}, {"a": "Person=1", "g": "FEATS"}, {"a": "Person=2", "g": "FEATS"}, {"a": "Mood=Ind", "g": "FEATS"}, {"a": "Mood=Imp", "g": "FEATS"}, {"a": "Mood=Cnd", "g": "FEATS"}, {"a": "AdpType=Prep", "g": "FEATS"}, {"a": "AdpType=Voc", "g": "FEATS"}, {"a": "AdpType=Comprep", "g": "FEATS"}, {"a": "Degree=Pos", "g": "FEATS"}, {"a": "Degree=Cmp", "g": "FEATS"}, {"a": "Degree=Sup", "g": "FEATS"}, {"a": "NameType=Giv", "g": "FEATS"}, {"a": "NameType=Geo", "g": "FEATS"}, {"a": "NameType=Nat", "g": "FEATS"}, {"a": "NameType=Oth", "g": "FEATS"}, {"a": "NameType=Giv,Nat", "g": "FEATS"}, {"a": "NameType=Geo,Giv", "g": "FEATS"}, {"a": "NameType=Giv,Oth", "g": "FEATS"}, {"a": "NameType=Geo,Oth", "g": "FEATS"}, {"a": "NameType=Geo,Giv,Oth", "g": "FEATS"}, {"a": "Variant=Short", "g": "FEATS"}, {"a": "Reflex=Yes", "g": "FEATS"}, {"a": "Poss=Yes", "g": "FEATS"}, {"a": "NumType=Card", "g": "FEATS"}, {"a": "NumType=Ord", "g": "FEATS"}, {"a": "NumType=Mult", "g": "FEATS"}, {"a": "NumType=Sets", "g": "FEATS"}, {"a": "NumForm=Digit", "g": "FEATS"}, {"a": "NumForm=Word", "g": "FEATS"}, {"a": "NumForm=Roman", "g": "FEATS"}, {"a": "Number[psor]=Sing", "g": "FEATS"}, {"a": "Number[psor]=Plur", "g": "FEATS"}, {"a": "PrepCase=Npr", "g": "FEATS"}, {"a": "PrepCase=Pre", "g": "FEATS"}, {"a": "Gender[psor]=Masc,Neut", "g": "FEATS"}, {"a": "Gender[psor]=Masc", "g": "FEATS"}, {"a": "Gender[psor]=Fem", "g": "FEATS"}, {"a": "Abbr=Yes", "g": "FEATS"}, {"a": "Foreign=Yes", "g": "FEATS"}, {"a": "ExtPos=ADP", "g": "FEATS"}, {"a": "ExtPos=CCONJ", "g": "FEATS"}, {"a": "ExtPos=SCONJ", "g": "FEATS"}, {"a": "ExtPos=ADV", "g": "FEATS"}, {"a": "Hyph=Yes", "g": "FEATS"}, {"a": "ConjType=Oper", "g": "FEATS"}, {"a": "Style=Coll", "g": "FEATS"}, {"a": "Typ=cas", "g": "TYP"}, {"a": "Typ=dej", "g": "TYP"}, {"a": "Typ=misto", "g": "TYP"}, {"a": "Typ=osoba", "g": "TYP"}, {"a": "Typ=vec", "g": "TYP"}, {"a": "Typ=zivocich", "g": "TYP"}, {"a": "Lem=a", "g": "LEM"}, {"a": "Lem=být", "g": "LEM"}, {"a": "Lem=co", "g": "LEM"}, {"a": "Lem=do", "g": "LEM"}, {"a": "Lem=jaký", "g": "LEM"}, {"a": "Lem=jeho", "g": "LEM"}, {"a": "Lem=k", "g": "LEM"}, {"a": "Lem=kdo", "g": "LEM"}, {"a": "Lem=kolik", "g": "LEM"}, {"a": "Lem=který", "g": "LEM"}, {"a": "Lem=mezi", "g": "LEM"}, {"a": "Lem=na", "g": "LEM"}, {"a": "Lem=nebo", "g": "LEM"}, {"a": "Lem=než", "g": "LEM"}, {"a": "Lem=o", "g": "LEM"}, {"a": "Lem=on", "g": "LEM"}, {"a": "Lem=protože", "g": "LEM"}, {"a": "Lem=s", "g": "LEM"}, {"a": "Lem=se", "g": "LEM"}, {"a": "Lem=svůj", "g": "LEM"}, {"a": "Lem=ten", "g": "LEM"}, {"a": "Lem=tento", "g": "LEM"}, {"a": "Lem=u", "g": "LEM"}, {"a": "Lem=v", "g": "LEM"}, {"a": "Lem=čí", "g": "LEM"}], VETY = [[{"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "velkého", "lemma": "velký", "upos": "ADJ", "deprel": "amod", "id": 3, "head": 4, "acts": ["ADJ", "amod", "Animacy=Anim", "Case=Acc", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos"]}, {"form": "psa", "lemma": "pes", "upos": "NOUN", "deprel": "obj", "id": 4, "head": 2, "acts": ["NOUN", "obj", "Animacy=Anim", "Case=Acc", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": ",", "lemma": ",", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 8, "acts": ["PUNCT", "punct"]}, {"form": "který", "lemma": "který", "upos": "DET", "deprel": "nsubj", "id": 6, "head": 8, "acts": ["DET", "nsubj", "Case=Nom", "Gender=Masc", "Number=Sing", "PronType=Int,Rel", "Lem=který"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 7, "head": 8, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "jmenuje", "lemma": "jmenovat", "upos": "VERB", "deprel": "acl:relcl", "id": 8, "head": 4, "acts": ["VERB", "acl:relcl", "Aspect=Imp,Perf", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "obj", "id": 9, "head": 8, "acts": ["PROPN", "obj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": ".", "lemma": ".", "upos": "PUNCT", "deprel": "punct", "id": 10, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Tento", "lemma": "tento", "upos": "DET", "deprel": "det", "id": 1, "head": 2, "acts": ["DET", "det", "Case=Nom", "Gender=Masc", "Number=Sing", "PronType=Dem", "Lem=tento"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 4, "head": 3, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 5, "head": 3, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "a", "lemma": "a", "upos": "CCONJ", "deprel": "cc", "id": 6, "head": 7, "acts": ["CCONJ", "cc", "Lem=a"]}, {"form": "nemá", "lemma": "mít", "upos": "VERB", "deprel": "conj", "id": 7, "head": 3, "acts": ["VERB", "conj", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Neg", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 8, "head": 7, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "studenou", "lemma": "studený", "upos": "ADJ", "deprel": "amod", "id": 9, "head": 10, "acts": ["ADJ", "amod", "Case=Acc", "Degree=Pos", "Gender=Fem", "Number=Sing", "Polarity=Pos"]}, {"form": "vodu", "lemma": "voda", "upos": "NOUN", "deprel": "obj", "id": 10, "head": 7, "acts": ["NOUN", "obj", "Case=Acc", "Gender=Fem", "Number=Sing", "Typ=vec"]}, {"form": ".", "lemma": ".", "upos": "PUNCT", "deprel": "punct", "id": 11, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Jeho", "lemma": "jeho", "upos": "DET", "deprel": "det", "id": 1, "head": 2, "acts": ["DET", "det", "Gender[psor]=Masc,Neut", "Number[psor]=Sing", "Person=3", "Poss=Yes", "PronType=Prs", "Lem=jeho"]}, {"form": "pán", "lemma": "pán", "upos": "NOUN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=osoba"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "pravidelně", "lemma": "pravidelně", "upos": "ADV", "deprel": "advmod", "id": 4, "head": 3, "acts": ["ADV", "advmod", "Degree=Pos", "Polarity=Pos"]}, {"form": "plavat", "lemma": "plavat", "upos": "VERB", "deprel": "advcl", "id": 5, "head": 3, "acts": ["VERB", "advcl", "Aspect=Imp", "Polarity=Pos", "VerbForm=Inf"]}, {"form": "do", "lemma": "do", "upos": "ADP", "deprel": "case", "id": 6, "head": 7, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=do"]}, {"form": "rybníka", "lemma": "rybník", "upos": "NOUN", "deprel": "obl", "id": 7, "head": 3, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Gen", "Gender=Masc", "Number=Sing", "Typ=misto"]}, {"form": "mezi", "lemma": "mezi", "upos": "ADP", "deprel": "case", "id": 8, "head": 9, "acts": ["ADP", "case", "AdpType=Prep", "Case=Acc", "Lem=mezi"]}, {"form": "kapry", "lemma": "kapr", "upos": "NOUN", "deprel": "obl", "id": 9, "head": 3, "acts": ["NOUN", "obl", "Animacy=Anim", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=zivocich"]}, {"form": ".", "lemma": ".", "upos": "PUNCT", "deprel": "punct", "id": 10, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 1, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 2, "head": 3, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "narodil", "lemma": "narodit", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Perf", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Tense=Past", "VerbForm=Part", "Voice=Act"]}, {"form": "v", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 4, "head": 5, "acts": ["ADP", "case", "AdpType=Prep", "Case=Loc", "Lem=v"]}, {"form": "roce", "lemma": "rok", "upos": "NOUN", "deprel": "obl", "id": 5, "head": 3, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Loc", "Gender=Masc", "Number=Sing", "Typ=cas"]}, {"form": "1970", "lemma": "1970", "upos": "NUM", "deprel": "nummod", "id": 6, "head": 5, "acts": ["NUM", "nummod", "NumForm=Digit", "NumType=Card"]}, {"form": "a", "lemma": "a", "upos": "CCONJ", "deprel": "cc", "id": 7, "head": 9, "acts": ["CCONJ", "cc", "Lem=a"]}, {"form": "jeho", "lemma": "jeho", "upos": "DET", "deprel": "det", "id": 8, "head": 9, "acts": ["DET", "det", "Gender[psor]=Masc,Neut", "Number[psor]=Sing", "Person=3", "Poss=Yes", "PronType=Prs", "Lem=jeho"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "conj", "id": 9, "head": 3, "acts": ["NOUN", "conj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "o", "lemma": "o", "upos": "ADP", "deprel": "case", "id": 10, "head": 13, "acts": ["ADP", "case", "AdpType=Prep", "Case=Acc", "Lem=o"]}, {"form": "čtyřicet", "lemma": "čtyřicet", "upos": "NUM", "deprel": "nummod:gov", "id": 11, "head": 13, "acts": ["NUM", "nummod:gov", "Case=Acc", "NumForm=Word", "NumType=Card", "Number=Sing"]}, {"form": "pět", "lemma": "pět", "upos": "NUM", "deprel": "nummod:gov", "id": 12, "head": 13, "acts": ["NUM", "nummod:gov", "Case=Acc", "NumForm=Word", "NumType=Card", "Number=Sing"]}, {"form": "let", "lemma": "léta", "upos": "NOUN", "deprel": "obl", "id": 13, "head": 14, "acts": ["NOUN", "obl", "Case=Gen", "Gender=Neut", "Number=Plur"]}, {"form": "později", "lemma": "pozdě", "upos": "ADV", "deprel": "orphan", "id": 14, "head": 9, "acts": ["ADV", "orphan", "Degree=Cmp", "Polarity=Pos"]}, {"form": ".", "lemma": ".", "upos": "PUNCT", "deprel": "punct", "id": 15, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "svého", "lemma": "svůj", "upos": "DET", "deprel": "det", "id": 3, "head": 4, "acts": ["DET", "det", "Animacy=Anim", "Case=Acc", "Gender=Masc", "Number=Sing", "Poss=Yes", "PronType=Prs", "Reflex=Yes", "Lem=svůj"]}, {"form": "psa", "lemma": "pes", "upos": "NOUN", "deprel": "obj", "id": 4, "head": 2, "acts": ["NOUN", "obj", "Animacy=Anim", "Case=Acc", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 5, "head": 2, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": ".", "lemma": ".", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Dává", "lemma": "dávat", "upos": "VERB", "deprel": "root", "id": 1, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "mu", "lemma": "on", "upos": "PRON", "deprel": "obl:arg", "id": 2, "head": 1, "acts": ["PRON", "obl:arg", "Case=Dat", "Gender=Masc,Neut", "Number=Sing", "Person=3", "PronType=Prs", "Variant=Short", "Lem=on"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 3, "head": 1, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "pravidelně", "lemma": "pravidelně", "upos": "ADV", "deprel": "advmod", "id": 4, "head": 1, "acts": ["ADV", "advmod", "Degree=Pos", "Polarity=Pos"]}, {"form": "ve", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 5, "head": 6, "acts": ["ADP", "case", "AdpType=Voc", "Case=Acc", "Lem=v"]}, {"form": "čtvrtek", "lemma": "čtvrtek", "upos": "NOUN", "deprel": "obl", "id": 6, "head": 1, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Sing", "Typ=cas"]}, {"form": "ráno", "lemma": "ráno", "upos": "ADV", "deprel": "advmod", "id": 7, "head": 1, "acts": ["ADV", "advmod", "Typ=cas"]}, {"form": ".", "lemma": ".", "upos": "PUNCT", "deprel": "punct", "id": 8, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "čeká", "lemma": "čekat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "u", "lemma": "u", "upos": "ADP", "deprel": "case", "id": 3, "head": 4, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=u"]}, {"form": "dveří", "lemma": "dveře", "upos": "NOUN", "deprel": "obl", "id": 4, "head": 2, "acts": ["NOUN", "obl", "Case=Gen", "Gender=Fem", "Number=Plur", "Typ=vec"]}, {"form": ",", "lemma": ",", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 7, "acts": ["PUNCT", "punct"]}, {"form": "protože", "lemma": "protože", "upos": "SCONJ", "deprel": "mark", "id": 6, "head": 7, "acts": ["SCONJ", "mark", "Lem=protože"]}, {"form": "ví", "lemma": "vědět", "upos": "VERB", "deprel": "advcl", "id": 7, "head": 2, "acts": ["VERB", "advcl", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": ",", "lemma": ",", "upos": "PUNCT", "deprel": "punct", "id": 8, "head": 13, "acts": ["PUNCT", "punct"]}, {"form": "kdy", "lemma": "kdy", "upos": "ADV", "deprel": "advmod", "id": 9, "head": 13, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 10, "head": 13, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "jeho", "lemma": "jeho", "upos": "DET", "deprel": "det", "id": 11, "head": 12, "acts": ["DET", "det", "Gender[psor]=Masc,Neut", "Number[psor]=Sing", "Person=3", "Poss=Yes", "PronType=Prs", "Lem=jeho"]}, {"form": "pán", "lemma": "pán", "upos": "NOUN", "deprel": "nsubj", "id": 12, "head": 13, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=osoba"]}, {"form": "vrací", "lemma": "vracet", "upos": "VERB", "deprel": "ccomp", "id": 13, "head": 7, "acts": ["VERB", "ccomp", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": ".", "lemma": ".", "upos": "PUNCT", "deprel": "punct", "id": 14, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "V", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 1, "head": 2, "acts": ["ADP", "case", "AdpType=Prep", "Case=Loc", "Lem=v"]}, {"form": "zimě", "lemma": "zima", "upos": "NOUN", "deprel": "obl", "id": 2, "head": 4, "acts": ["NOUN", "obl", "Case=Loc", "Gender=Fem", "Number=Sing", "Typ=cas"]}, {"form": "spolu", "lemma": "spolu", "upos": "ADV", "deprel": "advmod", "id": 3, "head": 4, "acts": ["ADV", "advmod"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 4, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Plur", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "do", "lemma": "do", "upos": "ADP", "deprel": "case", "id": 5, "head": 6, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=do"]}, {"form": "lesa", "lemma": "les", "upos": "NOUN", "deprel": "obl", "id": 6, "head": 4, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Gen", "Gender=Masc", "Number=Sing", "Typ=misto"]}, {"form": "a", "lemma": "a", "upos": "CCONJ", "deprel": "cc", "id": 7, "head": 9, "acts": ["CCONJ", "cc", "Lem=a"]}, {"form": "v", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 8, "head": 9, "acts": ["ADP", "case", "AdpType=Prep", "Case=Loc", "Lem=v"]}, {"form": "létě", "lemma": "léto", "upos": "NOUN", "deprel": "conj", "id": 9, "head": 4, "acts": ["NOUN", "conj", "Case=Loc", "Gender=Neut", "Number=Sing", "Typ=cas"]}, {"form": "k", "lemma": "k", "upos": "ADP", "deprel": "case", "id": 10, "head": 11, "acts": ["ADP", "case", "AdpType=Prep", "Case=Dat", "Lem=k"]}, {"form": "rybníku", "lemma": "rybník", "upos": "NOUN", "deprel": "orphan", "id": 11, "head": 9, "acts": ["NOUN", "orphan", "Animacy=Inan", "Case=Dat", "Gender=Masc", "Number=Sing", "Typ=misto"]}, {"form": ".", "lemma": ".", "upos": "PUNCT", "deprel": "punct", "id": 12, "head": 4, "acts": ["PUNCT", "punct"]}]], OTAZKY = [[{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "root", "id": 1, "head": 0, "acts": ["PRON", "root", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 1, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 1, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Jak", "lemma": "jak", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 3, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 2, "head": 3, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "jmenuje", "lemma": "jmenovat", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp,Perf", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karlův", "lemma": "Karlův", "upos": "ADJ", "deprel": "amod", "id": 4, "head": 5, "acts": ["ADJ", "amod", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Gender[psor]=Masc", "NameType=Giv", "Number=Sing", "Poss=Yes", "Typ=osoba"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 5, "head": 3, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Jak", "lemma": "jak", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 3, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 2, "head": 3, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "jmenuje", "lemma": "jmenovat", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp,Perf", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "ten", "lemma": "ten", "upos": "DET", "deprel": "det", "id": 4, "head": 5, "acts": ["DET", "det", "Case=Nom", "Gender=Masc", "Number=Sing", "PronType=Dem", "Lem=ten"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 5, "head": 3, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Čí", "lemma": "čí", "upos": "DET", "deprel": "root", "id": 1, "head": 0, "acts": ["DET", "root", "Case=Nom", "Gender=Masc", "Number=Sing", "PronType=Int,Rel", "Lem=čí"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 1, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 1, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Komu", "lemma": "kdo", "upos": "PRON", "deprel": "obl:arg", "id": 1, "head": 2, "acts": ["PRON", "obl:arg", "Animacy=Anim", "Case=Dat", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "patří", "lemma": "patřit", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "ten", "lemma": "ten", "upos": "DET", "deprel": "det", "id": 3, "head": 4, "acts": ["DET", "det", "Case=Nom", "Gender=Masc", "Number=Sing", "PronType=Dem", "Lem=ten"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 4, "head": 2, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 4, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 4, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Alfonsův", "lemma": "Alfonsův", "upos": "ADJ", "deprel": "amod", "id": 3, "head": 4, "acts": ["ADJ", "amod", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Gender[psor]=Masc", "NameType=Giv", "Number=Sing", "Poss=Yes", "Typ=osoba"]}, {"form": "pán", "lemma": "pán", "upos": "NOUN", "deprel": "root", "id": 4, "head": 0, "acts": ["NOUN", "root", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=osoba"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 4, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 3, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 3, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "pán", "lemma": "pán", "upos": "NOUN", "deprel": "root", "id": 3, "head": 0, "acts": ["NOUN", "root", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=osoba"]}, {"form": "toho", "lemma": "ten", "upos": "DET", "deprel": "det", "id": 4, "head": 5, "acts": ["DET", "det", "Case=Gen", "Gender=Masc,Neut", "Number=Sing", "PronType=Dem", "Lem=ten"]}, {"form": "psa", "lemma": "pes", "upos": "NOUN", "deprel": "nmod", "id": 5, "head": 3, "acts": ["NOUN", "nmod", "Animacy=Anim", "Case=Gen", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 1, "head": 3, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "root", "id": 3, "head": 0, "acts": ["NOUN", "root", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 1, "head": 3, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "pánem", "lemma": "pán", "upos": "NOUN", "deprel": "root", "id": 3, "head": 0, "acts": ["NOUN", "root", "Animacy=Anim", "Case=Ins", "Gender=Masc", "Number=Sing", "Typ=osoba"]}, {"form": "Alfonse", "lemma": "Alfons", "upos": "PROPN", "deprel": "nmod", "id": 4, "head": 3, "acts": ["PROPN", "nmod", "Animacy=Anim", "Case=Gen", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Jmenuje", "lemma": "jmenovat", "upos": "VERB", "deprel": "root", "id": 1, "head": 0, "acts": ["VERB", "root", "Aspect=Imp,Perf", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 2, "head": 1, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "Karlův", "lemma": "Karlův", "upos": "ADJ", "deprel": "amod", "id": 3, "head": 4, "acts": ["ADJ", "amod", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Gender[psor]=Masc", "NameType=Giv", "Number=Sing", "Poss=Yes", "Typ=osoba"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 4, "head": 1, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "flat", "id": 5, "head": 4, "acts": ["PROPN", "flat", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "root", "id": 1, "head": 0, "acts": ["PRON", "root", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 1, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "„", "lemma": "\"", "upos": "PUNCT", "deprel": "punct", "id": 3, "head": 4, "acts": ["PUNCT", "punct"]}, {"form": "tento", "lemma": "tento", "upos": "DET", "deprel": "det", "id": 4, "head": 5, "acts": ["DET", "det", "Case=Nom", "Gender=Masc", "Number=Sing", "PronType=Dem", "Lem=tento"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 5, "head": 1, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "“", "lemma": "\"", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 5, "acts": ["PUNCT", "punct"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 7, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Koho", "lemma": "kdo", "upos": "PRON", "deprel": "obj", "id": 1, "head": 2, "acts": ["PRON", "obj", "Animacy=Anim", "Case=Acc", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "označuje", "lemma": "označovat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "„", "lemma": "\"", "upos": "PUNCT", "deprel": "punct", "id": 3, "head": 4, "acts": ["PUNCT", "punct"]}, {"form": "jeho", "lemma": "jeho", "upos": "DET", "deprel": "det", "id": 4, "head": 5, "acts": ["DET", "det", "Gender[psor]=Masc,Neut", "Number[psor]=Sing", "Person=3", "Poss=Yes", "PronType=Prs", "Lem=jeho"]}, {"form": "pán", "lemma": "pán", "upos": "NOUN", "deprel": "nsubj", "id": 5, "head": 2, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=osoba"]}, {"form": "“", "lemma": "\"", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 5, "acts": ["PUNCT", "punct"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 7, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Komu", "lemma": "kdo", "upos": "PRON", "deprel": "obl:arg", "id": 1, "head": 3, "acts": ["PRON", "obl:arg", "Animacy=Anim", "Case=Dat", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "dává", "lemma": "dávat", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 4, "head": 3, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "dává", "lemma": "dávat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 3, "head": 2, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Na", "lemma": "na", "upos": "ADP", "deprel": "case", "id": 1, "head": 2, "acts": ["ADP", "case", "AdpType=Prep", "Case=Acc", "Lem=na"]}, {"form": "koho", "lemma": "kdo", "upos": "PRON", "deprel": "obl:arg", "id": 2, "head": 4, "acts": ["PRON", "obl:arg", "Animacy=Anim", "Case=Acc", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 4, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "čeká", "lemma": "čekat", "upos": "VERB", "deprel": "root", "id": 4, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 4, "acts": ["PUNCT", "punct"]}], [{"form": "S", "lemma": "s", "upos": "ADP", "deprel": "case", "id": 1, "head": 2, "acts": ["ADP", "case", "AdpType=Prep", "Case=Ins", "Lem=s"]}, {"form": "kým", "lemma": "kdo", "upos": "PRON", "deprel": "obl", "id": 2, "head": 3, "acts": ["PRON", "obl", "Animacy=Anim", "Case=Ins", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 4, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "do", "lemma": "do", "upos": "ADP", "deprel": "case", "id": 5, "head": 6, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=do"]}, {"form": "lesa", "lemma": "les", "upos": "NOUN", "deprel": "obl", "id": 6, "head": 3, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Gen", "Gender=Masc", "Number=Sing", "Typ=misto"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 7, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "do", "lemma": "do", "upos": "ADP", "deprel": "case", "id": 3, "head": 4, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=do"]}, {"form": "lesa", "lemma": "les", "upos": "NOUN", "deprel": "obl", "id": 4, "head": 2, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Gen", "Gender=Masc", "Number=Sing", "Typ=misto"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 3, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 2, "head": 3, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "narodil", "lemma": "narodit", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Perf", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Tense=Past", "VerbForm=Part", "Voice=Act"]}, {"form": "v", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 4, "head": 5, "acts": ["ADP", "case", "AdpType=Prep", "Case=Loc", "Lem=v"]}, {"form": "roce", "lemma": "rok", "upos": "NOUN", "deprel": "obl", "id": 5, "head": 3, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Loc", "Gender=Masc", "Number=Sing", "Typ=cas"]}, {"form": "2015", "lemma": "2015", "upos": "NUM", "deprel": "nummod", "id": 6, "head": 5, "acts": ["NUM", "nummod", "NumForm=Digit", "NumType=Card"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 7, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 3, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 3, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "starší", "lemma": "starý", "upos": "ADJ", "deprel": "root", "id": 3, "head": 0, "acts": ["ADJ", "root", "Animacy=Anim", "Case=Nom", "Degree=Cmp", "Gender=Masc", "Number=Sing", "Polarity=Pos"]}, {"form": ",", "lemma": ",", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 5, "acts": ["PUNCT", "punct"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "appos", "id": 5, "head": 3, "acts": ["PROPN", "appos", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "nebo", "lemma": "nebo", "upos": "CCONJ", "deprel": "cc", "id": 6, "head": 7, "acts": ["CCONJ", "cc", "Lem=nebo"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "conj", "id": 7, "head": 5, "acts": ["PROPN", "conj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 8, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "psa", "lemma": "pes", "upos": "NOUN", "deprel": "obj", "id": 3, "head": 2, "acts": ["NOUN", "obj", "Animacy=Anim", "Case=Acc", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Koho", "lemma": "kdo", "upos": "PRON", "deprel": "obj", "id": 1, "head": 2, "acts": ["PRON", "obj", "Animacy=Anim", "Case=Acc", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "čeká", "lemma": "čekat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "u", "lemma": "u", "upos": "ADP", "deprel": "case", "id": 3, "head": 4, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=u"]}, {"form": "dveří", "lemma": "dveře", "upos": "NOUN", "deprel": "obl", "id": 4, "head": 2, "acts": ["NOUN", "obl", "Case=Gen", "Gender=Fem", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 3, "head": 2, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 4, "head": 2, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "nemá", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Neg", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 3, "head": 2, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "studenou", "lemma": "studený", "upos": "ADJ", "deprel": "amod", "id": 4, "head": 5, "acts": ["ADJ", "amod", "Case=Acc", "Degree=Pos", "Gender=Fem", "Number=Sing", "Polarity=Pos"]}, {"form": "vodu", "lemma": "voda", "upos": "NOUN", "deprel": "obj", "id": 5, "head": 2, "acts": ["NOUN", "obj", "Case=Acc", "Gender=Fem", "Number=Sing", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kdo", "lemma": "kdo", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 2, "acts": ["PRON", "nsubj", "Animacy=Anim", "Case=Nom", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "plavat", "lemma": "plavat", "upos": "VERB", "deprel": "advcl", "id": 3, "head": 2, "acts": ["VERB", "advcl", "Aspect=Imp", "Polarity=Pos", "VerbForm=Inf"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Jaký", "lemma": "jaký", "upos": "DET", "deprel": "root", "id": 1, "head": 0, "acts": ["DET", "root", "Case=Nom", "Gender=Masc", "Number=Sing", "PronType=Int,Rel", "Lem=jaký"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 1, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Karlův", "lemma": "Karlův", "upos": "ADJ", "deprel": "amod", "id": 3, "head": 4, "acts": ["ADJ", "amod", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Gender[psor]=Masc", "NameType=Giv", "Number=Sing", "Poss=Yes", "Typ=osoba"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 4, "head": 1, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Jak", "lemma": "jak", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "velký", "lemma": "velký", "upos": "ADJ", "deprel": "root", "id": 2, "head": 0, "acts": ["ADJ", "root", "Animacy=Anim", "Case=Nom", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 3, "head": 2, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 4, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 1, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 1, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 3, "head": 1, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "svého", "lemma": "svůj", "upos": "DET", "deprel": "det", "id": 4, "head": 5, "acts": ["DET", "det", "Animacy=Anim", "Case=Acc", "Gender=Masc", "Number=Sing", "Poss=Yes", "PronType=Prs", "Reflex=Yes", "Lem=svůj"]}, {"form": "psa", "lemma": "pes", "upos": "NOUN", "deprel": "obj", "id": 5, "head": 1, "acts": ["NOUN", "obj", "Animacy=Anim", "Case=Acc", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Koho", "lemma": "kdo", "upos": "PRON", "deprel": "obj", "id": 1, "head": 2, "acts": ["PRON", "obj", "Animacy=Anim", "Case=Acc", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 4, "head": 2, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Co", "lemma": "co", "upos": "PRON", "deprel": "obj", "id": 1, "head": 2, "acts": ["PRON", "obj", "Animacy=Inan", "Case=Acc", "PronType=Int,Rel", "Lem=co"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 4, "head": 2, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Co", "lemma": "co", "upos": "PRON", "deprel": "obj", "id": 1, "head": 3, "acts": ["PRON", "obj", "Animacy=Inan", "Case=Acc", "PronType=Int,Rel", "Lem=co"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "nemá", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Neg", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 4, "head": 3, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 1, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 1, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "rád", "lemma": "rád", "upos": "ADJ", "deprel": "iobj", "id": 3, "head": 1, "acts": ["ADJ", "iobj", "Degree=Pos", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Variant=Short"]}, {"form": "studenou", "lemma": "studený", "upos": "ADJ", "deprel": "amod", "id": 4, "head": 5, "acts": ["ADJ", "amod", "Case=Acc", "Degree=Pos", "Gender=Fem", "Number=Sing", "Polarity=Pos"]}, {"form": "vodu", "lemma": "voda", "upos": "NOUN", "deprel": "obj", "id": 5, "head": 1, "acts": ["NOUN", "obj", "Case=Acc", "Gender=Fem", "Number=Sing", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Kdy", "lemma": "kdy", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 3, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 2, "head": 3, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "narodil", "lemma": "narodit", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Perf", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Tense=Past", "VerbForm=Part", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 4, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "V", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 1, "head": 3, "acts": ["ADP", "case", "AdpType=Prep", "Case=Loc", "Lem=v"]}, {"form": "kterém", "lemma": "který", "upos": "DET", "deprel": "det", "id": 2, "head": 3, "acts": ["DET", "det", "Case=Loc", "Gender=Masc,Neut", "Number=Sing", "PronType=Int,Rel", "Lem=který"]}, {"form": "roce", "lemma": "rok", "upos": "NOUN", "deprel": "obl", "id": 3, "head": 5, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Loc", "Gender=Masc", "Number=Sing", "Typ=cas"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 4, "head": 5, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "narodil", "lemma": "narodit", "upos": "VERB", "deprel": "root", "id": 5, "head": 0, "acts": ["VERB", "root", "Aspect=Perf", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Tense=Past", "VerbForm=Part", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 6, "head": 5, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 7, "head": 5, "acts": ["PUNCT", "punct"]}], [{"form": "Kdy", "lemma": "kdy", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 3, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "se", "lemma": "se", "upos": "PRON", "deprel": "expl:pv", "id": 2, "head": 3, "acts": ["PRON", "expl:pv", "Case=Acc", "PronType=Prs", "Reflex=Yes", "Variant=Short", "Lem=se"]}, {"form": "narodil", "lemma": "narodit", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Perf", "Gender=Masc", "Number=Sing", "Polarity=Pos", "Tense=Past", "VerbForm=Part", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 4, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "O", "lemma": "o", "upos": "ADP", "deprel": "case", "id": 1, "head": 3, "acts": ["ADP", "case", "AdpType=Prep", "Case=Acc", "Lem=o"]}, {"form": "kolik", "lemma": "kolik", "upos": "DET", "deprel": "det:numgov", "id": 2, "head": 3, "acts": ["DET", "det:numgov", "Case=Acc", "NumType=Card", "PronType=Dem,Ind", "Lem=kolik"]}, {"form": "let", "lemma": "léta", "upos": "NOUN", "deprel": "obl", "id": 3, "head": 6, "acts": ["NOUN", "obl", "Case=Gen", "Gender=Neut", "Number=Plur"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 4, "head": 6, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 5, "head": 6, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "mladší", "lemma": "mladý", "upos": "ADJ", "deprel": "root", "id": 6, "head": 0, "acts": ["ADJ", "root", "Animacy=Anim", "Case=Nom", "Degree=Cmp", "Gender=Masc", "Number=Sing", "Polarity=Pos"]}, {"form": "než", "lemma": "než", "upos": "SCONJ", "deprel": "mark", "id": 7, "head": 8, "acts": ["SCONJ", "mark", "Lem=než"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "advcl", "id": 8, "head": 6, "acts": ["PROPN", "advcl", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 9, "head": 6, "acts": ["PUNCT", "punct"]}], [{"form": "Kdy", "lemma": "kdy", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "dostává", "lemma": "dostávat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 4, "head": 2, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Který", "lemma": "který", "upos": "DET", "deprel": "det", "id": 1, "head": 2, "acts": ["DET", "det", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Sing", "PronType=Int,Rel", "Lem=který"]}, {"form": "den", "lemma": "den", "upos": "NOUN", "deprel": "obl", "id": 2, "head": 3, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Sing", "Typ=cas"]}, {"form": "dostává", "lemma": "dostávat", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "pes", "lemma": "pes", "upos": "NOUN", "deprel": "nsubj", "id": 4, "head": 3, "acts": ["NOUN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 5, "head": 3, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "V", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 1, "head": 4, "acts": ["ADP", "case", "AdpType=Prep", "Case=Acc", "Lem=v"]}, {"form": "kterou", "lemma": "který", "upos": "DET", "deprel": "det", "id": 2, "head": 4, "acts": ["DET", "det", "Case=Acc", "Gender=Fem", "Number=Sing", "PronType=Int,Rel", "Lem=který"]}, {"form": "denní", "lemma": "denní", "upos": "ADJ", "deprel": "amod", "id": 3, "head": 4, "acts": ["ADJ", "amod", "Case=Acc", "Degree=Pos", "Gender=Fem", "Number=Sing", "Polarity=Pos"]}, {"form": "dobu", "lemma": "doba", "upos": "NOUN", "deprel": "obl", "id": 4, "head": 5, "acts": ["NOUN", "obl", "Case=Acc", "Gender=Fem", "Number=Sing", "Typ=cas"]}, {"form": "dostává", "lemma": "dostávat", "upos": "VERB", "deprel": "root", "id": 5, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 6, "head": 5, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 7, "head": 5, "acts": ["PUNCT", "punct"]}], [{"form": "Jak", "lemma": "jak", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "často", "lemma": "často", "upos": "ADV", "deprel": "advmod", "id": 2, "head": 3, "acts": ["ADV", "advmod", "Degree=Pos", "Polarity=Pos"]}, {"form": "dostává", "lemma": "dostávat", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 4, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "buřty", "lemma": "buřt", "upos": "NOUN", "deprel": "obj", "id": 5, "head": 3, "acts": ["NOUN", "obj", "Animacy=Inan", "Case=Acc", "Gender=Masc", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Jak", "lemma": "jak", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "často", "lemma": "často", "upos": "ADV", "deprel": "advmod", "id": 2, "head": 3, "acts": ["ADV", "advmod", "Degree=Pos", "Polarity=Pos"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 4, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "plavat", "lemma": "plavat", "upos": "VERB", "deprel": "advcl", "id": 5, "head": 3, "acts": ["VERB", "advcl", "Aspect=Imp", "Polarity=Pos", "VerbForm=Inf"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Kdy", "lemma": "kdy", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Plur", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "s", "lemma": "s", "upos": "ADP", "deprel": "case", "id": 4, "head": 5, "acts": ["ADP", "case", "AdpType=Prep", "Case=Ins", "Lem=s"]}, {"form": "Alfonsem", "lemma": "Alfons", "upos": "PROPN", "deprel": "obl", "id": 5, "head": 2, "acts": ["PROPN", "obl", "Animacy=Anim", "Case=Ins", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "do", "lemma": "do", "upos": "ADP", "deprel": "case", "id": 6, "head": 7, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=do"]}, {"form": "lesa", "lemma": "les", "upos": "NOUN", "deprel": "obl", "id": 7, "head": 2, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Gen", "Gender=Masc", "Number=Sing", "Typ=misto"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 8, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kdy", "lemma": "kdy", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "k", "lemma": "k", "upos": "ADP", "deprel": "case", "id": 3, "head": 4, "acts": ["ADP", "case", "AdpType=Prep", "Case=Dat", "Lem=k"]}, {"form": "rybníku", "lemma": "rybník", "upos": "NOUN", "deprel": "obl", "id": 4, "head": 2, "acts": ["NOUN", "obl", "Animacy=Inan", "Case=Dat", "Gender=Masc", "Number=Sing", "Typ=misto"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kam", "lemma": "kam", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "plavat", "lemma": "plavat", "upos": "VERB", "deprel": "advcl", "id": 4, "head": 2, "acts": ["VERB", "advcl", "Aspect=Imp", "Polarity=Pos", "VerbForm=Inf"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kde", "lemma": "kde", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 3, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "plave", "lemma": "plavat", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Mezi", "lemma": "mezi", "upos": "ADP", "deprel": "case", "id": 1, "head": 2, "acts": ["ADP", "case", "AdpType=Prep", "Case=Ins", "Lem=mezi"]}, {"form": "kým", "lemma": "kdo", "upos": "PRON", "deprel": "obl", "id": 2, "head": 4, "acts": ["PRON", "obl", "Animacy=Anim", "Case=Ins", "PronType=Int,Rel", "Lem=kdo"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 4, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "plave", "lemma": "plavat", "upos": "VERB", "deprel": "root", "id": 4, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 4, "acts": ["PUNCT", "punct"]}], [{"form": "Co", "lemma": "co", "upos": "PRON", "deprel": "nsubj", "id": 1, "head": 4, "acts": ["PRON", "nsubj", "Animacy=Inan", "Case=Nom", "PronType=Int,Rel", "Lem=co"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 4, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "v", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 3, "head": 4, "acts": ["ADP", "case", "AdpType=Prep", "Case=Loc", "Lem=v"]}, {"form": "rybníce", "lemma": "rybník", "upos": "NOUN", "deprel": "root", "id": 4, "head": 0, "acts": ["NOUN", "root", "Animacy=Inan", "Case=Loc", "Gender=Masc", "Number=Sing", "Typ=misto"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 4, "acts": ["PUNCT", "punct"]}], [{"form": "Kam", "lemma": "kam", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "s", "lemma": "s", "upos": "ADP", "deprel": "case", "id": 4, "head": 5, "acts": ["ADP", "case", "AdpType=Prep", "Case=Ins", "Lem=s"]}, {"form": "psem", "lemma": "pes", "upos": "NOUN", "deprel": "obl", "id": 5, "head": 2, "acts": ["NOUN", "obl", "Animacy=Anim", "Case=Ins", "Gender=Masc", "Number=Sing", "Typ=zivocich"]}, {"form": "v", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 6, "head": 7, "acts": ["ADP", "case", "AdpType=Prep", "Case=Loc", "Lem=v"]}, {"form": "zimě", "lemma": "zima", "upos": "NOUN", "deprel": "obl", "id": 7, "head": 2, "acts": ["NOUN", "obl", "Case=Loc", "Gender=Fem", "Number=Sing", "Typ=cas"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 8, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kam", "lemma": "kam", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "chodí", "lemma": "chodit", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Plur", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "v", "lemma": "v", "upos": "ADP", "deprel": "case", "id": 3, "head": 4, "acts": ["ADP", "case", "AdpType=Prep", "Case=Loc", "Lem=v"]}, {"form": "létě", "lemma": "léto", "upos": "NOUN", "deprel": "obl", "id": 4, "head": 2, "acts": ["NOUN", "obl", "Case=Loc", "Gender=Neut", "Number=Sing", "Typ=cas"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Kde", "lemma": "kde", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 2, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "čeká", "lemma": "čekat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Proč", "lemma": "proč", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 3, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "čeká", "lemma": "čekat", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "u", "lemma": "u", "upos": "ADP", "deprel": "case", "id": 4, "head": 5, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=u"]}, {"form": "dveří", "lemma": "dveře", "upos": "NOUN", "deprel": "obl", "id": 5, "head": 3, "acts": ["NOUN", "obl", "Case=Gen", "Gender=Fem", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Co", "lemma": "co", "upos": "PRON", "deprel": "obj", "id": 1, "head": 3, "acts": ["PRON", "obj", "Animacy=Inan", "Case=Acc", "PronType=Int,Rel", "Lem=co"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "ví", "lemma": "vědět", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Co", "lemma": "co", "upos": "PRON", "deprel": "obj", "id": 1, "head": 2, "acts": ["PRON", "obj", "Animacy=Inan", "Case=Acc", "PronType=Int,Rel", "Lem=co"]}, {"form": "dělá", "lemma": "dělat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "pravidelně", "lemma": "pravidelně", "upos": "ADV", "deprel": "advmod", "id": 4, "head": 2, "acts": ["ADV", "advmod", "Degree=Pos", "Polarity=Pos"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Co", "lemma": "co", "upos": "PRON", "deprel": "obj", "id": 1, "head": 2, "acts": ["PRON", "obj", "Animacy=Inan", "Case=Acc", "PronType=Int,Rel", "Lem=co"]}, {"form": "dává", "lemma": "dávat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "psovi", "lemma": "ps", "upos": "NOUN", "deprel": "obl:arg", "id": 4, "head": 2, "acts": ["NOUN", "obl:arg", "Animacy=Anim", "Case=Dat", "Gender=Masc", "Number=Sing"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Co", "lemma": "co", "upos": "PRON", "deprel": "obj", "id": 1, "head": 2, "acts": ["PRON", "obj", "Animacy=Inan", "Case=Acc", "PronType=Int,Rel", "Lem=co"]}, {"form": "dělá", "lemma": "dělat", "upos": "VERB", "deprel": "root", "id": 2, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 3, "head": 2, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "u", "lemma": "u", "upos": "ADP", "deprel": "case", "id": 4, "head": 5, "acts": ["ADP", "case", "AdpType=Prep", "Case=Gen", "Lem=u"]}, {"form": "dveří", "lemma": "dveře", "upos": "NOUN", "deprel": "obl", "id": 5, "head": 2, "acts": ["NOUN", "obl", "Case=Gen", "Gender=Fem", "Number=Plur", "Typ=vec"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 6, "head": 2, "acts": ["PUNCT", "punct"]}], [{"form": "Jakou", "lemma": "jaký", "upos": "DET", "deprel": "det", "id": 1, "head": 2, "acts": ["DET", "det", "Case=Acc", "Gender=Fem", "Number=Sing", "PronType=Int,Rel", "Lem=jaký"]}, {"form": "barvu", "lemma": "barva", "upos": "NOUN", "deprel": "obj", "id": 2, "head": 3, "acts": ["NOUN", "obj", "Case=Acc", "Gender=Fem", "Number=Sing", "Typ=vec"]}, {"form": "má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Alfons", "lemma": "Alfons", "upos": "PROPN", "deprel": "nsubj", "id": 4, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=zivocich"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Kde", "lemma": "kde", "upos": "ADV", "deprel": "advmod", "id": 1, "head": 3, "acts": ["ADV", "advmod", "PronType=Int,Rel"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 3, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "bydlí", "lemma": "bydlet", "upos": "VERB", "deprel": "root", "id": 3, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Má", "lemma": "mít", "upos": "VERB", "deprel": "root", "id": 1, "head": 0, "acts": ["VERB", "root", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act"]}, {"form": "Karel", "lemma": "Karel", "upos": "PROPN", "deprel": "nsubj", "id": 2, "head": 1, "acts": ["PROPN", "nsubj", "Animacy=Anim", "Case=Nom", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "kočku", "lemma": "kočka", "upos": "NOUN", "deprel": "obj", "id": 3, "head": 1, "acts": ["NOUN", "obj", "Case=Acc", "Gender=Fem", "Number=Sing"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 4, "head": 1, "acts": ["PUNCT", "punct"]}], [{"form": "Kolik", "lemma": "kolik", "upos": "DET", "deprel": "det:numgov", "id": 1, "head": 4, "acts": ["DET", "det:numgov", "Case=Nom", "NumType=Card", "PronType=Dem,Ind", "Lem=kolik"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 3, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Karlovi", "lemma": "Karl", "upos": "PROPN", "deprel": "root", "id": 3, "head": 0, "acts": ["PROPN", "root", "Animacy=Anim", "Case=Dat", "Gender=Masc", "NameType=Giv", "Number=Sing", "Typ=osoba"]}, {"form": "let", "lemma": "léta", "upos": "NOUN", "deprel": "nsubj", "id": 4, "head": 3, "acts": ["NOUN", "nsubj", "Case=Gen", "Gender=Neut", "Number=Plur"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 3, "acts": ["PUNCT", "punct"]}], [{"form": "Jaké", "lemma": "jaký", "upos": "DET", "deprel": "root", "id": 1, "head": 0, "acts": ["DET", "root", "Case=Nom", "Gender=Neut", "Number=Sing", "PronType=Int,Rel", "Lem=jaký"]}, {"form": "je", "lemma": "být", "upos": "AUX", "deprel": "cop", "id": 2, "head": 1, "acts": ["AUX", "cop", "Aspect=Imp", "Mood=Ind", "Number=Sing", "Person=3", "Polarity=Pos", "Tense=Pres", "VerbForm=Fin", "Voice=Act", "Lem=být"]}, {"form": "Karlovo", "lemma": "Karlův", "upos": "ADJ", "deprel": "amod", "id": 3, "head": 4, "acts": ["ADJ", "amod", "Case=Nom", "Gender=Neut", "Gender[psor]=Masc", "NameType=Giv", "Number=Sing", "Poss=Yes", "Typ=osoba"]}, {"form": "příjmení", "lemma": "příjmení", "upos": "NOUN", "deprel": "nsubj", "id": 4, "head": 1, "acts": ["NOUN", "nsubj", "Case=Nom", "Gender=Neut", "Number=Sing", "Typ=dej"]}, {"form": "?", "lemma": "?", "upos": "PUNCT", "deprel": "punct", "id": 5, "head": 1, "acts": ["PUNCT", "punct"]}]], VAZBA = [{"q": 0, "otazka": "Kdo je Alfons?", "veta": 0, "token": 3, "slovo": "psa"}, {"q": 1, "otazka": "Jak se jmenuje Karlův pes?", "veta": 0, "token": 8, "slovo": "Alfons"}, {"q": 2, "otazka": "Jak se jmenuje ten pes?", "veta": 0, "token": 8, "slovo": "Alfons"}, {"q": 3, "otazka": "Čí je Alfons?", "veta": 0, "token": 0, "slovo": "Karel"}, {"q": 4, "otazka": "Komu patří ten pes?", "veta": 0, "token": 0, "slovo": "Karel"}, {"q": 5, "otazka": "Kdo je Alfonsův pán?", "veta": 0, "token": 0, "slovo": "Karel"}, {"q": 6, "otazka": "Kdo je pán toho psa?", "veta": 0, "token": 0, "slovo": "Karel"}, {"q": 7, "otazka": "Je Alfons pes?", "veta": 0, "token": 3, "slovo": "psa"}, {"q": 8, "otazka": "Je Karel pánem Alfonse?", "veta": 2, "token": 1, "slovo": "pán"}, {"q": 9, "otazka": "Jmenuje se Karlův pes Alfons?", "veta": 0, "token": 8, "slovo": "Alfons"}, {"q": 10, "otazka": "Kdo je „tento pes“?", "veta": 0, "token": 8, "slovo": "Alfons"}, {"q": 11, "otazka": "Koho označuje „jeho pán“?", "veta": 0, "token": 0, "slovo": "Karel"}, {"q": 12, "otazka": "Komu Karel dává buřty?", "veta": 5, "token": 1, "slovo": "mu"}, {"q": 13, "otazka": "Kdo dává buřty?", "veta": 5, "token": 0, "slovo": "Dává"}, {"q": 14, "otazka": "Na koho Alfons čeká?", "veta": 6, "token": 11, "slovo": "pán"}, {"q": 15, "otazka": "S kým chodí Karel do lesa?", "veta": 7, "token": 2, "slovo": "spolu"}, {"q": 16, "otazka": "Kdo chodí do lesa?", "veta": 7, "token": 3, "slovo": "chodí"}, {"q": 17, "otazka": "Kdo se narodil v roce 2015?", "veta": 3, "token": 8, "slovo": "pes"}, {"q": 18, "otazka": "Kdo je starší, Karel nebo Alfons?", "veta": 3, "token": 0, "slovo": "Karel"}, {"q": 19, "otazka": "Kdo má psa?", "veta": 0, "token": 0, "slovo": "Karel"}, {"q": 20, "otazka": "Koho má Karel?", "veta": 0, "token": 3, "slovo": "psa"}, {"q": 21, "otazka": "Kdo čeká u dveří?", "veta": 6, "token": 0, "slovo": "Alfons"}, {"q": 22, "otazka": "Kdo má rád buřty?", "veta": 1, "token": 1, "slovo": "pes"}, {"q": 23, "otazka": "Kdo nemá rád studenou vodu?", "veta": 1, "token": 1, "slovo": "pes"}, {"q": 24, "otazka": "Kdo chodí plavat?", "veta": 2, "token": 1, "slovo": "pán"}, {"q": 25, "otazka": "Jaký je Karlův pes?", "veta": 0, "token": 2, "slovo": "velkého"}, {"q": 26, "otazka": "Jak velký je Alfons?", "veta": 0, "token": 2, "slovo": "velkého"}, {"q": 27, "otazka": "Má Karel rád svého psa?", "veta": 4, "token": 4, "slovo": "rád"}, {"q": 28, "otazka": "Koho má Karel rád?", "veta": 4, "token": 3, "slovo": "psa"}, {"q": 29, "otazka": "Co má Alfons rád?", "veta": 1, "token": 4, "slovo": "buřty"}, {"q": 30, "otazka": "Co pes nemá rád?", "veta": 1, "token": 9, "slovo": "vodu"}, {"q": 31, "otazka": "Má Alfons rád studenou vodu?", "veta": 1, "token": 6, "slovo": "nemá"}, {"q": 32, "otazka": "Kdy se narodil Karel?", "veta": 3, "token": 5, "slovo": "1970"}, {"q": 33, "otazka": "V kterém roce se narodil Karel?", "veta": 3, "token": 5, "slovo": "1970"}, {"q": 34, "otazka": "Kdy se narodil Alfons?", "veta": null, "token": null, "slovo": null}, {"q": 35, "otazka": "O kolik let je pes mladší než Karel?", "veta": 3, "token": 10, "slovo": "čtyřicet"}, {"q": 36, "otazka": "Kdy dostává Alfons buřty?", "veta": 5, "token": 5, "slovo": "čtvrtek"}, {"q": 37, "otazka": "Který den dostává pes buřty?", "veta": 5, "token": 5, "slovo": "čtvrtek"}, {"q": 38, "otazka": "V kterou denní dobu dostává buřty?", "veta": 5, "token": 6, "slovo": "ráno"}, {"q": 39, "otazka": "Jak často dostává Alfons buřty?", "veta": 5, "token": 3, "slovo": "pravidelně"}, {"q": 40, "otazka": "Jak často chodí Karel plavat?", "veta": 2, "token": 3, "slovo": "pravidelně"}, {"q": 41, "otazka": "Kdy chodí Karel s Alfonsem do lesa?", "veta": 7, "token": 1, "slovo": "zimě"}, {"q": 42, "otazka": "Kdy chodí k rybníku?", "veta": 7, "token": 8, "slovo": "létě"}, {"q": 43, "otazka": "Kam chodí Karel plavat?", "veta": 2, "token": 6, "slovo": "rybníka"}, {"q": 44, "otazka": "Kde Karel plave?", "veta": 2, "token": 6, "slovo": "rybníka"}, {"q": 45, "otazka": "Mezi kým Karel plave?", "veta": 2, "token": 8, "slovo": "kapry"}, {"q": 46, "otazka": "Co je v rybníce?", "veta": 2, "token": 8, "slovo": "kapry"}, {"q": 47, "otazka": "Kam chodí Karel s psem v zimě?", "veta": 7, "token": 5, "slovo": "lesa"}, {"q": 48, "otazka": "Kam chodí v létě?", "veta": 7, "token": 10, "slovo": "rybníku"}, {"q": 49, "otazka": "Kde čeká Alfons?", "veta": 6, "token": 3, "slovo": "dveří"}, {"q": 50, "otazka": "Proč Alfons čeká u dveří?", "veta": 6, "token": 6, "slovo": "ví"}, {"q": 51, "otazka": "Co Alfons ví?", "veta": 6, "token": 12, "slovo": "vrací"}, {"q": 52, "otazka": "Co dělá Karel pravidelně?", "veta": 2, "token": 4, "slovo": "plavat"}, {"q": 53, "otazka": "Co dává Karel psovi?", "veta": 5, "token": 2, "slovo": "buřty"}, {"q": 54, "otazka": "Co dělá Alfons u dveří?", "veta": 6, "token": 1, "slovo": "čeká"}, {"q": 55, "otazka": "Jakou barvu má Alfons?", "veta": null, "token": null, "slovo": null}, {"q": 56, "otazka": "Kde Karel bydlí?", "veta": null, "token": null, "slovo": null}, {"q": 57, "otazka": "Má Karel kočku?", "veta": null, "token": null, "slovo": null}, {"q": 58, "otazka": "Kolik je Karlovi let?", "veta": null, "token": null, "slovo": null}, {"q": 59, "otazka": "Jaké je Karlovo příjmení?", "veta": null, "token": null, "slovo": null}];
+const ROLE = {"kdo": "zive", "co": "vec", "kdy": "cas", "odkdy": "cas-od", "dokdy": "cas-do", "kde": "misto", "kam": "smer", "odkud": "puvod", "kudy": "cesta", "proc": "duvod", "proč": "duvod", "nač": "ucel", "jak": "zpusob", "kolik": "pocet", "kolikátý": "poradi", "jaký": "vlastnost", "který": "vyber", "čí": "vlastnik"};
+const GI = {UPOS:0, DEPREL:1, FEATS:2, TYP:3, LEM:4}, BND='‖', EMPTY='∅';
+let punct=0, rWords=0, rSent=1, only=1, tframe=0, roleOn=0, cIn=0,
+    typyOn=1, pin=null;
+const $ = s => document.querySelector(s), tip = $('#tip'), sv = $('#sv');
+
+seg('#rs',v=>rSent=v); seg('#r',v=>rWords=v); seg('#p',v=>punct=v);
+seg('#c',v=>only=v);   seg('#f',v=>tframe=v);  seg('#rl',v=>roleOn=v);
+seg('#cn',v=>cIn=v);  seg('#ty',v=>typyOn=v);
+function seg(id,set){ document.querySelectorAll(id+' button').forEach(b=>{
+  b.onclick=()=>{ document.querySelectorAll(id+' button')
+    .forEach(x=>x.setAttribute('aria-pressed',x===b)); set(+b.dataset.v); draw(); }; }); }
+
+const text = i => VETY[i].map(t=>t.form).join(' ').replace(/ ([,.])/g,'$1');
+const toks = i => punct ? VETY[i] : VETY[i].filter(t=>t.upos!=='PUNCT');
+const wkey = f => punct ? f : f.toLowerCase();
+const acts = x => x.b ? [BND]
+  : (typyOn ? x.t.acts : x.t.acts.filter(a=>!a.startsWith('Typ=')));
+const sgn  = d => d>0 ? '+'+d : ''+d;
+
+/* Jeden tok přes CELÝ text. Vektor i mřížka pak sdílejí tytéž indexy —
+   bez toho by nešlo ukázat, kam který slot vektoru dopadá. */
+function stream(){
+  const out=[{b:true,s:-1}];
+  VETY.forEach((src,z)=>{ let k=0;
+    src.forEach((t,o)=>{ if(!punct && t.upos==='PUNCT') return;
+      out.push({t,s:z,k:k++,orig:o}); });
+    out.push({b:true,s:z}); });
+  const B=new Map();
+  out.forEach((x,j)=>{ if(x.b) return;
+    if(!B.has(x.s)) B.set(x.s,{lo:j,hi:j}); else B.get(x.s).hi=j; });
+  return {out,B};
+}
+
+/* Sloty vektoru středu `i`: kam dopadají, s jakým offsetem a jestli se
+   cestou šlo přes rám. Tohle je jediné místo, kde se pravidla rozhodují. */
+function slotsOf(out,B,i){
+  const s=out[i].s;
+  const lo=Math.max(0,(B.get(Math.max(0,s-rSent))||{lo:0}).lo-1);
+  const hi=Math.min(out.length-1,
+    (B.get(Math.min(VETY.length-1,s+rSent))||{hi:out.length-1}).hi+1);
+  const cross=j=>{ const a=Math.min(i,j), b=Math.max(i,j);
+    for(let k=a+1;k<b;k++) if(out[k].b) return true; return false; };
+  if(rWords===0) return [{j:i,d:0,cross:false}];
+  const use=[];
+  for(let j=lo;j<=hi;j++){ if(j===i) continue;
+    if(out[j].b && tframe) continue;          // průhledný rám nekrokuje
+    use.push(j); }
+  const L=use.filter(j=>j<i), R=use.filter(j=>j>i), out2=[];
+  if(rWords===9){
+    L.forEach((j,k)=>out2.push({j,d:k-L.length,cross:cross(j)}));
+    out2.push({j:i,d:0,cross:false});
+    R.forEach((j,k)=>out2.push({j,d:k+1,cross:cross(j)}));
+    return out2; }
+  for(let d=-rWords;d<0;d++){ const j=L[L.length+d];
+    out2.push(j===undefined?{j:null,d,cross:false}:{j,d,cross:cross(j)}); }
+  if(cIn) out2.push({j:i,d:0,cross:false});
+  for(let d=1;d<=rWords;d++){ const j=R[d-1];
+    out2.push(j===undefined?{j:null,d,cross:false}:{j,d,cross:cross(j)}); }
+  return out2;
+}
+function vecOf(out,S){
+  return S.flatMap(sl => sl.j===null ? [sgn(sl.d)+':'+EMPTY]
+    : acts(out[sl.j]).concat(sl.cross?[BND]:[]).map(a=>sgn(sl.d)+':'+a));
+}
+
+let rowsEl,lexEl,lnkEl,tplEl,model=null;
+
+/* Otázka je pro tuhle mašinu jen další věta: týž rozbor, tytéž aktivace,
+   táž šablona a TÝŽ r_words — jinak by vektory měly jiný tvar a nemohly by
+   se nikdy potkat. r_sentences tu smysl nemá, otázka stojí sama. */
+function qtoks(qi){ const v=OTAZKY[qi];
+  const base = punct ? v : v.filter(t=>t.upos!=='PUNCT');
+  if(!roleOn) return base;
+  /* UD dává všem tázacím příslovcím tytéž tři aktivace, takže „kdy“ a „proč“
+     jsou pro vektor totéž. Role to doplní jako další aktivaci. */
+  return base.map(t=>{ const r=t.acts.some(a=>a.startsWith('PronType=Int'))
+      && ROLE[t.lemma];
+    return r ? Object.assign({}, t, {acts:t.acts.concat(['Ptá='+r])}) : t; }); }
+function qacts(t){ return typyOn ? t.acts
+  : t.acts.filter(a=>!a.startsWith('Typ=')); }
+function qanchor(v){                       // díra po odpovědi, nebo kořen
+  let i=v.findIndex(t=>t.acts.some(a=>a.startsWith('PronType=Int')));
+  if(i<0) i=v.findIndex(t=>t.acts.includes('root'));
+  return i<0?0:i; }
+function qslots(v,i){
+  if(rWords===0) return [{j:i,d:0,cross:false}];
+  const L=[],R=[]; v.forEach((_,j)=>{ if(j<i) L.push(j); else if(j>i) R.push(j); });
+  const o=[];
+  if(rWords===9){ L.forEach((j,k)=>o.push({j,d:k-L.length,cross:false}));
+    o.push({j:i,d:0,cross:false});
+    R.forEach((j,k)=>o.push({j,d:k+1,cross:false})); return o; }
+  for(let d=-rWords;d<0;d++){ const j=L[L.length+d];
+    o.push(j===undefined?{j:null,d,cross:false}:{j,d,cross:false}); }
+  if(cIn) o.push({j:i,d:0,cross:false});
+  for(let d=1;d<=rWords;d++){ const j=R[d-1];
+    o.push(j===undefined?{j:null,d,cross:false}:{j,d,cross:false}); }
+  return o; }
+function qvec(v,S){ return S.flatMap(sl=> sl.j===null ? [sgn(sl.d)+':'+EMPTY]
+  : qacts(v[sl.j]).map(a=>sgn(sl.d)+':'+a)); }
+
+function draw(){
+  const {out,B}=stream();
+  const own=out.map((x,i)=>({x,i})).filter(o=>!o.x.b);
+
+  const ids=new Map(), byT=new Map(), wordOf=new Map();
+  const words=[], wIdx=new Map(), slots=new Map();
+  own.forEach(o=>{ const f=wkey(o.x.t.form);
+    if(!wIdx.has(f)){ wIdx.set(f,words.length);
+      words.push({form:f,rows:[],tids:new Set(),sents:new Set()}); }
+    words[wIdx.get(f)].rows.push(o.i); words[wIdx.get(f)].sents.add(o.x.s); });
+  own.forEach(o=>{ const S=slotsOf(out,B,o.i); slots.set(o.i,S);
+    const vec=vecOf(out,S), k=vec.join('|');
+    if(!ids.has(k)) ids.set(k,'t'+String(ids.size+1).padStart(2,'0'));
+    const t=ids.get(k);
+    if(!byT.has(t)) byT.set(t,{words:new Set(),rows:[],vec});
+    byT.get(t).words.add(wkey(o.x.t.form)); byT.get(t).rows.push(o.i);
+    words[wIdx.get(wkey(o.x.t.form))].tids.add(t);
+    wordOf.set(o.i,{w:wIdx.get(wkey(o.x.t.form)),t}); });
+
+  const zrno = punct ? 'surově' : 'normalizovaně';
+  const lmap=new Map();
+  own.forEach(o=>{ const lk=wordOf.get(o.i), k=lk.w+'|'+lk.t;
+    if(!lmap.has(k)) lmap.set(k,{w:lk.w,t:lk.t,occ:[]}); lmap.get(k).occ.push(o.i); });
+  const links=[...lmap.values()];
+
+  const use = only
+    ? [-1].concat(COLS.map((c,i)=>i)).filter(i=> i===-1 ? true
+        : out.some(x=>!x.b && x.t.acts.includes(COLS[i].a)))
+    : [-1].concat(COLS.map((c,i)=>i));
+  const w = only?13:6;
+
+  const grp=$('#grp'); grp.innerHTML='';
+  if(!only){ const pocty={};
+    COLS.forEach(c=>pocty[c.g]=(pocty[c.g]||0)+1);
+    const barva={'‖':'muted',UPOS:'upos',DEPREL:'deprel',FEATS:'feats',
+                 TYP:'ink',LEM:'ink2'};
+    for(const [g,n] of [['‖',1]].concat(Object.entries(pocty))){
+      const d=document.createElement('div'); d.textContent=g;
+      d.style.width=(n*w+n-1)+'px'; d.style.color='var(--'+(barva[g]||'muted')+')';
+      grp.appendChild(d); } }
+
+  rowsEl=$('#rows'); lexEl=$('#lex'); lnkEl=$('#lnk'); tplEl=$('#tpl');
+  rowsEl.innerHTML=''; lexEl.innerHTML=''; lnkEl.innerHTML=''; tplEl.innerHTML='';
+  let lit=0;
+  out.forEach((x,i)=>{
+    const line=document.createElement('div');
+    line.className='line'+(x.b&&tframe?' pruh':'');
+    const gut=document.createElement('span'); gut.className='gut';
+    gut.textContent=(!x.b && x.k===0)?(x.s+1)+'.':'';
+    line.appendChild(gut);
+    const r=document.createElement('div');
+    r.className='rw'+(x.b?' bnd':'');
+    r.style.gridTemplateColumns='repeat('+use.length+','+w+'px)';
+    const on=x.b?null:new Set(x.t.acts);
+    use.forEach(ci=>{ const c=document.createElement('div');
+      const hit = ci===-1 ? !!x.b : (on && on.has(COLS[ci].a));
+      c.className='c'+(hit?(ci===-1?' gb':' g'+GI[COLS[ci].g]):'');
+      if(hit) lit++;
+      c.onmouseenter=e=>{ if(!pin){ clearAll(); hot(i); }
+        show(e,x,i,ci===-1?BND:COLS[ci].a,hit); };
+      c.onmouseleave=()=>{ cold(); hide(); };
+      r.appendChild(c); });
+    line.dataset.row=i; line.dataset.sent=x.s;
+    if(!x.b) line.onclick=()=>{ const k='row:'+i; pin=(pin===k?null:k); cold(); };
+    line.appendChild(r); rowsEl.appendChild(line);
+  });
+  words.forEach((wd,k)=>{ const li=document.createElement('li');
+    li.dataset.w=k;
+    li.innerHTML='<span class="id">w'+String(k+1).padStart(2,'0')+'</span>'
+      +'<span class="form">'+wd.form+'</span>'
+      +(wd.sents.size>1?'<span class="share">'+wd.sents.size+' věty</span>'
+        : wd.rows.length>1?'<span class="share">'+wd.rows.length+'×</span>':'');
+    wire(li,'w',k,e=>showWord(e,wd));
+    lexEl.appendChild(li); });
+  links.forEach((L,n)=>{ const li=document.createElement('li');
+    li.dataset.l=n; li.dataset.w=L.w; li.dataset.t=L.t;
+    li.innerHTML='<span class="id">w'+String(L.w+1).padStart(2,'0')+'·'+L.t+'</span>'
+      +'<span class="share">'+L.occ.length+'×</span>';
+    wire(li,'l',n,e=>showLink(e,L,zrno));
+    lnkEl.appendChild(li); });
+  [...byT.entries()].forEach(([t,info])=>{ const li=document.createElement('li');
+    li.dataset.t=t;
+    li.innerHTML='<span class="id">'+t+'</span><span class="vec">'
+      +info.vec.slice(0,3).join(' ')+(info.vec.length>3?' …':'')+'</span>'
+      +(info.words.size>1?'<span class="share">'+info.words.size+' slova</span>':'');
+    wire(li,'t',t,e=>showT(e,t,info));
+    tplEl.appendChild(li); });
+
+  /* ---- strana otázek: zrcadlo levé strany, týž r_words ---------------- */
+  const qids=new Map(), qbyT=new Map(), qwords=[], qwIdx=new Map(), qinfo=[];
+  OTAZKY.forEach((_,qi)=>{
+    const v=qtoks(qi), a=qanchor(v), S=qslots(v,a);
+    const vec=qvec(v,S), key=vec.join('|');
+    if(!qids.has(key)) qids.set(key,'q'+String(qids.size+1).padStart(2,'0'));
+    const qt=qids.get(key);
+    if(!qbyT.has(qt)) qbyT.set(qt,{vec,qs:[],words:new Set()});
+    const f=wkey(v[a].form);
+    if(!qwIdx.has(f)){ qwIdx.set(f,qwords.length);
+      qwords.push({form:f,qs:[],tids:new Set()}); }
+    qwords[qwIdx.get(f)].qs.push(qi); qwords[qwIdx.get(f)].tids.add(qt);
+    qbyT.get(qt).qs.push(qi); qbyT.get(qt).words.add(f);
+    qinfo.push({qi, w:qwIdx.get(f), qt, anchor:v[a].form}); });
+
+  const qlmap=new Map();
+  qinfo.forEach(x=>{ const k=x.w+'|'+x.qt;
+    if(!qlmap.has(k)) qlmap.set(k,{w:x.w,t:x.qt,qs:[]}); qlmap.get(k).qs.push(x.qi); });
+  const qlinks=[...qlmap.values()];
+
+  /* Zadaná vazba: otázka → slovo v textu → jeho šablona. Etalon míří
+     PŮVODNÍM indexem tokenu, proto se hledá podle `orig`, ne podle pořadí. */
+  /* Vazba spojuje ŠABLONU se ŠABLONOU, ne otázku se šablonou — proto se
+     internuje stejně jako všechny ostatní tabulky. Kolik různých faktových
+     šablon visí na jedné šabloně otázky, je rovnou míra její dvojznačnosti. */
+  const jmap=new Map(), qTarget=new Map();
+  VAZBA.forEach(v=>{
+    const qt=qinfo[v.q].qt;
+    let t=null, row=-1;
+    if(v.veta!==null){
+      row=out.findIndex(x=>!x.b && x.s===v.veta && x.orig===v.token);
+      const lk=row>=0?wordOf.get(row):null; t=lk?lk.t:null; }
+    const k=qt+'|'+(t||'—');
+    if(!jmap.has(k)) jmap.set(k,{qt,t,qs:[],slova:new Set(),rows:[]});
+    const J=jmap.get(k); J.qs.push(v.q); qTarget.set(v.q,t);
+    if(v.slovo){ J.slova.add(v.slovo); J.rows.push(row); } });
+  const joins=[...jmap.values()];
+
+  const qlexEl=$('#qlex'), qlnkEl=$('#qlnk'), qtplEl=$('#qtpl'),
+        qEl=$('#q'), joinEl=$('#join');
+  [qlexEl,qlnkEl,qtplEl,qEl,joinEl].forEach(e=>e.innerHTML='');
+  [...qbyT.entries()].forEach(([qt,info])=>{ const li=document.createElement('li');
+    li.dataset.qt=qt;
+    li.innerHTML='<span class="id">'+qt+'</span><span class="vec">'
+      +info.vec.slice(0,3).join(' ')+(info.vec.length>3?' …':'')+'</span>'
+      +(info.qs.length>1?'<span class="share">'+info.qs.length+'×</span>':'');
+    wire(li,'qt',qt,null); qtplEl.appendChild(li); });
+  qlinks.forEach((L,n)=>{ const li=document.createElement('li');
+    li.dataset.ql=n; li.dataset.qw=L.w; li.dataset.qt=L.t;
+    li.innerHTML='<span class="id">q'+String(L.w+1).padStart(2,'0')+'·'+L.t+'</span>'
+      +'<span class="share">'+L.qs.length+'×</span>';
+    wire(li,'ql',n,null); qlnkEl.appendChild(li); });
+  qwords.forEach((wd,k)=>{ const li=document.createElement('li');
+    li.dataset.qw=k;
+    li.innerHTML='<span class="id">q'+String(k+1).padStart(2,'0')+'</span>'
+      +'<span class="form">'+wd.form+'</span>'
+      +(wd.qs.length>1?'<span class="share">'+wd.qs.length+'×</span>':'');
+    wire(li,'qw',k,null); qlexEl.appendChild(li); });
+  OTAZKY.forEach((_,qi)=>{ const li=document.createElement('li');
+    li.dataset.q=qi;
+    const bez=!qTarget.get(qi);
+    li.className=(bez?'mez ':'')+'ask';
+    wire(li,'q',qi,e=>showQ(e,qi));
+    li.innerHTML='<span class="id">'+(qi+1)+'.</span><span class="form">'
+      +VAZBA[qi].otazka+'</span>';
+    qEl.appendChild(li); });
+  joins.forEach((j,n)=>{ const li=document.createElement('li');
+    li.dataset.j=n; li.dataset.qt=j.qt; li.dataset.t=j.t||'';
+    li.className=j.t===null?'mez':'';
+    li.innerHTML='<span class="id">'+j.qt+' → '+(j.t||'—')+'</span>'
+      +'<span class="vec">'+([...j.slova].join(', ')||'bez cíle')+'</span>'
+      +(j.qs.length>1?'<span class="share">'+j.qs.length+'×</span>':'');
+    wire(li,'j',n,null); joinEl.appendChild(li); });
+
+  const perQt=new Map();
+  joins.forEach(j=>{ if(!j.t) return;
+    perQt.set(j.qt,(perQt.get(j.qt)||0)+1); });
+  const nej=Math.max(0,...perQt.values());
+  $('#capj').textContent='('+joins.length+' dvojic, nejvíc '+nej+' na 1 vzor)';
+  $('#capqt').textContent='('+qbyT.size+')';
+  $('#capqv').textContent='('+qlinks.length+')';
+  $('#capql').textContent='('+qwords.length+')';
+  $('#capq').textContent='('+OTAZKY.length+')';
+
+  model={out,B,own,words,wIdx,byT,wordOf,links,slots,zrno,
+         qwords,qbyT,qlinks,qinfo,joins,qTarget};
+
+  const ncol=use.length;
+  $('#capf').textContent='('+out.length+' × '+ncol+')';
+  $('#capl').textContent='('+words.length+')';
+  $('#capv').textContent='('+links.length+' · '+zrno+')';
+  $('#capt').textContent='('+byT.size+')';
+  $('#dim').textContent=out.length+' × '+ncol;
+  $('#lit').textContent=lit;
+  $('#den').textContent=(100*lit/(out.length*ncol)).toFixed(1)+' %';
+  $('#nt').textContent=byT.size; $('#nw').textContent=own.length;
+  $('#ratio').textContent=(byT.size/own.length).toFixed(2);
+
+  const vet=own.map(o=>new Set(slots.get(o.i).filter(s=>s.j!==null&&!out[s.j].b)
+    .map(s=>out[s.j].s)).size);
+  const maxVet=Math.max(...vet);
+  $('#hit').textContent=maxVet+(maxVet===1&&rSent>0
+    ? ' — r_sentences nemá jak zabrat, r_words tak daleko nedosáhne':'');
+  const dl=own.map(o=>slots.get(o.i).length);
+  $('#reach').textContent = rWords===0 ? '1 slot — jen střed'
+    : Math.min(...dl)===Math.max(...dl) ? Math.min(...dl)+' slotů'
+    : Math.min(...dl)+'–'+Math.max(...dl)+' slotů podle středu';
+  const pres=own.filter(o=>slots.get(o.i).some(s=>s.cross)).length;
+  $('#cross').textContent = tframe ? pres+' z '+own.length : '—';
+
+  $('#txt').innerHTML=VETY.map((_,i)=>'<p><span class="num">'+(i+1)+'.</span>'
+    +text(i)+'</p>').join('');
+  $('#note').textContent = tframe
+    ? 'Průhledný rám: krok se počítá jen přes slova, ale slot, který přes hranici '
+      +'prošel, nese značku ‖ — takže se nikdy neslije se sousedem uvnitř věty.'
+    : 'Rám krokuje: je vlastním slotem vektoru. Při r_words=1 se tím celý poloměr '
+      +'utratí za značku a slovo za hranicí zůstane neviditelné.';
+  $('#tab').innerHTML='<table><tr><th>w_id</th><th>slovo</th><th>t_id</th>'
+    +'<th>sdílí šablonu s</th></tr>'
+    +words.map((wd,k)=>'<tr><td class="n">w'+String(k+1).padStart(2,'0')+'</td><td>'
+      +wd.form+'</td><td class="n">'+[...wd.tids].join(', ')+'</td><td>'
+      +[...wd.tids].flatMap(t=>[...byT.get(t).words]).filter(f=>f!==wd.form).join(', ')
+      +'</td></tr>').join('')+'</table>';
+
+  requestAnimationFrame(edges);
+}
+
+function mid(el,side){ const b=el.getBoundingClientRect(),
+  s=document.querySelector('.stage').getBoundingClientRect();
+  return [(side==='r'?b.right:b.left)-s.left, b.top-s.top+b.height/2]; }
+
+function edges(){
+  const s=document.querySelector('.stage').getBoundingClientRect();
+  sv.setAttribute('viewBox','0 0 '+s.width+' '+s.height); sv.innerHTML='';
+  const shared=t=>(model.byT.get(t)||{words:new Set()}).words.size>1;
+  const P=(a,b,cls,data)=>{ const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    const dx=(b[0]-a[0])*0.5;
+    p.setAttribute('d','M'+a[0]+','+a[1]+'C'+(a[0]+dx)+','+a[1]+' '+(b[0]-dx)+','+b[1]
+      +' '+b[0]+','+b[1]);
+    if(cls) p.setAttribute('class',cls);
+    Object.entries(data||{}).forEach(([k,v])=>p.dataset[k]=v);
+    sv.appendChild(p); };
+  const okrajPole = document.querySelector('.p-field').getBoundingClientRect().right
+                    - s.left;
+  model.own.forEach(o=>{ const rw=rowsEl.querySelector('[data-row="'+o.i+'"]');
+    const lk=model.wordOf.get(o.i), li=lexEl.querySelector('[data-w="'+lk.w+'"]');
+    if(rw&&li){ const a=mid(rw,'r');
+      P([okrajPole, a[1]], mid(li,'l'), shared(lk.t)?'heat':'',
+        {row:o.i,w:lk.w,t:lk.t}); } });
+  model.links.forEach((L,n)=>{ const li=lexEl.querySelector('[data-w="'+L.w+'"]');
+    const ln=lnkEl.querySelector('[data-l="'+n+'"]');
+    const tl=tplEl.querySelector('[data-t="'+L.t+'"]');
+    const cls=shared(L.t)?'heat':'';
+    if(li&&ln) P(mid(li,'r'),mid(ln,'l'),cls,{w:L.w,t:L.t,l:n});
+    if(ln&&tl) P(mid(ln,'r'),mid(tl,'l'),cls,{w:L.w,t:L.t,l:n}); });
+
+  /* --- strana otázek, zprava doleva: otázka → slovník → vazba → šablona */
+  const Q=s=>document.querySelector(s);
+  model.qinfo.forEach(x=>{
+    const q=Q('#q li[data-q="'+x.qi+'"]'), lx=Q('#qlex li[data-qw="'+x.w+'"]');
+    if(q&&lx) P(mid(lx,'r'),mid(q,'l'),'ask',{qi:x.qi,qw:x.w,qt:x.qt}); });
+  model.qlinks.forEach((L,n)=>{
+    const lx=Q('#qlex li[data-qw="'+L.w+'"]'), ln=Q('#qlnk li[data-ql="'+n+'"]');
+    const tp=Q('#qtpl li[data-qt="'+L.t+'"]');
+    if(ln&&lx) P(mid(ln,'r'),mid(lx,'l'),'ask',{qw:L.w,qt:L.t,ql:n});
+    if(tp&&ln) P(mid(tp,'r'),mid(ln,'l'),'ask',{qw:L.w,qt:L.t,ql:n}); });
+
+  /* --- most: zadaná vazba fakt ↔ otázka -------------------------------- */
+  model.joins.forEach((j,n)=>{
+    const jn=Q('#join li[data-j="'+n+'"]');
+    const tp=Q('#qtpl li[data-qt="'+j.qt+'"]');
+    const tl=j.t?tplEl.querySelector('[data-t="'+j.t+'"]'):null;
+    const cls=j.t?'':'mez';
+    if(tl&&jn) P(mid(tl,'r'),mid(jn,'l'),cls,{t:j.t||'',qt:j.qt,j:n});
+    if(jn&&tp) P(mid(jn,'r'),mid(tp,'l'),cls,{t:j.t||'',qt:j.qt,j:n}); });
+}
+
+function paint(pred){ sv.querySelectorAll('path').forEach(p=>{
+  p.classList.remove('hot'); if(pred(p.dataset)) p.classList.add('hot'); }); }
+
+/* Plátno je široké přes tři tisíce pixelů, takže hover nestačí — než
+   přejedeš očima z jednoho konce na druhý, zhasne. Klik proto PŘIPNE a
+   drží, dokud neklikneš jinam. Platí to pro každý sloupec stejně. */
+function svit(kind, id){
+  if(kind==='row') return hot(+id);
+  if(kind==='w')   return hotWord(+id);
+  if(kind==='l')   return hotLink(+id);
+  if(kind==='t')   return hotT(id);
+  if(kind==='j')   return hotJoin(+id);
+  if(kind==='qt')  return hotQT(id);
+  if(kind==='ql')  return hotQL(+id);
+  if(kind==='qw')  return hotQW(+id);
+  if(kind==='q')   return hotQ(+id); }
+function wire(el, kind, id, bublina){
+  el.classList.add('klik');
+  el.onmouseenter = e => { if(!pin){ clearAll(); svit(kind,id); }
+                           if(bublina) bublina(e); };
+  el.onmouseleave = () => { cold(); hide(); };
+  el.onclick = () => { const k=kind+':'+id; pin = (pin===k?null:k); cold(); }; }
+function clearAll(){ paint(()=>false);
+  document.querySelectorAll('li.hot,li.dim,.line.hot,.line.slot')
+    .forEach(e=>e.classList.remove('hot','dim','slot'));
+  document.querySelectorAll('.pinned').forEach(e=>e.classList.remove('pinned'));
+  rowsEl.querySelectorAll('.gut').forEach(g=>{ if(g.dataset.orig!==undefined){
+    g.textContent=g.dataset.orig; delete g.dataset.orig; } }); }
+/* Kliknutá otázka zůstane rozsvícená — jinak zhasne dřív, než stihneš
+   očima přejet přes celé plátno k faktu na druhém konci. */
+function cold(){ clearAll();
+  if(pin===null) return;
+  const [kind,id]=pin.split(':'); svit(kind,id);
+  document.querySelectorAll('.pinned').forEach(e=>e.classList.remove('pinned'));
+  const sel={row:'.line[data-row="'+id+'"]', w:'#lex li[data-w="'+id+'"]',
+             l:'#lnk li[data-l="'+id+'"]', t:'#tpl li[data-t="'+id+'"]',
+             j:'#join li[data-j="'+id+'"]', qt:'#qtpl li[data-qt="'+id+'"]',
+             ql:'#qlnk li[data-ql="'+id+'"]', qw:'#qlex li[data-qw="'+id+'"]',
+             q:'#q li[data-q="'+id+'"]'}[kind];
+  const el=sel && document.querySelector(sel); if(el) el.classList.add('pinned'); }
+
+function mark(q){ document.querySelectorAll(q).forEach(e=>e.classList.add('hot')); }
+
+/* Zvýraznění je PRŮCHOZÍ celým plátnem. Ať klikneš kdekoli, dojede to na
+   oba konce — od slova v textu až k otázkám, které se na něj ptají, a
+   zpátky. Dvě šiřitelky: doprava od faktových vzorů, doleva od otázkových. */
+function doprava(ts){
+  const qts=new Set();
+  model.joins.forEach((j,n)=>{ if(j.t && ts.has(j.t)){
+    mark('#join li[data-j="'+n+'"]'); qts.add(j.qt); } });
+  qts.forEach(qt=>{ mark('#qtpl li[data-qt="'+qt+'"]');
+    mark('#qlnk li[data-qt="'+qt+'"]');
+    model.qbyT.get(qt).qs.forEach(qi=>{ mark('#q li[data-q="'+qi+'"]');
+      mark('#qlex li[data-qw="'+model.qinfo[qi].w+'"]'); }); });
+  return qts; }
+function doleva(qts){
+  const ts=new Set();
+  model.joins.forEach((j,n)=>{ if(qts.has(j.qt)){
+    mark('#join li[data-j="'+n+'"]'); if(j.t) ts.add(j.t); } });
+  ts.forEach(t=>{ mark('#tpl li[data-t="'+t+'"]');
+    model.links.forEach((L,n)=>{ if(L.t===t) mark('#lnk li[data-l="'+n+'"]'); });
+    model.byT.get(t).rows.forEach(i=>{
+      mark('#lex li[data-w="'+model.wordOf.get(i).w+'"]');
+      const ln=rowsEl.querySelector('.line[data-row="'+i+'"]');
+      if(ln) ln.classList.add('hot'); }); });
+  return ts; }
+function vlevo(ts){                       // dokreslí levou stranu k daným vzorům
+  ts.forEach(t=>{ mark('#tpl li[data-t="'+t+'"]');
+    model.links.forEach((L,n)=>{ if(L.t===t) mark('#lnk li[data-l="'+n+'"]'); });
+    model.byT.get(t).rows.forEach(i=>{
+      mark('#lex li[data-w="'+model.wordOf.get(i).w+'"]');
+      const ln=rowsEl.querySelector('.line[data-row="'+i+'"]');
+      if(ln) ln.classList.add('hot'); }); }); }
+function rozsvit(ts, qts, extra){
+  qts = qts || doprava(ts);
+  paint(d => (d.t && ts.has(d.t)) || (d.qt && qts.has(d.qt))
+             || (extra ? extra(d) : false)); }
+
+function hot(i){
+  const line=rowsEl.querySelector('.line[data-row="'+i+'"]');
+  if(line) line.classList.add('hot');
+  showSlots(i);
+  const lk=model.wordOf.get(+i); if(!lk) return;
+  const ts=new Set([lk.t]); vlevo(ts);
+  rozsvit(ts, null, d=> +d.row===+i); }
+function hotWord(k){
+  const ts=new Set(model.words[k].tids); vlevo(ts);
+  mark('#lex li[data-w="'+k+'"]'); showSlots(model.words[k].rows[0]);
+  rozsvit(ts, null, d=> +d.w===k); }
+function hotLink(n){ const L=model.links[n];
+  const ts=new Set([L.t]); vlevo(ts);
+  mark('#lnk li[data-l="'+n+'"]'); showSlots(L.occ[0]);
+  rozsvit(ts, null, d=> +d.l===n); }
+function hotT(t){ const ts=new Set([t]); vlevo(ts);
+  showSlots(model.byT.get(t).rows[0]); rozsvit(ts); }
+function hotJoin(n){ const j=model.joins[n];
+  mark('#join li[data-j="'+n+'"]');
+  const qts=new Set([j.qt]); const ts=doleva(qts); doprava(ts);
+  rozsvit(ts, qts, d=> +d.j===n); }
+function hotQT(qt){ const qts=new Set([qt]); const ts=doleva(qts); doprava(ts);
+  rozsvit(ts, qts); }
+function hotQL(n){ const L=model.qlinks[n];
+  mark('#qlnk li[data-ql="'+n+'"]');
+  const qts=new Set([L.t]); const ts=doleva(qts); doprava(ts);
+  rozsvit(ts, qts, d=> +d.ql===n); }
+function hotQW(k){ const wd=model.qwords[k];
+  mark('#qlex li[data-qw="'+k+'"]');
+  const qts=new Set(wd.tids); const ts=doleva(qts); doprava(ts);
+  rozsvit(ts, qts, d=> +d.qw===k); }
+function hotQ(qi){ const x=model.qinfo[qi];
+  mark('#q li[data-q="'+qi+'"]'); mark('#qlex li[data-qw="'+x.w+'"]');
+  const qts=new Set([x.qt]); const ts=doleva(qts); doprava(ts);
+  rozsvit(ts, qts, d=> +d.qi===qi); }
+
+/* Srozumitelnost stojí a padá s tímhle: při najetí se do postranního sloupce
+   vypíšou OFFSETY slotů na těch řádcích, kam vektor opravdu dopadl. Přepnutí
+   rámu je pak vidět přímo — číslo se přesune ze značky na slovo. */
+function showSlots(i){
+  const S=model.slots.get(i); if(!S) return;
+  S.forEach(sl=>{ if(sl.j===null) return;
+    const line=rowsEl.querySelector('[data-row="'+sl.j+'"]'); if(!line) return;
+    line.classList.add('slot');
+    const g=line.querySelector('.gut');
+    if(g.dataset.orig===undefined) g.dataset.orig=g.textContent;
+    g.textContent=(sl.d>0?'+':'')+sl.d+(sl.cross?'‖':''); });
+}
+
+function at(e){ const r=e.target.getBoundingClientRect(); tip.style.opacity=1;
+  tip.style.left=Math.max(8,Math.min(r.left,innerWidth-tip.offsetWidth-8))+'px';
+  tip.style.top=Math.max(8,r.top-tip.offsetHeight-8)+'px'; }
+function show(e,x,i,act,hit){
+  tip.innerHTML = x.b
+    ? 'řádek '+i+' · <b>rám věty</b>'+(tframe?' — průhledný, krok nespotřebuje'
+        :' — krokuje, je vlastním slotem')
+    : 'řádek '+i+' · <b>'+act+'</b>'+(hit?'':' (nesvítí)')
+      +' · slovo <b>„'+x.t.form+'“</b><br>věta '+(x.s+1)+': '+text(x.s);
+  at(e); }
+function showWord(e,wd){ tip.innerHTML='<b>'+wd.form+'</b> — '+wd.rows.length
+  +'× v textu, věty '+[...wd.sents].map(z=>z+1).join(', ')
+  +'<br>šablony: '+[...wd.tids].join(', '); at(e); }
+function showLink(e,L,zrno){ tip.innerHTML='<b>vazba</b> w'
+  +String(L.w+1).padStart(2,'0')+' · '+L.t+' · '+zrno+'<br>slovo <b>„'
+  +model.words[L.w].form+'“</b>, výskytů '+L.occ.length
+  +'<br>v kódu: links[(w_id, t_id, zrno)] → výskyty'; at(e); }
+function showT(e,t,info){ const vet=new Set(info.rows.map(i=>model.out[i].s));
+  tip.innerHTML='<b>'+t+'</b> — vzor okolí, bez jediného slova uvnitř<br>'
+  +info.vec.join(' · ')+'<br>přes vazby navěšeno: <b>'+[...info.words].join(', ')+'</b>'
+  +(vet.size>1?' — napříč větami '+[...vet].map(z=>z+1).join(', '):''); at(e); }
+function showQ(e,qi){ const x=model.qinfo[qi], t=model.qTarget.get(qi);
+  const slova = t ? [...model.byT.get(t).words].join(', ') : null;
+  tip.innerHTML='<b>'+VAZBA[qi].otazka+'</b><br>kotva „'+x.anchor+'“ → vzor '+x.qt
+    +'<br>'+(t ? 'vazba na vzor faktu <b>'+t+'</b> (' + slova + ')'
+              : '<b>bez cíle</b> — text to neříká, nebo se to musí spočítat')
+    +'<br><span style="opacity:.7">klikni a zůstane to svítit</span>';
+  at(e); }
+function hide(){ tip.style.opacity=0; }
+addEventListener('resize',()=>requestAnimationFrame(edges));
+draw();
+</script>

@@ -1,0 +1,16 @@
+# Prostředí pro lokální UDPipe 2. Verze jsou přišpendlené schválně — je to
+# ověřená kombinace, na které rozbor běží; TensorFlow s transformers se umí
+# rozejít a hledat to podruhé je zbytečná práce.
+#
+#   python3.11 -m venv .venv
+#   .venv/bin/pip install -r requirements.txt
+#
+# Samotný backend (server/) žádnou z těchto knihoven nepotřebuje, vystačí si
+# se standardní knihovnou. Tohle je jen pro rozbor vět.
+
+tensorflow==2.21.0
+tf_keras==2.21.0
+transformers==4.49.0
+ufal.udpipe==1.4.0.1
+ufal.morphodita==1.11.3.3
+ufal.chu_liu_edmonds==1.0.3

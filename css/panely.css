@@ -1,0 +1,68 @@
+/* Panely vpravo od pole — slovník, vazby, šablony — a hrany mezi nimi. */
+
+
+
+  .bridge { flex:0 0 var(--bw,54px); }
+
+  .klik { cursor:pointer; }
+
+  .pinned { outline:2px solid var(--ink); outline-offset:-2px; }
+
+  .p-lex { flex:0 0 186px; }
+
+  .p-lnk { flex:0 0 158px; }
+
+  .p-tpl { flex:0 0 205px; }
+
+  .panel ul { list-style:none; margin:0; padding:0; }
+
+  .panel li { height:var(--rh); display:flex; align-items:center; gap:6px;
+              padding:0 11px; white-space:nowrap; cursor:default; }
+
+  .p-lnk .id { color:var(--ink2); }
+
+  .vec { font-size:11px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; }
+
+  .id { color:var(--muted); font-size:11px; font-variant-numeric:tabular-nums; }
+
+  li.hot { background:var(--grid); }
+
+  li.emp .form { color:var(--muted); font-style:italic; }
+
+  .share { font-size:10.5px; color:var(--ink2); border:1px solid var(--axis);
+           border-radius:9px; padding:0 6px; }
+
+  .obe { font-size:10.5px; color:var(--surface); background:var(--deprel);
+         border-radius:9px; padding:0 6px; font-weight:600; }
+
+
+  svg.edges { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+
+  svg.edges path { fill:none; stroke:var(--axis); stroke-width:1; opacity:.5; }
+
+  svg.edges path.hot { stroke:var(--ink); stroke-width:2.4; opacity:1; }
+
+
+  .foot { display:flex; flex-wrap:wrap; gap:22px; margin-top:13px; color:var(--ink2);
+          max-width:1300px; }
+
+  .foot b { color:var(--ink); font-variant-numeric:tabular-nums; }
+
+  .note { margin-top:18px; color:var(--ink2); max-width:82ch;
+          border-left:2px solid var(--axis); padding-left:13px; }
+
+  .span i { position:absolute; top:14px; left:50%; transform:translateX(-50%);
+            font-style:normal; font-size:10px; letter-spacing:.09em;
+            text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+
+  .p-map { flex:0 0 300px; }
+
+  .p-map li { gap:5px; }
+
+  .p-map .qf { color:var(--upos); font-weight:600; }
+
+  .p-map .ff { color:var(--ink); font-weight:600; }
+
+  .p-map .ar { color:var(--muted); }
+
+  .p-map li .x { margin-left:auto; }

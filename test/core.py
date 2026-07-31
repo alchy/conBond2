@@ -324,6 +324,38 @@ r.poslat("Alík je pes")
 ok(r.odpovedet(" Alík savec").odpoved.startswith("ano"),
    "po přidání věty se odpověď nezměnila — nic se nenaučilo")
 
+# OTÁZKA SE NESMÍ ZAPSAT JAKO TVRZENÍ. „Co je Šmoula?" má tvar „X je Y“ a
+# dřív se z tázacího slova stal pojem: přijato „co ∈ šmoula“.
+r2 = Rozhovor(Znalost())
+r2.poslat("Šmoula je skřítek.")
+pred = len(r2.znalost.tvrzeni)
+for otazka in ("Co je Šmoula?", "co je Šmoula?", "Kdo je Šmoula?",
+               "Je Šmoula skřítek?", "Šmoula je skřítek?", "Je Šmoula drak?"):
+    z = r2.poslat(otazka)
+    ok(z.druh in ("otazka", "rodokmen"),
+       f"„{otazka}“ se zpracovalo jako {z.druh}, ne jako dotaz")
+ok(len(r2.znalost.tvrzeni) == pred,
+   f"otázky přidaly {len(r2.znalost.tvrzeni) - pred} tvrzení — nesmí přidat žádné")
+ok(not any(t.levy in ("co", "kdo") for t in r2.znalost.tvrzeni),
+   "tázací slovo se stalo pojmem")
+print("  otázky: " + " · ".join(f"{z.text}→{z.druh}" for z in r2.historie[1:4]))
+
+# Věta začínající značkou dřív shodila dělení: hledalo se v odsazeném
+# řetězci, dělilo v neodsazeném, a ValueError šel ven jako pětistovka.
+for kraj in ("je Šmoula skřítek", "není Šmoula drak", "je", "?"):
+    r2.poslat(kraj)          # nesmí spadnout
+print(f"  krajní tvary prošly, tvrzení pořád {len(r2.znalost.tvrzeni)}")
+
+# Víceslovný pojem: „Je Šmoula pohádková bytost?" nejde rozdělit podle
+# posledního slova — kde je řez, ví až znalost.
+r3 = Rozhovor(Znalost())
+r3.poslat("Šmoula je skřítek.")
+r3.poslat("skřítek je pohádková bytost")
+r3.rozhodnout("podtrida")
+ok(r3.poslat("Je Šmoula pohádková bytost?").odpoved.startswith("ano"),
+   "řez u víceslovného pojmu se nenašel")
+print(f"  víceslovný pojem: {r3.historie[-1].odpoved}")
+
 stav = r.vypsat_stav()
 ok(set(stav) == {"historie", "znalost", "ceka"}, "stav pro prohlížeč má jiné klíče")
 ok(stav["znalost"]["cisla"]["tvrzeni"] == len(r.znalost.tvrzeni), "čísla nesedí")

@@ -63,7 +63,11 @@ export function postavList() {
 function radekPrepisu(z) {
   const trida = { tvrzeni: 'ok', otazka: 'dotaz', rodokmen: 'dotaz',
                   nejasnost: 'ptam', odmitnuto: 'ne', chyba: 'ne' }[z.druh] || '';
-  const hrana = z.hrana && z.hrana.levy
+  /* U tvrzení je hrana už v odpovědi („přijato: X ⊂ Y") a chip by ji
+     zopakoval slovo od slova. U otázky a nejasnosti přidá, jak se pojmy
+     normalizovaly, takže tam smysl má. */
+  const ukazHranu = z.hrana && z.hrana.levy && z.druh !== 'tvrzeni';
+  const hrana = ukazHranu
     ? `<span class="hrana">${esc(z.hrana.levy)} <b>${esc(z.hrana.znak)}</b> `
       + `${esc(z.hrana.pravy)}</span>` : '';
   return `<div class="tah ${trida}"><div class="rekl">${esc(z.text)}</div>`

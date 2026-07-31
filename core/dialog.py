@@ -26,8 +26,8 @@ import time
 from dataclasses import dataclass, field
 from typing import Optional
 
-from .tvrzeni import (INSTANCE, PODTRIDA, SYNONYMUM, ZAPOR, Mluvnice,
-                      Nejasnost, Tvrzeni, Znalost)
+from .tvrzeni import (INSTANCE, PODTRIDA, SYNONYMUM, ZAPOR, Dotaz,
+                      Mluvnice, Nejasnost, Tvrzeni, Znalost)
 
 # Druhy záznamu — co se s poslaným textem stalo.
 TVRZENI, OTAZKA, RODOKMEN, NEJASNOST, ODMITNUTO, CHYBA = (
@@ -82,6 +82,13 @@ class Rozhovor:
             return Zaznam(text, CHYBA,
                           "tomuhle tvaru nerozumím — zkus „X je druh Y“ "
                           "nebo „? X Y“ pro dotaz")
+        # Otázka se NIKDY nesmí zapsat jako tvrzení. „Co je Šmoula?" má tvar
+        # „X je Y" a bez tohohle se z tázacího slova stal pojem.
+        if isinstance(vysledek, Dotaz):
+            if vysledek.cim is None:
+                return self.zaradit(vysledek.co, text)
+            co, cim = self.rozdelit(vysledek)
+            return self.odpovedet_pojmy(co, cim, text)
         if isinstance(vysledek, Nejasnost):
             self.nejasne = vysledek
             return Zaznam(text, NEJASNOST, vysledek.otazka(),
@@ -118,24 +125,50 @@ class Rozhovor:
         kusy = dotaz.split()
         if len(kusy) < 2:
             return Zaznam("?" + dotaz, CHYBA, "ptej se ve tvaru: ? Krakatit dílo")
-        co = self.mluvnice._pojem(" ".join(kusy[:-1]))
-        cim = self.mluvnice._pojem(kusy[-1])
+        return self.odpovedet_pojmy(self.mluvnice._pojem(" ".join(kusy[:-1])),
+                                    self.mluvnice._pojem(kusy[-1]),
+                                    "? " + dotaz.strip())
+
+    def rozdelit(self, dotaz: Dotaz) -> tuple:
+        """Kde v „Je Šmoula pohádková bytost?" končí první pojem.
+
+        Mluvnice to rozhodnout nemůže — obě strany smějí být víceslovné.
+        Zeptáme se tedy znalosti a vezmeme řez, po kterém obě strany něco
+        znamenají; když takový není, aspoň levá; jinak zůstane výchozí."""
+        slova = dotaz.slova
+        if len(slova) < 2:
+            return dotaz.co, dotaz.cim
+        nejlepsi, skore = None, -1
+        for i in range(1, len(slova)):
+            co, cim = " ".join(slova[:i]), " ".join(slova[i:])
+            body = 2 * self.znalost.zna(co) + self.znalost.zna(cim)
+            if body > skore:
+                nejlepsi, skore = (co, cim), body
+        return nejlepsi if skore > 0 else (dotaz.co, dotaz.cim)
+
+    def odpovedet_pojmy(self, co: str, cim: str, text: str) -> Zaznam:
+        """Pojmy už jsou lemmatizované — sem chodí i česky položená otázka."""
         odpoved = self.znalost.je(co, cim)
-        slovy = {True: f"ano, {co} je {cim}",
-                 False: f"ne, {co} není {cim}",
+        # V odpovědi napsaný tvar, v hraně klíč — počítá se s lemmaty.
+        a, b = self.znalost.tvar(co), self.znalost.tvar(cim)
+        slovy = {True: f"ano, {a} je {b}",
+                 False: f"ne, {a} není {b}",
                  None: "nevím — a mlčení není zápor, jen chybějící znalost"}
-        return Zaznam("? " + dotaz.strip(), OTAZKA, slovy[odpoved],
+        return Zaznam(text, OTAZKA, slovy[odpoved],
                       hrana={"druh": None, "levy": co, "pravy": cim,
                              "znak": {True: "∈", False: "≠", None: "?"}[odpoved]})
 
     def rodokmen(self, pojem: str) -> Zaznam:
-        p = self.mluvnice._pojem(pojem)
-        predci = sorted(self.znalost.predci(p))
+        return self.zaradit(self.mluvnice._pojem(pojem), "?? " + pojem.strip())
+
+    def zaradit(self, pojem: str, text: str) -> Zaznam:
+        """Čím vším pojem je. Odpověď na „co je X?" i na „?? X"."""
+        predci = sorted(self.znalost.predci(pojem))
         if not predci:
-            return Zaznam("?? " + pojem.strip(), RODOKMEN,
-                          f"o „{p}“ zatím nic nevím")
-        return Zaznam("?? " + pojem.strip(), RODOKMEN,
-                      f"{p} ⊂ " + ", ".join(predci))
+            return Zaznam(text, RODOKMEN,
+                          f"o „{self.znalost.tvar(pojem)}“ zatím nic nevím")
+        return Zaznam(text, RODOKMEN, f"{self.znalost.tvar(pojem)} ⊂ "
+                      + ", ".join(self.znalost.tvar(p) for p in predci))
 
     # ---- čtení -------------------------------------------------------
     def zapsat(self, zaznam: Zaznam) -> Zaznam:
@@ -155,10 +188,14 @@ class Rozhovor:
         skoro sto a v přepisu rozhovoru nemají co dělat. Odvození přes ně
         samozřejmě běží dál, takže „Krakatit je dílo“ vyjde i tehdy, když se
         o díle nikdo nezmínil."""
-        hrany = [{"druh": t.druh, "levy": t.levy, "pravy": t.pravy,
+        # Zobrazuje se napsaný tvar, počítá se s lemmatem — proto obojí.
+        hrany = [{"druh": t.druh, "levy": t.levy_tvar, "pravy": t.pravy_tvar,
+                  "klic": [t.levy, t.pravy],
                   "znak": ZNAK[t.druh], "zdroj": t.zdroj, "veta": t.veta}
                  for t in self.znalost.tvrzeni]
-        pojmy = sorted({k for h in hrany for k in (h["levy"], h["pravy"])})
+        # Pojmy jdou z KLÍČŮ, ne ze zobrazených tvarů — jinak by se týž
+        # uzel objevil dvakrát, pokaždé v jiném pádu.
+        pojmy = sorted({k for h in hrany for k in h["klic"]})
         return {
             "hrany": hrany,
             "pojmy": [{"jmeno": p, "predci": sorted(self.znalost.predci(p))}

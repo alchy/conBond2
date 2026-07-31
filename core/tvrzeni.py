@@ -57,9 +57,23 @@ ZNACKY_PODTRIDY = ("je druh", "je druhem", "patří mezi", "je typ", "je typem")
 ZNACKY_SYNONYMA = ("je totéž co", "je totez co", "znamená totéž co", "=",
                    "je synonymum pro", "je jiné slovo pro")
 
+# OTÁZKA NENÍ TVRZENÍ. „Co je Šmoula?" má tvar „X je Y" a bez tohohle se
+# zapsalo jako fakt, že co je šmoula — tázací slovo se stalo pojmem. Otázku
+# pozná otazník na konci nebo tázací slovo na začátku; obojí, protože
+# „kdo je Šmoula" bez otazníku je pořád otázka.
+TAZACI = ("co", "kdo", "koho", "komu", "čí", "jaký", "jaká", "jaké", "který",
+          "která", "které", "je", "jsou", "není", "nejsou")
+# Tázací slova, po kterých se ptáme na ZAŘAZENÍ, ne na jednu hranu.
+NA_ZARAZENI = ("co", "kdo", "koho", "komu", "čí")
+
 
 @dataclass
 class Tvrzeni:
+    """`levy` a `pravy` jsou LEMMATA — podle nich se pojmy potkávají.
+    `levy_tvar` a `pravy_tvar` je to, co člověk napsal, a slouží jen k
+    zobrazení: víceslovný pojem se lemmatizuje po slovech, takže
+    „pohádková bytost" vyjde jako „pohádkový bytost". Jako klíč je to
+    v pořádku a shoda funguje, ale ukazovat se to člověku nemá."""
     druh: str
     levy: str
     pravy: str
@@ -67,21 +81,45 @@ class Tvrzeni:
     cas: float = field(default_factory=time.time)
     jistota: float = 1.0
     veta: str = ""
+    levy_tvar: str = ""
+    pravy_tvar: str = ""
+
+    def __post_init__(self) -> None:
+        self.levy_tvar = self.levy_tvar or self.levy
+        self.pravy_tvar = self.pravy_tvar or self.pravy
+
+    def znak(self) -> str:
+        return {PODTRIDA: "⊂", INSTANCE: "∈", SYNONYMUM: "=", ZAPOR: "≠"}[self.druh]
 
     def do_slovniku(self) -> dict:
         return {"druh": self.druh, "levy": self.levy, "pravy": self.pravy,
                 "zdroj": self.zdroj, "cas": self.cas,
-                "jistota": self.jistota, "veta": self.veta}
+                "jistota": self.jistota, "veta": self.veta,
+                "levy_tvar": self.levy_tvar, "pravy_tvar": self.pravy_tvar}
 
     @classmethod
     def ze_slovniku(cls, d: dict) -> "Tvrzeni":
         return cls(**{k: d[k] for k in
-                      ("druh", "levy", "pravy", "zdroj", "cas", "jistota", "veta")
+                      ("druh", "levy", "pravy", "zdroj", "cas", "jistota",
+                       "veta", "levy_tvar", "pravy_tvar")
                       if k in d})
 
     def __str__(self) -> str:
-        znak = {PODTRIDA: "⊂", INSTANCE: "∈", SYNONYMUM: "=", ZAPOR: "≠"}[self.druh]
-        return f"{self.levy} {znak} {self.pravy}"
+        return f"{self.levy_tvar} {self.znak()} {self.pravy_tvar}"
+
+
+@dataclass
+class Dotaz:
+    """Otázka položená česky, ne přes „?". `cim` je None u „co je X?" — tam
+    se ptáme na zařazení, ne na jednu hranu.
+
+    `slova` nese lemmata nerozdělená, protože „Je Šmoula pohádková bytost?"
+    natvrdo rozdělit nejde: podle posledního slova vyjde „Šmoula pohádková"
+    a „bytost". Kde je řez, ví až znalost, a ta sem nepatří."""
+    co: str
+    cim: Optional[str] = None
+    veta: str = ""
+    slova: tuple = ()
 
 
 @dataclass
@@ -91,13 +129,18 @@ class Nejasnost:
     levy: str
     pravy: str
     veta: str
+    levy_tvar: str = ""
+    pravy_tvar: str = ""
 
     def otazka(self) -> str:
-        return (f"Je „{self.levy}\" DRUH pojmu „{self.pravy}\" (jako román je druh "
-                f"díla), nebo KONKRÉTNÍ {self.pravy} (jako Krakatit je román)?")
+        l, p = self.levy_tvar or self.levy, self.pravy_tvar or self.pravy
+        return (f"Je „{l}\" DRUH pojmu „{p}\" (jako román je druh "
+                f"díla), nebo KONKRÉTNÍ {p} (jako Krakatit je román)?")
 
     def rozhodni(self, druh: str) -> Tvrzeni:
-        return Tvrzeni(druh=druh, levy=self.levy, pravy=self.pravy, veta=self.veta)
+        return Tvrzeni(druh=druh, levy=self.levy, pravy=self.pravy,
+                       veta=self.veta, levy_tvar=self.levy_tvar,
+                       pravy_tvar=self.pravy_tvar)
 
 
 class Mluvnice:
@@ -109,25 +152,31 @@ class Mluvnice:
         self.lemmatizuj = lemmatizuj or (lambda s: s.strip().lower())
 
     def rozeber(self, veta: str):
-        cista = sceli_zkratky(veta.strip()).rstrip(".!?")
+        """Vrací Tvrzeni, Dotaz, Nejasnost, nebo None. Otázka se testuje
+        PRVNÍ: „Co je Šmoula?" má tvar tvrzení a jinak by se zapsala jako
+        fakt, že co je šmoula."""
+        syrova = sceli_zkratky(veta.strip())
+        cista = syrova.rstrip(".!?")
         if not cista:
             return None
+        if syrova.endswith("?") or self._prvni_slovo(cista) in TAZACI:
+            return self._dotaz(cista, veta)
 
         for znacka in ZNACKY_SYNONYMA:
             if znacka in cista.lower():
                 l, p = self._rozdel(cista, znacka)
-                return Tvrzeni(SYNONYMUM, self._pojem(l), self._pojem(p), veta=veta)
+                return self._tvrzeni(SYNONYMUM, l, p, veta)
 
-        if " není " in f" {cista} " or cista.lower().startswith("není "):
+        if self._obsahuje(cista, " není "):
             l, p = self._rozdel(cista, " není ")
-            return Tvrzeni(ZAPOR, self._pojem(l), self._pojem(p), veta=veta)
+            return self._tvrzeni(ZAPOR, l, p, veta)
 
         for znacka in ZNACKY_PODTRIDY:
             if znacka in cista.lower():
                 l, p = self._rozdel(cista, znacka)
-                return Tvrzeni(PODTRIDA, self._pojem(l), self._pojem(p), veta=veta)
+                return self._tvrzeni(PODTRIDA, l, p, veta)
 
-        if " je " in f" {cista} ":
+        if self._obsahuje(cista, " je "):
             l, p = self._rozdel(cista, " je ")
             levy_syrovy = l.strip()
             # Velké písmeno = konkrétní věc. V češtině je to slušné vodítko
@@ -137,14 +186,69 @@ class Mluvnice:
             # křik. Jenže tím propadly zkratky: R.U.R. se scelí na „RUR"
             # a to je vlastní jméno jako každé jiné.
             if levy_syrovy[:1].isupper():
-                return Tvrzeni(INSTANCE, self._pojem(l), self._pojem(p), veta=veta)
-            return Nejasnost(self._pojem(l), self._pojem(p), veta)
+                return self._tvrzeni(INSTANCE, l, p, veta)
+            return Nejasnost(self._pojem(l), self._pojem(p), veta,
+                             self._ocistit(l), self._ocistit(p))
         return None
+
+    def _tvrzeni(self, druh: str, l: str, p: str, veta: str) -> "Tvrzeni":
+        """Lemma jako klíč, napsaný tvar k zobrazení."""
+        return Tvrzeni(druh, self._pojem(l), self._pojem(p), veta=veta,
+                       levy_tvar=self._ocistit(l), pravy_tvar=self._ocistit(p))
+
+    @staticmethod
+    def _ocistit(kus: str) -> str:
+        """Povrchový tvar bez značek — lemmatizace se sem nesahá."""
+        kus = sceli_zkratky(kus.strip()).strip(",;")
+        for predlozka in ("pro ", "s ", "se ", "co "):
+            if kus.lower().startswith(predlozka):
+                kus = kus[len(predlozka):]
+        return kus.strip()
+
+    @staticmethod
+    def _prvni_slovo(veta: str) -> str:
+        kusy = veta.strip().split()
+        return kusy[0].lower().strip(",;") if kusy else ""
+
+    @staticmethod
+    def _obsahuje(veta: str, znacka: str) -> bool:
+        """Hledá se v ODSAZENÉM řetězci, aby značka chytla i na kraji věty."""
+        return znacka.lower() in f" {veta.lower()} "
 
     @staticmethod
     def _rozdel(veta: str, znacka: str):
-        i = veta.lower().index(znacka.lower())
-        return veta[:i], veta[i + len(znacka):]
+        """Dělí se v témž odsazeném řetězci, ve kterém se hledalo.
+
+        Dřív se hledalo v odsazeném a dělilo v neodsazeném, takže věta
+        začínající značkou („je Šmoula skřítek") test prošla a na dělení
+        spadla — ValueError až ven z API jako pětistovka."""
+        odsazena = f" {veta} "
+        i = odsazena.lower().find(znacka.lower())
+        if i < 0:
+            return veta, ""
+        return odsazena[:i].strip(), odsazena[i + len(znacka):].strip()
+
+    def _dotaz(self, cista: str, veta: str):
+        """Česky položená otázka. Konvence je táž jako u „? X Y": poslední
+        slovo je to, na co se ptáme, zbytek je pojem — víceslovné pojmy na
+        obou stranách naráz rozdělit nejde."""
+        prvni = self._prvni_slovo(cista)
+        if prvni in NA_ZARAZENI and self._obsahuje(cista, " je "):
+            _, pojem = self._rozdel(cista, " je ")
+            return Dotaz(self._pojem(pojem), None, veta) if pojem else None
+        if prvni in ("je", "jsou", "není", "nejsou"):
+            zbytek = cista.split(None, 1)[1] if len(cista.split(None, 1)) > 1 else ""
+            kusy = zbytek.split()
+            if len(kusy) >= 2:
+                slova = tuple(self._pojem(k) for k in kusy)
+                # výchozí řez u posledního slova; lepší najde až znalost
+                return Dotaz(" ".join(slova[:-1]), slova[-1], veta, slova)
+            return None
+        if self._obsahuje(cista, " je "):
+            l, p = self._rozdel(cista, " je ")
+            if l and p:
+                return Dotaz(self._pojem(l), self._pojem(p), veta)
+        return None
 
     def _pojem(self, kus: str) -> str:
         # Scelení i tady, ne jen v rozeber(): dotazy „? R.U.R. dílo" jdou
@@ -170,12 +274,17 @@ class Znalost:
         self.nadrazene: dict = {}       # pojem → [nadřazené]
         self.synonyma: dict = {}        # pojem → zástupce
         self.zapory: set = set()
+        # lemma → jak to člověk napsal. Kvůli odpovědím: uzel „pohádkový
+        # bytost" je správný klíč, ale říct se má „pohádková bytost".
+        self.tvary: dict = {}
         if soubor and os.path.exists(soubor):
             self.nacti()
 
     # ---- příjem ------------------------------------------------------
     def prijmi(self, t: Tvrzeni) -> Optional[str]:
         """Vrací None při přijetí, jinak důvod odmítnutí."""
+        self.tvary.setdefault(t.levy, t.levy_tvar)
+        self.tvary.setdefault(t.pravy, t.pravy_tvar)
         l, p = self.zastupce(t.levy), self.zastupce(t.pravy)
         if l == p and t.druh != SYNONYMUM:
             return f"„{t.levy}\" a „{t.pravy}\" už jsou totéž"
@@ -201,6 +310,21 @@ class Znalost:
         return None
 
     # ---- odvozování --------------------------------------------------
+    def tvar(self, pojem: str) -> str:
+        """Jak se pojem napsal, když o něm poprvé padlo slovo."""
+        return self.tvary.get(pojem, pojem)
+
+    def zna(self, pojem: str) -> bool:
+        """Padlo o tomhle pojmu vůbec někdy slovo? Slouží k rozřezání
+        otázky, ne k odpovídání — neznalost pojmu není zápor."""
+        p = self.zastupce(pojem)
+        if p in self.nadrazene or p in self.synonyma:
+            return True
+        if any(p == c for dvojice in self.zapory for c in dvojice):
+            return True
+        return any(p == rodic for rodice in self.nadrazene.values()
+                   for rodic in rodice)
+
     def zastupce(self, pojem: str) -> str:
         """Synonyma splývají v jeden uzel; tohle je jeho jméno."""
         videno = set()
@@ -273,6 +397,7 @@ class Znalost:
         self.nadrazene.clear()
         self.synonyma.clear()
         self.zapory.clear()
+        self.tvary.clear()
         if self.svaz:
             self.naplnit_ze_svazu(self.svaz)
         self.uloz()

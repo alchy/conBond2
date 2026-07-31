@@ -15,10 +15,11 @@ from typing import Mapping, Optional, Sequence
 
 from .settings import Nastaveni
 from .window import Okno
-from .interfaces import SkladacVektoru, Slucovac, Uloziste, ZdrojAktivaci
+from .interfaces import Sitko, SkladacVektoru, Slucovac, Uloziste, ZdrojAktivaci
 from .lexicon import Slovnik
 from .log import log
 from .side import Strana
+from .sieve import SitkoStredu
 from .flow import Tok
 from .sources import SkladacRetezcem, SlucovacShodou, ZdrojZTokenu
 
@@ -30,14 +31,17 @@ class Pole:
     def __init__(self, uloziste: Uloziste, nastaveni: Optional[Nastaveni] = None, *,
                  zdroj: Optional[ZdrojAktivaci] = None,
                  skladac: Optional[SkladacVektoru] = None,
-                 slucovace: Optional[Mapping[str, Slucovac]] = None):
+                 slucovace: Optional[Mapping[str, Slucovac]] = None,
+                 sitko: Optional[Sitko] = None):
         self.uloziste = uloziste
         self.nastaveni = nastaveni or Nastaveni()
         self._zdroj_zvenku = zdroj
+        self._sitko_zvenku = sitko
         self.skladac = skladac or SkladacRetezcem()
         self.slucovace = dict(slucovace) if slucovace else {
             "f": SlucovacShodou(), "q": SlucovacShodou()}
         self.zdroj: Optional[ZdrojAktivaci] = None
+        self.sitko: Optional[Sitko] = None
         self.slovnik: Optional[Slovnik] = None
         self.strany: dict[str, Strana] = {}
 
@@ -51,6 +55,7 @@ class Pole:
                       r_q=self.nastaveni.polomer_dotazu,
                       syrove=self.nastaveni.syrove, typy=self.nastaveni.typy):
             self.zdroj = self.pripravit_zdroj()
+            self.sitko = self.pripravit_sitko()
             with log.krok("rozprostření vět"):
                 toky = {k: self.rozprostrit(k) for k in KORPUSY}
             with log.krok("sdílený slovník"):
@@ -76,6 +81,14 @@ class Pole:
                             typy=self.nastaveni.typy,
                             syrove=self.nastaveni.syrove)
 
+    def pripravit_sitko(self) -> Sitko:
+        """Vertikály sítko potřebuje kvůli skupinám — `FEATS` propustí celou
+        skupinu, ne jedno jméno."""
+        if self._sitko_zvenku is not None:
+            return self._sitko_zvenku
+        return SitkoStredu(self.nastaveni.stred_atributy,
+                           self.uloziste.nacist_vertikaly())
+
     def rozprostrit(self, strana: str) -> Tok:
         vety = self.uloziste.nacist_korpus(KORPUSY[strana])
         log.debug("rozprostírám", strana=strana, vet=len(vety),
@@ -95,7 +108,8 @@ class Pole:
         okno = Okno(self.nastaveni.ziskat_polomer(strana),
                     self.nastaveni.stred_uvnitr)
         return Strana(strana, PREDPONY[strana], tok, okno, self.zdroj,
-                      self.skladac, self.slucovace[strana], self.slovnik).postavit()
+                      self.skladac, self.slucovace[strana], self.slovnik,
+                      self.sitko).postavit()
 
     # ---- čtení -------------------------------------------------------
     @property

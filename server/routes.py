@@ -73,6 +73,9 @@ def udelej_handler(config, uloziste, rozbor):
                 n.syrove = q["syrove"] in PRAVDA
             if "stred" in q:
                 n.stred_uvnitr = q["stred"] in PRAVDA
+            if "stred_atr" in q:
+                # čárkami oddělený seznam; prázdný = celý střed
+                n.stred_atributy = q["stred_atr"]
             if "typy" in q:
                 n.typy = q["typy"] in PRAVDA
             return n
@@ -194,7 +197,8 @@ def udelej_handler(config, uloziste, rozbor):
             pole.postavit()
             skladac = Skladac(pole.ziskat_slovnik(), pole.zdroj, pole.skladac,
                               Okno(pole.nastaveni.polomer_dotazu,
-                                   pole.nastaveni.stred_uvnitr))
+                                   pole.nastaveni.stred_uvnitr),
+                              pole.sitko)
             skladac.vzor.slova = list(data.get("q", []))
             skladac.vzor.kotva = int(data.get("kotva", -1))
             skladac.vzor.cile = list(data.get("f", []))

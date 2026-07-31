@@ -15,8 +15,9 @@ from dataclasses import dataclass, field
 from typing import Mapping, Optional, Sequence
 
 from .window import Okno, zapsat_offset
-from .interfaces import SkladacVektoru, ZdrojAktivaci
+from .interfaces import Sitko, SkladacVektoru, ZdrojAktivaci
 from .lexicon import Slovnik
+from .sieve import SitkoVse
 from .sources import PRAZDNO
 
 
@@ -48,11 +49,15 @@ class Skladac:
     """Sestavuje vzor a umí z něj složit vektor."""
 
     def __init__(self, slovnik: Slovnik, zdroj: ZdrojAktivaci,
-                 skladac: SkladacVektoru, okno: Okno):
+                 skladac: SkladacVektoru, okno: Okno, sitko: Sitko = None):
         self.slovnik = slovnik
         self.zdroj = zdroj
         self.skladac = skladac
         self.okno = okno
+        # Totéž sítko jako u stavby pole; jinak by složená otázka nesla na
+        # středu víc než šablony, se kterými se má potkat, a netrefila by ani
+        # jednu.
+        self.sitko = sitko or SitkoVse()
         self.vzor = Vzor()
 
     # ---- sestavování -------------------------------------------------
@@ -111,7 +116,8 @@ class Skladac:
                 continue
             if self.spocitat_jistotu(tvar) > 1:
                 nejiste.append(tvar)
-            casti.append(self.skladac.popsat_slot(d, aktivace))
+            casti.append(self.skladac.popsat_slot(
+                d, self.sitko.propustit(d, aktivace)))
         return {
             "vektor": self.skladac.slozit_vektor(casti),
             "mimo_okno": mimo_okno, "nezname": nezname, "nejiste": nejiste,

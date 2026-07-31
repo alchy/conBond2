@@ -167,6 +167,45 @@ stary = popsat_zaznam({"q": ["kdo"], "f": ["psa"]})
 ok(stary["typ"] is None and stary["text"] == "kdo",
    "starší záznam bez kotvy se čte špatně")
 
+print("\n— sítko: střed v okně, ale projde z něj jen jmenované —")
+# Bez sítka je střed buď celý venku (a zápor, čas i osoba jsou neviditelné,
+# protože je v češtině nese slovo samo), nebo celý uvnitř (a šablona přestane
+# být obálkou okolí). Sítko je mezi tím.
+mimo = nove_pole()
+cely = nove_pole(stred_uvnitr=True)
+uzke = nove_pole(stred_atributy=("Polarity",))
+print(f"  šablon faktů — mimo {mimo.fakta.pocet_sablon()}"
+      f" · celý střed {cely.fakta.pocet_sablon()}"
+      f" · jen Polarity {uzke.fakta.pocet_sablon()}")
+ok(uzke.nastaveni.stred_uvnitr,
+   "stred_atributy nezapnulo střed do okna — filtrovalo by se, co v okně není")
+ok(uzke.nastaveni.stred_atributy == ("Polarity",),
+   f"stred_atributy se uložily jinak: {uzke.nastaveni.stred_atributy}")
+ok(Nastaveni(stred_atributy="Polarity, Tense").stred_atributy
+   == ("Polarity", "Tense"), "řetězec se nerozdělil po čárkách")
+
+
+def na_stredu(pole):
+    """Aktivace, které se ve vektorech objevily na offsetu 0."""
+    return {a.split(":", 1)[1] for info in pole.fakta.vypsat_sablony().values()
+            for a in info["vec"] if a.startswith("0:")}
+
+
+ok(not na_stredu(mimo), "střed nastavený mimo se přesto dostal do vektoru")
+ok(len(na_stredu(cely)) > 1, "celý střed do vektoru nepustil skoro nic")
+prosaklo = {a for a in na_stredu(uzke)
+            if a != "∅" and not a.startswith("Polarity")}
+print(f"  na offsetu 0: celý {len(na_stredu(cely))} různých"
+      f" · přes sítko {sorted(na_stredu(uzke))}")
+ok(not prosaklo, f"sítkem prosáklo, co nemělo: {sorted(prosaklo)}")
+ok(mimo.fakta.pocet_sablon() <= uzke.fakta.pocet_sablon()
+   <= cely.fakta.pocet_sablon(),
+   "sítko nedrží mezi oběma krajnostmi")
+# Sousedům sítko nesmí sáhnout — filtruje se podle offsetu, ne plošně.
+ok(any(a.startswith("-1:") and "Polarity" not in a
+       for info in uzke.fakta.vypsat_sablony().values() for a in info["vec"]),
+   "sítko ořezalo i sousední sloty, ne jen střed")
+
 print("\n— export ven —")
 pole = nove_pole()
 ven = pole_ven(pole)

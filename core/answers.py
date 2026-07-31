@@ -29,7 +29,9 @@ from collections import defaultdict
 from typing import Optional
 
 from .field import Pole
+from .edges import jmeno as cele_jmeno
 from .language import Jazyk
+from .roles import deprel
 from .roles import Role
 from .tvrzeni import Znalost
 
@@ -47,6 +49,7 @@ class Odpovidac:
         self.vety = pole.uloziste.nacist_korpus("facts")
         self.podle_typu = self._sestavit_navesky()
         self.podle_entity = self._sestavit_entity()
+        self.podle_jmena = self._sestavit_jmena()
 
     # ---- rejstříky ---------------------------------------------------
     def _sestavit_navesky(self) -> dict:
@@ -70,6 +73,40 @@ class Odpovidac:
                     h = n.get("hodnota")
                     if isinstance(h, dict) and h.get("komu"):
                         self.komu[(vi, tuple(n["rozsah"]))] = h["komu"]
+        return out
+
+    def _sestavit_jmena(self) -> dict:
+        """Celé jméno → věty, ve kterých stojí.
+
+        VRSTVA OSOB POD VRSTVOU DOKUMENTŮ. `podle_entity` zná jen to, o čem
+        je ČLÁNEK — devadesát jedna klíčů. Lidé zmínění uvnitř článků tam
+        nejsou, a proto „Kdo je Novák?" mlčelo, ačkoli Novákové jsou
+        v korpusu čtyři: nebylo co porovnat a remíza nevznikla.
+
+        Jméno se skládá týmž pravidlem jako u hran a v grafu — jedním."""
+        out: dict = defaultdict(set)
+        for vi, veta in enumerate(self.vety):
+            for t in veta:
+                if t.get("upos") != "PROPN" or deprel(t) == "flat":
+                    continue
+                j = cele_jmeno(veta, t)
+                # Jen celá jména — holé křestní neurčuje. A nanejvýš tři
+                # slova: „Arthur Rimbaud Autor Karel Čapek" vzniklo tím, že
+                # `flat` v citaci spojil, co spolu nesouvisí. Delší řetěz
+                # není jméno, je to vada rozboru.
+                if j and 2 <= len(j.split()) <= 3:
+                    out[j].add(vi)
+        # VARIANTY TÉHOŽ JMÉNA SE SLÉVAJÍ. „Karel Čapek" a „Karel Antonín
+        # Čapek" je jeden člověk a doptávat se mezi nimi je nesmysl —
+        # otázka by neměla odpověď, ať se vybere kterákoli.
+        # Slučuje se jen JEDNOZNAČNÉ zkrácení, stejně jako u hran: kdyby
+        # „Karel Novák" byl podmnožinou dvou delších jmen, nepatří ani
+        # jednomu.
+        for kratke in sorted(out):
+            slova = set(kratke.split())
+            delsi = [j for j in out if j != kratke and slova < set(j.split())]
+            if len(delsi) == 1:
+                out[delsi[0]] |= out.pop(kratke)
         return out
 
     def _sestavit_entity(self) -> dict:
@@ -173,7 +210,25 @@ class Odpovidac:
         # doptání říká „je toho víc a vyber si". Jsou to různé odpovědi
         # a míchat je znamená zahodit informaci, kterou pole má.
         nejasne = [] if (cizi or self.sedi_cele_jmeno(jmena, entita)) \
-            else [k for k in shody if len(k.split("_")) > 1][:6]
+            else [k.replace("_", " ") for k in shody if len(k.split("_")) > 1]
+        # KOLIK LIDÍ SEDÍ NA JMÉNO Z OTÁZKY. Hledá se mezi OSOBAMI, ne mezi
+        # dokumenty: dokumentů je devadesát jedna, lidí patnáct set.
+        kusy = {j.lower() for j in jmena}
+        lide = [j for j in self.podle_jmena if kusy <= set(j.split())] if kusy else []
+        # ČLÁNEK PŘEBÍJÍ ZMÍNKU. „Kdy se narodil Hrabal?" nemá vyvolat
+        # doptání jen proto, že se v Hrabalově článku mihne František
+        # Hrabal. Korpus je o Bohumilovi; kdo má vlastní dokument, je
+        # ten, na koho se lidé ptají.
+        z_dokumentu = [j for j in lide if j.replace(" ", "_") in self.podle_entity]
+        if len(z_dokumentu) == 1:
+            lide = z_dokumentu
+        if len(lide) == 1:
+            # Otázka určuje jednoho člověka. Že se přitom „Karel" trefí do
+            # tří dokumentů, je vedlejší — celé jméno je silnější signál
+            # než shoda na půlce.
+            nejasne = []
+        else:
+            nejasne = sorted(set(nejasne) | set(lide))[:6]
         nejasne = nejasne if len(nejasne) > 1 else []
         zbytek = [t for t in tvary if t not in set(entita.split("_"))]
         kde = {t: self.vety_tvaru(t) for t in zbytek}

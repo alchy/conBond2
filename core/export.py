@@ -57,6 +57,19 @@ def slovnik_ven(slovnik: Slovnik) -> list:
     return out
 
 
+def korpusy_ven(pole: Pole) -> dict:
+    """Věty tak, jak je vidí jádro — tedy i s hrubými vrstvami a už bez
+    toho, co je vypnuté. Prohlížeč jinak vykreslí mřížku, která neodpovídá
+    vektoru: sloupec by v katalogu byl a v tokenu ne.
+
+    Čte se to jen přes šev `vypsat_aktivace`, aby export nesahal zdroji
+    dovnitř — jiná implementace zdroje odvozuje jinak nebo vůbec."""
+    return {jmeno: [[dict(t, acts=list(pole.zdroj.vypsat_aktivace(t)))
+                     for t in veta]
+                    for veta in pole.uloziste.nacist_korpus(jmeno)]
+            for jmeno in KORPUSY.values()}
+
+
 def cisla_strany(strana: Strana) -> dict:
     prazdnych, celkem = strana.spocitat_prazdne_sloty()
     return {
@@ -94,7 +107,8 @@ def pole_ven(pole: Pole, *, s_korpusy: bool = False,
         "q": strana_ven(pole.dotazy, plny_vektor),
     }
     if s_korpusy:
-        ven["vertikaly"] = list(pole.uloziste.nacist_vertikaly())
-        ven["korpusy"] = {jm: list(pole.uloziste.nacist_korpus(jm))
-                          for jm in KORPUSY.values()}
+        # Katalog i s hrubými vrstvami — prohlížeč musí vidět tytéž sloupce
+        # jako jádro, jinak by mřížka neodpovídala vektoru.
+        ven["vertikaly"] = list(pole.vypsat_vertikaly())
+        ven["korpusy"] = korpusy_ven(pole)
     return ven

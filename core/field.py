@@ -14,6 +14,7 @@ Poloměr se nevleče každým voláním — drží ho Nastaveni. Setter jen pozn
 from typing import Mapping, Optional, Sequence
 
 from .settings import Nastaveni
+from .derived import bez_odvozenych, vertikaly_odvozenych
 from .window import Okno
 from .interfaces import Sitko, SkladacVektoru, Slucovac, Uloziste, ZdrojAktivaci
 from .lexicon import Slovnik
@@ -44,6 +45,7 @@ class Pole:
         self.sitko: Optional[Sitko] = None
         self.slovnik: Optional[Slovnik] = None
         self.strany: dict[str, Strana] = {}
+        self._vertikaly: Optional[list] = None
 
     # ---- stavba ------------------------------------------------------
     def postavit(self, vzdy: bool = False) -> "Pole":
@@ -74,10 +76,29 @@ class Pole:
             self.nastaveni.oznacit_cerstvym()
         return self
 
+    def vypsat_vertikaly(self) -> list:
+        """Katalog sloupců: uložené plus hrubé vrstvy nad nimi.
+
+        Skládá se to tady, ne v úložišti — úložiště má vracet, co je uložené,
+        a hrubé vrstvy uložené nejsou, počítají se. Zdroj, sítko i export
+        musejí vidět týž katalog, jinak by se rozešlo kanonické pořadí."""
+        if self._vertikaly is None:
+            # bez_odvozenych i tady: kdyby se hrubý sloupec přece jen dostal
+            # do uloženého katalogu, nesmí v něm být dvakrát
+            self._vertikaly = (bez_odvozenych(self.uloziste.nacist_vertikaly())
+                               + vertikaly_odvozenych())
+        return self._vertikaly
+
+    def zapomenout_katalog(self) -> "Pole":
+        """Katalog se změnil zvenku — zahodit, ať se složí znovu."""
+        self._vertikaly = None
+        self.nastaveni.zestaralo = True
+        return self
+
     def pripravit_zdroj(self) -> ZdrojAktivaci:
         if self._zdroj_zvenku is not None:
             return self._zdroj_zvenku
-        return ZdrojZTokenu(self.uloziste.nacist_vertikaly(),
+        return ZdrojZTokenu(self.vypsat_vertikaly(),
                             typy=self.nastaveni.typy,
                             syrove=self.nastaveni.syrove)
 
@@ -87,7 +108,7 @@ class Pole:
         if self._sitko_zvenku is not None:
             return self._sitko_zvenku
         return SitkoStredu(self.nastaveni.stred_atributy,
-                           self.uloziste.nacist_vertikaly())
+                           self.vypsat_vertikaly())
 
     def rozprostrit(self, strana: str) -> Tok:
         vety = self.uloziste.nacist_korpus(KORPUSY[strana])

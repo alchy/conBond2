@@ -14,7 +14,8 @@ sys.path.insert(0, KOREN)
 
 from core import (Config, Nastaveni, Pole, SitkoStredu,  # noqa: E402
                   SitkoStupnovane, SitkoVse, Skladac, UlozisteSouboru,
-                  filtruje_stred, nastavit_log, pole_ven)
+                  ZdrojZTokenu, filtruje_stred, korpusy_ven, nastavit_log,
+                  pole_ven, vertikaly_odvozenych)
 from core.compose import popsat_zaznam  # noqa: E402
 from core.window import Okno  # noqa: E402
 
@@ -233,6 +234,53 @@ ok(not filtruje_stred(SitkoStupnovane({1: (), None: ("UPOS",)})),
    "sítko, které střed nechává být, se hlásí jako filtrující")
 ok(filtruje_stred(SitkoStupnovane({0: ("Polarity",), None: ()})),
    "sítko filtrující nultý offset se nepřiznalo")
+
+print("\n— hrubé vrstvy jsou zadarmo, dokud je sítko nepoužije —")
+# Odvozená hodnota je FUNKCÍ jemné, takže vektor sice prodlouží, ale nesmí
+# rozdělit ani jednu šablonu. Kdyby rozdělila, není to hrubší vrstva téhož,
+# ale nový atribut — a ten by měl stát to, co každý jiný.
+katalog = list(UlozisteSouboru(config=CONFIG).nacist_vertikaly())
+bez = Pole(UlozisteSouboru(config=CONFIG),
+           zdroj=ZdrojZTokenu(katalog, odvozene=()))
+bez.nastavit_polomery(2, 2).postavit()
+s_vrstvami = nove_pole(polomer_faktu=2, polomer_dotazu=2)
+delka = {jm: sum(len(i["vec"]) for i in p.fakta.vypsat_sablony().values())
+              // max(1, p.fakta.pocet_sablon())
+         for jm, p in (("bez", bez), ("s", s_vrstvami))}
+print(f"  bez vrstev {bez.fakta.pocet_sablon()} šablon (délka {delka['bez']})"
+      f" · s vrstvami {s_vrstvami.fakta.pocet_sablon()} (délka {delka['s']})")
+ok(bez.fakta.pocet_sablon() == s_vrstvami.fakta.pocet_sablon(),
+   f"hrubá vrstva rozdělila šablony: {bez.fakta.pocet_sablon()}"
+   f" → {s_vrstvami.fakta.pocet_sablon()}")
+ok(delka["s"] > delka["bez"], "hrubá vrstva se do vektoru vůbec nedostala")
+
+hrube = {a.split(":", 1)[1] for info in s_vrstvami.fakta.vypsat_sablony().values()
+         for a in info["vec"] if ":Trida=" in a or ":Uloha=" in a}
+print(f"  v poli: {', '.join(sorted(hrube))}")
+ok(hrube, "hrubé vrstvy se v poli neobjevily")
+ok(all(v["a"] in {c["a"] for c in s_vrstvami.vypsat_vertikaly()}
+       for v in vertikaly_odvozenych()),
+   "hrubé sloupce nejsou v katalogu, mřížka by je neuměla zobrazit")
+
+# Teprve sítko, které pustí hrubou vrstvu a jemnou ne, něco změní.
+jen_hrube = Pole(UlozisteSouboru(config=CONFIG),
+                 sitko=SitkoStupnovane({1: (), None: ("HRUBĚ",)}))
+jen_hrube.nastavit_polomery(2, 2).postavit()
+print(f"  na ±2 jen hrubě → {jen_hrube.fakta.pocet_sablon()} šablon")
+ok(jen_hrube.fakta.pocet_sablon() < s_vrstvami.fakta.pocet_sablon(),
+   "hrubý pohled na ±2 nedal míň šablon než plný")
+daleko = {a.split(":", 1)[1] for info in jen_hrube.fakta.vypsat_sablony().values()
+          for a in info["vec"] if a.startswith(("-2:", "+2:"))}
+ok(all(a == "∅" or a.startswith(("Trida=", "Uloha=")) for a in daleko),
+   f"na ±2 prosáklo i něco jemného: {sorted(a for a in daleko if '=' in a)[:4]}")
+
+# Prohlížeč musí dostat věty tak, jak je vidí jádro — jinak by měl v katalogu
+# sloupec, který v žádném tokenu nenajde.
+vyvezeno = korpusy_ven(s_vrstvami)
+prvni = next(t for veta in vyvezeno["facts"] for t in veta)
+ok(any(a.startswith("Trida=") for a in prvni["acts"]),
+   f"vyvezený token nemá hrubou vrstvu: {prvni['acts']}")
+ok("form" in prvni and "upos" in prvni, "vývozem se ztratilo, co token nesl")
 
 print("\n— export ven —")
 pole = nove_pole()

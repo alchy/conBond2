@@ -13,7 +13,8 @@ import sys
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
 
-from core import Pole, Skladac, log, pole_ven
+from core import Pole, Skladac, korpusy_ven, log, pole_ven
+from core.derived import bez_odvozenych, ocistit_korpus
 from core.window import Okno
 
 STATICKE = (".html", ".css", ".js", ".json", ".svg", ".map")
@@ -110,10 +111,13 @@ def udelej_handler(config, uloziste, rozbor):
                     pole, s_korpusy=q.get("korpusy") in PRAVDA))
 
             if cesta == "/api/data":
+                # Týž katalog i tytéž věty jako /api/field — tedy i s hrubými
+                # vrstvami. Kdyby se to lišilo, mřížka by podle toho, kterou
+                # cestou se data načetla, ukazovala jednou o tři sloupce míň.
+                pole.postavit()
                 return self.posli(200, {
-                    "vertikaly": uloziste.nacist_vertikaly(),
-                    "korpusy": {jm: uloziste.nacist_korpus(jm)
-                                for jm in ("facts", "query")},
+                    "vertikaly": pole.vypsat_vertikaly(),
+                    "korpusy": korpusy_ven(pole),
                 })
 
             if cesta == "/api/mappings":
@@ -147,11 +151,13 @@ def udelej_handler(config, uloziste, rozbor):
             if cesta == "/api/data":
                 if not isinstance(data, dict) or "vertikaly" not in data:
                     return self.chyba(400, "čekám objekt s klíčem vertikaly")
-                uloziste.ulozit_vertikaly(data["vertikaly"])
+                # Hrubé vrstvy prohlížeč dostal, aby je uměl vykreslit, ale
+                # zpátky se neukládají — počítají se z jemných.
+                uloziste.ulozit_vertikaly(bez_odvozenych(data["vertikaly"]))
                 for jm in ("facts", "query"):
                     if jm in data.get("korpusy", {}):
-                        uloziste.ulozit_korpus(jm, data["korpusy"][jm])
-                pole.nastaveni.zestaralo = True     # data se změnila, přepočítat
+                        uloziste.ulozit_korpus(jm, ocistit_korpus(data["korpusy"][jm]))
+                pole.zapomenout_katalog()           # data se změnila, přepočítat
                 return self.posli(200, {"ok": True})
 
             m = re.match(r"^/api/mappings/([^/]+)$", cesta)

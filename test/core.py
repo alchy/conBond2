@@ -668,6 +668,46 @@ ok(_m and _m["spor"] == 0, f"druhé dítě se počítá jako spor: {_m}")
 ok(_m and _m["navic"] >= 1, "odvozený fakt se nikde neprojevil")
 print(f"  pravidel z faktů: {len(_n)} · bez jediné definiční věty")
 
+print("\n— graf entit: cesta není důkaz —")
+from core.graph import Graf, prekryv_zivotu, spojeni  # noqa: E402
+
+
+def _g(form, lem, upos, dep):
+    return {"form": form, "lemma": lem, "upos": upos, "acts": [upos, dep],
+            "id": 1, "head": 0}
+
+
+_VETY = [
+    [_g("Halman", "halman", "PROPN", "nsubj"), _g("byl", "být", "AUX", "cop"),
+     _g("asistentem", "asistent", "NOUN", "root"),
+     _g("Myslbeka", "myslbek", "PROPN", "nmod")],
+    [_g("Myslbek", "myslbek", "PROPN", "nsubj"),
+     _g("znal", "znát", "VERB", "root"), _g("Nerudu", "neruda", "PROPN", "obj")],
+    [_g("Neruda", "neruda", "PROPN", "nsubj"), _g("psal", "psát", "VERB", "root"),
+     _g("Němcové", "němcová", "PROPN", "iobj")],
+]
+_gr = Graf.postavit(_VETY)
+_ZIV = {"němcová": (1820, 1862), "halman": (1873, 1945),
+        "myslbek": (1848, 1922), "neruda": (1834, 1891)}
+
+ok(spojeni(_gr, "halman", "myslbek", _ZIV)["druh"] == "dolozeno",
+   "jedna věta o obou se nepočítá jako doložení")
+_c = spojeni(_gr, "němcová", "myslbek", _ZIV)
+ok(_c["druh"] == "cesta", f"cesta přes Nerudu se nenašla: {_c['druh']}")
+ok(all(k["vety"] for k in _c["kroky"]), "krok cesty nemá doložení")
+
+# JEDINÉ POCTIVÉ „NE", jaké graf umí. Němcová zemřela 1862, Halman se
+# narodil 1873 — a cesta mezi nimi vede, takže bez tohohle řezu by z toho
+# vyšlo „možná".
+ok(spojeni(_gr, "němcová", "halman", _ZIV)["druh"] == "vylouceno",
+   "nepřekrývající se životy neznamenaly vyloučení")
+
+# Neznámé datum NENÍ důvod říct „ne" — pole je monotónní i tady.
+ok(prekryv_zivotu((1820, 1862), None) is None, "chybějící datum se vydává za ne")
+ok(spojeni(_gr, "němcová", "kdokoli", _ZIV)["druh"] == "nevim",
+   "neznámé jméno nedalo nevím")
+print(f"  uzlů {len(_gr)} · doloženo / cesta / vyloučeno / nevím rozlišeno")
+
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")
 ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")

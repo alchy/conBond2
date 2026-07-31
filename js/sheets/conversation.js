@@ -60,8 +60,17 @@ export function postavList() {
     el('div', { class: 'pojmy', id: 'dPojmy' }),
   ]);
 
-  return el('section', { class: 'sheet', id: 's-dial', hidden: '' },
-    [chat, znalost]);
+  /* AKTIVACE VEDLE ROZHOVORU, ne pod ním. Odpověď je jedno slovo, ale to,
+     co se rozsvítilo, se mění každým tahem — a od chvíle, kdy se předchozí
+     odpověď stala aktivací, je to jediné místo, kde je vidět, ČÍM se pole
+     zúžilo. Schované v detailu to znamená hledat po každé otázce znovu. */
+  const akt = el('aside', { class: 'card aktivace', id: 'dAktivace' }, [
+    el('div', { class: 'nadpis' }, 'Co svítí'),
+    el('div', { class: 'telo', id: 'dAktTelo' }),
+  ]);
+
+  return el('section', { class: 'sheet dialog2', id: 's-dial', hidden: '' },
+    [el('div', { class: 'sloupec' }, [chat, znalost]), akt]);
 }
 
 /* ---- jeden tah ------------------------------------------------------- */
@@ -138,6 +147,45 @@ function tah(z) {
     + '</div>';
 }
 
+/* ---- postranní panel ------------------------------------------------- */
+function panelAktivaci(z) {
+  if (!z || !z.nalez) {
+    return '<p class="hint">Zeptej se a tady bude vidět, co se v poli rozsvítilo.</p>';
+  }
+  const a = z.nalez.aktivace || {};
+  const r = [];
+  const rada = (jmeno, obsah) => obsah
+    ? `<div class="skup"><span class="sj">${jmeno}</span>${obsah}</div>` : '';
+
+  if (a.entita) {
+    r.push(rada('osoba', `<i class="cip ent">${esc(a.entita)}<b>${a.vet_entity}</b></i>`
+      + (a.z_tematu ? '<i class="cip zn">z tématu</i>' : '')));
+  }
+  /* Slova z předchozí odpovědi se značí zvlášť — jsou to aktivace, které
+     v otázce nezazněly, a bez rozlišení by vypadaly jako by je napsal
+     člověk. */
+  const zOdp = new Set(a.z_odpovedi || []);
+  const tvary = Object.entries(a.svitici || {}).filter(([, n]) => n)
+    .sort((x, y) => y[1] - x[1])
+    .map(([t, n]) => `<i class="cip${zOdp.has(t) ? ' zn' : ''}">${esc(t)}<b>${n}</b></i>`)
+    .join('');
+  r.push(rada('tvary', tvary));
+  if (zOdp.size) r.push(rada('', '<span class="pozn">zeleně: z předchozí odpovědi</span>'));
+  if ((a.nezname || []).length) {
+    r.push(rada('nesvítí', a.nezname.map(t => `<i class="cip pryc">${esc(t)}</i>`).join('')));
+  }
+  r.push(rada('pole', `<i class="cip">${cislo(z.nalez.vet)} vět</i>`
+    + (z.nalez.typ ? `<i class="cip">${esc(z.nalez.typ)}</i>` : '')
+    + (z.nalez.role ? `<i class="cip zn">větný člen: ${esc(z.nalez.role)}</i>` : '')
+    + (a.siroko ? '<i class="cip pryc">širší</i>' : '')));
+  const k = z.nalez.kandidati || [];
+  if (k.length) {
+    r.push(rada('kandidáti', k.slice(0, 8).map((x, i) =>
+      `<i class="cip${i ? '' : ' prvni'}">${esc(x.text)}</i>`).join('')));
+  }
+  return r.join('');
+}
+
 /* ---- vykreslení ------------------------------------------------------ */
 export function prekresli(root, stav, akce) {
   if (!root || !stav) return;
@@ -162,6 +210,9 @@ export function prekresli(root, stav, akce) {
   }
   root.querySelector('#dText').disabled = stav.ceka;
   root.querySelector('#dSend').disabled = stav.ceka;
+
+  const posledni = stav.historie[stav.historie.length - 1];
+  root.querySelector('#dAktTelo').innerHTML = panelAktivaci(posledni);
 
   const c = stav.znalost.cisla;
   root.querySelector('#dCisla').innerHTML =

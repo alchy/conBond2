@@ -264,6 +264,21 @@ li.skryto { color:var(--muted); font-size:11px; font-style:italic; }
   /* ---- list Dialog: rozhovor jako u chatu -----------------------------
      Přepis roluje, vstup drží dole. Detail je u každého tahu vlastní
      `<details>` — zavřený, aby odpověď nezmizela mezi čísly. */
+  /* Rozhovor vlevo, aktivace vpravo. Panel se při úzkém okně podsune pod
+     rozhovor — na telefonu je čtení odpovědi přednější než pohled do pole. */
+  .dialog2 { display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+  .dialog2 .sloupec { display:flex; flex-direction:column; gap:12px; }
+  .aktivace { width:min(330px, 92vw); position:sticky; top:12px; }
+  .aktivace .nadpis { font-weight:600; font-size:13px; margin-bottom:9px; }
+  .aktivace .telo { display:flex; flex-direction:column; gap:9px; }
+  .aktivace .skup { display:flex; gap:5px; flex-wrap:wrap; align-items:baseline; }
+  .aktivace .sj { font-size:11px; color:var(--muted); width:58px; flex:none; }
+  .aktivace .cip { font-size:11.5px; }
+  .aktivace .cip b { margin-left:5px; opacity:.65; font-weight:600; }
+  .aktivace .cip.prvni { outline:1px solid var(--ring); }
+  .aktivace .pozn { font-size:11px; color:var(--muted); }
+  .aktivace .hint { font-size:12px; color:var(--muted); }
+
   .chat { width:min(860px, 92vw); display:flex; flex-direction:column; }
 
   .chat .prepis { height:min(56vh, 520px); overflow-y:auto;

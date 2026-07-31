@@ -268,5 +268,46 @@
   "mode": "unsure",
   "kind": "zápory",
   "dok": "pes_domácí"
+ },
+ {
+  "q": "Kdo je Bohumil Hrabal?",
+  "expect": [
+   "prozaik",
+   "spisovatel"
+  ],
+  "mode": "answer",
+  "kind": "téma",
+  "dok": "bohumil_hrabal",
+  "poznamka": "první tah — nastavuje téma"
+ },
+ {
+  "q": "Kde se narodil?",
+  "expect": [
+   "Židenic"
+  ],
+  "mode": "answer",
+  "kind": "téma",
+  "dok": "bohumil_hrabal",
+  "navazuje": true,
+  "poznamka": "bez jména — musí vzít téma z předchozího tahu"
+ },
+ {
+  "q": "Kdy zemřel?",
+  "expect": [
+   "1997"
+  ],
+  "mode": "answer",
+  "kind": "téma",
+  "dok": "bohumil_hrabal",
+  "navazuje": true
+ },
+ {
+  "q": "Kdy se narodil Sherlock Holmes?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "téma",
+  "dok": "",
+  "navazuje": true,
+  "poznamka": "téma NESMÍ zachránit cizí jméno"
  }
 ]

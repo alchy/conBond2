@@ -41,6 +41,14 @@ TVRZENI, OTAZKA, RODOKMEN, NEJASNOST, ODMITNUTO, CHYBA, OBSAH = (
 
 ZNAK = {PODTRIDA: "⊂", INSTANCE: "∈", SYNONYMUM: "=", ZAPOR: "≠"}
 
+# Jak rychle téma chladne. Po třech tazích na jiné téma zbude z entity
+# desetina, po pěti nic — tedy „o čem byla řeč" drží pár tahů, ne celý
+# rozhovor. Převzato z ActivationField v conBondu, ale jen ta část, která
+# udržuje řetěz; šíření tepla po hranách se sem nepřenáší, protože pole
+# ROZŠIŘUJE a my ho potřebujeme zúžit.
+CHLADNUTI = 0.55
+STUDENE = 0.15
+
 
 @dataclass
 class Zaznam:
@@ -69,6 +77,7 @@ class Rozhovor:
         self.historie: list[Zaznam] = []
         self.nejasne: Optional[Nejasnost] = None
         self.posledni_nalez: Optional[dict] = None
+        self.tema: dict = {}          # entita → teplo
 
     # ---- příjem ------------------------------------------------------
     def poslat(self, text: str) -> Zaznam:
@@ -94,7 +103,8 @@ class Rozhovor:
     def z_pole(self, text: str) -> Zaznam:
         """Odpověď z korpusu. Vrací KANDIDÁTY, ne jedno slovo: šablona je
         abstrakce, která má kandidáty matchnout, ne mezi nimi vybrat."""
-        v = self.odpovidac.odpovedet(text)
+        v = self.odpovidac.odpovedet(text, tema=self.horka_temata())
+        self.zahrat(v["aktivace"].get("entita"))
         self.posledni_nalez = v
         a = v["aktivace"]
         kde = f"Ent={a['entita']} ({a['vet_entity']} vět)" if a["entita"] else "bez osoby"
@@ -209,6 +219,27 @@ class Rozhovor:
         return Zaznam(text, RODOKMEN, f"{self.znalost.tvar(pojem)} ⊂ "
                       + ", ".join(self.znalost.tvar(p) for p in predci))
 
+    # ---- téma --------------------------------------------------------
+    def zahrat(self, entita: Optional[str]) -> None:
+        """Odpověď zpětně přihřeje to, o čem byla — tím řetěz drží téma.
+
+        Chladne VŠECHNO včetně právě zahřáté entity; jinak by první téma
+        rozhovoru zůstalo nejteplejší napořád."""
+        for k in list(self.tema):
+            self.tema[k] *= CHLADNUTI
+            if self.tema[k] < STUDENE:
+                del self.tema[k]
+        if entita:
+            # NASTAVÍ se na plné teplo, NEPŘIČTE. Sčítání znamenalo, že
+            # dlouho probírané téma nejde přebít: po šesti tazích o Hrabalovi
+            # a jednom o Čapkovi zůstal Hrabal teplejší a „Kde se narodil?"
+            # odpovědělo Židenice. Zmínka je přepnutí tématu, ne hlas.
+            self.tema[entita] = 1.0
+
+    def horka_temata(self) -> list:
+        """Entity od nejteplejší. Otázka bez jména si vezme první."""
+        return [k for k, _ in sorted(self.tema.items(), key=lambda x: -x[1])]
+
     # ---- čtení -------------------------------------------------------
     def zapsat(self, zaznam: Zaznam) -> Zaznam:
         self.historie.append(zaznam)
@@ -252,6 +283,9 @@ class Rozhovor:
         return {"historie": self.vypsat_historii(),
                 "znalost": self.vypsat_znalost(),
                 "nalez": self.posledni_nalez,
+                "tema": [{"entita": k, "teplo": round(v, 2)}
+                         for k, v in sorted(self.tema.items(),
+                                            key=lambda x: -x[1])],
                 "ceka": self.ceka_na_rozhodnuti()}
 
     def zapomenout(self) -> None:
@@ -261,4 +295,5 @@ class Rozhovor:
         self.historie.clear()
         self.nejasne = None
         self.posledni_nalez = None
+        self.tema.clear()
         self.znalost.vycistit()

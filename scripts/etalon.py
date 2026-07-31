@@ -38,6 +38,8 @@ KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, KOREN)
 
 from core import Config, Odpovidac, Pole, UlozisteSouboru, nastavit_log  # noqa: E402
+from core.dialog import Rozhovor  # noqa: E402
+from core.tvrzeni import Znalost  # noqa: E402
 
 SADA = os.path.join(KOREN, "data", "gold", "etalon.json")
 # Kolik kandidátů se ještě počítá jako „v poli". Šablona neidentifikuje jednu
@@ -55,8 +57,16 @@ def sedi(text: str, ocekavane) -> bool:
     return any(e.lower() in t for e in ocekavane)
 
 
-def vyhodnotit(o: Odpovidac, polozka: dict) -> dict:
-    v = o.odpovedet(polozka["q"])
+def vyhodnotit(o: Odpovidac, polozka: dict, rozhovor=None) -> dict:
+    """`navazuje` znamená, že otázka patří k PŘEDCHOZÍ — jde týmž rozhovorem,
+    aby se uplatnilo téma. Ostatní se ptají samostatně, ať výsledek nezávisí
+    na pořadí; to je celý smysl etalonu."""
+    if polozka.get("navazuje") and rozhovor is not None:
+        z = rozhovor.poslat(polozka["q"])
+        v = z.nalez or {"kandidati": [], "odpoved": None,
+                        "aktivace": {}, "typ": None, "vet": 0}
+    else:
+        v = o.odpovedet(polozka["q"])
     kand = v["kandidati"]
     if polozka["mode"] == "unsure":
         return {"ok": not kand, "duvod": "mlčí" if not kand
@@ -85,8 +95,13 @@ def main() -> int:
 
     podle_kind = defaultdict(lambda: Counter())
     detail = "--detail" in sys.argv
+    rozhovor = Rozhovor(Znalost(), odpovidac=o)
     for p in sada:
-        r = vyhodnotit(o, p)
+        if not p.get("navazuje"):
+            # nový řetěz: téma z předchozí otázky se nesmí přelít
+            rozhovor = Rozhovor(Znalost(), odpovidac=o)
+            rozhovor.poslat(p["q"])
+        r = vyhodnotit(o, p, rozhovor)
         k = podle_kind[p["kind"]]
         k["celkem"] += 1
         k["ok"] += bool(r["ok"])

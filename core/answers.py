@@ -120,9 +120,22 @@ class Odpovidac:
         kusy = text.replace("?", " ").replace(".", " ").split()
         return [k for k in kusy[1:] if k[:1].isupper()]
 
-    def rozsvitit(self, text: str) -> dict:
+    def rozsvitit(self, text: str, tema=()) -> dict:
         tvary = self.obsahove_tvary(text)
         entita = self.najit_entitu(tvary)
+        # TÉMA DRŽÍ ŘETĚZ. „Kdo je Hrabal?" a pak „Kde se narodil?" — druhá
+        # otázka jméno nemá a bez tématu se pole složí ze samotného slovesa;
+        # měřeno, že pak odpoví pokaždé týmž místem bez ohledu na to, o kom
+        # byla řeč.
+        #
+        # Téma se bere JEN u otázky, která žádné jméno nezmiňuje. Kdyby
+        # doplňovalo i tam, kde jméno je, zachránilo by „Kdy se narodil
+        # Sherlock Holmes?" tématem předchozí osoby — a z paměti tématu by
+        # se stala nová cesta ke konfabulaci.
+        z_tematu = ""
+        if not entita and not self.jmena_v_otazce(text):
+            z_tematu = next((e for e in tema if e in self.podle_entity), "")
+            entita = z_tematu
         vety_entity = set(self.podle_entity.get(entita, ()))
         # JMÉNO, KTERÉ V KORPUSU VŮBEC NENÍ, ZNAMENÁ „NEVÍM". Bez tohohle
         # řezu odpověděl systém na „Kdy se narodil Sherlock Holmes?" datem
@@ -178,7 +191,7 @@ class Odpovidac:
         return {"tvary": tvary, "entita": entita, "vet_entity": len(vety_entity),
                 "svitici": {t: len(v) for t, v in kde.items()},
                 "nezname": [t for t, v in kde.items() if not v],
-                "jmena": jmena, "cizi_jmeno": cizi,
+                "jmena": jmena, "cizi_jmeno": cizi, "z_tematu": bool(z_tematu),
                 "siroko": siroko, "vety": prunik}
 
     def rozsirit(self, tvar: str) -> set:
@@ -199,8 +212,8 @@ class Odpovidac:
     def je_na_obsah(self, text: str) -> bool:
         return self.jazyk.na_co_se_pta(text) is not None
 
-    def odpovedet(self, text: str, se_znalosti: bool = True) -> dict:
-        akt = self.rozsvitit(text)
+    def odpovedet(self, text: str, se_znalosti: bool = True, tema=()) -> dict:
+        akt = self.rozsvitit(text, tema)
         vety = set(akt["vety"])
         pomohla = set()
         if se_znalosti:

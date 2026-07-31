@@ -362,7 +362,7 @@ ok(r3.poslat("Je Šmoula pohádková bytost?").odpoved.startswith("ano"),
 print(f"  víceslovný pojem: {r3.historie[-1].odpoved}")
 
 stav = r.vypsat_stav()
-ok(set(stav) == {"historie", "znalost", "nalez", "ceka"},
+ok(set(stav) == {"historie", "znalost", "nalez", "tema", "ceka"},
    f"stav pro prohlížeč má jiné klíče: {sorted(stav)}")
 ok(stav["znalost"]["cisla"]["tvrzeni"] == len(r.znalost.tvrzeni), "čísla nesedí")
 r.zapomenout()
@@ -452,6 +452,45 @@ prosaklo = [a for v in korpus for t in v for a in t["acts"]
             if a.startswith(("Dok=", "Vd="))]
 print(f"  vět s původem: {ma_puvod}/{len(korpus)} · v acts prosáklo: {len(prosaklo)}")
 ok(not prosaklo, "původ věty se dostal do aktivací a rozpadl by šablony po autorech")
+
+print("\n— téma drží řetěz, ale nezachrání cizí jméno —")
+# Bez tématu odpověděla otázka bez jména („Kde se narodil?") pokaždé týmž
+# místem — polem složeným ze samotného slovesa. Měřeno: Hrabal i Čapek
+# dostali Hronov, protože alois_jirásek je první abecedně.
+from core.dialog import Rozhovor as _R  # noqa: E402
+from core.tvrzeni import Znalost as _Z  # noqa: E402
+_pole = nove_pole()
+_o = Odpovidac(_pole)
+_r = _R(_Z(), odpovidac=_o)
+_r.zahrat("karel")
+ok(_r.horka_temata() == ["karel"], "téma se nezahřálo")
+# Zmínka je PŘEPNUTÍ tématu, ne hlas: bez tohohle šel dlouho probíraný
+# Hrabal přebít Čapka a „Kde se narodil?" odpovědělo Židenice.
+for _ in range(5):
+    _r.zahrat("karel")
+_r.zahrat("alfons")
+ok(_r.horka_temata()[0] == "alfons",
+   f"pětkrát zmíněné téma přebilo nové: {_r.tema}")
+for _ in range(5):
+    _r.zahrat(None)
+ok(not _r.horka_temata(), f"téma nevychladlo: {_r.tema}")
+
+# Otázka SE JMÉNEM téma nebere — jinak by cizí jméno zachránilo předchozí
+# osobu a z paměti tématu by se stala cesta ke konfabulaci.
+# Výchozí sada je malá a entity v ní nejsou, tak si jednu podstrčíme —
+# zkouší se PRAVIDLO výběru tématu, ne obsah korpusu.
+_o.podle_entity["zkouska"] = {0, 1}
+_a = _o.rozsvitit("Kdy se narodil Sherlock Holmes?", tema=["zkouska"])
+ok(not _a["z_tematu"], "otázka se jménem si vzala téma")
+ok(_a["cizi_jmeno"], "cizí jméno se nepoznalo")
+_b = _o.rozsvitit("Kde se narodil?", tema=["zkouska"])
+ok(_b["z_tematu"] and _b["entita"] == "zkouska",
+   f"otázka bez jména téma nevzala: {_b['entita']!r}")
+# Téma, které v korpusu není, se nesmí použít — jinak by pole bylo prázdné
+# a odpověď by se hledala v ničem.
+_c = _o.rozsvitit("Kde se narodil?", tema=["nikdo_takovy"])
+ok(not _c["z_tematu"], "vzalo se téma, které v korpusu není")
+print(f"  téma se bere jen bez jména · chladne na {len(_r.tema)} po pěti tazích")
 
 print("\n— cizí jméno znamená nevím, ne odpověď o někom jiném —")
 # Bez tohohle řezu odpověděl systém na „Kdy se narodil Sherlock Holmes?"

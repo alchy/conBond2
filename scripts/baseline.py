@@ -261,11 +261,14 @@ def krok_zapis() -> None:
     with open(ROZEBRANE, encoding="utf-8") as f:
         clanky = json.load(f)
     vety = [v for kdo in sorted(clanky) for v in clanky[kdo]]
-    # lemma, id a head byly potřeba jen pro koreferenci; do pole nepatří
+    # Lemma do pole nepatří. `id` a `head` ANO — nejsou v `acts`, takže se
+    # do vektoru nedostanou, ale bez nich nejde poznat, co na čem závisí.
+    # První pokus je zahazoval a doplatily na to dvě věci: koreference brala
+    # podmět odkudkoli z věty a generátor otázek věšel na kořen nález, který
+    # patřil úplně jiné klauzuli („Kolik se narodil Mácha? → 16").
     for v in vety:
         for t in v:
-            for klic in ("lemma", "id", "head"):
-                t.pop(klic, None)
+            t.pop("lemma", None)
     os.makedirs(os.path.dirname(CIL), exist_ok=True)
     with open(CIL, "w", encoding="utf-8") as f:
         json.dump(vety, f, ensure_ascii=False)

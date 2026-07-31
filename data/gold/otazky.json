@@ -1,0 +1,1973 @@
+[
+ {
+  "otazka": 0,
+  "text": "Kde se narodil Bohumil Hrabal?",
+  "veta": 6,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=misto",
+  "entita": "bohumil_hrabal",
+  "odpoved": "Židenice"
+ },
+ {
+  "otazka": 1,
+  "text": "Kdy zahájil Bohumil Hrabal?",
+  "veta": 17,
+  "rozsah": [
+   4,
+   5
+  ],
+  "typ": "Typ=cas",
+  "entita": "bohumil_hrabal",
+  "odpoved": "roku 1925"
+ },
+ {
+  "otazka": 2,
+  "text": "Kde přešel Bohumil Hrabal?",
+  "veta": 18,
+  "rozsah": [
+   7
+  ],
+  "typ": "Typ=misto",
+  "entita": "bohumil_hrabal",
+  "odpoved": "Nymburce"
+ },
+ {
+  "otazka": 3,
+  "text": "Kdy odmaturoval Bohumil Hrabal?",
+  "veta": 20,
+  "rozsah": [
+   0,
+   1
+  ],
+  "typ": "Typ=cas",
+  "entita": "bohumil_hrabal",
+  "odpoved": "Roku 1934"
+ },
+ {
+  "otazka": 4,
+  "text": "Kde pracoval Bohumil Hrabal?",
+  "veta": 24,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "bohumil_hrabal",
+  "odpoved": "Kostomlatech"
+ },
+ {
+  "otazka": 5,
+  "text": "Kde prožil Bohumil Hrabal?",
+  "veta": 27,
+  "rozsah": [
+   11
+  ],
+  "typ": "Typ=misto",
+  "entita": "bohumil_hrabal",
+  "odpoved": "Libni"
+ },
+ {
+  "otazka": 6,
+  "text": "Kdy nesměl Bohumil Hrabal?",
+  "veta": 36,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "bohumil_hrabal",
+  "odpoved": "roce 1970"
+ },
+ {
+  "otazka": 7,
+  "text": "Kdy se setkal Bohumil Hrabal?",
+  "veta": 44,
+  "rozsah": [
+   4,
+   5
+  ],
+  "typ": "Typ=cas",
+  "entita": "bohumil_hrabal",
+  "odpoved": "roce 1994"
+ },
+ {
+  "otazka": 8,
+  "text": "Kdy obdržel Bohumil Hrabal?",
+  "veta": 51,
+  "rozsah": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "typ": "Typ=cas",
+  "entita": "bohumil_hrabal",
+  "odpoved": "30 . dubna 1968"
+ },
+ {
+  "otazka": 9,
+  "text": "Kdy obsluhoval Bohumil Hrabal?",
+  "veta": 68,
+  "rozsah": [
+   6
+  ],
+  "typ": "Typ=cas",
+  "entita": "bohumil_hrabal",
+  "odpoved": "1982"
+ },
+ {
+  "otazka": 10,
+  "text": "Kdy obsluhoval Bohumil Hrabal?",
+  "veta": 69,
+  "rozsah": [
+   12
+  ],
+  "typ": "Typ=cas",
+  "entita": "bohumil_hrabal",
+  "odpoved": "1982"
+ },
+ {
+  "otazka": 11,
+  "text": "Kde obsluhoval Bohumil Hrabal?",
+  "veta": 69,
+  "rozsah": [
+   60
+  ],
+  "typ": "Typ=misto",
+  "entita": "bohumil_hrabal",
+  "odpoved": "Torontu"
+ },
+ {
+  "otazka": 12,
+  "text": "Kde zvolí Božena Němcová?",
+  "veta": 621,
+  "rozsah": [
+   4
+  ],
+  "typ": "Typ=misto",
+  "entita": "božena_němcová",
+  "odpoved": "Žernově"
+ },
+ {
+  "otazka": 13,
+  "text": "Kde se sblíží Božena Němcová?",
+  "veta": 685,
+  "rozsah": [
+   16
+  ],
+  "typ": "Typ=misto",
+  "entita": "božena_němcová",
+  "odpoved": "Vídně"
+ },
+ {
+  "otazka": 14,
+  "text": "Kde se žije Božena Němcová?",
+  "veta": 687,
+  "rozsah": [
+   4
+  ],
+  "typ": "Typ=misto",
+  "entita": "božena_němcová",
+  "odpoved": "Vídni"
+ },
+ {
+  "otazka": 15,
+  "text": "Kde se spatří Božena Němcová?",
+  "veta": 707,
+  "rozsah": [
+   15
+  ],
+  "typ": "Typ=misto",
+  "entita": "božena_němcová",
+  "odpoved": "Vosova"
+ },
+ {
+  "otazka": 16,
+  "text": "Kde studoval Ivan Olbracht?",
+  "veta": 1067,
+  "rozsah": [
+   4
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Berlíně"
+ },
+ {
+  "otazka": 17,
+  "text": "Kde působil Ivan Olbracht?",
+  "veta": 1072,
+  "rozsah": [
+   3
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Vídni"
+ },
+ {
+  "otazka": 18,
+  "text": "Kde se patřil Ivan Olbracht?",
+  "veta": 1075,
+  "rozsah": [
+   18
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Rusku"
+ },
+ {
+  "otazka": 19,
+  "text": "Kdy podepsal Ivan Olbracht?",
+  "veta": 1078,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "ivan_olbracht",
+  "odpoved": "roce 1929"
+ },
+ {
+  "otazka": 20,
+  "text": "Kdy se pobýval Ivan Olbracht?",
+  "veta": 1080,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "ivan_olbracht",
+  "odpoved": "letech 1931"
+ },
+ {
+  "otazka": 21,
+  "text": "Kde se pobýval Ivan Olbracht?",
+  "veta": 1080,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Rusi"
+ },
+ {
+  "otazka": 22,
+  "text": "Kdy zemřel Ivan Olbracht?",
+  "veta": 1093,
+  "rozsah": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "typ": "Typ=cas",
+  "entita": "ivan_olbracht",
+  "odpoved": "30 . prosince 1952"
+ },
+ {
+  "otazka": 23,
+  "text": "Kde zemřel Ivan Olbracht?",
+  "veta": 1093,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 24,
+  "text": "Kde se věnoval Ivan Olbracht?",
+  "veta": 1098,
+  "rozsah": [
+   1
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Rusi"
+ },
+ {
+  "otazka": 25,
+  "text": "Kde se zaměřil Ivan Olbracht?",
+  "veta": 1111,
+  "rozsah": [
+   13
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Rakouska"
+ },
+ {
+  "otazka": 26,
+  "text": "Kde nezáleží Ivan Olbracht?",
+  "veta": 1137,
+  "rozsah": [
+   3
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Rusínech"
+ },
+ {
+  "otazka": 27,
+  "text": "Kde se odchází Ivan Olbracht?",
+  "veta": 1157,
+  "rozsah": [
+   6
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Ostravy"
+ },
+ {
+  "otazka": 28,
+  "text": "Kde se seznámí Ivan Olbracht?",
+  "veta": 1158,
+  "rozsah": [
+   1
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Ostravě"
+ },
+ {
+  "otazka": 29,
+  "text": "Kde má Ivan Olbracht?",
+  "veta": 1167,
+  "rozsah": [
+   3
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "Československa"
+ },
+ {
+  "otazka": 30,
+  "text": "Kde vydal Ivan Olbracht?",
+  "veta": 1173,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=misto",
+  "entita": "ivan_olbracht",
+  "odpoved": "SSSR"
+ },
+ {
+  "otazka": 31,
+  "text": "Kdy odsoudil Ivan Olbracht?",
+  "veta": 1174,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "ivan_olbracht",
+  "odpoved": "1952"
+ },
+ {
+  "otazka": 32,
+  "text": "Kdy opustil Jan Neruda?",
+  "veta": 1254,
+  "rozsah": [
+   3,
+   4
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "roce 1857"
+ },
+ {
+  "otazka": 33,
+  "text": "Kdy pracoval Jan Neruda?",
+  "veta": 1255,
+  "rozsah": [
+   2,
+   3
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "roku 1856"
+ },
+ {
+  "otazka": 34,
+  "text": "Kde podnikl Jan Neruda?",
+  "veta": 1259,
+  "rozsah": [
+   4
+  ],
+  "typ": "Typ=misto",
+  "entita": "jan_neruda",
+  "odpoved": "Německa"
+ },
+ {
+  "otazka": 35,
+  "text": "Kdy se zamiloval Jan Neruda?",
+  "veta": 1272,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "roce 1862"
+ },
+ {
+  "otazka": 36,
+  "text": "Kdy se bydlel Jan Neruda?",
+  "veta": 1282,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "roku 1874"
+ },
+ {
+  "otazka": 37,
+  "text": "Kdy onemocněl Jan Neruda?",
+  "veta": 1283,
+  "rozsah": [
+   0,
+   1
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "Roku 1880"
+ },
+ {
+  "otazka": 38,
+  "text": "Kdy uklouzl Jan Neruda?",
+  "veta": 1284,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "roce 1888"
+ },
+ {
+  "otazka": 39,
+  "text": "Kdy zemřel Jan Neruda?",
+  "veta": 1286,
+  "rozsah": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "22 . srpna 1891"
+ },
+ {
+  "otazka": 40,
+  "text": "Kdy spolupracoval Jan Neruda?",
+  "veta": 1294,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "roku 1859"
+ },
+ {
+  "otazka": 41,
+  "text": "Kdy se vstoupil Jan Neruda?",
+  "veta": 1296,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "roce 1860"
+ },
+ {
+  "otazka": 42,
+  "text": "Kdy zveřejnil Jan Neruda?",
+  "veta": 1317,
+  "rozsah": [
+   15,
+   16
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "roce 1854"
+ },
+ {
+  "otazka": 43,
+  "text": "Kdy publikoval Jan Neruda?",
+  "veta": 1392,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=cas",
+  "entita": "jan_neruda",
+  "odpoved": "1869"
+ },
+ {
+  "otazka": 44,
+  "text": "Kde spolupracoval Jaroslav Hašek?",
+  "veta": 1449,
+  "rozsah": [
+   11
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Čechách"
+ },
+ {
+  "otazka": 45,
+  "text": "Kdy se zúčastnil Jaroslav Hašek?",
+  "veta": 1472,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "roce 1897"
+ },
+ {
+  "otazka": 46,
+  "text": "Kde se zúčastnil Jaroslav Hašek?",
+  "veta": 1472,
+  "rozsah": [
+   11
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 47,
+  "text": "Kde prošel Jaroslav Hašek?",
+  "veta": 1479,
+  "rozsah": [
+   8
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Slovensko"
+ },
+ {
+  "otazka": 48,
+  "text": "Kdy měl Jaroslav Hašek?",
+  "veta": 1486,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "roce 1909"
+ },
+ {
+  "otazka": 49,
+  "text": "Kdy přispíval Jaroslav Hašek?",
+  "veta": 1492,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "roku 1911"
+ },
+ {
+  "otazka": 50,
+  "text": "Kdy založil Jaroslav Hašek?",
+  "veta": 1493,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "roce 1911"
+ },
+ {
+  "otazka": 51,
+  "text": "Kde popsal Jaroslav Hašek?",
+  "veta": 1499,
+  "rozsah": [
+   3
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Chotěboři"
+ },
+ {
+  "otazka": 52,
+  "text": "Kdy padl Jaroslav Hašek?",
+  "veta": 1511,
+  "rozsah": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "24 . září 1915"
+ },
+ {
+  "otazka": 53,
+  "text": "Kde padl Jaroslav Hašek?",
+  "veta": 1511,
+  "rozsah": [
+   10
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Chorupan"
+ },
+ {
+  "otazka": 54,
+  "text": "Kdy publikoval Jaroslav Hašek?",
+  "veta": 1515,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "1917"
+ },
+ {
+  "otazka": 55,
+  "text": "Kdy vstoupil Jaroslav Hašek?",
+  "veta": 1516,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "1918"
+ },
+ {
+  "otazka": 56,
+  "text": "Kde působil Jaroslav Hašek?",
+  "veta": 1523,
+  "rozsah": [
+   3
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Sibiři"
+ },
+ {
+  "otazka": 57,
+  "text": "Kde se onemocněl Jaroslav Hašek?",
+  "veta": 1526,
+  "rozsah": [
+   10
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Krasnojarsku"
+ },
+ {
+  "otazka": 58,
+  "text": "Kdy přijel Jaroslav Hašek?",
+  "veta": 1528,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "1920"
+ },
+ {
+  "otazka": 59,
+  "text": "Kde přijel Jaroslav Hašek?",
+  "veta": 1528,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Československa"
+ },
+ {
+  "otazka": 60,
+  "text": "Kde navštěvoval Jaroslav Hašek?",
+  "veta": 1534,
+  "rozsah": [
+   3
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 61,
+  "text": "Kde začal psát Jaroslav Hašek?",
+  "veta": 1538,
+  "rozsah": [
+   1
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Lipnici"
+ },
+ {
+  "otazka": 62,
+  "text": "Kdy zemřel Jaroslav Hašek?",
+  "veta": 1541,
+  "rozsah": [
+   0,
+   1,
+   2,
+   3
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "3 . ledna 1923"
+ },
+ {
+  "otazka": 63,
+  "text": "Kdy se vyznamenal Jaroslav Hašek?",
+  "veta": 1550,
+  "rozsah": [
+   0,
+   1
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Roku 1918"
+ },
+ {
+  "otazka": 64,
+  "text": "Kde utekl Jaroslav Hašek?",
+  "veta": 1567,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_hašek",
+  "odpoved": "Ruska"
+ },
+ {
+  "otazka": 65,
+  "text": "Kdy se narodil Jaroslav Seifert?",
+  "veta": 1733,
+  "rozsah": [
+   41,
+   42,
+   43
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_seifert",
+  "odpoved": "5 . října"
+ },
+ {
+  "otazka": 66,
+  "text": "Kde se narodil Jaroslav Seifert?",
+  "veta": 1733,
+  "rozsah": [
+   32
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_seifert",
+  "odpoved": "Žižkově"
+ },
+ {
+  "otazka": 67,
+  "text": "Kdy začal pracovat Jaroslav Seifert?",
+  "veta": 1748,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_seifert",
+  "odpoved": "roku 1930"
+ },
+ {
+  "otazka": 68,
+  "text": "Kdy odmítl Jaroslav Seifert?",
+  "veta": 1773,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_seifert",
+  "odpoved": "1949"
+ },
+ {
+  "otazka": 69,
+  "text": "Kdy se začal věnovat Jaroslav Seifert?",
+  "veta": 1775,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_seifert",
+  "odpoved": "roce 1949"
+ },
+ {
+  "otazka": 70,
+  "text": "Kdy spolupracoval Jaroslav Seifert?",
+  "veta": 1777,
+  "rozsah": [
+   2,
+   3
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_seifert",
+  "odpoved": "roku 1955"
+ },
+ {
+  "otazka": 71,
+  "text": "Kdy uspořádal Jaroslav Seifert?",
+  "veta": 1800,
+  "rozsah": [
+   3,
+   4
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_seifert",
+  "odpoved": "roce 1951"
+ },
+ {
+  "otazka": 72,
+  "text": "Kdy se publikuje Jaroslav Seifert?",
+  "veta": 1843,
+  "rozsah": [
+   2,
+   3
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_seifert",
+  "odpoved": "roce 1937"
+ },
+ {
+  "otazka": 73,
+  "text": "Kde se publikuje Jaroslav Seifert?",
+  "veta": 1843,
+  "rozsah": [
+   19
+  ],
+  "typ": "Typ=misto",
+  "entita": "jaroslav_seifert",
+  "odpoved": "Mnichovu"
+ },
+ {
+  "otazka": 74,
+  "text": "Kdy lže Jaroslav Seifert?",
+  "veta": 1992,
+  "rozsah": [
+   11
+  ],
+  "typ": "Typ=cas",
+  "entita": "jaroslav_seifert",
+  "odpoved": "2018"
+ },
+ {
+  "otazka": 75,
+  "text": "Kde se žil Josef Čapek?",
+  "veta": 1996,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "josef_čapek",
+  "odpoved": "Svatoňovicích"
+ },
+ {
+  "otazka": 76,
+  "text": "Kde chodil Josef Čapek?",
+  "veta": 1999,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "josef_čapek",
+  "odpoved": "Vrchlabí"
+ },
+ {
+  "otazka": 77,
+  "text": "Kdy začal žít Josef Čapek?",
+  "veta": 2001,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "1904"
+ },
+ {
+  "otazka": 78,
+  "text": "Kde začal žít Josef Čapek?",
+  "veta": 2001,
+  "rozsah": [
+   8
+  ],
+  "typ": "Typ=misto",
+  "entita": "josef_čapek",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 79,
+  "text": "Kdy maloval Josef Čapek?",
+  "veta": 2002,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "1904"
+ },
+ {
+  "otazka": 80,
+  "text": "Kdy se seznámil Josef Čapek?",
+  "veta": 2004,
+  "rozsah": [
+   4,
+   5
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "roce 1910"
+ },
+ {
+  "otazka": 81,
+  "text": "Kdy odjel Josef Čapek?",
+  "veta": 2005,
+  "rozsah": [
+   15
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "1910"
+ },
+ {
+  "otazka": 82,
+  "text": "Kde odjel Josef Čapek?",
+  "veta": 2005,
+  "rozsah": [
+   17
+  ],
+  "typ": "Typ=misto",
+  "entita": "josef_čapek",
+  "odpoved": "Paříže"
+ },
+ {
+  "otazka": 83,
+  "text": "Kdy vytvořil Josef Čapek?",
+  "veta": 2027,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "1942"
+ },
+ {
+  "otazka": 84,
+  "text": "Kdy se opustil Josef Čapek?",
+  "veta": 2041,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "roce 1921"
+ },
+ {
+  "otazka": 85,
+  "text": "Kdy objevuje Josef Čapek?",
+  "veta": 2068,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "roce 1917"
+ },
+ {
+  "otazka": 86,
+  "text": "Kdy vystavoval Josef Čapek?",
+  "veta": 2070,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "roce 1920"
+ },
+ {
+  "otazka": 87,
+  "text": "Kdy se vytvořil Josef Čapek?",
+  "veta": 2087,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "letech 1933"
+ },
+ {
+  "otazka": 88,
+  "text": "Kdy debutoval Josef Čapek?",
+  "veta": 2101,
+  "rozsah": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "25 . ledna 1921"
+ },
+ {
+  "otazka": 89,
+  "text": "Kdy navrhl Josef Čapek?",
+  "veta": 2102,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "1921"
+ },
+ {
+  "otazka": 90,
+  "text": "Kdy vytvořil Josef Čapek?",
+  "veta": 2103,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "roce 1922"
+ },
+ {
+  "otazka": 91,
+  "text": "Kde spolupracoval Josef Čapek?",
+  "veta": 2104,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "josef_čapek",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 92,
+  "text": "Kde zaplnil Josef Čapek?",
+  "veta": 2107,
+  "rozsah": [
+   15
+  ],
+  "typ": "Typ=misto",
+  "entita": "josef_čapek",
+  "odpoved": "Mravencích"
+ },
+ {
+  "otazka": 93,
+  "text": "Kdy vytvářel Josef Čapek?",
+  "veta": 2114,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "letech 1923"
+ },
+ {
+  "otazka": 94,
+  "text": "Kdy vytvořil Josef Čapek?",
+  "veta": 2144,
+  "rozsah": [
+   6,
+   7
+  ],
+  "typ": "Typ=cas",
+  "entita": "josef_čapek",
+  "odpoved": "roce 1918"
+ },
+ {
+  "otazka": 95,
+  "text": "Kde se narodil Karel Hynek Mácha?",
+  "veta": 2227,
+  "rozsah": [
+   27
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 96,
+  "text": "Kde odešel Karel Hynek Mácha?",
+  "veta": 2237,
+  "rozsah": [
+   11
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "Litoměřic"
+ },
+ {
+  "otazka": 97,
+  "text": "Kdy studoval Karel Hynek Mácha?",
+  "veta": 2239,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "letech 1824"
+ },
+ {
+  "otazka": 98,
+  "text": "Kde studoval Karel Hynek Mácha?",
+  "veta": 2239,
+  "rozsah": [
+   10
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "Příkopech"
+ },
+ {
+  "otazka": 99,
+  "text": "Kdy navštěvoval Karel Hynek Mácha?",
+  "veta": 2240,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "1830"
+ },
+ {
+  "otazka": 100,
+  "text": "Kdy navštěvoval Karel Hynek Mácha?",
+  "veta": 2242,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "letech 1831"
+ },
+ {
+  "otazka": 101,
+  "text": "Kdy vystoupil Karel Hynek Mácha?",
+  "veta": 2244,
+  "rozsah": [
+   6,
+   7
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "letech 1834"
+ },
+ {
+  "otazka": 102,
+  "text": "Kde navštívil Karel Hynek Mácha?",
+  "veta": 2257,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "Valečov"
+ },
+ {
+  "otazka": 103,
+  "text": "Kde odložil Karel Hynek Mácha?",
+  "veta": 2291,
+  "rozsah": [
+   15
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 104,
+  "text": "Kdy se rozběhl Karel Hynek Mácha?",
+  "veta": 2295,
+  "rozsah": [
+   2,
+   3,
+   4
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "15 . října"
+ },
+ {
+  "otazka": 105,
+  "text": "Kde se rozběhl Karel Hynek Mácha?",
+  "veta": 2295,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "Litoměřic"
+ },
+ {
+  "otazka": 106,
+  "text": "Kdy si všiml Karel Hynek Mácha?",
+  "veta": 2296,
+  "rozsah": [
+   2,
+   3,
+   4
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "23 . října"
+ },
+ {
+  "otazka": 107,
+  "text": "Kde si všiml Karel Hynek Mácha?",
+  "veta": 2296,
+  "rozsah": [
+   8
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "Radobýlu"
+ },
+ {
+  "otazka": 108,
+  "text": "Kdy píše Karel Hynek Mácha?",
+  "veta": 2301,
+  "rozsah": [
+   0,
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "2 . listopadu"
+ },
+ {
+  "otazka": 109,
+  "text": "Kdy zemřel Karel Hynek Mácha?",
+  "veta": 2304,
+  "rozsah": [
+   3,
+   4,
+   5,
+   6
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "6 . listopadu 1836"
+ },
+ {
+  "otazka": 110,
+  "text": "Kdy se uchýlil Karel Hynek Mácha?",
+  "veta": 2314,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "roce 1830"
+ },
+ {
+  "otazka": 111,
+  "text": "Kdy pracoval Karel Hynek Mácha?",
+  "veta": 2325,
+  "rozsah": [
+   7
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_hynek_mácha",
+  "odpoved": "1835"
+ },
+ {
+  "otazka": 112,
+  "text": "Kde se narodil Karel Čapek?",
+  "veta": 2475,
+  "rozsah": [
+   4
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_čapek",
+  "odpoved": "Svatoňovicích"
+ },
+ {
+  "otazka": 113,
+  "text": "Kde se přestěhoval Karel Čapek?",
+  "veta": 2477,
+  "rozsah": [
+   6
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_čapek",
+  "odpoved": "Úpice"
+ },
+ {
+  "otazka": 114,
+  "text": "Kde absolvoval Karel Čapek?",
+  "veta": 2478,
+  "rozsah": [
+   1
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_čapek",
+  "odpoved": "Úpici"
+ },
+ {
+  "otazka": 115,
+  "text": "Kde prožíval Karel Čapek?",
+  "veta": 2479,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_čapek",
+  "odpoved": "Hronově"
+ },
+ {
+  "otazka": 116,
+  "text": "Kde studoval Karel Čapek?",
+  "veta": 2481,
+  "rozsah": [
+   7
+  ],
+  "typ": "Typ=misto",
+  "entita": "karel_čapek",
+  "odpoved": "Hradci"
+ },
+ {
+  "otazka": 117,
+  "text": "Kdy ukončil Karel Čapek?",
+  "veta": 2482,
+  "rozsah": [
+   0,
+   1
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_čapek",
+  "odpoved": "Roku 1915"
+ },
+ {
+  "otazka": 118,
+  "text": "Kdy odešel Karel Čapek?",
+  "veta": 2489,
+  "rozsah": [
+   5,
+   6
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_čapek",
+  "odpoved": "roce 1921"
+ },
+ {
+  "otazka": 119,
+  "text": "Kdy měl Karel Čapek?",
+  "veta": 2666,
+  "rozsah": [
+   6
+  ],
+  "typ": "Typ=cas",
+  "entita": "karel_čapek",
+  "odpoved": "1939"
+ },
+ {
+  "otazka": 120,
+  "text": "Kdy žil Milan Kundera?",
+  "veta": 2776,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roku 1975"
+ },
+ {
+  "otazka": 121,
+  "text": "Kde žil Milan Kundera?",
+  "veta": 2776,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=misto",
+  "entita": "milan_kundera",
+  "odpoved": "Francii"
+ },
+ {
+  "otazka": 122,
+  "text": "Kde studoval Milan Kundera?",
+  "veta": 2787,
+  "rozsah": [
+   9
+  ],
+  "typ": "Typ=misto",
+  "entita": "milan_kundera",
+  "odpoved": "Brně"
+ },
+ {
+  "otazka": 123,
+  "text": "Kdy absolvoval Milan Kundera?",
+  "veta": 2789,
+  "rozsah": [
+   2,
+   3
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roce 1953"
+ },
+ {
+  "otazka": 124,
+  "text": "Kdy vstoupil Milan Kundera?",
+  "veta": 2792,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roce 1948"
+ },
+ {
+  "otazka": 125,
+  "text": "Kde vstoupil Milan Kundera?",
+  "veta": 2792,
+  "rozsah": [
+   7
+  ],
+  "typ": "Typ=misto",
+  "entita": "milan_kundera",
+  "odpoved": "Československa"
+ },
+ {
+  "otazka": 126,
+  "text": "Kdy oznámil Milan Kundera?",
+  "veta": 2797,
+  "rozsah": [
+   4,
+   5
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roku 1950"
+ },
+ {
+  "otazka": 127,
+  "text": "Kdy vystoupil Milan Kundera?",
+  "veta": 2810,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roce 1967"
+ },
+ {
+  "otazka": 128,
+  "text": "Kdy žil Milan Kundera?",
+  "veta": 2843,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roku 1975"
+ },
+ {
+  "otazka": 129,
+  "text": "Kde žil Milan Kundera?",
+  "veta": 2843,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=misto",
+  "entita": "milan_kundera",
+  "odpoved": "Francii"
+ },
+ {
+  "otazka": 130,
+  "text": "Kdy získal Milan Kundera?",
+  "veta": 2845,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roce 1981"
+ },
+ {
+  "otazka": 131,
+  "text": "Kdy navštívil Milan Kundera?",
+  "veta": 2848,
+  "rozsah": [
+   12,
+   13
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roce 2000"
+ },
+ {
+  "otazka": 132,
+  "text": "Kdy publikoval Milan Kundera?",
+  "veta": 2858,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "1989"
+ },
+ {
+  "otazka": 133,
+  "text": "Kdy vydal Milan Kundera?",
+  "veta": 2896,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roce 1957"
+ },
+ {
+  "otazka": 134,
+  "text": "Kdy přidal Milan Kundera?",
+  "veta": 2901,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roce 1968"
+ },
+ {
+  "otazka": 135,
+  "text": "Kdy vydal Milan Kundera?",
+  "veta": 2906,
+  "rozsah": [
+   16,
+   17
+  ],
+  "typ": "Typ=cas",
+  "entita": "milan_kundera",
+  "odpoved": "roce 1965"
+ },
+ {
+  "otazka": 136,
+  "text": "Kde se narodil Vladislav Vančura?",
+  "veta": 3041,
+  "rozsah": [
+   3
+  ],
+  "typ": "Typ=misto",
+  "entita": "vladislav_vančura",
+  "odpoved": "Háji"
+ },
+ {
+  "otazka": 137,
+  "text": "Kde vystudoval Vladislav Vančura?",
+  "veta": 3050,
+  "rozsah": [
+   8
+  ],
+  "typ": "Typ=misto",
+  "entita": "vladislav_vančura",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 138,
+  "text": "Kde se vrátil Vladislav Vančura?",
+  "veta": 3064,
+  "rozsah": [
+   6
+  ],
+  "typ": "Typ=misto",
+  "entita": "vladislav_vančura",
+  "odpoved": "Davle"
+ },
+ {
+  "otazka": 139,
+  "text": "Kdy publikoval Vladislav Vančura?",
+  "veta": 3078,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "roku 1920"
+ },
+ {
+  "otazka": 140,
+  "text": "Kdy podepsal Vladislav Vančura?",
+  "veta": 3080,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "roce 1929"
+ },
+ {
+  "otazka": 141,
+  "text": "Kdy působil Vladislav Vančura?",
+  "veta": 3082,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "roce 1924"
+ },
+ {
+  "otazka": 142,
+  "text": "Kdy se podepsal Vladislav Vančura?",
+  "veta": 3092,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "1934"
+ },
+ {
+  "otazka": 143,
+  "text": "Kdy se věnoval Vladislav Vančura?",
+  "veta": 3109,
+  "rozsah": [
+   7
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "1921"
+ },
+ {
+  "otazka": 144,
+  "text": "Kdy přemýšlel Vladislav Vančura?",
+  "veta": 3114,
+  "rozsah": [
+   5,
+   6
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "roce 1920"
+ },
+ {
+  "otazka": 145,
+  "text": "Kdy napsal Vladislav Vančura?",
+  "veta": 3115,
+  "rozsah": [
+   0,
+   1
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "Roku 1926"
+ },
+ {
+  "otazka": 146,
+  "text": "Kdy otiskl Vladislav Vančura?",
+  "veta": 3116,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "1929"
+ },
+ {
+  "otazka": 147,
+  "text": "Kdy se měl Vladislav Vančura?",
+  "veta": 3118,
+  "rozsah": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "9 . září 1932"
+ },
+ {
+  "otazka": 148,
+  "text": "Kdy se podílel Vladislav Vančura?",
+  "veta": 3134,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "roce 1937"
+ },
+ {
+  "otazka": 149,
+  "text": "Kdy obdržel Vladislav Vančura?",
+  "veta": 3166,
+  "rozsah": [
+   5,
+   6
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "roce 1929"
+ },
+ {
+  "otazka": 150,
+  "text": "Kdy obdržel Vladislav Vančura?",
+  "veta": 3179,
+  "rozsah": [
+   5,
+   6
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "roce 1931"
+ },
+ {
+  "otazka": 151,
+  "text": "Kdy obdržel Vladislav Vančura?",
+  "veta": 3192,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vladislav_vančura",
+  "odpoved": "roce 1947"
+ },
+ {
+  "otazka": 152,
+  "text": "Kdy bydlel Vítězslav Nezval?",
+  "veta": 3279,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "roku 1903"
+ },
+ {
+  "otazka": 153,
+  "text": "Kde bydlel Vítězslav Nezval?",
+  "veta": 3279,
+  "rozsah": [
+   5
+  ],
+  "typ": "Typ=misto",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Šemíkovicích"
+ },
+ {
+  "otazka": 154,
+  "text": "Kdy studoval Vítězslav Nezval?",
+  "veta": 3280,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "roku 1911"
+ },
+ {
+  "otazka": 155,
+  "text": "Kde studoval Vítězslav Nezval?",
+  "veta": 3280,
+  "rozsah": [
+   6
+  ],
+  "typ": "Typ=misto",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Třebíči"
+ },
+ {
+  "otazka": 156,
+  "text": "Kde si oblíbil Vítězslav Nezval?",
+  "veta": 3283,
+  "rozsah": [
+   0
+  ],
+  "typ": "Typ=misto",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Brno"
+ },
+ {
+  "otazka": 157,
+  "text": "Kde jezdil Vítězslav Nezval?",
+  "veta": 3284,
+  "rozsah": [
+   4
+  ],
+  "typ": "Typ=misto",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Žabovřesk"
+ },
+ {
+  "otazka": 158,
+  "text": "Kdy se vstoupil Vítězslav Nezval?",
+  "veta": 3285,
+  "rozsah": [
+   0,
+   1
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Roku 1922"
+ },
+ {
+  "otazka": 159,
+  "text": "Kdy vstoupil Vítězslav Nezval?",
+  "veta": 3288,
+  "rozsah": [
+   0,
+   1
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Roku 1924"
+ },
+ {
+  "otazka": 160,
+  "text": "Kdy podepsal Vítězslav Nezval?",
+  "veta": 3300,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "roce 1946"
+ },
+ {
+  "otazka": 161,
+  "text": "Kdy podepsal Vítězslav Nezval?",
+  "veta": 3302,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "roce 1948"
+ },
+ {
+  "otazka": 162,
+  "text": "Kdy se oženil Vítězslav Nezval?",
+  "veta": 3316,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "roce 1948"
+ },
+ {
+  "otazka": 163,
+  "text": "Kdy měl Vítězslav Nezval?",
+  "veta": 3317,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "roku 1937"
+ },
+ {
+  "otazka": 164,
+  "text": "Kdy onemocněl Vítězslav Nezval?",
+  "veta": 3319,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "roku 1950"
+ },
+ {
+  "otazka": 165,
+  "text": "Kdy podnikl Vítězslav Nezval?",
+  "veta": 3321,
+  "rozsah": [
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "1958"
+ },
+ {
+  "otazka": 166,
+  "text": "Kde podnikl Vítězslav Nezval?",
+  "veta": 3321,
+  "rozsah": [
+   6
+  ],
+  "typ": "Typ=misto",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Itálie"
+ },
+ {
+  "otazka": 167,
+  "text": "Kde zemřel Vítězslav Nezval?",
+  "veta": 3322,
+  "rozsah": [
+   12
+  ],
+  "typ": "Typ=misto",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Praze"
+ },
+ {
+  "otazka": 168,
+  "text": "Kdy vydal Vítězslav Nezval?",
+  "veta": 3383,
+  "rozsah": [
+   1,
+   2
+  ],
+  "typ": "Typ=cas",
+  "entita": "vítězslav_nezval",
+  "odpoved": "letech 1935"
+ },
+ {
+  "otazka": 169,
+  "text": "Kde se ohlíží Vítězslav Nezval?",
+  "veta": 3384,
+  "rozsah": [
+   7
+  ],
+  "typ": "Typ=misto",
+  "entita": "vítězslav_nezval",
+  "odpoved": "Paříži"
+ }
+]

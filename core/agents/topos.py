@@ -13,7 +13,7 @@ ale užitečný jako VSTUP pro agenta.
 
 from typing import Iterable, Optional, Sequence
 
-from .base import Agent, Naveska
+from .base import Agent, Naveska, v_zavorce
 
 
 class Topos(Agent):
@@ -29,6 +29,9 @@ class Topos(Agent):
         return t["form"].lower() in self.gazetteer
 
     def najdi(self, veta: Sequence[dict]) -> list:
+        # Závorky se přeskakují stejně jako u Chronose: „strýce (z Konice)"
+        # je vsuvka o někom jiném a její místo nepatří ději věty.
         return [Naveska(rozsah=[i], hlava=i, typ=self.typ,
                         hodnota=t["form"], zdroj=self.jmeno)
-                for i, t in enumerate(veta) if self.je_misto(t)]
+                for i, t in enumerate(veta)
+                if self.je_misto(t) and not v_zavorce(veta, i)]

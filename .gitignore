@@ -15,3 +15,6 @@ run/
 # Mezikroky stavby baseline (velké, obnovitelné skriptem)
 data/raw/_vety.json
 data/raw/_tokeny.json
+data/ontology/tvrzeni.json
+data/gold/_kotvy.json
+data/gold/_otazky_text.json

@@ -226,6 +226,39 @@ class Rozhovor:
         return Zaznam(text, RODOKMEN, f"{self.znalost.tvar(pojem)} ⊂ "
                       + ", ".join(self.znalost.tvar(p) for p in predci))
 
+    def z_dialogu(self, text: str, v: dict) -> list:
+        """Co o té osobě padlo V TOMHLE ROZHOVORU, jako první kandidát.
+
+        „Božena Němcová je spisovatelka." — přijato, hrana zapsaná. A hned
+        nato „Kdo je Božena Němcová?" odpovědělo „realistkou" z korpusu,
+        protože odpovídač čte POLE a naučené hrany leží ve ZNALOSTI. Člověk
+        to řekl před vteřinou a stroj se zachoval, jako by neslyšel.
+
+        Odpovídač se kvůli tomu nemění: zůstává čtečkou pole. Skládat obojí
+        je věc rozhovoru, protože jen ten ví, co v něm zaznělo.
+
+        Přednost má naučené, ne korpus — kdo systém opravuje, dělá to proto,
+        aby ho opravil. Původní kandidáti se ale nezahazují; zůstávají za
+        ním a v detailu je vidět obojí.
+
+        Odvozený kandidát nenese větu, protože žádnou nemá — nese, odkud
+        se vzal. Splést ho s doloženým by znamenalo vydávat naučené za
+        přečtené."""
+        if v.get("typ") != "Typ=druh" or not self.odpovidac:
+            return []
+        entita = (v["aktivace"].get("entita") or "").replace("_", " ")
+        if not entita:
+            return []
+        out = []
+        for t in self.znalost.tvrzeni:
+            if t.druh == ZAPOR or t.levy != entita:
+                continue
+            tvar = self.znalost.tvar(t.pravy)
+            out.append({"veta": None, "rozsah": [], "text": tvar,
+                        "kontext": f"z rozhovoru: {t.levy} {ZNAK[t.druh]} {tvar}",
+                        "z_dialogu": True})
+        return out
+
     # ---- téma --------------------------------------------------------
     def zahrat(self, entita: Optional[str]) -> None:
         """Odpověď zpětně přihřeje to, o čem byla — tím řetěz drží téma.

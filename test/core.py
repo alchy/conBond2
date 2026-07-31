@@ -821,6 +821,55 @@ ok(hrany_z_arity(_H, _ar) == [], "z pěti hran se vyrobily zápory")
 ok(hrany_z_arity(_H, _ar, nejmene_dokladu=2), "s nízkým prahem nevzniklo nic")
 print("  Antonín: basa · Hašek · Monet · baroko  ·  arita změřena, ne zadána")
 
+print("\n— hrany z korpusu: jméno celé, remíza se neslučuje —")
+from core.edges import hrany_vety, jmeno, sjednotit_jmena  # noqa: E402
+
+
+def _e(form, lem, upos, dep, tid, head, **kw):
+    t = {"form": form, "lemma": lem, "upos": upos, "acts": [upos, dep],
+         "id": tid, "head": head}
+    t["acts"] += kw.pop("rysy", [])
+    t.update(kw)
+    return t
+
+
+# „Karel Novák je otec Petra." — jmenný přísudek dá predikát, genitiv druhý
+# konec, a příjmení visí na křestním přes `flat`.
+_veta = [_e("Karel", "karel", "PROPN", "nsubj", 1, 4),
+         _e("Novák", "novák", "PROPN", "flat", 2, 1),
+         _e("je", "být", "AUX", "cop", 3, 4),
+         _e("otec", "otec", "NOUN", "root", 4, 0),
+         _e("Petra", "petr", "PROPN", "nmod", 5, 4, rysy=["Case=Gen"])]
+_h = hrany_vety(_veta, 7)
+ok(_h == [("otec", "karel novák", "petr", 7, "text")], f"hrana vyšla jinak: {_h}")
+
+# JMÉNO JE CELÉ, NEBO ŽÁDNÉ — jinak by hrana patřila všem Karlům.
+ok(jmeno(_veta, _veta[0]) == "karel novák", "příjmení se nepřipojilo")
+ok(jmeno(_veta, _veta[3]) == "", "obecné jméno prošlo jako osoba")
+
+# Otázka se ptá, neodpovídá.
+ok(hrany_vety(_veta + [_e("?", "?", "PUNCT", "punct", 6, 4)], 7) == [],
+   "tázací věta dala hranu")
+
+# `Ent=` je jméno DOKUMENTU. U životopisu je to i osoba, u knihy ne —
+# bez řezu vzniklo „poslat(bible 1 korintským, timoteo)".
+_prodrop = [_e("Oženil", "oženit", "VERB", "root", 1, 0,
+                rysy=["Ent=arnošt_lustig"]),
+            _e("Věru", "věra", "PROPN", "obj", 2, 1)]
+ok(hrany_vety(_prodrop, 0, osoby={"arnošt lustig"}), "koreference nedodala podmět")
+ok(hrany_vety(_prodrop, 0, osoby={"bible jan"}) == [],
+   "dokument, který není osoba, prošel jako podmět")
+
+# SLUČOVÁNÍ JMEN, ale jen jednoznačné.
+_hr = [("otec", "karel novák", "petr", 1, "text"),
+       ("syn", "tomáš novák", "petr novák", 2, "text")]
+_no, _mapa = sjednotit_jmena(_hr)
+ok(_mapa.get("petr") == "petr novák", "zkrácené jméno se nesloučilo")
+_dvoj = _hr + [("otec", "karel čapek", "josef čapek", 3, "text")]
+ok("karel" not in sjednotit_jmena(_dvoj)[1],
+   "„karel“ se sloučil, ač sedí na dva lidi")
+print("  hrana i s příjmením · dokument≠osoba · remíza se neslučuje")
+
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")
 ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")

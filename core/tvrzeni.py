@@ -34,11 +34,23 @@ expanzí.
 
 import json
 import os
+import re
 import time
 from dataclasses import dataclass, field
 from typing import Optional
 
 PODTRIDA, INSTANCE, SYNONYMUM, ZAPOR = "podtrida", "instance", "synonymum", "zapor"
+
+# Zkratka psaná s tečkami je JEDEN pojem, ne tři. Tokenizér ji rozseká na
+# „r u r" a z Čapkova dramatu se stane nesmysl; tečky proto padnou dřív, než
+# se text pošle na lemmatizaci. Dvě a víc písmen s tečkou — „tzv." tedy
+# nechytí, což je správně, to zkratka pojmu není.
+ZKRATKA = re.compile(r"(?<![\w.])(?:\w\.){2,}")
+
+
+def sceli_zkratky(text: str) -> str:
+    """R.U.R. → RUR, s.r.o. → sro"""
+    return ZKRATKA.sub(lambda m: m.group(0).replace(".", ""), text)
 
 # Tvary, které druh určují samy. Cokoli jiného je nejasné a ptáme se.
 ZNACKY_PODTRIDY = ("je druh", "je druhem", "patří mezi", "je typ", "je typem")
@@ -97,7 +109,7 @@ class Mluvnice:
         self.lemmatizuj = lemmatizuj or (lambda s: s.strip().lower())
 
     def rozeber(self, veta: str):
-        cista = veta.strip().rstrip(".!?")
+        cista = sceli_zkratky(veta.strip()).rstrip(".!?")
         if not cista:
             return None
 
@@ -120,7 +132,11 @@ class Mluvnice:
             levy_syrovy = l.strip()
             # Velké písmeno = konkrétní věc. V češtině je to slušné vodítko
             # u vlastních jmen; kde nestačí, ptáme se.
-            if levy_syrovy[:1].isupper() and not levy_syrovy.isupper():
+            #
+            # Celá verzálka se dřív vylučovala, aby se za jméno nepovažoval
+            # křik. Jenže tím propadly zkratky: R.U.R. se scelí na „RUR"
+            # a to je vlastní jméno jako každé jiné.
+            if levy_syrovy[:1].isupper():
                 return Tvrzeni(INSTANCE, self._pojem(l), self._pojem(p), veta=veta)
             return Nejasnost(self._pojem(l), self._pojem(p), veta)
         return None
@@ -131,7 +147,9 @@ class Mluvnice:
         return veta[:i], veta[i + len(znacka):]
 
     def _pojem(self, kus: str) -> str:
-        kus = kus.strip().strip(",;")
+        # Scelení i tady, ne jen v rozeber(): dotazy „? R.U.R. dílo" jdou
+        # rovnou sem a jinak by se ptaly na jiný uzel, než jaký se uložil.
+        kus = sceli_zkratky(kus.strip()).strip(",;")
         for predlozka in ("pro ", "s ", "se ", "co "):
             if kus.lower().startswith(predlozka):
                 kus = kus[len(predlozka):]

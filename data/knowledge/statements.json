@@ -1,0 +1,26 @@
+{
+ "tvrzeni": [
+  {
+   "druh": "instance",
+   "levy": "karel čapek",
+   "pravy": "spisovatel",
+   "zdroj": "dialog",
+   "cas": 1785494911.1339798,
+   "jistota": 1.0,
+   "veta": "Karel Čapek je spisovatel.",
+   "levy_tvar": "Karel Čapek",
+   "pravy_tvar": "spisovatel"
+  },
+  {
+   "druh": "podtrida",
+   "levy": "spisovatel",
+   "pravy": "člověk",
+   "zdroj": "dialog",
+   "cas": 1785494916.641276,
+   "jistota": 1.0,
+   "veta": "spisovatel je druh člověka",
+   "levy_tvar": "spisovatel",
+   "pravy_tvar": "člověka"
+  }
+ ]
+}

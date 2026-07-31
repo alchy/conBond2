@@ -349,6 +349,27 @@ class Znalost:
                 fronta.append((r, h + 1))
         return out
 
+    def potomci(self, pojem: str, hloubka: int = 12) -> set:
+        """Všechno, co tímhle pojmem JE — opačný směr než `predci`.
+
+        Otázka smí zobecňovat: kdo se ptá na spisovatele, míří i na Hrabala.
+        Fakt zobecňovat nesmí, proto se to nedělá v datech, ale až tady při
+        porovnání."""
+        dolu: dict = {}
+        for dite, rodice in self.nadrazene.items():
+            for r in rodice:
+                dolu.setdefault(self.zastupce(r), set()).add(self.zastupce(dite))
+        out, fronta = set(), [(self.zastupce(pojem), 0)]
+        while fronta:
+            p, h = fronta.pop()
+            if h >= hloubka:
+                continue
+            for d in dolu.get(p, ()):  # noqa: E501
+                if d not in out:
+                    out.add(d)
+                    fronta.append((d, h + 1))
+        return out
+
     def je(self, co: str, cim: str) -> Optional[bool]:
         """True / False / None, kde None znamená POCTIVĚ „nevím".
 

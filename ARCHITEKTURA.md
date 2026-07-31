@@ -696,8 +696,11 @@ nešla by vypnout, a přesně to se na stroji bez displeje dělá.
              uzly vznikají a hasnou s každým tahem
              ⇒ je vidět, čím stroj právě myslí, ne jen kde to našel
 
-/view vzor   ŠABLONY a matice vztahů mezi nimi        (nové)
-             která šablona ukazuje na kterou a jak silně
+/view vzor   ŠABLONY a MATICE vztahů mezi nimi       (nové, klíčové)
+             která šablona ukazuje na kterou a jak silně;
+             po tahu se zvýrazní cesta otázka → šablona → věty.
+             Tohle je jediné okno, ze kterého je poznat, jestli systém
+             větu IDENTIFIKOVAL, nebo ji jen našel podle slov.
 
 /view graf   ENTITY a hrany s doložením               (nové)
              cesta, po které odpověď přišla, zvýrazněná
@@ -708,6 +711,81 @@ počet kandidátů, zdroj, řetěz).
 
 Zásada: **vizualizace se bez stroje vědomě nespustí.** Prázdné okno je
 horší než jasná hláška.
+
+---
+
+## 7d · Rozbor: UDPipe jako lexikální nástroj
+
+Systém si morfologii ani syntax nevymýšlí — dostane ji z **UDPipe 2**,
+který se přebírá z conBondu2 i s ověřenou kombinací verzí.
+
+```
+model      cs_all-ud-2.17-251125          (další jazyky = další model)
+běh        lokálně, offline, vlastní proces
+klient     JEDEN v celém systému
+```
+
+Čtyři pravidla, každé zapsané po chybě:
+
+1. **Jediný klient.** Klienti bývali dva a lišili se v tom, co dělají se
+   zkratkami — korpus měl „R.U.R." rozsekané na tři tokeny a otázka
+   scelené. Obojí dál fungovalo a jen mluvilo o jiném slově.
+2. **Scelování na chokepointu.** Zkratky, spojovníky a víceslovná jména se
+   řeší na jednom místě, ne v každém volajícím.
+3. **Rozbor je klient jádra, ne jeho závislost.** Jádro dostane hotové
+   tokeny. TensorFlow a transformers patří k přípravě dat; samotné
+   odpovídání musí běžet bez nich.
+4. **Neznámá aktivace se hlásí.** Tiše zakládat sloupce znamená, že si
+   uživatel překlepem rozšíří atributový prostor, aniž o tom ví.
+
+Model je **jazykový profil v jiné podobě**: přidat angličtinu znamená
+anglický model plus `jazyk/en.json` — ani řádek v jádře.
+
+---
+
+## 7e · Neuronová síť: jen doplněk, a jen na návrhy
+
+Tohle je hranice, která se nesmí posunout.
+
+> **Primárně se identifikuje nad grafem a vzory. Síť smí navrhovat, nikdy
+> tvrdit.**
+
+### Kde síť smí být
+
+**Návrh definice vzoru.** Šablony vznikají slučováním stejných vektorů, což
+je přesné, ale křehké — jediná odlišná aktivace udělá druhou třídu. Síť
+umí navrhnout, **které vektory patří k sobě**, tedy pomoct s definicí
+šablony a s vazbami v matici.
+
+```
+síť navrhne:   Š(„Kde byl X uvězněn?") ~ Š(„X strávil ve vězení …")
+symbolika ověří: kolik dvojic to doloží · kolik protipříkladů
+rozhodne:      práh, ne důvěra
+```
+
+**Návrh kandidátů na sloučení jmen**, na synonymní predikáty, na chybějící
+hrany. Vždycky jako **hypotéza ke změření**, nikdy jako hotový fakt.
+
+### Kde síť být nesmí
+
+* **V odpovědi.** Odpověď musí nést řetěz doložení, a ze sítě řetěz
+  nevypadne. Číslo bez rozbalitelného zdůvodnění je hádání s desetinnou
+  čárkou.
+* **V rozhodnutí o pravdivosti.** Tvrzení platí, protože je doložené nebo
+  odvozené, ne protože to model odhadl s vysokou pravděpodobností.
+* **Jako náhrada rozboru.** Morfologie a závislosti přicházejí z UDPipe,
+  což je nástroj s definovaným výstupem, ne s odhadem.
+
+### Proč zrovna takhle
+
+Celý systém stojí na tom, že se dá zpětně říct **proč**. Síť tu vlastnost
+nemá a nedá se jí dodat. Ale nemá ji ani potřebovat: její výstup vstupuje
+do stejného měřicího aparátu jako všechno ostatní — `doklad / navíc /
+spor`, práh, protipříklady. Co projde, je pravidlo se svým doložením; co
+neprojde, se zahodí.
+
+Zkouška, že se hranice drží: **vypnutím sítě systém zhloupne, ale
+nezačne lhát.** Odpovědí bude míň, ne víc špatných.
 
 ---
 

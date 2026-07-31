@@ -11,3 +11,7 @@ __pycache__/
 *.pyc
 .DS_Store
 run/
+
+# Mezikroky stavby baseline (velké, obnovitelné skriptem)
+data/raw/_vety.json
+data/raw/_tokeny.json

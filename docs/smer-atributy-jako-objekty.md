@@ -67,7 +67,53 @@ jinak každá další vrstva výsledek zhorší a bude to vypadat, že jsou ty v
 > 22 % je šum a nikdo by z něj neměl nic vyvozovat. Rozdíl mezi 98 % stropu a
 > 0 % zobecnění šum není — na to je příliš velký a má zřejmou příčinu.
 
-## Co z návrhu beru beze změny
+### Oprava: ta metrika měří dvě věci najednou a jednu z nich trestá
+
+Křížová metrika výše předpokládá, že šablona dotazu má mít **jeden** správný
+faktový cíl, a když jich má víc, počítá to jako chybu. To je špatně.
+
+Šablona nemá identifikovat konkrétní odpověď, ale **pole odpovědi** — druh
+místa, kde odpověď leží. „Kde se narodil X?" má trefit rodiště u všech autorů
+naráz; že jich zasáhne dvanáct, je správné chování, ne rozostření. Teprve
+druhý krok, zúžení podle entity, z toho pole vybere jednu.
+
+Metrika tedy musí být dvoustupňová:
+
+1. **zásah pole** — obsahuje množina faktových šablon, na které vzor dotazu
+   ukazuje, tu správnou? Tohle měří, co dělá aktivační pole.
+2. **výběr v poli** — vybere se v něm správná instance podle entity? Tohle
+   pole nedělá a dělat nemá; je to úloha pro identitu a koreferenci.
+
+Čísla výše míchají obojí dohromady a odečítají body za to, co je záměr. Než
+se z nich bude cokoli vyvozovat, musí se rozdělit — a hlavně přeměřit na
+korpusu, kde vůbec je co zasáhnout. Na osmi větách o Karlovi a Alfonsovi
+nemá „pole odpovědi" jak vzniknout, protože každý fakt je v textu jednou.
+
+### Doplněno později: na větším korpusu to vypadá jinak
+
+Všechna čísla výše jsou z korpusu o **86 tokenech faktů**. Postavili jsme
+baseline z dvanácti wikipedických článků o českých spisovatelích —
+**3478 vět, 65 564 tokenů**, tedy zhruba sedmisetnásobek — a přeměřili:
+
+| r | středů | šablon | poměr | vzorů sdílených ≥ 2 slovy |
+|---:|---:|---:|---:|---:|
+| 0 | 52 150 | 2 514 | **0,05** | 1 261 |
+| 1 | 52 150 | 26 205 | **0,50** | 5 586 |
+| 2 | 52 150 | 46 197 | 0,89 | 1 440 |
+| 3 | 52 150 | 48 940 | 0,94 | 518 |
+
+Na osmi větách vycházel poměr při r=1 na 0,95. Tady vychází **0,50** a
+**5 586 vzorů sdílí víc než jedno slovo**. Nejčastější vzor se opakuje
+363krát napříč 38 různými slovy.
+
+**Závěr „zobecnění umírá" byl z velké části artefakt velikosti korpusu.**
+Na 86 tokenech je každý kontext jedinečný prostě proto, že se text nemá kde
+opakovat — nešlo tam nic naměřit, jen se to tvářilo jako měření.
+
+Co platí dál: poměr **pořád roste s r** (0,05 → 0,94), takže směr té úvahy
+sedí — jemnější reprezentace znamená míň sdílení. Změnila se ale absolutní
+úroveň i to, kde je zlom. Než se cokoli začne přidávat nebo ubírat, patří
+to přeměřit tady, ne na osmi větách.
 
 **Sémantické role nad pádem.** `Case=Dat` je tvar, `Recipient` je význam. Pád
 se mění s konstrukcí, role ne. Nejsilnější jednotlivý bod celého návrhu.
@@ -175,7 +221,9 @@ z dvaceti kapitol. Podle měření to má být obráceně.
 
 ## Co zůstává otevřené
 
-* Jaká úspěšnost je vlastně cíl? 22 % je výchozí stav; nevíme, co je dobré.
+* Jaká úspěšnost je vlastně cíl? 22 % je výchozí stav při metrice, o které
+  výše píšu, že měří špatně; po rozdělení na zásah pole a výběr v poli bude
+  jiné a nevíme, co je dobré.
 * Má se pro fakta a dotazy brát jiná sada atributů? Měření napovídá, že ano —
   nejlepší výsledek dalo `r_q=1, r_f=0`, tedy různé nastavení pro každou
   stranu. Je to na hraně šumu, ale směr sedí s tím, že otázka a fakt jsou

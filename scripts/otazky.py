@@ -168,8 +168,15 @@ def krok_generuj():
                 continue
             videno.add(klic)
             otazky.append(text)
+            # KLÍČ JE STABILNÍ, ne pozice v korpusu. Pozice přežije přesně do
+            # příští přestavby: po rozšíření z 12 na 34 článků ukazovala
+            # jinam a měření spadlo ze 100 % na 0 %, aniž by to cokoli
+            # ohlásilo. Dokument a pořadí věty v něm to přečkají.
             zlata.append({"otazka": len(otazky) - 1, "text": text,
-                          "veta": vi, "rozsah": n["rozsah"], "typ": typ,
+                          "dok": veta[0].get("dok", ""),
+                          "vd": veta[0].get("vd", -1),
+                          "veta": vi,          # jen pro čtení, neopírat se
+                          "rozsah": n["rozsah"], "typ": typ,
                           "entita": kdo,
                           "odpoved": " ".join(veta[j]["form"] for j in n["rozsah"])})
     os.makedirs(os.path.dirname(ZLATA), exist_ok=True)

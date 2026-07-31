@@ -10,6 +10,7 @@ Průchod má tři kroky a každý se dá spustit zvlášť:
     python3 scripts/baseline.py vety      # text → věty (bez rozboru)
     python3 scripts/baseline.py rozbor    # věty → tokeny (lokální UDPipe)
     python3 scripts/baseline.py koreference   # doplní podměty
+    python3 scripts/baseline.py zapis     # agenti + druh výpovědi + korpus
     python3 scripts/baseline.py vse
 
 DOPLŇOVÁNÍ PODMĚTU je tu schválně jako vlastní krok a jeho výsledek je
@@ -43,6 +44,7 @@ KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, KOREN)
 
 from core import Config  # noqa: E402
+from core.agents import oznacit_korpus  # noqa: E402
 from core.log import log, nastavit  # noqa: E402
 
 SUROVE = os.path.join(KOREN, "data", "raw")
@@ -319,7 +321,21 @@ def krok_koreference() -> dict:
 def krok_zapis() -> None:
     with open(ROZEBRANE, encoding="utf-8") as f:
         clanky = json.load(f)
-    vety = [v for kdo in sorted(clanky) for v in clanky[kdo]]
+    # PŮVOD VĚTY. Bez něj se dá na větu odkazovat jen pozicí v korpusu — a ta
+    # přežije přesně do příští přestavby. Doplatila na to zlatá sada: po
+    # rozšíření z 12 na 34 článků ukazovala jinam a spadla ze 100 % na 0 %,
+    # aniž by to cokoli ohlásilo.
+    #
+    # Drží se MIMO `acts`, stejně jako `hodnota`: do vektoru nesmí. Kdyby se
+    # dostal dovnitř, rozpadly by se šablony po autorech — 34 hodnot na
+    # každém tokenu je nejhorší možná kombinace pokrytí a mohutnosti.
+    vety = []
+    for kdo in sorted(clanky):
+        for poradi, v in enumerate(clanky[kdo]):
+            for t in v:
+                t["dok"] = kdo
+                t["vd"] = poradi          # pořadí věty v dokumentu
+            vety.append(v)
     # Lemma do pole nepatří. `id` a `head` ANO — nejsou v `acts`, takže se
     # do vektoru nedostanou, ale bez nich nejde poznat, co na čem závisí.
     # První pokus je zahazoval a doplatily na to dvě věci: koreference brala
@@ -328,6 +344,11 @@ def krok_zapis() -> None:
     for v in vety:
         for t in v:
             t.pop("lemma", None)
+    # AGENTI JSOU KROK PŘÍPRAVY, ne něco, co se pustí zvlášť. Dřív se
+    # spouštěli ad hoc a přepsáním korpusu mlčky zmizeli — přesně ta tichá
+    # vada, na kterou conBond nasadil health.py.
+    souhrn = oznacit_korpus(vety)
+    log.info("agenti označili", **souhrn)
     pocty = oznacit_druh(vety)
     log.info("druh výpovědi označen", **pocty,
              podil_prozy=f"{100*pocty['proza']/max(len(vety),1):.0f} %")

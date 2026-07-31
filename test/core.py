@@ -420,6 +420,17 @@ ok(isinstance(v["aktivace"]["vety"], list), "věty jdou ven jako množina, to ne
 ok(v["typ"] == "Typ=misto", f"tázací tvar dal {v['typ']}")
 print(f"  aktivace: {v['aktivace']['svitici']} · typ {v['typ']}")
 
+print("\n— původ věty se drží MIMO acts —")
+# Bez původu se dá na větu odkazovat jen pozicí v korpusu a ta přežije do
+# příští přestavby. Do vektoru ale nesmí: 34 hodnot na každém tokenu by
+# rozpadlo šablony po autorech.
+korpus = UlozisteSouboru(config=CONFIG).nacist_korpus("facts")
+ma_puvod = sum(1 for v in korpus if v and "dok" in v[0])
+prosaklo = [a for v in korpus for t in v for a in t["acts"]
+            if a.startswith(("Dok=", "Vd="))]
+print(f"  vět s původem: {ma_puvod}/{len(korpus)} · v acts prosáklo: {len(prosaklo)}")
+ok(not prosaklo, "původ věty se dostal do aktivací a rozpadl by šablony po autorech")
+
 print("\n— výřez: ven jde kousek, čísla zůstávají celá —")
 # Pole se staví CELÉ. Kdyby se stavělo z výřezu, přestaly by být šablony
 # šablonami korpusu a sdílení by se počítalo z náhodného vzorku — přesně ten

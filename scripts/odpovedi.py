@@ -48,9 +48,31 @@ from core.tvrzeni import INSTANCE, PODTRIDA, Tvrzeni, Znalost  # noqa: E402
 ZLATA = os.path.join(KOREN, "data", "gold", "otazky.json")
 
 
-def nacist_zlatou():
+def nacist_zlatou(o=None):
+    """Zlatá sada s klíčem DOKUMENT + pořadí věty v něm, ne pozicí v korpusu.
+
+    Pozice přežije jen do příští přestavby: po rozšíření z 12 na 34 článků
+    ukazovala jinam a měření spadlo ze 100 % na 0 %, aniž by to cokoli
+    ohlásilo. Kdo tu sadu čte, musí ten klíč přeložit — a tady je to jedno
+    místo, aby se překlad nemohl tiše rozejít."""
     with open(ZLATA, encoding="utf-8") as f:
-        return json.load(f)
+        zlata = json.load(f)
+    if o is None:
+        return zlata
+    kam = {}
+    for vi, veta in enumerate(o.vety):
+        if veta:
+            kam[(veta[0].get("dok"), veta[0].get("vd"))] = vi
+    ven, ztraceno = [], 0
+    for z in zlata:
+        vi = kam.get((z.get("dok"), z.get("vd")))
+        if vi is None:
+            ztraceno += 1
+            continue
+        ven.append(dict(z, veta=vi))
+    if ztraceno:
+        print(f"  pozor: {ztraceno} otázek se v korpusu nenašlo podle klíče")
+    return ven
 
 
 def zmerit(o: Odpovidac, zlata, se_znalosti=False):
@@ -119,8 +141,8 @@ def main():
     pole = Pole(UlozisteSouboru(config=Config.nacist()))
     pole.nastavit_polomery(1, 1)
     pole.postavit()
-    zlata = nacist_zlatou()
     o = Odpovidac(pole)
+    zlata = nacist_zlatou(o)
     f = pole.fakta
     print(f"korpus: {len(o.vety)} vět · {f.pocet_stredu()} slov"
           f" · {f.pocet_sablon()} šablon · slovník {len(o.slovnik)} tvarů")

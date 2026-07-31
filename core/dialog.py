@@ -12,6 +12,12 @@ CO ROZHOVOR UMÍ
     Krakatit není báseň             zápor
     ? Krakatit dílo                 dotaz  → ano / ne / nevím
     ?? Krakatit                     rodokmen — čím vším to je
+    Kde se narodil Hrabal?          otázka na OBSAH korpusu
+
+DVA DRUHY OTÁZEK. „Je Krakatit dílo?" se ptá na VZTAH a odpovídá znalost.
+„Kde se narodil Hrabal?" se ptá na OBSAH a odpovídá pole — vrátí kandidáty,
+ne jednu odpověď, protože šablona je abstrakce, která má kandidáty matchnout;
+vybrat z nich je jiná úloha.
 
 TŘI ODPOVĚDI, NE DVĚ. `nevím` není výmluva: pole je monotónní a chybějící
 hrana znamená, že se nikdo neptal, ne že odpověď je ne. Proto se `ne` řekne
@@ -30,8 +36,8 @@ from .tvrzeni import (INSTANCE, PODTRIDA, SYNONYMUM, ZAPOR, Dotaz,
                       Mluvnice, Nejasnost, Tvrzeni, Znalost)
 
 # Druhy záznamu — co se s poslaným textem stalo.
-TVRZENI, OTAZKA, RODOKMEN, NEJASNOST, ODMITNUTO, CHYBA = (
-    "tvrzeni", "otazka", "rodokmen", "nejasnost", "odmitnuto", "chyba")
+TVRZENI, OTAZKA, RODOKMEN, NEJASNOST, ODMITNUTO, CHYBA, OBSAH = (
+    "tvrzeni", "otazka", "rodokmen", "nejasnost", "odmitnuto", "chyba", "obsah")
 
 ZNAK = {PODTRIDA: "⊂", INSTANCE: "∈", SYNONYMUM: "=", ZAPOR: "≠"}
 
@@ -45,19 +51,24 @@ class Zaznam:
     odpoved: str
     hrana: Optional[dict] = None      # {druh, levy, pravy, znak}
     volby: tuple = ()                 # co může člověk rozhodnout
+    nalez: Optional[dict] = None      # aktivace a kandidáti u otázky na obsah
     cas: float = field(default_factory=time.time)
 
     def do_slovniku(self) -> dict:
         return {"text": self.text, "druh": self.druh, "odpoved": self.odpoved,
-                "hrana": self.hrana, "volby": list(self.volby), "cas": self.cas}
+                "hrana": self.hrana, "volby": list(self.volby),
+                "nalez": self.nalez, "cas": self.cas}
 
 
 class Rozhovor:
-    def __init__(self, znalost: Znalost, mluvnice: Optional[Mluvnice] = None):
+    def __init__(self, znalost: Znalost, mluvnice: Optional[Mluvnice] = None,
+                 odpovidac=None):
         self.znalost = znalost
         self.mluvnice = mluvnice or Mluvnice()
+        self.odpovidac = odpovidac
         self.historie: list[Zaznam] = []
         self.nejasne: Optional[Nejasnost] = None
+        self.posledni_nalez: Optional[dict] = None
 
     # ---- příjem ------------------------------------------------------
     def poslat(self, text: str) -> Zaznam:
@@ -74,7 +85,30 @@ class Rozhovor:
             return self.zapsat(self.rodokmen(text[2:]))
         if text.startswith("?"):
             return self.zapsat(self.odpovedet(text[1:]))
+        # Otázka na OBSAH se pozná tázacím tvarem a jde do pole, ne do
+        # znalosti — „Kde se narodil Hrabal?" žádný vztah nezakládá.
+        if self.odpovidac is not None and self.odpovidac.je_na_obsah(text):
+            return self.zapsat(self.z_pole(text))
         return self.zapsat(self.prijmout(text))
+
+    def z_pole(self, text: str) -> Zaznam:
+        """Odpověď z korpusu. Vrací KANDIDÁTY, ne jedno slovo: šablona je
+        abstrakce, která má kandidáty matchnout, ne mezi nimi vybrat."""
+        v = self.odpovidac.odpovedet(text)
+        self.posledni_nalez = v
+        a = v["aktivace"]
+        kde = f"Ent={a['entita']} ({a['vet_entity']} vět)" if a["entita"] else "bez osoby"
+        tvary = ", ".join(f"{t} ({n})" for t, n in a["svitici"].items() if n)
+        if not v["kandidati"]:
+            popis = f"v poli není nic typu {v['typ']} — {kde}"
+            if a["nezname"]:
+                popis += f"; nesvítí: {', '.join(a['nezname'])}"
+            return Zaznam(text, OBSAH, popis, nalez=v)
+        popis = (f"{len(v['kandidati'])} kandidátů z {v['vet']} vět · {kde}"
+                 + (f" · {tvary}" if tvary else "")
+                 + (" · sloveso nesedlo, beru celou osobu" if a.get("siroko") else "")
+                 + (" · pomohla znalost" if v["znalost_pomohla"] else ""))
+        return Zaznam(text, OBSAH, popis, nalez=v)
 
     def prijmout(self, text: str) -> Zaznam:
         vysledek = self.mluvnice.rozeber(text)
@@ -212,6 +246,7 @@ class Rozhovor:
     def vypsat_stav(self) -> dict:
         return {"historie": self.vypsat_historii(),
                 "znalost": self.vypsat_znalost(),
+                "nalez": self.posledni_nalez,
                 "ceka": self.ceka_na_rozhodnuti()}
 
     def zapomenout(self) -> None:
@@ -220,4 +255,5 @@ class Rozhovor:
         Znalost, protože hrany z dialogu už v ní leží promíchané s ním."""
         self.historie.clear()
         self.nejasne = None
+        self.posledni_nalez = None
         self.znalost.vycistit()

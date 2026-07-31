@@ -16,7 +16,7 @@ from core import (Config, Nastaveni, Pole, SitkoStredu,  # noqa: E402
                   SitkoStupnovane, SitkoVse, Skladac, UlozisteSouboru,
                   ZdrojZTokenu, filtruje_stred, korpusy_ven, nastavit_log,
                   pole_ven, prehled_sablon, vertikaly_odvozenych,
-                  Vyrez)
+                  Odpovidac, Vyrez)
 from core.compose import popsat_zaznam  # noqa: E402
 from core.dialog import Rozhovor  # noqa: E402
 from core.language import Jazyk  # noqa: E402
@@ -359,7 +359,8 @@ ok(r3.poslat("Je Šmoula pohádková bytost?").odpoved.startswith("ano"),
 print(f"  víceslovný pojem: {r3.historie[-1].odpoved}")
 
 stav = r.vypsat_stav()
-ok(set(stav) == {"historie", "znalost", "ceka"}, "stav pro prohlížeč má jiné klíče")
+ok(set(stav) == {"historie", "znalost", "nalez", "ceka"},
+   f"stav pro prohlížeč má jiné klíče: {sorted(stav)}")
 ok(stav["znalost"]["cisla"]["tvrzeni"] == len(r.znalost.tvrzeni), "čísla nesedí")
 r.zapomenout()
 ok(not r.znalost.tvrzeni and not r.znalost.nadrazene and not r.znalost.zapory,
@@ -404,6 +405,20 @@ ok(set(ven) >= {"nastaveni", "klic_mapovani", "slovnik", "f", "q"},
 ok(len(ven["f"]["radky"]) == pole.fakta.tok.pocet_radku(), "rozvržení řádků nesedí")
 ok(ven["f"]["cisla"]["sablon"] == 71, "čísla v exportu nesedí s modelem")
 print(f"  klíčů: {', '.join(sorted(ven))} · řádků f {len(ven['f']['radky'])}")
+
+print("\n— odpovídač: osoba jako aktivace, sloveso jako tvar —")
+# Osoba se podle TVARU najít nedá: čeština podmět zahazuje a identita sedí
+# jako aktivace Ent=. Hledání podle tvaru dalo na spisovatelském korpusu 1 %.
+pole = nove_pole()
+odp = Odpovidac(pole)
+ok(odp.je_na_obsah("Kde se narodil Karel?"), "otázka na obsah se nepoznala")
+ok(not odp.je_na_obsah("Je Krakatit dílo?"), "otázka na vztah se čte jako obsah")
+ok(not odp.je_na_obsah("Karel je spisovatel."), "tvrzení se čte jako otázka")
+v = odp.odpovedet("Kde se jmenuje Karel?")
+ok(set(v) >= {"aktivace", "typ", "kandidati", "odpoved"}, "nález má jiné klíče")
+ok(isinstance(v["aktivace"]["vety"], list), "věty jdou ven jako množina, to není JSON")
+ok(v["typ"] == "Typ=misto", f"tázací tvar dal {v['typ']}")
+print(f"  aktivace: {v['aktivace']['svitici']} · typ {v['typ']}")
 
 print("\n— výřez: ven jde kousek, čísla zůstávají celá —")
 # Pole se staví CELÉ. Kdyby se stavělo z výřezu, přestaly by být šablony

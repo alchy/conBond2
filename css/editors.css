@@ -344,3 +344,41 @@ li.skryto { color:var(--muted); font-size:11px; font-style:italic; }
   .vz .sl[data-o="0"] { background:var(--hrube); color:#fff; }
   .vz .tvary { font-size:12px; color:var(--ink2); line-height:1.5; }
   .vz .vic { color:var(--muted); }
+
+  /* ---- kandidáti odpovědi -------------------------------------------- */
+  .kandidati { width:min(520px, 42vw); }
+  .kandidati .akt { display:flex; flex-direction:column; gap:4px;
+                    margin-bottom:10px; }
+  .kandidati .akt .r { display:flex; flex-wrap:wrap; gap:4px;
+                       align-items:baseline; }
+  .kandidati .akt .r > span { font-size:11px; color:var(--muted);
+                              width:52px; flex:0 0 auto; }
+  .cip { font-style:normal; font-size:11.5px; padding:1px 7px; border-radius:4px;
+         background:var(--grid); color:var(--ink2); }
+  .cip b { color:var(--ink); }
+  .cip.ent { background:var(--hrube); color:#fff; }
+  .cip.ent b { color:#fff; }
+  .cip.zn { background:var(--feats); color:#fff; }
+  /* Tvar, který nesvítí nikde, je důvod, proč odpověď nepřijde. */
+  .cip.pryc { background:transparent; border:1px dashed var(--deprel);
+              color:var(--deprel); }
+
+  .kandidati .pocet { font-size:11px; color:var(--muted); margin-bottom:6px; }
+  .kandidati .kseznam { max-height:420px; overflow-y:auto; }
+  .kand { padding:6px 9px; border-radius:6px; background:var(--plane);
+          border:1px solid var(--ring); margin-bottom:5px; }
+  .kand.prvni { border-color:var(--feats); }
+  .kand b { font-size:13.5px; color:var(--ink); }
+  .kand .vt { font-size:11px; color:var(--muted); margin-left:8px; }
+  .kand .ctx { font-size:11.5px; color:var(--ink2); margin-top:3px;
+               line-height:1.45; }
+
+  details.znalost { margin-top:12px; width:max-content; max-width:1010px; }
+  details.znalost > summary { cursor:pointer; list-style:none;
+                              display:flex; gap:12px; align-items:baseline; }
+  details.znalost > summary::-webkit-details-marker { display:none; }
+  details.znalost > summary::before { content:"›"; color:var(--muted);
+                                      transition:transform .12s ease; }
+  details.znalost[open] > summary::before { transform:rotate(90deg); }
+  details.znalost > summary b { font-size:15px; }
+  details.znalost .cisla { margin-bottom:0; }

@@ -48,6 +48,8 @@ class Jazyk:
     velke_pismeno_je_instance: bool = True
     mesice: dict = field(default_factory=dict)
     uvozuje_rok: tuple = ()
+    tazaci_na_typ: dict = field(default_factory=dict)
+    prazdna: tuple = ()
 
     # ---- načtení -----------------------------------------------------
     @classmethod
@@ -90,3 +92,14 @@ class Jazyk:
 
     def uvozuje(self, slovo: str) -> bool:
         return slovo.lower().strip(".") in self.uvozuje_rok
+
+    def na_co_se_pta(self, text: str) -> Optional[str]:
+        """Druh místa, kde odpověď leží — nebo None, když to není otázka
+        na obsah."""
+        for slovo in text.lower().replace("?", " ").split():
+            if slovo in self.tazaci_na_typ:
+                return self.tazaci_na_typ[slovo]
+        return None
+
+    def je_prazdne(self, slovo: str) -> bool:
+        return slovo in self.prazdna or slovo in self.tazaci_na_typ

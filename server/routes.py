@@ -13,8 +13,8 @@ import sys
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
 
-from core import (CELY, Pole, Skladac, Vyrez, korpusy_ven, log,
-                  pole_ven, prehled_sablon)
+from core import (CELY, Odpovidac, Pole, Skladac, Vyrez, korpusy_ven,
+                  log, pole_ven, prehled_sablon)
 from core.derived import bez_odvozenych, ocistit_korpus
 from core.dialog import Rozhovor
 from core.tvrzeni import INSTANCE, PODTRIDA, Mluvnice, Znalost
@@ -48,6 +48,15 @@ def udelej_handler(config, uloziste, rozbor):
     znalost = Znalost(config.cesta_znalosti())
     znalost.naplnit_ze_svazu(config.cesta_svazu())
     rozhovor = Rozhovor(znalost, Mluvnice(udelej_lemmatizator(rozbor)))
+
+    def pripojit_odpovidac():
+        """Odpovídač potřebuje postavené pole, takže se zapojí líně — první
+        otázka na obsah si ho vyžádá a pak už drží. Sdílí TUTÉŽ znalost jako
+        rozhovor, jinak by expanze neznala, co se právě zadalo."""
+        if rozhovor.odpovidac is None:
+            pole.postavit()
+            rozhovor.odpovidac = Odpovidac(pole, znalost)
+        return rozhovor.odpovidac
 
     class Handler(BaseHTTPRequestHandler):
         server_version = "pole2/3.0"
@@ -258,6 +267,7 @@ def udelej_handler(config, uloziste, rozbor):
             # Dialog: text dovnitř, celý stav ven. Prohlížeč si nic nedopočítává
             # — o tom, co se s větou stalo, rozhoduje jádro.
             if cesta == "/api/dialog":
+                pripojit_odpovidac()
                 rozhovor.poslat(data.get("text") or "")
                 return self.posli(200, rozhovor.vypsat_stav())
 

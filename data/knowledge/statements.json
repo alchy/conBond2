@@ -2,25 +2,14 @@
  "tvrzeni": [
   {
    "druh": "instance",
-   "levy": "karel čapek",
+   "levy": "bohumil hrabal",
    "pravy": "spisovatel",
    "zdroj": "dialog",
-   "cas": 1785494911.1339798,
+   "cas": 1785496025.9332852,
    "jistota": 1.0,
-   "veta": "Karel Čapek je spisovatel.",
-   "levy_tvar": "Karel Čapek",
+   "veta": "Bohumil Hrabal je spisovatel.",
+   "levy_tvar": "Bohumil Hrabal",
    "pravy_tvar": "spisovatel"
-  },
-  {
-   "druh": "podtrida",
-   "levy": "spisovatel",
-   "pravy": "člověk",
-   "zdroj": "dialog",
-   "cas": 1785494916.641276,
-   "jistota": 1.0,
-   "veta": "spisovatel je druh člověka",
-   "levy_tvar": "spisovatel",
-   "pravy_tvar": "člověka"
   }
  ]
 }

@@ -14,12 +14,12 @@ const POPIS = { podtrida: 'podtřída', instance: 'instance',
                 synonymum: 'synonymum', zapor: 'zápor' };
 
 export const UKAZKA = [
+  'Kde se narodil Bohumil Hrabal?',
   'Krakatit je román.',
   'román je druh díla',
   '? Krakatit dílo',
   'Krakatit není báseň',
   '? Krakatit báseň',
-  '? Krakatit film',
 ];
 
 export function postavList() {
@@ -28,9 +28,11 @@ export function postavList() {
     el('p', { class: 'hint', html:
       'Znalost se zadává větou. <b>X je druh Y</b> je podtřída, <b>X je Y</b> '
       + 'instance, <b>X je totéž co Y</b> synonymum, <b>X není Y</b> zápor. '
-      + 'Otázka je <b>? X Y</b>, rodokmen <b>?? X</b>.<br>Když si mluvnice není '
-      + 'jistá, <b>zeptá se</b> — „pes je savec" může být obojí a špatná hrana '
-      + 'se šíří expanzí dál.' }),
+      + 'Otázka na vztah je <b>? X Y</b>, rodokmen <b>?? X</b>.<br>'
+      + '<b>Kde / Kdy / Kolik</b> se ptá na <b>obsah korpusu</b> — odpoví pole '
+      + 'a kandidáti se vypíšou vpravo.<br>Když si mluvnice není jistá, '
+      + '<b>zeptá se</b>: „pes je savec" může být obojí a špatná hrana se šíří '
+      + 'expanzí dál.' }),
     el('div', { class: 'prepis', id: 'dPrepis' }),
     el('div', { class: 'ptani', id: 'dPtani', hidden: '' }),
     el('div', { class: 'radek' }, [
@@ -44,19 +46,35 @@ export function postavList() {
     ]),
   ]);
 
-  const znalost = el('div', { class: 'card znalost' }, [
-    el('h2', {}, 'Co systém ví'),
+  /* Kandidáti dostali místo vpravo, protože jich je hodně a jsou to ta
+     zajímavá data. Šablona je abstrakce, která má kandidáty MATCHNOUT —
+     vybrat z nich jednoho je jiná úloha, tak se ukazují všichni. */
+  const kandidati = el('div', { class: 'card kandidati' }, [
+    el('h2', {}, 'Kandidáti odpovědi'),
+    el('p', { class: 'hint', html:
+      'Otázka na obsah rozsvítí pole: <b>osoba</b> se hledá jako aktivace '
+      + '<code>Ent=</code> (ve větě jako slovo většinou vůbec není — čeština '
+      + 'podmět zahazuje), <b>sloveso</b> jako tvar ve slovníku. Průnik je '
+      + 'pole odpovědi a tázací tvar řekne, jaký <b>druh</b> místa v něm '
+      + 'hledat.' }),
+    el('div', { class: 'akt', id: 'dAkt' }),
+    el('div', { class: 'kseznam', id: 'dKand' }),
+  ]);
+
+  /* Znalost je sbalená: čte se občas, kdežto kandidáti pořád. */
+  const znalost = el('details', { class: 'card znalost', id: 'dZnalost' }, [
+    el('summary', {}, [el('b', {}, 'Co systém ví'),
+      el('span', { class: 'cisla', id: 'dCisla' })]),
     el('p', { class: 'hint', html:
       'Jen hrany <b>z tohohle rozhovoru</b>. Typový svaz z Wikidat je pod tím '
       + 'jako podklad a odvozuje se přes něj taky — proto „Krakatit je dílo" '
       + 'vyjde i tehdy, když se o díle nikdo nezmínil.' }),
-    el('div', { class: 'cisla', id: 'dCisla' }),
     el('div', { class: 'hrany', id: 'dHrany' }),
     el('div', { class: 'pojmy', id: 'dPojmy' }),
   ]);
 
   return el('section', { class: 'sheet', id: 's-dial', hidden: '' },
-    [el('div', { class: 'two' }, [rozhovor, znalost])]);
+    [el('div', { class: 'two' }, [rozhovor, kandidati]), znalost]);
 }
 
 /* ---- vykreslení ------------------------------------------------------ */
@@ -103,6 +121,8 @@ export function prekresli(root, stav, akce) {
     + `<span><b>${c.zapory}</b> záporů</span><span><b>${c.synonyma}</b> synonym</span>`
     + `<span class="muted">${c.uzlu_celkem} uzlů i s podkladem</span>`;
 
+  kresliKandidaty(root, stav.nalez);
+
   root.querySelector('#dHrany').innerHTML = stav.znalost.hrany.length
     ? stav.znalost.hrany.map(h =>
       `<div class="hr ${esc(h.druh)}"><span class="lv">${esc(h.levy)}</span>`
@@ -117,4 +137,38 @@ export function prekresli(root, stav, akce) {
     .filter(p => p.predci.length)
     .map(p => `<div class="rod"><b>${esc(p.jmeno)}</b> ⊂ `
       + p.predci.map(x => esc(x)).join(', ') + '</div>').join('');
+}
+
+
+/* ---- kandidáti -------------------------------------------------------- */
+function kresliKandidaty(root, n) {
+  const akt = root.querySelector('#dAkt');
+  const seznam = root.querySelector('#dKand');
+  if (!n) {
+    akt.innerHTML = '';
+    seznam.innerHTML = '<p class="hint">Zeptej se na obsah: '
+      + '„Kde se narodil Bohumil Hrabal?"</p>';
+    return;
+  }
+  const a = n.aktivace;
+  const tvary = Object.entries(a.svitici).filter(([, k]) => k)
+    .map(([t, k]) => `<i class="cip">${esc(t)} <b>${k}</b></i>`).join('');
+  akt.innerHTML =
+    (a.entita ? `<div class="r"><span>osoba</span><i class="cip ent">Ent=`
+      + `${esc(a.entita)} <b>${a.vet_entity}</b></i></div>` : '')
+    + (tvary ? `<div class="r"><span>tvary</span>${tvary}</div>` : '')
+    + (a.nezname.length ? `<div class="r"><span>nesvítí</span>`
+       + a.nezname.map(t => `<i class="cip pryc">${esc(t)}</i>`).join('') + '</div>' : '')
+    + `<div class="r"><span>pole</span><i class="cip">${n.vet} vět</i>`
+    + `<i class="cip">${esc(n.typ || '—')}</i>`
+    + (a.siroko ? '<i class="cip pryc">sloveso nesedlo — celá osoba</i>' : '')
+    + (n.znalost_pomohla ? '<i class="cip zn">pomohla znalost</i>' : '') + '</div>';
+
+  seznam.innerHTML = n.kandidati.length
+    ? `<div class="pocet">${n.kandidati.length} kandidátů</div>`
+      + n.kandidati.map((k, i) => `<div class="kand${i ? '' : ' prvni'}">`
+        + `<b>${esc(k.text)}</b><span class="vt">věta ${k.veta}</span>`
+        + `<div class="ctx">${esc(k.kontext.slice(0, 150))}${k.kontext.length > 150 ? '…' : ''}</div>`
+        + '</div>').join('')
+    : '<p class="hint">V poli není nic toho druhu.</p>';
 }

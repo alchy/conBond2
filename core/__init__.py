@@ -30,6 +30,7 @@ from .sieve import (SitkoStredu, SitkoStupnovane, SitkoVse,  # noqa: E402
                     filtruje_stred, jmeno_aktivace)
 from .compose import Skladac, Vzor
 from .lexicon import Polozka, Slovnik
+from .roles import Role  # noqa: E402
 from .side import Strana, Vazba
 from .flow import Radek, Tok
 from .storage import UlozisteSouboru
@@ -47,7 +48,7 @@ __all__ = [
     "log", "Log", "nastavit_log", "TICHO", "INFO", "DEBUG",
     "Tok", "Radek", "Okno", "Slot", "zapsat_offset",
     "Slovnik", "Polozka", "Strana", "Vazba",
-    "Skladac", "Vzor",
+    "Skladac", "Vzor", "Role",
     "ZdrojAktivaci", "Uloziste", "SkladacVektoru", "Slucovac", "Sitko",
     "ZdrojZTokenu", "SkladacRetezcem", "SlucovacShodou",
     "SitkoStredu", "SitkoStupnovane", "SitkoVse",

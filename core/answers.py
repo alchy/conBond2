@@ -30,6 +30,7 @@ from typing import Optional
 
 from .field import Pole
 from .language import Jazyk
+from .roles import Role
 from .tvrzeni import Znalost
 
 
@@ -41,6 +42,7 @@ class Odpovidac:
         self.pole = pole
         self.znalost = znalost or Znalost()
         self.jazyk = jazyk or Jazyk.nacist()
+        self.role = Role(self.jazyk)
         self.slovnik = pole.ziskat_slovnik()
         self.vety = pole.uloziste.nacist_korpus("facts")
         self.podle_typu = self._sestavit_navesky()
@@ -224,6 +226,19 @@ class Odpovidac:
         typ = self.jazyk.na_co_se_pta(text)
         o_kom = akt["tvary"] if typ == "Typ=druh" else ()
         nalezy = self.sebrat(vety, typ, o_kom)
+        # ROLE JAKO ZÁCHRANNÁ SÍŤ. Typ našel agent a je přesnější — „v Praze"
+        # ověřil Topos jako místo. Kde agent mlčí (Komu, Čím, Proč, Jak),
+        # rozhodne větný člen z rozboru: „Řekl JIM" je `obl` v dativu a leží
+        # to v datech, jen se na to nikdo nedíval.
+        # …ALE JEN TAM, KDE AGENT VŮBEC NENÍ. Když se ptáme „Kde",
+        # odpovídá Topos, a jeho mlčení je ODPOVĚĎ: v poli žádné místo není.
+        # Přebít ho rolí `kde` znamená vzít první lokál, který se namane —
+        # „Kde se narodil Franz Kafka?" tak vyrobilo „ve svých prózách".
+        # Role proto smí mluvit jen u otázek, které žádný typ nepokrývá:
+        # Komu, Čím, Proč, Jak. Prázdný `typ` je ta podmínka.
+        role = "" if typ else self.role_otazky(text)
+        if not nalezy and role:
+            nalezy = self.sebrat_roli(vety, role)
         # ZÚŽENÍ, KTERÉ NIC NENAJDE, JE HORŠÍ NEŽ ŠIRŠÍ POLE — ale jen když
         # otázce rozumíme celé. „Kdy se narodil Alois Jirásek?" protnulo
         # entitu se slovesem na jedinou větu, a ta žádný čas neměla: rok
@@ -238,12 +253,18 @@ class Odpovidac:
                         and not akt["nezname"])
         if not nalezy and lze_rozsirit:
             sirsi = set(self.podle_entity.get(akt["entita"], ()))
+            # Role se do širšího pole nepouští. Rozšíření zahazuje právě
+            # to, čím se otázka lišila — „S kým se OŽENIL Hrabal" se
+            # v korpusu nepotká ani jednou, a v širším poli má role
+            # `s_kym_cim` na výběr ze všech jeho společníků. Typ přežije,
+            # protože ho ověřil agent: datum je datum i po rozšíření.
+            # Role ověřená není, takže mlčí.
             nalezy = self.sebrat(sirsi, typ, o_kom)
             if nalezy:
                 vety, akt["siroko"] = sirsi, True
         # Množiny se ven neposílají — nález jde rovnou do JSON pro prohlížeč.
         ven = dict(akt, vety=sorted(akt["vety"])[:200])
-        return {"aktivace": ven, "typ": typ, "vet": len(vety),
+        return {"aktivace": ven, "typ": typ, "role": role, "vet": len(vety),
                 "znalost_pomohla": bool(pomohla), "kandidati": nalezy,
                 "odpoved": nalezy[0]["text"] if nalezy else None}
 
@@ -267,6 +288,35 @@ class Odpovidac:
                 else:
                     jine.append(zaznam)
         return out if (kusy and out) else (jine if not kusy else out)
+
+    def role_otazky(self, text: str) -> str:
+        """Role, kterou má mít odpověď. Přísudek ji smí přemapovat —
+        u pojmenování se ptáme „jak", ale odpovědí je jméno.
+
+        Sloveso otázky se hledá podle kmene, protože otázka není rozebraná:
+        „jmenovaly" a „jmenovat" mají společných šest písmen. Je to zkratka,
+        ne rozbor — kdyby se ukázala jako těsná, patří sem UDPipe."""
+        prisudek = ""
+        for t in self.obsahove_tvary(text):
+            for klic in self.jazyk.role_podle_prisudku:
+                if t[:6] and klic.startswith(t[:6]):
+                    prisudek = klic
+                    break
+        return self.role.role_otazky(text, prisudek)
+
+    def sebrat_roli(self, vety, role: str) -> list:
+        """Úseky dané role. Role se počítá až tady, nad větami POLE — ne
+        dopředu nad celým korpusem: pole má desítky vět, korpus 25 755,
+        a rejstřík rolí by stál víc paměti než celé pole."""
+        out = []
+        for vi in sorted(vety):
+            veta = self.vety[vi]
+            for i in self.role.role_vety(veta).get(role, ()):
+                r = self.role.rozsah(veta, i)
+                out.append({"veta": vi, "rozsah": r,
+                            "text": self.text_rozsahu(vi, r),
+                            "kontext": self.text_vety(vi)})
+        return out
 
     # ---- čtení -------------------------------------------------------
     def text_rozsahu(self, vi: int, rozsah) -> str:

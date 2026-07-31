@@ -309,5 +309,57 @@
   "dok": "",
   "navazuje": true,
   "poznamka": "téma NESMÍ zachránit cizí jméno"
+ },
+ {
+  "q": "S kým se oženil Josef Škvorecký?",
+  "expect": [
+   "Zdenou Salivarovou",
+   "Salivarovou"
+  ],
+  "mode": "answer",
+  "kind": "role",
+  "dok": "josef_škvorecký"
+ },
+ {
+  "q": "S kým se oženil Josef Čapek?",
+  "expect": [
+   "Jarmilou"
+  ],
+  "mode": "answer",
+  "kind": "role",
+  "dok": "josef_čapek"
+ },
+ {
+  "q": "S kým se oženil Bohumil Hrabal?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "role",
+  "dok": "bohumil_hrabal"
+ },
+ {
+  "q": "S kým se přátelil Bohumil Hrabal?",
+  "expect": [
+   "Kolářem",
+   "Bondym"
+  ],
+  "mode": "answer",
+  "kind": "role",
+  "dok": "bohumil_hrabal"
+ },
+ {
+  "q": "Jako co pracoval Alois Jirásek?",
+  "expect": [
+   "učitel"
+  ],
+  "mode": "answer",
+  "kind": "role",
+  "dok": "alois_jirásek"
+ },
+ {
+  "q": "S kým se oženil pes domácí?",
+  "expect": [],
+  "mode": "unsure",
+  "kind": "role",
+  "dok": "pes_domácí"
  }
 ]

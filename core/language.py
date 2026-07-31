@@ -50,6 +50,14 @@ class Jazyk:
     uvozuje_rok: tuple = ()
     tazaci_na_typ: dict = field(default_factory=dict)
     prazdna: tuple = ()
+    deprel_na_roli: dict = field(default_factory=dict)
+    tazaci_na_roli: dict = field(default_factory=dict)
+    role_podle_prisudku: dict = field(default_factory=dict)
+    role_popis: dict = field(default_factory=dict)
+    spojky_role: dict = field(default_factory=dict)
+    role_vyzaduji_predlozku: dict = field(default_factory=dict)
+    role_zadaji_jmeno: tuple = ()
+    jmenne_upos: tuple = ()
 
     # ---- načtení -----------------------------------------------------
     @classmethod

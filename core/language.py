@@ -58,6 +58,8 @@ class Jazyk:
     role_vyzaduji_predlozku: dict = field(default_factory=dict)
     role_zadaji_jmeno: tuple = ()
     jmenne_upos: tuple = ()
+    predlozka_na_roli: dict = field(default_factory=dict)
+    tazaci_bez_typu: tuple = ()
 
     # ---- načtení -----------------------------------------------------
     @classmethod
@@ -101,12 +103,25 @@ class Jazyk:
     def uvozuje(self, slovo: str) -> bool:
         return slovo.lower().strip(".") in self.uvozuje_rok
 
+    @staticmethod
+    def tvary_otazky(text: str) -> list:
+        """Tázací tvary od nejdelšího: dvojice před jednotlivými slovy.
+
+        „Jako co pracoval" obsahuje „co", a to samo o sobě ukazuje na druh
+        — tedy na „kdo ten člověk je". Delší tvar proto musí přijít na řadu
+        dřív, jinak otázka po povolání dostane odpověď po totožnosti."""
+        slova = text.lower().replace("?", " ").replace(",", " ").split()
+        dvojice = [" ".join(p) for p in zip(slova, slova[1:])]
+        return dvojice + slova
+
     def na_co_se_pta(self, text: str) -> Optional[str]:
         """Druh místa, kde odpověď leží — nebo None, když to není otázka
-        na obsah."""
-        for slovo in text.lower().replace("?", " ").split():
-            if slovo in self.tazaci_na_typ:
-                return self.tazaci_na_typ[slovo]
+        na obsah, případně když ji má vzít rolový katalog."""
+        for tvar in self.tvary_otazky(text):
+            if tvar in self.tazaci_bez_typu:
+                return None
+            if tvar in self.tazaci_na_typ:
+                return self.tazaci_na_typ[tvar]
         return None
 
     def je_prazdne(self, slovo: str) -> bool:

@@ -100,6 +100,9 @@ function detailTahu(z) {
     }
     r.push('<div class="r"><span>pole</span>'
       + cip(cislo(z.nalez.vet) + ' vět') + cip(z.nalez.typ || '—')
+      /* Role říká, že odpověď nenašel agent, ale větný člen z rozboru —
+         slabší důkaz, takže má být poznat na první pohled. */
+      + (z.nalez.role ? cip('větný člen: ' + z.nalez.role, 'zn') : '')
       + (a.siroko ? cip('širší — něco se nepotkalo', 'pryc') : '')
       + (z.nalez.znalost_pomohla ? cip('pomohla znalost', 'zn') : '') + '</div>');
     kusy.push(`<div class="akt">${r.join('')}</div>`);

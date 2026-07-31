@@ -73,7 +73,9 @@ class Role:
 
     def predlozka(self, veta: Sequence[Mapping], t: Mapping) -> str:
         for x in veta:
-            if x.get("head") == t.get("id") and deprel(x) == "case":
+            # `case` u předložky, `mark` u spojky — „na gymnáziu" i „jako
+            # učitel" jsou totéž: funkční slovo, které roli teprve určí.
+            if x.get("head") == t.get("id") and deprel(x) in ("case", "mark"):
                 return x["lemma"].lower() if x.get("lemma") else x["form"].lower()
         return ""
 
@@ -87,6 +89,11 @@ class Role:
         tabulka = self.jazyk.deprel_na_roli.get(d)
         if not tabulka:
             return ""
+        # Předložka bije pád. „jako učitel" je akuzativ stejně jako
+        # „napsal knihu", ale odpovídá na jinou otázku.
+        z_predlozky = self.jazyk.predlozka_na_roli.get(self.predlozka(veta, token))
+        if z_predlozky:
+            return z_predlozky
         p = pad(token)
         r = tabulka.get(p) or tabulka.get("vychozi", "")
         # Některé role stojí a padají s předložkou. Bez věty se neověří,
@@ -114,8 +121,8 @@ class Role:
         odpovědí je jméno, tedy předmět — a to je vlastnost slovesa, ne
         tázacího tvaru."""
         r = ""
-        for slovo in text.lower().replace("?", " ").split():
-            r = self.jazyk.tazaci_na_roli.get(slovo, "")
+        for tvar in self.jazyk.tvary_otazky(text):
+            r = self.jazyk.tazaci_na_roli.get(tvar, "")
             if r:
                 break
         if not r:

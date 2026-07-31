@@ -196,6 +196,9 @@
     },
     "root": {
       "vychozi": "co_dela"
+    },
+    "advcl:pred": {
+      "vychozi": "jako_co"
     }
   },
   "_tazaci_na_roli": "Tázací tvar → ROLE, kterou má mít odpověď. Doplněk k tazaci_na_typ: kde agent typ nedodá (Komu, Čím, Proč, Jak), rozhodne role z rozboru.",
@@ -224,7 +227,9 @@
     "jaký": "jaky",
     "jaká": "jaky",
     "jaké": "jaky",
-    "který": "jaky"
+    "který": "jaky",
+    "jako co": "jako_co",
+    "jako kdo": "jako_co"
   },
   "_role_podle_prisudku": "Přemapování role odpovědi podle slovesa. U pojmenování se ptáme JAK („Jak se jmenoval?\"), ale odpovědí je JMÉNO, tedy předmět vazby. Jazyk = data, ne větev v kódu.",
   "role_podle_prisudku": {
@@ -251,7 +256,8 @@
     "jak": "příslovečné určení způsobu — Jak?",
     "kolik": "příslovečné určení míry — Kolik?",
     "proc": "příslovečné určení příčiny — Proč?",
-    "jaky": "přívlastek — Jaký? Který? Čí?"
+    "jaky": "přívlastek — Jaký? Který? Čí?",
+    "jako_co": "v jaké roli, čím se živil"
   },
   "_spojky_role": "Podřadicí spojka určuje roli celé vedlejší věty.",
   "spojky_role": {
@@ -276,12 +282,20 @@
     "koho_ceho",
     "s_kym_cim",
     "kolik",
-    "jaky"
+    "jaky",
+    "jako_co"
   ],
   "jmenne_upos": [
     "NOUN",
     "PROPN",
     "NUM",
     "ADJ"
+  ],
+  "predlozka_na_roli": {
+    "jako": "jako_co"
+  },
+  "tazaci_bez_typu": [
+    "jako co",
+    "jako kdo"
   ]
 }

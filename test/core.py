@@ -5,9 +5,12 @@
 """
 
 import os
+import shutil
 import sys
+import tempfile
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+KOREN = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, KOREN)
 
 from core import (Config, Nastaveni, Pole, Skladac, UlozisteSouboru,  # noqa: E402
                   nastavit_log, pole_ven)
@@ -24,8 +27,19 @@ def ok(podminka, zprava):
         print("  ✗ " + zprava)
 
 
+# Testy měří proti VÝCHOZÍ sadě, ne proti pracovní kopii. První verze brala
+# Config.nacist(), takže jakmile se do data/corpora/ nahrál baseline korpus,
+# začala tvrdit čísla z jiných dat, než na kterých běžela. Přesně na tohle
+# je Config: ukáže se na jinou složku, kde jsou jen defaults, a úložiště si
+# je vezme, protože pracovní kopie chybí.
+_DOCASNA = tempfile.mkdtemp(prefix="pole2-test-")
+shutil.copytree(os.path.join(KOREN, "data", "defaults"),
+                os.path.join(_DOCASNA, "defaults"))
+CONFIG = Config(data=_DOCASNA)
+
+
 def nove_pole(**kw):
-    pole = Pole(UlozisteSouboru(config=Config.nacist()))
+    pole = Pole(UlozisteSouboru(config=CONFIG))
     for klic, hodnota in kw.items():
         setattr(pole.nastaveni, klic, hodnota)
     return pole.postavit()
@@ -169,5 +183,6 @@ ok(jinam.slozka("corpora").endswith("corpora"), "podadresář struktury nesedí"
 ok(Config(data="data").data.endswith("/data"), "relativní cesta se nezakotvila")
 print(f"  {jinam}")
 
+shutil.rmtree(_DOCASNA, ignore_errors=True)
 print(f"\n{chyb} KONTROL SELHALO" if chyb else "\nvšechny kontroly prošly")
 sys.exit(1 if chyb else 0)

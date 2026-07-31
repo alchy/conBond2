@@ -27,19 +27,6 @@
  },
  {
   "otazka": 2,
-  "text": "Kdy navštěvoval Alois Jirásek?",
-  "dok": "alois_jirásek",
-  "vd": 10,
-  "veta": 10,
-  "rozsah": [
-   7
-  ],
-  "typ": "Typ=cas",
-  "entita": "alois_jirásek",
-  "odpoved": "1863"
- },
- {
-  "otazka": 3,
   "text": "Kde navštěvoval Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 10,
@@ -52,7 +39,7 @@
   "odpoved": "Broumově"
  },
  {
-  "otazka": 4,
+  "otazka": 3,
   "text": "Kde žil Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 11,
@@ -65,20 +52,7 @@
   "odpoved": "Litomyšli"
  },
  {
-  "otazka": 5,
-  "text": "Kdy se oženil Alois Jirásek?",
-  "dok": "alois_jirásek",
-  "vd": 15,
-  "veta": 15,
-  "rozsah": [
-   13
-  ],
-  "typ": "Typ=cas",
-  "entita": "alois_jirásek",
-  "odpoved": "1859"
- },
- {
-  "otazka": 6,
+  "otazka": 4,
   "text": "Kdy přesídlil Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 18,
@@ -92,7 +66,7 @@
   "odpoved": "roce 1888"
  },
  {
-  "otazka": 7,
+  "otazka": 5,
   "text": "Kde přesídlil Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 18,
@@ -105,7 +79,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 8,
+  "otazka": 6,
   "text": "Kdy žil Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 20,
@@ -119,7 +93,7 @@
   "odpoved": "roku 1903"
  },
  {
-  "otazka": 9,
+  "otazka": 7,
   "text": "Kde pokračoval Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 21,
@@ -132,7 +106,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 10,
+  "otazka": 8,
   "text": "Kde zajížděl Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 27,
@@ -145,7 +119,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 11,
+  "otazka": 9,
   "text": "Kdy navštívil Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 28,
@@ -159,7 +133,7 @@
   "odpoved": "roce 1876"
  },
  {
-  "otazka": 12,
+  "otazka": 10,
   "text": "Kde navštívil Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 28,
@@ -172,7 +146,7 @@
   "odpoved": "Chodsko"
  },
  {
-  "otazka": 13,
+  "otazka": 11,
   "text": "Kde se podíval Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 29,
@@ -185,7 +159,7 @@
   "odpoved": "Drážďan"
  },
  {
-  "otazka": 14,
+  "otazka": 12,
   "text": "Kdy podepsal Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 33,
@@ -198,7 +172,7 @@
   "odpoved": "1917"
  },
  {
-  "otazka": 15,
+  "otazka": 13,
   "text": "Kde vítal Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 35,
@@ -211,7 +185,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 16,
+  "otazka": 14,
   "text": "Kdy zemřel Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 39,
@@ -224,7 +198,7 @@
   "odpoved": "1930"
  },
  {
-  "otazka": 17,
+  "otazka": 15,
   "text": "Kde zemřel Alois Jirásek?",
   "dok": "alois_jirásek",
   "vd": 39,
@@ -237,7 +211,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 18,
+  "otazka": 16,
   "text": "Kde se narodil Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 2,
@@ -250,7 +224,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 19,
+  "otazka": 17,
   "text": "Kde prošel Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 6,
@@ -263,7 +237,7 @@
   "odpoved": "Osvětimí"
  },
  {
-  "otazka": 20,
+  "otazka": 18,
   "text": "Kdy se uprchl Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 7,
@@ -276,7 +250,7 @@
   "odpoved": "1945"
  },
  {
-  "otazka": 21,
+  "otazka": 19,
   "text": "Kde se uprchl Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 7,
@@ -289,20 +263,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 22,
-  "text": "Kdy se oženil Arnošt Lustig?",
-  "dok": "arnošt_lustig",
-  "vd": 11,
-  "veta": 351,
-  "rozsah": [
-   8
-  ],
-  "typ": "Typ=cas",
-  "entita": "arnošt_lustig",
-  "odpoved": "1927"
- },
- {
-  "otazka": 23,
+  "otazka": 20,
   "text": "Kdy studoval Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 14,
@@ -316,7 +277,7 @@
   "odpoved": "roku 1946"
  },
  {
-  "otazka": 24,
+  "otazka": 21,
   "text": "Kdy odjel Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 15,
@@ -330,7 +291,7 @@
   "odpoved": "Roku 1948"
  },
  {
-  "otazka": 25,
+  "otazka": 22,
   "text": "Kde odjel Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 15,
@@ -343,7 +304,7 @@
   "odpoved": "Izraele"
  },
  {
-  "otazka": 26,
+  "otazka": 23,
   "text": "Kdy trávil Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 38,
@@ -356,7 +317,7 @@
   "odpoved": "1968"
  },
  {
-  "otazka": 27,
+  "otazka": 24,
   "text": "Kde trávil Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 38,
@@ -369,7 +330,7 @@
   "odpoved": "Itálii"
  },
  {
-  "otazka": 28,
+  "otazka": 25,
   "text": "Kdy se dozvěděl Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 39,
@@ -384,7 +345,7 @@
   "odpoved": "22 . srpna"
  },
  {
-  "otazka": 29,
+  "otazka": 26,
   "text": "Kde se dozvěděl Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 39,
@@ -397,7 +358,7 @@
   "odpoved": "Československa"
  },
  {
-  "otazka": 30,
+  "otazka": 27,
   "text": "Kdy se přijel Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 45,
@@ -410,7 +371,7 @@
   "odpoved": "1969"
  },
  {
-  "otazka": 31,
+  "otazka": 28,
   "text": "Kde se přijel Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 45,
@@ -423,7 +384,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 32,
+  "otazka": 29,
   "text": "Kde zemřel Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 49,
@@ -436,7 +397,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 33,
+  "otazka": 30,
   "text": "Kde přispíval Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 53,
@@ -449,7 +410,7 @@
   "odpoved": "USA"
  },
  {
-  "otazka": 34,
+  "otazka": 31,
   "text": "Kdy napsal Arnošt Lustig?",
   "dok": "arnošt_lustig",
   "vd": 100,
@@ -463,7 +424,7 @@
   "odpoved": "Roku 1985"
  },
  {
-  "otazka": 35,
+  "otazka": 32,
   "text": "Kde se narodil Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 6,
@@ -476,7 +437,7 @@
   "odpoved": "Židenice"
  },
  {
-  "otazka": 36,
+  "otazka": 33,
   "text": "Kdy zahájil Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 17,
@@ -490,7 +451,7 @@
   "odpoved": "roku 1925"
  },
  {
-  "otazka": 37,
+  "otazka": 34,
   "text": "Kde přešel Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 18,
@@ -503,7 +464,7 @@
   "odpoved": "Nymburce"
  },
  {
-  "otazka": 38,
+  "otazka": 35,
   "text": "Kdy odmaturoval Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 20,
@@ -517,7 +478,7 @@
   "odpoved": "Roku 1934"
  },
  {
-  "otazka": 39,
+  "otazka": 36,
   "text": "Kde pracoval Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 24,
@@ -530,20 +491,7 @@
   "odpoved": "Kostomlatech"
  },
  {
-  "otazka": 40,
-  "text": "Kdy prožil Bohumil Hrabal?",
-  "dok": "bohumil_hrabal",
-  "vd": 27,
-  "veta": 497,
-  "rozsah": [
-   4
-  ],
-  "typ": "Typ=cas",
-  "entita": "bohumil_hrabal",
-  "odpoved": "1950"
- },
- {
-  "otazka": 41,
+  "otazka": 37,
   "text": "Kde prožil Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 27,
@@ -556,20 +504,7 @@
   "odpoved": "Libni"
  },
  {
-  "otazka": 42,
-  "text": "Kdy si vzal Bohumil Hrabal?",
-  "dok": "bohumil_hrabal",
-  "vd": 28,
-  "veta": 498,
-  "rozsah": [
-   14
-  ],
-  "typ": "Typ=cas",
-  "entita": "bohumil_hrabal",
-  "odpoved": "1926"
- },
- {
-  "otazka": 43,
+  "otazka": 38,
   "text": "Kdy nesměl Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 36,
@@ -583,7 +518,7 @@
   "odpoved": "roce 1970"
  },
  {
-  "otazka": 44,
+  "otazka": 39,
   "text": "Kdy se setkal Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 44,
@@ -597,7 +532,7 @@
   "odpoved": "roce 1994"
  },
  {
-  "otazka": 45,
+  "otazka": 40,
   "text": "Kdy se zemřel Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 45,
@@ -611,7 +546,7 @@
   "odpoved": "roce 1997"
  },
  {
-  "otazka": 46,
+  "otazka": 41,
   "text": "Kde se zemřel Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 45,
@@ -624,7 +559,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 47,
+  "otazka": 42,
   "text": "Kdy obdržel Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 51,
@@ -640,7 +575,7 @@
   "odpoved": "30 . dubna 1968"
  },
  {
-  "otazka": 48,
+  "otazka": 43,
   "text": "Kdy obsluhoval Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 68,
@@ -653,7 +588,7 @@
   "odpoved": "1982"
  },
  {
-  "otazka": 49,
+  "otazka": 44,
   "text": "Kdy obsluhoval Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 69,
@@ -666,7 +601,7 @@
   "odpoved": "1982"
  },
  {
-  "otazka": 50,
+  "otazka": 45,
   "text": "Kde obsluhoval Bohumil Hrabal?",
   "dok": "bohumil_hrabal",
   "vd": 69,
@@ -679,7 +614,7 @@
   "odpoved": "Torontu"
  },
  {
-  "otazka": 51,
+  "otazka": 46,
   "text": "Kdy udržela Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 18,
@@ -693,7 +628,7 @@
   "odpoved": "roce 1989"
  },
  {
-  "otazka": 52,
+  "otazka": 47,
   "text": "Kde udržela Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 18,
@@ -706,7 +641,7 @@
   "odpoved": "Česku"
  },
  {
-  "otazka": 53,
+  "otazka": 48,
   "text": "Kdy se léčila Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 52,
@@ -720,7 +655,7 @@
   "odpoved": "roku 1840"
  },
  {
-  "otazka": 54,
+  "otazka": 49,
   "text": "Kde začala psát Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 61,
@@ -733,7 +668,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 55,
+  "otazka": 50,
   "text": "Kde se přestěhovala Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 71,
@@ -746,7 +681,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 56,
+  "otazka": 51,
   "text": "Kdy pobývala Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 79,
@@ -759,7 +694,7 @@
   "odpoved": "1851"
  },
  {
-  "otazka": 57,
+  "otazka": 52,
   "text": "Kdy se zamilovala Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 83,
@@ -773,7 +708,7 @@
   "odpoved": "Roku 1851"
  },
  {
-  "otazka": 58,
+  "otazka": 53,
   "text": "Kdy odjela Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 85,
@@ -786,7 +721,7 @@
   "odpoved": "1852"
  },
  {
-  "otazka": 59,
+  "otazka": 54,
   "text": "Kde odjela Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 85,
@@ -799,7 +734,7 @@
   "odpoved": "Ďarmot"
  },
  {
-  "otazka": 60,
+  "otazka": 55,
   "text": "Kdy se zamilovala Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 92,
@@ -813,7 +748,7 @@
   "odpoved": "Roku 1854"
  },
  {
-  "otazka": 61,
+  "otazka": 56,
   "text": "Kde se odmítala Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 112,
@@ -826,7 +761,7 @@
   "odpoved": "Litomyšle"
  },
  {
-  "otazka": 62,
+  "otazka": 57,
   "text": "Kdy strávila Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 149,
@@ -840,7 +775,7 @@
   "odpoved": "roku 1850"
  },
  {
-  "otazka": 63,
+  "otazka": 58,
   "text": "Kde strávila Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 149,
@@ -853,7 +788,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 64,
+  "otazka": 59,
   "text": "Kdy trávila Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 212,
@@ -866,7 +801,7 @@
   "odpoved": "1851"
  },
  {
-  "otazka": 65,
+  "otazka": 60,
   "text": "Kde si přijela Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 229,
@@ -879,7 +814,7 @@
   "odpoved": "Litomyšle"
  },
  {
-  "otazka": 66,
+  "otazka": 61,
   "text": "Kdy se zúčastnila Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 250,
@@ -893,7 +828,7 @@
   "odpoved": "roce 1843"
  },
  {
-  "otazka": 67,
+  "otazka": 62,
   "text": "Kde se zúčastnila Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 250,
@@ -906,7 +841,7 @@
   "odpoved": "Žofíně"
  },
  {
-  "otazka": 68,
+  "otazka": 63,
   "text": "Kde zvolí Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 304,
@@ -919,7 +854,7 @@
   "odpoved": "Žernově"
  },
  {
-  "otazka": 69,
+  "otazka": 64,
   "text": "Kde se sblíží Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 368,
@@ -932,7 +867,7 @@
   "odpoved": "Vídně"
  },
  {
-  "otazka": 70,
+  "otazka": 65,
   "text": "Kde se žije Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 370,
@@ -945,7 +880,7 @@
   "odpoved": "Vídni"
  },
  {
-  "otazka": 71,
+  "otazka": 66,
   "text": "Kde se spatří Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 390,
@@ -958,7 +893,7 @@
   "odpoved": "Vosova"
  },
  {
-  "otazka": 72,
+  "otazka": 67,
   "text": "Kde si všimla Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 447,
@@ -971,7 +906,7 @@
   "odpoved": "Miskolci"
  },
  {
-  "otazka": 73,
+  "otazka": 68,
   "text": "Kdy neopustila Božena Němcová?",
   "dok": "božena_němcová",
   "vd": 626,
@@ -985,7 +920,7 @@
   "odpoved": "roce 1989"
  },
  {
-  "otazka": 74,
+  "otazka": 69,
   "text": "Kdy se odmaturoval Eduard Bass?",
   "dok": "eduard_bass",
   "vd": 3,
@@ -999,7 +934,7 @@
   "odpoved": "roce 1905"
  },
  {
-  "otazka": 75,
+  "otazka": 70,
   "text": "Kde se odmaturoval Eduard Bass?",
   "dok": "eduard_bass",
   "vd": 3,
@@ -1012,7 +947,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 76,
+  "otazka": 71,
   "text": "Kdy vystupoval Eduard Bass?",
   "dok": "eduard_bass",
   "vd": 4,
@@ -1026,7 +961,7 @@
   "odpoved": "roku 1910"
  },
  {
-  "otazka": 77,
+  "otazka": 72,
   "text": "Kdy začal vystupovat Eduard Bass?",
   "dok": "eduard_bass",
   "vd": 7,
@@ -1039,7 +974,7 @@
   "odpoved": "1913"
  },
  {
-  "otazka": 78,
+  "otazka": 73,
   "text": "Kdy sloužil Eduard Bass?",
   "dok": "eduard_bass",
   "vd": 8,
@@ -1053,7 +988,7 @@
   "odpoved": "letech 1914"
  },
  {
-  "otazka": 79,
+  "otazka": 74,
   "text": "Kde sloužil Eduard Bass?",
   "dok": "eduard_bass",
   "vd": 8,
@@ -1066,7 +1001,7 @@
   "odpoved": "Hradčanech"
  },
  {
-  "otazka": 80,
+  "otazka": 75,
   "text": "Kdy pracoval Eduard Bass?",
   "dok": "eduard_bass",
   "vd": 10,
@@ -1080,7 +1015,7 @@
   "odpoved": "letech 1920"
  },
  {
-  "otazka": 81,
+  "otazka": 76,
   "text": "Kde bydlel Eduard Bass?",
   "dok": "eduard_bass",
   "vd": 18,
@@ -1093,7 +1028,7 @@
   "odpoved": "Podskalí"
  },
  {
-  "otazka": 82,
+  "otazka": 77,
   "text": "Kde se narodil Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 1,
@@ -1106,7 +1041,7 @@
   "odpoved": "Hronově"
  },
  {
-  "otazka": 83,
+  "otazka": 78,
   "text": "Kdy začal studovat Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 3,
@@ -1120,7 +1055,7 @@
   "odpoved": "roku 1927"
  },
  {
-  "otazka": 84,
+  "otazka": 79,
   "text": "Kdy navštěvoval Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 4,
@@ -1134,7 +1069,7 @@
   "odpoved": "roce 1929"
  },
  {
-  "otazka": 85,
+  "otazka": 80,
   "text": "Kde navštěvoval Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 4,
@@ -1147,7 +1082,7 @@
   "odpoved": "Vídni"
  },
  {
-  "otazka": 86,
+  "otazka": 81,
   "text": "Kdy se ukončil Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 5,
@@ -1161,7 +1096,7 @@
   "odpoved": "roku 1930"
  },
  {
-  "otazka": 87,
+  "otazka": 82,
   "text": "Kdy pracoval Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 6,
@@ -1174,7 +1109,7 @@
   "odpoved": "1937"
  },
  {
-  "otazka": 88,
+  "otazka": 83,
   "text": "Kde zvolil Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 8,
@@ -1187,7 +1122,7 @@
   "odpoved": "Brusel"
  },
  {
-  "otazka": 89,
+  "otazka": 84,
   "text": "Kde se usadil Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 11,
@@ -1200,7 +1135,7 @@
   "odpoved": "Yorku"
  },
  {
-  "otazka": 90,
+  "otazka": 85,
   "text": "Kdy se objevil Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 12,
@@ -1214,7 +1149,7 @@
   "odpoved": "roce 1946"
  },
  {
-  "otazka": 91,
+  "otazka": 86,
   "text": "Kde pokračoval Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 14,
@@ -1227,7 +1162,7 @@
   "odpoved": "Norsku"
  },
  {
-  "otazka": 92,
+  "otazka": 87,
   "text": "Kdy získal Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 15,
@@ -1241,7 +1176,7 @@
   "odpoved": "roce 1957"
  },
  {
-  "otazka": 93,
+  "otazka": 88,
   "text": "Kde se živil Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 16,
@@ -1254,7 +1189,7 @@
   "odpoved": "Americe"
  },
  {
-  "otazka": 94,
+  "otazka": 89,
   "text": "Kdy zemřel Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 21,
@@ -1270,7 +1205,7 @@
   "odpoved": "7 . května 1973"
  },
  {
-  "otazka": 95,
+  "otazka": 90,
   "text": "Kde zemřel Egon Hostovský?",
   "dok": "egon_hostovský",
   "vd": 21,
@@ -1283,7 +1218,7 @@
   "odpoved": "Montclair"
  },
  {
-  "otazka": 96,
+  "otazka": 91,
   "text": "Kde se narodil František Halas?",
   "dok": "františek_halas",
   "vd": 1,
@@ -1296,7 +1231,7 @@
   "odpoved": "Brně"
  },
  {
-  "otazka": 97,
+  "otazka": 92,
   "text": "Kde prožil František Halas?",
   "dok": "františek_halas",
   "vd": 4,
@@ -1309,7 +1244,7 @@
   "odpoved": "Kunštátu"
  },
  {
-  "otazka": 98,
+  "otazka": 93,
   "text": "Kde žil František Halas?",
   "dok": "františek_halas",
   "vd": 13,
@@ -1322,7 +1257,7 @@
   "odpoved": "Brně"
  },
  {
-  "otazka": 99,
+  "otazka": 94,
   "text": "Kde se vyučil František Halas?",
   "dok": "františek_halas",
   "vd": 14,
@@ -1335,20 +1270,7 @@
   "odpoved": "Brně"
  },
  {
-  "otazka": 100,
-  "text": "Kdy absolvoval František Halas?",
-  "dok": "františek_halas",
-  "vd": 19,
-  "veta": 1794,
-  "rozsah": [
-   7
-  ],
-  "typ": "Typ=cas",
-  "entita": "františek_halas",
-  "odpoved": "1923"
- },
- {
-  "otazka": 101,
+  "otazka": 95,
   "text": "Kde absolvoval František Halas?",
   "dok": "františek_halas",
   "vd": 19,
@@ -1361,7 +1283,7 @@
   "odpoved": "Brně"
  },
  {
-  "otazka": 102,
+  "otazka": 96,
   "text": "Kde se nevrátil František Halas?",
   "dok": "františek_halas",
   "vd": 20,
@@ -1374,7 +1296,7 @@
   "odpoved": "Brna"
  },
  {
-  "otazka": 103,
+  "otazka": 97,
   "text": "Kdy se podnikl František Halas?",
   "dok": "františek_halas",
   "vd": 21,
@@ -1388,7 +1310,7 @@
   "odpoved": "roce 1931"
  },
  {
-  "otazka": 104,
+  "otazka": 98,
   "text": "Kde se podnikl František Halas?",
   "dok": "františek_halas",
   "vd": 21,
@@ -1401,7 +1323,7 @@
   "odpoved": "Itálie"
  },
  {
-  "otazka": 105,
+  "otazka": 99,
   "text": "Kdy navštívil František Halas?",
   "dok": "františek_halas",
   "vd": 32,
@@ -1414,7 +1336,7 @@
   "odpoved": "1947"
  },
  {
-  "otazka": 106,
+  "otazka": 100,
   "text": "Kde navštívil František Halas?",
   "dok": "františek_halas",
   "vd": 32,
@@ -1427,7 +1349,7 @@
   "odpoved": "Polsko"
  },
  {
-  "otazka": 107,
+  "otazka": 101,
   "text": "Kdy zemřel František Halas?",
   "dok": "františek_halas",
   "vd": 35,
@@ -1443,7 +1365,7 @@
   "odpoved": "27 . října 1949"
  },
  {
-  "otazka": 108,
+  "otazka": 102,
   "text": "Kde zemřel František Halas?",
   "dok": "františek_halas",
   "vd": 35,
@@ -1456,7 +1378,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 109,
+  "otazka": 103,
   "text": "Kde se staví František Halas?",
   "dok": "františek_halas",
   "vd": 61,
@@ -1469,7 +1391,7 @@
   "odpoved": "Francii"
  },
  {
-  "otazka": 110,
+  "otazka": 104,
   "text": "Kde se narodil František Hrubín?",
   "dok": "františek_hrubín",
   "vd": 1,
@@ -1482,7 +1404,7 @@
   "odpoved": "Vinohradech"
  },
  {
-  "otazka": 111,
+  "otazka": 105,
   "text": "Kde prožil František Hrubín?",
   "dok": "františek_hrubín",
   "vd": 4,
@@ -1495,7 +1417,7 @@
   "odpoved": "Lešanech"
  },
  {
-  "otazka": 112,
+  "otazka": 106,
   "text": "Kde se studoval František Hrubín?",
   "dok": "františek_hrubín",
   "vd": 6,
@@ -1508,7 +1430,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 113,
+  "otazka": 107,
   "text": "Kdy žil František Hrubín?",
   "dok": "františek_hrubín",
   "vd": 16,
@@ -1522,7 +1444,7 @@
   "odpoved": "roku 1945"
  },
  {
-  "otazka": 114,
+  "otazka": 108,
   "text": "Kde žil František Hrubín?",
   "dok": "františek_hrubín",
   "vd": 16,
@@ -1535,7 +1457,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 115,
+  "otazka": 109,
   "text": "Kde pobýval František Hrubín?",
   "dok": "františek_hrubín",
   "vd": 17,
@@ -1548,7 +1470,7 @@
   "odpoved": "Chlumu"
  },
  {
-  "otazka": 116,
+  "otazka": 110,
   "text": "Kde roztrhal František Hrubín?",
   "dok": "františek_hrubín",
   "vd": 53,
@@ -1561,7 +1483,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 117,
+  "otazka": 111,
   "text": "Kde se narodil Ivan Klíma?",
   "dok": "ivan_klíma",
   "vd": 3,
@@ -1574,7 +1496,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 118,
+  "otazka": 112,
   "text": "Kdy pracoval Ivan Klíma?",
   "dok": "ivan_klíma",
   "vd": 8,
@@ -1588,7 +1510,7 @@
   "odpoved": "letech 1959"
  },
  {
-  "otazka": 119,
+  "otazka": 113,
   "text": "Kdy vstoupil Ivan Klíma?",
   "dok": "ivan_klíma",
   "vd": 10,
@@ -1602,7 +1524,7 @@
   "odpoved": "roce 1953"
  },
  {
-  "otazka": 120,
+  "otazka": 114,
   "text": "Kdy odjel Ivan Klíma?",
   "dok": "ivan_klíma",
   "vd": 13,
@@ -1616,7 +1538,7 @@
   "odpoved": "roce 1969"
  },
  {
-  "otazka": 121,
+  "otazka": 115,
   "text": "Kde odjel Ivan Klíma?",
   "dok": "ivan_klíma",
   "vd": 13,
@@ -1629,7 +1551,7 @@
   "odpoved": "USA"
  },
  {
-  "otazka": 122,
+  "otazka": 116,
   "text": "Kdy podpořil Ivan Klíma?",
   "dok": "ivan_klíma",
   "vd": 17,
@@ -1643,7 +1565,7 @@
   "odpoved": "roce 2013"
  },
  {
-  "otazka": 123,
+  "otazka": 117,
   "text": "Kde studoval Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 7,
@@ -1656,7 +1578,7 @@
   "odpoved": "Berlíně"
  },
  {
-  "otazka": 124,
+  "otazka": 118,
   "text": "Kde působil Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 12,
@@ -1669,7 +1591,7 @@
   "odpoved": "Vídni"
  },
  {
-  "otazka": 125,
+  "otazka": 119,
   "text": "Kde se patřil Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 15,
@@ -1682,7 +1604,7 @@
   "odpoved": "Rusku"
  },
  {
-  "otazka": 126,
+  "otazka": 120,
   "text": "Kdy podepsal Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 18,
@@ -1696,7 +1618,7 @@
   "odpoved": "roce 1929"
  },
  {
-  "otazka": 127,
+  "otazka": 121,
   "text": "Kdy se pobýval Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 20,
@@ -1710,7 +1632,7 @@
   "odpoved": "letech 1931"
  },
  {
-  "otazka": 128,
+  "otazka": 122,
   "text": "Kde se pobýval Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 20,
@@ -1723,7 +1645,7 @@
   "odpoved": "Rusi"
  },
  {
-  "otazka": 129,
+  "otazka": 123,
   "text": "Kdy zastával Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 31,
@@ -1737,7 +1659,7 @@
   "odpoved": "roku 1945"
  },
  {
-  "otazka": 130,
+  "otazka": 124,
   "text": "Kdy zemřel Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 33,
@@ -1753,7 +1675,7 @@
   "odpoved": "30 . prosince 1952"
  },
  {
-  "otazka": 131,
+  "otazka": 125,
   "text": "Kde zemřel Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 33,
@@ -1766,7 +1688,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 132,
+  "otazka": 126,
   "text": "Kde se věnoval Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 38,
@@ -1779,7 +1701,7 @@
   "odpoved": "Rusi"
  },
  {
-  "otazka": 133,
+  "otazka": 127,
   "text": "Kde se zaměřil Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 51,
@@ -1792,7 +1714,7 @@
   "odpoved": "Rakouska"
  },
  {
-  "otazka": 134,
+  "otazka": 128,
   "text": "Kde nezáleží Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 77,
@@ -1805,7 +1727,7 @@
   "odpoved": "Rusínech"
  },
  {
-  "otazka": 135,
+  "otazka": 129,
   "text": "Kde se odchází Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 97,
@@ -1818,7 +1740,7 @@
   "odpoved": "Ostravy"
  },
  {
-  "otazka": 136,
+  "otazka": 130,
   "text": "Kde se seznámí Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 98,
@@ -1831,7 +1753,7 @@
   "odpoved": "Ostravě"
  },
  {
-  "otazka": 137,
+  "otazka": 131,
   "text": "Kde má Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 107,
@@ -1844,7 +1766,7 @@
   "odpoved": "Československa"
  },
  {
-  "otazka": 138,
+  "otazka": 132,
   "text": "Kde vydal Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 113,
@@ -1857,7 +1779,7 @@
   "odpoved": "SSSR"
  },
  {
-  "otazka": 139,
+  "otazka": 133,
   "text": "Kdy odsoudil Ivan Olbracht?",
   "dok": "ivan_olbracht",
   "vd": 114,
@@ -1870,7 +1792,7 @@
   "odpoved": "1952"
  },
  {
-  "otazka": 140,
+  "otazka": 134,
   "text": "Kdy opustil Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 10,
@@ -1884,7 +1806,7 @@
   "odpoved": "roce 1857"
  },
  {
-  "otazka": 141,
+  "otazka": 135,
   "text": "Kdy pracoval Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 11,
@@ -1898,7 +1820,7 @@
   "odpoved": "roku 1856"
  },
  {
-  "otazka": 142,
+  "otazka": 136,
   "text": "Kde podnikl Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 15,
@@ -1911,7 +1833,7 @@
   "odpoved": "Německa"
  },
  {
-  "otazka": 143,
+  "otazka": 137,
   "text": "Kdy se zamiloval Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 28,
@@ -1925,7 +1847,7 @@
   "odpoved": "roce 1862"
  },
  {
-  "otazka": 144,
+  "otazka": 138,
   "text": "Kdy se bydlel Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 38,
@@ -1939,7 +1861,7 @@
   "odpoved": "roku 1874"
  },
  {
-  "otazka": 145,
+  "otazka": 139,
   "text": "Kdy onemocněl Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 39,
@@ -1953,7 +1875,7 @@
   "odpoved": "Roku 1880"
  },
  {
-  "otazka": 146,
+  "otazka": 140,
   "text": "Kdy uklouzl Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 40,
@@ -1967,7 +1889,7 @@
   "odpoved": "roce 1888"
  },
  {
-  "otazka": 147,
+  "otazka": 141,
   "text": "Kdy zemřel Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 42,
@@ -1983,7 +1905,7 @@
   "odpoved": "22 . srpna 1891"
  },
  {
-  "otazka": 148,
+  "otazka": 142,
   "text": "Kdy spolupracoval Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 50,
@@ -1997,7 +1919,7 @@
   "odpoved": "roku 1859"
  },
  {
-  "otazka": 149,
+  "otazka": 143,
   "text": "Kdy se vstoupil Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 52,
@@ -2011,7 +1933,7 @@
   "odpoved": "roce 1860"
  },
  {
-  "otazka": 150,
+  "otazka": 144,
   "text": "Kdy zveřejnil Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 73,
@@ -2025,7 +1947,7 @@
   "odpoved": "roce 1854"
  },
  {
-  "otazka": 151,
+  "otazka": 145,
   "text": "Kdy publikoval Jan Neruda?",
   "dok": "jan_neruda",
   "vd": 148,
@@ -2038,7 +1960,7 @@
   "odpoved": "1869"
  },
  {
-  "otazka": 152,
+  "otazka": 146,
   "text": "Kde spolupracoval Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 4,
@@ -2051,7 +1973,7 @@
   "odpoved": "Čechách"
  },
  {
-  "otazka": 153,
+  "otazka": 147,
   "text": "Kdy se zúčastnil Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 27,
@@ -2065,7 +1987,7 @@
   "odpoved": "roce 1897"
  },
  {
-  "otazka": 154,
+  "otazka": 148,
   "text": "Kde se zúčastnil Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 27,
@@ -2078,7 +2000,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 155,
+  "otazka": 149,
   "text": "Kde prošel Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 34,
@@ -2091,20 +2013,7 @@
   "odpoved": "Slovensko"
  },
  {
-  "otazka": 156,
-  "text": "Kdy se zamiloval Jaroslav Hašek?",
-  "dok": "jaroslav_hašek",
-  "vd": 37,
-  "veta": 2545,
-  "rozsah": [
-   9
-  ],
-  "typ": "Typ=cas",
-  "entita": "jaroslav_hašek",
-  "odpoved": "1887"
- },
- {
-  "otazka": 157,
+  "otazka": 150,
   "text": "Kdy měl Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 41,
@@ -2118,7 +2027,7 @@
   "odpoved": "roce 1909"
  },
  {
-  "otazka": 158,
+  "otazka": 151,
   "text": "Kdy přispíval Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 47,
@@ -2132,7 +2041,7 @@
   "odpoved": "roku 1911"
  },
  {
-  "otazka": 159,
+  "otazka": 152,
   "text": "Kdy založil Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 48,
@@ -2146,7 +2055,7 @@
   "odpoved": "roce 1911"
  },
  {
-  "otazka": 160,
+  "otazka": 153,
   "text": "Kdy se strávil Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 53,
@@ -2159,7 +2068,7 @@
   "odpoved": "1912"
  },
  {
-  "otazka": 161,
+  "otazka": 154,
   "text": "Kde popsal Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 54,
@@ -2172,7 +2081,7 @@
   "odpoved": "Chotěboři"
  },
  {
-  "otazka": 162,
+  "otazka": 155,
   "text": "Kdy narukoval Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 64,
@@ -2186,7 +2095,7 @@
   "odpoved": "roce 1915"
  },
  {
-  "otazka": 163,
+  "otazka": 156,
   "text": "Kde narukoval Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 64,
@@ -2199,7 +2108,7 @@
   "odpoved": "Budějovicích"
  },
  {
-  "otazka": 164,
+  "otazka": 157,
   "text": "Kdy padl Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 66,
@@ -2215,7 +2124,7 @@
   "odpoved": "24 . září 1915"
  },
  {
-  "otazka": 165,
+  "otazka": 158,
   "text": "Kde padl Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 66,
@@ -2228,7 +2137,7 @@
   "odpoved": "Chorupan"
  },
  {
-  "otazka": 166,
+  "otazka": 159,
   "text": "Kdy publikoval Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 70,
@@ -2241,7 +2150,7 @@
   "odpoved": "1917"
  },
  {
-  "otazka": 167,
+  "otazka": 160,
   "text": "Kdy vstoupil Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 71,
@@ -2254,7 +2163,7 @@
   "odpoved": "1918"
  },
  {
-  "otazka": 168,
+  "otazka": 161,
   "text": "Kde nesouhlasil Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 74,
@@ -2267,7 +2176,7 @@
   "odpoved": "Moskvy"
  },
  {
-  "otazka": 169,
+  "otazka": 162,
   "text": "Kde působil Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 78,
@@ -2280,7 +2189,7 @@
   "odpoved": "Sibiři"
  },
  {
-  "otazka": 170,
+  "otazka": 163,
   "text": "Kde se onemocněl Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 81,
@@ -2293,7 +2202,7 @@
   "odpoved": "Krasnojarsku"
  },
  {
-  "otazka": 171,
+  "otazka": 164,
   "text": "Kdy přijel Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 83,
@@ -2306,7 +2215,7 @@
   "odpoved": "1920"
  },
  {
-  "otazka": 172,
+  "otazka": 165,
   "text": "Kde přijel Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 83,
@@ -2319,7 +2228,7 @@
   "odpoved": "Československa"
  },
  {
-  "otazka": 173,
+  "otazka": 166,
   "text": "Kde navštěvoval Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 89,
@@ -2332,7 +2241,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 174,
+  "otazka": 167,
   "text": "Kdy odjel Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 91,
@@ -2348,7 +2257,7 @@
   "odpoved": "25 . srpna 1921"
  },
  {
-  "otazka": 175,
+  "otazka": 168,
   "text": "Kde odjel Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 91,
@@ -2361,7 +2270,7 @@
   "odpoved": "Lipnice"
  },
  {
-  "otazka": 176,
+  "otazka": 169,
   "text": "Kde začal psát Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 93,
@@ -2374,7 +2283,7 @@
   "odpoved": "Lipnici"
  },
  {
-  "otazka": 177,
+  "otazka": 170,
   "text": "Kdy zemřel Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 96,
@@ -2390,7 +2299,7 @@
   "odpoved": "3 . ledna 1923"
  },
  {
-  "otazka": 178,
+  "otazka": 171,
   "text": "Kdy se vyznamenal Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 105,
@@ -2404,7 +2313,7 @@
   "odpoved": "Roku 1918"
  },
  {
-  "otazka": 179,
+  "otazka": 172,
   "text": "Kde se vrátil Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 121,
@@ -2417,7 +2326,7 @@
   "odpoved": "Rusku"
  },
  {
-  "otazka": 180,
+  "otazka": 173,
   "text": "Kde utekl Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 122,
@@ -2430,7 +2339,7 @@
   "odpoved": "Ruska"
  },
  {
-  "otazka": 181,
+  "otazka": 174,
   "text": "Kde má Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 186,
@@ -2443,7 +2352,7 @@
   "odpoved": "Rusku"
  },
  {
-  "otazka": 182,
+  "otazka": 175,
   "text": "Kde má Jaroslav Hašek?",
   "dok": "jaroslav_hašek",
   "vd": 187,
@@ -2456,7 +2365,7 @@
   "odpoved": "Bugulma"
  },
  {
-  "otazka": 183,
+  "otazka": 176,
   "text": "Kdy se narodil Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 5,
@@ -2471,7 +2380,7 @@
   "odpoved": "5 . října"
  },
  {
-  "otazka": 184,
+  "otazka": 177,
   "text": "Kde se narodil Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 5,
@@ -2484,20 +2393,7 @@
   "odpoved": "Žižkově"
  },
  {
-  "otazka": 185,
-  "text": "Kdy odbýval Jaroslav Seifert?",
-  "dok": "jaroslav_seifert",
-  "vd": 10,
-  "veta": 2801,
-  "rozsah": [
-   19
-  ],
-  "typ": "Typ=cas",
-  "entita": "jaroslav_seifert",
-  "odpoved": "1912"
- },
- {
-  "otazka": 186,
+  "otazka": 178,
   "text": "Kde odbýval Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 10,
@@ -2510,7 +2406,7 @@
   "odpoved": "Žižkově"
  },
  {
-  "otazka": 187,
+  "otazka": 179,
   "text": "Kde se vstoupil Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 14,
@@ -2523,7 +2419,7 @@
   "odpoved": "Československa"
  },
  {
-  "otazka": 188,
+  "otazka": 180,
   "text": "Kdy začal pracovat Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 20,
@@ -2537,7 +2433,7 @@
   "odpoved": "roku 1930"
  },
  {
-  "otazka": 189,
+  "otazka": 181,
   "text": "Kdy se připojil Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 22,
@@ -2550,20 +2446,7 @@
   "odpoved": "1938"
  },
  {
-  "otazka": 190,
-  "text": "Kdy působil Jaroslav Seifert?",
-  "dok": "jaroslav_seifert",
-  "vd": 23,
-  "veta": 2814,
-  "rozsah": [
-   9
-  ],
-  "typ": "Typ=cas",
-  "entita": "jaroslav_seifert",
-  "odpoved": "1939"
- },
- {
-  "otazka": 191,
+  "otazka": 182,
   "text": "Kdy se zanechal Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 25,
@@ -2577,7 +2460,7 @@
   "odpoved": "roce 1949"
  },
  {
-  "otazka": 192,
+  "otazka": 183,
   "text": "Kde se oženil Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 31,
@@ -2590,7 +2473,7 @@
   "odpoved": "Praha"
  },
  {
-  "otazka": 193,
+  "otazka": 184,
   "text": "Kde se zapojil Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 36,
@@ -2603,7 +2486,7 @@
   "odpoved": "Československu"
  },
  {
-  "otazka": 194,
+  "otazka": 185,
   "text": "Kdy odmítl Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 45,
@@ -2616,7 +2499,7 @@
   "odpoved": "1949"
  },
  {
-  "otazka": 195,
+  "otazka": 186,
   "text": "Kdy se začal věnovat Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 47,
@@ -2630,7 +2513,7 @@
   "odpoved": "roce 1949"
  },
  {
-  "otazka": 196,
+  "otazka": 187,
   "text": "Kdy spolupracoval Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 49,
@@ -2644,7 +2527,7 @@
   "odpoved": "roku 1955"
  },
  {
-  "otazka": 197,
+  "otazka": 188,
   "text": "Kdy uspořádal Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 72,
@@ -2658,7 +2541,7 @@
   "odpoved": "roce 1951"
  },
  {
-  "otazka": 198,
+  "otazka": 189,
   "text": "Kdy obdržel Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 74,
@@ -2672,7 +2555,7 @@
   "odpoved": "roce 1984"
  },
  {
-  "otazka": 199,
+  "otazka": 190,
   "text": "Kdy zemřel Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 81,
@@ -2685,7 +2568,7 @@
   "odpoved": "1986"
  },
  {
-  "otazka": 200,
+  "otazka": 191,
   "text": "Kde zemřel Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 81,
@@ -2698,7 +2581,7 @@
   "odpoved": "Strahově"
  },
  {
-  "otazka": 201,
+  "otazka": 192,
   "text": "Kdy se publikuje Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 115,
@@ -2712,7 +2595,7 @@
   "odpoved": "roce 1937"
  },
  {
-  "otazka": 202,
+  "otazka": 193,
   "text": "Kde se publikuje Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 115,
@@ -2725,7 +2608,7 @@
   "odpoved": "Mnichovu"
  },
  {
-  "otazka": 203,
+  "otazka": 194,
   "text": "Kdy se pokračuje Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 130,
@@ -2739,7 +2622,7 @@
   "odpoved": "roce 1945"
  },
  {
-  "otazka": 204,
+  "otazka": 195,
   "text": "Kdy lže Jaroslav Seifert?",
   "dok": "jaroslav_seifert",
   "vd": 264,
@@ -2752,7 +2635,7 @@
   "odpoved": "2018"
  },
  {
-  "otazka": 205,
+  "otazka": 196,
   "text": "Kde se narodil Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 3,
@@ -2765,7 +2648,7 @@
   "odpoved": "Lounech"
  },
  {
-  "otazka": 206,
+  "otazka": 197,
   "text": "Kde navštěvoval Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 5,
@@ -2778,7 +2661,7 @@
   "odpoved": "Kolíně"
  },
  {
-  "otazka": 207,
+  "otazka": 198,
   "text": "Kdy studoval Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 6,
@@ -2792,7 +2675,7 @@
   "odpoved": "roku 1862"
  },
  {
-  "otazka": 208,
+  "otazka": 199,
   "text": "Kde studoval Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 6,
@@ -2805,7 +2688,7 @@
   "odpoved": "Slaném"
  },
  {
-  "otazka": 209,
+  "otazka": 200,
   "text": "Kdy přestoupil Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 14,
@@ -2819,7 +2702,7 @@
   "odpoved": "roce 1873"
  },
  {
-  "otazka": 210,
+  "otazka": 201,
   "text": "Kde navázal Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 22,
@@ -2832,7 +2715,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 211,
+  "otazka": 202,
   "text": "Kdy působil Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 26,
@@ -2846,7 +2729,7 @@
   "odpoved": "roku 1875"
  },
  {
-  "otazka": 212,
+  "otazka": 203,
   "text": "Kde působil Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 26,
@@ -2859,7 +2742,7 @@
   "odpoved": "Meranu"
  },
  {
-  "otazka": 213,
+  "otazka": 204,
   "text": "Kde působil Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 27,
@@ -2872,7 +2755,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 214,
+  "otazka": 205,
   "text": "Kdy získal Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 32,
@@ -2886,7 +2769,7 @@
   "odpoved": "Roku 1898"
  },
  {
-  "otazka": 215,
+  "otazka": 206,
   "text": "Kdy se zamiloval Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 125,
@@ -2900,7 +2783,7 @@
   "odpoved": "roce 1874"
  },
  {
-  "otazka": 216,
+  "otazka": 207,
   "text": "Kde se cítil Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 127,
@@ -2913,7 +2796,7 @@
   "odpoved": "Meranu"
  },
  {
-  "otazka": 217,
+  "otazka": 208,
   "text": "Kde napsal Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 133,
@@ -2926,7 +2809,7 @@
   "odpoved": "Meranu"
  },
  {
-  "otazka": 218,
+  "otazka": 209,
   "text": "Kde se léčil Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 159,
@@ -2939,7 +2822,7 @@
   "odpoved": "Stupčicích"
  },
  {
-  "otazka": 219,
+  "otazka": 210,
   "text": "Kdy zemřel Jaroslav Vrchlický?",
   "dok": "jaroslav_vrchlický",
   "vd": 161,
@@ -2955,7 +2838,7 @@
   "odpoved": "9 . září 1912"
  },
  {
-  "otazka": 220,
+  "otazka": 211,
   "text": "Kde vystudoval Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 7,
@@ -2968,7 +2851,7 @@
   "odpoved": "Prostějově"
  },
  {
-  "otazka": 221,
+  "otazka": 212,
   "text": "Kdy se účastnil Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 8,
@@ -2982,7 +2865,7 @@
   "odpoved": "letech 1916"
  },
  {
-  "otazka": 222,
+  "otazka": 213,
   "text": "Kde složil Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 10,
@@ -2995,7 +2878,7 @@
   "odpoved": "Kopečku"
  },
  {
-  "otazka": 223,
+  "otazka": 214,
   "text": "Kdy studoval Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 11,
@@ -3009,7 +2892,7 @@
   "odpoved": "roku 1919"
  },
  {
-  "otazka": 224,
+  "otazka": 215,
   "text": "Kde studoval Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 11,
@@ -3022,7 +2905,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 225,
+  "otazka": 216,
   "text": "Kdy pobýval Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 12,
@@ -3035,7 +2918,7 @@
   "odpoved": "1923"
  },
  {
-  "otazka": 226,
+  "otazka": 217,
   "text": "Kde pobýval Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 12,
@@ -3048,7 +2931,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 227,
+  "otazka": 218,
   "text": "Kdy vystoupil Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 13,
@@ -3062,7 +2945,7 @@
   "odpoved": "roce 1921"
  },
  {
-  "otazka": 228,
+  "otazka": 219,
   "text": "Kde se léčil Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 17,
@@ -3075,7 +2958,7 @@
   "odpoved": "Tatrách"
  },
  {
-  "otazka": 229,
+  "otazka": 220,
   "text": "Kdy se zabýval Jiří Wolker?",
   "dok": "jiří_wolker",
   "vd": 27,
@@ -3088,20 +2971,7 @@
   "odpoved": "1917"
  },
  {
-  "otazka": 230,
-  "text": "Kdy se žil Josef Čapek?",
-  "dok": "josef_čapek",
-  "vd": 3,
-  "veta": 3402,
-  "rozsah": [
-   19
-  ],
-  "typ": "Typ=cas",
-  "entita": "josef_čapek",
-  "odpoved": "1886"
- },
- {
-  "otazka": 231,
+  "otazka": 221,
   "text": "Kde se žil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 3,
@@ -3114,7 +2984,7 @@
   "odpoved": "Svatoňovicích"
  },
  {
-  "otazka": 232,
+  "otazka": 222,
   "text": "Kde chodil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 6,
@@ -3127,7 +2997,7 @@
   "odpoved": "Vrchlabí"
  },
  {
-  "otazka": 233,
+  "otazka": 223,
   "text": "Kdy začal žít Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 8,
@@ -3140,7 +3010,7 @@
   "odpoved": "1904"
  },
  {
-  "otazka": 234,
+  "otazka": 224,
   "text": "Kde začal žít Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 8,
@@ -3153,7 +3023,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 235,
+  "otazka": 225,
   "text": "Kdy maloval Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 9,
@@ -3166,7 +3036,7 @@
   "odpoved": "1904"
  },
  {
-  "otazka": 236,
+  "otazka": 226,
   "text": "Kdy se seznámil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 11,
@@ -3180,7 +3050,7 @@
   "odpoved": "roce 1910"
  },
  {
-  "otazka": 237,
+  "otazka": 227,
   "text": "Kdy odjel Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 12,
@@ -3193,7 +3063,7 @@
   "odpoved": "1910"
  },
  {
-  "otazka": 238,
+  "otazka": 228,
   "text": "Kde odjel Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 12,
@@ -3206,7 +3076,7 @@
   "odpoved": "Paříže"
  },
  {
-  "otazka": 239,
+  "otazka": 229,
   "text": "Kdy se inspiroval Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 26,
@@ -3220,7 +3090,7 @@
   "odpoved": "roku 1928"
  },
  {
-  "otazka": 240,
+  "otazka": 230,
   "text": "Kdy vytvořil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 34,
@@ -3233,7 +3103,7 @@
   "odpoved": "1942"
  },
  {
-  "otazka": 241,
+  "otazka": 231,
   "text": "Kdy se opustil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 48,
@@ -3247,7 +3117,7 @@
   "odpoved": "roce 1921"
  },
  {
-  "otazka": 242,
+  "otazka": 232,
   "text": "Kdy přešel Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 53,
@@ -3261,7 +3131,7 @@
   "odpoved": "roce 1921"
  },
  {
-  "otazka": 243,
+  "otazka": 233,
   "text": "Kdy vystavil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 60,
@@ -3274,7 +3144,7 @@
   "odpoved": "1914"
  },
  {
-  "otazka": 244,
+  "otazka": 234,
   "text": "Kde vystavil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 60,
@@ -3287,7 +3157,7 @@
   "odpoved": "Marseille"
  },
  {
-  "otazka": 245,
+  "otazka": 235,
   "text": "Kdy objevuje Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 75,
@@ -3301,7 +3171,7 @@
   "odpoved": "roce 1917"
  },
  {
-  "otazka": 246,
+  "otazka": 236,
   "text": "Kdy vystavoval Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 77,
@@ -3315,7 +3185,7 @@
   "odpoved": "roce 1920"
  },
  {
-  "otazka": 247,
+  "otazka": 237,
   "text": "Kdy vytvářel Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 89,
@@ -3329,7 +3199,7 @@
   "odpoved": "roku 1931"
  },
  {
-  "otazka": 248,
+  "otazka": 238,
   "text": "Kdy namaloval Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 91,
@@ -3343,7 +3213,7 @@
   "odpoved": "roce 1933"
  },
  {
-  "otazka": 249,
+  "otazka": 239,
   "text": "Kdy se vytvořil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 94,
@@ -3357,7 +3227,7 @@
   "odpoved": "letech 1933"
  },
  {
-  "otazka": 250,
+  "otazka": 240,
   "text": "Kdy debutoval Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 108,
@@ -3373,7 +3243,7 @@
   "odpoved": "25 . ledna 1921"
  },
  {
-  "otazka": 251,
+  "otazka": 241,
   "text": "Kdy navrhl Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 109,
@@ -3386,7 +3256,7 @@
   "odpoved": "1921"
  },
  {
-  "otazka": 252,
+  "otazka": 242,
   "text": "Kdy vytvořil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 110,
@@ -3400,7 +3270,7 @@
   "odpoved": "roce 1922"
  },
  {
-  "otazka": 253,
+  "otazka": 243,
   "text": "Kde spolupracoval Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 111,
@@ -3413,7 +3283,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 254,
+  "otazka": 244,
   "text": "Kde zaplnil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 114,
@@ -3426,7 +3296,7 @@
   "odpoved": "Mravencích"
  },
  {
-  "otazka": 255,
+  "otazka": 245,
   "text": "Kdy vytvářel Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 121,
@@ -3440,7 +3310,7 @@
   "odpoved": "letech 1923"
  },
  {
-  "otazka": 256,
+  "otazka": 246,
   "text": "Kdy se začal věnovat Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 149,
@@ -3454,7 +3324,7 @@
   "odpoved": "roce 1919"
  },
  {
-  "otazka": 257,
+  "otazka": 247,
   "text": "Kdy vytvořil Josef Čapek?",
   "dok": "josef_čapek",
   "vd": 151,
@@ -3468,7 +3338,7 @@
   "odpoved": "roce 1918"
  },
  {
-  "otazka": 258,
+  "otazka": 248,
   "text": "Kde prožil Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 1,
@@ -3481,7 +3351,7 @@
   "odpoved": "Náchodě"
  },
  {
-  "otazka": 259,
+  "otazka": 249,
   "text": "Kdy studoval Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 5,
@@ -3494,7 +3364,7 @@
   "odpoved": "1946"
  },
  {
-  "otazka": 260,
+  "otazka": 250,
   "text": "Kde působil Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 6,
@@ -3507,7 +3377,7 @@
   "odpoved": "Broumově"
  },
  {
-  "otazka": 261,
+  "otazka": 251,
   "text": "Kdy získal Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 7,
@@ -3521,7 +3391,7 @@
   "odpoved": "Roku 1951"
  },
  {
-  "otazka": 262,
+  "otazka": 252,
   "text": "Kdy nastoupil Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 8,
@@ -3535,7 +3405,7 @@
   "odpoved": "roku 1953"
  },
  {
-  "otazka": 263,
+  "otazka": 253,
   "text": "Kdy bydlel Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 9,
@@ -3549,7 +3419,7 @@
   "odpoved": "letech 1953"
  },
  {
-  "otazka": 264,
+  "otazka": 254,
   "text": "Kde bydlel Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 9,
@@ -3562,7 +3432,7 @@
   "odpoved": "Březince"
  },
  {
-  "otazka": 265,
+  "otazka": 255,
   "text": "Kdy nastoupil Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 10,
@@ -3576,7 +3446,7 @@
   "odpoved": "roce 1956"
  },
  {
-  "otazka": 266,
+  "otazka": 256,
   "text": "Kde odjel Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 16,
@@ -3589,7 +3459,7 @@
   "odpoved": "USA"
  },
  {
-  "otazka": 267,
+  "otazka": 257,
   "text": "Kde se rozhodl Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 17,
@@ -3602,7 +3472,7 @@
   "odpoved": "Torontu"
  },
  {
-  "otazka": 268,
+  "otazka": 258,
   "text": "Kdy vyučoval Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 18,
@@ -3616,7 +3486,7 @@
   "odpoved": "letech 1969"
  },
  {
-  "otazka": 269,
+  "otazka": 259,
   "text": "Kdy se založil Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 20,
@@ -3630,7 +3500,7 @@
   "odpoved": "roce 1971"
  },
  {
-  "otazka": 270,
+  "otazka": 260,
   "text": "Kdy psal Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 35,
@@ -3643,7 +3513,7 @@
   "odpoved": "1970"
  },
  {
-  "otazka": 271,
+  "otazka": 261,
   "text": "Kdy publikoval Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 38,
@@ -3657,7 +3527,7 @@
   "odpoved": "roku 1990"
  },
  {
-  "otazka": 272,
+  "otazka": 262,
   "text": "Kdy napsal Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 41,
@@ -3671,7 +3541,7 @@
   "odpoved": "roce 1955"
  },
  {
-  "otazka": 273,
+  "otazka": 263,
   "text": "Kdy účinkoval Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 42,
@@ -3684,7 +3554,7 @@
   "odpoved": "1962"
  },
  {
-  "otazka": 274,
+  "otazka": 264,
   "text": "Kdy moderoval Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 46,
@@ -3698,7 +3568,7 @@
   "odpoved": "letech 1965"
  },
  {
-  "otazka": 275,
+  "otazka": 265,
   "text": "Kdy se přihlásil Josef Škvorecký?",
   "dok": "josef_škvorecký",
   "vd": 55,
@@ -3712,7 +3582,7 @@
   "odpoved": "roce 1990"
  },
  {
-  "otazka": 276,
+  "otazka": 266,
   "text": "Kde se narodil Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 9,
@@ -3725,7 +3595,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 277,
+  "otazka": 267,
   "text": "Kde se vyučil Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 16,
@@ -3738,7 +3608,7 @@
   "odpoved": "Vídni"
  },
  {
-  "otazka": 278,
+  "otazka": 268,
   "text": "Kde se odešel Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 18,
@@ -3751,7 +3621,7 @@
   "odpoved": "Vídni"
  },
  {
-  "otazka": 279,
+  "otazka": 269,
   "text": "Kdy odcestoval Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 57,
@@ -3765,7 +3635,7 @@
   "odpoved": "roce 1873"
  },
  {
-  "otazka": 280,
+  "otazka": 270,
   "text": "Kde odcestoval Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 57,
@@ -3778,7 +3648,7 @@
   "odpoved": "Ruska"
  },
  {
-  "otazka": 281,
+  "otazka": 271,
   "text": "Kde se vrátil Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 58,
@@ -3791,7 +3661,7 @@
   "odpoved": "Čech"
  },
  {
-  "otazka": 282,
+  "otazka": 272,
   "text": "Kde podnikl Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 59,
@@ -3804,7 +3674,7 @@
   "odpoved": "Skandinávie"
  },
  {
-  "otazka": 283,
+  "otazka": 273,
   "text": "Kdy se procestoval Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 60,
@@ -3818,7 +3688,7 @@
   "odpoved": "roce 1880"
  },
  {
-  "otazka": 284,
+  "otazka": 274,
   "text": "Kde se procestoval Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 60,
@@ -3831,7 +3701,7 @@
   "odpoved": "Nizozemsko"
  },
  {
-  "otazka": 285,
+  "otazka": 275,
   "text": "Kdy navštívil Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 61,
@@ -3845,7 +3715,7 @@
   "odpoved": "roku 1884"
  },
  {
-  "otazka": 286,
+  "otazka": 276,
   "text": "Kde navštívil Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 61,
@@ -3858,7 +3728,7 @@
   "odpoved": "Slovinsko"
  },
  {
-  "otazka": 287,
+  "otazka": 277,
   "text": "Kdy obdržel Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 62,
@@ -3872,7 +3742,7 @@
   "odpoved": "Roku 1892"
  },
  {
-  "otazka": 288,
+  "otazka": 278,
   "text": "Kde obdržel Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 62,
@@ -3885,7 +3755,7 @@
   "odpoved": "Ruska"
  },
  {
-  "otazka": 289,
+  "otazka": 279,
   "text": "Kdy cestoval Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 63,
@@ -3899,7 +3769,7 @@
   "odpoved": "roku 1899"
  },
  {
-  "otazka": 290,
+  "otazka": 280,
   "text": "Kde cestoval Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 63,
@@ -3912,20 +3782,7 @@
   "odpoved": "Ruska"
  },
  {
-  "otazka": 291,
-  "text": "Kdy se prožil Julius Zeyer?",
-  "dok": "julius_zeyer",
-  "vd": 92,
-  "veta": 3831,
-  "rozsah": [
-   7
-  ],
-  "typ": "Typ=cas",
-  "entita": "julius_zeyer",
-  "odpoved": "1887"
- },
- {
-  "otazka": 292,
+  "otazka": 281,
   "text": "Kde se prožil Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 92,
@@ -3938,7 +3795,7 @@
   "odpoved": "Vodňanech"
  },
  {
-  "otazka": 293,
+  "otazka": 282,
   "text": "Kde pobýval Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 93,
@@ -3951,7 +3808,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 294,
+  "otazka": 283,
   "text": "Kdy se nastěhoval Julius Zeyer?",
   "dok": "julius_zeyer",
   "vd": 140,
@@ -3965,7 +3822,7 @@
   "odpoved": "roce 1878"
  },
  {
-  "otazka": 295,
+  "otazka": 284,
   "text": "Kde se žil Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 7,
@@ -3978,7 +3835,7 @@
   "odpoved": "Borová"
  },
  {
-  "otazka": 296,
+  "otazka": 285,
   "text": "Kde odešel Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 9,
@@ -3991,7 +3848,7 @@
   "odpoved": "Jihlavy"
  },
  {
-  "otazka": 297,
+  "otazka": 286,
   "text": "Kdy studoval Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 10,
@@ -4005,7 +3862,7 @@
   "odpoved": "roku 1833"
  },
  {
-  "otazka": 298,
+  "otazka": 287,
   "text": "Kde studoval Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 10,
@@ -4018,7 +3875,7 @@
   "odpoved": "Brodě"
  },
  {
-  "otazka": 299,
+  "otazka": 288,
   "text": "Kdy dokončil Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 11,
@@ -4032,7 +3889,7 @@
   "odpoved": "roce 1838"
  },
  {
-  "otazka": 300,
+  "otazka": 289,
   "text": "Kde studoval Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 12,
@@ -4045,7 +3902,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 301,
+  "otazka": 290,
   "text": "Kdy se vydal Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 20,
@@ -4058,7 +3915,7 @@
   "odpoved": "1842"
  },
  {
-  "otazka": 302,
+  "otazka": 291,
   "text": "Kde se vydal Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 20,
@@ -4071,7 +3928,7 @@
   "odpoved": "Ruska"
  },
  {
-  "otazka": 303,
+  "otazka": 292,
   "text": "Kdy se vrátil Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 23,
@@ -4084,7 +3941,7 @@
   "odpoved": "1844"
  },
  {
-  "otazka": 304,
+  "otazka": 293,
   "text": "Kdy se proslavil Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 28,
@@ -4098,7 +3955,7 @@
   "odpoved": "Roku 1845"
  },
  {
-  "otazka": 305,
+  "otazka": 294,
   "text": "Kdy odešel Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 39,
@@ -4112,7 +3969,7 @@
   "odpoved": "roce 1848"
  },
  {
-  "otazka": 306,
+  "otazka": 295,
   "text": "Kde se podílel Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 44,
@@ -4125,7 +3982,7 @@
   "odpoved": "Polsko"
  },
  {
-  "otazka": 307,
+  "otazka": 296,
   "text": "Kde zastupoval Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 49,
@@ -4138,7 +3995,7 @@
   "odpoved": "Humpolec"
  },
  {
-  "otazka": 308,
+  "otazka": 297,
   "text": "Kdy rezignoval Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 52,
@@ -4151,7 +4008,7 @@
   "odpoved": "1848"
  },
  {
-  "otazka": 309,
+  "otazka": 298,
   "text": "Kde se usadil Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 59,
@@ -4164,7 +4021,7 @@
   "odpoved": "Kutné"
  },
  {
-  "otazka": 310,
+  "otazka": 299,
   "text": "Kdy přijel Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 91,
@@ -4180,7 +4037,7 @@
   "odpoved": "15 . května 1855"
  },
  {
-  "otazka": 311,
+  "otazka": 300,
   "text": "Kde přijel Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 91,
@@ -4193,7 +4050,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 312,
+  "otazka": 301,
   "text": "Kde žil Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 96,
@@ -4206,7 +4063,7 @@
   "odpoved": "Brodě"
  },
  {
-  "otazka": 313,
+  "otazka": 302,
   "text": "Kde se měl Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 100,
@@ -4219,7 +4076,7 @@
   "odpoved": "Prahu"
  },
  {
-  "otazka": 314,
+  "otazka": 303,
   "text": "Kdy si začal stěžovat Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 102,
@@ -4233,7 +4090,7 @@
   "odpoved": "Roku 1856"
  },
  {
-  "otazka": 315,
+  "otazka": 304,
   "text": "Kdy se dostal Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 103,
@@ -4249,7 +4106,7 @@
   "odpoved": "18 . června 1856"
  },
  {
-  "otazka": 316,
+  "otazka": 305,
   "text": "Kdy požil Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 104,
@@ -4265,7 +4122,7 @@
   "odpoved": "24 . července 1856"
  },
  {
-  "otazka": 317,
+  "otazka": 306,
   "text": "Kdy se navštívil Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 164,
@@ -4279,7 +4136,7 @@
   "odpoved": "roce 1846"
  },
  {
-  "otazka": 318,
+  "otazka": 307,
   "text": "Kdy se navrhl Karel Havlíček Borovský?",
   "dok": "karel_havlíček_borovský",
   "vd": 166,
@@ -4293,7 +4150,7 @@
   "odpoved": "roce 1848"
  },
  {
-  "otazka": 319,
+  "otazka": 308,
   "text": "Kde se narodil Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 2,
@@ -4306,7 +4163,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 320,
+  "otazka": 309,
   "text": "Kde odešel Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 12,
@@ -4319,7 +4176,7 @@
   "odpoved": "Litoměřic"
  },
  {
-  "otazka": 321,
+  "otazka": 310,
   "text": "Kdy studoval Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 14,
@@ -4333,7 +4190,7 @@
   "odpoved": "letech 1824"
  },
  {
-  "otazka": 322,
+  "otazka": 311,
   "text": "Kde studoval Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 14,
@@ -4346,7 +4203,7 @@
   "odpoved": "Příkopech"
  },
  {
-  "otazka": 323,
+  "otazka": 312,
   "text": "Kdy navštěvoval Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 15,
@@ -4359,7 +4216,7 @@
   "odpoved": "1830"
  },
  {
-  "otazka": 324,
+  "otazka": 313,
   "text": "Kdy navštěvoval Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 17,
@@ -4373,7 +4230,7 @@
   "odpoved": "letech 1831"
  },
  {
-  "otazka": 325,
+  "otazka": 314,
   "text": "Kdy vystoupil Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 19,
@@ -4387,7 +4244,7 @@
   "odpoved": "letech 1834"
  },
  {
-  "otazka": 326,
+  "otazka": 315,
   "text": "Kdy vykonal Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 29,
@@ -4401,7 +4258,7 @@
   "odpoved": "roce 1832"
  },
  {
-  "otazka": 327,
+  "otazka": 316,
   "text": "Kde vykonal Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 29,
@@ -4414,7 +4271,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 328,
+  "otazka": 317,
   "text": "Kde navštívil Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 32,
@@ -4427,7 +4284,7 @@
   "odpoved": "Valečov"
  },
  {
-  "otazka": 329,
+  "otazka": 318,
   "text": "Kde vyrazil Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 35,
@@ -4440,7 +4297,7 @@
   "odpoved": "Itálie"
  },
  {
-  "otazka": 330,
+  "otazka": 319,
   "text": "Kde se setkal Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 39,
@@ -4453,7 +4310,7 @@
   "odpoved": "Lublani"
  },
  {
-  "otazka": 331,
+  "otazka": 320,
   "text": "Kdy šel Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 41,
@@ -4466,7 +4323,7 @@
   "odpoved": "1835"
  },
  {
-  "otazka": 332,
+  "otazka": 321,
   "text": "Kdy se vyznal Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 53,
@@ -4480,7 +4337,7 @@
   "odpoved": "roce 1833"
  },
  {
-  "otazka": 333,
+  "otazka": 322,
   "text": "Kde odložil Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 66,
@@ -4493,20 +4350,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 334,
-  "text": "Kdy nastoupil Karel Hynek Mácha?",
-  "dok": "karel_hynek_mácha",
-  "vd": 67,
-  "veta": 4287,
-  "rozsah": [
-   12
-  ],
-  "typ": "Typ=cas",
-  "entita": "karel_hynek_mácha",
-  "odpoved": "1793"
- },
- {
-  "otazka": 335,
+  "otazka": 323,
   "text": "Kdy jel Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 69,
@@ -4521,7 +4365,7 @@
   "odpoved": "4 . října"
  },
  {
-  "otazka": 336,
+  "otazka": 324,
   "text": "Kde jel Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 69,
@@ -4534,7 +4378,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 337,
+  "otazka": 325,
   "text": "Kdy se rozběhl Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 70,
@@ -4549,7 +4393,7 @@
   "odpoved": "15 . října"
  },
  {
-  "otazka": 338,
+  "otazka": 326,
   "text": "Kde se rozběhl Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 70,
@@ -4562,7 +4406,7 @@
   "odpoved": "Litoměřic"
  },
  {
-  "otazka": 339,
+  "otazka": 327,
   "text": "Kdy si všiml Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 71,
@@ -4577,7 +4421,7 @@
   "odpoved": "23 . října"
  },
  {
-  "otazka": 340,
+  "otazka": 328,
   "text": "Kde si všiml Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 71,
@@ -4590,7 +4434,7 @@
   "odpoved": "Radobýlu"
  },
  {
-  "otazka": 341,
+  "otazka": 329,
   "text": "Kdy píše Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 76,
@@ -4605,7 +4449,7 @@
   "odpoved": "2 . listopadu"
  },
  {
-  "otazka": 342,
+  "otazka": 330,
   "text": "Kdy zemřel Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 79,
@@ -4621,7 +4465,7 @@
   "odpoved": "6 . listopadu 1836"
  },
  {
-  "otazka": 343,
+  "otazka": 331,
   "text": "Kdy se uchýlil Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 89,
@@ -4635,7 +4479,7 @@
   "odpoved": "roce 1830"
  },
  {
-  "otazka": 344,
+  "otazka": 332,
   "text": "Kdy pracoval Karel Hynek Mácha?",
   "dok": "karel_hynek_mácha",
   "vd": 100,
@@ -4648,7 +4492,7 @@
   "odpoved": "1835"
  },
  {
-  "otazka": 345,
+  "otazka": 333,
   "text": "Kdy se působil Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 4,
@@ -4662,7 +4506,7 @@
   "odpoved": "roku 1851"
  },
  {
-  "otazka": 346,
+  "otazka": 334,
   "text": "Kdy se narodil Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 13,
@@ -4678,7 +4522,7 @@
   "odpoved": "7 . listopadu 1811"
  },
  {
-  "otazka": 347,
+  "otazka": 335,
   "text": "Kde se narodil Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 13,
@@ -4691,7 +4535,7 @@
   "odpoved": "Miletíně"
  },
  {
-  "otazka": 348,
+  "otazka": 336,
   "text": "Kdy nastoupil Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 23,
@@ -4705,7 +4549,7 @@
   "odpoved": "roku 1825"
  },
  {
-  "otazka": 349,
+  "otazka": 337,
   "text": "Kdy nastoupil Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 25,
@@ -4719,7 +4563,7 @@
   "odpoved": "Roku 1831"
  },
  {
-  "otazka": 350,
+  "otazka": 338,
   "text": "Kde nastoupil Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 25,
@@ -4732,20 +4576,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 351,
-  "text": "Kdy se započal Karel Jaromír Erben?",
-  "dok": "karel_jaromír_erben",
-  "vd": 26,
-  "veta": 4494,
-  "rozsah": [
-   8
-  ],
-  "typ": "Typ=cas",
-  "entita": "karel_jaromír_erben",
-  "odpoved": "1833"
- },
- {
-  "otazka": 352,
+  "otazka": 339,
   "text": "Kde se seznámil Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 29,
@@ -4758,7 +4589,7 @@
   "odpoved": "Žebráku"
  },
  {
-  "otazka": 353,
+  "otazka": 340,
   "text": "Kdy zemřel Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 43,
@@ -4774,7 +4605,7 @@
   "odpoved": "21 . listopadu 1870"
  },
  {
-  "otazka": 354,
+  "otazka": 341,
   "text": "Kde sbíral Karel Jaromír Erben?",
   "dok": "karel_jaromír_erben",
   "vd": 54,
@@ -4787,7 +4618,7 @@
   "odpoved": "Čech"
  },
  {
-  "otazka": 355,
+  "otazka": 342,
   "text": "Kde se narodil Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 1,
@@ -4800,7 +4631,7 @@
   "odpoved": "Rychnově"
  },
  {
-  "otazka": 356,
+  "otazka": 343,
   "text": "Kde studoval Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 3,
@@ -4813,7 +4644,7 @@
   "odpoved": "Rychnově"
  },
  {
-  "otazka": 357,
+  "otazka": 344,
   "text": "Kdy dokončil Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 4,
@@ -4827,7 +4658,7 @@
   "odpoved": "roku 1912"
  },
  {
-  "otazka": 358,
+  "otazka": 345,
   "text": "Kde dokončil Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 4,
@@ -4840,7 +4671,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 359,
+  "otazka": 346,
   "text": "Kde organizoval Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 6,
@@ -4853,7 +4684,7 @@
   "odpoved": "Rychnově"
  },
  {
-  "otazka": 360,
+  "otazka": 347,
   "text": "Kde se pokoušel Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 7,
@@ -4866,7 +4697,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 361,
+  "otazka": 348,
   "text": "Kde nastoupil Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 12,
@@ -4879,7 +4710,7 @@
   "odpoved": "ČSR"
  },
  {
-  "otazka": 362,
+  "otazka": 349,
   "text": "Kdy začal psát Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 15,
@@ -4893,7 +4724,7 @@
   "odpoved": "roku 1920"
  },
  {
-  "otazka": 363,
+  "otazka": 350,
   "text": "Kdy spolupracoval Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 18,
@@ -4907,7 +4738,7 @@
   "odpoved": "roku 1922"
  },
  {
-  "otazka": 364,
+  "otazka": 351,
   "text": "Kdy redigoval Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 20,
@@ -4921,7 +4752,7 @@
   "odpoved": "letech 1927"
  },
  {
-  "otazka": 365,
+  "otazka": 352,
   "text": "Kdy nastoupil Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 21,
@@ -4935,7 +4766,7 @@
   "odpoved": "roce 1933"
  },
  {
-  "otazka": 366,
+  "otazka": 353,
   "text": "Kdy se oženil Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 24,
@@ -4951,7 +4782,7 @@
   "odpoved": "3 . srpna 1920"
  },
  {
-  "otazka": 367,
+  "otazka": 354,
   "text": "Kde stačil Karel Poláček?",
   "dok": "karel_poláček",
   "vd": 28,
@@ -4964,7 +4795,7 @@
   "odpoved": "Anglie"
  },
  {
-  "otazka": 368,
+  "otazka": 355,
   "text": "Kde se narodil Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 2,
@@ -4977,7 +4808,7 @@
   "odpoved": "Svatoňovicích"
  },
  {
-  "otazka": 369,
+  "otazka": 356,
   "text": "Kde se přestěhoval Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 4,
@@ -4990,7 +4821,7 @@
   "odpoved": "Úpice"
  },
  {
-  "otazka": 370,
+  "otazka": 357,
   "text": "Kde absolvoval Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 5,
@@ -5003,7 +4834,7 @@
   "odpoved": "Úpici"
  },
  {
-  "otazka": 371,
+  "otazka": 358,
   "text": "Kde prožíval Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 6,
@@ -5016,7 +4847,7 @@
   "odpoved": "Hronově"
  },
  {
-  "otazka": 372,
+  "otazka": 359,
   "text": "Kde studoval Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 8,
@@ -5029,7 +4860,7 @@
   "odpoved": "Hradci"
  },
  {
-  "otazka": 373,
+  "otazka": 360,
   "text": "Kdy ukončil Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 9,
@@ -5043,7 +4874,7 @@
   "odpoved": "Roku 1915"
  },
  {
-  "otazka": 374,
+  "otazka": 361,
   "text": "Kdy odešel Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 16,
@@ -5057,7 +4888,7 @@
   "odpoved": "roce 1921"
  },
  {
-  "otazka": 375,
+  "otazka": 362,
   "text": "Kdy se oženil Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 24,
@@ -5073,7 +4904,7 @@
   "odpoved": "26 . srpna 1935"
  },
  {
-  "otazka": 376,
+  "otazka": 363,
   "text": "Kdy přivodil Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 35,
@@ -5086,7 +4917,7 @@
   "odpoved": "1938"
  },
  {
-  "otazka": 377,
+  "otazka": 364,
   "text": "Kdy žil Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 43,
@@ -5100,7 +4931,7 @@
   "odpoved": "roku 1925"
  },
  {
-  "otazka": 378,
+  "otazka": 365,
   "text": "Kdy měl Karel Čapek?",
   "dok": "karel_čapek",
   "vd": 193,
@@ -5113,7 +4944,7 @@
   "odpoved": "1939"
  },
  {
-  "otazka": 379,
+  "otazka": 366,
   "text": "Kde se narodil Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 3,
@@ -5126,7 +4957,7 @@
   "odpoved": "Brumově"
  },
  {
-  "otazka": 380,
+  "otazka": 367,
   "text": "Kdy absolvoval Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 4,
@@ -5140,7 +4971,7 @@
   "odpoved": "letech 1941"
  },
  {
-  "otazka": 381,
+  "otazka": 368,
   "text": "Kde absolvoval Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 4,
@@ -5153,7 +4984,7 @@
   "odpoved": "Zlíně"
  },
  {
-  "otazka": 382,
+  "otazka": 369,
   "text": "Kdy odmaturoval Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 5,
@@ -5167,7 +4998,7 @@
   "odpoved": "roce 1946"
  },
  {
-  "otazka": 383,
+  "otazka": 370,
   "text": "Kde odmaturoval Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 5,
@@ -5180,7 +5011,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 384,
+  "otazka": 371,
   "text": "Kdy pracoval Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 6,
@@ -5194,7 +5025,7 @@
   "odpoved": "letech 1948"
  },
  {
-  "otazka": 385,
+  "otazka": 372,
   "text": "Kdy se vystoupil Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 8,
@@ -5208,7 +5039,7 @@
   "odpoved": "roce 1951"
  },
  {
-  "otazka": 386,
+  "otazka": 373,
   "text": "Kdy obdržel Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 11,
@@ -5222,7 +5053,7 @@
   "odpoved": "roce 1964"
  },
  {
-  "otazka": 387,
+  "otazka": 374,
   "text": "Kdy nastoupil Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 12,
@@ -5236,7 +5067,7 @@
   "odpoved": "Roku 1965"
  },
  {
-  "otazka": 388,
+  "otazka": 375,
   "text": "Kdy dokončil Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 18,
@@ -5250,7 +5081,7 @@
   "odpoved": "roce 1970"
  },
  {
-  "otazka": 389,
+  "otazka": 376,
   "text": "Kdy se zemřel Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 28,
@@ -5266,7 +5097,7 @@
   "odpoved": "6 . června 2015"
  },
  {
-  "otazka": 390,
+  "otazka": 377,
   "text": "Kdy se podepsal Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 81,
@@ -5280,7 +5111,7 @@
   "odpoved": "roce 1999"
  },
  {
-  "otazka": 391,
+  "otazka": 378,
   "text": "Kdy hlasoval Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 84,
@@ -5294,7 +5125,7 @@
   "odpoved": "roce 2004"
  },
  {
-  "otazka": 392,
+  "otazka": 379,
   "text": "Kde hlasoval Ludvík Vaculík?",
   "dok": "ludvík_vaculík",
   "vd": 84,
@@ -5307,7 +5138,7 @@
   "odpoved": "ČR"
  },
  {
-  "otazka": 393,
+  "otazka": 380,
   "text": "Kdy žil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 1,
@@ -5321,7 +5152,7 @@
   "odpoved": "roku 1975"
  },
  {
-  "otazka": 394,
+  "otazka": 381,
   "text": "Kde žil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 1,
@@ -5334,7 +5165,7 @@
   "odpoved": "Francii"
  },
  {
-  "otazka": 395,
+  "otazka": 382,
   "text": "Kde se narodil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 6,
@@ -5347,7 +5178,7 @@
   "odpoved": "Brně"
  },
  {
-  "otazka": 396,
+  "otazka": 383,
   "text": "Kde studoval Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 12,
@@ -5360,7 +5191,7 @@
   "odpoved": "Brně"
  },
  {
-  "otazka": 397,
+  "otazka": 384,
   "text": "Kdy absolvoval Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 14,
@@ -5374,7 +5205,7 @@
   "odpoved": "roce 1953"
  },
  {
-  "otazka": 398,
+  "otazka": 385,
   "text": "Kdy vstoupil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 17,
@@ -5388,7 +5219,7 @@
   "odpoved": "roce 1948"
  },
  {
-  "otazka": 399,
+  "otazka": 386,
   "text": "Kde vstoupil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 17,
@@ -5401,7 +5232,7 @@
   "odpoved": "Československa"
  },
  {
-  "otazka": 400,
+  "otazka": 387,
   "text": "Kdy se oženil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 21,
@@ -5415,7 +5246,7 @@
   "odpoved": "roce 1956"
  },
  {
-  "otazka": 401,
+  "otazka": 388,
   "text": "Kdy oznámil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 22,
@@ -5429,7 +5260,7 @@
   "odpoved": "roku 1950"
  },
  {
-  "otazka": 402,
+  "otazka": 389,
   "text": "Kdy vystoupil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 35,
@@ -5443,7 +5274,7 @@
   "odpoved": "roce 1967"
  },
  {
-  "otazka": 403,
+  "otazka": 390,
   "text": "Kdy žil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 68,
@@ -5457,7 +5288,7 @@
   "odpoved": "roku 1975"
  },
  {
-  "otazka": 404,
+  "otazka": 391,
   "text": "Kde žil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 68,
@@ -5470,7 +5301,7 @@
   "odpoved": "Francii"
  },
  {
-  "otazka": 405,
+  "otazka": 392,
   "text": "Kdy získal Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 70,
@@ -5484,7 +5315,7 @@
   "odpoved": "roce 1981"
  },
  {
-  "otazka": 406,
+  "otazka": 393,
   "text": "Kdy navštívil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 73,
@@ -5498,7 +5329,7 @@
   "odpoved": "roce 2000"
  },
  {
-  "otazka": 407,
+  "otazka": 394,
   "text": "Kde publikoval Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 82,
@@ -5511,7 +5342,7 @@
   "odpoved": "Francii"
  },
  {
-  "otazka": 408,
+  "otazka": 395,
   "text": "Kdy publikoval Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 83,
@@ -5524,7 +5355,7 @@
   "odpoved": "1989"
  },
  {
-  "otazka": 409,
+  "otazka": 396,
   "text": "Kdy podepsal Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 90,
@@ -5538,7 +5369,7 @@
   "odpoved": "roce 2009"
  },
  {
-  "otazka": 410,
+  "otazka": 397,
   "text": "Kdy získal Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 95,
@@ -5551,7 +5382,7 @@
   "odpoved": "2019"
  },
  {
-  "otazka": 411,
+  "otazka": 398,
   "text": "Kdy věnoval Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 102,
@@ -5565,7 +5396,7 @@
   "odpoved": "roce 2020"
  },
  {
-  "otazka": 412,
+  "otazka": 399,
   "text": "Kde věnoval Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 102,
@@ -5578,7 +5409,7 @@
   "odpoved": "Brně"
  },
  {
-  "otazka": 413,
+  "otazka": 400,
   "text": "Kde zemřel Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 104,
@@ -5591,7 +5422,7 @@
   "odpoved": "Paříži"
  },
  {
-  "otazka": 414,
+  "otazka": 401,
   "text": "Kdy vstoupil Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 116,
@@ -5605,7 +5436,7 @@
   "odpoved": "roce 1945"
  },
  {
-  "otazka": 415,
+  "otazka": 402,
   "text": "Kdy vydal Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 121,
@@ -5619,7 +5450,7 @@
   "odpoved": "roce 1957"
  },
  {
-  "otazka": 416,
+  "otazka": 403,
   "text": "Kdy přidal Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 126,
@@ -5633,7 +5464,7 @@
   "odpoved": "roce 1968"
  },
  {
-  "otazka": 417,
+  "otazka": 404,
   "text": "Kdy vydal Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 131,
@@ -5647,7 +5478,7 @@
   "odpoved": "roce 1965"
  },
  {
-  "otazka": 418,
+  "otazka": 405,
   "text": "Kdy vydal Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 135,
@@ -5661,7 +5492,7 @@
   "odpoved": "roce 1967"
  },
  {
-  "otazka": 419,
+  "otazka": 406,
   "text": "Kdy emigroval Milan Kundera?",
   "dok": "milan_kundera",
   "vd": 151,
@@ -5675,7 +5506,7 @@
   "odpoved": "roce 1975"
  },
  {
-  "otazka": 420,
+  "otazka": 407,
   "text": "Kde se narodil Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 2,
@@ -5688,7 +5519,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 421,
+  "otazka": 408,
   "text": "Kde bydlel Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 3,
@@ -5701,7 +5532,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 422,
+  "otazka": 409,
   "text": "Kde navštěvoval Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 5,
@@ -5714,7 +5545,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 423,
+  "otazka": 410,
   "text": "Kde žil Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 7,
@@ -5727,20 +5558,7 @@
   "odpoved": "Buštěhradě"
  },
  {
-  "otazka": 424,
-  "text": "Kdy absolvoval Ota Pavel?",
-  "dok": "ota_pavel",
-  "vd": 11,
-  "veta": 5691,
-  "rozsah": [
-   5
-  ],
-  "typ": "Typ=cas",
-  "entita": "ota_pavel",
-  "odpoved": "1945"
- },
- {
-  "otazka": 425,
+  "otazka": 411,
   "text": "Kde absolvoval Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 11,
@@ -5753,7 +5571,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 426,
+  "otazka": 412,
   "text": "Kdy složil Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 12,
@@ -5767,7 +5585,7 @@
   "odpoved": "roce 1960"
  },
  {
-  "otazka": 427,
+  "otazka": 413,
   "text": "Kde se hrál Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 13,
@@ -5780,7 +5598,7 @@
   "odpoved": "Spartu"
  },
  {
-  "otazka": 428,
+  "otazka": 414,
   "text": "Kdy působil Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 14,
@@ -5794,7 +5612,7 @@
   "odpoved": "letech 1949"
  },
  {
-  "otazka": 429,
+  "otazka": 415,
   "text": "Kdy zastával Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 15,
@@ -5807,7 +5625,7 @@
   "odpoved": "1956"
  },
  {
-  "otazka": 430,
+  "otazka": 416,
   "text": "Kdy odešel Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 19,
@@ -5821,7 +5639,7 @@
   "odpoved": "roku 1966"
  },
  {
-  "otazka": 431,
+  "otazka": 417,
   "text": "Kdy potkal Ota Pavel?",
   "dok": "ota_pavel",
   "vd": 30,
@@ -5834,7 +5652,7 @@
   "odpoved": "1974"
  },
  {
-  "otazka": 432,
+  "otazka": 418,
   "text": "Kdy se narodil Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 5,
@@ -5848,7 +5666,7 @@
   "odpoved": "roce 1867"
  },
  {
-  "otazka": 433,
+  "otazka": 419,
   "text": "Kde se narodil Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 5,
@@ -5861,7 +5679,7 @@
   "odpoved": "Opavě"
  },
  {
-  "otazka": 434,
+  "otazka": 420,
   "text": "Kdy vydával Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 7,
@@ -5875,7 +5693,7 @@
   "odpoved": "roku 1860"
  },
  {
-  "otazka": 435,
+  "otazka": 421,
   "text": "Kde vydával Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 7,
@@ -5888,20 +5706,7 @@
   "odpoved": "Slezsku"
  },
  {
-  "otazka": 436,
-  "text": "Kdy studoval Petr Bezruč?",
-  "dok": "petr_bezruč",
-  "vd": 26,
-  "veta": 5912,
-  "rozsah": [
-   4
-  ],
-  "typ": "Typ=cas",
-  "entita": "petr_bezruč",
-  "odpoved": "1885"
- },
- {
-  "otazka": 437,
+  "otazka": 422,
   "text": "Kdy složil Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 44,
@@ -5915,7 +5720,7 @@
   "odpoved": "roce 1891"
  },
  {
-  "otazka": 438,
+  "otazka": 423,
   "text": "Kde bydlel Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 48,
@@ -5928,7 +5733,7 @@
   "odpoved": "Koloredov"
  },
  {
-  "otazka": 439,
+  "otazka": 424,
   "text": "Kde jezdíval Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 64,
@@ -5941,7 +5746,7 @@
   "odpoved": "Kostelce"
  },
  {
-  "otazka": 440,
+  "otazka": 425,
   "text": "Kde se podnikal Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 98,
@@ -5954,7 +5759,7 @@
   "odpoved": "Beskydech"
  },
  {
-  "otazka": 441,
+  "otazka": 426,
   "text": "Kdy se zúčastňoval Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 102,
@@ -5968,7 +5773,7 @@
   "odpoved": "letech 1912"
  },
  {
-  "otazka": 442,
+  "otazka": 427,
   "text": "Kde se zúčastňoval Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 102,
@@ -5981,7 +5786,7 @@
   "odpoved": "Šmelcovna"
  },
  {
-  "otazka": 443,
+  "otazka": 428,
   "text": "Kde prožil Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 104,
@@ -5994,7 +5799,7 @@
   "odpoved": "Kostelci"
  },
  {
-  "otazka": 444,
+  "otazka": 429,
   "text": "Kdy zemřel Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 105,
@@ -6008,7 +5813,7 @@
   "odpoved": "roce 1958"
  },
  {
-  "otazka": 445,
+  "otazka": 430,
   "text": "Kdy obdržel Petr Bezruč?",
   "dok": "petr_bezruč",
   "vd": 107,
@@ -6022,7 +5827,7 @@
   "odpoved": "roce 1945"
  },
  {
-  "otazka": 446,
+  "otazka": 431,
   "text": "Kde se narodil Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 1,
@@ -6035,7 +5840,7 @@
   "odpoved": "Ostředku"
  },
  {
-  "otazka": 447,
+  "otazka": 432,
   "text": "Kde prožil Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 4,
@@ -6048,7 +5853,7 @@
   "odpoved": "Benešovsku"
  },
  {
-  "otazka": 448,
+  "otazka": 433,
   "text": "Kde vystudoval Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 5,
@@ -6061,7 +5866,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 449,
+  "otazka": 434,
   "text": "Kdy působil Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 7,
@@ -6075,7 +5880,7 @@
   "odpoved": "letech 1873"
  },
  {
-  "otazka": 450,
+  "otazka": 435,
   "text": "Kde cestoval Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 10,
@@ -6088,7 +5893,7 @@
   "odpoved": "Kavkaz"
  },
  {
-  "otazka": 451,
+  "otazka": 436,
   "text": "Kdy žil Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 11,
@@ -6102,7 +5907,7 @@
   "odpoved": "letech 1895"
  },
  {
-  "otazka": 452,
+  "otazka": 437,
   "text": "Kde žil Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 11,
@@ -6115,7 +5920,7 @@
   "odpoved": "Obříství"
  },
  {
-  "otazka": 453,
+  "otazka": 438,
   "text": "Kde trávil Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 12,
@@ -6128,7 +5933,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 454,
+  "otazka": 439,
   "text": "Kde prožil Svatopluk Čech?",
   "dok": "svatopluk_čech",
   "vd": 84,
@@ -6141,7 +5946,7 @@
   "odpoved": "Liteň"
  },
  {
-  "otazka": 455,
+  "otazka": 440,
   "text": "Kdy studoval Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 5,
@@ -6155,7 +5960,7 @@
   "odpoved": "letech 1919"
  },
  {
-  "otazka": 456,
+  "otazka": 441,
   "text": "Kdy bydlel Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 9,
@@ -6169,7 +5974,7 @@
   "odpoved": "letech 1934"
  },
  {
-  "otazka": 457,
+  "otazka": 442,
   "text": "Kdy působil Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 10,
@@ -6183,7 +5988,7 @@
   "odpoved": "letech 1933"
  },
  {
-  "otazka": 458,
+  "otazka": 443,
   "text": "Kdy pracoval Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 11,
@@ -6197,7 +6002,7 @@
   "odpoved": "letech 1939"
  },
  {
-  "otazka": 459,
+  "otazka": 444,
   "text": "Kde opouští Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 20,
@@ -6210,7 +6015,7 @@
   "odpoved": "Všenor"
  },
  {
-  "otazka": 460,
+  "otazka": 445,
   "text": "Kdy bydlel Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 25,
@@ -6224,7 +6029,7 @@
   "odpoved": "roku 1948"
  },
  {
-  "otazka": 461,
+  "otazka": 446,
   "text": "Kdy přestal psát Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 32,
@@ -6238,7 +6043,7 @@
   "odpoved": "roce 1977"
  },
  {
-  "otazka": 462,
+  "otazka": 447,
   "text": "Kdy reagoval Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 44,
@@ -6251,7 +6056,7 @@
   "odpoved": "1937"
  },
  {
-  "otazka": 463,
+  "otazka": 448,
   "text": "Kde oslavil Vladimír Holan?",
   "dok": "vladimír_holan",
   "vd": 51,
@@ -6264,7 +6069,7 @@
   "odpoved": "Československa"
  },
  {
-  "otazka": 464,
+  "otazka": 449,
   "text": "Kde se narodil Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 2,
@@ -6277,7 +6082,7 @@
   "odpoved": "Háji"
  },
  {
-  "otazka": 465,
+  "otazka": 450,
   "text": "Kde vystudoval Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 11,
@@ -6290,7 +6095,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 466,
+  "otazka": 451,
   "text": "Kde se vrátil Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 25,
@@ -6303,7 +6108,7 @@
   "odpoved": "Davle"
  },
  {
-  "otazka": 467,
+  "otazka": 452,
   "text": "Kdy publikoval Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 39,
@@ -6317,7 +6122,7 @@
   "odpoved": "roku 1920"
  },
  {
-  "otazka": 468,
+  "otazka": 453,
   "text": "Kdy podepsal Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 41,
@@ -6331,7 +6136,7 @@
   "odpoved": "roce 1929"
  },
  {
-  "otazka": 469,
+  "otazka": 454,
   "text": "Kdy působil Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 43,
@@ -6345,7 +6150,7 @@
   "odpoved": "roce 1924"
  },
  {
-  "otazka": 470,
+  "otazka": 455,
   "text": "Kdy se podepsal Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 53,
@@ -6358,7 +6163,7 @@
   "odpoved": "1934"
  },
  {
-  "otazka": 471,
+  "otazka": 456,
   "text": "Kdy se věnoval Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 70,
@@ -6371,7 +6176,7 @@
   "odpoved": "1921"
  },
  {
-  "otazka": 472,
+  "otazka": 457,
   "text": "Kdy se napsal Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 73,
@@ -6385,7 +6190,7 @@
   "odpoved": "Roku 1924"
  },
  {
-  "otazka": 473,
+  "otazka": 458,
   "text": "Kdy přemýšlel Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 75,
@@ -6399,7 +6204,7 @@
   "odpoved": "roce 1920"
  },
  {
-  "otazka": 474,
+  "otazka": 459,
   "text": "Kdy napsal Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 76,
@@ -6413,7 +6218,7 @@
   "odpoved": "Roku 1926"
  },
  {
-  "otazka": 475,
+  "otazka": 460,
   "text": "Kdy otiskl Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 77,
@@ -6426,7 +6231,7 @@
   "odpoved": "1929"
  },
  {
-  "otazka": 476,
+  "otazka": 461,
   "text": "Kdy se měl Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 79,
@@ -6442,7 +6247,7 @@
   "odpoved": "9 . září 1932"
  },
  {
-  "otazka": 477,
+  "otazka": 462,
   "text": "Kdy se podílel Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 95,
@@ -6456,7 +6261,7 @@
   "odpoved": "roce 1937"
  },
  {
-  "otazka": 478,
+  "otazka": 463,
   "text": "Kdy obdržel Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 127,
@@ -6470,7 +6275,7 @@
   "odpoved": "roce 1929"
  },
  {
-  "otazka": 479,
+  "otazka": 464,
   "text": "Kdy přepracoval Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 128,
@@ -6484,7 +6289,7 @@
   "odpoved": "roce 1935"
  },
  {
-  "otazka": 480,
+  "otazka": 465,
   "text": "Kdy obdržel Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 140,
@@ -6498,7 +6303,7 @@
   "odpoved": "roce 1931"
  },
  {
-  "otazka": 481,
+  "otazka": 466,
   "text": "Kdy obdržel Vladislav Vančura?",
   "dok": "vladislav_vančura",
   "vd": 153,
@@ -6512,7 +6317,7 @@
   "odpoved": "roce 1947"
  },
  {
-  "otazka": 482,
+  "otazka": 467,
   "text": "Kde vyvedl Václav Havel?",
   "dok": "václav_havel",
   "vd": 12,
@@ -6525,7 +6330,7 @@
   "odpoved": "Československo"
  },
  {
-  "otazka": 483,
+  "otazka": 468,
   "text": "Kde se narodil Václav Havel?",
   "dok": "václav_havel",
   "vd": 17,
@@ -6538,20 +6343,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 484,
-  "text": "Kdy měl Václav Havel?",
-  "dok": "václav_havel",
-  "vd": 18,
-  "veta": 6728,
-  "rozsah": [
-   8
-  ],
-  "typ": "Typ=cas",
-  "entita": "václav_havel",
-  "odpoved": "1938"
- },
- {
-  "otazka": 485,
+  "otazka": 469,
   "text": "Kde navštěvoval Václav Havel?",
   "dok": "václav_havel",
   "vd": 22,
@@ -6564,7 +6356,7 @@
   "odpoved": "Československa"
  },
  {
-  "otazka": 486,
+  "otazka": 470,
   "text": "Kdy nastoupil Václav Havel?",
   "dok": "václav_havel",
   "vd": 26,
@@ -6578,7 +6370,7 @@
   "odpoved": "roce 1951"
  },
  {
-  "otazka": 487,
+  "otazka": 471,
   "text": "Kdy složil Václav Havel?",
   "dok": "václav_havel",
   "vd": 27,
@@ -6592,7 +6384,7 @@
   "odpoved": "roku 1954"
  },
  {
-  "otazka": 488,
+  "otazka": 472,
   "text": "Kdy debutoval Václav Havel?",
   "dok": "václav_havel",
   "vd": 29,
@@ -6606,7 +6398,7 @@
   "odpoved": "roce 1955"
  },
  {
-  "otazka": 489,
+  "otazka": 473,
   "text": "Kdy uveřejňoval Václav Havel?",
   "dok": "václav_havel",
   "vd": 30,
@@ -6620,7 +6412,7 @@
   "odpoved": "roku 1969"
  },
  {
-  "otazka": 490,
+  "otazka": 474,
   "text": "Kdy vystoupil Václav Havel?",
   "dok": "václav_havel",
   "vd": 33,
@@ -6634,7 +6426,7 @@
   "odpoved": "roce 1956"
  },
  {
-  "otazka": 491,
+  "otazka": 475,
   "text": "Kdy pracoval Václav Havel?",
   "dok": "václav_havel",
   "vd": 34,
@@ -6648,7 +6440,7 @@
   "odpoved": "roku 1960"
  },
  {
-  "otazka": 492,
+  "otazka": 476,
   "text": "Kdy napsal Václav Havel?",
   "dok": "václav_havel",
   "vd": 35,
@@ -6662,7 +6454,7 @@
   "odpoved": "Roku 1959"
  },
  {
-  "otazka": 493,
+  "otazka": 477,
   "text": "Kdy se oženil Václav Havel?",
   "dok": "václav_havel",
   "vd": 42,
@@ -6678,7 +6470,7 @@
   "odpoved": "9 . července 1964"
  },
  {
-  "otazka": 494,
+  "otazka": 478,
   "text": "Kde se oženil Václav Havel?",
   "dok": "václav_havel",
   "vd": 42,
@@ -6691,7 +6483,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 495,
+  "otazka": 479,
   "text": "Kdy vydal Václav Havel?",
   "dok": "václav_havel",
   "vd": 44,
@@ -6705,7 +6497,7 @@
   "odpoved": "Roku 1966"
  },
  {
-  "otazka": 496,
+  "otazka": 480,
   "text": "Kdy se připojil Václav Havel?",
   "dok": "václav_havel",
   "vd": 47,
@@ -6718,7 +6510,7 @@
   "odpoved": "1968"
  },
  {
-  "otazka": 497,
+  "otazka": 481,
   "text": "Kdy se zapojil Václav Havel?",
   "dok": "václav_havel",
   "vd": 52,
@@ -6731,7 +6523,7 @@
   "odpoved": "1969"
  },
  {
-  "otazka": 498,
+  "otazka": 482,
   "text": "Kde musel opustit Václav Havel?",
   "dok": "václav_havel",
   "vd": 54,
@@ -6744,7 +6536,7 @@
   "odpoved": "Československu"
  },
  {
-  "otazka": 499,
+  "otazka": 483,
   "text": "Kdy podepsal Václav Havel?",
   "dok": "václav_havel",
   "vd": 60,
@@ -6758,7 +6550,7 @@
   "odpoved": "roce 1972"
  },
  {
-  "otazka": 500,
+  "otazka": 484,
   "text": "Kdy pracoval Václav Havel?",
   "dok": "václav_havel",
   "vd": 61,
@@ -6772,7 +6564,7 @@
   "odpoved": "Roku 1974"
  },
  {
-  "otazka": 501,
+  "otazka": 485,
   "text": "Kdy strávil Václav Havel?",
   "dok": "václav_havel",
   "vd": 70,
@@ -6785,7 +6577,7 @@
   "odpoved": "1977"
  },
  {
-  "otazka": 502,
+  "otazka": 486,
   "text": "Kdy trpěl Václav Havel?",
   "dok": "václav_havel",
   "vd": 83,
@@ -6798,7 +6590,7 @@
   "odpoved": "1982"
  },
  {
-  "otazka": 503,
+  "otazka": 487,
   "text": "Kdy vykonával Václav Havel?",
   "dok": "václav_havel",
   "vd": 92,
@@ -6814,7 +6606,7 @@
   "odpoved": "17 . května 1989"
  },
  {
-  "otazka": 504,
+  "otazka": 488,
   "text": "Kde vykonával Václav Havel?",
   "dok": "václav_havel",
   "vd": 92,
@@ -6827,7 +6619,7 @@
   "odpoved": "Pankráci"
  },
  {
-  "otazka": 505,
+  "otazka": 489,
   "text": "Kdy se zúčastnil Václav Havel?",
   "dok": "václav_havel",
   "vd": 100,
@@ -6842,7 +6634,7 @@
   "odpoved": "19 . listopadu"
  },
  {
-  "otazka": 506,
+  "otazka": 490,
   "text": "Kdy promluvil Václav Havel?",
   "dok": "václav_havel",
   "vd": 101,
@@ -6857,7 +6649,7 @@
   "odpoved": "21 . listopadu"
  },
  {
-  "otazka": 507,
+  "otazka": 491,
   "text": "Kde vystoupil Václav Havel?",
   "dok": "václav_havel",
   "vd": 130,
@@ -6870,7 +6662,7 @@
   "odpoved": "USA"
  },
  {
-  "otazka": 508,
+  "otazka": 492,
   "text": "Kdy se navštívil Václav Havel?",
   "dok": "václav_havel",
   "vd": 132,
@@ -6883,7 +6675,7 @@
   "odpoved": "1990"
  },
  {
-  "otazka": 509,
+  "otazka": 493,
   "text": "Kdy odstoupil Václav Havel?",
   "dok": "václav_havel",
   "vd": 146,
@@ -6899,7 +6691,7 @@
   "odpoved": "17 . července 1992"
  },
  {
-  "otazka": 510,
+  "otazka": 494,
   "text": "Kdy se opustil Václav Havel?",
   "dok": "václav_havel",
   "vd": 166,
@@ -6915,7 +6707,7 @@
   "odpoved": "2 . února 2003"
  },
  {
-  "otazka": 511,
+  "otazka": 495,
   "text": "Kdy se založil Václav Havel?",
   "dok": "václav_havel",
   "vd": 169,
@@ -6931,7 +6723,7 @@
   "odpoved": "26 . července 2004"
  },
  {
-  "otazka": 512,
+  "otazka": 496,
   "text": "Kdy vyjádřil Václav Havel?",
   "dok": "václav_havel",
   "vd": 171,
@@ -6945,7 +6737,7 @@
   "odpoved": "roce 2006"
  },
  {
-  "otazka": 513,
+  "otazka": 497,
   "text": "Kde odpočíval Václav Havel?",
   "dok": "václav_havel",
   "vd": 175,
@@ -6958,7 +6750,7 @@
   "odpoved": "Hrádečku"
  },
  {
-  "otazka": 514,
+  "otazka": 498,
   "text": "Kdy zemřel Václav Havel?",
   "dok": "václav_havel",
   "vd": 178,
@@ -6974,7 +6766,7 @@
   "odpoved": "18 . prosince 2011"
  },
  {
-  "otazka": 515,
+  "otazka": 499,
   "text": "Kdy daroval Václav Havel?",
   "dok": "václav_havel",
   "vd": 217,
@@ -6988,7 +6780,7 @@
   "odpoved": "letech 1986"
  },
  {
-  "otazka": 516,
+  "otazka": 500,
   "text": "Kdy se publikoval Václav Havel?",
   "dok": "václav_havel",
   "vd": 222,
@@ -7002,7 +6794,7 @@
   "odpoved": "roce 2005"
  },
  {
-  "otazka": 517,
+  "otazka": 501,
   "text": "Kdy prodal Václav Havel?",
   "dok": "václav_havel",
   "vd": 229,
@@ -7016,7 +6808,7 @@
   "odpoved": "roce 1993"
  },
  {
-  "otazka": 518,
+  "otazka": 502,
   "text": "Kdy daroval Václav Havel?",
   "dok": "václav_havel",
   "vd": 231,
@@ -7030,7 +6822,7 @@
   "odpoved": "roce 1996"
  },
  {
-  "otazka": 519,
+  "otazka": 503,
   "text": "Kdy prodal Václav Havel?",
   "dok": "václav_havel",
   "vd": 232,
@@ -7044,7 +6836,7 @@
   "odpoved": "roce 1997"
  },
  {
-  "otazka": 520,
+  "otazka": 504,
   "text": "Kdy pořídil Václav Havel?",
   "dok": "václav_havel",
   "vd": 234,
@@ -7058,7 +6850,7 @@
   "odpoved": "roce 2000"
  },
  {
-  "otazka": 521,
+  "otazka": 505,
   "text": "Kdy se vrátil Václav Havel?",
   "dok": "václav_havel",
   "vd": 243,
@@ -7072,7 +6864,7 @@
   "odpoved": "roce 1993"
  },
  {
-  "otazka": 522,
+  "otazka": 506,
   "text": "Kde získal Václav Havel?",
   "dok": "václav_havel",
   "vd": 246,
@@ -7085,7 +6877,7 @@
   "odpoved": "Bulovce"
  },
  {
-  "otazka": 523,
+  "otazka": 507,
   "text": "Kde podpořil Václav Havel?",
   "dok": "václav_havel",
   "vd": 274,
@@ -7098,7 +6890,7 @@
   "odpoved": "Iráku"
  },
  {
-  "otazka": 524,
+  "otazka": 508,
   "text": "Kde se narodil Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 1,
@@ -7111,7 +6903,7 @@
   "odpoved": "Dolínku"
  },
  {
-  "otazka": 525,
+  "otazka": 509,
   "text": "Kdy pracoval Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 10,
@@ -7125,7 +6917,7 @@
   "odpoved": "roku 1861"
  },
  {
-  "otazka": 526,
+  "otazka": 510,
   "text": "Kdy převzal Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 15,
@@ -7139,7 +6931,7 @@
   "odpoved": "Roku 1872"
  },
  {
-  "otazka": 527,
+  "otazka": 511,
   "text": "Kde redigoval Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 16,
@@ -7152,7 +6944,7 @@
   "odpoved": "Květy"
  },
  {
-  "otazka": 528,
+  "otazka": 512,
   "text": "Kde cestoval Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 20,
@@ -7165,7 +6957,7 @@
   "odpoved": "Itálii"
  },
  {
-  "otazka": 529,
+  "otazka": 513,
   "text": "Kdy se oženil Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 28,
@@ -7180,7 +6972,7 @@
   "odpoved": "22 . února"
  },
  {
-  "otazka": 530,
+  "otazka": 514,
   "text": "Kde jezdil Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 31,
@@ -7193,7 +6985,7 @@
   "odpoved": "Zbraslav"
  },
  {
-  "otazka": 531,
+  "otazka": 515,
   "text": "Kde žil Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 32,
@@ -7206,7 +6998,7 @@
   "odpoved": "Závisti"
  },
  {
-  "otazka": 532,
+  "otazka": 516,
   "text": "Kdy se vrátil Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 36,
@@ -7221,7 +7013,7 @@
   "odpoved": "20 . září"
  },
  {
-  "otazka": 533,
+  "otazka": 517,
   "text": "Kde se vrátil Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 36,
@@ -7234,7 +7026,7 @@
   "odpoved": "Prahy"
  },
  {
-  "otazka": 534,
+  "otazka": 518,
   "text": "Kde zemřel Vítězslav Hálek?",
   "dok": "vítězslav_hálek",
   "vd": 37,
@@ -7247,23 +7039,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 535,
-  "text": "Kdy měl Vítězslav Nezval?",
-  "dok": "vítězslav_nezval",
-  "vd": 2,
-  "veta": 7308,
-  "rozsah": [
-   5,
-   6,
-   7,
-   8
-  ],
-  "typ": "Typ=cas",
-  "entita": "vítězslav_nezval",
-  "odpoved": "5 . října 1902"
- },
- {
-  "otazka": 536,
+  "otazka": 519,
   "text": "Kdy bydlel Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 3,
@@ -7277,7 +7053,7 @@
   "odpoved": "roku 1903"
  },
  {
-  "otazka": 537,
+  "otazka": 520,
   "text": "Kde bydlel Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 3,
@@ -7290,7 +7066,7 @@
   "odpoved": "Šemíkovicích"
  },
  {
-  "otazka": 538,
+  "otazka": 521,
   "text": "Kdy studoval Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 4,
@@ -7304,7 +7080,7 @@
   "odpoved": "roku 1911"
  },
  {
-  "otazka": 539,
+  "otazka": 522,
   "text": "Kde studoval Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 4,
@@ -7317,7 +7093,7 @@
   "odpoved": "Třebíči"
  },
  {
-  "otazka": 540,
+  "otazka": 523,
   "text": "Kde si oblíbil Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 7,
@@ -7330,7 +7106,7 @@
   "odpoved": "Brno"
  },
  {
-  "otazka": 541,
+  "otazka": 524,
   "text": "Kde jezdil Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 8,
@@ -7343,7 +7119,7 @@
   "odpoved": "Žabovřesk"
  },
  {
-  "otazka": 542,
+  "otazka": 525,
   "text": "Kdy se vstoupil Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 9,
@@ -7357,7 +7133,7 @@
   "odpoved": "Roku 1922"
  },
  {
-  "otazka": 543,
+  "otazka": 526,
   "text": "Kdy vstoupil Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 12,
@@ -7371,7 +7147,7 @@
   "odpoved": "Roku 1924"
  },
  {
-  "otazka": 544,
+  "otazka": 527,
   "text": "Kdy vstoupil Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 23,
@@ -7385,7 +7161,7 @@
   "odpoved": "roce 1924"
  },
  {
-  "otazka": 545,
+  "otazka": 528,
   "text": "Kde vstoupil Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 23,
@@ -7398,7 +7174,7 @@
   "odpoved": "Československa"
  },
  {
-  "otazka": 546,
+  "otazka": 529,
   "text": "Kdy podepsal Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 24,
@@ -7412,7 +7188,7 @@
   "odpoved": "roce 1946"
  },
  {
-  "otazka": 547,
+  "otazka": 530,
   "text": "Kdy podepsal Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 26,
@@ -7426,7 +7202,7 @@
   "odpoved": "roce 1948"
  },
  {
-  "otazka": 548,
+  "otazka": 531,
   "text": "Kdy se oženil Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 40,
@@ -7440,7 +7216,7 @@
   "odpoved": "roce 1948"
  },
  {
-  "otazka": 549,
+  "otazka": 532,
   "text": "Kdy měl Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 41,
@@ -7454,7 +7230,7 @@
   "odpoved": "roku 1937"
  },
  {
-  "otazka": 550,
+  "otazka": 533,
   "text": "Kdy se poznal Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 42,
@@ -7468,7 +7244,7 @@
   "odpoved": "Roku 1952"
  },
  {
-  "otazka": 551,
+  "otazka": 534,
   "text": "Kdy onemocněl Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 43,
@@ -7482,7 +7258,7 @@
   "odpoved": "roku 1950"
  },
  {
-  "otazka": 552,
+  "otazka": 535,
   "text": "Kdy podnikl Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 45,
@@ -7495,7 +7271,7 @@
   "odpoved": "1958"
  },
  {
-  "otazka": 553,
+  "otazka": 536,
   "text": "Kde podnikl Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 45,
@@ -7508,7 +7284,7 @@
   "odpoved": "Itálie"
  },
  {
-  "otazka": 554,
+  "otazka": 537,
   "text": "Kde zemřel Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 46,
@@ -7521,7 +7297,7 @@
   "odpoved": "Praze"
  },
  {
-  "otazka": 555,
+  "otazka": 538,
   "text": "Kdy vydal Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 107,
@@ -7535,7 +7311,7 @@
   "odpoved": "letech 1935"
  },
  {
-  "otazka": 556,
+  "otazka": 539,
   "text": "Kde se ohlíží Vítězslav Nezval?",
   "dok": "vítězslav_nezval",
   "vd": 108,

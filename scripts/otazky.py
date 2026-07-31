@@ -124,6 +124,12 @@ def naveska_typu(veta, typ, koren=None):
     stal Hrabal? → 40", což je nesmysl: to číslo patří do jiné klauzule
     a není to počet."""
     for i, t in enumerate(veta):
+        # Životní rozpětí v závorce („Marii Podhajskou ( 1859 – 1927 )") NENÍ
+        # odpověď na otázku po ději. Strukturně na slovese visí — závorka
+        # patří k podstatnému jménu, které na něm visí — a bez tohohle řezu
+        # dala otázka „Kdy se oženil Jirásek?" rok narození jeho ženy.
+        if any(a == "Udal=zivot" for a in t["acts"]):
+            continue
         for n in t.get("navesky", []):
             if n["typ"] != typ:
                 continue

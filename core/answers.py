@@ -48,10 +48,17 @@ class Odpovidac:
 
     # ---- rejstříky ---------------------------------------------------
     def _sestavit_navesky(self) -> dict:
-        """Věta → typ → rozsahy, které agenti označili."""
+        """Věta → typ → rozsahy, které agenti označili.
+
+        Životní rozpětí v závorce se vynechá: „oženil se s Marií Podhajskou
+        ( 1859 – 1927 )" nese čas, ale je to rok narození JEHO ŽENY, ne
+        odpověď na otázku po ději. Agent Bio to označí `Udal=zivot` právě
+        proto, že u nedefiniční závorky nevíme, čí život to je."""
         out: dict = defaultdict(lambda: defaultdict(list))
         for vi, veta in enumerate(self.vety):
             for t in veta:
+                if any(a == "Udal=zivot" for a in t["acts"]):
+                    continue
                 for n in t.get("navesky", ()):
                     out[vi][n["typ"]].append(tuple(n["rozsah"]))
         return out

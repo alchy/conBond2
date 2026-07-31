@@ -781,6 +781,46 @@ ok(len(_m) == 1 and _m[0] == {k: v for k, v in _v["barva"].items()
    "propagace a úplný rozbor daly různý výsledek")
 print("  večírek: propagace i úplný rozbor se shodly na jediném modelu")
 
+print("\n— přiřazovací tabulka a měřená arita —")
+from core.relations import hrany_z_arity, zmerit_aritu  # noqa: E402
+from core.tabulka import Tabulka  # noqa: E402
+
+# Úloha o milovnících umění (Bartlová, kap. 4.6). Diagram na ni nestačí:
+# neumí říct „právě jeden“ — to je součin a takový uzel v něm není.
+_t = Tabulka(["Josef", "Antonín", "František", "Pavel"], {
+    "nástroj": ["housle", "viola", "violoncello", "basa"],
+    "autor": ["Čapek", "Hašek", "Kundera", "Seifert"],
+    "malíř": ["Gogh", "Gauguin", "Monet", "Cézanne"],
+    "sloh": ["gotický", "románský", "renesanční", "barokní"]})
+(_t.spolu("housle", "Kundera", "1").neni("František", "basa", "2")
+   .spolu("Gauguin", "románský", "3").spolu("Hašek", "Monet", "4")
+   .nikdy("Cézanne", "Kundera", "5").je("Antonín", "barokní", "6")
+   .je("Pavel", "Seifert", "7").je("František", "Cézanne", "8")
+   .spolu("viola", "Gogh", "9").nikdy("gotický", "Cézanne", "10"))
+_res = _t.resit()
+# VŠECHNA řešení, ne první: úloha se dvěma řešeními vypadá při vracení
+# prvního jako vyřešená.
+ok(len(_res) == 1, f"úloha nemá jediné řešení, ale {len(_res)}")
+_a = _t.podle_osob(_res[0])["Antonín"]
+ok(_a == {"nástroj": "basa", "autor": "Hašek", "malíř": "Monet",
+          "sloh": "barokní"}, f"Antonín vyšel jinak: {_a}")
+
+# ARITA SE MĚŘÍ, NEPŘEDÁVÁ. Dřív se `jedinecne` posílalo rukou — týž
+# zapečený axiom jako kdysi porovnání letopočtů, jen menší.
+_H = [("otec", "karel", "petr"), ("otec", "karel", "lucie"),
+      ("otec", "josef", "karel"), ("bratr", "petr", "lucie"),
+      ("bratr", "tomáš", "lucie")]
+_ar = zmerit_aritu(_H)
+ok(_ar["otec"]["jedna_na_hodnotu"], "otcovství nevyšlo jako výlučné")
+ok(_ar["otec"]["nejvic_na_osobu"] == 2, "druhé dítě se počítá jako porušení")
+ok(not _ar["bratr"]["jedna_na_hodnotu"], "bratrství vyšlo jako výlučné")
+
+# PRÁH DOKLADŮ NENÍ OPATRNOST. Nad pár hranami vyjde výlučné i to, co
+# výlučné není, a vznikly by ZÁPORNÉ hrany, které nikdo netvrdil.
+ok(hrany_z_arity(_H, _ar) == [], "z pěti hran se vyrobily zápory")
+ok(hrany_z_arity(_H, _ar, nejmene_dokladu=2), "s nízkým prahem nevzniklo nic")
+print("  Antonín: basa · Hašek · Monet · baroko  ·  arita změřena, ne zadána")
+
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")
 ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")

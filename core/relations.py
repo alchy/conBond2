@@ -288,3 +288,86 @@ def navrhnout_pravidla(hrany: Iterable, jedinecne: Iterable = (),
                             "pokryti": len(doklad) / len(doloz)})
     out.sort(key=lambda r: (-r["doklad"], r["spor"], r["term"]))
     return out
+
+
+# ---- arita: kolik hodnot smí jedna entita mít --------------------------
+
+def zmerit_aritu(hrany: Iterable) -> dict:
+    """Kolik hodnot nese jedna entita u každého predikátu — MĚŘENO.
+
+    ODKUD TA POTŘEBA. `navrhnout_pravidla()` dostávalo množinu `jedinecne`
+    ručně: „otec a matka mají jediné řešení, bratr ne." To je týž zapečený
+    axiom jako kdysi `if za < nb` — jen menší. Přitom to v datech leží:
+    když v celém korpusu nemá nikdo dva otce, je otcovství jednohodnotové,
+    a když má někdo pět bratrů, není.
+
+    DVA SMĚRY, PROTOŽE JSOU RŮZNÉ. `otec(Karel, Petr)` znamená „Karel je
+    otec Petra":
+
+        na_hodnotu   kolik různých otců má jedno dítě        1  ⇒ výlučné
+        na_osobu     kolik různých dětí má jeden otec        n  ⇒ není
+
+    Kdo to splete, dostane spor pokaždé, když má rodič druhé dítě — a to
+    není spor, to je rodina. (Tuhle chybu tenhle projekt jednou udělal.)
+
+    ARITA SE STAVÍ PRŮBĚŽNĚ. Není to hotový soud, ale pozorování nad tím,
+    co zatím přišlo — nová data ji smějí vyvrátit. Proto se vrací i počet
+    dokladů a protipříklady, ne jen `True`/`False`: tvrdit výlučnost ze tří
+    hran je hádání, ne měření.
+    """
+    podle: dict = {}
+    for p, k, c in hrany:
+        d = podle.setdefault(p, {"na_osobu": {}, "na_hodnotu": {}, "hran": 0})
+        d["na_osobu"].setdefault(k, set()).add(c)
+        d["na_hodnotu"].setdefault(c, set()).add(k)
+        d["hran"] += 1
+    out = {}
+    for p, d in podle.items():
+        nej_o = max((len(v) for v in d["na_osobu"].values()), default=0)
+        nej_h = max((len(v) for v in d["na_hodnotu"].values()), default=0)
+        out[p] = {
+            "hran": d["hran"],
+            "nejvic_na_osobu": nej_o, "nejvic_na_hodnotu": nej_h,
+            "jedna_na_osobu": nej_o == 1, "jedna_na_hodnotu": nej_h == 1,
+            "vice_na_hodnotu": sorted(
+                (c, sorted(v)) for c, v in d["na_hodnotu"].items() if len(v) > 1)[:3]}
+    return out
+
+
+def hrany_z_arity(hrany: Iterable, arita: Mapping,
+                  nejmene_dokladu: int = 20) -> list:
+    """Záporné hrany, které nikdo nepsal — plynou z výlučnosti atributu.
+
+    Tvrzení si tím nese vlastní okolí: jakmile se z textu vytáhne
+    `otec(Karel, Petr)` a otcovství je jednohodnotové, je tím zároveň
+    řečeno, že nikdo jiný Petrovým otcem není. Do diagramu to jde jako
+    obyčejná šipka do negace.
+
+    Generuje se jen to, co z ARITY plyne — tedy proti DOLOŽENÝM hranám
+    téhož predikátu, ne proti všem myslitelným. Vyrábět zápor vůči
+    každému jménu v korpusu by pole zahltilo tvrzeními, na která se nikdo
+    neptal.
+
+    PRÁH DOKLADŮ NENÍ OPATRNOST, JE TO NUTNOST. Nad třemi hranami vyjde
+    „děd" jako výlučný — každé dítě v těch datech má jednoho dědu. Ve
+    skutečnosti má každý dva; data to jen neukázala. Bez prahu by z toho
+    vznikly ZÁPORNÉ hrany, které nikdo netvrdil, a ty by pak vyvracely
+    pravdivá tvrzení.
+
+    Absence protipříkladu není důkaz. U malého vzorku vypadá stejně jako
+    zákon — a je to táž past, jakou hlídá monotónní pole na druhém konci:
+    co v datech není, o tom se nikdo neptal.
+    """
+    hrany = list(hrany)
+    osoby: dict = {}
+    for p, k, c in hrany:
+        osoby.setdefault(p, set()).add(k)
+    out = []
+    for p, k, c in hrany:
+        a = arita.get(p) or {}
+        if not a.get("jedna_na_hodnotu") or a.get("hran", 0) < nejmene_dokladu:
+            continue
+        for jiny in sorted(osoby.get(p, ())):
+            if jiny != k and (p, jiny, c) not in set(hrany):
+                out.append((p, jiny, c, False))       # ¬p(jiny, c)
+    return out

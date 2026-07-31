@@ -1,13 +1,36 @@
 """Vztahy jako skládání — definiční věta je DATA, ne tabulka v kódu.
 
-CO TO ŘEŠÍ. „Kdo je Petrův tchán?" nejde odpovědět, dokud někdo nenapíše,
-co tchán je. Přitom to v korpusu stojí obyčejnou větou:
+CO TO ŘEŠÍ. „Kdo je Petrův tchán?" nejde odpovědět, dokud se neví, co tchán
+je. Pravidlo `tchán = otec ∘ (manžel | manželka)` se dá získat DVĚMA cestami
+a ta druhá je ta podstatná.
 
-    Tchán je otec manžela nebo manželky.
+    1. Z DEFINICE          „Tchán je otec manžela nebo manželky."
+    2. ZE VZTAHU MEZI FAKTY   korpus říká  tchán(Karel, Jana)
+                              a jinde      otec(Karel, Petr)
+                                           manžel(Petr, Jana)
 
-Z ní se dá odvodit pravidlo `tchán = otec ∘ (manžel | manželka)` a tím se
-z primitivních hran (otec, matka, manžel…) dopočítají odvozené. Runtime pak
+První cesta je pohodlná, ale spoléhá na to, že text definici obsahuje —
+a životopis, evangelium ani článek o včelách žádné definice nepíšou.
+
+Druhá se učí z faktů samotných: pravidlo NENÍ v žádné větě, je vidět až
+ve VZTAHU MEZI VĚTAMI. Kde se složená cesta opakovaně kryje s doloženou
+hranou, je to pravidlo — a čím víc dokladů, tím jistější.
+
+Obojí končí stejně: z primitivních hran se dopočítají odvozené a runtime
 nemá o vztazích jedinou větev navíc — odvozená hrana je obyčejný fakt.
+
+A TÍM SE VRSTVA ZAVŘE SAMA NA SEBE. Odvozená hrana je vstup dalšího
+odvozování i dalšího UČENÍ: z faktů vzniknou pravidla, z pravidel nové
+fakty, a nad těmi se dají hledat pravidla znova. Získávání faktů z textu
+tak přestává být jednosměrné.
+
+Ověřeno na vymyšlené rodině, kde není jediná definiční věta:
+
+    matka = manželka ∘ otec     doklad 2 · spor 0 · pokrytí 100 %
+      ⟹ matka(Věra, Lucie)      hrana, která v textu NIKDE NESTOJÍ
+
+Text říká, že Věra je manželka Karla a Karel otec Lucie. Že je Věra matka
+Lucie, neříká nikde — a přesto to plyne.
 
 PŘEVZATO Z conBondu (`reldefs.py`). Tam to bylo popsané jako mapování jedné
 faktické vrstvy na druhou; podstatné je, že se pravidla NEPÍŠOU, nýbrž ČTOU
@@ -27,6 +50,15 @@ Rozdíl je podstatný: „děd je otec otce" platí vždycky, kdežto co znamen�
 FIXPOINT, PROTOŽE DEFINICE STOJÍ NA DEFINICÍCH. „Praděd je otec děda"
 nedává smysl, dokud není přijat „děd". Přijatý term rozšíří slovník a kolo
 se opakuje, dokud něco přibývá.
+
+CHYBĚJÍCÍ HRANA NENÍ PROTIPŘÍKLAD. Pole je monotónní: co v něm není, o tom
+se nikdo neptal — ne že to neplatí. Když tedy složená cesta dá hranu, kterou
+korpus nedokládá, NENÍ to spor, jen nedoložený případ. Sporem je až doložená
+hrana, která tvrdí něco jiného, a to jen u vztahů, které mají jediné řešení
+(jeden otec, ne jeden bratr).
+
+Bez tohohle rozlišení by každé pravidlo vyšlo jako chybné, protože žádný
+korpus není úplný.
 """
 
 from typing import Iterable, Mapping, Optional, Sequence
@@ -170,3 +202,89 @@ def odvodit_hrany(hrany: Iterable, pravidla: Mapping, kol: int = 6) -> list:
         if not pribylo:
             break
     return nove
+
+
+# ---- učení pravidel ze samotných faktů ---------------------------------
+
+def slozit_cestu(podle_predikatu: Mapping, base: str, pres: str) -> set:
+    """Hrany, které vzniknou složením dvou predikátů za sebou.
+
+    base(a, b) ∧ pres(b, c) ⟹ (a, c). Prostřední článek se zahazuje —
+    zajímá nás, co cesta spojuje, ne kudy vedla."""
+    prostredni: dict = {}
+    for k, c in podle_predikatu.get(pres, ()):
+        prostredni.setdefault(k, []).append(c)
+    return {(k1, c2) for k1, c1 in podle_predikatu.get(base, ())
+            for c2 in prostredni.get(c1, ())}
+
+
+def navrhnout_pravidla(hrany: Iterable, jedinecne: Iterable = (),
+                       min_dokladu: int = 2) -> list:
+    """Hrany korpusu → pravidla, která z nich VYPLÝVAJÍ. Žádná definice.
+
+    Pro každý predikát se zkusí každá dvojice (base, přes) a spočítá se, jak
+    se složená cesta kryje s tím, co korpus o tom predikátu doopravdy říká.
+
+        tchán(Karel, Jana)  doloženo
+        otec(Karel, Petr) ∧ manžel(Petr, Jana)  ⟹  (Karel, Jana)  ✓ kryje se
+
+    TŘI ČÍSLA, NE JEDNO SKÓRE. Každé odpovídá na jinou otázku a slévat je
+    znamená zahodit rozdíl mezi „málo dokladů" a „doloženo špatně":
+
+        doklad   složená cesta trefila doloženou hranu
+        navic    cesta dala hranu, kterou korpus nedokládá
+        spor     cesta si odporuje s doloženou hranou
+
+    `navic` NENÍ chyba. Pole je monotónní: chybějící hrana znamená, že se
+    nikdo neptal. Právě proto se počítá zvlášť a do rozhodování nevstupuje —
+    kdyby vstupovala, každé pravidlo by nad neúplným korpusem propadlo.
+
+    Spor je vidět jen u vztahů z `jedinecne` — těch, které mají jediné
+    řešení. Otce má člověk jednoho, takže dvě různá tvrzení jsou spor;
+    bratrů může mít pět a druhý bratr nevyvrací prvního.
+
+    Vrací seznam seřazený od nejlépe doloženého; nic nepřijímá ani
+    nezavrhuje. Rozhodnutí patří tomu, kdo vidí i práh — pravidlo se dvěma
+    doklady je něco jiného než pravidlo s dvěma sty.
+    """
+    podle_predikatu: dict = {}
+    for p, k, c in hrany:
+        podle_predikatu.setdefault(p, []).append((k, c))
+    jedinecne = set(jedinecne)
+    predikaty = sorted(podle_predikatu)
+    out = []
+    for term in predikaty:
+        doloz = set(podle_predikatu[term])
+        # Jedinečnost sedí na DRUHÉM konci hrany, ne na prvním. `matka(Věra,
+        # Petr)` znamená „Věra je matka Petra": jedno dítě má jednu matku,
+        # kdežto jedna matka může mít dětí kolik chce. Kdo to otočí, dostane
+        # spor pokaždé, když má rodič druhé dítě — a to není spor, to je
+        # rodina.
+        podle_ciho: dict = {}
+        for k, c in doloz:
+            podle_ciho.setdefault(c, set()).add(k)
+        for base in predikaty:
+            if base == term:
+                continue
+            for pres in predikaty:
+                # `base ∘ term` by dokazovalo term sebou samým.
+                if pres == term:
+                    continue
+                cesta = slozit_cestu(podle_predikatu, base, pres)
+                if not cesta:
+                    continue
+                doklad = cesta & doloz
+                if len(doklad) < min_dokladu:
+                    continue
+                navic = cesta - doloz
+                # Spor je, až když korpus o TÉMŽE druhém konci tvrdí něco
+                # jiného. Že o něm nemluví vůbec, spor není — pole je
+                # monotónní.
+                spor = {(k, c) for k, c in navic if term in jedinecne
+                        and podle_ciho.get(c) and k not in podle_ciho[c]}
+                out.append({"term": term, "base": base, "via": [pres],
+                            "doklad": len(doklad), "navic": len(navic) - len(spor),
+                            "spor": len(spor),
+                            "pokryti": len(doklad) / len(doloz)})
+    out.sort(key=lambda r: (-r["doklad"], r["spor"], r["term"]))
+    return out

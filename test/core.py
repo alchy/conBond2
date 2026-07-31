@@ -639,6 +639,35 @@ ok(("tchán", "karel", "jana") in _sada, f"tchán se neodvodil: {_sada}")
 ok(("děd", "josef", "petr") in _sada, f"děd se neodvodil: {_sada}")
 print(f"  pravidel {len(_pr)} · odvozených hran {len(_nove)}")
 
+print("\n— vztahy se učí z faktů, ne jen z definic —")
+from core.relations import navrhnout_pravidla  # noqa: E402
+
+_H = [("otec", "karel", "petr"), ("otec", "karel", "lucie"),
+      ("otec", "petr", "tomáš"), ("otec", "josef", "karel"),
+      ("otec", "josef", "milan"), ("manželka", "jana", "petr"),
+      ("manželka", "věra", "karel"), ("matka", "věra", "petr"),
+      ("matka", "jana", "tomáš"), ("bratr", "milan", "karel"),
+      ("děd", "josef", "petr"), ("děd", "josef", "lucie"),
+      ("děd", "karel", "tomáš")]
+_n = {(r["term"], r["base"], r["via"][0]): r
+      for r in navrhnout_pravidla(_H, jedinecne={"otec", "matka", "děd"})}
+ok(("děd", "otec", "otec") in _n, "z faktů se nevyčetlo, že děd je otec otce")
+ok(_n[("děd", "otec", "otec")]["spor"] == 0, "správné pravidlo hlásí spor")
+
+# JEDINEČNOST SEDÍ NA DRUHÉM KONCI HRANY. „matka(Věra, Petr)" znamená
+# „Věra je matka Petra": jedno dítě má jednu matku, jedna matka může mít
+# dětí kolik chce. Kdo to otočí, hlásí spor pokaždé, když má rodič druhé
+# dítě — a to není spor, to je rodina.
+_m = _n.get(("matka", "manželka", "otec"))
+ok(_m is not None, "nevyčetlo se, že matka je manželka otce")
+ok(_m and _m["spor"] == 0, f"druhé dítě se počítá jako spor: {_m}")
+
+# Chybějící hrana není protipříklad — je to nový fakt. Právě tenhle:
+# text říká manželka(Věra, Karel) a otec(Karel, Lucie), ale matka(Věra,
+# Lucie) v něm nestojí nikde.
+ok(_m and _m["navic"] >= 1, "odvozený fakt se nikde neprojevil")
+print(f"  pravidel z faktů: {len(_n)} · bez jediné definiční věty")
+
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")
 ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")

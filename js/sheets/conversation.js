@@ -1,8 +1,14 @@
-/* Dialog — znalost se zadává větou, ne tabulkou.
+/* Dialog — rozhovor jako u chatu: otázka, odpověď, a detail až na vyžádání.
 
    Prohlížeč tu nerozhoduje o ničem: pošle text a dostane zpátky, co se s ním
    stalo. Druh tvrzení, odvození i odmítnutí řeší jádro, protože zdroj pravdy
    sedí na backendu a stránka je jen jeden ze dvou kanálů.
+
+   PROČ JE DETAIL SCHOVANÝ, ALE NE ZAHOZENÝ. Odpověď je jedno slovo, kdežto
+   cesta k ní je pět řádků: která osoba se rozsvítila, které tvary, jak
+   široké vyšlo pole a kolik v něm bylo kandidátů. Číst to u každého tahu je
+   otrava; nemít to k dispozici znamená věřit stroji na slovo. Proto má každý
+   tah vlastní `<details>` — zavřený, ale úplný.
 
    Tři odpovědi, ne dvě: `nevím` není výmluva. Pole je monotónní a chybějící
    hrana znamená, že se nikdo neptal, ne že odpověď je ne. */
@@ -13,55 +19,36 @@ const ZNAKY = { podtrida: '⊂', instance: '∈', synonymum: '=', zapor: '≠' }
 const POPIS = { podtrida: 'podtřída', instance: 'instance',
                 synonymum: 'synonymum', zapor: 'zápor' };
 
+const cislo = x => new Intl.NumberFormat('cs').format(x);
+
 export const UKAZKA = [
+  'Kdo je Alois Jirásek?',
   'Kde se narodil Bohumil Hrabal?',
+  'Kolik zubů má dospělý pes?',
+  'Kdy se narodil Sherlock Holmes?',
   'Krakatit je román.',
-  'román je druh díla',
   '? Krakatit dílo',
-  'Krakatit není báseň',
-  '? Krakatit báseň',
 ];
 
 export function postavList() {
-  const rozhovor = el('div', { class: 'card rozhovor' }, [
-    el('h2', {}, 'Rozhovor'),
-    el('p', { class: 'hint', html:
-      'Znalost se zadává větou. <b>X je druh Y</b> je podtřída, <b>X je Y</b> '
-      + 'instance, <b>X je totéž co Y</b> synonymum, <b>X není Y</b> zápor. '
-      + 'Otázka na vztah je <b>? X Y</b>, rodokmen <b>?? X</b>.<br>'
-      + '<b>Kde / Kdy / Kolik</b> se ptá na <b>obsah korpusu</b> — odpoví pole '
-      + 'a kandidáti se vypíšou vpravo.<br>Když si mluvnice není jistá, '
-      + '<b>zeptá se</b>: „pes je savec" může být obojí a špatná hrana se šíří '
-      + 'expanzí dál.' }),
+  const chat = el('div', { class: 'card chat' }, [
     el('div', { class: 'prepis', id: 'dPrepis' }),
     el('div', { class: 'ptani', id: 'dPtani', hidden: '' }),
-    el('div', { class: 'radek' }, [
-      el('input', { type: 'text', id: 'dText', size: '46',
-        placeholder: 'Krakatit je román.  ·  ? Krakatit dílo' }),
-      el('button', { class: 'act', id: 'dSend' }, 'Řekni'),
+    el('div', { class: 'vstup' }, [
+      el('input', { type: 'text', id: 'dText', autocomplete: 'off',
+        placeholder: 'Kdo je Alois Jirásek?   ·   Krakatit je román.' }),
+      el('button', { class: 'act', id: 'dSend' }, 'Zeptat se'),
     ]),
-    el('div', { class: 'radek' }, [
-      el('button', { class: 'lehke', id: 'dUkazka' }, 'Předvést na příkladu'),
+    el('div', { class: 'pod' }, [
+      el('button', { class: 'lehke', id: 'dUkazka' }, 'Předvést na příkladech'),
       el('button', { class: 'lehke', id: 'dZapomen' }, 'Zapomenout naučené'),
+      el('span', { class: 'napoveda', html:
+        '<b>Kdo · Co · Kde · Kdy · Kolik</b> se ptá korpusu &nbsp;·&nbsp; '
+        + '<b>X je druh Y</b> učí vztah &nbsp;·&nbsp; <b>? X Y</b> se ptá na vztah' }),
     ]),
   ]);
 
-  /* Kandidáti dostali místo vpravo, protože jich je hodně a jsou to ta
-     zajímavá data. Šablona je abstrakce, která má kandidáty MATCHNOUT —
-     vybrat z nich jednoho je jiná úloha, tak se ukazují všichni. */
-  const kandidati = el('div', { class: 'card kandidati' }, [
-    el('h2', {}, 'Kandidáti odpovědi'),
-    el('p', { class: 'hint', html:
-      'Otázka na obsah rozsvítí pole: <b>osoba</b> se hledá jako aktivace '
-      + '<code>Ent=</code> (ve větě jako slovo většinou vůbec není — čeština '
-      + 'podmět zahazuje), <b>sloveso</b> jako tvar ve slovníku. Průnik je '
-      + 'pole odpovědi a tázací tvar řekne, jaký <b>druh</b> místa v něm '
-      + 'hledat.' }),
-    el('div', { class: 'akt', id: 'dAkt' }),
-    el('div', { class: 'kseznam', id: 'dKand' }),
-  ]);
-
-  /* Znalost je sbalená: čte se občas, kdežto kandidáti pořád. */
+  /* Znalost je sbalená: čte se občas, kdežto rozhovor pořád. */
   const znalost = el('details', { class: 'card znalost', id: 'dZnalost' }, [
     el('summary', {}, [el('b', {}, 'Co systém ví'),
       el('span', { class: 'cisla', id: 'dCisla' })]),
@@ -74,30 +61,85 @@ export function postavList() {
   ]);
 
   return el('section', { class: 'sheet', id: 's-dial', hidden: '' },
-    [el('div', { class: 'two' }, [rozhovor, kandidati]), znalost]);
+    [chat, znalost]);
+}
+
+/* ---- jeden tah ------------------------------------------------------- */
+function odpovedTahu(z) {
+  /* U otázky na obsah je ODPOVĚĎ to slovo, ne popis pole. Popis patří do
+     detailu — jinak se to hlavní ztratí mezi čísly. */
+  if (z.druh === 'obsah') {
+    return z.nalez && z.nalez.odpoved
+      ? { text: z.nalez.odpoved, trida: 'ok' }
+      : { text: z.odpoved, trida: 'nevim' };
+  }
+  const trida = { tvrzeni: 'ok', otazka: 'ok', rodokmen: 'ok',
+                  nejasnost: 'ptam', odmitnuto: 'ne', chyba: 'ne' }[z.druh] || '';
+  return { text: z.odpoved, trida };
+}
+
+function detailTahu(z) {
+  const kusy = [];
+  const cip = (t, c = '') => `<i class="cip ${c}">${esc(t)}</i>`;
+  if (z.nalez) {
+    const a = z.nalez.aktivace;
+    const r = [];
+    if (a.entita) {
+      r.push('<div class="r"><span>osoba</span>'
+        + `<i class="cip ent">Ent=${esc(a.entita)} <b>${a.vet_entity}</b></i></div>`);
+    }
+    const tvary = Object.entries(a.svitici).filter(([, k]) => k)
+      .map(([t, k]) => `<i class="cip">${esc(t)} <b>${k}</b></i>`).join('');
+    if (tvary) r.push(`<div class="r"><span>tvary</span>${tvary}</div>`);
+    if (a.nezname.length) {
+      r.push('<div class="r"><span>nesvítí</span>'
+        + a.nezname.map(t => cip(t, 'pryc')).join('') + '</div>');
+    }
+    r.push('<div class="r"><span>pole</span>'
+      + cip(cislo(z.nalez.vet) + ' vět') + cip(z.nalez.typ || '—')
+      + (a.siroko ? cip('širší — něco se nepotkalo', 'pryc') : '')
+      + (z.nalez.znalost_pomohla ? cip('pomohla znalost', 'zn') : '') + '</div>');
+    kusy.push(`<div class="akt">${r.join('')}</div>`);
+
+    const k = z.nalez.kandidati;
+    if (k.length) {
+      if (k.length > 1) kusy.push(`<div class="pocet">${k.length} kandidátů</div>`);
+      kusy.push(k.map((x, i) =>
+        `<div class="kand${i ? '' : ' prvni'}"><b>${esc(x.text)}</b>`
+        + `<span class="vt">věta ${x.veta}</span>`
+        + `<div class="ctx">${esc(x.kontext.slice(0, 170))}`
+        + `${x.kontext.length > 170 ? '…' : ''}</div></div>`).join(''));
+    }
+  }
+  /* U tvrzení je hrana už v odpovědi („přijato: X ⊂ Y"), jinde přidá, jak se
+     pojmy normalizovaly. */
+  if (z.hrana && z.hrana.levy && z.druh !== 'tvrzeni') {
+    kusy.push('<div class="akt"><div class="r"><span>hrana</span>'
+      + `<i class="cip">${esc(z.hrana.levy)} <b>${esc(z.hrana.znak)}</b> `
+      + `${esc(z.hrana.pravy)}</i></div></div>`);
+  }
+  return kusy.join('');
+}
+
+function tah(z) {
+  const o = odpovedTahu(z);
+  const d = detailTahu(z);
+  return '<div class="tah">'
+    + `<div class="ja">${esc(z.text)}</div>`
+    + `<div class="on ${o.trida}">${esc(o.text)}</div>`
+    + (d ? `<details class="proc"><summary>jak k tomu došel</summary>${d}</details>`
+         : '')
+    + '</div>';
 }
 
 /* ---- vykreslení ------------------------------------------------------ */
-function radekPrepisu(z) {
-  const trida = { tvrzeni: 'ok', otazka: 'dotaz', rodokmen: 'dotaz',
-                  nejasnost: 'ptam', odmitnuto: 'ne', chyba: 'ne' }[z.druh] || '';
-  /* U tvrzení je hrana už v odpovědi („přijato: X ⊂ Y") a chip by ji
-     zopakoval slovo od slova. U otázky a nejasnosti přidá, jak se pojmy
-     normalizovaly, takže tam smysl má. */
-  const ukazHranu = z.hrana && z.hrana.levy && z.druh !== 'tvrzeni';
-  const hrana = ukazHranu
-    ? `<span class="hrana">${esc(z.hrana.levy)} <b>${esc(z.hrana.znak)}</b> `
-      + `${esc(z.hrana.pravy)}</span>` : '';
-  return `<div class="tah ${trida}"><div class="rekl">${esc(z.text)}</div>`
-    + `<div class="rekl2">${esc(z.odpoved)}${hrana}</div></div>`;
-}
-
 export function prekresli(root, stav, akce) {
   if (!root || !stav) return;
   const prepis = root.querySelector('#dPrepis');
   prepis.innerHTML = stav.historie.length
-    ? stav.historie.map(radekPrepisu).join('')
-    : '<div class="tah prazdno">Zatím nic. Zkus „Krakatit je román."</div>';
+    ? stav.historie.map(tah).join('')
+    : '<div class="prazdno">Zeptej se korpusu — <b>Kdo je Alois Jirásek?</b>'
+      + ' — nebo ho nauč vztah: <b>Krakatit je román.</b></div>';
   prepis.scrollTop = prepis.scrollHeight;
 
   /* Nejasnost blokuje další vstup — nedořešená hrana by se ztratila. */
@@ -119,9 +161,7 @@ export function prekresli(root, stav, akce) {
   root.querySelector('#dCisla').innerHTML =
     `<span><b>${c.tvrzeni}</b> tvrzení</span><span><b>${c.pojmy}</b> pojmů</span>`
     + `<span><b>${c.zapory}</b> záporů</span><span><b>${c.synonyma}</b> synonym</span>`
-    + `<span class="muted">${c.uzlu_celkem} uzlů i s podkladem</span>`;
-
-  kresliKandidaty(root, stav.nalez);
+    + `<span class="muted">${cislo(c.uzlu_celkem)} uzlů i s podkladem</span>`;
 
   root.querySelector('#dHrany').innerHTML = stav.znalost.hrany.length
     ? stav.znalost.hrany.map(h =>
@@ -137,38 +177,4 @@ export function prekresli(root, stav, akce) {
     .filter(p => p.predci.length)
     .map(p => `<div class="rod"><b>${esc(p.jmeno)}</b> ⊂ `
       + p.predci.map(x => esc(x)).join(', ') + '</div>').join('');
-}
-
-
-/* ---- kandidáti -------------------------------------------------------- */
-function kresliKandidaty(root, n) {
-  const akt = root.querySelector('#dAkt');
-  const seznam = root.querySelector('#dKand');
-  if (!n) {
-    akt.innerHTML = '';
-    seznam.innerHTML = '<p class="hint">Zeptej se na obsah: '
-      + '„Kde se narodil Bohumil Hrabal?"</p>';
-    return;
-  }
-  const a = n.aktivace;
-  const tvary = Object.entries(a.svitici).filter(([, k]) => k)
-    .map(([t, k]) => `<i class="cip">${esc(t)} <b>${k}</b></i>`).join('');
-  akt.innerHTML =
-    (a.entita ? `<div class="r"><span>osoba</span><i class="cip ent">Ent=`
-      + `${esc(a.entita)} <b>${a.vet_entity}</b></i></div>` : '')
-    + (tvary ? `<div class="r"><span>tvary</span>${tvary}</div>` : '')
-    + (a.nezname.length ? `<div class="r"><span>nesvítí</span>`
-       + a.nezname.map(t => `<i class="cip pryc">${esc(t)}</i>`).join('') + '</div>' : '')
-    + `<div class="r"><span>pole</span><i class="cip">${n.vet} vět</i>`
-    + `<i class="cip">${esc(n.typ || '—')}</i>`
-    + (a.siroko ? '<i class="cip pryc">sloveso nesedlo — celá osoba</i>' : '')
-    + (n.znalost_pomohla ? '<i class="cip zn">pomohla znalost</i>' : '') + '</div>';
-
-  seznam.innerHTML = n.kandidati.length
-    ? `<div class="pocet">${n.kandidati.length} kandidátů</div>`
-      + n.kandidati.map((k, i) => `<div class="kand${i ? '' : ' prvni'}">`
-        + `<b>${esc(k.text)}</b><span class="vt">věta ${k.veta}</span>`
-        + `<div class="ctx">${esc(k.kontext.slice(0, 150))}${k.kontext.length > 150 ? '…' : ''}</div>`
-        + '</div>').join('')
-    : '<p class="hint">V poli není nic toho druhu.</p>';
 }

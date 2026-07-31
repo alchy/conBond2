@@ -261,61 +261,98 @@ li.skryto { color:var(--muted); font-size:11px; font-style:italic; }
 .p-map li .pta { font-size:10.5px; background:var(--upos); color:#fff;
                  border-radius:9px; padding:0 6px; font-weight:600; }
 
-  /* ---- list Dialog --------------------------------------------------
-     Přepis vlevo, znalost vpravo. Přepis má pevnou výšku a roluje: kdyby
-     rostl, odsouval by vstupní řádek a při delším rozhovoru by se za ním
-     muselo jezdit. */
-  .rozhovor { width:min(560px, 46vw); }
+  /* ---- list Dialog: rozhovor jako u chatu -----------------------------
+     Přepis roluje, vstup drží dole. Detail je u každého tahu vlastní
+     `<details>` — zavřený, aby odpověď nezmizela mezi čísly. */
+  .chat { width:min(860px, 92vw); display:flex; flex-direction:column; }
 
-  .rozhovor .prepis { height:300px; overflow-y:auto; padding:8px 10px;
-                      background:var(--plane); border:1px solid var(--ring);
-                      border-radius:6px; margin-bottom:10px; }
+  .chat .prepis { height:min(56vh, 520px); overflow-y:auto;
+                  padding:4px 4px 8px; margin-bottom:10px;
+                  scroll-behavior:smooth; }
+  .chat .prazdno { color:var(--muted); font-size:13px; padding:22px 4px; }
+  .chat .prazdno b { color:var(--ink2); }
 
-  .rozhovor .tah { padding:5px 0; border-bottom:1px solid var(--grid); }
-  .rozhovor .tah:last-child { border-bottom:0; }
-  .rozhovor .tah .rekl { font-size:13px; color:var(--ink); }
-  .rozhovor .tah .rekl { font-weight:600; }
-  .rozhovor .tah .rekl::before { content:"› "; color:var(--muted);
-                                 font-weight:400; }
-  .rozhovor .tah .rekl2 { font-size:12.5px; color:var(--ink2);
-                          padding-left:14px; }
-  .rozhovor .tah.ok .rekl2 { color:var(--feats); }
-  .rozhovor .tah.ne .rekl2 { color:var(--deprel); }
-  .rozhovor .tah.ptam .rekl2 { color:var(--hrube); }
-  .rozhovor .tah.prazdno { color:var(--muted); font-size:12.5px; }
-  .rozhovor .hrana { margin-left:9px; color:var(--muted); }
-  .rozhovor .hrana b { color:var(--ink); }
+  .tah { margin-bottom:16px; }
 
-  .rozhovor .ptani { display:flex; gap:7px; margin-bottom:10px;
-                     padding:9px 10px; border-radius:6px;
-                     border:1px solid var(--hrube); }
+  /* Otázka vpravo, odpověď vlevo — týž tvar, jaký lidé znají z chatu. */
+  .tah .ja { margin-left:auto; width:max-content; max-width:80%;
+             padding:7px 13px; border-radius:14px 14px 3px 14px;
+             background:var(--grid); color:var(--ink); font-size:13.5px; }
+  .tah .on { margin-top:7px; width:max-content; max-width:88%;
+             padding:8px 14px; border-radius:14px 14px 14px 3px;
+             background:var(--plane); border:1px solid var(--ring);
+             font-size:15px; color:var(--ink); line-height:1.45; }
+  .tah .on.ok    { border-color:var(--feats); }
+  .tah .on.nevim { color:var(--ink2); font-size:13px; }
+  .tah .on.ne    { border-color:var(--deprel); color:var(--deprel); font-size:13px; }
+  .tah .on.ptam  { border-color:var(--hrube); font-size:13.5px; }
 
-  .rozhovor .radek { display:flex; gap:7px; align-items:center;
-                     margin-bottom:7px; }
-  .rozhovor .radek input { font:inherit; font-size:13px; padding:5px 9px;
-                           border:1px solid var(--axis); border-radius:6px;
-                           background:var(--surface); color:var(--ink);
-                           flex:1 1 auto; }
-  .rozhovor input:disabled { opacity:.5; }
+  .tah .proc { margin:5px 0 0 2px; }
+  .tah .proc > summary { cursor:pointer; list-style:none; font-size:11.5px;
+                         color:var(--muted); padding:2px 0; width:max-content; }
+  .tah .proc > summary::-webkit-details-marker { display:none; }
+  .tah .proc > summary::before { content:"› "; }
+  .tah .proc[open] > summary::before { content:"⌄ "; }
+  .tah .proc > summary:hover { color:var(--ink2); }
+  .tah .proc[open] { padding:8px 11px; margin-top:6px; border-radius:8px;
+                     background:var(--plane); border:1px solid var(--ring); }
+
+  .akt { display:flex; flex-direction:column; gap:4px; margin-bottom:8px; }
+  .akt .r { display:flex; flex-wrap:wrap; gap:4px; align-items:baseline; }
+  .akt .r > span { font-size:11px; color:var(--muted); width:48px;
+                   flex:0 0 auto; }
+  .cip { font-style:normal; font-size:11.5px; padding:1px 7px; border-radius:4px;
+         background:var(--grid); color:var(--ink2); }
+  .cip b { color:var(--ink); }
+  .cip.ent { background:var(--hrube); color:#fff; }
+  .cip.ent b { color:#fff; }
+  .cip.zn { background:var(--feats); color:#fff; }
+  /* Tvar, který nesvítí nikde, je důvod, proč odpověď nepřijde. */
+  .cip.pryc { background:transparent; border:1px dashed var(--deprel);
+              color:var(--deprel); }
+
+  .pocet { font-size:11px; color:var(--muted); margin-bottom:5px; }
+  .kand { padding:5px 9px; border-radius:6px; background:var(--surface);
+          border:1px solid var(--ring); margin-bottom:4px; }
+  .kand.prvni { border-color:var(--feats); }
+  .kand b { font-size:13px; color:var(--ink); }
+  .kand .vt { font-size:10.5px; color:var(--muted); margin-left:8px; }
+  .kand .ctx { font-size:11.5px; color:var(--ink2); margin-top:2px;
+               line-height:1.45; }
+
+  .chat .ptani { display:flex; gap:7px; margin-bottom:9px; padding:9px 10px;
+                 border-radius:8px; border:1px solid var(--hrube); }
+
+  .chat .vstup { display:flex; gap:8px; align-items:center; }
+  .chat .vstup input { font:inherit; font-size:14px; padding:9px 13px;
+                       border:1px solid var(--axis); border-radius:10px;
+                       background:var(--surface); color:var(--ink);
+                       flex:1 1 auto; }
+  .chat .vstup input:focus { outline:2px solid var(--ring); outline-offset:1px; }
+  .chat .vstup input:disabled { opacity:.5; }
+  .chat .vstup .act { padding:9px 16px; border-radius:10px; }
+
+  .chat .pod { display:flex; gap:7px; align-items:center; flex-wrap:wrap;
+               margin-top:9px; }
+  .chat .napoveda { font-size:11.5px; color:var(--muted); margin-left:4px; }
+  .chat .napoveda b { color:var(--ink2); font-weight:600; }
 
   .lehke { font:inherit; font-size:12px; padding:4px 9px; cursor:pointer;
            border:1px solid var(--ring); border-radius:6px;
            background:transparent; color:var(--ink2); }
   .lehke:hover { background:var(--grid); color:var(--ink); }
 
-  .znalost { width:min(430px, 36vw); }
+  .znalost { width:min(860px, 92vw); margin-top:12px; }
   .znalost .cisla { display:flex; flex-wrap:wrap; gap:11px; font-size:12px;
-                    color:var(--ink2); margin-bottom:10px; }
+                    color:var(--ink2); }
   .znalost .cisla b { color:var(--ink); }
   .znalost .cisla .muted { color:var(--muted); }
-
   .znalost .hr { display:flex; gap:7px; align-items:baseline; font-size:13px;
                  padding:3px 0; border-bottom:1px solid var(--grid); }
   .znalost .hr .zn { color:var(--hrube); font-weight:650; }
   .znalost .hr.zapor .zn { color:var(--deprel); }
   .znalost .hr .lv, .znalost .hr .pv { color:var(--ink); }
   .znalost .hr .dr { margin-left:auto; font-size:11px; color:var(--muted); }
-
   .znalost .rod { font-size:12px; color:var(--ink2); padding:2px 0; }
   .znalost .rod b { color:var(--ink); }
   .znalost .pojmy { margin-top:10px; padding-top:8px;
@@ -373,7 +410,7 @@ li.skryto { color:var(--muted); font-size:11px; font-style:italic; }
   .kand .ctx { font-size:11.5px; color:var(--ink2); margin-top:3px;
                line-height:1.45; }
 
-  details.znalost { margin-top:12px; width:max-content; max-width:1010px; }
+  details.znalost > summary { margin-bottom:2px; }
   details.znalost > summary { cursor:pointer; list-style:none;
                               display:flex; gap:12px; align-items:baseline; }
   details.znalost > summary::-webkit-details-marker { display:none; }

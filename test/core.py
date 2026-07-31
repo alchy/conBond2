@@ -708,6 +708,35 @@ ok(spojeni(_gr, "němcová", "kdokoli", _ZIV)["druh"] == "nevim",
    "neznámé jméno nedalo nevím")
 print(f"  uzlů {len(_gr)} · doloženo / cesta / vyloučeno / nevím rozlišeno")
 
+print("\n— šipkový diagram: systém se k řešení dopracuje —")
+from core.diagram import Diagram  # noqa: E402
+
+# Úloha o věštkyni (Bartlová, kap. 4.4). Dáno je jediné: zaplatil jsem.
+#   a věřím věštkyni · b jsem hloupý · c zaplatil jsem · d dozvěděl jsem se pravdu
+_vestkyne = (Diagram()
+             .implikace("¬a", "b", "1. nevěříš-li ⇒ jsi hloupý")
+             .implikace("b", "¬c", "2. jsi-li hloupý ⇒ nezaplatíš")
+             .implikace("c", "d", "3. zaplatíš-li ⇒ dozvíš se pravdu"))
+_r = _vestkyne.obarvit({"c": True})
+ok(_r["barva"].get("d") is True, "modus ponens nedal „dozvím se pravdu“")
+# MODUS TOLLENS je ten, na kterém to stojí. Dopředným čtením šipek by
+# z „zaplatil jsem“ vypadlo jen d; že nejsem hloupý, plyne až zpětně.
+ok(_r["barva"].get("b") is False, "modus tollens nevyvrátil „jsem hloupý“")
+ok(_r["barva"].get("a") is True, "řetězení dozadu nedalo „věřím věštkyni“")
+ok(not _r["spory"] and not _r["neurceno"], "úloha měla vyjít beze zbytku")
+
+# SPOR SE HLÁSÍ, NEPŘEPISUJE. První verze měla u obou pravidel podmínku
+# „a uzel ještě není obarvený“ — a spolkla tím právě rozpor: obarvený uzel
+# se přeskočil a nikde se to neprojevilo.
+_s = _vestkyne.obarvit({"c": True, "b": True})
+ok(_s["spory"], "odporující si vstupy neohlásily spor")
+
+# Z důsledku se nesmí usuzovat na předpoklad. „Dozvěděl jsem se pravdu“
+# neznamená, že jsem zaplatil.
+_p = _vestkyne.obarvit({"d": True})
+ok("c" not in _p["barva"], "diagram potvrdil důsledkem předpoklad")
+print(f"  věštkyně vyřešena · spor ohlášen · z důsledku se neusuzuje")
+
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")
 ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")

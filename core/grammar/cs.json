@@ -100,7 +100,7 @@
   "století",
   "stol"
  ],
- "_tazaci_na_typ": "Tázací tvar → druh místa, kde odpověď leží. Tohle je celá „sémantika\" otázky na obsah; zbytek udělá pole.",
+ "_tazaci_na_typ": "Tázací tvar → druh místa, kde odpověď leží. Kdo/Co míří na JMENNÝ PŘÍSUDEK („Ježíš je Kristus“), který označuje agent Druh; ostatní na návěsky Chronose, Topose a Metrona.",
  "tazaci_na_typ": {
   "kdy": "Typ=cas",
   "odkdy": "Typ=cas",
@@ -112,7 +112,13 @@
   "kolik": "Typ=pocet",
   "kolika": "Typ=pocet",
   "kolikrát": "Typ=pocet",
-  "nakolik": "Typ=pocet"
+  "nakolik": "Typ=pocet",
+  "kdo": "Typ=druh",
+  "co": "Typ=druh",
+  "jaký": "Typ=druh",
+  "jaká": "Typ=druh",
+  "jaké": "Typ=druh",
+  "čím": "Typ=druh"
  },
  "_prazdna": "Tvary, které o obsahu nic neříkají — svítily by skoro všude a průnik by zúžily na nic.",
  "prazdna": [

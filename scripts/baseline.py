@@ -130,6 +130,26 @@ def je_koren_slovesa(t: dict) -> bool:
     return "root" in t["acts"] and t["upos"] in ("VERB", "AUX")
 
 
+def je_jmenny_prisudek(veta: list, t: dict) -> bool:
+    """Kořen, na kterém visí spona — „Alois Jirásek ( … ) byl český prozaik".
+
+    Tahle věta říká, KDO ten člověk je, a přitom dlouho jako jediná
+    nedostala entitu: kořenem je podstatné jméno, ne sloveso, takže se na ni
+    koreference vůbec nepodívala. Otázka „Kdo je Alois Jirásek?" pak
+    nenašla nic, ačkoli odpověď stála v první větě článku."""
+    if "root" not in t["acts"]:
+        return False
+    return any(x.get("head") == t.get("id") and "cop" in x["acts"] for x in veta)
+
+
+def koren_vypovedi(veta: list):
+    """Kořen věty, ať je to sloveso, nebo jmenný přísudek."""
+    for t in veta:
+        if je_koren_slovesa(t) or je_jmenny_prisudek(veta, t):
+            return t
+    return None
+
+
 def podmet_korene(veta: list, koren: dict):
     """Podmět KOŘENE, ne libovolný podmět ve větě.
 
@@ -227,8 +247,16 @@ def krok_koreference() -> dict:
         zasah = 0
         for veta in vety:
             souhrn["vet"] += 1
-            koren = next((t for t in veta if je_koren_slovesa(t)), None)
-            if koren is None or not je_treti_osoba(koren):
+            koren = koren_vypovedi(veta)
+            if koren is None:
+                continue
+            # U jmenného přísudku nese osobu SPONA, ne přísudek sám.
+            nositel = koren
+            if not je_koren_slovesa(koren):
+                nositel = next((x for x in veta
+                                if x.get("head") == koren.get("id")
+                                and "cop" in x["acts"]), koren)
+            if not je_treti_osoba(nositel):
                 continue
             podmet = podmet_korene(veta, koren)
             if podmet is None:

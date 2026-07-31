@@ -55,12 +55,19 @@ class Odpovidac:
         odpověď na otázku po ději. Agent Bio to označí `Udal=zivot` právě
         proto, že u nedefiniční závorky nevíme, čí život to je."""
         out: dict = defaultdict(lambda: defaultdict(list))
+        # `komu` u jmenného přísudku: ve větě jich může být víc a jen jeden
+        # patří tomu, na koho se ptáme. Drží se stranou od rozsahů, aby
+        # zbytek kódu zůstal stejný.
+        self.komu: dict = {}
         for vi, veta in enumerate(self.vety):
             for t in veta:
                 if any(a == "Udal=zivot" for a in t["acts"]):
                     continue
                 for n in t.get("navesky", ()):
                     out[vi][n["typ"]].append(tuple(n["rozsah"]))
+                    h = n.get("hodnota")
+                    if isinstance(h, dict) and h.get("komu"):
+                        self.komu[(vi, tuple(n["rozsah"]))] = h["komu"]
         return out
 
     def _sestavit_entity(self) -> dict:
@@ -202,7 +209,8 @@ class Odpovidac:
             if pomohla:
                 vety = pomohla if not vety else ((vety & pomohla) or vety)
         typ = self.jazyk.na_co_se_pta(text)
-        nalezy = self.sebrat(vety, typ)
+        o_kom = akt["tvary"] if typ == "Typ=druh" else ()
+        nalezy = self.sebrat(vety, typ, o_kom)
         # ZÚŽENÍ, KTERÉ NIC NENAJDE, JE HORŠÍ NEŽ ŠIRŠÍ POLE — ale jen když
         # otázce rozumíme celé. „Kdy se narodil Alois Jirásek?" protnulo
         # entitu se slovesem na jedinou větu, a ta žádný čas neměla: rok
@@ -217,7 +225,7 @@ class Odpovidac:
                         and not akt["nezname"])
         if not nalezy and lze_rozsirit:
             sirsi = set(self.podle_entity.get(akt["entita"], ()))
-            nalezy = self.sebrat(sirsi, typ)
+            nalezy = self.sebrat(sirsi, typ, o_kom)
             if nalezy:
                 vety, akt["siroko"] = sirsi, True
         # Množiny se ven neposílají — nález jde rovnou do JSON pro prohlížeč.
@@ -226,15 +234,26 @@ class Odpovidac:
                 "znalost_pomohla": bool(pomohla), "kandidati": nalezy,
                 "odpoved": nalezy[0]["text"] if nalezy else None}
 
-    def sebrat(self, vety, typ) -> list:
-        """Úseky daného druhu ve větách pole."""
-        out = []
+    def sebrat(self, vety, typ, o_kom=()) -> list:
+        """Úseky daného druhu ve větách pole.
+
+        U `Typ=druh` rozhoduje ještě `o_kom`: věta „Kdo je lhář, ne-li ten,
+        kdo popírá, že Ježíš je Kristus?" má jmenné přísudky dva a jen jeden
+        patří Ježíšovi. Kdo se ptá na osobu, dostane jen její přísudky —
+        a když žádný nesedí, radši nic než cizí."""
+        kusy = {k.lower() for k in o_kom}
+        out, jine = [], []
         for vi in sorted(vety):
             for rozsah in self.podle_typu.get(vi, {}).get(typ, ()):
-                out.append({"veta": vi, "rozsah": list(rozsah),
-                            "text": self.text_rozsahu(vi, rozsah),
-                            "kontext": self.text_vety(vi)})
-        return out
+                zaznam = {"veta": vi, "rozsah": list(rozsah),
+                          "text": self.text_rozsahu(vi, rozsah),
+                          "kontext": self.text_vety(vi)}
+                komu = self.komu.get((vi, tuple(rozsah)))
+                if kusy and komu and kusy & set(komu.split()):
+                    out.append(zaznam)
+                else:
+                    jine.append(zaznam)
+        return out if (kusy and out) else (jine if not kusy else out)
 
     # ---- čtení -------------------------------------------------------
     def text_rozsahu(self, vi: int, rozsah) -> str:

@@ -184,6 +184,121 @@ ve stejném dokumentu.
 
 ---
 
+## 2b · Identifikace věty: vzor, šablona a MATICE VZTAHŮ mezi nimi
+
+Tohle je jádro odpovídání a dnešní systém to nemá.
+
+```
+VZOR       jeden konkrétní vektor    jak vypadá TAHLE věta
+ŠABLONA    třída stejných vektorů    druh vět, které vypadají takhle
+MATICE     vztahy mezi šablonami     které druhy spolu souvisejí
+```
+
+### Proč nestačí šablona sama
+
+Otázka „Kde byl Jan uvězněn?" se přeloží na vzor. Ten se sotva kdy trefí
+na šablonu **přesně** — otázka a odpověď mají jiný slovosled, jiný pád,
+jinou osobu. Kdyby se hledala jen totožnost, systém by mlčel skoro vždy.
+
+Proto matice: **šablona otázky ukazuje na šablony odpovědí**, a ten vztah
+se buduje z dat, ne z pravidel.
+
+```
+Š(„Kde byl X uvězněn?")  ─┬─ 0,81 ─→  Š(„X byl uvězněn v <místo>")
+                          ├─ 0,62 ─→  Š(„<místo>, kde X seděl")
+                          └─ 0,44 ─→  Š(„X strávil ve vězení <čas>")
+```
+
+### Jak matice vzniká
+
+Tři nezávislé zdroje, každý s vlastní vahou a **vlastním doložením**:
+
+1. **Sdílené kotvy.** Dvě šablony, jejichž věty opakovaně mluví o týchž
+   entitách a týchž hodnotách, spolu souvisejí. Tohle je čistě
+   pozorovatelné a nepotřebuje jazykovou znalost.
+2. **Společná hrana.** Šablona A vyrábí `uvěznit(kdo, kde)` a šablona B
+   taky — pak jsou to dva způsoby, jak říct totéž. Hrana je společný
+   jmenovatel různých formulací.
+3. **Dialog.** Člověk potvrdí nebo opraví: „ne, tohle je o něčem jiném."
+   Nejdražší zdroj, ale nejpřesnější — a musí být vidět, které vazby
+   odtud pocházejí.
+
+Matice je **řídká a vážená**, drží se jen nad nějakým prahem, a každá
+vazba nese počet dokladů. Bez počtu se nedá poznat vazba z tisíce vět od
+vazby z jedné.
+
+### Co tím systém získá
+
+```
+dnes:   otázka → slova → věty, kde ta slova leží  (pytel)
+nově:   otázka → vzor → šablony → věty toho DRUHU (třída)
+```
+
+Rozdíl je vidět přesně na tom selhání: v pytli vět o Nerudovi Praha leží.
+Ve třídě vět o **věznění** Neruda není, a odpověď je mlčení.
+
+---
+
+## 2c · Aproximace ze vztahů a učení
+
+Systém se nesmí zastavit na tom, co je doložené. Musí umět **přiblížit se**
+— a přiznat, že se přiblížil.
+
+### Tři způsoby aproximace
+
+**1 · Přes šablonu (tvarová aproximace).**
+Nejbližší šablona v matici místo přesné shody. „Kde se narodil X?" a
+„X pochází z <místo>" nejsou totéž, ale odpověď leží ve stejném poli.
+Míra = váha v matici.
+
+**2 · Přes vztah (skládaná aproximace).**
+Když chybí přímá hrana, složí se z existujících — `tchán = otec ∘ manžel`.
+Míra = délka řetězu a nejslabší článek v něm.
+
+**3 · Přes zařazení (typová aproximace).**
+Co platí o třídě, platí obvykle o členu. `liška ⊂ divoké zvíře`, o divokých
+zvířatech se ví, kde žijí. Míra = vzdálenost ve svazu a to, jestli existuje
+konkrétnější pravidlo, které ji přebíjí.
+
+Všechny tři vracejí **odstupňované tvrzení**, ne holé „ano" — a formulace
+se musí lišit slovy, ne jen v detailu.
+
+### Učení: čtyři smyčky
+
+```
+1. Z FAKTŮ NA PRAVIDLA
+   kde se složená cesta opakovaně kryje s doloženou hranou, je to pravidlo
+   doklad / navíc / spor — a `navíc` NENÍ chyba, pole je monotónní
+
+2. Z PRAVIDEL NA FAKTY
+   odvozená hrana je vstup dalšího odvozování i dalšího učení
+   ⇒ vrstva se zavírá sama na sebe
+
+3. Z DAT NA MÍRY
+   arita (kolik hodnot smí entita mít), výlučnost rozměru, váhy v matici
+   — všechno MĚŘENO, nikdy zadáno
+
+4. Z DIALOGU NA VŠECHNO
+   člověk potvrdí, opraví, doplní — a jeho hrana přebíjí korpus,
+   protože kdo systém opravuje, dělá to proto, aby ho opravil
+```
+
+Smyčka 2 je ta, kvůli které to celé stojí za to: text říká, že Věra je
+manželka Karla a Karel otec Lucie. Že je Věra matka Lucie, neříká
+**nikde** — a přesto to plyne, a je to nový fakt, nad kterým se dá učit
+dál.
+
+### Co učení nesmí
+
+* **Nepřepisovat doložené.** Naučené pravidlo smí odvozovat, ne měnit to,
+  co v textu stojí.
+* **Nepřijímat pod prahem.** Pravidlo ze tří dokladů je náhoda. A práh se
+  neohýbá po měření.
+* **Neztrácet, odkud to je.** Každá naučená hrana nese pravidlo, premisy
+  a počet dokladů — jinak ji nejde vzít zpátky, až se ukáže špatná.
+
+---
+
 ## 3 · Vrstvy
 
 ```
@@ -218,6 +333,35 @@ ve stejném dokumentu.
 │ druh · obsah · ŘETĚZ DOLOŽENÍ · míra jistoty                    │
 └─────────────────────────────────────────────────────────────────┘
 ```
+
+### Subsystémy: pojmenovaní agenti, každý s jednou prací
+
+Převzato z conBondu, kde se to osvědčilo — pojmenovaná věc se dá vypnout,
+změřit a nahradit. Každý subsystém **jen značkuje**; rozhodování je jinde.
+
+```
+CHRONOS   čas       datum, rok, událost narození a úmrtí, osa času
+TOPOS     místo     kde se to stalo; NameType=Geo proti Giv/Sur
+METRON    počet      kolik; a co počet NENÍ (řadové číslovky)
+BIO       životopis  definiční závorka: narození, úmrtí, místa
+DRUH      zařazení   jmenný přísudek — „kdo/co to je", i se záporem
+SPEECH    přímá řeč  kdo co komu řekl; rám uvozovací věty
+MNEMOS    paměť      co člověk řekl o sobě a o světě V TOMHLE rozhovoru
+HERMES    kanály     kudy odpověď ven — web, terminál, hlas, soubor
+ROLES     větné členy 12 rolí z rozboru, tabulkou z profilu
+NAMES     jména      scelení, varianty, osoby proti dokumentům
+```
+
+Pravidla, která platí pro každý z nich:
+
+* **Jen značkuje.** Chronos řekne „tohle je čas", ne „tohle je odpověď".
+* **Dá se vypnout.** A musí být měřitelné, co se tím ztratí.
+* **Značka nese zdroj.** Aby šlo poznat, který subsystém se plete.
+* **Mlčení je platný výstup.** Agent, který nic nenašel, není chyba.
+
+MNEMOS stojí trochu stranou: nepracuje s korpusem, ale s tím, co člověk
+řekl. Jeho hrany mají jinou proveninci a **přebíjejí korpus**, protože
+kdo systém opravuje, dělá to proto, aby ho opravil.
 
 ### Švy (jediná místa, kde se smí lišit implementace)
 
@@ -407,6 +551,83 @@ chybí dnes.
 
 ---
 
+## 5b · Dialog s člověkem
+
+Systém není vyhledávač s okénkem. Rozhovor je **rovnocenný zdroj pravdy**
+vedle korpusu a musí umět všechno, co člověk v rozhovoru běžně dělá.
+
+### Co má rozumět
+
+```
+OTÁZKA NA OBSAH      Kde se narodil Hrabal?          → pole
+OTÁZKA NA VZTAH      Je Krakatit dílo?               → znalost
+OTÁZKA NA SOUVISLOST Mohl Čapek znát Němcovou?       → graf + rozměr
+TVRZENÍ              Krakatit je román.              → nová hrana
+OPRAVA               Ne, Jan byl uvězněn v Machaeru. → přebije korpus
+DEFINICE             Tchán je otec manžela.          → nové pravidlo
+OSOBNÍ FAKT          Mám rád knedlíky.               → mnemos
+VZKAZ                Vyřiď Jindrovi, že přijdu.      → schránka
+NAVÁZÁNÍ             Čí?  ·  A kdy?  ·  A on?        → elipsa z tématu
+METAOTÁZKA           Odkud to víš?  ·  Co víš o X?   → řetěz doložení
+SPOLEČENSKÉ          Dobrý den. · Děkuju.            → odpověď, ne rozbor
+```
+
+### Zapamatování faktu od uživatele (MNEMOS)
+
+Co člověk řekne o sobě nebo o světě, se **uloží a nese jinou proveninci
+než korpus**. Tři vlastnosti, které to musí mít:
+
+1. **Přebíjí korpus.** Kdo systém opravuje, dělá to proto, aby ho opravil.
+   Ale to staré se nemaže — jen ustoupí, a v detailu je vidět obojí.
+2. **Ví, čí to je.** Fakt patří tomu, kdo ho řekl. Bez identity se
+   „mám rád knedlíky" nedá k nikomu vztáhnout, a systém se má radši
+   zeptat, než hádat.
+3. **Je odvolatelné.** „Zapomeň, co jsem říkal o X" musí jít — a musí
+   zmizet i to, co se z toho odvodilo.
+
+Naučené hrany vstupují do **téhož** odvozování jako korpusové: pravidla
+z faktů, arita i diagram na ně platí stejně. To je celý smysl jednoho
+referenčního jazyka.
+
+### Vyřizování vzkazů
+
+Vzkaz je fakt s **adresátem a časem doručení**. Systém ho přijme, potvrdí
+a doručí, až se adresát ozve.
+
+```
+uloz:    „Vyřiď Jindrovi, že přijdu v pátek."
+         → vzkaz(od=já, komu=jindra, co=…, kdy=…)
+doruc:   Jindra se přihlásí → „Máš vzkaz od Honzy: …"
+```
+
+Zásada, která to drží při zemi: **vzkaz se nedoručuje odhadem.** Když
+není jisté, kdo je „Jindra", systém se doptá — stejně jako u jmen
+v korpusu. Špatně doručený vzkaz je horší než nedoručený.
+
+### Metaotázky jsou plnohodnotné
+
+„Odkud to víš?" musí umět odpovědět vždycky, protože každá odpověď nese
+řetěz. To není luxus — je to jediná obrana proti tomu, aby se odvozené
+vydávalo za doložené.
+
+```
+Kde se narodil Hrabal?  →  Židenice
+Odkud to víš?           →  věta 14 dokumentu bohumil_hrabal, agent Bio,
+                           definiční závorka, `Udal=narozeni`
+```
+
+### Elipsa bez zvláštního mechanismu
+
+Navazující otázka nemá vlastní mechanismus — **předchozí odpověď se stane
+aktivací** a zúží pole jako každý jiný signál. Ověřeno: „Kdo je Ježíš?" →
+„Syn Boží"; „Čí?" pak svítí slovy `syn` a `boží` a pole klesne z 557 vět
+na 34.
+
+Podmínka: doplňuje se **jen** u otázky, která sama nic nenese. Jinak by si
+předchozí odpověď táhla do všech dalších otázek.
+
+---
+
 ## 6 · Nedotknutelné zásady
 
 Tohle není styl. Každá zásada je zapsaná po chybě, která bez ní vznikla.
@@ -456,6 +677,62 @@ přiznáním, že ukázka byla vydávána za výsledek.
 
 ---
 
+## 7b · Vizualizace: viewBase jako ZÁKAZNÍK, ne součást
+
+Systém musí být vidět. Ne logem, ale obrazem toho, čím právě myslí.
+
+`viewBase` (Canvas, TerminalWindow) se připojuje **přes veřejné API jako
+kdokoli jiný** — o vnitřnostech neví nic. Kdyby sahala do dat přímo,
+nešla by vypnout, a přesně to se na stroji bez displeje dělá.
+
+Čtyři pohledy, převzaté z conBondu, kde se osvědčily:
+
+```
+/view doc    DOKUMENTY korpusu a jejich blízkosti
+             po tahu se rozsvítí ten, ze kterého odpověď přišla
+             stabilní mapa — mění se pomalu
+
+/view word   ROZSVÍCENÁ SLOVA pole a jejich vodivosti
+             uzly vznikají a hasnou s každým tahem
+             ⇒ je vidět, čím stroj právě myslí, ne jen kde to našel
+
+/view vzor   ŠABLONY a matice vztahů mezi nimi        (nové)
+             která šablona ukazuje na kterou a jak silně
+
+/view graf   ENTITY a hrany s doložením               (nové)
+             cesta, po které odpověď přišla, zvýrazněná
+```
+
+Plus dvě okna: **DIALOG** s promptem a **AKTIVACE** bez promptu (režim,
+počet kandidátů, zdroj, řetěz).
+
+Zásada: **vizualizace se bez stroje vědomě nespustí.** Prázdné okno je
+horší než jasná hláška.
+
+---
+
+## 7c · Dokumentace jako součást, ne příloha
+
+Platí pravidlo, na kterém stojí čitelnost obou projektů:
+
+> **Každá metoda má vysvětlení alespoň principiální, a u každého řezu
+> stojí, po jaké naměřené chybě vznikl.**
+
+Konkrétně:
+
+* **Docstring vysvětluje PROČ, ne co.** Co dělá kód, je vidět z kódu.
+* **U každé konstanty a prahu stojí, odkud se vzal.** „Šestnáct místo
+  sedmi" bez důvodu je magické číslo; s důvodem je to záznam měření.
+* **Chyba se zapisuje do kódu, ne jen do commitu.** Řez, který vznikl
+  proto, že systém odpověděl „ve svých prózách" na otázku po rodišti, to
+  musí mít napsané u sebe — jinak ho někdo za půl roku „zjednoduší".
+* **Příručka s diagramy volání** pro každý průchod (příjem, stavba,
+  dotaz, dialog, učení).
+* **Spustitelné ukázky** vedle textu: `scripts/diagram.py` ukáže krok za
+  krokem, co se v odvozování děje. Ukázka, kterou lze spustit, nezastará.
+
+---
+
 ## 8 · Měření
 
 Nový systém musí mít od prvního dne to, co má conBond2:
@@ -476,6 +753,19 @@ nejdřív něco naučí.
 
 **Brána se měří taky.** Otázka, která neprojde do pole, nemá odpověď, i
 kdyby ji pole mělo. Stalo se to při každém přidání nové cesty.
+
+**Testuje se každý směr, ne jen ten šťastný.** Ke každé schopnosti patří
+čtveřice zkoušek, a chybí-li kterákoli, není ta schopnost hotová:
+
+```
+1. UMÍ            správný vstup → správná odpověď
+2. MLČÍ           chybějící data → přiznání, ne výmysl
+3. DOPTÁ SE       nejednoznačný vstup → otázka zpět, ne volba
+4. OHLÁSÍ SPOR    odporující si vstup → hlášení, ne tichý výběr
+```
+
+Dnešní etalon má domény přesně kvůli tomu — `zápory` měří mlčení a bez ní
+by se vylepšování dosahu odměňovalo i tehdy, když roste konfabulace.
 
 Výchozí stav k porovnání: **40 otázek, 85 % dosah, 65 % první, scénáře 2/2.**
 
@@ -499,6 +789,37 @@ Výchozí stav k porovnání: **40 otázek, 85 % dosah, 65 % první, scénáře 
 ## 10 · Pořadí stavby
 
 Podle závislostí, ne podle atraktivnosti.
+
+### Krok nula: SCAFFOLD dřív než cokoli jiného
+
+Nejdřív se navrhne a postaví **kostra**: adresáře, švy jako abstraktní
+třídy, prázdné profily, `Config`, log, testovací běh, a **jedna zkouška,
+která projde skrz naprázdno** — text dovnitř, prázdná odpověď ven, ale
+celou cestou.
+
+Teprve do hotové kostry se vkládají vrstvy. Důvod je praktický: v obou
+předchozích projektech vznikly nejhorší vazby tam, kde se vrstva přidávala
+do něčeho, co pro ni nemělo místo — odtud „odpovídač nesahá na šablony".
+
+### Data se přebírají z obou projektů
+
+Nic se nesbírá znovu. K dispozici je:
+
+```
+z conBond2   korpus 26 051 vět s rozborem, agenty a koreferencí
+             etalon 40 kurátorovaných otázek + scénáře
+             jazykový profil cs.json
+             vertikály (300 sloupců pole)
+z conBond    etalon 95 otázek (tři režimy včetně `clarify`)
+             dialogové scénáře
+             slovník synonym (1016 skupin)
+             tabulka vztahů jako odvozovací pravidla
+             graf entit s vahami podle větného členu
+```
+
+Licence: Wikipedie **CC BY-SA 4.0**, ekumenický překlad Bible je
+**autorský a do veřejného repozitáře nesmí** (jen Kralická). Zdroje se
+vedou v `ZDROJ.md` a přenášejí se s daty.
 
 ```
 0. kostra knihovny + jazykový profil   ← všechno ostatní se o ně opře

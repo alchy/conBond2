@@ -89,7 +89,7 @@ class SlucovacShodou(Slucovac):
     """Dva vektory jsou tatáž šablona, právě když jsou znak po znaku stejné."""
 
     def __init__(self) -> None:
-        self.predpona = "t"
+        self.predpona = "f"
         self.podle_klice: dict[Hashable, str] = {}
         self.sablony: dict[str, dict] = {}
 

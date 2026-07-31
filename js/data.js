@@ -8,7 +8,7 @@ export const data = { cols: [], facts: [], query: [] };
 export let vychozi = null;      // pro tlačítko „Výchozí data"
 
 export const KORPUS = {
-  f: { klic: 'facts', jm: 'fakta', predpona: 't' },
+  f: { klic: 'facts', jm: 'fakta', predpona: 'f' },
   q: { klic: 'query', jm: 'dotazy', predpona: 'q' },
 };
 

@@ -99,7 +99,7 @@ class Slucovac(ABC):
 
     @abstractmethod
     def zacit_sadu(self, predpona: str) -> None:
-        """Nová sada šablon. Předpona 't' pro fakta, 'q' pro dotazy — id
+        """Nová sada šablon. Předpona 'f' pro fakta, 'q' pro dotazy — id
         jsou pak od sebe rozeznatelná na první pohled."""
 
     @abstractmethod

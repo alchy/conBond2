@@ -102,7 +102,7 @@ ok(pole.fakta.pocet_sablon() == 71 and pole.dotazy.pocet_sablon() == 161,
    "počty šablon nesedí")
 ok(len(pole.fakta.vazby) == 74 and len(pole.dotazy.vazby) == 210,
    "počty vazeb nesedí")
-for k, predpona in (("f", "t"), ("q", "q")):
+for k, predpona in (("f", "f"), ("q", "q")):
     strana = pole.strana(k)
     zpet = sum(len(strana.vypsat_vazby_sablony(t)) for t in strana.vypsat_sablony())
     ok(zpet == len(strana.vazby),

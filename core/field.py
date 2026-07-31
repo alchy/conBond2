@@ -24,7 +24,10 @@ from .sieve import SitkoStredu, filtruje_stred
 from .flow import Tok
 from .sources import SkladacRetezcem, SlucovacShodou, ZdrojZTokenu
 
-PREDPONY = {"f": "t", "q": "q"}
+# Předpona id šablon. Fakta „f", dotazy „q" — id je pak na první
+# pohled poznat, ze které strany je. Dřív měla fakta „t" (template)
+# a míchalo se to s označením strany.
+PREDPONY = {"f": "f", "q": "q"}
 KORPUSY = {"f": "facts", "q": "query"}
 
 

@@ -12,19 +12,19 @@ vlastní šablonu neviditelné.**
 Se středem mimo, r=1, kotva na sponě:
 
 ```
-Brno je   město.   -1:PROPN -1:nsubj -1:Number=Sing … +1:NOUN +1:root …   → t02
-Brno není město.   -1:PROPN -1:nsubj -1:Number=Sing … +1:NOUN +1:root …   → t02
+Brno je   město.   -1:PROPN -1:nsubj -1:Number=Sing … +1:NOUN +1:root …   → f02
+Brno není město.   -1:PROPN -1:nsubj -1:Number=Sing … +1:NOUN +1:root …   → f02
 ```
 
 Znak po znaku totéž. Věty se liší jen tím slovem, které je středem, takže po
-složení obálky mezi nimi nezbyl žádný rozdíl. V měření to byla šablona `t46`
+složení obálky mezi nimi nezbyl žádný rozdíl. V měření to byla šablona `f46`
 se šesti členy, `{'instance': 3, 'zapor': 3}`.
 
 Se středem uvnitř se liší v jediném slotu:
 
 ```
-Brno je   město.   … 0:AUX 0:cop 0:Polarity=Pos …   → t02
-Brno není město.   … 0:AUX 0:cop 0:Polarity=Neg …   → t05
+Brno je   město.   … 0:AUX 0:cop 0:Polarity=Pos …   → f02
+Brno není město.   … 0:AUX 0:cop 0:Polarity=Neg …   → f05
 ```
 
 UDPipe tu informaci dodával celou dobu. Netýká se to jen záporu — stejně
@@ -45,10 +45,10 @@ středem uvnitř se týchž 195 výskytů rozpadlo do 92 šablon, roztříděný
 pádu, čísla a rodu středu:
 
 ```
-t444    13×   filosofie, kritiky, lásky, reality      NOUN Gen Sing Fem
-t5371    8×   dramatik, esejista, pedagog, právník    NOUN Nom Sing Masc
-t2837    6×   badatelů, lidí, maloměšťáků, poutníků   NOUN Gen Plur Masc
-t4761    6×   1818, 1833, 1920, 1921, 1957            NUM
+f444    13×   filosofie, kritiky, lásky, reality      NOUN Gen Sing Fem
+f5371    8×   dramatik, esejista, pedagog, právník    NOUN Nom Sing Masc
+f2837    6×   badatelů, lidí, maloměšťáků, poutníků   NOUN Gen Plur Masc
+f4761    6×   1818, 1833, 1920, 1921, 1957            NUM
 ```
 
 Tím zmizí to, kvůli čemu pole existuje: že „dramatik" a „filosofie" stojí na

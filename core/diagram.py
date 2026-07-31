@@ -18,6 +18,21 @@ odpovědi — a co je podstatnější, spadnou tam jako TOTÉŽ:
 
 Žádná z těch věcí nepotřebuje vlastní větev. Všechny jsou šipka.
 
+ATOM NENÍ NÁLEPKA, JE TO `predikát(argument)`. V učebnici se výroky značí
+písmeny — j, k, t — a vypadá to, že je musí pojmenovat člověk. Nemusí:
+všechny tři mají týž tvar `doma(osoba)`, liší se jen argumentem. Uzly se
+proto jmenují `doma(jakub)`, ne `j`, a tím se z ručního značkování stává
+táž úloha, jakou pole už umí: šablona je predikát, kandidáti jsou hodnoty.
+
+DVĚ CESTY K ZÁVĚRU, A KAŽDÁ UMÍ NĚCO JINÉHO.
+
+    obarvit()   propagace od daného      rychlá, ale potřebuje první barvu
+    modely()    zkusit všechny možnosti  úplná, ale 2^n
+
+Úloha o vnukovi ukazuje, proč nestačí ta první: nedáno NIC, a přesto
+z ní plyne, že někdo je doma. Žádný jednotlivý výrok vynucený není —
+to se pozná až rozborem případů.
+
 DVĚ PRAVIDLA, NIC VÍC. Diagram se obarvuje jen jimi a obě jsou v úloze
 o věštkyni potřeba:
 
@@ -68,6 +83,25 @@ class Diagram:
         self.sipky.append((z, do, duvod))
         self.uzly.update({z, do, negace(z), negace(do)})
         return self
+
+    def ekvivalence(self, a: str, b: str, duvod: str = "") -> "Diagram":
+        """„A právě tehdy, když B" — implikace oběma směry.
+
+        Žádný nový druh hrany. Ekvivalence JE dvojice šipek a diagram to
+        nemusí umět zvlášť."""
+        d = duvod or f"{a} ⇔ {b}"
+        return self.implikace(a, b, d).implikace(b, a, d)
+
+    def disjunkce(self, a: str, b: str, duvod: str = "") -> "Diagram":
+        """„A nebo B" (aspoň jeden) — taky dvojice šipek: ¬A ⇒ B, ¬B ⇒ A.
+
+        POZOR NA MEZ. Funguje to pro dva členy, protože předpoklad zůstane
+        jediný výrok. U tří by musel být předpoklad součin („není A ani B
+        ⇒ C") a takový uzel diagram nemá. Rozšiřovat to fingovaně by
+        znamenalo tvrdit víc, než se dá odvodit — kdo potřebuje delší
+        disjunkci, má sáhnout po `modely()`, které je úplné."""
+        d = duvod or f"{a} ∨ {b}"
+        return self.implikace(negace(a), b, d).implikace(negace(b), a, d)
 
     # ---- obarvení ----------------------------------------------------
     def obarvit(self, dane: Mapping) -> dict:
@@ -133,6 +167,73 @@ class Diagram:
                         "plati": True,
                         "proc": obarveni["proc"].get(u if h else u, "")})
         return out
+
+
+    # ---- co plyne, když není dáno nic --------------------------------
+    def splnuje(self, hodnoty: Mapping) -> bool:
+        """Neporušuje tohle úplné ohodnocení některou šipku?
+
+        Implikace je nepravdivá v jediném případě — předpoklad platí
+        a důsledek ne. Všechno ostatní ji splňuje, včetně toho, že
+        předpoklad neplatí; proto se tu netestuje nic jiného."""
+        for z, do, _ in self.sipky:
+            if hodnoty.get(z) and not hodnoty.get(do):
+                return False
+        return True
+
+    def modely(self, dane: Optional[Mapping] = None,
+               nejvys_atomu: int = 16) -> Optional[list]:
+        """Všechna bezesporná ohodnocení, nebo None při přílišné velikosti.
+
+        PROČ TOHLE VEDLE PROPAGACE. Obarvování potřebuje první barvu:
+        modus ponens i tollens vycházejí z něčeho daného. Úloha, kde není
+        dáno NIC a přesto z ní něco plyne, jím projde beze změny.
+
+            j ⇒ ¬t · k ⇒ t · ¬k ⇒ j        nic není dáno
+            a přesto: někdo doma je vždycky
+
+        Vyzkoušet všechny možnosti je metoda tabulky pravdivostních hodnot
+        (Bartlová, kap. 4.1). Je ÚPLNÁ tam, kde je propagace jen rychlá:
+        najde i to, co plyne až z rozboru případů.
+
+        Cenou je 2^n, proto ten strop. Vrátit None je poctivější než počítat
+        hodinu — volající se aspoň dozví, že odpověď nezná, místo aby čekal.
+        """
+        atomy = sorted({zaklad(u) for u in self.uzly})
+        if len(atomy) > nejvys_atomu:
+            return None
+        dane = {zaklad(u): (bool(h) if not u.startswith("¬") else not bool(h))
+                for u, h in (dane or {}).items()}
+        out = []
+        for maska in range(1 << len(atomy)):
+            h = {a: bool(maska >> i & 1) for i, a in enumerate(atomy)}
+            if any(h[a] != v for a, v in dane.items() if a in h):
+                continue
+            # Negace se dopočítají, aby je `splnuje` vidělo jako uzly.
+            uplne = dict(h)
+            uplne.update({negace(a): not v for a, v in h.items()})
+            if self.splnuje(uplne):
+                out.append(h)
+        return out
+
+    def plyne(self, uzel: str, dane: Optional[Mapping] = None) -> Optional[bool]:
+        """Platí ten výrok ve VŠECH bezesporných ohodnoceních?
+
+        True / False / None, a to None je plnohodnotná odpověď: znamená, že
+        obojí je možné. Vrátit místo něj „ne" by z nerozhodnutelnosti
+        udělalo zápor — týž prohřešek, jaký hlídá monotónní pole.
+
+        Bez modelů se nic z toho nedá říct, takže i prázdná množina modelů
+        (vstupy si odporují) vrací None, ne False."""
+        m = self.modely(dane)
+        if not m:
+            return None
+        z, kladne = zaklad(uzel), not uzel.startswith("¬")
+        hodnoty = {h.get(z) for h in m}
+        if len(hodnoty) > 1:
+            return None
+        plati = hodnoty.pop()
+        return plati if kladne else (not plati)
 
 
 def z_pravidel(pravidla: Iterable) -> Diagram:

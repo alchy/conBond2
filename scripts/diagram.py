@@ -110,8 +110,96 @@ def co_neudela():
      neprojevil a diagram vypadal, že úloha vyšla.""")
 
 
+def vnuk():
+    nadpis("3 · ÚLOHA O VNUKOVI — když není dáno NIC")
+    JM = {"doma(jakub)": "Jakub", "doma(kačenka)": "Kačenka",
+          "doma(terezka)": "Terezka"}
+    print("""
+ATOM NENÍ NÁLEPKA. Učebnice značí výroky j, k, t a vypadá to, že je musí
+pojmenovat člověk. Nemusí: všechny tři mají týž tvar `doma(osoba)` a liší
+se jen argumentem. Uzly se proto jmenují `doma(jakub)` — je to táž úloha,
+jakou pole už umí, jen predikát místo šablony a osoba místo kandidáta.""")
+
+    def uloha(prvni):
+        return (Diagram().implikace(*prvni)
+                .implikace("doma(kačenka)", "doma(terezka)",
+                           "2. je-li Kačenka doma, je doma i Terezka")
+                .implikace("¬doma(kačenka)", "doma(jakub)",
+                           "3. není-li Kačenka doma, je doma Jakub"))
+
+    for nazev, prvni in (
+        ("PŮVODNÍ ZADÁNÍ", ("doma(jakub)", "¬doma(terezka)",
+                            "1. je-li Jakub doma, není doma Terezka")),
+        ("ZMĚNĚNÁ PRVNÍ INFORMACE", ("¬doma(jakub)", "¬doma(terezka)",
+                                     "1'. není-li Jakub doma, není doma ani Terezka"))):
+        d = uloha(prvni)
+        print(f"\n{nazev}")
+        for z, do, duvod in d.sipky:
+            print(f"    {duvod}")
+        r = d.obarvit({})
+        print(f"\n  propagace od daného: obarveno {r['barva'] or '{}'}"
+              " — nemá odkud začít")
+        m = d.modely()
+        print(f"  všechny bezesporné možnosti ({len(m)}):")
+        for h in m:
+            print("      " + " · ".join(
+                f"{JM[a]} {'doma' if v else 'pryč'}" for a, v in sorted(h.items())))
+        for a in sorted(JM):
+            v = d.plyne(a)
+            print(f"    plyne, že {JM[a]} je doma? "
+                  + {True: "ANO", False: "NE", None: "nedá se rozhodnout"}[v])
+        print(f"    je někdo doma vždycky? "
+              + ("ANO" if all(any(h.values()) for h in m) else "ne"))
+    print("""
+ODPOVĚĎ: s původním zadáním se o Jakubovi rozhodnout NEDÁ — jsou dvě
+možnosti a v jedné doma není. Se změněnou první informací je Jakub doma
+ve všech třech, takže za vnukem jet.
+
+A všimni si toho zvláštního na původním zadání: vynucený není ŽÁDNÝ
+jednotlivý výrok, a přesto z něj něco plyne — někdo doma je vždycky.
+Propagace to najít nemůže, protože nemá odkud začít. Tohle je metoda
+tabulky pravdivostních hodnot (Bartlová, kap. 4.1): úplná, ale za 2^n.""")
+
+
+def vecirek():
+    nadpis("4 · ÚLOHA O VEČÍRKU — ekvivalence a disjunkce")
+    print("""
+Přibyly dvě spojky, ale ŽÁDNÝ nový druh hrany. Obojí je dvojice šipek:
+
+    A ⇔ B    →   A ⇒ B  ·  B ⇒ A
+    A ∨ B    →   ¬A ⇒ B ·  ¬B ⇒ A
+
+U tří členů disjunkce by to už nešlo: předpoklad by musel být součin
+(„není A ani B ⇒ C") a takový uzel diagram nemá. Kdo potřebuje delší,
+má sáhnout po úplném rozboru.""")
+    JM = {"prijde(jana)": "Jana", "prijde(pavel)": "Pavel",
+          "prijde(kateřina)": "Kateřina", "prijde(vladislav)": "Vladislav",
+          "prijde(lenka)": "Lenka"}
+    d = (Diagram()
+         .ekvivalence("prijde(jana)", "prijde(pavel)",
+                      "1. Jana přijde právě tehdy, když přijde Pavel")
+         .disjunkce("prijde(kateřina)", "prijde(vladislav)",
+                    "2. dorazí Kateřina nebo Vladislav")
+         .implikace("¬prijde(jana)", "prijde(kateřina)",
+                    "3. nepřijde-li Jana, přijde Kateřina")
+         .implikace("prijde(lenka)", "¬prijde(vladislav)",
+                    "4. přijde-li Lenka, nepřijde Vladislav"))
+    print("\nDÁNO:  Kateřina nedorazí")
+    r = d.obarvit({"prijde(kateřina)": False})
+    print("\nPRŮBĚH:")
+    for i, (u, h) in enumerate((u, h) for u, h in r["barva"].items()
+                               if not u.startswith("¬")):
+        print(f"    {i + 1}. {JM[u]:<10} {'PŘIJDE' if h else 'nepřijde'}")
+        print(f"       ↳ {r['proc'][u]}")
+    print(f"\n    neurčeno: {r['neurceno'] or 'nic'}")
+    m = d.modely({"prijde(kateřina)": False})
+    print(f"    kontrola úplným rozborem: {len(m)} model, tentýž")
+    print("\nODPOVĚĎ: na večírku budou " + ", ".join(
+        JM[u] for u, h in r["barva"].items() if h and not u.startswith("¬")))
+
+
 def z_conbondu():
-    nadpis("3 · VĚCI Z conBondu2 JSOU TÁŽ ŠIPKA")
+    nadpis("5 · VĚCI Z conBondu2 JSOU TÁŽ ŠIPKA")
     print("""
 Nic z toho není nová větev v kódu. Všechno jsou implikace, jen z jiného
 zdroje — a v důvodu je vidět odkud.""")
@@ -146,6 +234,8 @@ jedna operace.""")
 def main():
     vestkyne()
     co_neudela()
+    vnuk()
+    vecirek()
     z_conbondu()
     print()
     return 0

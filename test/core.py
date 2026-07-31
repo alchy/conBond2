@@ -737,6 +737,50 @@ _p = _vestkyne.obarvit({"d": True})
 ok("c" not in _p["barva"], "diagram potvrdil důsledkem předpoklad")
 print(f"  věštkyně vyřešena · spor ohlášen · z důsledku se neusuzuje")
 
+# Úloha o vnukovi (Bartlová, kap. 4.4). Uzly se jmenují `doma(kdo)`, ne
+# j/k/t — atom je predikát s argumentem, ne nálepka od člověka.
+def _vnuk(prvni):
+    return (Diagram().implikace(*prvni)
+            .implikace("doma(kačenka)", "doma(terezka)", "2.")
+            .implikace("¬doma(kačenka)", "doma(jakub)", "3."))
+
+
+_pv = _vnuk(("doma(jakub)", "¬doma(terezka)", "1."))
+ok(_pv.obarvit({})["barva"] == {}, "propagace bez daného něco obarvila")
+# NIC JEDNOTLIVÉHO VYNUCENÉ NENÍ, a přesto z úlohy něco plyne. Tohle
+# propagace najít nemůže — potřebuje rozbor případů.
+ok(_pv.plyne("doma(jakub)") is None, "o Jakubovi se v původním zadání rozhodnout nedá")
+_m = _pv.modely()
+ok(len(_m) == 2, f"původní zadání nemá dvě možnosti, ale {len(_m)}")
+ok(all(any(h.values()) for h in _m), "„někdo je doma“ mělo platit ve všech")
+
+# Změněná první informace už Jakuba vynutí — a to je odpověď na úlohu.
+_zm = _vnuk(("¬doma(jakub)", "¬doma(terezka)", "1'."))
+ok(_zm.plyne("doma(jakub)") is True, "změněné zadání nevynutilo Jakuba doma")
+ok(_zm.plyne("doma(kačenka)") is None, "o Kačence se rozhodnout nedá ani teď")
+print(f"  vnuk: původní {len(_m)} možnosti bez závěru · změněné vynutí Jakuba")
+
+# Úloha o večírku. Přidává ekvivalenci a disjunkci — obojí se přeloží na
+# šipky, takže jádro diagramu zůstává beze změny.
+_vecirek = (Diagram()
+            .ekvivalence("prijde(jana)", "prijde(pavel)", "1.")
+            .disjunkce("prijde(kateřina)", "prijde(vladislav)", "2.")
+            .implikace("¬prijde(jana)", "prijde(kateřina)", "3.")
+            .implikace("prijde(lenka)", "¬prijde(vladislav)", "4."))
+_v = _vecirek.obarvit({"prijde(kateřina)": False})
+ok(not _v["neurceno"] and not _v["spory"], "večírek nevyšel beze zbytku")
+for _kdo, _ma in (("jana", True), ("pavel", True), ("vladislav", True),
+                  ("lenka", False), ("kateřina", False)):
+    ok(_v["barva"].get(f"prijde({_kdo})") is _ma, f"u {_kdo} vyšlo něco jiného")
+
+# DVĚ NEZÁVISLÉ CESTY SE MUSÍ SHODNOUT. Propagace je rychlá, úplný rozbor
+# je úplný; kdyby si odporovaly, je chyba v jedné z nich.
+_m = _vecirek.modely({"prijde(kateřina)": False})
+ok(len(_m) == 1 and _m[0] == {k: v for k, v in _v["barva"].items()
+                              if not k.startswith("¬")},
+   "propagace a úplný rozbor daly různý výsledek")
+print("  večírek: propagace i úplný rozbor se shodly na jediném modelu")
+
 print("\n— config umí data přesměrovat —")
 jinam = Config(data="/tmp/pole2-test-data")
 ok(jinam.data == "/tmp/pole2-test-data", "absolutní cesta se přepsala")
